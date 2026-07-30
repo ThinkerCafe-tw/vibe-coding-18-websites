@@ -1,0 +1,47 @@
+name: 網站或教材問題
+description: 回報可重現的錯誤、失效連結或教材內容問題
+title: "[問題] "
+labels:
+  - bug
+body:
+  - type: dropdown
+    id: episode
+    attributes:
+      label: 集數
+      options:
+        - 課程首頁
+        - EP01
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 發生了什麼
+      description: 請描述你看到的畫面或結果，不要貼出個資、金鑰或私人網址。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 如何重現
+      placeholder: |
+        1. 開啟……
+        2. 點擊……
+        3. 看到……
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 裝置與瀏覽器
+      placeholder: 例如：iPhone Safari、Windows Chrome
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 公開資料確認
+      options:
+        - label: 我已確認內容不含個資、登入資訊、金鑰或私人對話。
+          required: true

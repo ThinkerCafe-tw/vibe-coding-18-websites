@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 學員討論與作品分享
+    url: https://github.com/ThinkerCafe-tw/vibe-coding-18-websites/discussions
+    about: 一般提問、學習心得與作品分享請使用 Discussions。
+  - name: 私密安全回報
+    url: https://github.com/ThinkerCafe-tw/vibe-coding-18-websites/security/advisories/new
+    about: 金鑰、個資或其他不適合公開的問題請私下回報。

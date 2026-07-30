@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="18 個網站學會 Vibe Coding：從自然對話、規格審批到真實驗收的繁體中文實作課程。"
+    >
+    <meta property="og:title" content="18 個網站學會 Vibe Coding">
+    <meta
+      property="og:description"
+      content="可執行網站、批准規格、對話提示卡與驗收清單。"
+    >
+    <meta property="og:type" content="website">
+    <meta
+      property="og:url"
+      content="https://thinkercafe-tw.github.io/vibe-coding-18-websites/"
+    >
+    <meta
+      property="og:image"
+      content="https://thinkercafe-tw.github.io/vibe-coding-18-websites/assets/ep01-preview.png"
+    >
+    <title>18 個網站學會 Vibe Coding</title>
+    <link rel="stylesheet" href="styles.css?v=1.0.0">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="回到課程首頁">
+        <span class="brand-mark">18</span>
+        <span>
+          <strong>Vibe Coding 網站實戰</strong>
+          <small>ThinkerCafe × 華視空中進修學院</small>
+        </span>
+      </a>
+      <nav aria-label="主要導覽">
+        <a href="#episodes">18 講</a>
+        <a href="#method">方法</a>
+        <a
+          class="github-link"
+          href="https://github.com/ThinkerCafe-tw/vibe-coding-18-websites"
+        >
+          <i data-lucide="github" aria-hidden="true"></i>
+          <span>GitHub</span>
+        </a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="intro-band">
+        <div class="intro-copy">
+          <p class="eyebrow">公開學員資源</p>
+          <h1>18 個網站學會 Vibe Coding</h1>
+          <p class="lead">
+            像開會一樣說出需求，請 AI 先回述；人批准規格後才施工，最後用真實操作驗收。
+          </p>
+          <div class="primary-actions">
+            <a class="button primary" href="#episodes">
+              <i data-lucide="list-video" aria-hidden="true"></i>
+              查看課程
+            </a>
+            <a
+              class="button secondary"
+              href="episodes/ep01-cafe/site/"
+            >
+              <i data-lucide="play" aria-hidden="true"></i>
+              開啟 EP01 成品
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="episodes-section" id="episodes" aria-labelledby="episodes-title">
+        <div class="episodes-heading">
+          <div>
+            <p class="eyebrow">課程目錄</p>
+            <h2 id="episodes-title">從第一個網站開始</h2>
+          </div>
+          <div class="course-stats" aria-live="polite">
+            <span id="release-stat">1 / 18 已發布</span>
+            <span id="progress-stat">0 / 1 已完成</span>
+          </div>
+        </div>
+
+        <div class="course-tools">
+          <label class="search-field">
+            <i data-lucide="search" aria-hidden="true"></i>
+            <span class="sr-only">搜尋課程</span>
+            <input
+              id="course-search"
+              type="search"
+              placeholder="搜尋集數或主題"
+              autocomplete="off"
+            >
+          </label>
+          <div class="segmented" role="group" aria-label="課程狀態">
+            <button type="button" class="active" data-filter="all" aria-pressed="true">全部</button>
+            <button type="button" data-filter="published" aria-pressed="false">已發布</button>
+            <button type="button" data-filter="upcoming" aria-pressed="false">即將推出</button>
+          </div>
+        </div>
+
+        <div id="episode-grid" class="episode-grid"></div>
+        <p id="empty-state" class="empty-state" hidden>找不到符合條件的課程。</p>
+      </section>
+
+      <section class="workflow-band" aria-labelledby="workflow-title">
+        <div class="section-heading">
+          <p class="eyebrow">學習主線</p>
+          <h2 id="workflow-title">每一集都做同一組關鍵判斷</h2>
+        </div>
+        <ol class="workflow">
+          <li>
+            <span>01</span>
+            <strong>先說需求</strong>
+            <p>自然對話先被聽懂，不急著生成。</p>
+          </li>
+          <li>
+            <span>02</span>
+            <strong>再審規格</strong>
+            <p>哪些要做、不能做、如何驗收。</p>
+          </li>
+          <li>
+            <span>03</span>
+            <strong>批准施工</strong>
+            <p>規格對齊後，AI 才能開始改檔案。</p>
+          </li>
+          <li>
+            <span>04</span>
+            <strong>動作驗收</strong>
+            <p>AI 的回報是證詞，重做結果才是證據。</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="method-band" id="method" aria-labelledby="method-title">
+        <div>
+          <p class="eyebrow">不是咒語式 Prompt</p>
+          <h2 id="method-title">提示卡只是起點，規格才是施工藍圖</h2>
+        </div>
+        <div class="method-copy">
+          <p>
+            你可以照提示卡開口，也可以用自己的話。AI 必須先回述理解、揭露缺口與不可編造的資料，再由人決定是否批准。
+          </p>
+          <a href="https://github.com/ThinkerCafe-tw/vibe-coding-18-websites/blob/main/docs/start-here.md">
+            閱讀完整學習方式
+            <i data-lucide="arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <strong>ThinkerCafe</strong>
+        <p>程式碼採 MIT；教學內容採 CC BY-NC-SA 4.0。</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/ThinkerCafe-tw/vibe-coding-18-websites/issues">回報問題</a>
+        <a href="https://github.com/ThinkerCafe-tw/vibe-coding-18-websites/discussions">學員討論</a>
+        <a href="LICENSE">授權</a>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script src="app.js?v=1.0.0"></script>
+  </body>
+</html>
