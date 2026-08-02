@@ -20,8 +20,11 @@
     "number": "03",
     "title": "攝影師作品集",
     "description": "分清本機完成、版本保存與公開網站。",
-    "state": "preparing",
-    "stateLabel": "整理中"
+    "state": "published",
+    "stateLabel": "已發布",
+    "slug": "ep03-photographer",
+    "image": "assets/ep03-preview.png",
+    "downloadUrl": "https://github.com/ThinkerCafe-tw/vibe-coding-18-websites/raw/main/dist/ep03-photographer-v1.0.0.zip"
   },
   {
     "number": "04",

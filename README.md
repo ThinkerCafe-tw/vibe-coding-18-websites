@@ -2,7 +2,7 @@
 
 華視空中進修學院《網頁設計》課程的公開學員資源。這裡提供每一講的可執行網站、人工批准後的規格、對話提示卡與驗收清單。
 
-[開啟學員網站](https://thinkercafe-tw.github.io/vibe-coding-18-websites/) · [開始 EP01](episodes/ep01-cafe/README.md) · [回報問題](https://github.com/ThinkerCafe-tw/vibe-coding-18-websites/issues)
+[開啟學員網站](https://vibe-coding-18-websites.vercel.app/) · [開始 EP01](episodes/ep01-cafe/README.md) · [查看 EP03](episodes/ep03-photographer/README.md) · [回報問題](https://github.com/ThinkerCafe-tw/vibe-coding-18-websites/issues)
 
 ## 這門課怎麼學
 
@@ -18,7 +18,7 @@
 |---|---|---|---|
 | EP01 | 咖啡廳網站 | 已發布 | [進入本集](episodes/ep01-cafe/README.md) |
 | EP02 | 健身房網站 | 整理中 | 即將公開 |
-| EP03 | 攝影師作品集 | 整理中 | 即將公開 |
+| EP03 | 攝影師作品集 | 已發布 | [進入本集](episodes/ep03-photographer/README.md) |
 | EP04 | 診所預約網站 | 整理中 | 即將公開 |
 | EP05 | 美容院會員網站 | 整理中 | 即將公開 |
 | EP06 | 法律事務所網站 | 整理中 | 即將公開 |
@@ -46,7 +46,7 @@
 
 ## 開啟方式
 
-最簡單的方式是直接使用[學員網站](https://thinkercafe-tw.github.io/vibe-coding-18-websites/)。
+最簡單的方式是直接使用[學員網站](https://vibe-coding-18-websites.vercel.app/)。
 
 也可以下載本 repo：
 
@@ -55,7 +55,7 @@ git clone https://github.com/ThinkerCafe-tw/vibe-coding-18-websites.git
 cd vibe-coding-18-websites
 ```
 
-EP01 是單檔靜態網站，直接開啟 `episodes/ep01-cafe/site/index.html` 即可。
+每集網站都可直接開啟 `site/index.html`。例如 EP03 位於 `episodes/ep03-photographer/site/index.html`。
 
 ## 提問與貢獻
 
@@ -68,4 +68,3 @@ EP01 是單檔靜態網站，直接開啟 `episodes/ep01-cafe/site/index.html` �
 - 程式碼採 [MIT License](LICENSE)。
 - 教學文字、規格與驗收表採 [CC BY-NC-SA 4.0](LICENSE-CONTENT)。
 - 第三方圖片依各自授權，來源記錄在對應的 `ATTRIBUTION.md`。
-

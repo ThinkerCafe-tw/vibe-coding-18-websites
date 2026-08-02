@@ -5,6 +5,7 @@ const episodeGrid = document.querySelector("#episode-grid");
 const emptyState = document.querySelector("#empty-state");
 const searchInput = document.querySelector("#course-search");
 const filterButtons = [...document.querySelectorAll("[data-filter]")];
+const releaseStat = document.querySelector("#release-stat");
 const progressStat = document.querySelector("#progress-stat");
 
 let activeFilter = "all";
@@ -136,6 +137,7 @@ function updateProgressStat() {
   const completedCount = [...completed].filter((slug) =>
     publishedSlugs.has(slug),
   ).length;
+  releaseStat.textContent = `${publishedSlugs.size} / ${episodes.length} 已發布`;
   progressStat.textContent = `${completedCount} / ${publishedSlugs.size} 已完成`;
 }
 
