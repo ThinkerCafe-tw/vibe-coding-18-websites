@@ -16,8 +16,11 @@
 - [先看施工規格](SPEC.md)
 - [跟著對話卡操作](PROMPT-CARD.md)
 - [使用驗收清單](VERIFY.md)
+- [核對圖片來源](site/assets/ATTRIBUTION.md)
 
 網站中的店名、故事、地址、電話與價格皆為課程示意資料，請勿當成真實店家資訊。
+
+`site/assets/` 已放入本集使用的三張固定練習圖片。手邊沒有照片時，先用這組素材完成練習，就不必讓 AI 在施工中臨時找圖。做自己的網站時，再換成自己的照片、AI 生成圖，或已確認授權的素材。
 
 ## 檔案結構
 
@@ -30,6 +33,10 @@ ep01-cafe/
 └── site/
     ├── index.html
     └── assets/
+        ├── hero-coffee.jpg
+        ├── about-coffee.jpg
+        ├── workspace-coffee.jpg
+        └── ATTRIBUTION.md
 ```
 
 ## 在自己的電腦開啟
