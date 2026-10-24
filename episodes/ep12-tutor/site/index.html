@@ -177,7 +177,7 @@ a{color:inherit}
 .meter i{display:block;height:100%;background:var(--indigo);border-radius:999px}
 .meter+span{display:block;font-size:16px;color:var(--ink-soft);margin-top:7px}
 .clip{background:var(--amber-soft);border-radius:12px;padding:16px 18px;margin-bottom:18px}
-.clip svg{display:block;width:100%;height:auto;margin-bottom:10px}
+.clip p{margin:8px 0 0;font-size:16px;line-height:1.7}
 .clip b{display:block;font-size:16px;font-weight:700;color:var(--amber)}
 .checks{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .checks li{display:inline-flex;gap:7px;align-items:center;font-size:16px;font-weight:700;line-height:1.4;padding:6px 13px;border-radius:999px;background:var(--green-soft);color:var(--green)}
@@ -1051,21 +1051,6 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
     });
   }
 
-  /* 試教影片卡：播放圖示與一條 SVG 聲音軌 */
-  function trialStripSvg() {
-    var bars = "", x = 54;
-    var hs = [16, 28, 10, 36, 14, 24, 7, 32, 18, 9, 26, 13, 20, 34, 11, 22, 6, 30, 15, 19, 8, 28, 12, 21, 5, 25, 14, 10, 27, 17];
-    for (var i = 0; i < hs.length; i++) {
-      var h = hs[i], y = (48 - h) / 2;
-      bars += '<rect x="' + x + '" y="' + y + '" width="4" height="' + h + '" rx="2"/>';
-      x += 8;
-    }
-    return '<svg viewBox="0 0 306 48" role="img" aria-label="試教影片">' +
-      '<circle cx="24" cy="24" r="15" fill="#b4660f"/>' +
-      '<path d="M20 16.5 31 24l-11 7.5Z" fill="#fff"/>' +
-      '<g fill="#e3c69c">' + bars + '</g></svg>';
-  }
-
   function cardFor(t) {
     var c = el("article", "tcard" + (st.tutor === t.id ? " is-picked" : ""));
     c.setAttribute("data-tutor", t.id);
@@ -1117,8 +1102,9 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
     c.appendChild(fit);
 
     var clip = el("div", "clip");
-    clip.innerHTML = trialStripSvg();
-    clip.appendChild(el("b", null, "試教影片　" + t.clip));
+    clip.appendChild(el("b", null, "試教影片版位示意"));
+    clip.appendChild(el("p", null, "正式媒合時，在這裡介紹老師的試教片段與講解方式。"));
+    clip.appendChild(el("p", null, "靜態示意卡，無播放功能。"));
     c.appendChild(clip);
 
     var btn = el("button", "pick", st.tutor === t.id ? "已選擇這一位" : "選這位安排試教");

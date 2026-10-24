@@ -743,8 +743,20 @@ footer .disc{margin:36px 0 0;padding-top:22px;border-top:1px solid rgba(223,227,
       echo = document.getElementById("booking-echo");
   var LABEL = { name: "姓名", contact: "聯絡方式", slot: "希望時段", goal: "運動目標", is_first: "是否首次" };
 
+  function clearResult() {
+    result.hidden = true;
+    echo.textContent = "";
+  }
+  form.addEventListener("input", clearResult);
+  form.addEventListener("change", clearResult);
+  // 原生驗證失敗時不會觸發 submit；invalid 不冒泡，需在擷取階段清除。
+  form.addEventListener("invalid", clearResult, true);
+  form.addEventListener("reset", clearResult);
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();               // 示範站不送到伺服器
+    clearResult();
+    if (!form.reportValidity()) return;
     var data = new FormData(form);
     echo.innerHTML = "";
     ["name", "contact", "slot", "goal", "is_first"].forEach(function (k) {

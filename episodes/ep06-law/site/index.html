@@ -501,9 +501,22 @@ footer .legal{flex-basis:100%;margin:0;font-size:17px;line-height:1.7}
     });
   }
 
+  function clearConfirmation(){
+    confirmBox.hidden = true;
+    confirmBox.textContent = '';
+    setState('');
+    statusLine.textContent = '委任狀態：尚未委任（待利益衝突檢查）';
+  }
+  form.addEventListener('input', clearConfirmation);
+  form.addEventListener('change', clearConfirmation);
+  // 原生驗證失敗不會送出表單；捕捉 invalid，避免留下上一筆成功狀態。
+  form.addEventListener('invalid', clearConfirmation, true);
+  form.addEventListener('reset', clearConfirmation);
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    // 瀏覽器原生驗證已先擋掉必填欄位與沒勾的勾選框,走到這裡代表都填了。
+    clearConfirmation();
+    if (!form.reportValidity()) return;
     setState('待檢查');
     statusLine.textContent = '委任狀態：尚未委任（待利益衝突檢查）';
     confirmBox.innerHTML =
@@ -516,9 +529,6 @@ footer .legal{flex-basis:100%;margin:0;font-size:17px;line-height:1.7}
     confirmBox.scrollIntoView({behavior:'smooth', block:'nearest'});
     document.getElementById('again').addEventListener('click', function(){
       form.reset();
-      confirmBox.hidden = true;
-      setState('');
-      statusLine.textContent = '委任狀態：尚未委任（待利益衝突檢查）';
       document.getElementById('client_name').focus();
     });
   });

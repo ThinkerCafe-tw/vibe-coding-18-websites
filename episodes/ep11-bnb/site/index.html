@@ -354,7 +354,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3c443e;padding-top:18px;font
         <dt>最低房價</dt>
         <dd><span class="num">NT$3,200</span> 起<small>檜木雙人房平日價，週末 NT$3,800</small></dd>
         <dt>取消規則</dt>
-        <dd>入住 30 天前退 100%<small>越晚取消退越少，四階寫在訂房摘要那一區</small></dd>
+        <dd>距入住日 30 天以上退 100%<small>越晚取消退越少，四階寫在訂房摘要那一區</small></dd>
         <dt>早餐</dt>
         <dd>含在房價<small>08:00–09:30，一桌一起吃</small></dd>
       </dl>
@@ -533,12 +533,12 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3c443e;padding-top:18px;font
       <div class="card">
         <span class="tag">階梯式取消政策</span>
         <ul class="policy" id="policy">
-          <li data-tier="30"><b>入住日 30 天以上</b><span class="pct">退 100%</span></li>
-          <li data-tier="14"><b>入住日前 14 到 30 天</b><span class="pct">退 75%</span></li>
-          <li data-tier="3"><b>入住日前 3 到 14 天</b><span class="pct">退 50%</span></li>
-          <li data-tier="0"><b>入住日前 3 天內</b><span class="pct">不退，可改期一次</span></li>
+          <li data-tier="30"><b>距入住日 30 天以上</b><span class="pct">退 100%</span></li>
+          <li data-tier="14"><b>距入住日 14–29 天</b><span class="pct">退 75%</span></li>
+          <li data-tier="3"><b>距入住日 3–13 天</b><span class="pct">退 50%</span></li>
+          <li data-tier="0"><b>距入住日未滿 3 天</b><span class="pct">不退款、不接受改期</span></li>
         </ul>
-        <p class="note" style="margin-top:14px">越早取消退越多，是因為越晚我們越難把房間再賣出去。規則寫在這裡，不用私訊問。你現在選的日期落在哪一階，會自己標起來。改期需在 3 天前來電，同一筆訂單限一次。</p>
+        <p class="note" style="margin-top:14px">越早取消退越多，是因為越晚我們越難把房間再賣出去。規則寫在這裡，不用私訊問。你現在選的日期落在哪一階，會自己標起來。距入住日 3 天以上可來電申請改期，每筆訂單限一次；未滿 3 天不接受改期。</p>
       </div>
     </div>
   </div>
@@ -718,7 +718,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3c443e;padding-top:18px;font
       </details>
       <details>
         <summary>臨時不能來，錢退得回來嗎？</summary>
-        <p class="ans">依階梯式取消政策：入住日 30 天以上退 100%、14 到 30 天退 75%、3 到 14 天退 50%、3 天內不退但可以改期一次。取消請來電 <span class="num">03-000-0000</span>，我們當場跟你算清楚退多少，不用等回覆。</p>
+        <p class="ans">依階梯式取消政策：距入住日 30 天以上退 100%、14–29 天退 75%、3–13 天退 50%、未滿 3 天不退款、不接受改期。距入住日 3 天以上可來電申請改期，每筆訂單限一次；未滿 3 天不接受改期。取消請來電 <span class="num">03-000-0000</span>，我們當場跟你算清楚退多少，不用等回覆。</p>
       </details>
     </div>
   </div>
@@ -744,9 +744,10 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3c443e;padding-top:18px;font
     <div>
       <h3>取消規則</h3>
       <p>30 天以上退 100%</p>
-      <p>14 到 30 天退 75%</p>
-      <p>3 到 14 天退 50%</p>
-      <p>3 天內不退，可改期一次</p>
+      <p>14–29 天退 75%</p>
+      <p>3–13 天退 50%</p>
+      <p>未滿 3 天不退款、不接受改期</p>
+      <p>距入住日 3 天以上可來電申請改期，每筆訂單限一次；未滿 3 天不接受改期。</p>
     </div>
     <p class="fine">價格與房況以民宿實際公告及確認信為準。<br>© 2026 山邊晨光民宿</p>
   </div>
@@ -925,10 +926,10 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
              total: room - discount + extra + FEE_CLEAN };
   }
 
-  /* 取消政策：四階，30 天以上／14 到 30 天／3 到 14 天／3 天內，
-     算入住日距今天幾天，落在哪一階 */
+  /* 取消政策採互斥區間：≥30、≥14、≥3、未滿3天。
+     以取消當日計算，不沿用建立訂單當日的退款階梯。 */
   function tierOf(inIso) {
-    var days = Math.round((fromIso(inIso) - T0) / 86400000);
+    var days = nightsBetween(iso(today()), inIso);
     if (days >= 30) return { key:"30", pct:100 };
     if (days >= 14) return { key:"14", pct:75 };
     if (days >= 3)  return { key:"3",  pct:50 };
@@ -1200,6 +1201,7 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
   $("btn-cancel").addEventListener("click", function () {
     if (!order || (order.status !== "已確認" && order.status !== "待付款")) return;
     var wasPaid = order.status === "已確認";
+    order.tier = tierOf(order.checkIn);
     order.nights.forEach(function (d) { setCell(order.room, d, "open", ""); });
     order.status = "已取消";
     order.refund = wasPaid ? Math.round(order.total * order.tier.pct / 100) : 0;
@@ -1254,6 +1256,7 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
     tPay.className   = "track " + (payment.status === "付款成功" ? "ok" : payment.status === "付款失敗" ? "bad" : "wait");
 
     paintHoldLine();
+    if (order.status === "待付款" || order.status === "已確認") order.tier = tierOf(order.checkIn);
 
     recap.innerHTML = "";
     [["訂單編號", order.no],
@@ -1261,7 +1264,9 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
      ["入住／退房", human(order.checkIn) + " 15:00 － " + human(order.checkOut) + " 11:00"],
      ["晚數與人數", order.nights.length + " 晚　" + order.people + " 人"],
      ["總金額", money(order.total)],
-     ["取消條件", "目前落在「退 " + order.tier.pct + "%」那一階"],
+     ["取消條件", "距入住日 30 天以上退 100%；14–29 天退 75%；3–13 天退 50%；未滿 3 天不退款。" +
+       ((order.status === "已取消" || order.status === "已退款") ? "取消時適用 " : "目前適用 ") + order.tier.pct + "%"],
+     ["改期條件", "距入住日 3 天以上可來電申請改期，每筆訂單限一次；未滿 3 天不接受改期。"],
      ["旅客", order.name + "　" + order.phone + "　" + order.email],
      ["備註", order.note || "（未填）"]
     ].forEach(function (p) {

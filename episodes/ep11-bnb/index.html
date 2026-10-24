@@ -1,5 +1,158 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP11 民宿訂房網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style><link rel="stylesheet" href="../../assets/teaching.css?v=20261024fix"><script src="../../assets/teaching.js?v=20261024fix" defer></script></head><body><header><a href="../../">← 回到 18 講</a><h1>EP11 民宿訂房網站</h1><p>房型、日期與入住規則必須能被核對。</p><nav aria-label="本講網站與下載"><a href="site/">開啟網站</a><a href="../../downloads/ep11-bnb.zip" download>下載網站原始碼</a></nav></header><main><nav class="lesson-tabs" role="tablist" aria-label="本講教學內容"><a id="tab-spec" role="tab" href="#spec" aria-controls="spec" aria-selected="true" tabindex="0">規格</a><a id="tab-prompt" role="tab" href="#prompt" aria-controls="prompt" aria-selected="false" tabindex="-1">對話提示卡</a><a id="tab-verify" role="tab" href="#verify" aria-controls="verify" aria-selected="false" tabindex="-1">驗收清單</a></nav><section id="spec" role="tabpanel" aria-labelledby="tab-spec" tabindex="0"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP11 施工規格</h1>
-<p>本規格整理自《網頁設計》第 11 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<p>本規格整理自《網頁設計》第 11 講第 4 節資料模型與狀態流程、第 5 節實作與驗收，以及第 6 節正式營運延伸，並對照本練習站的實際功能；是學員審閱與實作依據。</p>
+<h2>網站目標</h2>
+<p>製作「山邊晨光民宿」的手機優先訂房原型。旅客能看房型、查日期與人數、核對總價和取消政策、填資料，再走完付款成功、付款失敗重試、保留逾時與取消退款流程。</p>
+<p>品牌設定為宜蘭礁溪的小型手作民宿，採米白、木褐、深苔綠，呈現溫暖安靜的生活感。每一步都要讓人看懂房況、訂單與付款的差別。</p>
+<h2>使用者情境</h2>
+<ol>
+<li>週末短住的夫妻：比較檜木雙人房與日期，確認週末價、交通及取消規則後送出訂房。</li>
+<li>小家庭：查看晨光四人房的人數上限、加人費、早餐與設備限制，核對完整住宿費用。</li>
+<li>付款中的旅客：看見房間暫時保留與剩餘時間；付款失敗可重試，逾時或取消則釋放房間。</li>
+<li>學員與房東：從逐房逐日房務板觀察「同一間房同一晚只能賣一次」，並區分前端模擬與正式後台的工作。</li>
+</ol>
+<h2>必要區塊</h2>
+<ol>
+<li>首頁主視覺：民宿名稱、生活主張、環境照片、「查看房型」與「查詢日期」入口，以及今晚可訂房數。</li>
+<li>空間故事：主人、早餐、在地生活與經營理念。</li>
+<li>房型列表與詳情：檜木雙人房、晨光四人房；各列照片、人數、床型、設備、樓層與限制、平日價、週末價及加人規則。</li>
+<li>日期查詢與房務板：今天起 14 天、實際房間 201／202／301 的每日狀態；入住日、退房日、人數、房型選擇。</li>
+<li>訂房摘要：逐晚房價、週末晚數、連住折扣、加人費、每筆清潔費、總額，以及目前適用的退款階梯。</li>
+<li>訂房表單：姓名、Email、電話為必填，另有備註；日期與房況通過後才建立待付款訂單。</li>
+<li>付款模擬與訂單卡：訂單編號、房間、日期、旅客、金額、三種狀態、保留倒數與操作紀錄；提供成功、失敗、逾時、取消、完成退款及重設操作。</li>
+<li>在地指南：三個推薦地點及適合的遊逛情境。</li>
+<li>交通指引：開車、搭車、停車及夜間抵達資訊。</li>
+<li>常見問答與聯絡：入住、退房、早餐、寵物、取消及改期；電話文字與連結一致。</li>
+</ol>
+<h2>資料欄位</h2>
+<p>下表是依書稿整理的資料模型。現有成品用 JavaScript 物件與當前頁面狀態模擬；正式營運時才持久保存至資料庫。</p>
+<table>
+<thead>
+<tr>
+<th>資料物件</th>
+<th>必要欄位</th>
+<th>本練習對應</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RoomType 房型</td>
+<td>房型 ID、名稱、基本／最多人數、床型、坪數、設備、限制、照片、平日價、週末價</td>
+<td>檜木雙人房基本 2 人、最多 3 人；晨光四人房基本 4 人、最多 6 人</td>
+</tr>
+<tr>
+<td>Room 實際房間</td>
+<td>房號、房型 ID、是否上架</td>
+<td>201／202 屬雙人房；301 屬四人房</td>
+</tr>
+<tr>
+<td>Availability 每房每日房況</td>
+<td>房號、日期、狀態、不可售原因、當日價格、保留到期時間</td>
+<td>房號＋日期識別一筆；原型價格由房型與日期推算，保留期限放在當前訂單</td>
+</tr>
+<tr>
+<td>Order 訂單</td>
+<td>訂單編號、房型、房號、入住／退房日、入住晚數、人數、旅客資料、備註、總額、狀態、保留期限、取消時退款比例、應退金額</td>
+<td>訂單卡與操作紀錄；保留 15 分鐘</td>
+</tr>
+<tr>
+<td>Payment 付款</td>
+<td>訂單編號、金流商、交易號、金額、付款狀態、通知時間</td>
+<td>原型顯示模擬交易號與付款狀態；正式版保存金流通知與驗證結果</td>
+</tr>
+<tr>
+<td>Guest 旅客</td>
+<td>姓名、Email、電話、入住次數</td>
+<td>第一版旅客資料嵌於當前訂單，入住次數屬延伸欄位</td>
+</tr>
+</tbody></table>
+<p>RoomType 是分類，Room 是實體。一個房型可有多間房，賣出 201 不代表 202 也售罄。Availability 必須每房每日一筆；多晚住宿要找到同一間房在所有入住夜晚都可訂，退房日不占用一晚。</p>
+<h2>日期、計價與取消規則</h2>
+<ol>
+<li>日期不可在過去，退房日至少晚於入住日一天。成品可訂範圍為今天起 14 天，退房可選第 15 天；範圍外不建立訂單。房況為保留、已預訂、入住、清潔或封鎖時，不能再次出售。</li>
+<li>週五、週六採週末價。檜木雙人房平日 NT$3,200、週末 NT$3,800；晨光四人房平日 NT$4,800、週末 NT$5,600。</li>
+<li>超過基本人數，每人每晚加 NT$800；每筆清潔費 NT$300。住滿 3 晚，只有房費打 9 折。總額＝逐晚房費－房費折扣＋加人費＋清潔費。</li>
+<li>退款依取消當日距入住日的日數計算，區間互斥，退款金額為已付款總額乘比例並四捨五入至整元。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>距入住日</th>
+<th>程式邊界</th>
+<th>退款比例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>30 天以上</td>
+<td>日數 ≥30</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>14–29 天</td>
+<td>14 ≤ 日數 &lt;30</td>
+<td>75%</td>
+</tr>
+<tr>
+<td>3–13 天</td>
+<td>3 ≤ 日數 &lt;14</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>未滿 3 天</td>
+<td>日數 &lt;3</td>
+<td>0%</td>
+</tr>
+</tbody></table>
+<p>距入住日 3 天以上可來電申請改期，每筆訂單限一次；未滿 3 天不接受改期。改期是來電申請規則，本原型沒有線上改期按鈕。摘要、FAQ、頁尾與訂單說明使用同一規則。</p>
+<h2>狀態與必要互動</h2>
+<table>
+<thead>
+<tr>
+<th>對象</th>
+<th>狀態與轉換</th>
+<th>應看見的結果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>房況</td>
+<td>可訂 → 保留中 → 已預訂 → 入住中 → 清潔中 → 可訂；封鎖／維修由房東另行開放</td>
+<td>送出後占住房間；付款成功才成為已預訂；逾時或取消釋放</td>
+</tr>
+<tr>
+<td>訂單</td>
+<td>待付款 → 已確認／已取消；已確認 → 已完成／已取消；已取消 → 已退款</td>
+<td>已完成、已退款為終態；取消與退款完成分成兩步</td>
+</tr>
+<tr>
+<td>付款</td>
+<td>未付款 → 付款中 → 付款成功／付款失敗；付款失敗可重試；退款完成 → 已退款</td>
+<td>失敗不等於訂單結束，保留期限內仍可重試</td>
+</tr>
+</tbody></table>
+<ul>
+<li>本頁可操作：查房、建立訂單、15 分鐘保留倒數、模擬付款成功／失敗、模擬逾時、取消、完成退款與重設。</li>
+<li>已付款取消依階梯計算應退金額；未付款取消金額為 0。房間先釋放，按「完成退款」後才顯示退款終態。</li>
+<li>入住、清潔、封鎖狀態以預設房況展示；已完成與房東開關房況屬完整模型，現有前台未提供對應後台操作。</li>
+</ul>
+<h2>設計要求與第一版範圍</h2>
+<ol>
+<li>成品為可直接開啟的單一 index.html，CSS 與少量 JavaScript 同檔，圖片使用隨包提供的檔案；手機、桌機皆可閱讀操作。</li>
+<li>手機日期、表單與按鈕不重疊，主要按鈕至少 44px；整頁無橫向溢出。修改手機時保留桌機版面。</li>
+<li>付款明確標為模擬，不收信用卡資料；使用虛構練習資料，沒有假評論、假證照或假媒體報導。</li>
+<li>原型資料保存在當前頁面，重設／重載回到示範資料；前端保留不能當作跨瀏覽器的併發鎖房。</li>
+<li>正式版延伸：後端以交易同時建立訂單與逐房逐日保留，驗證 webhook 後確認付款，保留到期自動釋位；房東後台管理房況、訂單、價格與封鎖日期。付款返回頁只提示結果，不能取代 webhook 主信源。</li>
+</ol>
+<h2>驗收重點</h2>
+<ul>
+<li>[ ] 房型資訊完整；雙人房兩間與四人房一間的數量、日期狀態能分開核對。</li>
+<li>[ ] 過去日期、退房早於入住、滿房與超出開放範圍的訂房被阻擋；連住必須同一房間全程可訂。</li>
+<li>[ ] 用平日／週末、3 晚折扣、加人與清潔費逐項重算，總額相符。</li>
+<li>[ ] 送出後顯示待付款／保留中／未付款；付款失敗仍保留且可重試，付款成功顯示已確認／已預訂／付款成功。</li>
+<li>[ ] 付款逾時與取消會釋放房間；同一間房同一晚重複訂房被阻擋，另一間可用房仍可出售。</li>
+<li>[ ] 已付款取消與完成退款分開顯示；核對退款比例及金額，退款完成後操作停在終態。</li>
+<li>[ ] 分別測距入住日 2、3、13、14、29、30 天，退款比例依序為 0%、50%、50%、75%、75%、100%；摘要亮起階梯、FAQ、頁尾、訂單文字一致。14 天以上以政策函式與摘要驗算，不視為 14 天房況窗內可訂。</li>
+<li>[ ] 改期條款在所有位置一致：距入住日 3 天以上來電申請一次，未滿 3 天不接受。</li>
+<li>[ ] 375 與 1280 寬度無破圖、橫向捲動或 console 錯誤；電話與導覽可到正確目標。</li>
+<li>[ ] 教學頁、SPEC.md 與 ZIP 規格一致；能說明正式版資料庫、後端鎖房、webhook 與後台各自負責什麼。</li>
+</ul>
 <h2>本練習包的素材</h2>
 <p>照片分別用於民宿環境、檜木雙人房與晨光四人房。練習重點是房型、人數、日期、房價與付款保留流程；換圖時讓照片與所屬房型一致，並保留手機上的房型資訊。來源說明見 <code>ATTRIBUTION.md</code>。</p>
 </section>
