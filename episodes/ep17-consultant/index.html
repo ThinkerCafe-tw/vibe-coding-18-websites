@@ -1,0 +1,103 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP17 顧問預約網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP17 顧問預約網站</h1><p>把服務範圍、時間與期待說清楚。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep17-consultant.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP17 施工規格</h1>
+<p>本規格整理自《網頁設計》第 17 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<h2>網站目標</h2>
+<p>讓客戶能理解顧問方案、預約時段、付款流程、付款成功/失敗頁與交付邊界。</p>
+<h2>必要區塊</h2>
+<ol>
+<li>首頁：顧問定位、適合客戶、預約諮詢按鈕</li>
+<li>服務方案：方案名稱、價格、時長、交付物、不包含項目</li>
+<li>案例與文章：案例摘要、方法論文章、可驗證成果</li>
+<li>預約表單：公司類型、問題描述、預算、可預約時段</li>
+<li>訂單摘要：方案、金額、稅額、總額、預約時間、退款規則</li>
+<li>付款流程示意：前往付款、付款中、付款成功、付款失敗、使用者取消</li>
+<li>交付說明：會議連結、會前資料、交付物、後續追蹤</li>
+</ol>
+<h2>資料模型</h2>
+<p>請示範以下六張表，並用外鍵 id 串接（對應第 4 節表 17-2）：</p>
+<ul>
+<li>ConsultingPackage(id, 名稱, 價格, 時長, 交付物, 不包含項目)</li>
+<li>ConsultationBooking(id, 客戶, 方案 id, 預約時間, 需求摘要, 狀態)</li>
+<li>Order(id, 預約 id, 金額, 稅額, 總額, 狀態)</li>
+<li>PaymentTransaction(id, 訂單 id, 金流商, 交易編號, 付款狀態, 回傳時間)</li>
+<li>PaymentCallback(交易編號, 原始回傳資料, 驗證結果, 處理時間)</li>
+<li>DeliveryRecord(預約 id, 會議連結, 交付物, 完成狀態, 後續事項)</li>
+</ul>
+<h2>互動示意</h2>
+<p>用少量 JavaScript示範：選擇不同方案會改變訂單金額；點擊付款按鈕後進入付款中狀態；可切換顯示付款成功、付款失敗、使用者取消三種結果；成功後顯示下一步交付說明。</p>
+<h2>技術補充</h2>
+<p>請在頁面中補一張「原型 / sandbox / 正式環境」差異表。內容要包含：是否使用真實商家帳號、是否需要後端、是否驗證 webhook 簽章、是否可以收真實信用卡、是否處理發票與退款。</p>
+<h2>設計要求</h2>
+<p>請做成一個可以直接打開的單一 index.html 檔案（HTML、CSS 寫在同一個檔案內），使用 RWD。畫面要清楚標示這是金流流程原型，尚未真正串接藍新或綠界。不要把商店代號、API 金鑰或交易簽章寫在前端。不要承諾保證成效、保證營收倍增或不可能驗證的結果。</p>
+<h2>課堂定稿補充</h2>
+<h3>六張資料表，撐起從預約到交付的金流閉環</h3>
+<p>這裡把一筆顧問服務拆成六張資料表，先用中文理解它們各管什麼。ConsultingPackage 是顧問方案，ConsultationBooking 是預約紀錄，Order 是訂單，PaymentTransaction 是付款交易，PaymentCallback 是付款通知紀錄，DeliveryRecord 是交付紀錄。欄位中的 id，就是用來識別某一筆資料的編號。訂單摘要要同時讀取方案、預約與訂單，才知道客戶買什麼、何時會面、付多少錢。每張表的欄位都有用途，下一步再用識別編號把它們串起來。</p>
+<h3>外鍵把六張表串成一條不留斷點的閉環</h3>
+<p>外鍵是一張表用欄位指向另一張表的某一筆。請逐段核對關聯：預約找方案，訂單找預約，交易找訂單，回呼找交易，交付找預約。若只收到付款通知，卻找不到對應交易與訂單，就無法把結果寫回同一筆生意；因此要用外鍵串通資料。</p>
+<h3>預約時段互動：已約不可選，一次只選一格</h3>
+<p>這段 JavaScript 是讓網頁回應點選的互動程式。我們先看三個結果：已約時段點不下去，一次只會選一個時段，選到的編號能被記住。booked 是已約標記，selected 是目前選取的標記；forEach 是逐個處理，classList 管理這些標記，return 代表停止這次操作。contains 是檢查有沒有標記，remove 和 add 是移除與加入，dataset.id 是這個元素帶的時段編號。程式先檢查已約，再移除舊選取、加上新選取。booking.slotId 先記住時段編號，送出後由後端寫入預約紀錄。實際點一個已約時段，再連續換兩個可用時段，核對畫面和記住的編號，就知道 AI 做的互動是否對得上需求。</p>
+<h3>圖17-1｜訂單狀態的流轉與分支</h3>
+<p>訂單狀態機的核心是在什麼狀態、收到什麼事件、轉到什麼狀態。主線是草稿送出訂單後變成待付款，付款成功通知驗證通過變成已付款，排定會議後變成已排程，交付完成後變成已完成。這條主線之外有三個分支：待付款收到 驗證後確認付款失敗會變成付款失敗，付款失敗可以重新發起付款、回到待付款再試一次；待付款如果使用者主動取消，會變成已取消；已付款之後，退款完成才變成已退款。付款失敗與取消都是從待付款岔出，但只有付款失敗能回頭再試，退款只發生在已付款之後，這兩條分支不能混為一談。 這裡的驗證包含確認付款成功、訂單與金額一致；收到通知或簽章正確，都不能單獨當作付款成功。 付款失敗回待付款是訂單轉移。重試時的交易處理方式，須依金流商規則設計。</p>
+<h3>付款狀態：五個狀態與分支</h3>
+<p>付款與訂單分開記。客戶按前往付款，由後端建立交易；金流回傳成功後，後端還要驗證簽章、訂單與金額，才能確認付款結果。失敗與取消仍是付款中的分支。前台不能靠成功頁把訂單改成已付款，後台也不能因通知重送就再交付一次。 付款成功、付款失敗、使用者取消這三種結果記在 PaymentTransaction；Order 只依後端驗證的結果更新自己的狀態。</p>
+<h3>真實金流串接的五個責任點</h3>
+<p>網站須從建立訂單到完成交付跑通全程，依五個責任點逐項驗收：建立訂單時，方案、金額、稅額、預約時間、退款規則要先固定，金額不能在付款後才被前端任意修改；建立交易時，商店代號留在後端設定。Hash Key 是金流驗證用的密鑰，Hash IV 是搭配算法的初始值；API 金鑰像系統介面的通行密碼，這些機密都由後端保管；回到網站這一步，成功頁只是體驗提示，不是收款憑證；Webhook 驗證這一步，真正更新訂單狀態的是後端驗證後的通知；最後交付與紀錄，付款不是結束，付款後的交付才是商業閉環的終點。金流閉環也包括開立發票的流程。</p>
+<h3>原型、沙盒測試、正式營運：三種環境</h3>
+<p>三種環境使用不同帳號和資料。原型先用模擬交易呈現畫面與流程。sandbox 就是沙盒測試環境，用金流商的測試商店、測試卡號與測試資料，把付款流程跑一遍。production 就是正式營運環境，使用實際商家的金流帳號與正式網址。後端環境變數是伺服器上的設定值，用來分開各環境的帳號與機密設定；還要接上交易簽章、金流主動通知驗證、發票與退款流程。每往下一層，就核對這一層真的完成了哪些設定與測試，把結果寫回交付清單。</p>
+</section>
+<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP17 對話提示卡</h1>
+<p>以下為第 17 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
+<h2>教材提示詞</h2>
+<pre><code class="language-text">你是網頁設計老師與前端工程師。
+請幫我製作一個「顧問預約與付款網站」單頁原型。
+
+【網站目標】
+讓客戶能理解顧問方案、預約時段、付款流程、付款成功/失敗頁與交付邊界。
+
+【必要區塊】
+1. 首頁：顧問定位、適合客戶、預約諮詢按鈕
+2. 服務方案：方案名稱、價格、時長、交付物、不包含項目
+3. 案例與文章：案例摘要、方法論文章、可驗證成果
+4. 預約表單：公司類型、問題描述、預算、可預約時段
+5. 訂單摘要：方案、金額、稅額、總額、預約時間、退款規則
+6. 付款流程示意：前往付款、付款中、付款成功、付款失敗、使用者取消
+7. 交付說明：會議連結、會前資料、交付物、後續追蹤
+
+【資料模型】
+請示範以下六張表，並用外鍵 id 串接（對應第 4 節表 17-2）：
+- ConsultingPackage(id, 名稱, 價格, 時長, 交付物, 不包含項目)
+- ConsultationBooking(id, 客戶, 方案 id, 預約時間, 需求摘要, 狀態)
+- Order(id, 預約 id, 金額, 稅額, 總額, 狀態)
+- PaymentTransaction(id, 訂單 id, 金流商, 交易編號, 付款狀態, 回傳時間)
+- PaymentCallback(交易編號, 原始回傳資料, 驗證結果, 處理時間)
+- DeliveryRecord(預約 id, 會議連結, 交付物, 完成狀態, 後續事項)
+
+【互動示意】
+用少量 JavaScript示範：選擇不同方案會改變訂單金額；點擊付款按鈕後進入付款中狀態；可切換顯示付款成功、付款失敗、使用者取消三種結果；成功後顯示下一步交付說明。
+
+【技術補充】
+請在頁面中補一張「原型 / sandbox / 正式環境」差異表。內容要包含：是否使用真實商家帳號、是否需要後端、是否驗證 webhook 簽章、是否可以收真實信用卡、是否處理發票與退款。
+
+【設計要求】
+請做成一個可以直接打開的單一 index.html 檔案（HTML、CSS 寫在同一個檔案內），使用 RWD。畫面要清楚標示這是金流流程原型，尚未真正串接藍新或綠界。不要把商店代號、API 金鑰或交易簽章寫在前端。不要承諾保證成效、保證營收倍增或不可能驗證的結果。
+</code></pre>
+</section>
+<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP17 驗收清單</h1>
+<h2>逐項檢查</h2>
+<p>AI 產出後請檢查：</p>
+<ul>
+<li>[ ] 方案是否寫清楚價格、時長、交付物與不包含項目。</li>
+<li>[ ] 訂單摘要是否在付款前再次攤開金額、總額與退款規則。</li>
+<li>[ ] 是否同時有付款成功、付款失敗、使用者取消三種結果。</li>
+<li>[ ] 是否提到正式系統需由後端 Webhook 做簽章驗證與冪等去重，而非僅判斷有無回呼、也不只看成功頁。</li>
+<li>[ ] 手機版付款流程是否清楚，不會讓客戶不知道下一步。</li>
+</ul>
+<p>每條若不通過，回到 AI 對話框針對那一條用一句話請它補，再重新檢查一輪。例如缺付款失敗或取消狀態時，輸入：「請補上付款失敗頁與使用者取消頁，並讓三種結果可以用按鈕切換顯示。」</p>
+<h2>主動測試</h2>
+<p>這是全書複雜度最高的一講——會扣到錢。最招牌的一測：點「前往付款」進到「付款中」後直接關掉頁面，回頭看那筆訂單是「待付款」還是被當成「已成立」——付一半卻顯示成功，就是放錢出去的破口。</p>
+<p><strong>AI 是被告不是法官，畫面才是證據</strong>：它嘴上保證「金流邏輯都對」不算數，把客人走過的路徑親手走一遍才算。</p>
+<h2>課堂定稿補充</h2>
+<h3>招牌測試：付到一半關頁，會不會被誤當已付款？</h3>
+<p>先保留訂單編號，點前往付款，進到付款中後直接關掉頁面，再回頭查看同一筆訂單是待付款還是被當成已付款。測試前提是原訂單仍待付款、無已驗證付款結果、無已生效取消；此時關頁本身不改狀態。失敗或取消照訂單狀態圖的分支處理，不可一律寫回待付款。再做對照：若後端已驗證付款成功，即使使用者沒看到成功頁，訂單也應是已付款。關頁不是付款失敗的證據，重點是不能靠成功頁決定訂單。親手走完這兩條路徑，核對同一筆訂單的狀態。</p>
+<h3>把規格交給 AI，再親手撞會扣到錢的破口</h3>
+<p>這次先把書上的範例遮起來，自己照網站目標、必要區塊、資料欄位、設計要求四段，寫出一版提示詞，再對照參考版本。七個頁面模組、六張資料表的關聯、付款五種狀態，以及原型、沙盒測試、正式營運的差異，都要講清楚。驗收時，從客戶怕什麼回頭看：怕費用不透明，就查方案、時長、交付物、不包含項目，並在付款前看到金額和退款規則；怕付錢沒結果，就查成功、失敗、取消與交付說明。後端金流通知要經簽章驗證，重送只算一次，手機付款也要走得通。最後把付到一半關頁的兩條路徑親手測完，缺哪一項就請 AI 改那一項，修完再驗。會扣到錢的地方，一定要自己親手撞過。</p>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>

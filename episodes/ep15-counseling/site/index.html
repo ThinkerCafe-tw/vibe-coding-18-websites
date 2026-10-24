@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小徑心理諮商所｜台北市中山區個別與伴侶諮商｜預約初談</title>
+<meta name="description" content="小徑心理諮商所，台北市中山區。預約前不需要留任何資料；隱私、取消規則與危機資源都寫在預約之前。">
+
+<style>
+:root{
+  --bg:#f8f5ee; --card:#ffffff; --soft:#dcedee; --line:#bcd6d8;
+  --ink:#10292e; --ink2:#3a555c; --teal:#0e6b73; --teald:#09525a; --sun:#f6d067;
+  --sans:"PingFang TC","Noto Sans TC","Hiragino Sans TC","Microsoft JhengHei",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.85 var(--sans)}
+h1,h2,h3{font-weight:700;line-height:1.35;margin:0}
+p{margin:0}
+a{color:var(--teald)}
+[hidden]{display:none!important}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+
+
+.top{background:var(--card);border-bottom:2px solid var(--line)}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:14px;max-width:1240px;margin:0 auto;padding:12px 28px}
+.brand{font-size:24px;font-weight:800;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand i{width:14px;height:14px;border-radius:999px;background:var(--teal);display:inline-block}
+.brand span{font-size:16px;font-weight:500;color:var(--ink2)}
+.top nav{display:none;gap:18px;font-size:16px}
+.top nav a{color:var(--ink2);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.top nav a:hover{color:var(--teald);text-decoration:underline}
+.help{font-size:16px;min-height:44px;padding:0 18px;border-radius:12px;background:var(--sun);color:var(--ink);text-decoration:none;font-weight:700;display:inline-flex;align-items:center;white-space:nowrap}
+.help:hover{background:#efc44d}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:48px;align-items:start}
+.main{min-width:0}
+
+
+.hero{padding:52px 0 60px}
+.eyebrow{font-size:16px;font-weight:700;color:var(--teal);letter-spacing:.06em}
+.hero-grid{display:flex;gap:36px;align-items:center;margin:16px 0 18px}
+.zero{display:flex;align-items:baseline;gap:6px;color:var(--teal);flex:none}
+.zn{font-size:176px;line-height:.9;font-weight:800;letter-spacing:-.04em}
+.zu{font-size:44px;font-weight:800}
+h1{font-size:44px;letter-spacing:.02em}
+.sub{font-size:19px;color:var(--ink2);max-width:36em;margin-top:8px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;align-items:center}
+.btn{font:inherit;font-size:18px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:14px;border:2px solid var(--teal);text-decoration:none;cursor:pointer}
+.btn-primary{background:var(--teal);color:#fff}
+.btn-primary:hover{background:var(--teald)}
+.btn-quiet{background:var(--card);color:var(--teald)}
+.btn-quiet:hover{background:var(--soft)}
+.btn-text{border-color:transparent;color:var(--teald);text-decoration:underline;text-underline-offset:5px;padding:0 8px}
+.soft{margin-top:20px;font-size:18px;color:var(--ink2)}
+.photo{position:relative;margin-top:34px;border-radius:22px;overflow:hidden;aspect-ratio:16/7;background:linear-gradient(135deg,#d3e6e3,#f1ede2)}
+.photo svg{position:absolute;inset:0;width:100%;height:100%}
+.photo .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+
+.sec{padding:48px 0;border-top:2px solid var(--line)}
+h2{font-size:32px;margin-bottom:8px}
+.lead{font-size:18px;color:var(--ink2);margin-bottom:26px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:26px 28px}
+.blk{margin:0 0 22px;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:24px 28px}
+.blk:last-child{margin-bottom:0}
+h3{font-size:22px;margin-bottom:8px}
+.blk p,.blk li{font-size:18px}
+.blk ul{margin:8px 0 0;padding-left:1.3em}
+
+
+.quote{background:var(--teald);color:#fff;border-radius:22px;padding:34px 38px}
+.quote p{font-size:24px;line-height:1.85;margin:0 0 .7em;font-weight:600}
+.quote .sign{font-size:18px;font-weight:500;margin:6px 0 0}
+.profile{margin:22px 0 0;display:grid;grid-template-columns:150px minmax(0,1fr);gap:0;background:var(--card);border:2px solid var(--line);border-radius:18px;overflow:hidden}
+.profile dt,.profile dd{margin:0;padding:15px 22px;border-bottom:1px solid var(--line)}
+.profile dt{font-size:16px;font-weight:700;color:var(--teald);background:#eaf4f4}
+.profile dt:nth-last-of-type(1),.profile dd:last-of-type{border-bottom:0}
+.profile dd{font-size:18px}
+.aside-card{margin-top:22px;background:#fff8e2;border:2px solid var(--sun);border-radius:18px;padding:24px 28px}
+.aside-card h3{font-size:22px}
+.aside-card p{font-size:18px}
+
+
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;counter-reset:s}
+.steps li{grid-column:span 2}
+.steps li:nth-child(n+4){grid-column:span 3}
+@media (max-width:1180px){.steps{grid-template-columns:1fr 1fr}.steps li,.steps li:nth-child(n+4){grid-column:auto}.steps li:last-child{grid-column:1/-1}}
+@media (max-width:640px){.steps{grid-template-columns:1fr}}
+.steps li{counter-increment:s;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:16px 18px}
+.steps li::before{content:counter(s);display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;background:var(--soft);color:var(--teald);font-size:16px;font-weight:800;margin-bottom:6px}
+.steps li.is-done{background:#eaf4f4}
+.steps li[aria-current=step]{border-color:var(--teal);box-shadow:0 0 0 3px var(--sun)}
+.steps li[aria-current=step]::before{background:var(--teal);color:#fff}
+.steps b{display:block;font-size:19px}
+.steps span{display:block;font-size:16px;color:var(--ink2);line-height:1.7;margin-top:2px}
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.fit>div{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:20px 22px}
+.fit>div:last-child{border-color:var(--teal)}
+.fit h3{font-size:20px}
+.fit p{font-size:18px}
+
+
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.svc-card{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:20px 22px}
+.svc-card h3{margin-bottom:2px}
+.svc-card .m{font-size:16px;color:var(--teald);font-weight:700;display:block;margin-bottom:6px}
+.svc-card p{font-size:18px}
+.fee{margin-top:14px;padding:22px 26px;background:var(--card);border:2px solid var(--teal);border-radius:16px;font-size:18px}
+
+
+.tier-list{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}
+.tier-list li{background:#eaf4f4;border-radius:12px;padding:14px 18px;font-size:18px}
+.tier-list b{display:block;font-size:19px}
+.bound{margin:6px 0 0}
+.bound dt{font-weight:700;font-size:19px;margin-top:12px}
+.bound dd{margin:0;font-size:18px}
+.crisis{border-color:var(--teal);background:#f1fafa}
+.blk .crisis-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+.crisis-item{display:flex;flex-direction:column;background:var(--card);border:2px solid var(--line);border-radius:14px;padding:10px 16px 12px}
+.tel{font-size:38px;font-weight:800;color:var(--teald);line-height:1.2;display:inline-flex;align-items:center;min-height:52px}
+.tel-none{font-size:30px}
+.tel-l{font-size:18px;color:var(--ink2)}
+
+
+.crisis-note{font-size:18px;background:#fff8e2;border:2px solid var(--sun);border-radius:14px;padding:16px 20px;margin-bottom:20px}
+.crisis-note a,.foot-crisis a{font-weight:800}
+.state-line{font-size:16px;font-weight:700;color:var(--teald);margin-bottom:14px}
+.form-note{font-size:16px;line-height:1.75;color:var(--ink);margin-bottom:18px}
+.form-note .nb{white-space:nowrap}
+.mini-meter{display:none;background:var(--card);border:2px solid var(--teal);border-radius:14px;padding:12px 16px;margin-bottom:16px;font-size:16px;font-weight:700}
+.mini-meter output{font-size:24px;color:var(--teal)}
+.form-card{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:30px 32px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{font-size:22px;font-weight:800;padding:0;margin-bottom:4px}
+.pick{margin-bottom:26px}
+.hint{font-size:16px;color:var(--ink2);margin-bottom:12px}
+.svc-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.svc{display:block;position:relative;cursor:pointer}
+.svc input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.svc-b{display:flex;flex-direction:column;gap:2px;height:100%;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--card);min-height:64px}
+.svc-name{font-size:20px;font-weight:800}
+.svc-meta{font-size:16px;color:var(--teald);font-weight:700}
+.svc-desc{font-size:16px;color:var(--ink2);line-height:1.65}
+.svc:hover .svc-b{background:#f1fafa}
+.svc input:checked+.svc-b{border-color:var(--teal);background:var(--soft);box-shadow:0 0 0 3px var(--sun)}
+.svc input:focus-visible+.svc-b{outline:3px solid var(--teal);outline-offset:2px}
+.slot-day{display:grid;grid-template-columns:118px minmax(0,1fr);gap:8px 14px;align-items:center;padding:10px 0;border-top:2px dashed var(--line)}
+.slot-date{font-size:18px;font-weight:800}
+.slot-chips{display:flex;flex-wrap:wrap;gap:10px}
+.slot{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 16px;border:2px solid var(--teal);border-radius:12px;background:var(--card);cursor:pointer;font-size:18px;font-weight:700}
+.slot input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.slot .slot-m{font-size:16px;font-weight:500;color:var(--ink2)}
+.slot:has(input:checked){background:var(--teal);color:#fff}
+.slot:has(input:checked) .slot-m{color:#fff}
+.slot:has(input:focus-visible){outline:3px solid var(--teal);outline-offset:2px}
+.slot.is-taken{background:#e6eded;border-color:#9db4b8;border-style:dashed;color:#4a6167;cursor:not-allowed;font-weight:500}
+.slot.is-taken .slot-m,.slot.is-taken .slot-n{color:#4a6167}
+.slot-n{font-size:16px}
+.slot-any{margin-top:12px}
+.summary{font-size:19px;font-weight:700;margin:4px 0 22px;padding:12px 16px;background:var(--soft);border-radius:12px}
+.privacy-box{background:#f1fafa;border:2px solid var(--teal);border-radius:14px;padding:18px 22px;margin-bottom:24px}
+.privacy-box h3{font-size:20px}
+.privacy-box ul{margin:6px 0 0;padding-left:1.3em}
+.privacy-box li{font-size:18px}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:19px;font-weight:800;margin-bottom:4px}
+input[type=text],textarea{width:100%;font:inherit;font-size:18px;color:var(--ink);background:var(--card);border:2px solid var(--ink2);border-radius:12px;padding:10px 14px;min-height:52px}
+textarea{resize:vertical;line-height:1.7}
+input[type=text]:focus,textarea:focus{outline:3px solid var(--teal);outline-offset:2px;border-color:var(--teal)}
+.field small{display:block;font-size:16px;color:var(--ink2);margin-top:6px}
+.consent{display:flex;gap:14px;align-items:flex-start;font-size:18px;margin:4px 0 22px;cursor:pointer;padding:8px 0;font-weight:600}
+.consent input{width:26px;height:26px;margin:4px 0 0;flex:none;accent-color:var(--teal)}
+#submit{width:100%;max-width:360px}
+.confirm{background:var(--card);border:3px solid var(--teal);border-radius:22px;padding:30px 32px;outline:0}
+.confirm h3{font-size:26px}
+.state-pill{display:inline-block;margin:8px 0 16px;padding:4px 16px;background:var(--sun);border-radius:999px;font-size:16px;font-weight:800}
+.recap{margin:0 0 18px;display:grid;grid-template-columns:130px minmax(0,1fr);border-top:2px solid var(--line)}
+.recap dt,.recap dd{margin:0;padding:11px 0;border-bottom:1px solid var(--line);font-size:18px;overflow-wrap:anywhere}
+.recap dt{font-size:16px;color:var(--teald);font-weight:800}
+.confirm p{font-size:18px;margin-bottom:12px}
+.confirm .btn{margin-top:8px}
+
+.contact{margin:0;display:grid;grid-template-columns:130px minmax(0,1fr);background:var(--card);border:2px solid var(--line);border-radius:18px;overflow:hidden}
+.contact dt,.contact dd{margin:0;padding:14px 22px;border-bottom:1px solid var(--line);font-size:18px}
+.contact dt{font-size:16px;font-weight:800;color:var(--teald);background:#eaf4f4}
+.contact dt:nth-last-of-type(1),.contact dd:last-of-type{border-bottom:0}
+
+.model{margin-top:26px;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:6px 22px}
+.model summary{font-size:18px;min-height:52px;display:flex;align-items:center;cursor:pointer;font-weight:700}
+.model-body>div{display:grid;grid-template-columns:190px minmax(0,1fr);gap:4px 18px;padding:12px 0;border-top:1px solid var(--line);font-size:16px}
+.model-body b{font-family:ui-monospace,Menlo,monospace;font-size:16px;overflow-wrap:anywhere}
+.model-body em{display:block;font-style:normal;color:var(--teald);margin-top:4px;font-weight:700}
+
+
+.meter{position:relative;top:0;margin-top:52px;background:var(--card);border:3px solid var(--teal);border-radius:22px;padding:22px 24px}
+.meter-h{font-size:16px;font-weight:800;color:var(--teald);letter-spacing:.06em}
+.meter-n{display:flex;align-items:baseline;gap:8px;margin:2px 0 10px;font-size:18px;font-weight:700}
+.meter-n output{font-size:76px;line-height:1;font-weight:800;color:var(--teal)}
+.meter-list{list-style:none;margin:0;padding:0;border-top:2px solid var(--line)}
+.meter-list li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:18px}
+.meter-list em{font-style:normal;font-size:16px;color:var(--ink2)}
+.meter-list li::before{content:"";width:14px;height:14px;border-radius:999px;border:2px solid var(--ink2);flex:none;margin-right:2px}
+.meter-list li.is-filled::before{background:var(--teal);border-color:var(--teal)}
+.meter-list li.is-filled em{color:var(--teald);font-weight:800}
+.meter-list li span{flex:1}
+.meter-note{font-size:16px;line-height:1.7;color:var(--ink2);margin:12px 0 14px}
+.meter-steps{list-style:none;margin:0;padding:0;font-size:16px;counter-reset:m}
+.meter-steps li{counter-increment:m;display:flex;gap:8px;align-items:center;padding:4px 0;color:var(--ink2)}
+.meter-steps li::before{content:counter(m);width:26px;height:26px;border-radius:999px;background:var(--soft);color:var(--teald);font-weight:800;font-size:16px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.meter-steps li[aria-current=step]{color:var(--ink);font-weight:800}
+.meter-steps li[aria-current=step]::before{background:var(--teal);color:#fff}
+.meter-steps li.is-done::before{background:#bfe0e2}
+
+footer{background:var(--ink);color:#eaf4f4;padding:42px 28px 50px;margin-top:20px}
+footer .in{max-width:1240px;margin:0 auto}
+footer .fname{font-size:24px;font-weight:800}
+footer p{font-size:16px;line-height:1.85;margin-top:8px}
+footer a{color:#fff}
+footer .foot-crisis{font-size:18px}
+footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padding:0 4px}
+
+@media (max-width:1080px){
+  .wrap{grid-template-columns:1fr;gap:0}
+  .meter{display:none}
+
+  .mini-meter{display:flex;align-items:baseline;gap:10px;position:sticky;top:0;z-index:30;margin:0;border-width:0 0 2px;border-radius:0;padding:8px 16px}
+  html{scroll-padding-top:56px}
+}
+@media (min-width:1081px){.top nav{display:flex}}
+@media (max-width:760px){
+  .top-in{padding:10px 16px}
+  .brand span{display:none}
+  .wrap{padding:0 16px}
+  .hero{padding:34px 0 44px}
+  .hero-grid{flex-direction:column;align-items:flex-start;gap:8px}
+  .zn{font-size:112px}
+  .zu{font-size:36px}
+  h1{font-size:34px}
+  .sub{font-size:18px}
+  .cta{flex-direction:column;align-items:stretch}
+  .btn{width:100%}
+  .btn-text{width:auto;align-self:flex-start}
+  .photo{aspect-ratio:4/3;border-radius:16px}
+  .sec{padding:38px 0}
+  h2{font-size:32px}
+  .blk,.card,.aside-card{padding:20px 18px}
+  .quote{padding:26px 20px}
+  .quote p{font-size:22px}
+  .profile,.contact,.recap{grid-template-columns:1fr}
+  .profile dt,.contact dt{padding:10px 18px}
+  .profile dd,.contact dd{padding:10px 18px 14px}
+  .fit,.svc-grid,.svc-list{grid-template-columns:1fr}
+  .crisis-list{grid-template-columns:1fr 1fr}
+  .form-card{padding:20px 14px}
+  .slot-day{grid-template-columns:1fr}
+  .confirm{padding:22px 16px}
+  .model-body>div{grid-template-columns:1fr}
+  #submit{max-width:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
+<p class="mini-meter">您目前填了 <output data-count>0</output> 項（只在您的畫面上）</p>
+<header class="top">
+<div class="top-in">
+<a class="brand" href="#top"><i aria-hidden="true"></i>小徑<span>心理諮商所</span></a>
+<nav aria-label="頁面導覽">
+<a href="#trust">諮商師</a><a href="#flow">預約流程</a><a href="#services">服務與費用</a><a href="#privacy">隱私與規則</a><a href="#booking">預約</a><a href="#contact">聯絡</a>
+</nav>
+<a class="help" href="#crisis">我需要立即協助</a>
+</div>
+</header>
+<div class="wrap">
+<main class="main" id="top">
+
+<section class="hero" aria-labelledby="h1">
+<p class="eyebrow">台北市中山區　預約制　現場與線上</p>
+<div class="hero-grid">
+<div class="zero" aria-hidden="true"><span class="zn">0</span><span class="zu">項</span></div>
+<h1 id="h1">瀏覽這一頁，<br>不需要交出任何資料。</h1>
+</div>
+<p class="sub">小徑心理諮商所提供成年人的個別諮商、伴侶諮商與線上諮商。適合想找人說說，但還沒決定要不要開始的您。表單只問稱呼、聯絡方式、偏好時段，和一格可以不寫的簡短需求。</p>
+<p class="cta"><a class="btn btn-primary" href="#booking">預約初談</a><a class="btn btn-quiet" href="#flow">了解服務方式</a><a class="btn btn-text" href="#crisis">我需要立即協助</a></p>
+<p class="soft">您可以先只看看。預約前，不需要留下任何資料。</p>
+<div class="photo" aria-hidden="true">
+<svg viewBox="0 0 1120 490" preserveAspectRatio="xMidYMid meet" focusable="false">
+<g fill="none" stroke="#0e6b73" stroke-opacity=".5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M250 380v-90c0-30 20-50 50-50h70c30 0 50 20 50 50v90"/>
+<path d="M240 380h190M270 380v34M400 380v34"/>
+<path d="M870 380v-90c0-30-20-50-50-50h-70c-30 0-50 20-50 50v90"/>
+<path d="M690 380h190M720 380v34M850 380v34"/>
+<path d="M530 400h60M560 400v-64M520 336h80"/>
+<path d="M940 200c0-40 20-70 60-80M940 200c-6-38-30-60-66-62M940 200v90"/>
+</g>
+<circle cx="560" cy="120" r="46" fill="#f6d067" fill-opacity=".75"/>
+</svg>
+<img class="hero-photo" src="images/hero.svg" alt="課程版面示意圖片" onerror="this.remove()">
+</div>
+</section>
+
+<section class="sec" id="trust" aria-labelledby="t-h2">
+<h2 id="t-h2">諮商師與這裡的做法</h2>
+<p class="lead">一段諮商師自己寫的話，和不能省略的基本資料。</p>
+<div class="quote"><p>深夜睡不著的人，多半已經一個人扛了很久。</p><p>您不需要先想清楚自己「夠不夠格」才來。這裡可以只是先看看：看我怎麼說話，看規則寫得清不清楚，看您能不能想像自己坐在那張椅子上。</p><p>要不要預約，由您決定；什麼時候決定，也由您。</p><p class="sign">周一禾　諮商心理師</p></div>
+<dl class="profile" id="therapist"><dt>姓名</dt><dd>周一禾　諮商心理師</dd><dt>證照</dt><dd>諮商心理師執照。字號會附在預約回覆裡，您可以自己向主管機關核對。</dd><dt>取向</dt><dd>以人本取向為底，搭配敘事取向。</dd><dt>服務對象</dt><dd>18 歲以上的成年人，個別或伴侶。</dd><dt>不可服務範圍</dt><dd>需要立即危機處理、精神科診斷或藥物調整、司法鑑定與法庭用診斷書，以及未滿 18 歲者。</dd></dl>
+<div class="aside-card"><h3>為什麼這裡沒有個案見證</h3>
+<p>本所不刊登個案見證、案例故事或評價。來談的人是把自己說給一個人聽，不是說給網站的訪客看。這一頁能讓您看的，是規則、做法，以及我們怎麼說話。</p></div>
+</section>
+
+<section class="sec" id="flow" aria-labelledby="f-h2">
+<h2 id="f-h2">預約怎麼進行</h2>
+<p class="lead">五個步驟，您隨時可以停在任何一步。</p>
+<ol class="steps" id="steps">
+<li data-step="1"><b>瀏覽匿名資訊</b><span>不需要留任何資料，就像現在這樣。</span></li>
+<li data-step="2"><b>選擇服務</b><span>選一種服務、一個偏好時段。這一步仍然不收個人資料。</span></li>
+<li data-step="3"><b>閱讀隱私說明</b><span>保密範圍、例外、資料保存期限，讀完再決定要不要往下。</span></li>
+<li data-step="4"><b>送出最小資料</b><span>稱呼、聯絡方式，以及可以不寫的簡短需求。</span></li>
+<li data-step="5"><b>等待回覆</b><span>本所在 2 個工作天內回覆；經您確認後，預約才算成立。</span></li>
+</ol>
+<div class="fit">
+<div><h3>適合預約初談</h3><p>覺得自己撐了一段時間、想找人談談，或還在猶豫要不要開始。不需要先確定「有沒有問題」。</p></div>
+<div><h3>請先聯絡緊急資源</h3><p>目前有立即傷害自己或他人的危險。網頁預約有回覆時間差，請直接看「需要立即協助」。</p></div>
+</div>
+</section>
+
+<section class="sec" id="services" aria-labelledby="s-h2">
+<h2 id="s-h2">服務項目與費用</h2>
+<p class="lead">先把做法和費用講清楚，您再決定。</p>
+<div class="svc-grid">
+<div class="svc-card"><h3>初談</h3><span class="m">30 分鐘・現場或線上</span><p>先聊聊現在的狀況與想要的方向，一起看合不合適。談完不一定要當場決定要不要繼續。</p></div>
+<div class="svc-card"><h3>個別諮商</h3><span class="m">50 分鐘・現場</span><p>一對一，固定的時段，一起處理您想談的事。</p></div>
+<div class="svc-card"><h3>伴侶諮商</h3><span class="m">80 分鐘・現場</span><p>兩個人一起來，談彼此之間卡住的地方。</p></div>
+<div class="svc-card"><h3>線上諮商</h3><span class="m">50 分鐘・視訊</span><p>在您自己的空間進行，需要安靜、不被打擾的環境。</p></div>
+</div>
+<p class="fee"><b>費用：</b>依服務類型不同，預約回覆會白紙黑字列出每一項；您回覆確認之前，不收任何費用。諮商是一起做的過程，結果沒有人能先講死，初談時會說明預計怎麼進行、多久一起回顧一次。</p>
+</section>
+
+<section class="sec" id="privacy" aria-labelledby="p-h2">
+<h2 id="p-h2">隱私與規則</h2>
+<p class="lead">保密、資料、取消與邊界，用白話寫在這裡。</p>
+<div class="blk" id="privacy-text">
+<h3>保密說明</h3>
+<p>您在會談裡說的內容，本所依法負保密責任，不會主動告訴任何第三方，包含您的家人、同事，也包括「您來過這裡」這件事。</p>
+</div>
+<div class="blk" id="privacy-exceptions">
+<h3>保密的例外</h3>
+<p>依法律規定，談話中若出現下列法定通報情形，諮商師依法須進行必要通報。通報時只會提供最少必要的資訊，也會事先和您說明：</p>
+<ul>
+<li>您有自傷的危險。</li>
+<li>您有傷害他人的危險。</li>
+<li>涉及兒童或少年的保護通報。</li>
+<li>涉及家庭暴力的通報。</li>
+</ul>
+<p>其餘法定情形與細節，初談時會向您說明。</p>
+</div>
+<div class="blk" id="privacy-retention">
+<h3>預約資料與諮商紀錄怎麼保存</h3>
+<p>預約時您告訴本所的資料（用電話、LINE 或這一頁都一樣），只用來安排這次預約。您的諮商紀錄，依法至少保存十年，僅供本所執業紀錄與必要之專業督導使用，不會作其他用途。保存期滿後，若無業務上必要，會依規定刪除。</p>
+</div>
+<div class="blk tiers" id="tiers">
+<h3>哪些資料我們收，哪些不收</h3>
+<ol class="tier-list">
+<li><b>預約必要：表單會問</b><span>稱呼、聯絡方式、偏好時段、服務類型；另有一格「簡短需求」，可以不寫。</span></li>
+<li><b>安全必要：不要求您填寫</b><span>有立即危險時，請直接打電話（見下方「需要立即協助」），不必等表單回覆。</span></li>
+<li><b>後續會談：留到見面再談</b><span>病史、家庭細節、創傷經驗，網頁表單不收，由諮商師在正式晤談中一起評估。</span></li>
+</ol>
+</div>
+<div class="blk" id="cancel">
+<h3>取消與改期</h3>
+<ul>
+<li>取消期限：請於會談開始前 <span style="white-space:nowrap">24 小時</span>，以電話或訊息告知取消或改期，不需要說明原因，我們會協助您優先安排下次時段。</li>
+<li>改期次數：每一次預約可以改期 2 次。</li>
+<li>費用規則：臨時取消或無故沒有出現，會影響您後續預約的排序，實際收費依當次狀況於預約時或初談時說明。諮商師臨時請假，由本所改期，不收費。</li>
+</ul>
+</div>
+<div class="blk" id="bounds">
+<h3>服務邊界</h3>
+<dl class="bound">
+<dt>諮商不是急診</dt><dd>表單回覆有時間差，週末與國定假日不回覆。有立即危險，請看下方「需要立即協助」。</dd>
+<dt>諮商不是醫療診斷</dt><dd>若涉及藥物或診斷，會轉介精神科醫師。</dd>
+<dt>線上諮商有限制</dt><dd>需要您所在的空間隱私、不被打擾；所在地法規與危機處理的限制，初談時說明。</dd>
+<dt>保密有例外</dt><dd>自傷、傷人、兒少、家暴等法定通報情形（見上方「保密的例外」）。</dd>
+</dl>
+</div>
+<div class="blk crisis" id="crisis">
+<h3>需要立即協助</h3>
+<p>有立即危險時，請直接聯絡下列資源，不必等本所回覆。</p>
+<ul class="crisis-list">
+<li class="crisis-item"><a class="tel" href="tel:119">119</a><span class="tel-l">消防與救護</span></li>
+<li class="crisis-item"><span class="tel tel-none">急診</span><span class="tel-l">前往最近的急診，不需要預約</span></li>
+<li class="crisis-item"><a class="tel crisis-name" href="tel:1925">安心專線</a><span class="tel-l">立即協助資源</span></li>
+<li class="crisis-item"><a class="tel" href="tel:1995">1995</a><span class="tel-l">生命線</span></li>
+<li class="crisis-item"><a class="tel" href="tel:1980">1980</a><span class="tel-l">張老師</span></li>
+</ul>
+</div>
+</section>
+
+<section class="sec" id="booking" aria-labelledby="b-h2">
+<h2 id="b-h2">預約初談</h2>
+<p class="lead">一次只問一件事，您隨時可以離開。</p>
+<p class="crisis-note">若您或身邊的人目前有立即傷害自己或他人的危險，請不要等待線上表單回覆。請立即撥打 <a href="tel:119">119</a>、前往最近急診，或聯繫 <a href="tel:1925">1925</a> 安心專線、<a href="tel:1995">1995</a> 生命線、<a href="tel:1980">1980</a> 張老師。</p>
+<p class="state-line" id="state-line">目前在第 1 步／共 5 步：瀏覽匿名資訊</p>
+<p class="form-note">預約以人工回覆確認為準；也可以直接撥電話 <a class="nb" href="tel:02-0000-0000">02-0000-0000</a> 或用 LINE 聯絡。</p>
+<div class="form-card">
+<form id="booking-form" autocomplete="off">
+<fieldset class="pick" id="pick-svc">
+<legend>第 1 步：選擇服務</legend>
+<p class="hint">到這一步，本頁沒有向您要任何資料。</p>
+<div id="svc-list" class="svc-list">
+<label class="svc"><input type="radio" name="service" value="初談"><span class="svc-b"><span class="svc-name">初談</span><span class="svc-meta">30 分鐘・現場或線上</span><span class="svc-desc">先聊聊現在的狀況與想要的方向，一起看合不合適。</span></span></label>
+<label class="svc"><input type="radio" name="service" value="個別諮商"><span class="svc-b"><span class="svc-name">個別諮商</span><span class="svc-meta">50 分鐘・現場</span><span class="svc-desc">一對一，固定的時段，一起處理您想談的事。</span></span></label>
+<label class="svc"><input type="radio" name="service" value="伴侶諮商"><span class="svc-b"><span class="svc-name">伴侶諮商</span><span class="svc-meta">80 分鐘・現場</span><span class="svc-desc">兩個人一起來，談彼此之間卡住的地方。</span></span></label>
+<label class="svc"><input type="radio" name="service" value="線上諮商"><span class="svc-b"><span class="svc-name">線上諮商</span><span class="svc-meta">50 分鐘・視訊</span><span class="svc-desc">在您自己的空間進行，需要安靜、不被打擾的環境。</span></span></label>
+</div>
+</fieldset>
+<fieldset class="pick" id="pick-slot" hidden>
+<legend>第 2 步：選擇偏好時段</legend>
+<p class="hint">已經有人預約的時段不能選。找不到合適的，可以選「都可以」，由本所協調。</p>
+<div id="slot-list"></div>
+</fieldset>
+<p id="pick-summary" class="summary" aria-live="polite">還沒選服務</p>
+<fieldset id="intake" hidden disabled>
+<legend class="vh">送出最小資料</legend>
+<div id="privacy-box" class="privacy-box">
+<h3>送出前，請先讀這一段</h3>
+<ul>
+<li>會談內容本所依法負保密責任，不會主動告訴任何第三方，包含您的家人。</li>
+<li>例外：自傷、傷人、兒少、家暴等法定通報情形，本所只提供最少必要的資訊，並會事先向您說明。</li>
+<li>您告訴本所的預約資料（用電話、LINE 或這一頁都一樣）只用來安排預約；成立之後的諮商紀錄，依法至少保存十年。</li>
+</ul>
+</div>
+<div class="field">
+<label for="f-name">稱呼</label>
+<input id="f-name" name="name" type="text" required maxlength="20" autocomplete="off">
+<small>暱稱或姓氏都可以，不需要本名。</small>
+</div>
+<div class="field">
+<label for="f-contact">聯絡方式</label>
+<input id="f-contact" name="contact" type="text" required minlength="5" maxlength="60" autocomplete="off">
+<small>電話、LINE 或 Email 擇一。本所只用它回覆預約。</small>
+</div>
+<div class="field">
+<label for="f-need">簡短需求（選填）</label>
+<textarea id="f-need" name="need" rows="3" maxlength="100" autocomplete="off"></textarea>
+<small>可以不寫。不需要寫病史或詳細經過，留到見面再談。</small>
+</div>
+<label class="consent">
+<input type="checkbox" name="consent" required>
+我已閱讀並同意上述保密說明與例外情況
+</label>
+<button type="submit" id="submit" class="btn btn-primary">送出預約請求</button>
+</fieldset>
+</form>
+<section id="confirm" class="confirm" hidden tabindex="-1" aria-live="polite">
+<h3>您的預約請求已整理好</h3>
+<p class="state-pill">狀態：等待回覆</p>
+<dl class="recap">
+<dt>稱呼</dt><dd id="c-name"></dd>
+<dt>聯絡方式</dt><dd id="c-contact"></dd>
+<dt>服務</dt><dd id="c-svc"></dd>
+<dt>偏好時段</dt><dd id="c-slot"></dd>
+<dt>簡短需求</dt><dd id="c-need"></dd>
+<dt>同意時間</dt><dd id="c-consent-time"></dd>
+</dl>
+<p>下一步：本所以人工確認預約。請再用電話 <a href="tel:02-0000-0000">02-0000-0000</a> 或 LINE 把這個時段告訴我們，我們會在 2 個工作天內回覆；經您回覆確認後，預約才算成立，在那之前不會收費。</p>
+<p>取消或改期：請於會談開始前 <span style="white-space:nowrap">24 小時</span>告知，不需要說明原因。</p>
+<p>若您現在有立即傷害自己或他人的危險，請不要等這則回覆，請看<a href="#crisis">需要立即協助</a>。</p>
+<button type="button" id="reset" class="btn btn-quiet">重新選擇</button>
+</section>
+</div>
+<details class="model" id="model">
+<summary>資料模型</summary>
+<div id="model-body" class="model-body">
+<div data-obj="TherapistProfile"><b>TherapistProfile</b><span>諮商師姓名、證照、取向、服務對象、不可服務範圍。用途：建立專業邊界。</span></div>
+<div data-obj="ServiceType"><b>ServiceType</b><span>個別諮商、伴侶諮商、線上諮商、初談。用途：說明服務類型。</span></div>
+<div data-obj="AvailabilitySlot"><b>AvailabilitySlot</b><span>日期、時段、服務方式、是否可預約。用途：顯示可約時段。</span></div>
+<div data-obj="IntakeRequest"><b>IntakeRequest</b><span>稱呼、聯絡方式、偏好時段、簡短需求。用途：初次預約。<em id="m-intake">目前沒有資料</em></span></div>
+<div data-obj="PrivacyConsent"><b>PrivacyConsent</b><span>保密說明、例外情況、資料保存期限、同意時間。用途：隱私告知。<em id="m-consent">尚未同意</em></span></div>
+<div data-obj="CrisisResource"><b>CrisisResource</b><span>緊急電話、急診、生命線、張老師等資源。用途：危機轉介。</span></div>
+<div data-obj="CancellationRule"><b>CancellationRule</b><span>取消期限、改期次數、費用規則。用途：預約規則。</span></div>
+</div>
+</details>
+</section>
+
+<section class="sec" id="contact" aria-labelledby="c-h2">
+<h2 id="c-h2">聯絡與位置</h2>
+<p class="lead">用您覺得舒服的方式聯絡。</p>
+<dl class="contact">
+<dt>電話</dt><dd><a href="tel:02-0000-0000">02-0000-0000</a>（週一至週五 <span style="white-space:nowrap">10:00–18:00</span>，不是危機專線）</dd>
+<dt>LINE</dt><dd>@example-xiaojing</dd>
+<dt>Email</dt><dd>hello@example.com</dd>
+<dt>位置</dt><dd>台北市中山區。完整地址與入口位置，會在預約確認後用訊息告知。</dd>
+<dt>確認訊息</dt><dd>預約確認後，您會收到日期、時間、方式與地址；訊息裡不會提到會談內容。</dd>
+</dl>
+</section>
+
+</main>
+<aside class="meter" aria-label="您目前填了幾項資料">
+<p class="meter-h">您目前填了</p>
+<p class="meter-n"><output data-count>0</output><span>項</span></p>
+<ul class="meter-list">
+<li data-field="name"><span>稱呼</span><em data-status>未填</em></li>
+<li data-field="contact"><span>聯絡方式</span><em data-status>未填</em></li>
+<li data-field="slot"><span>偏好時段</span><em data-status>未填</em></li>
+<li data-field="need"><span>簡短需求</span><em data-status>未填（可不寫）</em></li>
+</ul>
+<p class="meter-note" data-after="已整理成預約請求；經您回覆確認前，不算預約成立。">按下送出之前，這些內容都只在您的畫面上，沒有交給任何人。</p>
+<ol class="meter-steps" aria-label="預約進行到哪一步">
+<li data-step="1">瀏覽匿名資訊</li>
+<li data-step="2">選擇服務</li>
+<li data-step="3">閱讀隱私說明</li>
+<li data-step="4">送出最小資料</li>
+<li data-step="5">等待回覆</li>
+</ol>
+</aside>
+</div>
+<footer>
+<div class="in">
+<p class="fname">小徑心理諮商所</p>
+<p class="foot-crisis">有立即危險請撥 <a href="tel:119">119</a>，或聯繫 <a href="tel:1925">1925</a> 安心專線、<a href="tel:1995">1995</a> 生命線、<a href="tel:1980">1980</a> 張老師。</p>
+<p>預約以人工回覆確認為準。© 2026 小徑心理諮商所</p>
+</div>
+</footer>
+<script>
+(function () {
+  "use strict";
+  /* 預約狀態機：瀏覽匿名資訊 → 選擇服務 → 閱讀隱私說明 → 送出最小資料 → 等待回覆。
+     第 1 步不收任何欄位；個人欄位（稱呼、聯絡方式、簡短需求）要到服務與時段都選了才出現。 */
+  var SERVICES = {
+    "初談": { len: "30 分鐘", modes: ["現場", "線上"] },
+    "個別諮商": { len: "50 分鐘", modes: ["現場"] },
+    "伴侶諮商": { len: "80 分鐘", modes: ["現場"] },
+    "線上諮商": { len: "50 分鐘", modes: ["線上"] }
+  };
+  var SLOTS = [
+    { id: "1006-1400", date: "10/06（二）", time: "14:00", mode: "現場", ok: true },
+    { id: "1006-1930", date: "10/06（二）", time: "19:30", mode: "現場", ok: false },
+    { id: "1007-1000", date: "10/07（三）", time: "10:00", mode: "線上", ok: true },
+    { id: "1007-1930", date: "10/07（三）", time: "19:30", mode: "線上", ok: true },
+    { id: "1008-1400", date: "10/08（四）", time: "14:00", mode: "現場", ok: true },
+    { id: "1008-1930", date: "10/08（四）", time: "19:30", mode: "線上", ok: false },
+    { id: "1009-1000", date: "10/09（五）", time: "10:00", mode: "現場", ok: true },
+    { id: "1009-1400", date: "10/09（五）", time: "14:00", mode: "線上", ok: true },
+    { id: "1013-1930", date: "10/13（二）", time: "19:30", mode: "現場", ok: true }
+  ];
+  var STEPS = ["瀏覽匿名資訊", "選擇服務", "閱讀隱私說明", "送出最小資料", "等待回覆"];
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  var form = $("#booking-form"), slotBox = $("#slot-list"), pickSlot = $("#pick-slot"), intake = $("#intake");
+  var confirmBox = $("#confirm"), summary = $("#pick-summary"), stateLine = $("#state-line");
+  var st = { svc: null, slot: null, submitted: false };
+
+  function slotText(id) {
+    if (id === "any") { return "都可以，由本所協調時間"; }
+    var s = SLOTS.filter(function (x) { return x.id === id; })[0];
+    return s ? s.date + " " + s.time + " " + s.mode : "";
+  }
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) { n.className = cls; }
+    if (text !== undefined) { n.textContent = text; }
+    return n;
+  }
+  function renderSlots() {
+    slotBox.textContent = "";
+    var svc = SERVICES[st.svc];
+    if (!svc) { return; }
+    var days = [];
+    SLOTS.forEach(function (s) {
+      if (svc.modes.indexOf(s.mode) < 0) { return; }
+      var d = days.filter(function (x) { return x.date === s.date; })[0];
+      if (!d) { d = { date: s.date, list: [] }; days.push(d); }
+      d.list.push(s);
+    });
+    days.forEach(function (d) {
+      var row = el("div", "slot-day");
+      row.appendChild(el("div", "slot-date", d.date));
+      var chips = el("div", "slot-chips");
+      d.list.forEach(function (s) {
+        var lab = el("label", "slot" + (s.ok ? "" : " is-taken"));
+        var inp = document.createElement("input");
+        inp.type = "radio"; inp.name = "slot"; inp.value = s.id; inp.disabled = !s.ok;
+        inp.addEventListener("change", function () { st.slot = inp.value; sync(); });
+        lab.appendChild(inp);
+        lab.appendChild(el("span", "slot-t", s.time));
+        lab.appendChild(el("span", "slot-m", s.mode));
+        if (!s.ok) { lab.appendChild(el("span", "slot-n", "已有人預約")); }
+        chips.appendChild(lab);
+      });
+      row.appendChild(chips);
+      slotBox.appendChild(row);
+    });
+    var any = el("label", "slot slot-any");
+    var ai = document.createElement("input");
+    ai.type = "radio"; ai.name = "slot"; ai.value = "any";
+    ai.addEventListener("change", function () { st.slot = "any"; sync(); });
+    any.appendChild(ai);
+    any.appendChild(el("span", "slot-t", "都可以，由本所協調"));
+    slotBox.appendChild(any);
+  }
+  function filled() {
+    var n = 0;
+    if ($("#f-name").value.trim()) { n++; }
+    if ($("#f-contact").value.trim()) { n++; }
+    if (st.slot) { n++; }
+    if ($("#f-need").value.trim()) { n++; }
+    return n;
+  }
+  function paintCount() {
+    var flags = { name: !!$("#f-name").value.trim(), contact: !!$("#f-contact").value.trim(), slot: !!st.slot, need: !!$("#f-need").value.trim() };
+    $$("[data-count]").forEach(function (o) { o.textContent = String(filled()); });
+    $$("[data-field]").forEach(function (li) {
+      var on = !!flags[li.getAttribute("data-field")];
+      li.classList.toggle("is-filled", on);
+      var s = li.querySelector("[data-status]");
+      if (s) { s.textContent = on ? "已填" : (li.getAttribute("data-field") === "need" ? "未填（可不寫）" : "未填"); }
+    });
+  }
+  function step() {
+    if (st.submitted) { return 5; }
+    if (!st.svc) { return 1; }
+    if (!st.slot) { return 2; }
+    return $("input[name=consent]").checked ? 4 : 3;
+  }
+  function sync() {
+    var n = step();
+    pickSlot.hidden = !st.svc;
+    var show = !!(st.svc && st.slot && !st.submitted);
+    intake.hidden = !show;
+    intake.disabled = !show;
+    form.hidden = st.submitted;
+    confirmBox.hidden = !st.submitted;
+    var svc = SERVICES[st.svc];
+    summary.textContent = !st.svc ? "還沒選服務" : st.svc + "（" + svc.len + "）・" + (st.slot ? slotText(st.slot) : "還沒選時段");
+    stateLine.textContent = "目前在第 " + n + " 步／共 5 步：" + STEPS[n - 1];
+    $$("[data-step]").forEach(function (li) {
+      var k = parseInt(li.getAttribute("data-step"), 10);
+      if (k === n) { li.setAttribute("aria-current", "step"); } else { li.removeAttribute("aria-current"); }
+      li.classList.toggle("is-done", k < n);
+    });
+    $$("[data-after]").forEach(function (n) {
+      if (!n.getAttribute("data-before")) { n.setAttribute("data-before", n.textContent); }
+      n.textContent = st.submitted ? n.getAttribute("data-after") : n.getAttribute("data-before");
+    });
+    paintCount();
+  }
+  $$("#svc-list input[name=service]").forEach(function (r) {
+    r.addEventListener("change", function () { st.svc = r.value; st.slot = null; renderSlots(); sync(); });
+  });
+  ["#f-name", "#f-contact", "#f-need"].forEach(function (s) { $(s).addEventListener("input", paintCount); });
+  $("input[name=consent]").addEventListener("change", sync);
+
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = $("#f-name").value.trim(), contact = $("#f-contact").value.trim(), need = $("#f-need").value.trim();
+    var d = new Date();
+    var when = d.getFullYear() + "/" + pad(d.getMonth() + 1) + "/" + pad(d.getDate()) + " " + pad(d.getHours()) + ":" + pad(d.getMinutes());
+    // 使用者輸入一律用 textContent 顯示（逸出），不用 innerHTML
+    $("#c-name").textContent = name;
+    $("#c-contact").textContent = contact;
+    $("#c-svc").textContent = st.svc;
+    $("#c-slot").textContent = slotText(st.slot);
+    $("#c-need").textContent = need || "（沒有填）";
+    $("#c-consent-time").textContent = when;
+    $("#m-intake").textContent = "最近一筆：" + name + "／" + contact + "／" + slotText(st.slot) + "／" + (need || "沒有填");
+    $("#m-consent").textContent = "最近一筆：已同意，" + when + "，諮商紀錄依法至少保存十年";
+    st.submitted = true;
+    sync();
+    confirmBox.focus();
+    confirmBox.scrollIntoView({ block: "start" });
+  });
+  $("#reset").addEventListener("click", function () {
+    form.reset();
+    st = { svc: null, slot: null, submitted: false };
+    renderSlots();
+    sync();
+    $("#booking").scrollIntoView({ block: "start" });
+  });
+  sync();
+})();
+
+</script>
+<style id="site-audit-fix">
+img,video{max-width:100%}
+select{max-width:100%;text-overflow:ellipsis}
+a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-space:nowrap}
+.crisis-item{padding-top:14px}
+@media (max-width:1080px){
+  .mini-meter{padding-left:20px;padding-right:20px}
+}
+@media (max-width:760px){
+  .top-in{padding-left:20px;padding-right:20px}
+  .wrap{padding:0 20px}
+  .blk,.card,.aside-card,.form-card,.confirm{padding-left:20px;padding-right:20px}
+  .tier-list li{padding-left:20px;padding-right:20px}
+  .profile dt,.contact dt,.profile dd,.contact dd{padding-left:20px;padding-right:20px}
+}
+</style>
+<style id="k22-legibility">
+.zn{line-height:1.15;padding:8px 6px 12px}
+.tel{line-height:1.4;padding:6px 8px}
+.crisis-name{font-size:28px}
+.crisis-item{padding-left:20px;padding-right:20px;padding-bottom:18px}
+h1{line-height:1.45;padding:6px 0 10px}
+.quote,.blk,.confirm{overflow:visible}
+</style>
+<style id="k22-find-spacing">mark[data-pv2fb]{padding:0 10px!important;box-decoration-break:clone}</style>
+</body>
+</html>

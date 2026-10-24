@@ -1,0 +1,64 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP07 餐廳訂位網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP07 餐廳訂位網站</h1><p>從訂位需求到可驗收的操作流程。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep07-restaurant.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP07 施工規格</h1>
+<p>本規格整理自《網頁設計》第 7 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<h2>網站目標</h2>
+<p>讓客人能查看餐廳資訊、菜單低消、桌型容量，並完成日期、人數、時段與桌型的訂位流程。</p>
+<h2>必要區塊</h2>
+<ol>
+<li>首頁：店名、料理類型、主張、立即訂位按鈕</li>
+<li>菜單與低消：招牌菜、套餐、低消、服務費</li>
+<li>桌型說明：二人桌、四人桌、包廂、吧台、可否併桌</li>
+<li>訂位選擇器：日期、人數、時段、可訂桌型、剩餘名額</li>
+<li>訂位表單：姓名、手機、人數、特殊需求、兒童椅</li>
+<li>訂位規則：保留 10 分鐘、取消期限、未到處理、低消規則</li>
+<li>確認區：訂位編號、日期、時段、人數、取消方式</li>
+</ol>
+<h2>資料模型</h2>
+<p>請在頁面中示範 TableType、TimeSlot、Reservation、CapacityRule、SpecialRequest。</p>
+<h2>互動示意</h2>
+<p>請用少量 JavaScript示範：選擇 2 人、4 人、6 人時，可用桌型會不同；已額滿時段要顯示灰色不可點；送出後顯示「已確認」與訂位編號。</p>
+<h2>設計要求</h2>
+<p>請把它做成一個可以直接打開的單一 index.html（HyperText Markup Language，超文字標記語言）檔案，CSS寫在同一個檔案裡，使用 RWD，手機上訂位表單不能太長，重要規則要在送出前再次顯示。不要假裝已串接正式後台，請在畫面標示這是訂位原型。</p>
+<h2>本練習包的素材</h2>
+<p>照片版位使用原創 SVG 示意圖，保留分類、燈箱與版面操作；實際照片由學員另備合法素材。來源記錄見 <code>ATTRIBUTION.md</code>。</p>
+</section>
+<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP07 對話提示卡</h1>
+<p>以下為第 7 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
+<h2>教材提示詞</h2>
+<pre><code class="language-text">你是網頁設計老師與前端工程師。
+請幫我建一個「餐廳訂位網站」單頁原型。
+
+【網站目標】
+讓客人能查看餐廳資訊、菜單低消、桌型容量，並完成日期、人數、時段與桌型的訂位流程。
+
+【必要區塊】
+1. 首頁：店名、料理類型、主張、立即訂位按鈕
+2. 菜單與低消：招牌菜、套餐、低消、服務費
+3. 桌型說明：二人桌、四人桌、包廂、吧台、可否併桌
+4. 訂位選擇器：日期、人數、時段、可訂桌型、剩餘名額
+5. 訂位表單：姓名、手機、人數、特殊需求、兒童椅
+6. 訂位規則：保留 10 分鐘、取消期限、未到處理、低消規則
+7. 確認區：訂位編號、日期、時段、人數、取消方式
+
+【資料模型】
+請在頁面中示範 TableType、TimeSlot、Reservation、CapacityRule、SpecialRequest。
+
+【互動示意】
+請用少量 JavaScript示範：選擇 2 人、4 人、6 人時，可用桌型會不同；已額滿時段要顯示灰色不可點；送出後顯示「已確認」與訂位編號。
+
+【設計要求】
+請把它做成一個可以直接打開的單一 index.html（HyperText Markup Language，超文字標記語言）檔案，CSS寫在同一個檔案裡，使用 RWD，手機上訂位表單不能太長，重要規則要在送出前再次顯示。不要假裝已串接正式後台，請在畫面標示這是訂位原型。
+</code></pre>
+</section>
+<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP07 驗收清單</h1>
+<h2>逐項檢查</h2>
+<p>AI 產出後，請檢查：</p>
+<ul>
+<li>[ ] 人數與桌型是否有對應，不是只看總座位數。</li>
+<li>[ ] 額滿時段是否真的不可點。</li>
+<li>[ ] 訂位送出後是否有訂位編號與取消方式。</li>
+<li>[ ] 保留時間、低消、服務費、取消期限是否清楚。</li>
+<li>[ ] 手機版選日期、人數、時段是否不會卡住。</li>
+</ul>
+<p>若某一項不符，不必整份重做：把那一項貼回工具，明確說「第 X 點沒做到，請只修這部分，其他不要動」，再重新檢查一次。例如發現「額滿時段還能點」，就回覆「額滿時段的按鈕要變灰色且不可點選，請只改這一點」，逐項收斂到符合清單。</p>
+<h2>主動測試</h2>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>

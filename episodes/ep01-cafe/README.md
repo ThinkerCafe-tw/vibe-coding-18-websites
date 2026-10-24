@@ -41,4 +41,4 @@ ep01-cafe/
 
 ## 在自己的電腦開啟
 
-下載本集壓縮檔並解壓縮後，直接打開 `site/index.html` 即可。也可以把整個資料夾交給 Codex，從 `PROMPT-CARD.md` 的第一步開始對話。
+下載本集壓縮檔並解壓縮後，直接打開 `site/index.html` 即可。也可以把整個資料夾交給 AI 助手，從 `PROMPT-CARD.md` 的第一步開始對話。

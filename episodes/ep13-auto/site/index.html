@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>開蓋車坊｜桃園市中壢區汽車保養｜先報價、後動工</title>
+<meta name="description" content="開蓋車坊位於桃園市中壢區，提供機油、空氣濾芯、煞車皮、電瓶與輪胎保養；零件與工資分欄的書面估價、線上預約、車籍紀錄與里程回廠提醒。">
+<style>
+:root{
+  --bg:#e9e6df; --card:#fffdf7; --ink:#151515; --mute:#4a4740; --line:#151515;
+  --y:#f2c100; --y-soft:#fbe9a0; --grey:#d5d1c7; --grey-ink:#3a3832; --red-ink:#7a2a0e; --red-soft:#f9d9c8;
+  --sans:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --hazard:repeating-linear-gradient(-45deg,#151515 0 14px,#f2c100 14px 28px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.7 var(--sans);-webkit-text-size-adjust:100%}
+img,svg{max-width:100%}
+a{color:var(--ink)}
+h1,h2,h3,p,ul,ol,dl,dd{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:4px solid var(--y);outline-offset:2px;box-shadow:0 0 0 2px var(--ink)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+
+header{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:0 max(24px,calc((100% - 1112px)/2)) 0 0;background:var(--ink);color:#fff}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);background:var(--y);padding:12px 24px 12px max(24px,calc((100vw - 1112px)/2));font-size:26px;font-weight:800;letter-spacing:.08em;clip-path:polygon(0 0,100% 0,calc(100% - 18px) 100%,0 100%);padding-right:40px}
+nav.nav ul{display:flex;flex-wrap:wrap;gap:2px 4px}
+nav.nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:#fff;text-decoration:none;font-size:17px;border-bottom:3px solid transparent}
+nav.nav a:hover{border-bottom-color:var(--y)}
+.tape{height:14px;background:var(--hazard)}
+
+
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;padding-top:44px;padding-bottom:52px;align-items:stretch}
+.hero-text{display:flex;flex-direction:column;justify-content:center}
+.eyebrow{display:inline-block;align-self:flex-start;background:var(--ink);color:var(--y);padding:4px 14px;font-weight:700;font-size:17px;letter-spacing:.08em}
+.hero h1{font-size:clamp(64px,10vw,132px);line-height:1.16;font-weight:800;letter-spacing:.01em;margin:16px 0 20px}
+.hero h1 em{font-style:normal;background:var(--y);padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.lead{font-size:21px;max-width:30em;font-weight:500}
+.fit{margin-top:12px;color:var(--mute);max-width:32em}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin:26px 0 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border:3px solid var(--ink);background:var(--card);color:var(--ink);font:800 19px/1 var(--sans);text-decoration:none;cursor:pointer;box-shadow:5px 5px 0 var(--ink);letter-spacing:.04em}
+.btn.primary{background:var(--y)}
+.btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
+.hours{font-size:17px;color:var(--mute);font-weight:600}
+.hero-side{position:relative;min-height:460px;border:3px solid var(--ink);overflow:hidden;display:flex;align-items:flex-end;background:var(--hazard)}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.steps3{position:relative;width:100%;background:var(--y);border-top:3px solid var(--ink);padding:18px 20px;display:grid;gap:8px;counter-reset:s}
+.steps3 li{display:flex;align-items:baseline;gap:12px;font-weight:700;font-size:20px;counter-increment:s}
+.steps3 li::before{content:counter(s);display:inline-grid;place-items:center;flex:none;width:34px;height:34px;background:var(--ink);color:var(--y);font:800 20px/1 var(--mono)}
+.steps3 small{font-weight:500;font-size:17px;display:block;color:var(--ink)}
+
+
+.sec{padding-top:60px;padding-bottom:16px}
+.sec-head{display:grid;gap:10px;max-width:46em;margin-bottom:28px}
+.sec-head p.tag{justify-self:start;background:var(--ink);color:var(--y);padding:2px 12px;font:700 17px/1.6 var(--mono);letter-spacing:.08em}
+h2{font-size:42px;line-height:1.2;font-weight:800;letter-spacing:.01em}
+.sec-head p{color:var(--mute)}
+h3{font-size:23px;line-height:1.4;font-weight:800}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:3px solid var(--ink);padding:20px 20px 24px;display:grid;gap:10px;align-content:start;box-shadow:6px 6px 0 var(--ink)}
+.card p{color:var(--mute)}
+.big-n{font:800 54px/1 var(--mono);color:var(--ink);background:var(--y);justify-self:start;padding:2px 12px}
+.svc h3{border-bottom:3px solid var(--ink);padding-bottom:8px}
+.svc-dl{display:grid;gap:6px;font-size:17px}
+.svc-dl div{display:grid;grid-template-columns:5.4em 1fr;gap:8px}
+.svc-dl dt{font-weight:800}
+.svc-dl dd{color:var(--ink)}
+.fine{font-size:17px;color:var(--mute);margin-top:18px;font-weight:600}
+.origin{margin-top:30px;border:3px solid var(--ink);background:var(--y-soft);padding:20px 22px}
+.origin dl{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:10px;font-size:17px}
+.origin dt{font-weight:800;border-bottom:3px solid var(--ink);display:inline-block;margin-bottom:4px}
+
+
+.est-block{margin-top:56px;display:grid;gap:22px}
+.wo{display:grid;grid-template-columns:repeat(4,1fr);border:3px solid var(--ink);background:var(--card)}
+.wo div{padding:10px 16px;border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);font-size:17px}
+.wo dt{font-size:16px;color:var(--mute);font-weight:700}
+.wo dd{font-weight:800}
+.wo .wide{grid-column:span 2}
+table.est,table.est tbody,table.est tr,table.est th,table.est td{display:block}
+table.est thead{display:none}
+table.est tbody{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+table.est tr{position:relative;background:var(--card);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:18px 18px 16px;display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;align-content:start}
+table.est tr::before{content:"";position:absolute;top:14px;right:14px;width:16px;height:16px;border-radius:50%;border:3px solid var(--ink);background:var(--bg)}
+table.est tr[data-state=paused]{background:repeating-linear-gradient(-45deg,#f4f1ea 0 12px,#e6e2d8 12px 24px)}
+table.est th.c-item{grid-column:1/-1;padding-right:34px;text-align:left}
+table.est .c-item b{display:block;font-size:26px;line-height:1.3}
+table.est .c-item small{display:block;color:var(--mute);font-size:16px;line-height:1.55;margin-top:4px}
+table.est td[data-label]::before{content:attr(data-label);display:block;font-size:16px;font-weight:700;color:var(--mute);font-family:var(--sans)}
+table.est td{font-size:19px;font-weight:700}
+table.est td.c-sub{grid-column:1/-1;border-top:3px solid var(--ink);padding-top:8px;font:800 40px/1.2 var(--mono)}
+table.est td.c-sub::before{font-size:16px}
+table.est td.c-st{grid-column:1/-1}
+.num{font-family:var(--mono)}
+select.st{min-height:48px;width:100%;border:3px solid var(--ink);padding:0 10px;font:800 18px/1 var(--sans);background:var(--card);color:var(--ink);border-radius:0}
+tr[data-state=agreed] select.st{background:var(--ink);color:var(--y)}
+tr[data-state=pending] select.st{background:var(--y);color:var(--ink)}
+tr[data-state=paused] select.st{background:var(--grey);color:var(--grey-ink)}
+.sum{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:3px solid var(--ink)}
+.sum div{padding:12px 16px;border-right:3px solid var(--ink);background:var(--card)}
+.sum div:last-child{border-right:0}
+.sum dt{font-size:16px;font-weight:700;color:var(--mute)}
+.sum b{font:800 34px/1.3 var(--mono)}
+.sum [data-k=agreed]{background:var(--ink);color:var(--y)}
+.sum [data-k=agreed] dt{color:#f0dd8a}
+.sum [data-k=pending]{background:var(--y)}
+.sum [data-k=pending] dt{color:var(--ink)}
+.sum [data-k=total]{background:var(--card)}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;counter-reset:f}
+.flow li{counter-increment:f;border:3px solid var(--ink);background:var(--card);padding:8px 12px;font-weight:700;font-size:17px;line-height:1.35;min-height:60px}
+.flow li::before{content:counter(f);display:block;font:800 22px/1.2 var(--mono)}
+.flow li.is-past{background:var(--grey);color:var(--grey-ink)}
+.flow li.is-now{background:var(--y);box-shadow:4px 4px 0 var(--ink)}
+.flow li.branch{grid-column:1/-1;border-style:dashed;min-height:0;display:flex;align-items:center;gap:10px}
+.flow li.branch::before{content:"改走";display:inline-block;font:700 17px/1.2 var(--sans);background:var(--ink);color:var(--y);padding:2px 8px}
+.flow li.branch.is-now{border-style:solid}
+#flow-note{font-weight:700}
+
+
+.book{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.board{position:relative;background:var(--ink);color:#fff;padding:22px;display:grid;gap:16px;border:3px solid var(--ink)}
+.board h3{color:var(--y)}
+#slot-list{display:grid;gap:10px}
+.slot-row{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:stretch}
+.slot-day{display:grid;align-content:center;justify-items:start;color:#fff}
+.slot-day b{font:800 22px/1.2 var(--mono)}
+.slot-day span{font-size:16px;color:#e3ddc9}
+.slot-cells{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.closed-note{grid-column:1/-1;align-self:center;color:#e3ddc9;font-size:17px}
+.slot{display:grid;gap:0;justify-items:start;align-content:center;min-height:64px;padding:6px 8px;border:3px solid #fff;background:#fff;color:var(--ink);font:400 16px/1.25 var(--sans);text-align:left;cursor:pointer;border-radius:0}
+.slot b{font:800 20px/1.2 var(--mono)}
+.slot span{font-size:16px;font-weight:600}
+.slot:hover:not(:disabled){border-color:var(--y);background:var(--y-soft)}
+.slot.is-on{background:var(--y);border-color:var(--y);box-shadow:0 0 0 3px #fff inset}
+.slot.is-full,.slot:disabled{background:repeating-linear-gradient(-45deg,#5a574f 0 8px,#48453f 8px 16px);border-color:#77736a;color:#fff;cursor:not-allowed}
+#pick-summary{font-weight:800;padding:10px 14px;background:#2a2926;color:#fff;border:3px dashed #77736a}
+#pick-summary[data-on="1"]{background:var(--y);color:var(--ink);border:3px solid var(--y)}
+.formbox{background:var(--card);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:24px;display:grid;gap:18px}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:12px;min-width:0}
+legend{background:var(--ink);color:var(--y);padding:2px 12px;font:700 17px/1.6 var(--mono);letter-spacing:.08em;margin-bottom:10px}
+label.f{display:grid;gap:4px;font-size:17px;font-weight:700;min-width:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+input[type=text],input[type=tel],input[type=email],input[type=number],textarea{width:100%;min-height:50px;padding:10px 12px;border:3px solid var(--ink);background:#fff;color:var(--ink);font:500 18px/1.4 var(--sans);border-radius:0}
+textarea{min-height:88px;resize:vertical}
+input:focus,textarea:focus,select:focus{background:var(--y-soft)}
+input::placeholder,textarea::placeholder{color:#5c5950}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.chk,.rad{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 14px;border:3px solid var(--ink);background:#fff;font-size:17px;font-weight:600;cursor:pointer}
+.chk input,.rad input{width:22px;height:22px;accent-color:var(--ink);margin:0}
+.chk:has(input:checked),.rad:has(input:checked){background:var(--y)}
+.rules-again{background:var(--y-soft);border:3px solid var(--ink);padding:12px 14px;font-size:17px;line-height:1.6;font-weight:600}
+#status{padding:12px 14px;border:3px solid var(--ink);background:var(--red-soft);color:var(--red-ink);font-size:17px;line-height:1.6;font-weight:700}
+#status[hidden]{display:none}
+#confirm{margin-top:28px;background:var(--y);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:24px;display:grid;gap:10px}
+#confirm[hidden]{display:none}
+#confirm dl{display:grid;grid-template-columns:8em 1fr;gap:6px 14px;font-size:18px}
+#confirm dt{font-weight:800}
+.no{font:800 30px/1.3 var(--mono);background:var(--ink);color:var(--y);justify-self:start;padding:0 14px}
+
+
+.rec-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.box{background:var(--card);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:22px;display:grid;gap:16px}
+.q{display:flex;gap:10px;flex-wrap:wrap}
+.q input{flex:1 1 180px}
+#rec-head{font-size:20px;font-weight:800}
+#rec-list{display:grid;gap:0;border-left:6px solid var(--ink);margin-left:6px}
+.rec{position:relative;padding:4px 0 22px 22px;display:grid;gap:8px}
+.rec::before{content:"";position:absolute;left:-15px;top:8px;width:24px;height:24px;background:var(--y);border:3px solid var(--ink)}
+.rec header{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+.rec-date{font:800 22px/1.3 var(--mono)}
+.rec-km{font:800 22px/1.3 var(--mono);background:var(--ink);color:var(--y);padding:0 10px}
+.rec-items{display:flex;flex-wrap:wrap;gap:6px}
+.rec-items li{padding:0 12px;border:2px solid var(--ink);background:#fff;font-size:17px;font-weight:700}
+.rec-photo,.rec-next{font-size:17px;color:var(--mute);font-weight:600}
+.rec-none{color:var(--mute)}
+.rail-bar{height:30px;border:3px solid var(--ink);background:#fff}
+.rail-bar i{display:block;height:100%;background:var(--hazard)}
+.rail-ticks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.rail-ticks li:nth-child(2){text-align:center}
+.rail-ticks li:nth-child(3){text-align:right}
+.rail-ticks b{display:block;font:800 26px/1.3 var(--mono)}
+.rail-ticks span{font-size:16px;font-weight:700;color:var(--mute)}
+#rem-out{display:grid;gap:14px}
+#rem-out p{font-size:18px}
+#rem-km{background:var(--y-soft);border-left:8px solid var(--ink);padding:10px 14px;font-weight:600}
+#rem-out[data-reached="1"] #rem-prog{background:var(--y);padding:4px 10px;font-weight:800}
+.mi{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-weight:800;font-size:17px}
+.mi input{max-width:11em}
+table.types{width:100%;border-collapse:collapse;border:3px solid var(--ink);background:var(--card);font-size:17px;margin-top:30px}
+table.types th,table.types td{padding:12px 14px;border-bottom:3px solid var(--ink);text-align:left;vertical-align:top}
+table.types thead th{background:var(--ink);color:var(--y);font-size:16px}
+.terms{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:17px;color:var(--mute)}
+.terms b{color:var(--ink);background:var(--y-soft);padding:0 6px}
+
+
+.policy{counter-reset:p;border-top:3px solid var(--ink)}
+.policy div{counter-increment:p;display:grid;grid-template-columns:64px 11em 1fr;gap:6px 18px;padding:16px 0;border-bottom:3px solid var(--ink);align-items:baseline}
+.policy div::before{content:counter(p);font:800 34px/1 var(--mono)}
+.policy dt{font-weight:800;font-size:20px}
+.policy dd{color:var(--mute)}
+.callbar{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:0;border:3px solid var(--ink);background:var(--ink);color:#fff}
+.callbar div{padding:16px 20px;border-right:3px solid #fff}
+.callbar div:last-child{border-right:0}
+.callbar dt{font-size:16px;color:#e3ddc9;font-weight:700}
+.callbar dd{font:800 22px/1.4 var(--mono);overflow-wrap:anywhere}
+.callbar div:first-child{background:var(--y);color:var(--ink)}
+.callbar div:first-child dt{color:var(--ink)}
+.callbar div:first-child dd{font-size:30px}
+details.model{margin-top:44px;background:var(--card);border:3px solid var(--ink);padding:0 18px}
+details.model summary{min-height:54px;display:flex;align-items:center;font-weight:800;cursor:pointer}
+#model-body{display:grid;gap:8px;padding:6px 0 18px;font-size:17px}
+#model-body div{display:grid;grid-template-columns:12em 1fr;gap:12px;border-top:2px solid var(--ink);padding-top:8px}
+#model-body code{font:800 16px/1.4 var(--mono)}
+#model-body em{display:block;font-style:normal;color:var(--mute)}
+footer{margin-top:60px;background:var(--ink);color:#e9e6df;padding:26px max(24px,calc((100% - 1112px)/2));font-size:17px;line-height:1.7;border-top:14px solid var(--y)}
+footer b{color:var(--y);font-size:20px}
+
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  table.est tbody{grid-template-columns:1fr 1fr}
+  .wo{grid-template-columns:repeat(2,1fr)}
+  .origin dl{grid-template-columns:repeat(2,1fr)}
+  .sum{grid-template-columns:repeat(2,1fr)}
+  .sum div:nth-child(2){border-right:0}
+  .sum div:nth-child(-n+2){border-bottom:3px solid var(--ink)}
+  .flow{grid-template-columns:repeat(3,1fr)}
+  .callbar{grid-template-columns:1fr 1fr}
+  .callbar div:nth-child(2){border-right:0}
+  .callbar div:nth-child(-n+2){border-bottom:3px solid #fff}
+}
+@media (max-width:900px){
+  .hero,.book,.rec-grid{grid-template-columns:1fr}
+  .hero-side{min-height:360px}
+  .board{position:static}
+  .policy div{grid-template-columns:52px 1fr}
+  .policy dd{grid-column:2}
+}
+
+@media (max-width: 640px) {
+  header { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  header.top{padding:0 0 8px 0}
+  .brand{padding-left:24px}
+  nav.nav{padding:0 16px}
+  .grid { grid-template-columns: 1fr; }
+  table.est tbody{grid-template-columns:1fr}
+  h2{font-size:34px}
+  .hero{padding-top:28px;padding-bottom:34px}
+  .hero-side{min-height:320px}
+  .two,.wo,.origin dl,.terms{grid-template-columns:1fr}
+  .wo .wide{grid-column:auto}
+  .sum{grid-template-columns:1fr}
+  .sum div{border-right:0;border-bottom:3px solid var(--ink)}
+  .sum div:last-child{border-bottom:0}
+  .flow{grid-template-columns:repeat(2,1fr)}
+  .board,.formbox,.box{padding:16px}
+  .slot-row{grid-template-columns:1fr;gap:4px}
+  .slot-day{display:flex;gap:10px;align-items:baseline}
+  .slot-cells{grid-template-columns:repeat(2,1fr)}
+  #confirm dl{grid-template-columns:1fr}
+  .callbar{grid-template-columns:1fr}
+  .callbar div,.callbar div:nth-child(n){border-right:0;border-bottom:3px solid #fff}
+  .callbar div:last-child{border-bottom:0}
+  .btn{flex:1 1 100%}
+  #model-body div{grid-template-columns:1fr}
+  .lead,.sec-head p,.card p,.svc-desc{font-size:18px}
+  table.types thead{display:none}
+  table.types,table.types tbody,table.types tr,table.types td,table.types th{display:block}
+  table.types tr{border-bottom:3px solid var(--ink);padding:8px 0}
+  table.types td,table.types th{border:0;padding:2px 14px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+</style>
+<style>
+
+.hero h1{font-size:clamp(64px,9vw,112px);line-height:1.35}
+.hero h1 em{display:inline-block;padding:.06em .14em;line-height:1.2}
+.eyebrow{padding:8px 16px}
+table.est td.c-st::before{padding-bottom:12px}
+.slot{padding:14px 16px!important;line-height:1.5!important}
+</style>
+</head>
+<body data-picker="grid">
+<aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
+<header class="top">
+  <a class="brand" href="#top" aria-label="開蓋車坊 首頁">開蓋車坊</a>
+  <nav class="nav" aria-label="主要導覽"><ul>
+    <li><a href="#trust">信任</a></li><li><a href="#services">服務與報價</a></li><li><a href="#booking">預約</a></li><li><a href="#records">紀錄與提醒</a></li><li><a href="#policy">規則</a></li><li><a href="#contact">聯絡</a></li>
+  </ul></nav>
+</header>
+<div class="tape" aria-hidden="true"></div>
+<main>
+  <section class="hero wrap" id="top">
+    <div class="hero-text">
+      <p class="eyebrow">桃園市中壢區　汽車保養</p>
+      <h1>先報價<br><em>後動工</em></h1>
+      <p class="lead">開蓋車坊把每一項保養寫成一張零件與工資分欄的估價單：你看得懂、你同意了，我們才動手。</p>
+      <p class="fit">適合：不想在報價單前猜哪一項是真的的車主——定期保養、有異音想檢查、想知道上次換過什麼。</p>
+      <div class="cta"><a class="btn primary" href="#services">查詢服務項目</a><a class="btn" href="#booking">預約保養</a></div>
+      <p class="hours">營業時間：週一至週六 09:00–18:00，週日公休。</p>
+    </div>
+    <div class="hero-side">
+      <img class="hero-photo" src="images/hero.svg" alt="課程版面示意圖片" onerror="this.remove()">
+      <ol class="steps3">
+        <li><span>先檢查<small>拆開看，拍照給你</small></span></li>
+        <li><span>再書面報價<small>零件、工資分欄</small></span></li>
+        <li><span>你同意，才動工<small>沒同意的項目不動</small></span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="trust">
+    <div class="sec-head"><p class="tag">01／06　信任</p><h2>看得到的做法，比「我們很誠實」有用</h2><p>照片、分欄的報價、你的同意，都變成查得到的紀錄。這些對誠實的師傅幾乎不費力，對想蒙混的人卻過不了關。</p></div>
+    <div class="grid">
+      <article class="card"><span class="big-n" aria-hidden="true">1</span><h3>先報價、後動工</h3><p>檢查完先給你書面估價單；沒有你的同意，任何一項都不會動工。追加的項目也一樣，先確認再動手。</p></article>
+      <article class="card"><span class="big-n" aria-hidden="true">2</span><h3>施工照片即時回傳</h3><p>拆下來的舊件與換上的新件並排拍照，用 LINE 傳給你，人不在現場也看得到。</p></article>
+      <article class="card"><span class="big-n" aria-hidden="true">3</span><h3>看得懂的紀錄</h3><p>每輛車一份紀錄：日期、里程、完成項目、照片與下次建議，下次回廠不必靠記憶。</p></article>
+    </div>
+    <div class="origin">
+      <h3>零件來源，分開寫、價格分開列</h3>
+      <dl>
+        <div><dt>原廠件</dt><dd>車廠原廠出品的零件。</dd></div>
+        <div><dt>OEM 件</dt><dd>符合原廠規格、授權供應商生產，品質近原廠件而售價較低。</dd></div>
+        <div><dt>副廠件</dt><dd>非原廠體系生產的零件，規格與價格依品牌而異。</dd></div>
+        <div><dt>翻修件</dt><dd>舊件整修後再使用，跟 OEM 件是兩回事；有用到會在估價單上標出來。</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="services">
+    <div class="sec-head"><p class="tag">02／06　服務項目與透明報價</p><h2>先看項目，再看一張分欄的估價單</h2><p>每個項目都寫明內容、參考價格、所需時間、適用車型與限制；價格拿不準的，就寫「檢查後再報」，不先喊價。</p></div>
+    <div class="grid" id="svc-menu"></div>
+    <p class="fine">參考價格是下方估價單那輛車的金額；其他車型、其他項目，以到廠檢查後的書面估價單為準。</p>
+
+    <div class="est-block">
+      <h3>一張估價單怎麼看</h3>
+      <p>進廠檢查後，你會拿到這樣一張單：零件、工資分欄，每一列都有你的同意狀態。下面是車牌 ABC-1234 的一張，每一列的狀態都可以自己改，合計會跟著算。</p>
+      <dl class="wo" id="wo">
+        <div><dt>工單編號</dt><dd>WO-1003-018</dd></div>
+        <div><dt>車輛</dt><dd>ABC-1234　Toyota Yaris</dd></div>
+        <div><dt>進廠里程</dt><dd>57,300 公里</dd></div>
+        <div><dt>完工狀態</dt><dd id="wo-done">尚未施工</dd></div>
+        <div class="wide"><dt>檢查項目</dt><dd>機油、空氣濾芯、煞車皮、輪胎、電瓶</dd></div>
+        <div class="wide"><dt>車主同意狀態</dt><dd id="wo-consent"></dd></div>
+      </dl>
+      <table class="est" aria-label="估價單">
+        <thead><tr><th scope="col">項目</th><th scope="col">零件來源</th><th scope="col">數量</th><th scope="col">零件（元）</th><th scope="col">工資（元）</th><th scope="col">小計（元）</th><th scope="col">同意狀態</th></tr></thead>
+        <tbody id="est-body"></tbody>
+      </table>
+      <dl class="sum" id="est-sum"></dl>
+      <ol class="flow" id="flow" aria-label="從預約到下次提醒的流程">
+        <li data-step="appt">預約</li><li data-step="check">進廠檢查</li><li data-step="quote">報價確認</li><li data-step="work">施工</li><li data-step="done">完工交車</li><li data-step="remind">下次提醒</li><li class="branch" data-step="partial">車主不同意：僅完成已同意項目</li>
+      </ol>
+      <p id="flow-note"></p>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="booking">
+    <div class="sec-head"><p class="tag">03／06　預約與車籍</p><h2>看排程板，選一格，預約保養</h2><p>每個時段收 3 台，灰色斜紋的是已額滿，點不下去。選好時段再填車主與車輛資料。</p></div>
+    <div class="book">
+      <div class="board">
+        <h3>本週時段</h3>
+        <div id="slot-list" role="group" aria-label="選日期與時段"></div>
+        <p id="pick-summary" aria-live="polite">還沒選時段</p>
+      </div>
+      <form class="formbox" id="booking-form">
+        <fieldset><legend>車主</legend>
+          <div class="two">
+            <label class="f">姓名<input type="text" id="f-name" name="name" required autocomplete="name"></label>
+            <label class="f">手機<input type="tel" id="f-phone" name="phone" required pattern="09[0-9]{8}" inputmode="numeric" placeholder="例 0912000000" title="手機 10 碼，例如 0912000000"></label>
+          </div>
+          <label class="f">Email（選填）<input type="email" id="f-email" name="email" autocomplete="email"></label>
+          <div><p class="f" style="font-weight:700;margin-bottom:6px">聯絡偏好</p>
+            <div class="opts"><label class="rad"><input type="radio" name="pref" value="電話" checked>電話</label><label class="rad"><input type="radio" name="pref" value="LINE">LINE</label><label class="rad"><input type="radio" name="pref" value="Email">Email</label></div></div>
+        </fieldset>
+        <fieldset><legend>車輛</legend>
+          <div class="two">
+            <label class="f">車牌<input type="text" id="f-plate" name="plate" required pattern="[A-Za-z0-9]{2,4}[\- ]?[A-Za-z0-9]{2,4}" placeholder="例 ABC-1234" autocapitalize="characters" title="例如 ABC-1234"></label>
+            <label class="f">目前里程（公里）<input type="number" id="f-mileage" name="mileage" min="0" inputmode="numeric"></label>
+          </div>
+          <div class="two">
+            <label class="f">品牌<input type="text" id="f-brand" name="brand"></label>
+            <label class="f">車型<input type="text" id="f-model" name="model"></label>
+          </div>
+          <label class="f">年份<input type="number" id="f-year" name="year" min="1990" max="2027" inputmode="numeric"></label>
+        </fieldset>
+        <fieldset><legend>服務項目</legend>
+          <div class="opts" id="svc-list"></div>
+          <div class="opts"><label class="rad"><input type="radio" name="purpose" value="定期保養" checked>我要定期保養</label><label class="rad"><input type="radio" name="purpose" value="異音檢查">我有異音想檢查</label></div>
+          <label class="f">備註<textarea id="f-note" name="note"></textarea></label>
+        </fieldset>
+        <p class="rules-again">送出前再看一次：同一天、同一時段，一張車牌只收一筆，送出後由後端系統與店內人工核對再確認一次；預約前一天 18:00 前可來電或 LINE 免費取消；預約以電話確認為準，電話 <span style="white-space:nowrap">03-0000-0000</span>。</p>
+        <p id="status" role="status" aria-live="polite" hidden></p>
+        <button class="btn primary" type="submit" id="submit">送出預約</button>
+      </form>
+    </div>
+    <section id="confirm" hidden aria-live="polite">
+      <h3>預約已收到</h3>
+      <p class="no" id="c-no"></p>
+      <dl>
+        <dt>日期時段</dt><dd id="c-when"></dd>
+        <dt>車牌</dt><dd id="c-plate"></dd>
+        <dt>服務項目</dt><dd id="c-svc"></dd>
+        <dt>狀態</dt><dd>預約（以電話確認為準）</dd>
+        <dt>取消方式</dt><dd>預約前一天 18:00 前，來電 03-0000-0000 或 LINE 告知，不收費。</dd>
+        <dt>下次回廠提醒</dt><dd id="c-next"></dd>
+      </dl>
+    </section>
+  </section>
+
+  <section class="sec wrap" id="records">
+    <div class="sec-head"><p class="tag">04／06　保養紀錄與下次提醒</p><h2>上次做了什麼、下次什麼時候回來</h2><p>每輛車的完成項目、里程與照片都留在紀錄裡；提醒文字只以上次紀錄為據，不嚇人，也可以忽略。</p></div>
+    <div class="rec-grid">
+      <div class="box" id="rec-panel">
+        <h3>查詢上次紀錄</h3>
+        <form class="q" id="q-form"><input type="text" id="q-plate" value="ABC-1234" aria-label="車牌" placeholder="例 ABC-1234" autocapitalize="characters"><button class="btn primary" type="submit">查詢上次紀錄</button></form>
+        <p id="rec-head"></p>
+        <div id="rec-list"></div>
+      </div>
+      <div class="box">
+        <h3>下次回廠提醒</h3>
+        <div id="rem-out">
+          <label class="mi" for="cur-mi">目前里程（公里）<input type="text" id="cur-mi" inputmode="numeric" value="54300"></label>
+          <div id="rail"></div>
+          <p id="rem-km"></p>
+          <p id="rem-prog"></p>
+          <p id="rem-time"></p>
+        </div>
+      </div>
+    </div>
+    <table class="types" aria-label="下次提醒的類型與觸發條件">
+      <thead><tr><th scope="col">提醒類型</th><th scope="col">觸發條件</th><th scope="col">例子</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">里程提醒</th><td>距離上次保養 5,000 公里</td><td>機油與濾芯檢查</td></tr>
+        <tr><th scope="row">時間提醒</th><td>距離上次保養 6 個月</td><td>定期保養</td></tr>
+        <tr><th scope="row">零件壽命</th><td>煞車皮、輪胎、電瓶</td><td>上次檢查已接近更換</td></tr>
+        <tr><th scope="row">年檢提醒</th><td>到期前 30 天</td><td>驗車與保險提醒</td></tr>
+      </tbody>
+    </table>
+    <div class="terms"><p><b>預防性維修：</b>不等零件失效，依里程或檢測結果提前處理。</p><p><b>里程追蹤：</b>記下每輛車的維修歷史與里程，適時提醒回廠。</p></div>
+  </section>
+
+  <section class="sec wrap" id="policy">
+    <div class="sec-head"><p class="tag">05／06　規則說明</p><h2>價格、取消、隱私，先講清楚</h2></div>
+    <dl class="policy">
+      <div><dt>價格與報價</dt><dd>檢查後以書面估價單報價，零件與工資分欄；估價單以外的價格，都不算數。</dd></div>
+      <div><dt>追加項目</dt><dd>施工中發現要追加的項目，先拍照、說明原因與是否急迫，你同意了才動手。</dd></div>
+      <div><dt>取消與改期</dt><dd>預約前一天 18:00 前，來電或 LINE 告知，免費取消或改期；預約不收訂金，沒有退款的問題。</dd></div>
+      <div><dt>重複預約</dt><dd>同一天、同一時段，一張車牌只留一個名額。真正防止重複預約要靠店內預約系統的後端檢查，再由店內人工核對；預約以來電確認為準。</dd></div>
+      <div><dt>隱私</dt><dd>車牌與電話只用在預約與回廠提醒；提醒可以隨時請我們停止。</dd></div>
+      <div><dt>服務邊界</dt><dd>提醒與建議都以上次紀錄為據，不代替你的判斷；已在別處保養過的項目，可以忽略提醒。</dd></div>
+    </dl>
+  </section>
+
+  <section class="sec wrap" id="contact">
+    <div class="sec-head"><p class="tag">06／06　聯絡與後續</p><h2>預約之後，我們這樣接手</h2><p>送出預約後，畫面會出現預約編號；店內以電話與你確認時段，確認後才算數。</p></div>
+    <dl class="callbar">
+      <div><dt>電話</dt><dd>03-0000-0000</dd></div>
+      <div><dt>LINE</dt><dd>@example-kaigai</dd></div>
+      <div><dt>Email</dt><dd>kaigai@example.com</dd></div>
+      <div><dt>地區</dt><dd>桃園市中壢區</dd></div>
+    </dl>
+    <div class="cta end-cta"><a class="btn primary" href="#booking">預約保養</a><a class="btn" href="#services">查詢服務項目</a></div>
+    <details class="model">
+      <summary>這一頁背後的資料模型</summary>
+      <dl id="model-body"></dl>
+    </details>
+  </section>
+</main>
+<footer><b>開蓋車坊</b><br>營業時間：週一至週六 09:00–18:00，週日公休。服務範圍：桃園市中壢區。<br>價格以到廠檢查後的書面估價單為準，預約以電話確認為準。© 2026 開蓋車坊</footer>
+<script>
+(() => {
+  "use strict";
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
+  const fmt = n => Number(n).toLocaleString("en-US");
+  const PICKER = document.body.dataset.picker || "chips";
+  const PHONE = "03-0000-0000";
+
+  /* ---------- 時段與名額（ScheduleSlot） ---------- */
+  const CAP = 3; // 每個時段可收 3 台
+  const SLOTS = [
+    { id: "0930", t: "09:30" },
+    { id: "1000", t: "10:00" },
+    { id: "1400", t: "14:00" },
+    { id: "1530", t: "15:30" }
+  ];
+  const DAYS = [
+    { id: "2026-10-09", md: "10/09", wd: "五", open: true, base: [1, 2, 0, 3] },
+    { id: "2026-10-10", md: "10/10", wd: "六", open: true, base: [3, 1, 2, 0] },
+    { id: "2026-10-11", md: "10/11", wd: "日", open: false, base: [0, 0, 0, 0] },
+    { id: "2026-10-12", md: "10/12", wd: "一", open: true, base: [0, 1, 1, 2] },
+    { id: "2026-10-13", md: "10/13", wd: "二", open: true, base: [2, 0, 1, 1] },
+    { id: "2026-10-14", md: "10/14", wd: "三", open: true, base: [1, 1, 0, 2] }
+  ];
+
+  /* ---------- 服務項目（ServiceMenu） ---------- */
+  const SERVICES = [
+    { id: "oil", name: "機油更換", desc: "更換機油，並檢查油面與有沒有漏油。", price: "參考 2,300 元（零件 1,800、工資 500）", time: "約 40 分鐘", fit: "汽油、油電小客車", limit: "機油規格依車型；柴油車與特殊規格請先來電確認。" },
+    { id: "air", name: "空氣濾芯", desc: "檢查髒污程度，需要換再報價，舊件留給你看。", price: "參考 600 元（零件 600、工資 0）", time: "約 15 分鐘", fit: "汽油、油電小客車", limit: "濾芯尺寸依車型，部分車型要先訂料。" },
+    { id: "brake", name: "煞車皮", desc: "量測厚度並拍照回傳；要換時先報價，你同意才動工。", price: "參考 4,400 元（零件 3,200、工資 1,200）", time: "約 2 小時", fit: "汽油、油電小客車", limit: "前後輪分開報價；煞車盤要不要處理，拆開檢查後才知道。" },
+    { id: "battery", name: "電瓶檢測", desc: "用儀器量測電瓶狀態，結果寫進這輛車的紀錄。", price: "到廠檢測後，以書面估價單為準", time: "約 20 分鐘", fit: "汽油、油電小客車", limit: "油電車的高壓電池不在此項目內。" },
+    { id: "tire", name: "輪胎檢查與換位", desc: "檢查胎紋、胎壓與偏磨，並做前後換位。", price: "到廠檢查後，以書面估價單為準", time: "約 40 分鐘", fit: "小客車、休旅車", limit: "更換輪胎要先確認尺寸與品牌，另外報價。" },
+    { id: "noise", name: "異音與警示燈檢查", desc: "試車、檢查、拍照說明；先報價，你決定要不要修。", price: "先檢查，再以書面估價單報價", time: "約 1 小時起，複雜的需要留車", fit: "汽油、油電小客車", limit: "需要拆解的項目會先告知範圍，再請你決定。" }
+  ];
+
+  /* ---------- 估價單（EstimateLine） ---------- */
+  const EST = [
+    { id: "oil", name: "機油更換", why: "距離上次更換已到里程門檻，屬例行項目，不急迫。", src: "OEM 件", qty: 1, parts: 1800, labor: 500, state: "agreed" },
+    { id: "air", name: "空氣濾芯", why: "濾芯有髒污，照片見紀錄；不急迫，可以等下次一起換。", src: "副廠件", qty: 1, parts: 600, labor: 0, state: "pending" },
+    { id: "brake", name: "煞車皮", why: "前煞車皮已在觀察名單；你先不換，已留紀錄，下次回廠再量一次。", src: "原廠件", qty: 1, parts: 3200, labor: 1200, state: "paused" }
+  ];
+  const STATE_TEXT = { agreed: "已同意", pending: "待確認", paused: "車主暫緩" };
+
+  /* ---------- 車籍與保養紀錄（VehicleProfile／MaintenanceRecord） ---------- */
+  const VEHICLE = { plate: "ABC-1234", brand: "Toyota", model: "Yaris", year: 2019 };
+  const RECORDS = [
+    { date: "2026/04/09", km: 52000, items: ["機油更換", "機油濾芯", "輪胎換位"], photos: 2, next: "57,000 公里左右檢查機油與濾芯" },
+    { date: "2025/10/11", km: 46800, items: ["機油更換", "機油濾芯", "電瓶檢測"], photos: 2, next: "52,000 公里左右檢查機油與濾芯" }
+  ];
+  const RULE = { km: 5000, months: 6 };
+
+  /* ---------- 狀態（只存在瀏覽器記憶體） ---------- */
+  const bookings = [];
+  const vehicles = new Set([VEHICLE.plate]);
+  const phones = new Set(["seed"]);
+  const sel = { day: "2026-10-10", slot: null };
+  const est = EST.map(l => Object.assign({}, l));
+
+  const dayOf = id => DAYS.find(d => d.id === id);
+  const slotOf = id => SLOTS.find(s => s.id === id);
+  const usedOf = (day, slot) => day.base[SLOTS.indexOf(slot)] + bookings.filter(b => b.day === day.id && b.slot === slot.id).length;
+  const leftOf = (day, slot) => CAP - usedOf(day, slot);
+  const normPlate = v => {
+    const s = v.toUpperCase().replace(/[\s._\-–—]+/g, "-").replace(/^-|-$/g, "");
+    return s.includes("-") ? s : s.replace(/^([A-Z]+)([0-9]+)$/, "$1-$2").replace(/^([0-9]+)([A-Z]+)$/, "$1-$2");
+  };
+  const lineSub = l => l.qty * (l.parts + l.labor);
+
+  function say(msg, kind) {
+    const el = $("#status");
+    el.textContent = msg || "";
+    el.dataset.kind = kind || "";
+    el.hidden = !msg;
+  }
+
+  /* ---------- 日期與時段 ---------- */
+  function slotBtn(day, s) {
+    const left = leftOf(day, s);
+    const full = left <= 0;
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "slot" + (full ? " is-full" : "") + (sel.day === day.id && sel.slot === s.id ? " is-on" : "");
+    b.dataset.day = day.id;
+    b.dataset.slot = s.id;
+    b.disabled = full;
+    b.setAttribute("aria-pressed", String(sel.day === day.id && sel.slot === s.id));
+    b.innerHTML = "<b>" + s.t + "</b><span>" + (full ? "已額滿" : PICKER === "grid" ? "剩 " + left + " 台" : "剩 " + left + " 個名額") + "</span>";
+    b.addEventListener("click", () => {
+      if (full) return;
+      sel.day = day.id;
+      sel.slot = s.id;
+      renderPick();
+    });
+    return b;
+  }
+
+  function renderPick() {
+    const list = $("#slot-list");
+    list.innerHTML = "";
+    if (PICKER === "grid") {
+      DAYS.forEach(day => {
+        const row = document.createElement("div");
+        row.className = "slot-row" + (day.open ? "" : " is-closed");
+        row.innerHTML = "<div class=\"slot-day\"><b>" + day.md + "</b><span>週" + day.wd + "</span></div>";
+        const cells = document.createElement("div");
+        cells.className = "slot-cells";
+        if (!day.open) {
+          cells.innerHTML = "<p class=\"closed-note\">公休，不收預約</p>";
+        } else {
+          SLOTS.forEach(s => cells.appendChild(slotBtn(day, s)));
+        }
+        row.appendChild(cells);
+        list.appendChild(row);
+      });
+    } else {
+      const dl = $("#date-list");
+      dl.innerHTML = "";
+      DAYS.forEach(day => {
+        const c = document.createElement("button");
+        c.type = "button";
+        c.className = "chip" + (sel.day === day.id ? " is-on" : "");
+        c.dataset.day = day.id;
+        c.disabled = !day.open;
+        c.setAttribute("aria-pressed", String(sel.day === day.id));
+        c.innerHTML = "<b>" + day.md + "</b><span>" + (day.open ? "週" + day.wd : "公休") + "</span>";
+        c.addEventListener("click", () => {
+          sel.day = day.id;
+          if (sel.slot && leftOf(day, slotOf(sel.slot)) <= 0) sel.slot = null;
+          renderPick();
+        });
+        dl.appendChild(c);
+      });
+      const day = dayOf(sel.day);
+      SLOTS.forEach(s => list.appendChild(slotBtn(day, s)));
+    }
+    const sum = $("#pick-summary");
+    if (sel.slot) {
+      const d = dayOf(sel.day), s = slotOf(sel.slot);
+      sum.textContent = d.md + "（週" + d.wd + "）" + s.t + "．剩 " + leftOf(d, s) + " 個名額";
+      sum.dataset.on = "1";
+    } else {
+      sum.textContent = "還沒選時段";
+      sum.dataset.on = "";
+    }
+  }
+
+  function renderServices() {
+    $("#svc-menu").innerHTML = SERVICES.map(s =>
+      "<article class=\"card svc\" data-svc=\"" + s.id + "\"><h3>" + s.name + "</h3><p class=\"svc-desc\">" + s.desc + "</p>" +
+      "<dl class=\"svc-dl\"><div><dt>參考價格</dt><dd>" + s.price + "</dd></div><div><dt>所需時間</dt><dd>" + s.time + "</dd></div>" +
+      "<div><dt>適用車型</dt><dd>" + s.fit + "</dd></div><div><dt>限制</dt><dd>" + s.limit + "</dd></div></dl></article>"
+    ).join("");
+    $("#svc-list").innerHTML = SERVICES.map(s =>
+      "<label class=\"chk\"><input type=\"checkbox\" name=\"svc\" value=\"" + s.name + "\"><span>" + s.name + "</span></label>"
+    ).join("");
+  }
+
+  /* ---------- 估價單、工單、流程 ---------- */
+  function renderEstimate() {
+    $("#est-body").innerHTML = est.map(l =>
+      "<tr data-id=\"" + l.id + "\" data-state=\"" + l.state + "\">" +
+      "<th scope=\"row\" class=\"c-item\"><b>" + l.name + "</b><small>" + l.why + "</small></th>" +
+      "<td class=\"c-src\" data-label=\"零件來源\">" + l.src + "</td>" +
+      "<td class=\"c-qty num\" data-label=\"數量\">" + l.qty + "</td>" +
+      "<td class=\"c-parts num\" data-label=\"零件\">" + fmt(l.parts) + "</td>" +
+      "<td class=\"c-labor num\" data-label=\"工資\">" + fmt(l.labor) + "</td>" +
+      "<td class=\"c-sub num\" data-label=\"小計\">" + fmt(lineSub(l)) + "</td>" +
+      "<td class=\"c-st\" data-label=\"同意狀態\"><select class=\"st\" aria-label=\"" + l.name + "的同意狀態\" data-id=\"" + l.id + "\">" +
+      Object.keys(STATE_TEXT).map(k => "<option value=\"" + k + "\"" + (k === l.state ? " selected" : "") + ">" + STATE_TEXT[k] + "</option>").join("") +
+      "</select></td></tr>"
+    ).join("");
+    $$("#est-body select.st").forEach(sel2 => sel2.addEventListener("change", () => {
+      est.find(l => l.id === sel2.dataset.id).state = sel2.value;
+      sel2.closest("tr").dataset.state = sel2.value;
+      renderEstSummary();
+    }));
+    renderEstSummary();
+  }
+
+  function renderEstSummary() {
+    const sum = st => est.filter(l => l.state === st).reduce((a, l) => a + lineSub(l), 0);
+    const cnt = st => est.filter(l => l.state === st).length;
+    const total = est.reduce((a, l) => a + lineSub(l), 0);
+    $("#est-sum").innerHTML =
+      "<div data-k=\"agreed\"><dt>已同意，會動工</dt><dd><b>" + fmt(sum("agreed")) + "</b> 元</dd></div>" +
+      "<div data-k=\"pending\"><dt>待確認，沒同意不動工</dt><dd><b>" + fmt(sum("pending")) + "</b> 元</dd></div>" +
+      "<div data-k=\"paused\"><dt>車主暫緩，保留紀錄</dt><dd><b>" + fmt(sum("paused")) + "</b> 元</dd></div>" +
+      "<div data-k=\"total\"><dt>三項合計</dt><dd><b>" + fmt(total) + "</b> 元</dd></div>";
+    // 工單摘要（WorkOrder）
+    $("#wo-consent").textContent = cnt("agreed") + " 項已同意、" + cnt("pending") + " 項待確認、" + cnt("paused") + " 項車主暫緩";
+    const pending = cnt("pending"), agreed = cnt("agreed"), paused = cnt("paused");
+    let now, note;
+    if (pending > 0) { now = "quote"; note = "還有 " + pending + " 項等你決定；沒有你的同意，這幾項不會動工。"; }
+    else if (agreed === 0) { now = "partial"; note = "沒有已同意的項目，這次只完成檢查並留下紀錄。"; }
+    else if (paused > 0) { now = "partial"; note = "只施工已同意的 " + agreed + " 項；暫緩的項目留在紀錄裡，下次回廠再討論。"; }
+    else { now = "work"; note = "三項都已同意，可以開始施工。"; }
+    $("#wo-done").textContent = now === "work" ? "可以開始施工" : now === "partial" ? "只施工已同意項目" : "尚未施工";
+    $$("#flow li").forEach(li => {
+      li.classList.toggle("is-now", li.dataset.step === now);
+      li.classList.toggle("is-past", ["appt", "check"].includes(li.dataset.step) || (li.dataset.step === "quote" && now !== "quote"));
+      if (li.classList.contains("is-now")) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+    });
+    $("#flow").dataset.now = now;
+    $("#flow-note").textContent = note;
+  }
+
+  /* ---------- 保養紀錄與下次提醒（MaintenanceRecord／ReminderRule） ---------- */
+  function addMonths(dateStr, m) {
+    const [y, mo, d] = dateStr.split("/").map(Number);
+    const t = mo - 1 + m;
+    const yy = y + Math.floor(t / 12), mm = (t % 12) + 1;
+    return yy + "/" + String(mm).padStart(2, "0") + "/" + String(d).padStart(2, "0");
+  }
+
+  function renderRecords(plate) {
+    const found = normPlate(plate) === VEHICLE.plate;
+    const box = $("#rec-list");
+    const head = $("#rec-head");
+    if (!found) {
+      head.textContent = "查無這張車牌的紀錄";
+      box.innerHTML = "<p class=\"rec-none\">第一次進廠時，我們會替這輛車建立車籍；之後每次施工，都會留下完成項目、里程與照片。</p>";
+      $("#rec-panel").dataset.found = "0";
+      return;
+    }
+    $("#rec-panel").dataset.found = "1";
+    head.textContent = "車牌 " + VEHICLE.plate + "．" + VEHICLE.brand + " " + VEHICLE.model + "．" + VEHICLE.year + " 年";
+    box.innerHTML = RECORDS.map(r =>
+      "<article class=\"rec\"><header><b class=\"rec-date\">" + r.date + "</b><span class=\"rec-km\">" + fmt(r.km) + " 公里</span></header>" +
+      "<ul class=\"rec-items\">" + r.items.map(i => "<li>" + i + "</li>").join("") + "</ul>" +
+      "<p class=\"rec-photo\">施工照片 " + r.photos + " 張，新舊件並排</p>" +
+      "<p class=\"rec-next\">下次建議：" + r.next + "</p></article>"
+    ).join("");
+  }
+
+  function renderReminder() {
+    const last = RECORDS[0];
+    const nextKm = last.km + RULE.km;
+    const cur = parseInt($("#cur-mi").value.replace(/[^0-9]/g, ""), 10);
+    const ok = Number.isFinite(cur) && cur > 0;
+    const pct = ok ? Math.max(0, Math.min(100, Math.round((cur - last.km) / RULE.km * 100))) : 0;
+    let prog;
+    if (!ok) prog = "輸入目前里程，就能看到距離下次建議里程還有多遠。";
+    else if (cur < nextKm) prog = "目前 " + fmt(cur) + " 公里，距離 " + fmt(nextKm) + " 公里還有 " + fmt(nextKm - cur) + " 公里。";
+    else prog = "目前 " + fmt(cur) + " 公里，已到建議的 " + fmt(nextKm) + " 公里，下次進廠可以一併檢查機油與濾芯。";
+    $("#rail").innerHTML =
+      "<div class=\"rail-bar\" role=\"img\" aria-label=\"里程進度 " + pct + "%\"><i style=\"width:" + pct + "%\"></i></div>" +
+      "<ol class=\"rail-ticks\"><li><b>" + fmt(last.km) + "</b><span>上次保養</span></li><li><b>" + (ok ? fmt(cur) : "—") + "</b><span>目前</span></li><li><b>" + fmt(nextKm) + "</b><span>建議檢查</span></li></ol>";
+    $("#rem-km").textContent = "上次保養紀錄顯示您的車輛里程為 " + fmt(last.km) + " 公里，建議在 " + fmt(nextKm) + " 公里左右檢查機油與濾芯。若近期已在其他地方保養，可忽略此提醒。";
+    $("#rem-prog").textContent = prog;
+    $("#rem-time").textContent = "時間提醒：距離上次保養（" + last.date + "）滿 " + RULE.months + " 個月的日期是 " + addMonths(last.date, RULE.months) + "；里程與時間，先到的那一個提醒您。";
+    $("#rem-out").dataset.reached = ok && cur >= nextKm ? "1" : "0";
+  }
+
+  /* ---------- 資料模型（收合區） ---------- */
+  function renderModel() {
+    const rows = [
+      ["VehicleProfile", "車牌、品牌、車型、年份、目前里程", vehicles.size + " 輛"],
+      ["CustomerProfile", "車主姓名、電話、Email、聯絡偏好", phones.size + " 位"],
+      ["ServiceMenu", "保養項目、參考價格、所需時間、適用車型", SERVICES.length + " 項"],
+      ["Appointment", "日期、時段、車輛、服務項目、狀態", bookings.length + " 筆"],
+      ["WorkOrder", "檢查項目、建議維修、車主同意狀態、完工狀態", "1 張"],
+      ["EstimateLine", "零件、工資、數量、單價、是否同意", est.length + " 列"],
+      ["MaintenanceRecord", "日期、里程、完成項目、照片、下次建議", RECORDS.length + " 筆"],
+      ["ReminderRule", "里程門檻、時間間隔、提醒內容", "2 條（里程、時間）"]
+    ];
+    $("#model-body").innerHTML = rows.map(r =>
+      "<div data-obj=\"" + r[0] + "\"><dt><code>" + r[0] + "</code></dt><dd>" + r[1] + "<em>目前 <b>" + r[2] + "</b></em></dd></div>"
+    ).join("");
+  }
+
+  function renderAll() { renderPick(); renderModel(); }
+
+  /* ---------- 送出預約 ---------- */
+  const form = $("#booking-form");
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    if (!sel.slot) { say("請先選一個日期與時段。", "warn"); return; }
+    const day = dayOf(sel.day), slot = slotOf(sel.slot);
+    if (leftOf(day, slot) <= 0) { say("這個時段剛剛額滿了，請改選其他時段。", "warn"); sel.slot = null; renderAll(); return; }
+    const plate = normPlate($("#f-plate").value);
+    const dup = bookings.find(b => b.day === day.id && b.slot === slot.id && b.plate === plate);
+    if (dup) { say("同一天、同一時段，車牌 " + plate + " 已經有一筆預約（編號 " + dup.no + "），這一筆不會重複送出。這個網頁只能在這一次瀏覽裡比對；真正防止重複預約，要靠店內預約系統的後端檢查。預約以來電確認為準。", "warn"); return; }
+    const no = "KG-" + day.md.replace("/", "") + "-" + slot.id + "-" + String(usedOf(day, slot) + 1).padStart(2, "0");
+    const svc = $$("input[name=svc]:checked").map(i => i.value);
+    const mileage = parseInt($("#f-mileage").value, 10);
+    bookings.push({ no, day: day.id, slot: slot.id, plate, name: $("#f-name").value.trim(), phone: $("#f-phone").value.trim(), svc });
+    vehicles.add(plate);
+    phones.add($("#f-phone").value.trim());
+    say("");
+    $("#c-no").textContent = no;
+    $("#c-when").textContent = day.md + "（週" + day.wd + "）" + slot.t;
+    $("#c-plate").textContent = plate;
+    $("#c-svc").textContent = svc.length ? svc.join("、") : "到廠後一起檢查";
+    $("#c-next").textContent = Number.isFinite(mileage) && mileage > 0
+      ? "目前 " + fmt(mileage) + " 公里，約 " + fmt(mileage + RULE.km) + " 公里或 " + RULE.months + " 個月後（先到的那一個）提醒您回廠；提醒文字以上次紀錄為據，隨時可以請我們停止提醒。"
+      : "里程請到廠時補登；時間提醒是 " + RULE.months + " 個月後，隨時可以請我們停止提醒。";
+    $("#confirm").hidden = false;
+    if (leftOf(day, slot) <= 0) sel.slot = null;
+    renderAll();
+    $("#confirm").scrollIntoView({ block: "nearest" });
+  });
+
+  /* ---------- 其他互動 ---------- */
+  $("#q-form").addEventListener("submit", e => { e.preventDefault(); renderRecords($("#q-plate").value); });
+  $("#cur-mi").addEventListener("input", renderReminder);
+
+  renderServices();
+  renderEstimate();
+  renderRecords($("#q-plate").value);
+  renderReminder();
+  renderAll();
+})();
+</script>
+<style id="site-audit-fix">
+img,video{max-width:100%}
+select{max-width:100%;text-overflow:ellipsis}
+a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-space:nowrap}
+.rec header{padding:8px 12px}
+@media (max-width:900px){.rec header{padding:12px 20px}}
+.callbar dd{font-size:19px;overflow-wrap:break-word}
+.callbar div:first-child dd{font-size:28px}
+@media (max-width:640px){
+  .sum div{padding-left:20px;padding-right:20px}
+  nav.nav ul{display:grid;grid-template-columns:repeat(3,max-content);gap:0 8px}
+}
+</style>
+</body>
+</html>

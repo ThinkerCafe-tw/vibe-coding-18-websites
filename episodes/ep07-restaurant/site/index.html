@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>留燈｜台北市大安區新派台菜｜線上訂位</title>
+<meta name="description" content="留燈，台北市大安區新派台菜。桌型、剩餘名額、低消與服務費都寫在訂位之前。">
+
+<style>
+:root{
+  --bg:#0d182d; --bg2:#13223f; --bg3:#182a4d;
+  --ink:#f6edda; --mute:#c9cfdc;
+  --amber:#f3b34a; --amber-d:#c98a26; --amber-line:rgba(243,179,74,.38);
+  --paper:#f7efdc; --paper-ink:#1b2440; --paper-mute:#4d5675;
+  --grey-bg:#d9d4c6; --grey-ink:#52504b;
+  --serif:"Songti TC","Noto Serif TC","Source Han Serif TC","STSong","PMingLiU",serif;
+  --sans:"PingFang TC","Noto Sans TC","Microsoft JhengHei","Heiti TC",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.75 var(--sans);letter-spacing:.02em}
+img,svg{max-width:100%}
+a{color:inherit}
+.wrap{width:min(1120px,calc(100% - 32px));margin-inline:auto}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.3;margin:0}
+p{margin:0}
+button{font:inherit;color:inherit}
+
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:999px;border:2px solid var(--amber);background:var(--amber);color:#1b1608;font-weight:700;font-size:18px;text-decoration:none;cursor:pointer;font-family:var(--sans)}
+.btn:hover{background:#ffc35f}
+.btn.ghost{background:transparent;color:var(--amber)}
+.btn.ghost:hover{background:rgba(243,179,74,.12)}
+:focus-visible{outline:3px solid #ffd98d;outline-offset:3px}
+
+
+.top{position:sticky;top:0;z-index:20;background:rgba(13,24,45,.94);border-bottom:1px solid var(--amber-line);backdrop-filter:blur(6px)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.brand{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--amber);text-decoration:none;letter-spacing:.12em}
+.top nav{display:none;gap:28px}
+.top nav a{text-decoration:none;font-size:18px;color:var(--ink);padding:8px 2px;border-bottom:2px solid transparent}
+.top nav a:hover{border-bottom-color:var(--amber)}
+.top .btn{min-height:46px;padding:0 20px}
+
+
+.proto{background:#241d0e;border-bottom:1px solid var(--amber-line);color:#ffe2a8}
+.proto p{padding:10px 0;font-size:17px;line-height:1.6}
+.proto b{color:var(--amber)}
+
+
+.hero{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 78% 30%,#1c2f57 0%,var(--bg) 62%)}
+.hero .wrap{position:relative;display:grid;gap:8px;padding:36px 0 44px}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32;mix-blend-mode:screen;z-index:0}
+.hero-copy{position:relative;z-index:2}
+.kicker{display:inline-block;font-size:16px;letter-spacing:.2em;color:var(--amber);border:1px solid var(--amber-line);border-radius:999px;padding:2px 14px}
+.hero h1{font-size:44px;line-height:1.28;margin:18px 0 14px;letter-spacing:.04em}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.lead{font-size:20px;color:var(--mute);max-width:32em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.facts{margin:30px 0 0;padding:0;list-style:none;display:grid;gap:10px;border-top:1px solid var(--amber-line);padding-top:20px}
+.facts li{display:flex;gap:14px;align-items:baseline;font-size:18px}
+.facts b{color:var(--amber);font-weight:700;min-width:5em}
+.hero-scene{position:relative;z-index:1;display:flex;gap:6px;align-items:stretch}
+.scene{display:block;flex:1 1 0;min-width:0;height:100%}
+.vtitle{flex:none;writing-mode:vertical-rl;font-family:var(--serif);font-weight:900;font-size:92px;line-height:1;color:var(--amber);letter-spacing:.1em;padding-top:4px}
+
+
+section{padding:64px 0}
+.sec-head{display:grid;gap:8px;margin-bottom:34px}
+.sec-head .no{font-family:var(--serif);color:var(--amber);font-size:18px;letter-spacing:.3em}
+.sec-head h2{font-size:34px}
+.sec-head p{color:var(--mute);max-width:38em}
+.alt{background:var(--bg2);border-block:1px solid var(--amber-line)}
+
+
+.tiers{display:grid;gap:16px}
+.tier{position:relative;display:grid;gap:6px;padding:24px 22px;border:1px solid var(--amber-line);border-radius:14px;background:linear-gradient(160deg,var(--bg3),var(--bg2))}
+.tier h3{font-size:24px}
+.tier .price{font-family:var(--serif);font-weight:900;font-size:38px;color:var(--amber);line-height:1.2}
+.tier .price small{font-size:18px;color:var(--mute);font-weight:400;font-family:var(--sans);margin-left:8px}
+.tier p{color:var(--mute)}
+.tier.top-pick{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber) inset,0 0 44px rgba(243,179,74,.16)}
+.tag{position:absolute;top:-14px;right:18px;background:var(--amber);color:#1b1608;font-size:16px;font-weight:700;padding:2px 14px;border-radius:999px}
+.dishes{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:0}
+.dishes li{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:16px 0;border-bottom:1px dotted var(--amber-line)}
+.dishes .n{font-family:var(--serif);font-size:22px;font-weight:700}
+.dishes .d{grid-column:1;color:var(--mute);font-size:18px}
+.dishes .p{grid-row:1;grid-column:2;font-family:var(--serif);font-size:22px;color:var(--amber);font-weight:700}
+.fees{margin-top:34px;padding:22px;border:2px solid var(--amber);border-radius:14px;background:rgba(243,179,74,.08)}
+.fees h3{font-size:24px;margin-bottom:10px;color:var(--amber)}
+.fees ul{margin:0;padding-left:1.2em;display:grid;gap:4px}
+.fees li b{color:var(--amber)}
+
+
+.tables{display:grid;gap:16px}
+.tcard{display:grid;grid-template-columns:84px 1fr;gap:6px 18px;align-items:center;padding:20px;border:1px solid var(--amber-line);border-radius:14px;background:var(--bg)}
+.tcard svg{width:84px;height:84px}
+.tcard h3{font-size:24px}
+.tcard .meta{color:var(--amber);font-size:18px}
+.tcard p{grid-column:1 / -1;color:var(--mute)}
+.tcard .k{grid-column:1 / -1;font-size:17px;color:var(--mute);border-top:1px dotted var(--amber-line);padding-top:8px}
+
+
+.book{background:var(--paper);color:var(--paper-ink);border-radius:18px;padding:22px 18px 26px;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.book h3{font-size:24px;margin-bottom:6px}
+.step{margin-top:26px}
+.step:first-of-type{margin-top:6px}
+.step>h3{display:flex;align-items:baseline;gap:12px;font-size:22px}
+.step>h3 span{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--paper-ink);color:var(--amber);font-size:18px;font-family:var(--sans);flex:none}
+.hint{margin:6px 0 12px;color:var(--paper-mute);font-size:17px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:64px;min-height:64px;padding:6px 12px;border:2px solid var(--paper-ink);border-radius:14px;background:transparent;color:var(--paper-ink);cursor:pointer;line-height:1.25}
+.chip .c-main{font-family:var(--serif);font-weight:900;font-size:22px}
+.chip .c-sub{font-size:16px}
+.chip:hover{background:rgba(27,36,64,.08)}
+.chip.is-on{background:var(--paper-ink);color:var(--amber)}
+.chip.is-closed,.chip:disabled{border-style:dashed;border-color:#8b8d99;color:#5c5f6d;background:transparent;cursor:not-allowed}
+#party-list{display:grid;grid-template-columns:repeat(4,1fr)}
+#party-list .chip{min-width:0}
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.slot{display:grid;gap:0;text-align:left;padding:12px 14px;min-height:96px;border:2px solid var(--paper-ink);border-radius:14px;background:#fffaf0;cursor:pointer;align-content:center}
+.slot .s-time{font-family:var(--serif);font-weight:900;font-size:28px;line-height:1.1}
+.slot .s-name{font-size:17px}
+.slot .s-left{font-size:16px;font-weight:700;color:#8a5a06}
+.slot:hover{background:#fff2d3}
+.slot.is-on{background:var(--paper-ink);color:#fff}
+.slot.is-on .s-left{color:var(--amber)}
+.slot.is-full{background:var(--grey-bg);border-color:#a9a598;color:var(--grey-ink)}
+.slot.is-full .s-left{color:var(--grey-ink)}
+.slot.is-full:hover{background:var(--grey-bg)}
+.slot:disabled{cursor:not-allowed}
+.tbls{display:grid;gap:10px}
+.tbl{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 14px;border:2px solid var(--paper-ink);border-radius:14px;background:#fffaf0;cursor:pointer}
+.tbl input{width:24px;height:24px;accent-color:var(--paper-ink)}
+.tbl .t-text b{display:block;font-family:var(--serif);font-size:20px}
+.tbl .t-text i{display:block;font-style:normal;font-size:16px;color:var(--paper-mute)}
+.tbl .t-left{font-weight:700;color:#8a5a06;font-size:17px}
+.tbl.is-full{background:var(--grey-bg);border-color:#a9a598;color:var(--grey-ink)}
+.tbl.is-full .t-left,.tbl.is-full .t-text i{color:var(--grey-ink)}
+.pick-summary{margin:26px 0 0;padding:14px 16px;border-radius:12px;background:var(--paper-ink);color:var(--amber);font-family:var(--serif);font-size:20px;font-weight:700}
+.pick-summary.is-empty{background:transparent;border:2px dashed #8b8d99;color:var(--paper-mute);font-weight:400}
+.fields{display:grid;gap:14px;margin-top:16px}
+.field label,.field .lab{display:block;font-weight:700;font-size:17px;margin-bottom:4px}
+.field input[type=text],.field input[type=tel]{width:100%;min-height:52px;padding:0 14px;font-size:18px;border:2px solid var(--paper-ink);border-radius:12px;background:#fffdf6;color:var(--paper-ink);font-family:var(--sans)}
+.field input[readonly]{background:#ece4cf;color:var(--paper-mute)}
+.needs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chk{display:flex;align-items:center;gap:10px;min-height:48px;padding:0 12px;border:2px solid var(--paper-ink);border-radius:12px;background:#fffdf6;font-size:17px;cursor:pointer}
+.chk input{width:22px;height:22px;accent-color:var(--paper-ink);flex:none}
+.rules-again{margin-top:20px;padding:16px;border:2px solid var(--paper-ink);border-radius:12px;background:#fff3d2}
+.rules-again h4{font-size:20px;margin-bottom:8px}
+.rules-again ul{margin:0;padding-left:1.2em;display:grid;gap:2px;font-size:17px}
+.submit{margin-top:20px;width:100%;min-height:58px;background:var(--paper-ink);border-color:var(--paper-ink);color:var(--amber);font-size:20px}
+.submit:hover{background:#2a3766}
+.status{min-height:1.6em;margin-top:12px;font-weight:700;color:#8a2a12;font-size:17px}
+.confirm{margin-top:20px;padding:22px 18px;border-radius:14px;background:var(--paper-ink);color:var(--ink);border:2px solid var(--amber)}
+.confirm[hidden]{display:none}
+.confirm .ok{display:inline-block;background:var(--amber);color:#1b1608;font-weight:900;font-size:18px;padding:2px 16px;border-radius:999px}
+.confirm .no{font-family:var(--serif);font-weight:900;font-size:30px;color:var(--amber);margin:12px 0 10px;word-break:break-all;letter-spacing:.04em}
+.confirm dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:18px}
+.confirm dt{color:var(--mute)}
+.confirm dd{margin:0}
+.confirm .how{margin-top:14px;padding-top:12px;border-top:1px dotted var(--amber-line);color:var(--ink);font-size:17px}
+.link-btn{margin-top:14px;background:none;border:none;color:var(--paper-mute);text-decoration:underline;font-size:17px;padding:8px 0;cursor:pointer}
+
+
+.rules{display:grid;gap:14px;counter-reset:r}
+.rule{position:relative;padding:22px 22px 22px 22px;border:1px solid var(--amber-line);border-radius:14px;background:var(--bg2)}
+.rule h3{font-size:22px;color:var(--amber);margin-bottom:6px}
+.rule p{color:var(--ink)}
+
+
+details.model{margin-top:26px;border:1px solid var(--amber-line);border-radius:14px;background:var(--bg)}
+details.model summary{cursor:pointer;padding:16px 18px;font-weight:700;font-size:18px}
+#model-body{padding:0 18px 12px;display:grid;gap:12px}
+.m-row h4{font-size:18px;color:var(--amber);font-family:var(--sans)}
+.m-row p{color:var(--mute);font-size:17px}
+
+footer{padding:34px 0 46px;border-top:1px solid var(--amber-line);background:#0a1223}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:baseline;justify-content:space-between}
+footer .brand{font-size:26px}
+footer p{color:var(--mute);font-size:16px}
+footer .legal{flex-basis:100%;line-height:1.7}
+.legal span{white-space:nowrap}
+
+@media (min-width:860px){
+  .top nav{display:flex}
+  .hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center;padding:64px 0 72px;gap:20px}
+  .hero h1{font-size:56px}
+  .vtitle{font-size:150px}
+  .hero-scene{min-height:520px}
+  .sec-head h2{font-size:38px}
+  section{padding:88px 0}
+  .tiers{grid-template-columns:1.3fr 1fr 1fr;align-items:end}
+  .tier.top-pick{padding-block:38px}
+  .dishes{grid-template-columns:1fr 1fr;column-gap:56px}
+  .tables{grid-template-columns:repeat(2,1fr)}
+  .book{padding:34px 36px 40px}
+  .slots{grid-template-columns:repeat(4,1fr)}
+  #party-list{grid-template-columns:repeat(8,1fr)}
+  .rules{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:859px){
+  .hero-scene{min-height:300px}
+  .top .btn{padding:0 16px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">留燈</a>
+    <nav aria-label="頁面導覽">
+      <a href="#menu">菜單與低消</a>
+      <a href="#tables">桌型說明</a>
+      <a href="#booking">訂位</a>
+      <a href="#rules">訂位規則</a>
+    </nav>
+    <a class="btn" href="#booking">立即訂位</a>
+  </div>
+</header>
+
+<div class="proto" role="note">
+  <div class="wrap"><p><b>示範原型：頁內結果與編號都不代表店家確認。</b>資料不保存，也不通知店內；真正訂位請來電 <span style="white-space:nowrap">02-0000-0000</span>。</p></div>
+</div>
+
+<main id="top">
+
+<div class="hero">
+
+  <img class="hero-photo" src="images/hero.svg" alt="課程版面示意圖片" onerror="this.remove()">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker">台北市大安區 · 新派台菜</span>
+      <h1>桌型看得到，<br>名額<em>算得準</em>。</h1>
+      <p class="lead">留燈是一家新派台菜餐廳。二人桌、四人桌、包廂、吧台各剩幾組，先給你看；送出後可查看頁內模擬編號；真正訂位仍需電話確認。</p>
+      <div class="hero-cta">
+        <a class="btn" href="#booking">立即訂位</a>
+        <a class="btn ghost" href="#menu">看菜單與低消</a>
+      </div>
+      <ul class="facts">
+        <li><b>營業</b><span>週二至週日 11:30–22:00，週一公休</span></li>
+        <li><b>費用</b><span>服務費一成，低消每位 150 元（飲料）</span></li>
+        <li><b>電話</b><span>02-0000-0000</span></li>
+      </ul>
+    </div>
+    <div class="hero-scene" aria-hidden="true">
+      <svg class="scene" viewBox="0 0 480 560" preserveAspectRatio="xMidYMin meet" focusable="false">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="42%" r="58%"><stop offset="0" stop-color="#f3b34a" stop-opacity=".5"/><stop offset="1" stop-color="#f3b34a" stop-opacity="0"/></radialGradient>
+          <linearGradient id="lamp" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c9741d"/><stop offset=".5" stop-color="#ffd684"/><stop offset="1" stop-color="#c9741d"/></linearGradient>
+        </defs>
+        <rect width="480" height="560" fill="url(#glow)"/>
+        <g fill="#f6edda" opacity=".55"><circle cx="40" cy="60" r="2"/><circle cx="96" cy="26" r="1.6"/><circle cx="210" cy="44" r="2"/><circle cx="330" cy="30" r="1.6"/><circle cx="420" cy="70" r="2"/><circle cx="452" cy="20" r="1.6"/><circle cx="20" cy="150" r="1.6"/></g>
+        <g stroke="#f3b34a" stroke-opacity=".55" stroke-width="2"><line x1="130" y1="0" x2="130" y2="130"/><line x1="270" y1="0" x2="270" y2="86"/><line x1="380" y1="0" x2="380" y2="188"/></g>
+        <g>
+          <g transform="translate(130 130)">
+            <rect x="-18" y="-6" width="36" height="12" rx="3" fill="#6d3f0d"/>
+            <ellipse cx="0" cy="84" rx="66" ry="80" fill="url(#lamp)"/>
+            <g fill="none" stroke="#8a4c0f" stroke-opacity=".55" stroke-width="2"><path d="M-66 84 Q0 96 66 84"/><path d="M-58 44 Q0 56 58 44"/><path d="M-58 124 Q0 136 58 124"/><ellipse cx="0" cy="84" rx="30" ry="80"/></g>
+            <rect x="-22" y="160" width="44" height="12" rx="3" fill="#6d3f0d"/>
+            <line x1="0" y1="172" x2="0" y2="220" stroke="#f3b34a" stroke-width="3"/>
+            <path d="M-10 220 h20 l-4 30 h-12z" fill="#f3b34a"/>
+          </g>
+          <g transform="translate(270 86) scale(.7)">
+            <rect x="-18" y="-6" width="36" height="12" rx="3" fill="#6d3f0d"/>
+            <ellipse cx="0" cy="84" rx="66" ry="80" fill="url(#lamp)"/>
+            <g fill="none" stroke="#8a4c0f" stroke-opacity=".55" stroke-width="2"><path d="M-66 84 Q0 96 66 84"/><path d="M-58 44 Q0 56 58 44"/><path d="M-58 124 Q0 136 58 124"/><ellipse cx="0" cy="84" rx="30" ry="80"/></g>
+            <rect x="-22" y="160" width="44" height="12" rx="3" fill="#6d3f0d"/>
+            <line x1="0" y1="172" x2="0" y2="215" stroke="#f3b34a" stroke-width="3"/>
+          </g>
+          <g transform="translate(380 188) scale(.5)">
+            <rect x="-18" y="-6" width="36" height="12" rx="3" fill="#6d3f0d"/>
+            <ellipse cx="0" cy="84" rx="66" ry="80" fill="url(#lamp)"/>
+            <g fill="none" stroke="#8a4c0f" stroke-opacity=".55" stroke-width="2"><path d="M-66 84 Q0 96 66 84"/><path d="M-58 44 Q0 56 58 44"/><path d="M-58 124 Q0 136 58 124"/><ellipse cx="0" cy="84" rx="30" ry="80"/></g>
+            <rect x="-22" y="160" width="44" height="12" rx="3" fill="#6d3f0d"/>
+          </g>
+        </g>
+
+        <g transform="translate(300 430)" fill="none" stroke="#f3b34a" stroke-opacity=".8" stroke-width="3">
+          <circle r="62"/><circle r="46" stroke-opacity=".45"/>
+          <circle cx="0" cy="-88" r="17"/><circle cx="0" cy="88" r="17"/><circle cx="-88" cy="0" r="17"/><circle cx="88" cy="0" r="17"/>
+        </g>
+      </svg>
+      <div class="vtitle" aria-hidden="true">留燈</div>
+    </div>
+  </div>
+</div>
+
+
+<section id="menu" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="no">壹　菜單與低消</span>
+      <h2>先看價格，再決定訂哪一桌</h2>
+      <p>桌席一桌最多 8 位，訂包廂。單點的招牌菜在下面。服務費與低消放在最前面，訂位之前就講清楚。</p>
+    </div>
+    <div class="tiers">
+      <article class="tier top-pick">
+        <span class="tag">主廚推薦</span>
+        <h3>旗艦桌席</h3>
+        <div class="price">NT$ 16,000<small>／一桌</small></div>
+        <p>十二道菜，從冷盤、湯品、主菜到甜點，一次上齊。適合請重要的客人。</p>
+      </article>
+      <article class="tier">
+        <h3>精選桌席</h3>
+        <div class="price">NT$ 8,000<small>／一桌</small></div>
+        <p>十道菜，含兩道招牌主菜。</p>
+      </article>
+      <article class="tier">
+        <h3>基本桌席</h3>
+        <div class="price">NT$ 5,000<small>／一桌</small></div>
+        <p>八道菜，家人聚餐的基本配置。</p>
+      </article>
+    </div>
+    <ul class="dishes" aria-label="招牌菜">
+      <li><span class="n">醬燒東坡肉</span><span class="p">NT$ 680</span><span class="d">慢燉入味，附手作刈包兩個。</span></li>
+      <li><span class="n">三杯中卷</span><span class="p">NT$ 520</span><span class="d">九層塔、薑片、米酒，鍋邊收乾。</span></li>
+      <li><span class="n">剝皮辣椒雞湯</span><span class="p">NT$ 380</span><span class="d">小鍋，兩到三人份。</span></li>
+      <li><span class="n">菜脯蛋</span><span class="p">NT$ 280</span><span class="d">厚切菜脯，外酥內軟。</span></li>
+      <li><span class="n">桂花酒釀湯圓</span><span class="p">NT$ 160</span><span class="d">飯後甜點，熱的。</span></li>
+    </ul>
+    <div class="fees">
+      <h3>費用，先寫在這裡</h3>
+      <ul>
+        <li><b>服務費：</b>一成（結帳時加收）。</li>
+        <li><b>低消：</b>每位 150 元，可用飲料抵。</li>
+        <li>單點與桌席價格皆為未加服務費的價格。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section id="tables">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="no">貳　桌型說明</span>
+      <h2>幾個人，坐哪一種桌</h2>
+      <p>訂位不是看總共還剩幾個座位，而是看你這一組能坐哪一種桌、那種桌還剩幾組。</p>
+    </div>
+    <div class="tables">
+      <article class="tcard" data-obj="TableType">
+        <svg viewBox="0 0 84 84" aria-hidden="true" focusable="false"><g fill="none" stroke="#f3b34a" stroke-width="3"><circle cx="42" cy="42" r="15"/><circle cx="42" cy="14" r="7"/><circle cx="42" cy="70" r="7"/></g></svg>
+        <div><h3>二人桌</h3><span class="meta">1–2 人 · 共 6 張</span></div>
+        <p>兩人的日常小酌。</p>
+        <p class="k">可併桌：兩張併成四人座，現場安排。</p>
+      </article>
+      <article class="tcard" data-obj="TableType">
+        <svg viewBox="0 0 84 84" aria-hidden="true" focusable="false"><g fill="none" stroke="#f3b34a" stroke-width="3"><rect x="24" y="24" width="36" height="36" rx="6"/><circle cx="42" cy="11" r="6"/><circle cx="42" cy="73" r="6"/><circle cx="11" cy="42" r="6"/><circle cx="73" cy="42" r="6"/></g></svg>
+        <div><h3>四人桌</h3><span class="meta">3–4 人 · 共 4 張</span></div>
+        <p>三到四位朋友、小家庭。</p>
+        <p class="k">不併桌。</p>
+      </article>
+      <article class="tcard" data-obj="TableType">
+        <svg viewBox="0 0 84 84" aria-hidden="true" focusable="false"><g fill="none" stroke="#f3b34a" stroke-width="3"><rect x="8" y="14" width="68" height="56" rx="6"/><ellipse cx="42" cy="42" rx="20" ry="14"/><circle cx="42" cy="24" r="4"/><circle cx="42" cy="60" r="4"/><circle cx="20" cy="42" r="4"/><circle cx="64" cy="42" r="4"/></g></svg>
+        <div><h3>包廂</h3><span class="meta">4–8 人 · 共 2 間</span></div>
+        <p>可以講話的獨立空間，桌席都在包廂。</p>
+        <p class="k">獨立空間，不併桌。有兒童椅。</p>
+      </article>
+      <article class="tcard" data-obj="TableType">
+        <svg viewBox="0 0 84 84" aria-hidden="true" focusable="false"><g fill="none" stroke="#f3b34a" stroke-width="3"><rect x="6" y="20" width="72" height="14" rx="5"/><circle cx="18" cy="52" r="7"/><circle cx="42" cy="52" r="7"/><circle cx="66" cy="52" r="7"/></g></svg>
+        <div><h3>吧台</h3><span class="meta">1–2 人 · 共 4 組</span></div>
+        <p>看得到出菜，一個人也自在。</p>
+        <p class="k">不併桌。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section id="booking" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="no">參　訂位</span>
+      <h2>選日期、人數、時段</h2>
+      <p>灰色的時段是額滿，點不下去。送出後顯示頁內模擬編號；真正訂位仍需電話確認。</p>
+    </div>
+    <div class="book">
+      <div class="step">
+        <h3><span>1</span>日期</h3>
+        <div class="chips" id="date-list"></div>
+      </div>
+      <div class="step">
+        <h3><span>2</span>人數</h3>
+        <div class="chips" id="party-list"></div>
+        <p class="hint" id="party-hint"></p>
+      </div>
+      <div class="step">
+        <h3><span>3</span>時段</h3>
+        <p class="hint">下午茶也可以訂。「尚有 N 組」是這個人數能坐的桌型合計。</p>
+        <div class="slots" id="slot-list"></div>
+      </div>
+      <div class="step" id="table-block">
+        <h3><span>4</span>桌型</h3>
+        <p class="hint" id="table-hint"></p>
+        <div class="tbls" id="table-list"></div>
+      </div>
+
+      <p class="pick-summary is-empty" id="pick-summary">還沒選時段</p>
+
+      <form id="booking-form" autocomplete="off">
+        <div class="fields">
+          <div class="field"><label for="f-name">姓名</label><input id="f-name" name="name" type="text" required placeholder="例：林小姐"></div>
+          <div class="field"><label for="f-phone">手機</label><input id="f-phone" name="phone" type="tel" required pattern="09[0-9]{8}" inputmode="numeric" placeholder="09 開頭共十碼，例如 0912000000"></div>
+          <div class="field"><label for="f-party">人數</label><input id="f-party" type="text" readonly value="4 人"></div>
+          <div class="field">
+            <span class="lab">特殊需求與兒童椅</span>
+            <div class="needs">
+              <label class="chk"><input type="checkbox" id="f-kids">兒童椅</label>
+              <label class="chk"><input type="checkbox" name="need" value="素食">素食</label>
+              <label class="chk"><input type="checkbox" name="need" value="慶生">慶生</label>
+              <label class="chk"><input type="checkbox" name="need" value="輪椅">輪椅</label>
+            </div>
+          </div>
+        </div>
+        <div class="rules-again" role="note">
+          <h4>送出前再看一次</h4>
+          <ul>
+            <li>桌位保留 10 分鐘，逾時未到會釋出。</li>
+            <li>用餐前一天 18:00 前可取消。</li>
+            <li>低消每位 150 元（飲料），另加一成服務費。</li>
+          </ul>
+        </div>
+        <button class="btn submit" type="submit" id="submit">送出訂位</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="confirm" id="confirm" hidden>
+        <span class="ok">頁內模擬｜已確認</span>
+        <div class="no" id="c-no"></div>
+        <p class="how">這是此頁的示範編號，資料未保存、未通知店內；訂位仍須來電確認。</p>
+        <dl>
+          <dt>日期</dt><dd id="c-date"></dd>
+          <dt>時段</dt><dd id="c-slot"></dd>
+          <dt>人數</dt><dd id="c-party"></dd>
+          <dt>桌型</dt><dd id="c-table"></dd>
+          <dt>需求</dt><dd id="c-needs"></dd>
+        </dl>
+        <p class="how">正式訂位與取消請來電 02-0000-0000；此頁編號僅供流程示範。</p>
+        <button class="link-btn" type="button" id="reset">回到初始狀態</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="rules">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="no">肆　訂位規則</span>
+      <h2>規則寫在你決定之前</h2>
+      <p>不放在頁尾小字，也不等結帳才說。</p>
+    </div>
+    <div class="rules">
+      <div class="rule"><h3>保留時間</h3><p>桌位保留 10 分鐘。遲到請先來電。</p></div>
+      <div class="rule"><h3>取消期限</h3><p>用餐前一天 18:00 前，來電取消，不收費。</p></div>
+      <div class="rule"><h3>未到處理</h3><p>超過保留時間仍未到，桌位釋出給下一組，這筆訂位記為未到。</p></div>
+      <div class="rule"><h3>低消與服務費</h3><p>低消每位 150 元，可用飲料抵；服務費一成，結帳時加收。</p></div>
+    </div>
+    <details class="model">
+      <summary>這一頁怎麼算出剩餘名額（資料設計）</summary>
+      <div id="model-body"></div>
+    </details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">留燈</span>
+    <p class="legal">菜單與價格以店內公告為準，訂位以電話確認為準。<span>© 2026 留燈</span></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ===== 資料模型：TableType / TimeSlot / CapacityRule / Reservation / SpecialRequest ===== */
+  var TableType = [
+    { id: "duo",  name: "二人桌", min: 1, max: 2, count: 6, merge: "可併桌，現場安排" },
+    { id: "bar",  name: "吧台",   min: 1, max: 2, count: 4, merge: "不併桌" },
+    { id: "quad", name: "四人桌", min: 3, max: 4, count: 4, merge: "不併桌" },
+    { id: "room", name: "包廂",   min: 4, max: 8, count: 2, merge: "獨立空間，不併桌" }
+  ];
+  var TimeSlot = [
+    { id: "lunch", name: "午餐",       start: "11:30", end: "13:30" },
+    { id: "tea",   name: "下午茶",     start: "14:30", end: "16:30" },
+    { id: "d1",    name: "晚餐第一輪", start: "18:00", end: "20:00" },
+    { id: "d2",    name: "晚餐第二輪", start: "20:00", end: "22:00" }
+  ];
+  /* CapacityRule：每個時段、每種桌型最多開幾組（人手不足時少開幾桌）；保留 10 分鐘；低消每位 150 元 */
+  var CapacityRule = {
+    lunch: { duo: 6, bar: 4, quad: 4, room: 2 },
+    tea:   { duo: 4, bar: 3, quad: 3, room: 1 },
+    d1:    { duo: 6, bar: 4, quad: 4, room: 2 },
+    d2:    { duo: 6, bar: 4, quad: 3, room: 2 },
+    holdMinutes: 10,
+    minSpendPerPerson: 150
+  };
+  var DAYS = [
+    { id: "2026-10-02", label: "10/02", dow: "五", open: true },
+    { id: "2026-10-03", label: "10/03", dow: "六", open: true },
+    { id: "2026-10-04", label: "10/04", dow: "日", open: true },
+    { id: "2026-10-05", label: "10/05", dow: "一", open: false },
+    { id: "2026-10-06", label: "10/06", dow: "二", open: true }
+  ];
+  /* 各日各時段各桌型「已確認」組數 */
+  var SEED = {
+    "2026-10-02": {
+      lunch: { duo: 1, bar: 0, quad: 1, room: 0 },
+      tea:   { duo: 0, bar: 0, quad: 0, room: 0 },
+      d1:    { duo: 5, bar: 3, quad: 3, room: 1 },
+      d2:    { duo: 2, bar: 1, quad: 1, room: 0 }
+    },
+    "2026-10-03": {
+      lunch: { duo: 2, bar: 1, quad: 2, room: 0 },
+      tea:   { duo: 1, bar: 0, quad: 1, room: 0 },
+      d1:    { duo: 4, bar: 4, quad: 4, room: 2 },
+      d2:    { duo: 3, bar: 2, quad: 3, room: 1 }
+    },
+    "2026-10-04": {
+      lunch: { duo: 6, bar: 4, quad: 4, room: 2 },
+      tea:   { duo: 2, bar: 1, quad: 1, room: 0 },
+      d1:    { duo: 2, bar: 1, quad: 2, room: 0 },
+      d2:    { duo: 0, bar: 0, quad: 0, room: 0 }
+    },
+    "2026-10-06": {
+      lunch: { duo: 0, bar: 0, quad: 0, room: 0 },
+      tea:   { duo: 0, bar: 0, quad: 0, room: 0 },
+      d1:    { duo: 1, bar: 0, quad: 1, room: 0 },
+      d2:    { duo: 0, bar: 0, quad: 0, room: 0 }
+    }
+  };
+  var DEFAULT_DAY = "2026-10-03";
+  var DEFAULT_PARTY = 4;
+  var FIRST_NO = 41;
+
+  var booked, reservations, seq;
+  var state = { day: DEFAULT_DAY, party: DEFAULT_PARTY, slot: null, table: null };
+
+  function $(id) { return document.getElementById(id); }
+  function pad(n, w) { n = String(n); while (n.length < w) n = "0" + n; return n; }
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  function byId(list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null; }
+
+  function resetData() {
+    booked = clone(SEED);
+    reservations = [];
+    seq = FIRST_NO;
+  }
+
+  /* 候選桌型 = 最少人數 ≤ 人數 ≤ 最多人數 */
+  function candidates(party) {
+    return TableType.filter(function (t) { return t.min <= party && party <= t.max; });
+  }
+  /* 某桌型剩餘名額 = min(實體桌數, 最大組數) − 同時段已確認筆數 */
+  function remaining(day, slot, type) {
+    var t = byId(TableType, type);
+    var cap = Math.min(t.count, CapacityRule[slot][type]);
+    return cap - booked[day][slot][type];
+  }
+  function slotLeft(day, slot, party) {
+    var left = 0;
+    candidates(party).forEach(function (t) { left += Math.max(0, remaining(day, slot, t.id)); });
+    return left;
+  }
+  function dayObj(id) { return byId(DAYS, id); }
+  function fmtDay(id) { var d = dayObj(id); return d.label + "（" + d.dow + "）"; }
+
+  function say(msg) { $("status").textContent = msg; }
+
+  /* ===== 畫面 ===== */
+  function renderDays() {
+    var box = $("date-list");
+    box.innerHTML = "";
+    DAYS.forEach(function (d) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip day" + (state.day === d.id ? " is-on" : "") + (d.open ? "" : " is-closed");
+      b.setAttribute("data-day", d.id);
+      b.setAttribute("aria-pressed", state.day === d.id ? "true" : "false");
+      b.innerHTML = '<span class="c-main">' + d.label + '</span><span class="c-sub">' + (d.open ? "週" + d.dow : "公休") + "</span>";
+      if (!d.open) b.disabled = true;
+      b.addEventListener("click", function () {
+        state.day = d.id; state.slot = null; state.table = null;
+        renderAll();
+      });
+      box.appendChild(b);
+    });
+  }
+
+  function renderParty() {
+    var box = $("party-list");
+    box.innerHTML = "";
+    for (var n = 1; n <= 8; n++) {
+      (function (n) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "chip party" + (state.party === n ? " is-on" : "");
+        b.setAttribute("data-n", n);
+        b.setAttribute("aria-pressed", state.party === n ? "true" : "false");
+        b.innerHTML = '<span class="c-main">' + n + '</span><span class="c-sub">人</span>';
+        b.addEventListener("click", function () {
+          state.party = n; state.slot = null; state.table = null;
+          renderAll();
+        });
+        box.appendChild(b);
+      })(n);
+    }
+    var names = candidates(state.party).map(function (t) { return t.name; }).join("、");
+    var fp = $("f-party");
+    if (fp) fp.value = state.party + " 人";
+    $("party-hint").textContent = state.party + " 人可以坐：" + names + "。看的是桌型，不是總座位數。";
+  }
+
+  function renderSlots() {
+    var box = $("slot-list");
+    box.innerHTML = "";
+    TimeSlot.forEach(function (s) {
+      var left = slotLeft(state.day, s.id, state.party);
+      var isFull = left <= 0;
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "slot" + (isFull ? " is-full" : "") + (state.slot === s.id ? " is-on" : "");
+      b.setAttribute("data-slot", s.id);
+      b.setAttribute("data-full", isFull ? "1" : "0");
+      b.innerHTML =
+        '<span class="s-time">' + s.start + '</span>' +
+        '<span class="s-name">' + s.name + '</span>' +
+        '<span class="s-left">' + (isFull ? "已額滿" : "尚有 " + left + " 組") + '</span>';
+      b.disabled = isFull;
+      b.addEventListener("click", function () {
+        if (isFull) return;
+        state.slot = s.id;
+        state.table = null;
+        renderSlots(); renderTables(); renderSummary();
+        $("table-block").scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+      box.appendChild(b);
+    });
+  }
+
+  function renderTables() {
+    var box = $("table-list");
+    box.innerHTML = "";
+    if (!state.slot) {
+      $("table-hint").textContent = "先選一個時段，這裡會列出這個人數能坐的桌型與剩餘組數。";
+      return;
+    }
+    var slot = byId(TimeSlot, state.slot);
+    $("table-hint").textContent = fmtDay(state.day) + " " + slot.start + " " + slot.name + "，" + state.party + " 人可選：";
+    var firstOk = null;
+    candidates(state.party).forEach(function (t) {
+      var left = remaining(state.day, state.slot, t.id);
+      if (left > 0 && !firstOk) firstOk = t.id;
+    });
+    if (!firstOk) firstOk = candidates(state.party)[0].id;
+    if (!state.table) state.table = firstOk;
+    candidates(state.party).forEach(function (t) {
+      var left = remaining(state.day, state.slot, t.id);
+      var lab = document.createElement("label");
+      lab.className = "tbl" + (left <= 0 ? " is-full" : "");
+      var inp = document.createElement("input");
+      inp.type = "radio"; inp.name = "table"; inp.value = t.id;
+      inp.checked = state.table === t.id;
+      inp.disabled = left <= 0;
+      inp.addEventListener("change", function () { state.table = t.id; renderSummary(); });
+      lab.appendChild(inp);
+      var txt = document.createElement("span");
+      txt.className = "t-text";
+      txt.innerHTML = '<b>' + t.name + '</b><i>' + t.min + "–" + t.max + " 人 · " + t.merge + '</i>';
+      lab.appendChild(txt);
+      var r = document.createElement("span");
+      r.className = "t-left";
+      r.textContent = left > 0 ? "剩 " + left + " 組" : "已額滿";
+      lab.appendChild(r);
+      box.appendChild(lab);
+    });
+  }
+
+  function renderSummary() {
+    var el = $("pick-summary");
+    if (!state.slot) { el.textContent = "還沒選時段"; el.className = "pick-summary is-empty"; return; }
+    var s = byId(TimeSlot, state.slot), t = byId(TableType, state.table);
+    el.className = "pick-summary";
+    el.textContent = fmtDay(state.day) + " " + s.start + "–" + s.end + " ｜ " + state.party + " 人 ｜ " + (t ? t.name : "");
+  }
+
+  function renderModel() {
+    var body = $("model-body");
+    if (!body) return;
+    var html = "";
+    html += '<div class="m-row" data-obj="TableType"><h4>TableType　桌型</h4><p>' +
+      TableType.map(function (t) { return t.name + " " + t.min + "–" + t.max + " 人 × " + t.count; }).join("；") + "</p></div>";
+    html += '<div class="m-row" data-obj="TimeSlot"><h4>TimeSlot　時段</h4><p>' +
+      TimeSlot.map(function (s) { return s.name + " " + s.start + "–" + s.end; }).join("；") + "</p></div>";
+    html += '<div class="m-row" data-obj="CapacityRule"><h4>CapacityRule　容量規則</h4><p>' +
+      "某桌型剩餘名額 = min(實體桌數, 最大組數) − 同時段已確認筆數。保留 " + CapacityRule.holdMinutes + " 分鐘；低消每位 " + CapacityRule.minSpendPerPerson + " 元（飲料）。</p></div>";
+    html += '<div class="m-row" data-obj="Reservation"><h4>Reservation　訂位</h4><p>編號、姓名、手機、人數、日期、時段、桌型、狀態。這一頁送出的訂位：<b>' + reservations.length + "</b> 筆。</p></div>";
+    html += '<div class="m-row" data-obj="SpecialRequest"><h4>SpecialRequest　特殊需求</h4><p>兒童椅、素食、慶生、輪椅，讓現場提前準備。</p></div>';
+    body.innerHTML = html;
+  }
+
+  function renderAll() {
+    renderDays(); renderParty(); renderSlots(); renderTables(); renderSummary(); renderModel();
+  }
+
+  /* ===== 送出 ===== */
+  function onSubmit(e) {
+    e.preventDefault();
+    var form = $("booking-form");
+    if (!state.slot || !state.table) {
+      say("還沒選好時段與桌型，請先在上方選好再送出。");
+      $("slot-list").scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+    var left = remaining(state.day, state.slot, state.table);
+    if (left <= 0) { say("這個時段的這種桌型剛剛額滿了，請改選其他時段。"); renderAll(); return; }
+    var name = $("f-name").value.trim(), phone = $("f-phone").value.trim();
+    for (var i = 0; i < reservations.length; i++) {
+      var r = reservations[i];
+      if (r.name === name && r.phone === phone && r.day === state.day && r.slot === state.slot) {
+        say("同一組姓名與手機在這個時段已經訂過了，一個時段只能訂一次。");
+        return;
+      }
+    }
+    var needs = [];
+    var boxes = form.querySelectorAll('input[name="need"]:checked');
+    for (var k = 0; k < boxes.length; k++) needs.push(boxes[k].value);
+    if ($("f-kids").checked) needs.push("兒童椅");
+    var slot = byId(TimeSlot, state.slot), table = byId(TableType, state.table);
+    booked[state.day][state.slot][state.table] += 1;
+    var no = "LD-" + state.day.slice(5).replace("-", "") + "-" + slot.start.replace(":", "") + "-" + pad(seq++, 3);
+    reservations.push({ no: no, name: name, phone: phone, day: state.day, slot: state.slot, table: state.table, party: state.party, status: "已確認", needs: needs });
+
+    $("c-no").textContent = no;
+    $("c-date").textContent = fmtDay(state.day);
+    $("c-slot").textContent = slot.start + "–" + slot.end + "（" + slot.name + "）";
+    $("c-party").textContent = state.party + " 人";
+    $("c-table").textContent = table.name;
+    $("c-needs").textContent = needs.length ? needs.join("、") : "無";
+    $("confirm").hidden = false;
+    say("頁內模擬已確認，示範編號 " + no + "；資料未保存，請電話確認正式訂位。");
+    state.slot = null; state.table = null;
+    renderAll();
+    $("confirm").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function onReset() {
+    resetData();
+    state = { day: DEFAULT_DAY, party: DEFAULT_PARTY, slot: null, table: null };
+    $("booking-form").reset();
+    $("confirm").hidden = true;
+    say("");
+    renderAll();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    resetData();
+    $("booking-form").addEventListener("submit", onSubmit);
+    $("reset").addEventListener("click", onReset);
+    renderAll();
+  });
+})();
+
+</script>
+<style id="site-audit-fix">
+img,video{max-width:100%}
+select{max-width:100%;text-overflow:ellipsis}
+a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-space:nowrap}
+.top{background:#0d182d}
+#confirm .link-btn{color:#c9cfdc}
+.facts li span{word-break:keep-all;overflow-wrap:anywhere}
+@media (max-width:859px){
+  .wrap{width:calc(100% - 40px)}
+  .vtitle{font-size:72px}
+  .hero-scene{padding-right:20px}
+  .book{padding-left:20px;padding-right:20px}
+  .rules-again{padding-left:20px;padding-right:20px}
+  .field input[type=text],.field input[type=tel]{font-size:16px}
+}
+</style>
+</body>
+</html>

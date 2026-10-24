@@ -1,257 +1,866 @@
 <!doctype html>
 <html lang="zh-Hant">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#1f2421">
-    <meta
-      name="description"
-      content="台中小柯攝影工作室作品集：婚紗、婚禮紀錄與個人形象照，自然、不過度修飾。"
-    >
-    <meta property="og:title" content="小柯攝影工作室｜自然地留下關係與情緒">
-    <meta
-      property="og:description"
-      content="婚紗、婚禮紀錄、個人形象照作品與方案。"
-    >
-    <meta property="og:type" content="website">
-    <meta
-      property="og:url"
-      content="https://vibe-coding-18-websites.vercel.app/episodes/ep03-photographer/site/"
-    >
-    <meta
-      property="og:image"
-      content="https://vibe-coding-18-websites.vercel.app/episodes/ep03-photographer/site/images/wedding-01.jpg"
-    >
-    <title>小柯攝影工作室｜台中婚紗、婚禮紀錄與形象照</title>
-    <link
-      rel="canonical"
-      href="https://vibe-coding-18-websites.vercel.app/episodes/ep03-photographer/site/"
-    >
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">跳到主要內容</a>
-    <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="小柯攝影工作室，回到頁首">
-        <span>KO</span>
-        <strong>小柯攝影工作室</strong>
-      </a>
-      <nav aria-label="主要導覽">
-        <a href="#work">作品</a>
-        <a href="#services">方案</a>
-        <a href="#about">關於</a>
-      </nav>
-      <a class="header-cta" href="#inquiry">詢問檔期</a>
-    </header>
+<head>
+<link rel="icon" href="data:,">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小柯攝影工作室｜台中婚紗婚禮紀錄</title>
+<meta name="description" content="小柯攝影工作室，台中的婚紗、婚禮紀錄與形象照攝影。自然、不過度修飾，重視情緒與現場關係。方案、交件時間與加選規則都寫在頁面上，可線上詢問檔期。">
 
-    <main id="main">
-      <section class="hero" id="top" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="kicker">Taichung · Photographer</p>
-          <h1 id="hero-title">讓照片保留當時的感覺，<em>自然、不過度修飾。</em></h1>
-          <p class="hero-lead">
-            台中小柯攝影工作室，拍攝婚紗、婚禮紀錄與個人形象照。重視情緒，也重視鏡頭裡每一段真實的關係。
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#work">看作品</a>
-            <a class="button button-secondary" href="#inquiry">詢問檔期</a>
-          </div>
-          <ul class="service-line" aria-label="攝影服務">
-            <li>婚紗</li>
-            <li>婚禮紀錄</li>
-            <li>個人形象照</li>
-          </ul>
-        </div>
-        <figure class="hero-image">
-          <img
-            src="images/wedding-01.jpg"
-            alt="自然光下手捧花束的新人"
-            width="1200"
-            height="900"
-          >
-          <figcaption>把注意力留給彼此，而不是鏡頭。</figcaption>
-        </figure>
-      </section>
 
-      <section class="portfolio" id="work" aria-labelledby="work-title">
-        <div class="section-heading">
-          <div>
-            <p class="kicker">Selected work</p>
-            <h2 id="work-title">作品</h2>
-          </div>
-          <p>從靠近彼此的手，到一整天流動的現場，讓照片說明我們怎麼觀看。</p>
-        </div>
 
-        <section class="work-group" aria-labelledby="wedding-title">
-          <div class="work-label">
-            <h3 id="wedding-title">婚紗</h3>
-            <span>01 — 04</span>
-          </div>
-          <div class="photo-grid wedding-grid">
-            <figure class="photo photo-wide">
-              <img src="images/wedding-01.jpg" alt="自然光下手捧花束的新人" width="1200" height="900" loading="lazy">
-            </figure>
-            <figure class="photo photo-tall">
-              <img src="images/wedding-02.jpg" alt="新人交疊的雙手與捧花特寫" width="1200" height="900" loading="lazy">
-            </figure>
-            <figure class="photo">
-              <img src="images/wedding-03.jpg" alt="夕陽下相擁的雙人剪影" width="1200" height="900" loading="lazy">
-            </figure>
-            <figure class="photo">
-              <img src="images/wedding-04.jpg" alt="磚牆場景中手捧花束的新人" width="1200" height="900" loading="lazy">
-            </figure>
-          </div>
-        </section>
+<style>
 
-        <section class="work-group" aria-labelledby="ceremony-title">
-          <div class="work-label">
-            <h3 id="ceremony-title">婚禮紀錄</h3>
-            <span>05 — 08</span>
-          </div>
-          <div class="photo-grid ceremony-grid">
-            <figure class="photo">
-              <img src="images/ceremony-01.jpg" alt="草地上牽手的新人與身影" width="1200" height="900" loading="lazy">
-            </figure>
-            <figure class="photo photo-wide">
-              <img src="images/ceremony-02.jpg" alt="明亮戶外婚宴的長桌佈置" width="1200" height="900" loading="lazy">
-            </figure>
-            <figure class="photo photo-tall">
-              <img src="images/ceremony-03.jpg" alt="綠意中的戶外證婚花亭" width="1200" height="900" loading="lazy">
-            </figure>
-            <figure class="photo">
-              <img src="images/ceremony-04.jpg" alt="新人在氣球升空時牽手回望" width="1200" height="900" loading="lazy">
-            </figure>
-          </div>
-        </section>
+:root{
+  --tar:#17130f;
+  --tar-2:#201a14;
+  --tar-3:#2a221a;
+  --bone:#ece5d8;
+  --bone-2:#b3a999;
+  --amber:#e5b169;
+  --line:#3a3026;
+  --sheet:1140px;
+  --wide:1560px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--tar)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.001ms !important}}
+body{
+  margin:0;background:var(--tar);color:var(--bone);
+  font-family:"Noto Serif TC","Songti TC","Source Han Serif TC",serif;
+  font-size:19px;line-height:1.95;font-weight:300;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+.n{font-family:"Spectral",Georgia,"Times New Roman",serif;font-variant-numeric:lining-nums tabular-nums;font-weight:300}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+img{display:block}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.sheet{max-width:var(--sheet);margin:0 auto;padding:0 48px}
+.sheet-wide{max-width:var(--wide);margin:0 auto;padding:0 48px}
 
-        <section class="work-group" aria-labelledby="portrait-title">
-          <div class="work-label">
-            <h3 id="portrait-title">個人形象照</h3>
-            <span>09 — 12</span>
-          </div>
-          <div class="photo-grid portrait-grid">
-            <figure class="photo photo-tall">
-              <img src="images/portrait-01.jpg" alt="整理西裝外套的專業工作者" width="1200" height="900" loading="lazy">
-            </figure>
-            <figure class="photo">
-              <img src="images/portrait-02.jpg" alt="工作桌前書寫與討論的雙手" width="1200" height="900" loading="lazy">
-            </figure>
-            <figure class="photo">
-              <img src="images/portrait-03.jpg" alt="舞台前景中的麥克風特寫" width="1200" height="900" loading="lazy">
-            </figure>
-            <figure class="photo photo-wide">
-              <img src="images/portrait-04.jpg" alt="山頂夕陽前的人物遠景" width="1200" height="900" loading="lazy">
-            </figure>
-          </div>
-        </section>
-      </section>
 
-      <section class="services" id="services" aria-labelledby="services-title">
-        <div class="section-heading light-heading">
-          <div>
-            <p class="kicker">Services</p>
-            <h2 id="services-title">拍攝方案</h2>
-          </div>
-          <p>先從你想留下的內容開始，再一起確認適合的節奏。</p>
-        </div>
-        <div class="service-cards">
-          <article>
-            <span>01</span>
-            <h3>婚紗</h3>
-            <p class="price">NT$28,000 <small>起</small></p>
-            <ul>
-              <li>4 小時拍攝</li>
-              <li>精修 30 張</li>
-              <li>4 週交件</li>
-            </ul>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>婚禮紀錄</h3>
-            <p class="price">NT$36,000 <small>起</small></p>
-            <ul>
-              <li>8 小時雙機</li>
-              <li>精修 80 張</li>
-              <li>6 週交件</li>
-            </ul>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>個人形象照</h3>
-            <p class="price">NT$12,000 <small>起</small></p>
-            <ul>
-              <li>2 小時拍攝</li>
-              <li>精修 10 張</li>
-              <li>2 週交件</li>
-            </ul>
-          </article>
-        </div>
-      </section>
+.top{border-bottom:1px solid var(--line)}
+.top .sheet-wide{display:flex;align-items:center;justify-content:space-between;gap:28px;padding-top:20px;padding-bottom:20px}
+.mark{margin:0;font-size:17px;font-weight:400;letter-spacing:.38em;line-height:1.4}
+.top nav{display:flex;gap:28px;flex-wrap:wrap}
+.top nav a{font-size:16px;color:var(--bone-2);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.top nav a:hover{color:var(--amber);border-bottom-color:var(--amber)}
 
-      <section class="about" id="about" aria-labelledby="about-title">
-        <figure>
-          <img src="images/about-ko.jpg" alt="黃昏原野中的人物側影" width="1200" height="900" loading="lazy">
-        </figure>
-        <div class="about-copy">
-          <p class="kicker">About the work</p>
-          <h2 id="about-title">拍攝不是把人放進一個標準姿勢。</h2>
-          <p>
-            我們從你在意的人、場景與關係開始，讓現場保有呼吸。畫面會整理，但不把當時的情緒磨平；需要引導時給清楚方向，值得等待時就把空間留給你們。
-          </p>
-          <a href="#inquiry">告訴我你想留下什麼 <span aria-hidden="true">→</span></a>
-        </div>
-      </section>
 
-      <section class="inquiry" id="inquiry" aria-labelledby="inquiry-title">
-        <div class="inquiry-intro">
-          <p class="kicker">Availability</p>
-          <h2 id="inquiry-title">詢問檔期</h2>
-          <p>填下預計的拍攝內容與日期，先把需求說清楚。這個課程示意表單不會送出或保存資料。</p>
-        </div>
-        <form id="inquiry-form" novalidate>
-          <div class="field-row">
-            <label>
-              姓名 <span aria-hidden="true">＊</span>
-              <input name="name" type="text" autocomplete="name" required>
-            </label>
-            <label>
-              聯絡方式 <span aria-hidden="true">＊</span>
-              <input name="contact" type="text" autocomplete="email" placeholder="Email 或電話" required>
-            </label>
-          </div>
-          <div class="field-row">
-            <label>
-              服務類型 <span aria-hidden="true">＊</span>
-              <select name="service" required>
-                <option value="">請選擇</option>
-                <option>婚紗</option>
-                <option>婚禮紀錄</option>
-                <option>個人形象照</option>
-              </select>
-            </label>
-            <label>
-              預計日期 <span aria-hidden="true">＊</span>
-              <input name="date" type="date" required>
-            </label>
-          </div>
-          <label>
-            想說的話 <span aria-hidden="true">＊</span>
-            <textarea name="message" rows="5" placeholder="拍攝地點、期待的畫面，或其他需要先知道的事" required></textarea>
-          </label>
-          <button class="button button-primary" type="submit">完成詢問資料</button>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-        </form>
-      </section>
-    </main>
+.card{text-align:center;padding:52px 24px 48px;border-bottom:1px solid var(--line)}
+.card h1{margin:0 0 22px;font-size:19px;font-weight:400;letter-spacing:.42em;line-height:1.5;color:var(--bone-2)}
+.card .claim{margin:0 auto 20px;max-width:19em;font-size:42px;line-height:1.5;font-weight:200;letter-spacing:.02em}
+.card .sub{margin:0 auto;max-width:31em;font-size:19px;line-height:2;color:var(--bone-2)}
+.clause{display:inline-block;line-break:strict;word-break:keep-all}
+.acts{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.go,.go-2{font-size:18px;font-weight:400;text-decoration:none;padding:16px 34px;line-height:1.4;letter-spacing:.1em;transition:background-color .2s,color .2s,border-color .2s}
+.go{background:var(--amber);color:var(--tar);border:1px solid var(--amber)}
+.go:hover{background:#f0c68c;border-color:#f0c68c}
+.go-2{background:transparent;color:var(--bone);border:1px solid var(--line)}
+.go-2:hover{border-color:var(--amber);color:var(--amber)}
+.sheetfilm{position:relative;width:100%;height:56vh;min-height:340px;max-height:660px;background:var(--tar-2)}
+.sheetfilm img{width:100%;height:100%;object-fit:cover;object-position:center 56%}
+.sheetfilm.is-missing img{display:none}
+.sheetfilm.is-missing{background-image:linear-gradient(160deg,#241c14 0%,#5d4630 48%,#a97f4c 100%)}
+.slug{border-bottom:1px solid var(--line)}
+.slug .sheet-wide{padding-top:14px;padding-bottom:14px}
+.slug p{margin:0;font-size:16px;color:var(--bone-2);letter-spacing:.1em}
 
-    <footer>
-      <div>
-        <strong>小柯攝影工作室</strong>
-        <span>Taichung, Taiwan</span>
+
+.band{border-top:1px solid var(--line)}
+.band.up{background:var(--tar-2)}
+.band .sheet{padding-top:92px;padding-bottom:92px}
+.title{margin:0 0 8px;font-size:35px;font-weight:200;letter-spacing:.14em;line-height:1.5}
+.lede{margin:0 0 54px;max-width:34em;font-size:18px;color:var(--bone-2);line-height:2}
+
+
+.works{border-top:1px solid var(--line)}
+.works .sheet-wide{padding-top:96px;padding-bottom:96px}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 30px}
+.tabs button{background:transparent;border:1px solid var(--line);padding:12px 24px;font-size:18px;font-weight:300;color:var(--bone-2);letter-spacing:.08em;min-height:46px;transition:background-color .2s,color .2s,border-color .2s}
+.tabs button .c{margin-left:10px;font-size:16px}
+.tabs button:hover{color:var(--amber);border-color:var(--amber)}
+.tabs button[aria-pressed="true"]{background:var(--amber);color:var(--tar);border-color:var(--amber);font-weight:400}
+
+
+.readout{
+  display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;
+  padding:16px 0;border-top:1px solid var(--amber);border-bottom:1px solid var(--line);margin-bottom:6px;
+}
+.readout .who{margin:0;font-size:22px;font-weight:400;line-height:1.5}
+.readout .what{margin:0;font-size:17px;color:var(--bone-2);letter-spacing:.06em}
+.readout.idle .who{color:var(--bone-2);font-weight:300}
+
+.table{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;list-style:none;margin:0;padding:0}
+.cell{margin:0}
+.cell[hidden]{display:none}
+.cell .hit{display:block;width:100%;padding:0;border:0;background:transparent;position:relative}
+.sq{position:relative;display:block;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--tar-3)}
+.sq img{width:100%;height:100%;object-fit:cover;transition:opacity .3s,transform .4s}
+.cell .hit:hover .sq img,.cell .hit:focus-visible .sq img{opacity:.6}
+.sq.is-missing img{display:none}
+.sq.is-missing{background-image:var(--tone)}
+.sq .tag{position:absolute;left:0;bottom:0;display:none;padding:9px 14px;font-size:16px;letter-spacing:.24em;color:var(--bone);background:rgba(12,10,8,.9)}
+.sq.is-missing .tag{display:block}
+
+.sq .peek{
+  position:absolute;inset:auto 0 0 0;padding:14px 16px;opacity:0;
+  background:linear-gradient(to top,rgba(10,8,6,.92) 0%,rgba(10,8,6,.72) 60%,rgba(10,8,6,0) 100%);
+  font-size:17px;letter-spacing:.14em;color:var(--amber);transition:opacity .25s;
+}
+.cell .hit:hover .peek,.cell .hit:focus-visible .peek{opacity:1}
+.tally{margin:26px 0 0;font-size:17px;color:var(--bone-2)}
+.fallback-list{margin:0;padding:0;list-style:none}
+
+
+.view[hidden]{display:none}
+.view{position:fixed;inset:0;z-index:60;background:#0c0a08;display:flex;flex-direction:column;padding:24px 36px 28px}
+.view .bar{display:flex;justify-content:space-between;align-items:center;gap:20px;flex:none;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.view .pos{font-size:17px;letter-spacing:.22em;color:var(--bone-2)}
+.shut{background:transparent;border:1px solid var(--bone-2);color:var(--bone);padding:12px 26px;font-size:17px;letter-spacing:.1em;transition:background-color .2s,color .2s,border-color .2s}
+.shut:hover{background:var(--amber);color:var(--tar);border-color:var(--amber)}
+.view .mid{flex:1;display:flex;align-items:center;gap:22px;min-height:0;padding:22px 0}
+.step{flex:none;background:transparent;border:1px solid var(--line);color:var(--bone);width:56px;height:56px;font-size:20px;transition:background-color .2s,color .2s,border-color .2s}
+.step:hover{background:var(--amber);color:var(--tar);border-color:var(--amber)}
+.stage{flex:1;min-width:0;height:100%;display:flex;align-items:center;justify-content:center}
+.big{position:relative;max-width:100%;max-height:100%;background:var(--tar-2)}
+.big img{max-width:100%;max-height:78vh;width:auto;height:auto}
+.big.is-missing img{display:none}
+.big.is-missing{background-image:var(--tone);width:min(72vw,940px);height:min(74vh,640px)}
+.big .tag{position:absolute;left:0;bottom:0;display:none;padding:9px 14px;font-size:16px;letter-spacing:.24em;color:var(--bone);background:rgba(12,10,8,.9)}
+.big.is-missing .tag{display:block}
+.view .foot{flex:none;border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
+.view .foot h3{margin:0;font-size:23px;font-weight:400}
+.view .foot .m{margin:4px 0 0;font-size:16px;color:var(--bone-2)}
+.view .foot .k{margin:0;font-size:16px;color:var(--bone-2);letter-spacing:.06em;text-align:right}
+
+
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:50px}
+.three h3{margin:0 0 14px;padding-top:16px;border-top:1px solid var(--amber);font-size:21px;font-weight:400;letter-spacing:.14em}
+.three p{margin:0;font-size:18px;line-height:2;color:var(--bone-2)}
+
+
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:50px}
+.plan{border-top:1px solid var(--amber);padding-top:20px;display:flex;flex-direction:column}
+.plan h3{margin:0;font-size:22px;font-weight:400;letter-spacing:.1em;line-height:1.5}
+.plan .amt{margin:18px 0 2px;font-size:40px;font-weight:200;color:var(--amber);line-height:1.25;letter-spacing:.01em}
+.plan .cur{margin:0 0 22px;font-size:16px;color:var(--bone-2)}
+.plan dl{margin:0;display:grid;grid-template-columns:4.5em 1fr;column-gap:20px;row-gap:14px;border-top:1px solid var(--line);padding-top:18px}
+.plan dt{font-size:16px;color:var(--bone-2)}
+.plan dd{margin:0;font-size:18px;line-height:1.8}
+.after{margin:44px 0 0;font-size:17px;color:var(--bone-2);line-height:2;max-width:46em}
+
+
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:34px;list-style:none;margin:0;padding:0}
+.flow li{border-top:1px solid var(--line);padding-top:18px}
+.flow .i{display:block;font-family:"Spectral",Georgia,serif;font-size:16px;letter-spacing:.26em;color:var(--amber)}
+.flow h3{margin:12px 0 10px;font-size:20px;font-weight:400;letter-spacing:.12em}
+.flow p{margin:0;font-size:17px;line-height:1.9;color:var(--bone-2)}
+
+
+.vow{display:grid;grid-template-columns:repeat(3,1fr);gap:50px;margin:0}
+.vow>div{border-top:1px solid var(--amber);padding-top:18px}
+.vow dt{font-size:16px;letter-spacing:.2em;color:var(--bone-2)}
+.vow dd{margin:12px 0 0;font-size:21px;font-weight:400;line-height:1.65}
+.vow dd small{display:block;margin-top:10px;font-size:17px;font-weight:300;color:var(--bone-2);line-height:1.95}
+
+
+.me{display:grid;grid-template-columns:1.2fr 1fr;gap:70px;align-items:start}
+.me p{margin:0 0 22px;font-size:19px;line-height:2.05}
+.me p:last-child{margin-bottom:0}
+.me .facts{border-top:1px solid var(--amber);padding-top:18px}
+.me dl{margin:0;display:grid;grid-template-columns:5.5em 1fr;column-gap:22px;row-gap:16px}
+.me dt{font-size:16px;color:var(--bone-2)}
+.me dd{margin:0;font-size:18px;line-height:1.8}
+
+
+form{max-width:740px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+.f{margin-bottom:28px}
+.f label{display:block;font-size:17px;margin-bottom:10px;color:var(--bone-2)}
+.f label .star{color:var(--amber);margin-left:4px}
+.f input,.f select,.f textarea{
+  width:100%;font:inherit;font-size:19px;font-weight:300;color:var(--bone);
+  background:var(--tar-2);border:1px solid var(--line);border-radius:0;
+  padding:14px 16px;line-height:1.6;min-height:52px;
+}
+.f input::placeholder,.f textarea::placeholder{color:#9a907f}
+.f textarea{resize:vertical;min-height:110px}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--amber)}
+.f input:invalid:not(:placeholder-shown){border-color:#d06a4a}
+.f .tip{margin:10px 0 0;font-size:16px;color:var(--bone-2);line-height:1.75}
+.send{background:var(--amber);color:var(--tar);border:1px solid var(--amber);border-radius:0;font-size:18px;font-weight:400;letter-spacing:.1em;padding:17px 36px;min-height:52px;transition:background-color .2s}
+.send:hover{background:#f0c68c}
+#done[hidden]{display:none}
+#done{margin-top:40px;padding:26px 30px;background:var(--tar-3);border-left:3px solid var(--amber);max-width:740px}
+#done h3{margin:0 0 12px;font-size:22px;font-weight:400;letter-spacing:.08em;color:var(--amber)}
+#done p{margin:0 0 10px;font-size:18px;line-height:1.95}
+#done b{font-weight:600}
+#done dl{margin:24px 0 0;display:grid;grid-template-columns:7em 1fr;column-gap:24px;row-gap:12px;font-size:17px}
+#done dt{color:var(--bone-2)}
+#done dd{margin:0}
+
+
+footer{background:#100d0a;border-top:1px solid var(--line)}
+footer .sheet{padding-top:62px;padding-bottom:62px}
+footer .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;font-size:18px;line-height:2}
+footer b{display:block;font-size:16px;font-weight:300;letter-spacing:.24em;color:var(--bone-2);margin-bottom:8px}
+footer a{color:var(--bone);text-decoration:none;border-bottom:1px solid rgba(236,229,216,.35);display:inline-block;padding:4px 0}
+footer a:hover{border-bottom-color:var(--amber);color:var(--amber)}
+footer .fine{margin:44px 0 0;padding-top:24px;border-top:1px solid var(--line);font-size:17px;color:var(--bone-2);line-height:2}
+
+
+@media (max-width:1080px){
+  .sheet,.sheet-wide{padding:0 32px}
+  .card{padding:60px 20px 56px}
+  .card .claim{font-size:38px}
+  .table{grid-template-columns:repeat(2,1fr)}
+  .three,.vow,.plans{grid-template-columns:repeat(2,1fr);gap:44px}
+  .flow{grid-template-columns:repeat(3,1fr);gap:32px}
+  .me{grid-template-columns:1fr;gap:48px}
+  footer .cols{grid-template-columns:repeat(2,1fr)}
+}
+
+
+@media (max-width:640px){
+  body{font-size:18px}
+  .sheet,.sheet-wide{padding:0 20px}
+  .top .sheet-wide{flex-direction:column;align-items:flex-start;gap:12px;padding-top:18px;padding-bottom:16px}
+  .top nav{gap:18px}
+  .top nav a{font-size:16px}
+  .card{padding:44px 4px 44px;text-align:left}
+  .card h1{font-size:17px;letter-spacing:.3em;margin-bottom:20px}
+  .card .claim{font-size:28px;line-height:1.62;margin-bottom:18px;max-width:none}
+  .card .sub{font-size:18px;max-width:none}
+  .acts{justify-content:flex-start;gap:12px;margin-top:28px}
+  .go,.go-2{flex:1 1 100%;text-align:center;padding:17px 18px}
+  .sheetfilm{height:42vh;min-height:260px}
+  .slug p{font-size:16px}
+  .band .sheet,.works .sheet-wide{padding-top:54px;padding-bottom:54px}
+  .title{font-size:27px}
+  .lede{margin-bottom:34px}
+  .tabs{gap:8px}
+  .tabs button{padding:11px 16px;font-size:17px}
+  .readout{padding:14px 0}
+  .readout .who{font-size:19px}
+  .readout .what{font-size:16px}
+  .table{grid-template-columns:1fr;gap:10px}
+  .three,.vow,.plans,.flow,.pair{grid-template-columns:1fr;gap:36px}
+  .pair{gap:0}
+  .plan .amt{font-size:33px}
+  .me p{font-size:18px}
+  .view{padding:16px 14px 20px}
+  .view .mid{gap:10px;padding:16px 0}
+  .step{width:48px;height:48px;font-size:18px}
+  .big img{max-height:44vh}
+  .big.is-missing{width:100%;height:min(44vh,320px)}
+  .view .foot{flex-direction:column;gap:10px}
+  .view .foot .k{text-align:left}
+  .send{width:100%}
+  footer .cols{grid-template-columns:1fr;gap:28px}
+  footer .fine{font-size:16px}
+}
+</style>
+</head>
+<body>
+<aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
+
+<header class="top">
+  <div class="sheet-wide">
+    <p class="mark">小柯攝影工作室</p>
+    <nav aria-label="主選單">
+      <a href="#works">作品</a>
+      <a href="#cases">案例說明</a>
+      <a href="#plans">服務方案</a>
+      <a href="#flow">拍攝流程</a>
+      <a href="#vow">交件承諾</a>
+      <a href="#me">關於我</a>
+      <a href="#ask">詢問檔期</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+
+  <section class="opener" aria-labelledby="hero-title">
+    <div class="card">
+      <h1 id="hero-title">小柯攝影工作室</h1>
+      <p class="claim"><span class="clause">婚紗、婚禮紀錄、形象照都接，</span><span class="clause">在台中拍你自然的樣子。</span></p>
+      <p class="sub"><span class="clause">婚紗、婚禮紀錄、形象照三種。</span><span class="clause">拍攝當天我大多數時間在等，</span><span class="clause">等你們自己講話、自己笑的那幾秒。</span></p>
+      <div class="acts">
+        <a class="go" href="#works">看作品</a>
+        <a class="go-2" href="#ask">詢問檔期</a>
       </div>
-      <p>本頁方案與人物資料僅供課程示意；正式委託前請另行確認內容與授權。</p>
-      <a href="../ATTRIBUTION.md">圖片來源與授權</a>
-    </footer>
-  </body>
+    </div>
+    <div class="sheetfilm" id="hero-film">
+      <img src="images/hero.svg" alt="課程版面示意圖片" width="1672" height="940">
+    </div>
+    <div class="slug">
+      <div class="sheet-wide"><p>高美濕地黃昏婚紗．婚紗｜台中・清水｜<span class="n">2026</span></p></div>
+    </div>
+  </section>
+
+
+  <section class="works" id="works" aria-labelledby="works-title">
+    <div class="sheet-wide">
+      <h2 class="title" id="works-title">作品</h2>
+      <p class="lede">三個系列，每個系列四件。滑過或用鍵盤走過任何一格，上面那一行就會讀出它是誰；點開看大圖，大圖是沒有裁切過的原始比例，可以用鍵盤左右鍵換張，按 Esc 關閉。</p>
+
+      <div class="tabs" role="group" aria-label="作品系列">
+        <button type="button" data-cat="all" aria-pressed="true">全部<span class="c n">12</span></button>
+        <button type="button" data-cat="wedding" aria-pressed="false">婚紗<span class="c n">4</span></button>
+        <button type="button" data-cat="ceremony" aria-pressed="false">婚禮紀錄<span class="c n">4</span></button>
+        <button type="button" data-cat="portrait" aria-pressed="false">形象照<span class="c n">4</span></button>
+      </div>
+
+      <p class="lede" id="series" role="status" aria-live="polite" style="margin-bottom:34px">三個系列放在一起看，是為了先確認風格穩不穩定：同一雙眼睛拍婚紗、婚禮跟形象照，出來的顏色與距離感應該是一致的。</p>
+
+      <div class="readout idle" id="readout">
+        <p class="who" id="readout-who">把游標移到照片上</p>
+        <p class="what" id="readout-what">看這一件的拍攝地點與年份</p>
+      </div>
+
+      <ul class="table" id="table">
+        <li class="cell" data-cat="wedding" data-title="老街廊下的便服婚紗" data-meta="婚紗｜台中・中區｜2026">
+          <button class="hit" type="button" aria-label="放大看：老街廊下的便服婚紗。婚紗，台中中區，2026 年">
+            <span class="sq" style="--tone:linear-gradient(140deg,#3b3125 0%,#6f6250 48%,#a8977f 100%)">
+              <img src="images/wedding-01.svg" alt="課程版面示意圖片" loading="lazy" width="1536" height="1024" style="object-position:center center">
+              <span class="tag n">3 : 2</span>
+              <span class="peek">看大圖</span>
+            </span>
+          </button>
+        </li>
+        <li class="cell" data-cat="wedding" data-title="老宅窗邊的白紗" data-meta="婚紗｜台中・西區｜2026">
+          <button class="hit" type="button" aria-label="放大看：老宅窗邊的白紗。婚紗，台中西區，2026 年">
+            <span class="sq" style="--tone:linear-gradient(160deg,#402f1f 0%,#7d6a52 52%,#b5a189 100%)">
+              <img src="images/wedding-02.svg" alt="課程版面示意圖片" loading="lazy" width="1024" height="1536" style="object-position:center 58%">
+              <span class="tag n">2 : 3</span>
+              <span class="peek">看大圖</span>
+            </span>
+          </button>
+        </li>
+        <li class="cell" data-cat="wedding" data-title="山谷晨霧裡的一個人影" data-meta="婚紗｜台中・和平｜2025">
+          <button class="hit" type="button" aria-label="放大看：山谷晨霧裡的一個人影。婚紗，台中和平，2025 年">
+            <span class="sq" style="--tone:linear-gradient(120deg,#4a565e 0%,#7c8a93 50%,#b6c0c5 100%)">
+              <img src="images/wedding-03.svg" alt="課程版面示意圖片" loading="lazy" width="1254" height="1254" style="object-position:center center">
+              <span class="tag n">1 : 1</span>
+              <span class="peek">看大圖</span>
+            </span>
+          </button>
+        </li>
+        <li class="cell" data-cat="wedding" data-title="山坡欄杆前的城市燈海" data-meta="婚紗｜台中・北屯｜2025">
+          <button class="hit" type="button" aria-label="放大看：山坡欄杆前的城市燈海。婚紗，台中北屯，2025 年">
+            <span class="sq" style="--tone:linear-gradient(150deg,#161a20 0%,#2c3038 46%,#6d6350 100%)">
+              <img src="images/wedding-04.svg" alt="課程版面示意圖片" loading="lazy" width="1536" height="1024" style="object-position:38% 62%">
+              <span class="tag n">3 : 2</span>
+              <span class="peek">看大圖</span>
+            </span>
+          </button>
+        </li>
+        <li class="cell" data-cat="ceremony" data-title="迎娶早晨的家中" data-meta="婚禮紀錄｜台中・北屯｜2026">
+          <button class="hit" type="button" aria-label="放大看：迎娶早晨的家中。婚禮紀錄，台中北屯，2026 年">
+            <span class="sq" style="--tone:linear-gradient(155deg,#4c493f 0%,#8e8b83 50%,#c5c2ba 100%)">
+              <img src="images/ceremony-01.svg" alt="課程版面示意圖片" loading="lazy" width="1024" height="1536" style="object-position:center 46%">
+              <span class="tag n">2 : 3</span>
+              <span class="peek">看大圖</span>
+            </span>
+          </button>
+        </li>
+        <li class="cell" data-cat="ceremony" data-title="交換戒指的那雙手" data-meta="婚禮紀錄｜台中・西區｜2026">
+          <button class="hit" type="button" aria-label="放大看：交換戒指的那雙手。婚禮紀錄，台中西區，2026 年">
+            <span class="sq" style="--tone:linear-gradient(135deg,#2a211a 0%,#4a3e34 48%,#8f7c66 100%)">
+              <img src="images/ceremony-02.svg" alt="課程版面示意圖片" loading="lazy" width="1536" height="1024" style="object-position:center center">
+              <span class="tag n">3 : 2</span>
+              <span class="peek">看大圖</span>
+            </span>
+          </button>
+        </li>
+        <li class="cell" data-cat="ceremony" data-title="宴客廳的進場動線" data-meta="婚禮紀錄｜台中・南屯｜2025">
+          <button class="hit" type="button" aria-label="放大看：宴客廳的進場動線。婚禮紀錄，台中南屯，2025 年">
+            <span class="sq" style="--tone:linear-gradient(125deg,#2c2018 0%,#4c382a 50%,#9a7852 100%)">
+              <img src="images/ceremony-03.svg" alt="課程版面示意圖片" loading="lazy" width="1254" height="1254" style="object-position:center center">
+              <span class="tag n">1 : 1</span>
+              <span class="peek">看大圖</span>
+            </span>
+          </button>
+        </li>
+        <li class="cell" data-cat="ceremony" data-title="開席之前的空場地" data-meta="婚禮紀錄｜台中・西屯｜2025">
+          <button class="hit" type="button" aria-label="放大看：開席之前的空場地。婚禮紀錄，台中西屯，2025 年">
+            <span class="sq" style="--tone:linear-gradient(145deg,#291f16 0%,#463628 48%,#93764c 100%)">
+              <img src="images/ceremony-04.svg" alt="課程版面示意圖片" loading="lazy" width="1536" height="1024" style="object-position:center 52%">
+              <span class="tag n">3 : 2</span>
+              <span class="peek">看大圖</span>
+            </span>
+          </button>
+        </li>
+        <li class="cell" data-cat="portrait" data-title="窗邊的半身形象照" data-meta="形象照｜台中・西區｜2026">
+          <button class="hit" type="button" aria-label="放大看：窗邊的半身形象照。形象照，台中西區，2026 年">
+            <span class="sq" style="--tone:linear-gradient(150deg,#55524b 0%,#9a968e 50%,#cecac3 100%)">
+              <img src="images/portrait-01.svg" alt="課程版面示意圖片" loading="lazy" width="1024" height="1536" style="object-position:center 42%">
+              <span class="tag n">2 : 3</span>
+              <span class="peek">看大圖</span>
+            </span>
+          </button>
+        </li>
+        <li class="cell" data-cat="portrait" data-title="烘豆機前的工作現場" data-meta="形象照｜台中・東區｜2026">
+          <button class="hit" type="button" aria-label="放大看：烘豆機前的工作現場。形象照，台中東區，2026 年">
+            <span class="sq" style="--tone:linear-gradient(140deg,#2b2118 0%,#4b3a2b 48%,#93764f 100%)">
+              <img src="images/portrait-02.svg" alt="課程版面示意圖片" loading="lazy" width="1536" height="1024" style="object-position:55% center">
+              <span class="tag n">3 : 2</span>
+              <span class="peek">看大圖</span>
+            </span>
+          </button>
+        </li>
+        <li class="cell" data-cat="portrait" data-title="工作桌與窗外的街景" data-meta="形象照｜台中・南屯｜2025">
+          <button class="hit" type="button" aria-label="放大看：工作桌與窗外的街景。形象照，台中南屯，2025 年">
+            <span class="sq" style="--tone:linear-gradient(130deg,#343026 0%,#5b564c 50%,#a49d8c 100%)">
+              <img src="images/portrait-03.svg" alt="課程版面示意圖片" loading="lazy" width="1254" height="1254" style="object-position:center center">
+              <span class="tag n">1 : 1</span>
+              <span class="peek">看大圖</span>
+            </span>
+          </button>
+        </li>
+        <li class="cell" data-cat="portrait" data-title="手作皮件的工作檯" data-meta="形象照｜台中・北區｜2025">
+          <button class="hit" type="button" aria-label="放大看：手作皮件的工作檯。形象照，台中北區，2025 年">
+            <span class="sq" style="--tone:linear-gradient(145deg,#2a1d14 0%,#4a3324 48%,#956d46 100%)">
+              <img src="images/portrait-04.svg" alt="課程版面示意圖片" loading="lazy" width="1536" height="1024" style="object-position:58% 58%">
+              <span class="tag n">3 : 2</span>
+              <span class="peek">看大圖</span>
+            </span>
+          </button>
+        </li>
+      </ul>
+      <p class="tally" id="tally" role="status" aria-live="polite">目前顯示 <span class="n">12</span> 件作品。</p>
+    </div>
+  </section>
+
+
+  <section class="band up" id="cases" aria-labelledby="cases-title">
+    <div class="sheet">
+      <h2 class="title" id="cases-title">案例說明</h2>
+      <p class="lede">照片只說得出結果，說不出當天的條件。這三段寫的是現場實際長什麼樣、我怎麼處理。</p>
+      <div class="three">
+        <div>
+          <h3>婚紗</h3>
+          <p>多數是半天到一天的外拍，場景由兩人一起挑，不排滿。山谷那組遇到起霧，能見度一路在變，我們先把最遠的點拍完再往回走。我不會要求你們維持一個表情三分鐘，走路、講話、被風吹亂頭髮都算數。</p>
+        </div>
+        <div>
+          <h3>婚禮紀錄</h3>
+          <p>婚禮當天沒有第二次機會，所以我把時間花在動線上：迎娶的家裡通常很擠，證婚與敬酒的光差很多。我會在儀式前先走一遍場地，確認站位與退路。拍攝時盡量不指揮，讓流程照原本的節奏走。</p>
+        </div>
+        <div>
+          <h3>形象照</h3>
+          <p>客群多半是小型品牌主與需要一張正式照片的專業工作者。拍攝地點優先選你自己的工作場所，器物與環境本身就是資訊。如果你不習慣面對鏡頭，我們會從手部與工作動作開始拍，臉的部分放到後面。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="band" id="plans" aria-labelledby="plans-title">
+    <div class="sheet">
+      <h2 class="title" id="plans-title">服務方案</h2>
+      <p class="lede">三個方案都含前置溝通與選片。價格會因為場景數、移動距離與時數變動，所以這裡寫的是區間，不是單一數字。</p>
+      <div class="plans">
+        <div class="plan">
+          <h3>形象照．半日</h3>
+          <p class="amt n">12,000–18,000</p>
+          <p class="cur">新台幣，未稅</p>
+          <dl>
+            <dt>內容</dt><dd>拍攝 <span class="n">2</span> 小時、<span class="n">1</span> 套服裝、室內或單一外景</dd>
+            <dt>交件</dt><dd>精修 <span class="n">15</span> 張，<span class="n">10</span> 個工作天</dd>
+            <dt>加選</dt><dd>加時每小時 <span class="n">3,000</span>；增加外景每處 <span class="n">2,000</span></dd>
+          </dl>
+        </div>
+        <div class="plan">
+          <h3>婚紗．外拍一日</h3>
+          <p class="amt n">28,000–42,000</p>
+          <p class="cur">新台幣，未稅</p>
+          <dl>
+            <dt>內容</dt><dd>拍攝 <span class="n">6</span> 小時、<span class="n">2</span> 到 <span class="n">3</span> 個場景、含勘景</dd>
+            <dt>交件</dt><dd>精修 <span class="n">40</span> 張加上當日原檔全給，<span class="n">21</span> 個工作天</dd>
+            <dt>加選</dt><dd>增加場景每處 <span class="n">4,000</span>；台中市以外交通費另計</dd>
+          </dl>
+        </div>
+        <div class="plan">
+          <h3>婚禮紀錄．<span class="n">8</span> 小時</h3>
+          <p class="amt n">36,000–52,000</p>
+          <p class="cur">新台幣，未稅</p>
+          <dl>
+            <dt>內容</dt><dd>迎娶到宴客共 <span class="n">8</span> 小時、單一攝影師、含婚前確認會議</dd>
+            <dt>交件</dt><dd>精修 <span class="n">150</span> 張加上當日原檔全給，<span class="n">30</span> 個工作天</dd>
+            <dt>加選</dt><dd>加時每小時 <span class="n">4,500</span>；第二攝影師 <span class="n">12,000</span></dd>
+          </dl>
+        </div>
+      </div>
+      <p class="after">沒有隱藏費用這件事寫在合約裡：報價單上沒列的項目，事後不會追加。交通費以出發地到拍攝地的實際距離計算，簽約前會先算給你看。</p>
+    </div>
+  </section>
+
+
+  <section class="band up" id="flow" aria-labelledby="flow-title">
+    <div class="sheet">
+      <h2 class="title" id="flow-title">拍攝流程</h2>
+      <p class="lede">從你送出詢問到拿到檔案，中間會經過這五步。每一步都會告訴你現在在哪裡、下一步等誰。</p>
+      <ol class="flow">
+        <li><span class="i n">01</span><h3>詢問</h3><p>你填下面的表單，或直接寫信。我會回檔期是否還在、這個需求適合哪個方案。</p></li>
+        <li><span class="i n">02</span><h3>溝通</h3><p>約一次線上或當面的會議，確認場景、時間、服裝與想避開的畫面。</p></li>
+        <li><span class="i n">03</span><h3>拍攝</h3><p>當天我提早到場勘光。婚禮場合會先走一次動線，再開始拍。</p></li>
+        <li><span class="i n">04</span><h3>精修</h3><p>先給全部可用的縮圖讓你挑，挑完我才修。修圖不改變臉型與體型。</p></li>
+        <li><span class="i n">05</span><h3>交件</h3><p>用雲端連結交付，連結保留 <span class="n">180</span> 天。到期前會提醒你下載。</p></li>
+      </ol>
+    </div>
+  </section>
+
+
+  <section class="band" id="vow" aria-labelledby="vow-title">
+    <div class="sheet">
+      <h2 class="title" id="vow-title">交件承諾</h2>
+      <p class="lede">這三件事寫進合約，不是口頭說說。逾期的部分照合約退費，不需要你來催。</p>
+      <dl class="vow">
+        <div><dt>精修張數</dt><dd>依方案下限保證<small>形象照 15 張、婚紗 40 張、婚禮紀錄 150 張。實際可用張數通常更多，但不會少於這個數字。</small></dd></div>
+        <div><dt>原檔規則</dt><dd>婚紗與婚禮紀錄全給<small>當日拍攝的原始檔全部交付，不挑不刪。形象照方案的原檔可加購。原檔不做色彩校正，請以精修檔為準。</small></dd></div>
+        <div><dt>交付時間</dt><dd>從選片完成起算<small>形象照 10 個工作天、婚紗 21 個工作天、婚禮紀錄 30 個工作天。逾期每日退 1%，上限 10%。</small></dd></div>
+      </dl>
+    </div>
+  </section>
+
+
+  <section class="band up" id="me" aria-labelledby="me-title">
+    <div class="sheet">
+      <h2 class="title" id="me-title">關於我</h2>
+      <p class="lede">工作室在台中市西區，預約制。下面是我的工作方式，先看過再決定要不要找我比較省時間。</p>
+      <div class="me">
+        <div>
+          <p>我是小柯，台中人。拍照之前做過三年平面設計，習慣先問「這張要給誰看」再按快門，這個習慣後來變成我接案的方式。</p>
+          <p>我拍的東西不多：婚紗、婚禮紀錄、形象照。不接修圖到失真的案子，也不承接需要大量擺拍的商業廣告。不是清高，是我拍不好，做不好的事就不收錢。</p>
+          <p>工作方式偏安靜。拍攝當天我話不多，大部分時間在找角度與等光。如果你不習慣被鏡頭盯著，可以先告訴我，我會把距離拉開，用長焦拍。</p>
+          <p>接案量刻意壓低，一個月最多四場婚禮。理由很實際：後製時間如果被壓縮，交件品質就會掉。</p>
+        </div>
+        <div class="facts">
+          <dl>
+            <dt>工作室</dt><dd>台中市西區，近美術館，預約制</dd>
+            <dt>服務地區</dt><dd>台中為主，中彰投可外拍，其他縣市加計交通費</dd>
+            <dt>設備</dt><dd>兩機兩鏡，婚禮場合另備閃燈與備援記憶卡</dd>
+            <dt>語言</dt><dd>中文、台語</dd>
+            <dt>接案量</dt><dd>每月至多 <span class="n">4</span> 場婚禮</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="band" id="ask" aria-labelledby="ask-title">
+    <div class="sheet">
+      <h2 class="title" id="ask-title">詢問檔期</h2>
+      <p class="lede">填得愈具體，我回得愈準。標星號的是必填，其餘可以留空。送出後你會在這一頁看到自己填的內容。</p>
+
+      <form id="ask-form">
+        <div class="pair">
+          <div class="f">
+            <label for="f-name">姓名<span class="star" aria-hidden="true">＊</span></label>
+            <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="王小明">
+          </div>
+          <div class="f">
+            <label for="f-email">Email<span class="star" aria-hidden="true">＊</span></label>
+            <input type="email" id="f-email" name="email" required autocomplete="email" placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="pair">
+          <div class="f">
+            <label for="f-phone">電話（選填）</label>
+            <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="0912-000-000">
+            <p class="tip">留電話我會優先用打的，比較快確認檔期。</p>
+          </div>
+          <div class="f">
+            <label for="f-type">拍攝類型<span class="star" aria-hidden="true">＊</span></label>
+            <select id="f-type" name="shoot_type" required>
+              <option value="">請選擇</option>
+              <option>婚紗</option>
+              <option>婚禮紀錄</option>
+              <option>形象照</option>
+              <option>還不確定，想先討論</option>
+            </select>
+          </div>
+        </div>
+        <div class="pair">
+          <div class="f">
+            <label for="f-date">預計日期<span class="star" aria-hidden="true">＊</span></label>
+            <input type="date" id="f-date" name="shoot_date" required>
+            <p class="tip">還沒定案沒關係，先填一個大概的日期就好。</p>
+          </div>
+          <div class="f">
+            <label for="f-place">拍攝地點<span class="star" aria-hidden="true">＊</span></label>
+            <input type="text" id="f-place" name="location" required placeholder="台中市西區，或寫「還在找」">
+          </div>
+        </div>
+        <div class="f">
+          <label for="f-budget">預算區間<span class="star" aria-hidden="true">＊</span></label>
+          <select id="f-budget" name="budget" required>
+            <option value="">請選擇</option>
+            <option>1 萬 5 以下</option>
+            <option>1 萬 5 到 3 萬</option>
+            <option>3 萬到 5 萬</option>
+            <option>5 萬以上</option>
+            <option>想先聽方案再決定</option>
+          </select>
+        </div>
+        <div class="f">
+          <label for="f-msg">想說明的需求</label>
+          <textarea id="f-msg" name="message" placeholder="例如：想在海邊拍，但不想穿長禮服；當天只有下午兩小時。"></textarea>
+        </div>
+        <button type="submit" class="send">送出詢問</button>
+      </form>
+
+      <div id="done" role="status" aria-live="polite" hidden>
+        <h3>已收到你填的內容</h3>
+        <p>我會在 <b>三個工作天</b> 內回信給你，回覆裡會寫檔期是否還在、這個需求適合哪個方案。<b>檔期要等雙方確認過才算保留，這一步還沒有幫你排進行事曆。</b></p>
+        <p>以下是你剛才填的內容，方便你核對；如果哪裡打錯了，直接回信告訴我就好。</p>
+        <dl id="echo"></dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<div class="view" id="view" role="dialog" aria-modal="true" aria-labelledby="view-title" hidden>
+  <div class="bar">
+    <span class="pos n" id="view-pos">1 / 12</span>
+    <button type="button" class="shut" id="view-shut">關閉</button>
+  </div>
+  <div class="mid">
+    <button type="button" class="step" id="view-prev" aria-label="上一張">←</button>
+    <div class="stage">
+      <div class="big" id="view-big">
+        <img id="view-img" src="" alt="">
+        <span class="tag n" id="view-tag">3 : 2</span>
+      </div>
+    </div>
+    <button type="button" class="step" id="view-next" aria-label="下一張">→</button>
+  </div>
+  <div class="foot">
+    <div>
+      <h3 id="view-title">作品標題</h3>
+      <p class="m" id="view-meta">系列｜地點｜年份</p>
+    </div>
+    <p class="k">這是未裁切的原始比例。<br>鍵盤左右鍵換張，Esc 關閉。</p>
+  </div>
+</div>
+
+<footer>
+  <div class="sheet">
+    <div class="cols">
+      <div><b>工作室</b>小柯攝影工作室<br>台中市西區，預約制</div>
+      <div><b>Email</b><a href="mailto:hello@example.com">hello@example.com</a><br><a href="tel:0400000000" class="n">04-0000-0000</a></div>
+      <div><b>Instagram</b><a href="#ask">小柯攝影工作室</a></div>
+      <div><b>服務地區</b>台中為主<br>中彰投可外拍</div>
+    </div>
+    <p class="fine">© <span class="n">2026</span> 小柯攝影工作室．版權所有，禁止未經授權轉載使用。頁面上的作品、方案與檔期以實際洽談內容為準。</p>
+  </div>
+</footer>
+
+<script>
+/* ──────────────────────────────────────────────────────────
+   1. 照片降級
+      任何一張 images/*.jpg 載不到，就替它的外框加上 is-missing：
+      格子改用這件作品自己的同色調底色，並露出極細的比例標記。
+      正方形不會塌，也不會出現破圖示。
+   ────────────────────────────────────────────────────────── */
+(function () {
+  function degrade(img) {
+    var box = img.closest(".sq") || img.closest(".sheetfilm") || img.closest(".big");
+    if (box) box.classList.add("is-missing");
+  }
+  var imgs = document.querySelectorAll(".sq img, .sheetfilm img");
+  Array.prototype.forEach.call(imgs, function (img) {
+    img.addEventListener("error", function () { degrade(img); });
+    if (img.complete && img.naturalWidth === 0) degrade(img);   // 已經失敗過的也補判一次
+  });
+})();
+
+/* ──────────────────────────────────────────────────────────
+   2. 讀出欄
+      格子上不掛作品名，改成上面那一行讀出目前指著的那一件。
+      滑鼠與鍵盤兩條路都要接：hover 接 mouseenter，鍵盤接 focus。
+      離開時退回預設那句，不留上一件的殘影。
+   ────────────────────────────────────────────────────────── */
+var Readout = (function () {
+  var bar  = document.getElementById("readout"),
+      who  = document.getElementById("readout-who"),
+      what = document.getElementById("readout-what");
+  var IDLE_WHO = "把游標移到照片上";
+  function idle(n) {
+    bar.classList.add("idle");
+    who.textContent = IDLE_WHO;
+    what.textContent = "看這一件的拍攝地點與年份";
+  }
+  function read(cell) {
+    bar.classList.remove("idle");
+    who.textContent  = cell.dataset.title;
+    what.textContent = cell.dataset.meta;
+  }
+  return { idle: idle, read: read };
+})();
+
+/* ──────────────────────────────────────────────────────────
+   3. 系列篩選
+      換系列時同時換三樣東西：看得到的格子、系列說明那一段、下方件數。
+      放大檢視的上下張只在「目前看得到的作品」之間走。
+   ────────────────────────────────────────────────────────── */
+var Table = (function () {
+  var NOTE = {
+    all:      "三個系列放在一起看，是為了先確認風格穩不穩定：同一雙眼睛拍婚紗、婚禮跟形象照，出來的顏色與距離感應該是一致的。",
+    wedding:  "婚紗多半是半天到一天的外拍，場景由兩人一起挑。我不排滿行程，寧可在一個地方待久一點，等到你們忘記鏡頭的那幾分鐘。",
+    ceremony: "婚禮紀錄沒有第二次機會，所以我把功夫花在儀式前：先走動線、先確認光。當天盡量不指揮，讓流程照原本的節奏走。",
+    portrait: "形象照優先在你自己的工作場所拍，器物與環境本身就是資訊。不習慣面對鏡頭的話，我們從手部與工作動作開始。"
+  };
+  var tabs  = document.querySelectorAll(".tabs button"),
+      cells = Array.prototype.slice.call(document.querySelectorAll(".cell")),
+      note  = document.getElementById("series"),
+      tally = document.getElementById("tally");
+
+  function visible() {
+    return cells.filter(function (li) { return !li.hasAttribute("hidden"); });
+  }
+  function apply(cat) {
+    var n = 0;
+    cells.forEach(function (li) {
+      var show = (cat === "all" || li.dataset.cat === cat);
+      if (show) { li.removeAttribute("hidden"); n++; } else { li.setAttribute("hidden", ""); }
+    });
+    Array.prototype.forEach.call(tabs, function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.cat === cat));
+    });
+    note.textContent = NOTE[cat];
+    tally.innerHTML = '目前顯示 <span class="n">' + n + '</span> 件作品。';
+    Readout.idle(n);
+  }
+  Array.prototype.forEach.call(tabs, function (b) {
+    b.addEventListener("click", function () { apply(b.dataset.cat); });
+  });
+
+  // 讀出欄的兩條輸入路徑
+  cells.forEach(function (li) {
+    var hit = li.querySelector("button.hit");
+    hit.addEventListener("mouseenter", function () { Readout.read(li); });
+    hit.addEventListener("focus",      function () { Readout.read(li); });
+    hit.addEventListener("mouseleave", function () { Readout.idle(visible().length); });
+    hit.addEventListener("blur",       function () { Readout.idle(visible().length); });
+  });
+  Readout.idle(cells.length);
+
+  return { visible: visible };
+})();
+
+/* ──────────────────────────────────────────────────────────
+   4. 放大檢視
+      點作品開大圖，← → 換張，Esc 關閉。
+      關閉時把焦點還給剛才點的那顆按鈕，鍵盤使用者不會迷路。
+   ────────────────────────────────────────────────────────── */
+(function () {
+  var box  = document.getElementById("view"),
+      img  = document.getElementById("view-img"),
+      big  = document.getElementById("view-big"),
+      tag  = document.getElementById("view-tag"),
+      ttl  = document.getElementById("view-title"),
+      met  = document.getElementById("view-meta"),
+      pos  = document.getElementById("view-pos"),
+      prev = document.getElementById("view-prev"),
+      next = document.getElementById("view-next"),
+      shut = document.getElementById("view-shut");
+  var list = [], idx = 0, opener = null;
+
+  function show(i) {
+    var li = list[i]; if (!li) return;
+    idx = i;
+    var src = li.querySelector("img"), sq = li.querySelector(".sq");
+    big.style.setProperty("--tone", sq.style.getPropertyValue("--tone"));
+    big.classList.remove("is-missing");
+    img.alt = src.alt;
+    img.src = src.getAttribute("src");
+    if (src.complete && src.naturalWidth === 0) big.classList.add("is-missing");
+    tag.textContent = li.querySelector(".tag").textContent;
+    ttl.textContent = li.dataset.title;
+    met.textContent = li.dataset.meta;
+    pos.textContent = (i + 1) + " / " + list.length;
+  }
+  img.addEventListener("error", function () { big.classList.add("is-missing"); });
+
+  function open(li) {
+    list = Table.visible();
+    opener = li.querySelector("button.hit");
+    box.removeAttribute("hidden");
+    document.body.style.overflow = "hidden";
+    show(list.indexOf(li));
+    shut.focus();
+  }
+  function close() {
+    box.setAttribute("hidden", "");
+    document.body.style.overflow = "";
+    if (opener) opener.focus();
+  }
+  function move(d) { show((idx + d + list.length) % list.length); }
+
+  document.getElementById("table").addEventListener("click", function (e) {
+    var b = e.target.closest("button.hit"); if (b) open(b.closest(".cell"));
+  });
+  shut.addEventListener("click", close);
+  prev.addEventListener("click", function () { move(-1); });
+  next.addEventListener("click", function () { move(1); });
+  box.addEventListener("click", function (e) { if (e.target === box) close(); });
+  document.addEventListener("keydown", function (e) {
+    if (box.hasAttribute("hidden")) return;
+    if (e.key === "Escape")     { e.preventDefault(); close(); }
+    if (e.key === "ArrowLeft")  { e.preventDefault(); move(-1); }
+    if (e.key === "ArrowRight") { e.preventDefault(); move(1); }
+  });
+})();
+
+/* ──────────────────────────────────────────────────────────
+   5. 詢問表單
+      空白送出：欄位有 required、表單沒有 novalidate，交給瀏覽器原生驗證擋。
+      Email 亂填：type="email" 會自己擋下來。
+      通過驗證才走到這裡：攔下送出，把資料原樣回顯，
+      並且明講「已收到、幾個工作天內回覆」，不假裝檔期已經排好。
+   ────────────────────────────────────────────────────────── */
+(function () {
+  var form = document.getElementById("ask-form"),
+      done = document.getElementById("done"),
+      echo = document.getElementById("echo");
+  var LABEL = {
+    name: "姓名", email: "Email", phone: "電話", shoot_type: "拍攝類型",
+    shoot_date: "預計日期", location: "拍攝地點", budget: "預算區間", message: "需求說明"
+  };
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();                 // 示範站不送到伺服器
+    var data = new FormData(form);
+    echo.innerHTML = "";
+    Object.keys(LABEL).forEach(function (k) {
+      var v = (data.get(k) || "").toString().trim();
+      var dt = document.createElement("dt"); dt.textContent = LABEL[k];
+      var dd = document.createElement("dd"); dd.textContent = v || "（未填）";
+      echo.appendChild(dt); echo.appendChild(dd);
+    });
+    done.removeAttribute("hidden");
+    done.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+})();
+</script>
+
+<style id="site-audit-fix">
+img,video{max-width:100%}
+select{max-width:100%;text-overflow:ellipsis}
+a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-space:nowrap}
+@media (max-width:640px){
+  .card{padding-left:20px;padding-right:20px}
+  .top nav{gap:0 18px;flex-wrap:nowrap}
+  .top nav a{white-space:nowrap}
+  .top nav a[href="#cases"],.top nav a[href="#vow"],.top nav a[href="#me"]{display:none}
+}
+</style>
+</body>
 </html>

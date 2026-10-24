@@ -1,0 +1,87 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP14 才藝教室網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP14 才藝教室網站</h1><p>招生資訊要回答家長真正會問的問題。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep14-talent.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP14 施工規格</h1>
+<p>本規格整理自《網頁設計》第 14 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<h2>網站目標</h2>
+<p>招生頁、班級表、試上表單、名額狀態與報名流程</p>
+<h2>使用者情境</h2>
+<p>使用者第一次進入網站時，需要在手機上快速判斷這個服務是否適合自己，並能完成主要行動：讓家長理解課程、年齡分班、名額、試上與正式報名流程。</p>
+<h2>必要區塊</h2>
+<ol>
+<li>Hero 首頁：名稱、定位、主張、主要行動按鈕</li>
+<li>信任證據：真實照片、資歷、評論、規則或案例</li>
+<li>核心流程：讓家長理解課程、年齡分班、名額、試上與正式報名流程</li>
+<li>資料表單：姓名、聯絡方式、情境欄位、備註</li>
+<li>規則說明：價格、限制、取消或退款規則</li>
+<li>聯絡與後續：電話、LINE、Email、地圖或確認訊息</li>
+</ol>
+<h2>資料欄位</h2>
+<p>請在頁面中示範下列資料結構（對應表 14-2）：</p>
+<ol>
+<li>CourseProgram：課程名稱、年齡範圍、程度、課程目標</li>
+<li>ClassGroup：班級、老師、時段、名額上限、目前人數</li>
+<li>TrialBooking：孩子年齡、家長聯絡方式、試上時段、狀態</li>
+<li>Enrollment：學員、班級、報名日期、繳費狀態</li>
+<li>WaitlistEntry：想報班級、候補順位、通知期限</li>
+<li>ProgressNote：孩子表現、老師觀察、建議下一步</li>
+</ol>
+<h2>設計要求</h2>
+<ol>
+<li>請使用清楚的 HTML結構與 CSS，做成單一 index.html。</li>
+<li>請使用 RWD，手機、平板、桌機都要可讀。</li>
+<li>請避免假評價、假資歷、假價格或過度承諾。</li>
+<li>表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。</li>
+<li>班級名額請依狀態顯示：未滿時顯示「可申請試上」、額滿時顯示「可登記候補」；並示範候補遞補規則——有人取消、名額空出時，把候補順位第一位標成「已通知」並給回覆期限。不要用「最後一席」這類話術。</li>
+</ol>
+<h2>本練習包的素材</h2>
+<p>照片版位使用原創 SVG 示意圖，保留分類、燈箱與版面操作；實際照片由學員另備合法素材。來源記錄見 <code>ATTRIBUTION.md</code>。</p>
+</section>
+<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP14 對話提示卡</h1>
+<p>以下為第 14 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
+<h2>教材提示詞</h2>
+<pre><code class="language-text">你是網頁設計老師與前端工程師。
+幫我做成一個「才藝教室網站」的單頁網站原型，做成可以直接打開的單一 index.html。
+
+【網站目標】
+招生頁、班級表、試上表單、名額狀態與報名流程
+
+【使用者情境】
+使用者第一次進入網站時，需要在手機上快速判斷這個服務是否適合自己，並能完成主要行動：讓家長理解課程、年齡分班、名額、試上與正式報名流程。
+
+【必要區塊】
+1. Hero 首頁：名稱、定位、主張、主要行動按鈕
+2. 信任證據：真實照片、資歷、評論、規則或案例
+3. 核心流程：讓家長理解課程、年齡分班、名額、試上與正式報名流程
+4. 資料表單：姓名、聯絡方式、情境欄位、備註
+5. 規則說明：價格、限制、取消或退款規則
+6. 聯絡與後續：電話、LINE、Email、地圖或確認訊息
+
+【資料欄位】
+請在頁面中示範下列資料結構（對應表 14-2）：
+1. CourseProgram：課程名稱、年齡範圍、程度、課程目標
+2. ClassGroup：班級、老師、時段、名額上限、目前人數
+3. TrialBooking：孩子年齡、家長聯絡方式、試上時段、狀態
+4. Enrollment：學員、班級、報名日期、繳費狀態
+5. WaitlistEntry：想報班級、候補順位、通知期限
+6. ProgressNote：孩子表現、老師觀察、建議下一步
+
+【設計要求】
+1. 請使用清楚的 HTML結構與 CSS，做成單一 index.html。
+2. 請使用 RWD，手機、平板、桌機都要可讀。
+3. 請避免假評價、假資歷、假價格或過度承諾。
+4. 表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。
+5. 班級名額請依狀態顯示：未滿時顯示「可申請試上」、額滿時顯示「可登記候補」；並示範候補遞補規則——有人取消、名額空出時，把候補順位第一位標成「已通知」並給回覆期限。不要用「最後一席」這類話術。
+</code></pre>
+</section>
+<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP14 驗收清單</h1>
+<h2>逐項檢查</h2>
+<p>AI 產出後，不要只看第一眼漂不漂亮，請依序檢查：</p>
+<ul>
+<li>[ ] 資料欄位是否足以支撐核心流程，而非只留姓名電話。</li>
+<li>[ ] 試上、正式報名與候補是否為三個不同狀態，而非混成同一張表單。</li>
+<li>[ ] 班級名額是否有上限，額滿時能否進候補而非繼續報名。</li>
+<li>[ ] 補課、退費與教材費規則是否在報名前看得到。</li>
+<li>[ ] 手機版是否能完成主要行動，且文字與按鈕不重疊。</li>
+</ul>
+<h2>主動測試</h2>
+<p>這頁讓家長填完會卡進名額與候補的狀態流轉，所以最危險的是<strong>看起來對、其實壞掉</strong>的沉默失敗。最招牌的一招：對一個已寫「額滿」的班，連按兩次「報名」，看第二次是被擋下來、還是又默默收一筆。</p>
+<p>記住一句話：<strong>AI 是被告不是法官，畫面才是證據。</strong> 你問它「額滿會不會擋？候補會不會自動遞補？」它幾乎一定回「會」，就算它根本沒做。</p>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>

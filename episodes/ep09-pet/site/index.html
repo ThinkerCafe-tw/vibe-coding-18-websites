@@ -1,0 +1,1236 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小毛屋寵物美容｜台北市文山區｜洗剪護理．透明美容區</title>
+<meta name="description" content="小毛屋寵物美容，台北市文山區。服務中會拍照、異常先通知，預約狀態一筆一筆看得到。洗澡烘乾、全身修剪、指甲與耳道護理，採預約制。">
+<style>
+
+
+:root{
+  --paper:#f4f1e9;
+  --paper2:#e9e4d6;
+  --ink:#1b2420;
+  --ink2:#55605a;
+  --rule:#c9c2ae;
+  --green:#20564a;
+  --green2:#153c34;
+  --clay:#9a4526;
+  --gray:#5f6862;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;
+  font-size:19px;line-height:1.8;-webkit-font-smoothing:antialiased;
+}
+.num{font-family:"Helvetica Neue",Arial,sans-serif;font-variant-numeric:tabular-nums}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.sheet{max-width:1240px;margin:0 auto;padding:0 48px}
+h1,h2,h3,h4{letter-spacing:.01em}
+
+
+.bar{border-bottom:3px solid var(--ink);background:var(--paper);position:relative;z-index:5}
+.bar .sheet{display:flex;align-items:center;justify-content:space-between;gap:22px;padding-top:15px;padding-bottom:15px;flex-wrap:wrap}
+.logo{margin:0;font-size:23px;font-weight:700;letter-spacing:.05em;display:flex;align-items:center;gap:11px}
+.logo small{font-size:16px;font-weight:400;letter-spacing:.1em;color:var(--ink2)}
+.bar nav{display:flex;gap:21px;align-items:center;flex-wrap:wrap}
+.bar nav a{font-size:17px;color:var(--ink2);text-decoration:none;padding:7px 0;border-bottom:3px solid transparent}
+.bar nav a:hover{color:var(--ink);border-bottom-color:var(--green)}
+.bar nav a.key{background:var(--green);color:#f3f1e8;border:0;padding:11px 20px;font-weight:700}
+.bar nav a.key:hover{background:var(--green2);color:#f3f1e8}
+
+
+.hero{border-bottom:3px solid var(--ink)}
+.hero .sheet{padding-top:64px;padding-bottom:0}
+.hero .duo{display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,1fr);gap:56px;align-items:center}
+.hero h1{margin:0 0 14px;font-size:66px;line-height:1.1;font-weight:700;letter-spacing:-.015em}
+.hero .tagline{margin:0 0 26px;font-size:19px;font-weight:700;letter-spacing:.28em;color:var(--green)}
+.hero .claim{margin:0 0 16px;font-size:30px;line-height:1.55;font-weight:700;text-wrap:balance}
+.hero .sub{margin:0 0 32px;font-size:20px;line-height:1.8;color:var(--ink2);text-wrap:pretty}
+.acts{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:56px}
+.btn1,.btn2{font-size:19px;font-weight:700;text-decoration:none;padding:16px 30px;line-height:1.35;display:inline-block}
+.btn1{background:var(--green);color:#f3f1e8;border:3px solid var(--green)}
+.btn1:hover{background:var(--green2);border-color:var(--green2)}
+.btn2{color:var(--ink);border:3px solid var(--ink);background:transparent}
+.btn2:hover{background:var(--ink);color:var(--paper)}
+
+.ph{position:relative;overflow:hidden;background:#eae5d7}
+.ph > svg,.ph > img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ph > img{object-fit:cover;color:transparent}
+
+.ph.loaded > svg{visibility:hidden}
+.ph-hero{aspect-ratio:5/4}
+.ph-glass{aspect-ratio:16/9;border:3px solid var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:3px solid var(--ink)}
+.facts div{padding:19px 24px;border-left:1px solid var(--rule)}
+.facts div:first-child{padding-left:0;border-left:0}
+.facts b{display:block;font-size:16px;font-weight:400;letter-spacing:.11em;color:var(--ink2)}
+.facts span{display:block;font-size:20px;font-weight:700;line-height:1.5}
+.facts em{font-style:normal;font-size:16px;color:var(--ink2);font-weight:400}
+
+
+.block{border-bottom:3px solid var(--ink)}
+.block.alt{background:var(--paper2)}
+.block .sheet{padding-top:72px;padding-bottom:72px}
+.head{display:flex;align-items:baseline;gap:20px;border-bottom:3px solid var(--ink);padding-bottom:13px;flex-wrap:wrap}
+.head h2{margin:0;font-size:40px;font-weight:700;line-height:1.3}
+.head p{margin:0;font-size:17px;color:var(--ink2)}
+.lede{margin:22px 0 42px;max-width:38em;font-size:20px;color:var(--ink2)}
+.sub-h{margin:52px 0 20px;font-size:26px;font-weight:700;line-height:1.4;border-left:7px solid var(--green);padding-left:16px}
+.note{font-size:17px;color:var(--ink2);line-height:1.75}
+.quote{margin:26px 0 0;background:var(--paper2);border-left:7px solid var(--green);padding:19px 24px;font-size:19px;line-height:1.8;max-width:54em}
+.block.alt .quote{background:#f0ecdf}
+
+
+.proof{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--rule)}
+.proof article{border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);padding:30px 34px 30px 0}
+.proof article:nth-child(2n){padding-right:0;padding-left:34px;border-right:0}
+.proof h3{margin:0 0 12px;font-size:23px;font-weight:700;line-height:1.45}
+.proof p{margin:0 0 11px;font-size:18px;line-height:1.8}
+.proof p:last-child{margin-bottom:0}
+.proof .tagline2{display:inline-block;font-size:16px;letter-spacing:.1em;color:var(--green);border:2px solid var(--green);padding:3px 10px;margin-bottom:13px}
+
+
+.steps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+.steps li{list-style:none;padding:22px 18px 24px 0;border-right:1px solid var(--rule)}
+.steps li:last-child{border-right:0;padding-right:0}
+.steps b{display:block;font-size:16px;letter-spacing:.14em;color:var(--green);font-weight:700}
+.steps span{display:block;font-size:19px;font-weight:700;line-height:1.5;margin-top:4px}
+.steps em{display:block;font-style:normal;font-size:16px;color:var(--ink2);line-height:1.65;margin-top:6px}
+ul.steps{margin:0;padding:0}
+
+
+.glass{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:48px;align-items:center;margin-top:8px}
+.glass dl{margin:0;display:grid;grid-template-columns:7.5em minmax(0,1fr);column-gap:20px;row-gap:15px}
+.glass dt{color:var(--ink2);font-size:17px}
+.glass dd{margin:0;font-size:18px;line-height:1.75}
+
+
+
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:6px}
+.shot{border:3px solid var(--ink);background:#faf8f2;display:flex;flex-direction:column}
+.shot svg{width:100%;height:auto;display:block;border-bottom:1px solid var(--rule)}
+.shot .cap{padding:18px 20px 20px}
+.shot b{display:block;font-size:16px;letter-spacing:.13em;color:var(--green);font-weight:700;margin-bottom:5px}
+.shot h4{margin:0 0 8px;font-size:21px;font-weight:700;line-height:1.45}
+.shot p{margin:0;font-size:17px;line-height:1.75;color:var(--ink2)}
+.shot p.also{margin-top:12px;padding-top:12px;border-top:1px dashed var(--clay);color:var(--ink)}
+
+
+table{width:100%;border-collapse:collapse;font-size:18px}
+caption{text-align:left;font-size:17px;color:var(--ink2);padding-bottom:13px}
+th,td{text-align:left;padding:19px 18px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.7}
+th{font-size:16px;font-weight:700;letter-spacing:.1em;color:var(--ink2);border-bottom:3px solid var(--ink);padding-top:0}
+td:first-child,th:first-child{padding-left:0}
+td:last-child,th:last-child{padding-right:0}
+tbody tr:last-child td{border-bottom:3px solid var(--ink)}
+td .money{font-size:19px;font-weight:700;white-space:nowrap}
+td .limit{color:var(--clay)}
+tr.off td{color:var(--gray)}
+.pill{display:inline-block;font-size:16px;font-weight:700;letter-spacing:.06em;padding:3px 11px;border:2px solid var(--green);color:var(--green);white-space:nowrap}
+.pill.full{border-color:var(--clay);color:#fff;background:var(--clay)}
+.pill.rest{border-color:var(--gray);color:var(--gray)}
+
+
+.machine{border:3px solid var(--ink);background:#faf8f2;margin-top:10px}
+.machine .now{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:30px;padding:28px 30px;border-bottom:3px solid var(--ink);align-items:center}
+.machine .now .big{font-size:52px;font-weight:700;line-height:1.1;color:var(--green);letter-spacing:.01em}
+.machine .now .big b{display:block;font-size:16px;font-weight:400;letter-spacing:.13em;color:var(--ink2);margin-bottom:6px}
+.machine.risk .now .big{color:var(--clay)}
+.machine.over .now .big{color:var(--gray)}
+.machine .now p{margin:0;font-size:18px;line-height:1.8;color:var(--ink2)}
+.track{display:flex;flex-wrap:wrap;gap:0;padding:24px 30px 6px;border-bottom:1px solid var(--rule)}
+.track .st{flex:1 1 0;min-width:96px;border-top:5px solid var(--rule);padding:11px 10px 18px 0;font-size:17px;color:var(--ink2);line-height:1.5}
+.track .st.on{border-top-color:var(--green);color:var(--ink);font-weight:700}
+.track .st.past{border-top-color:var(--green)}
+.track .st.branch{border-top-style:dashed;border-top-color:var(--clay)}
+.track .st.branch.on{border-top-color:var(--clay);color:var(--clay)}
+
+.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:24px 30px}
+.keys button{font-family:inherit;font-size:18px;font-weight:700;padding:13px 19px;background:transparent;color:var(--ink);border:3px solid var(--ink);cursor:pointer}
+.keys button:hover:not(:disabled){background:var(--ink);color:var(--paper)}
+.keys button:disabled{color:var(--gray);border-color:var(--rule);cursor:not-allowed}
+.keys button.risky{border-color:var(--clay);color:var(--clay)}
+.keys button.risky:hover:not(:disabled){background:var(--clay);color:#fff}
+.alarm{margin:0 30px 24px;border-left:7px solid var(--clay);background:rgba(154,69,38,.09);padding:17px 21px;font-size:18px;line-height:1.8;color:#71331c}
+.log{border-top:1px solid var(--rule);padding:22px 30px 26px}
+.log b{display:block;font-size:16px;letter-spacing:.12em;color:var(--ink2);margin-bottom:11px;font-weight:400}
+.log ol{margin:0;padding-left:1.4em;font-size:17px;line-height:1.85}
+.tools{display:flex;gap:13px;flex-wrap:wrap;align-items:center;margin-top:22px}
+.ghost{font-family:inherit;font-size:18px;font-weight:700;padding:13px 22px;background:transparent;color:var(--ink);border:3px solid var(--ink);cursor:pointer}
+.ghost:hover{background:var(--ink);color:var(--paper)}
+
+
+.formwrap{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:54px;margin-top:10px}
+fieldset{border:0;border-top:3px solid var(--ink);margin:0 0 34px;padding:20px 0 0}
+legend{padding:0;font-size:22px;font-weight:700;line-height:1.4}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+.f{margin-bottom:22px}
+
+.pair .f{display:flex;flex-direction:column}
+.pair .f input,.pair .f select{margin-top:auto}
+.f label{display:block;font-size:18px;font-weight:700;margin-bottom:7px}
+.f .hint{display:block;font-size:16px;font-weight:400;color:var(--ink2);line-height:1.6;margin-top:2px}
+.f input[type=text],.f input[type=tel],.f input[type=email],.f input[type=number],.f select,.f textarea{
+  width:100%;font-family:inherit;font-size:19px;line-height:1.6;padding:13px 14px;
+  border:3px solid var(--ink);background:#faf8f2;color:var(--ink);border-radius:0}
+.f textarea{min-height:98px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{outline:3px solid var(--green);outline-offset:2px}
+.f .req{color:var(--clay);font-weight:700}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:9px 0;font-size:18px;line-height:1.7;cursor:pointer}
+.chk input{width:23px;height:23px;margin:6px 0 0;flex:0 0 auto;accent-color:var(--green)}
+.chk.wide{grid-column:1/-1;border-top:1px solid var(--rule);margin-top:10px;padding-top:16px}
+.send{font-family:inherit;font-size:21px;font-weight:700;padding:18px 40px;background:var(--green);color:#f3f1e8;border:3px solid var(--green);cursor:pointer}
+.send:hover{background:var(--green2)}
+.side{border-top:3px solid var(--ink);padding-top:20px}
+.side h3{margin:0 0 14px;font-size:23px;font-weight:700;line-height:1.45}
+.side p{margin:0 0 14px;font-size:18px;line-height:1.8}
+.side .why{border-left:7px solid var(--green);background:var(--paper2);padding:16px 20px;font-size:17px;line-height:1.75;margin-bottom:22px}
+.block.alt .side .why{background:#f0ecdf}
+.done{border-top:5px solid var(--green);padding-top:22px;margin-top:26px}
+.done h4{margin:0 0 14px;font-size:25px;font-weight:700;line-height:1.4}
+.done ul{margin:0 0 20px;padding-left:1.3em;font-size:18px;line-height:1.85}
+.done dl{margin:0;display:grid;grid-template-columns:8.5em minmax(0,1fr);column-gap:18px;row-gap:11px;border-top:1px solid var(--rule);padding-top:18px}
+.done dt{color:var(--ink2);font-size:17px}
+.done dd{margin:0;font-size:18px;line-height:1.7;word-break:break-word}
+.blocked{border-left:7px solid var(--clay);background:rgba(154,69,38,.09);padding:18px 22px;font-size:18px;line-height:1.8;color:#71331c;margin-bottom:24px}
+
+
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--rule)}
+.rules article{border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);padding:28px 34px 28px 0}
+.rules article:nth-child(2n){padding-right:0;padding-left:34px;border-right:0}
+.rules h3{margin:0 0 11px;font-size:22px;font-weight:700}
+.rules p{margin:0 0 10px;font-size:18px;line-height:1.8}
+.rules p:last-child{margin-bottom:0}
+
+
+.contact{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:52px}
+.contact dl{margin:0;display:grid;grid-template-columns:6.5em minmax(0,1fr);column-gap:20px;row-gap:17px}
+.contact dt{color:var(--ink2);font-size:17px}
+.contact dd{margin:0;font-size:19px;line-height:1.75}
+.contact dd a{font-weight:700}
+.mapbox{border:3px solid var(--ink);background:#faf8f2}
+.mapbox svg{width:100%;height:auto;display:block}
+.mapbox p{margin:0;padding:15px 20px;border-top:1px solid var(--rule);font-size:17px;color:var(--ink2);line-height:1.7}
+
+footer{background:var(--ink);color:#e7e4da}
+footer .sheet{padding-top:48px;padding-bottom:48px;display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:38px}
+footer h3{margin:0 0 11px;font-size:21px;font-weight:700;letter-spacing:.05em}
+footer p{margin:0 0 7px;font-size:18px;line-height:1.8;color:#bfc4bd}
+footer a{color:#e7e4da}
+footer .fine{grid-column:1/-1;border-top:1px solid #3b4643;padding-top:20px;margin-top:6px;font-size:16px;color:#a4aaa4;line-height:1.8}
+
+
+@media (max-width:1040px){
+  .sheet{padding:0 28px}
+  .hero h1{font-size:52px}
+  .hero .duo{gap:36px}
+  .steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .steps li:nth-child(3n){border-right:0;padding-right:0}
+  .steps li:nth-child(-n+3){border-bottom:1px solid var(--rule)}
+  .formwrap,.glass,.contact{grid-template-columns:minmax(0,1fr);gap:40px}
+  .machine .now{grid-template-columns:minmax(0,1fr);gap:16px}
+}
+
+@media (max-width:760px){
+  body{font-size:18px}
+  .sheet{padding:0 18px}
+  .bar .sheet{gap:11px;padding-top:13px;padding-bottom:13px}
+  .bar nav{gap:15px}
+  .bar nav a.key{padding:10px 16px}
+  .hero .sheet{padding-top:34px}
+  .hero .duo{grid-template-columns:minmax(0,1fr);gap:28px}
+  .ph-hero{margin-bottom:28px}
+  .hero h1{font-size:40px;line-height:1.16}
+  .hero .claim{font-size:24px}
+  .hero .sub{font-size:18px}
+  .acts{margin-bottom:34px}
+  .btn1,.btn2{width:100%;text-align:center}
+  .facts{grid-template-columns:minmax(0,1fr)}
+  .facts div{padding:15px 0;border-left:0;border-top:1px solid var(--rule)}
+  .facts div:first-child{border-top:0}
+  .block .sheet{padding-top:46px;padding-bottom:46px}
+  .head h2{font-size:30px}
+  .lede{margin:18px 0 30px;font-size:18px}
+  .sub-h{font-size:22px;margin:38px 0 16px}
+  .proof,.rules{grid-template-columns:minmax(0,1fr)}
+  .proof article,.rules article,
+  .proof article:nth-child(2n),.rules article:nth-child(2n){padding:24px 0;border-right:0;padding-left:0}
+  .steps{grid-template-columns:minmax(0,1fr)}
+  .steps li{border-right:0;border-bottom:1px solid var(--rule);padding:16px 0}
+  .steps li:last-child{border-bottom:0}
+  .glass dl{grid-template-columns:minmax(0,1fr);row-gap:5px}
+  .glass dt{margin-top:12px}
+  .machine .now{padding:22px 18px}
+  .machine .now .big{font-size:40px}
+  .track{padding:18px 18px 4px}
+  .track .st{flex:1 1 100%;min-width:0;border-top-width:5px;padding:9px 0 13px}
+  .keys{padding:18px}
+  .keys button{flex:1 1 100%}
+  .alarm{margin:0 18px 18px}
+  .log{padding:18px}
+  .shots{grid-template-columns:minmax(0,1fr)}
+  .pair,.checks{grid-template-columns:minmax(0,1fr)}
+  .send{width:100%}
+  .done dl,.contact dl{grid-template-columns:minmax(0,1fr);row-gap:4px}
+  .done dt,.contact dt{margin-top:11px}
+
+  table,caption,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  tbody tr{border-bottom:3px solid var(--ink);padding:16px 0}
+  tbody tr:last-child td{border-bottom:0}
+  td{border-bottom:0;padding:5px 0}
+  td:before{content:attr(data-th)"：";color:var(--ink2);font-size:16px;display:block}
+  footer .sheet{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:36px;padding-bottom:36px}
+}
+</style>
+</head>
+<body>
+<aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
+
+<header class="bar">
+  <div class="sheet">
+    <p class="logo">小毛屋寵物美容 <small>台北市文山區</small></p>
+    <nav aria-label="主要導覽">
+      <a href="#trust">為什麼敢交給我們</a>
+      <a href="#flow">服務與流程</a>
+      <a href="#rules">價格與規則</a>
+      <a href="#contact">聯絡我們</a>
+      <a class="key" href="#book">預約美容</a>
+    </nav>
+  </div>
+</header>
+
+
+
+<section class="hero" id="top" data-obj="PetGroomingProfile">
+  <div class="sheet">
+    <div class="duo">
+      <div>
+        <p class="tagline">看得見的那一小時</p>
+        <h1>小毛屋<br>寵物美容</h1>
+        <p class="claim">服務中會拍照，異常會先通知你，不會先動手。</p>
+        <p class="sub">台北市文山區．採預約制．洗澡烘乾、全身修剪、指甲與耳道護理。<br>
+          美容區隔著一整面玻璃，你可以站在外面看完全程；不方便留下來，我們就用照片把那一小時補給你。</p>
+        <div class="acts">
+          <a class="btn1" href="#book">預約美容</a>
+          <a class="btn2" href="#flow">先看服務流程</a>
+        </div>
+      </div>
+
+      <div class="ph ph-hero">
+      <svg class="win" viewBox="0 0 520 430" preserveAspectRatio="xMidYMid slice" role="img" aria-label="插圖：一整面玻璃窗，窗內是美容桌、吹風機與正在被梳理的狗">
+        <defs>
+          <linearGradient id="a-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#dfe6df"/><stop offset="1" stop-color="#f2efe6"/>
+          </linearGradient>
+          <linearGradient id="a-light" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".55"/>
+            <stop offset=".55" stop-color="#ffffff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="520" height="430" fill="url(#a-sky)"/>
+
+        <rect x="14" y="14" width="492" height="402" fill="none" stroke="#1b2420" stroke-width="6"/>
+        <line x1="260" y1="14" x2="260" y2="416" stroke="#1b2420" stroke-width="4"/>
+        <line x1="14" y1="120" x2="506" y2="120" stroke="#1b2420" stroke-width="4"/>
+
+        <rect x="20" y="126" width="480" height="284" fill="#eae5d7"/>
+        <rect x="44" y="160" width="170" height="8" fill="#c9c2ae"/>
+        <rect x="56" y="136" width="20" height="24" fill="#20564a"/>
+        <rect x="86" y="142" width="16" height="18" fill="#9a4526"/>
+        <rect x="112" y="138" width="22" height="22" fill="#c9c2ae"/>
+
+        <rect x="120" y="300" width="300" height="12" fill="#1b2420"/>
+        <rect x="150" y="312" width="10" height="82" fill="#55605a"/>
+        <rect x="380" y="312" width="10" height="82" fill="#55605a"/>
+
+        <ellipse cx="288" cy="244" rx="46" ry="40" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+        <path d="M246 222 Q230 196 232 236 Q234 262 252 254 Z" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+        <path d="M330 222 Q346 196 344 236 Q342 262 324 254 Z" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+        <ellipse cx="288" cy="268" rx="25" ry="18" fill="#efece1" stroke="#1b2420" stroke-width="3"/>
+        <ellipse cx="288" cy="256" rx="8" ry="6" fill="#1b2420"/>
+        <circle cx="270" cy="234" r="4.5" fill="#1b2420"/>
+        <circle cx="306" cy="234" r="4.5" fill="#1b2420"/>
+        <path d="M288 264 Q280 276 272 270" fill="none" stroke="#1b2420" stroke-width="3" stroke-linecap="round"/>
+        <path d="M288 264 Q296 276 304 270" fill="none" stroke="#1b2420" stroke-width="3" stroke-linecap="round"/>
+        <rect x="252" y="284" width="72" height="18" rx="4" fill="#20564a"/>
+
+        <rect x="142" y="284" width="58" height="7" rx="3" fill="#9a4526"/>
+        <rect x="150" y="291" width="4" height="9" fill="#9a4526"/>
+        <rect x="162" y="291" width="4" height="9" fill="#9a4526"/>
+        <rect x="174" y="291" width="4" height="9" fill="#9a4526"/>
+        <rect x="186" y="291" width="4" height="9" fill="#9a4526"/>
+
+        <line x1="420" y1="136" x2="420" y2="206" stroke="#55605a" stroke-width="5"/>
+        <rect x="398" y="206" width="44" height="26" rx="6" fill="#55605a"/>
+        <path d="M398 219 L372 210 M398 224 L372 226 M398 229 L374 242"
+              fill="none" stroke="#9fb0a6" stroke-width="4" stroke-linecap="round"/>
+
+        <rect x="20" y="20" width="480" height="390" fill="url(#a-light)"/>
+        <line x1="60" y1="416" x2="180" y2="20" stroke="#ffffff" stroke-opacity=".5" stroke-width="16"/>
+      </svg>
+
+      <img src="images/hero.svg" alt="課程版面示意圖片" onload="this.parentNode.classList.add('loaded')" onerror="this.remove()">
+      </div>
+    </div>
+
+    <div class="facts">
+      <div><b>營業時間</b><span>週二至週日 <em>10:00–19:00</em></span></div>
+      <div><b>公休</b><span>每週一</span></div>
+      <div><b>當日最後收件</b><span class="num">17:00</span></div>
+      <div><b>預約電話</b><span class="num">02-0000-0000</span></div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="block alt" id="trust" data-obj="TrustEvidence">
+  <div class="sheet">
+    <div class="head">
+      <h2>為什麼敢把牠交給我們</h2>
+      <p>四件你進門就可以當場檢查的事</p>
+    </div>
+    <p class="lede">我們沒有放顧客評論，也沒有放獎狀。評論可以挑、獎狀看不出今天桌面乾不乾淨。下面四件事都可以在你站在店裡的三分鐘內親眼確認。</p>
+    <div class="proof">
+      <article>
+        <span class="tagline2">看得到</span>
+        <h3>美容區隔著一整面玻璃</h3>
+        <p>洗澡、吹乾、修剪全部在玻璃後面進行，走道側完全通透，不做布簾、不做隔間。</p>
+        <p>你可以站著看完全程，也可以坐在等待區看。不想久等就先走，我們用照片補。</p>
+      </article>
+      <article>
+        <span class="tagline2">說得出</span>
+        <h3>消毒寫成一句可以被問的話</h3>
+        <p>美容桌與工具在每一隻寵物之間用次氯酸水擦拭一次；籠具每日結束後整籠清洗。</p>
+        <p>我們不寫「注重清潔」這種話，因為那句話問不出下一個問題。</p>
+      </article>
+      <article>
+        <span class="tagline2">分得開</span>
+        <h3>洗澡與修剪由不同人負責</h3>
+        <p>林美容師負責洗澡與烘乾，吳美容師負責修剪與造型。每一筆預約都會寫清楚今天是誰接手。</p>
+        <p>洗澡那一段不趕時間，怕吹風的改用低速；修剪前先跟你確認長度，剪到一半有疑問就停下來問你。</p>
+      </article>
+      <article>
+        <span class="tagline2">承擔得起</span>
+        <h3>出事的時候我們怎麼回覆</h3>
+        <p>只要在我們手上發生的事，公開回覆一律寫三件：當下發生什麼、我們怎麼處理、之後改了什麼。</p>
+        <p>不寫「是寵物自己不配合」。這條規則寫在這裡，是為了讓你以後可以拿它對照我們。</p>
+      </article>
+    </div>
+    <p class="quote">若服務過程中發現皮膚、耳朵或行為異常，我們會先拍照記錄並通知飼主；必要時建議暫停美容並就醫。</p>
+    <p class="note" style="margin-top:14px">美容師只記錄看得見的外觀徵象（紅腫、結痂、分泌物、行為異常），不做任何疾病判定，也不販售醫療處置。</p>
+  </div>
+</section>
+
+
+<section class="block" id="flow">
+  <div class="sheet">
+    <div class="head">
+      <h2>服務與流程</h2>
+      <p>從進門到接回，中間發生的每一件事</p>
+    </div>
+
+    <ul class="steps">
+      <li><b>01</b><span>到店評估</span><em>先看精神、皮膚與毛況，再談要剪什麼。</em></li>
+      <li><b>02</b><span>拍服務前照片</span><em>打結、紅腫、指甲長度先存證。</em></li>
+      <li><b>03</b><span>洗澡烘乾</span><em>林美容師接手，怕吹風的改用低速。</em></li>
+      <li><b>04</b><span>修剪造型</span><em>吳美容師接手，中途有異常就停下。</em></li>
+      <li><b>05</b><span>拍服務後照片</span><em>與服務前同角度，下次可以對照。</em></li>
+      <li><b>06</b><span>交回與回報</span><em>當面講一次今天看到什麼。</em></li>
+    </ul>
+
+    <h3 class="sub-h">環境透明度：那面玻璃後面長什麼樣</h3>
+    <div class="glass">
+
+      <div class="ph ph-glass">
+      <svg viewBox="0 0 560 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="插圖：美容區的平面剖面，由左到右是等待區、玻璃隔間、洗澡台、烘乾區與休息籠">
+        <rect x="0" y="0" width="560" height="300" fill="#f0ece0"/>
+        <rect x="0" y="0" width="150" height="300" fill="#e4dfd0"/>
+        <text x="20" y="34" font-size="17" fill="#55605a" font-family="sans-serif">等待區</text>
+        <rect x="22" y="180" width="106" height="14" fill="#55605a"/>
+        <rect x="30" y="194" width="8" height="34" fill="#55605a"/>
+        <rect x="112" y="194" width="8" height="34" fill="#55605a"/>
+        <rect x="22" y="152" width="106" height="28" rx="6" fill="#20564a"/>
+
+        <rect x="150" y="0" width="16" height="300" fill="#cfe0dc" stroke="#1b2420" stroke-width="4"/>
+        <line x1="158" y1="24" x2="158" y2="90" stroke="#ffffff" stroke-width="6"/>
+        <text x="182" y="34" font-size="17" fill="#55605a" font-family="sans-serif">洗澡台</text>
+        <text x="332" y="34" font-size="17" fill="#55605a" font-family="sans-serif">烘乾與修剪</text>
+        <text x="470" y="34" font-size="17" fill="#55605a" font-family="sans-serif">休息籠</text>
+
+        <rect x="182" y="150" width="120" height="70" rx="8" fill="#dfe7e2" stroke="#1b2420" stroke-width="4"/>
+        <path d="M212 150 L212 120 L252 120" fill="none" stroke="#55605a" stroke-width="5"/>
+        <path d="M252 120 L252 138" fill="none" stroke="#55605a" stroke-width="5"/>
+        <path d="M248 142 L252 156 L256 142 Z" fill="#9fb0a6"/>
+
+        <rect x="332" y="164" width="112" height="12" fill="#1b2420"/>
+        <rect x="352" y="176" width="8" height="52" fill="#55605a"/>
+        <rect x="416" y="176" width="8" height="52" fill="#55605a"/>
+        <circle cx="388" cy="140" r="24" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+        <circle cx="380" cy="136" r="3" fill="#1b2420"/><circle cx="396" cy="136" r="3" fill="#1b2420"/>
+        <ellipse cx="388" cy="150" rx="11" ry="8" fill="#efece1" stroke="#1b2420" stroke-width="2.5"/>
+        <path d="M368 122 Q358 106 360 126" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+        <path d="M408 122 Q418 106 416 126" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+
+        <rect x="470" y="140" width="70" height="88" fill="none" stroke="#1b2420" stroke-width="4"/>
+        <line x1="488" y1="140" x2="488" y2="228" stroke="#1b2420" stroke-width="2.5"/>
+        <line x1="505" y1="140" x2="505" y2="228" stroke="#1b2420" stroke-width="2.5"/>
+        <line x1="522" y1="140" x2="522" y2="228" stroke="#1b2420" stroke-width="2.5"/>
+
+        <line x1="0" y1="252" x2="560" y2="252" stroke="#c9c2ae" stroke-width="3"/>
+      </svg>
+
+      <img src="images/glass.svg" alt="課程版面示意圖片" onload="this.parentNode.classList.add('loaded')" onerror="this.remove()">
+      </div>
+      <dl>
+        <dt>玻璃隔間</dt><dd>從等待區到美容區只隔一片玻璃，走道側不做遮蔽，站著就看得到洗澡台與美容桌。</dd>
+        <dt>空間分流</dt><dd>洗澡台與烘乾修剪區分開，同一張檯面上一次只有一隻寵物，不會兩隻並排作業。</dd>
+        <dt>休息籠</dt><dd>等待接回的寵物在獨立籠位，籠位之間不直接對望，減少互相吠叫。</dd>
+        <dt>消毒</dt><dd>桌面與工具在每一隻寵物之間用次氯酸水擦拭；籠具每日營業結束後整籠清洗。</dd>
+        <dt>不接的狀況</dt><dd>有明顯皮膚傷口、發燒、近一週內手術，或到店評估判斷過度緊張的，當天不服務、不收費。</dd>
+      </dl>
+    </div>
+
+    <h3 class="sub-h">服務紀錄：服務前、服務中、服務後</h3>
+
+    <div class="shots">
+      <article class="shot" style="margin:0">
+        <svg viewBox="0 0 300 200" role="img" aria-label="插圖：服務前，毛髮糾結的狗側臉">
+          <rect width="300" height="200" fill="#efe9db"/>
+          <g transform="translate(150 108)">
+            <ellipse cx="0" cy="0" rx="52" ry="46" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+            <path d="M-46 -24 Q-66 -54 -62 -8 Q-60 24 -40 14 Z" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+            <path d="M46 -24 Q66 -54 62 -8 Q60 24 40 14 Z" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+            <ellipse cx="0" cy="26" rx="28" ry="20" fill="#efece1" stroke="#1b2420" stroke-width="3"/>
+            <ellipse cx="0" cy="13" rx="9" ry="6.5" fill="#1b2420"/>
+            <circle cx="-20" cy="-10" r="5" fill="#1b2420"/><circle cx="20" cy="-10" r="5" fill="#1b2420"/>
+            <path d="M0 21 Q-9 34 -18 28 M0 21 Q9 34 18 28" fill="none" stroke="#1b2420" stroke-width="3" stroke-linecap="round"/>
+
+            <g fill="none" stroke="#9a4526" stroke-width="3" stroke-linecap="round">
+              <path d="M-52 -34 q-12 -8 -20 2 q10 6 4 16"/>
+              <path d="M52 -34 q12 -8 20 2 q-10 6 -4 16"/>
+              <path d="M-38 40 q-10 12 -24 10 q10 8 4 18"/>
+              <path d="M38 40 q10 12 24 10 q-10 8 -4 18"/>
+              <path d="M-4 -48 q-8 -14 4 -18 q10 6 2 18"/>
+            </g>
+            <circle cx="-44" cy="34" r="11" fill="none" stroke="#9a4526" stroke-width="3" stroke-dasharray="4 4"/>
+          </g>
+        </svg>
+        <div class="cap">
+          <b>服務前</b>
+          <h4>先存下原本的樣子</h4>
+          <p>打結位置、皮膚紅腫、指甲長度都在這一張裡。之後要討論什麼，從這張開始講。</p>
+        </div>
+      </article>
+      <article class="shot" style="margin:0">
+        <svg viewBox="0 0 300 200" role="img" aria-label="插圖：服務中，正在被吹風機烘乾的狗側臉">
+          <rect width="300" height="200" fill="#e7ece6"/>
+          <g transform="translate(160 108)">
+            <ellipse cx="0" cy="0" rx="52" ry="46" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+            <path d="M-46 -24 Q-66 -54 -62 -8 Q-60 24 -40 14 Z" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+            <path d="M46 -24 Q66 -54 62 -8 Q60 24 40 14 Z" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+            <ellipse cx="0" cy="26" rx="28" ry="20" fill="#efece1" stroke="#1b2420" stroke-width="3"/>
+            <ellipse cx="0" cy="13" rx="9" ry="6.5" fill="#1b2420"/>
+            <circle cx="-20" cy="-10" r="5" fill="#1b2420"/><circle cx="20" cy="-10" r="5" fill="#1b2420"/>
+            <path d="M0 21 Q-9 34 -18 28 M0 21 Q9 34 18 28" fill="none" stroke="#1b2420" stroke-width="3" stroke-linecap="round"/>
+          </g>
+          <rect x="16" y="86" width="52" height="30" rx="8" fill="#55605a"/>
+          <rect x="30" y="116" width="16" height="22" rx="4" fill="#55605a"/>
+          <g fill="none" stroke="#20564a" stroke-width="4" stroke-linecap="round" opacity=".8">
+            <path d="M70 92 q22 6 44 0"/>
+            <path d="M70 102 q26 8 52 2"/>
+            <path d="M70 112 q22 10 44 8"/>
+          </g>
+        </svg>
+        <div class="cap">
+          <b>服務中</b>
+          <h4>不用在外面猜</h4>
+          <p>洗完、開始吹乾、開始修剪，各傳一次。你在忙也能知道牠現在走到哪一步。</p>
+        </div>
+      </article>
+      <article class="shot" style="margin:0">
+        <svg viewBox="0 0 300 200" role="img" aria-label="插圖：服務後，毛髮整齊並繫上領巾的狗側臉">
+          <rect width="300" height="200" fill="#e7ece6"/>
+          <g transform="translate(150 104)">
+            <ellipse cx="0" cy="0" rx="52" ry="46" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+            <path d="M-46 -24 Q-66 -54 -62 -8 Q-60 24 -40 14 Z" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+            <path d="M46 -24 Q66 -54 62 -8 Q60 24 40 14 Z" fill="#faf8f2" stroke="#1b2420" stroke-width="4"/>
+            <ellipse cx="0" cy="26" rx="28" ry="20" fill="#efece1" stroke="#1b2420" stroke-width="3"/>
+            <ellipse cx="0" cy="13" rx="9" ry="6.5" fill="#1b2420"/>
+            <circle cx="-20" cy="-10" r="5" fill="#1b2420"/><circle cx="20" cy="-10" r="5" fill="#1b2420"/>
+            <path d="M0 21 Q-9 34 -18 28 M0 21 Q9 34 18 28" fill="none" stroke="#1b2420" stroke-width="3" stroke-linecap="round"/>
+
+            <g fill="none" stroke="#c9c2ae" stroke-width="3" stroke-linecap="round">
+              <path d="M-70 22 q-10 -28 4 -50"/>
+              <path d="M70 22 q10 -28 -4 -50"/>
+            </g>
+
+            <path d="M-26 46 L0 58 L26 46 L20 62 L-20 62 Z" fill="#20564a"/>
+          </g>
+        </svg>
+        <div class="cap">
+          <b>服務後</b>
+          <h4>跟第一張同一個角度</h4>
+          <p>成品照不是拿來炫技的，是拿來跟服務前那張並排看的。下次要不要剪短一點，從這兩張決定。</p>
+          <p class="also">若服務中發現紅腫、結痂、分泌物或行為異常，那張照片與說明也放在這一格：我們先停手、先拍照、先通知你，必要時建議你帶去看獸醫，不在這裡賣任何處置。</p>
+        </div>
+      </article>
+    </div>
+
+
+    <h3 class="sub-h">服務項目與價格</h3>
+
+    <table data-obj="ServiceItem">
+      <caption>體重以到店實秤為準。</caption>
+      <thead>
+        <tr><th scope="col">項目</th><th scope="col">內容</th><th scope="col">價格</th><th scope="col">限制</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-th="項目"><strong>基礎洗澡烘乾</strong></td>
+          <td data-th="內容">洗澡、吹乾、耳道清潔、指甲修剪、腳底毛修剪</td>
+          <td data-th="價格"><span class="money num">小型犬 NT$800</span><br><span class="money num">中型犬 NT$1,100</span><br><span class="money num">大型犬 NT$1,600</span></td>
+          <td data-th="限制" class="limit">需完成三個月內疫苗接種</td>
+        </tr>
+        <tr>
+          <td data-th="項目"><strong>洗澡＋全身修剪</strong></td>
+          <td data-th="內容">基礎洗澡烘乾全部內容，加上全身剪毛與造型修剪</td>
+          <td data-th="價格"><span class="money num">小型犬 NT$1,400</span><br><span class="money num">中型犬 NT$1,900</span><br><span class="money num">大型犬 NT$2,600</span></td>
+          <td data-th="限制" class="limit">八歲以上需先到店評估</td>
+        </tr>
+        <tr>
+          <td data-th="項目"><strong>貓咪洗澡烘乾</strong></td>
+          <td data-th="內容">洗澡、吹乾、指甲修剪</td>
+          <td data-th="價格"><span class="money num">NT$1,200</span></td>
+          <td data-th="限制" class="limit">需先到店評估；會咬人或極度緊張者不接</td>
+        </tr>
+        <tr>
+          <td data-th="項目"><strong>指甲修剪＋耳道清潔</strong></td>
+          <td data-th="內容">只做指甲與耳道，不含洗澡</td>
+          <td data-th="價格"><span class="money num">NT$300</span></td>
+          <td data-th="限制" class="limit">需先電話確認當日時段</td>
+        </tr>
+        <tr>
+          <td data-th="項目"><strong>嚴重打結拆結</strong></td>
+          <td data-th="內容">超過三十分鐘的拆結工時</td>
+          <td data-th="價格"><span class="money num">每 15 分鐘 NT$200</span></td>
+          <td data-th="限制" class="limit">先拍照、先打電話問過你才動手；拆不開會建議剃短，不硬拆</td>
+        </tr>
+        <tr>
+          <td data-th="項目"><strong>藥浴</strong></td>
+          <td data-th="內容">依你提供的獸醫指示使用指定藥劑</td>
+          <td data-th="價格"><span class="money num">加購 NT$400</span></td>
+          <td data-th="限制" class="limit">需自備獸醫開立的藥劑與書面指示；本店不判斷你的寵物需不需要藥浴</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-h">最近可以預約的時段</h3>
+
+    <table data-obj="ScheduleSlot">
+      <caption>名額是那個時段還能接幾組。洗剪全套一次只接一組；上午的洗澡烘乾同一位美容師可以接兩組。
+        送出預約後，這張表與下面的下拉選單會一起更新，額滿的時段就選不到了。</caption>
+      <thead>
+        <tr><th scope="col">日期</th><th scope="col">時段</th><th scope="col">美容師</th><th scope="col">名額</th><th scope="col">狀態</th></tr>
+      </thead>
+      <tbody id="slot-rows"></tbody>
+    </table>
+
+    <h3 class="sub-h">一筆預約會走過的七個狀態</h3>
+
+    <p class="lede">你的預約會照下面這七個狀態一步一步更新。按按看就知道：不是每一顆按鈕隨時都能按，
+      「已完成」與「已取消」之後就不會再變動。</p>
+    <div class="machine" id="machine">
+      <div class="now">
+        <div class="big"><b>目前狀態</b><span id="state-now">已預約</span></div>
+        <p id="state-say">預約已經成立，還沒到店。到店那一刻我們會按「已到店」，你在這一頁就看得到。</p>
+      </div>
+      <div class="track" id="track" aria-hidden="true"></div>
+      <div class="keys" id="keys"></div>
+      <p class="alarm" id="risk-say" hidden>
+        <strong>風險暫停中。</strong>若服務過程中發現皮膚、耳朵或行為異常，我們會先拍照記錄並通知飼主；必要時建議暫停美容並就醫。
+        「建議就醫」不是一個狀態，是我們在這個狀態下會對你做的動作。
+      </p>
+      <div class="log">
+        <b>狀態紀錄</b>
+        <ol id="log-list"><li>建立預約單，狀態為「已預約」。</li></ol>
+      </div>
+    </div>
+    <div class="tools">
+      <button type="button" class="ghost" id="reset-state">回到初始狀態</button>
+      <span class="note">這裡按的只改這個畫面，不會動到你的預約；重新整理就會回到最初。</span>
+    </div>
+
+    <div class="acts" style="margin-top:46px;margin-bottom:0">
+      <a class="btn1" href="#book">填寫預約資料</a>
+      <a class="btn2" href="#rules">先看取消與退款規則</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="block alt" id="book">
+  <div class="sheet">
+    <div class="head">
+      <h2>預約美容</h2>
+      <p>填完這一張，我們才知道今天該怎麼安排</p>
+    </div>
+    <div class="formwrap">
+      <div>
+
+        <form id="book-form">
+          <fieldset data-obj="UserRequest">
+            <legend>你的聯絡方式</legend>
+            <div class="pair">
+              <div class="f">
+                <label for="f-owner">你的姓名 <span class="req">必填</span></label>
+                <input id="f-owner" name="ownerName" type="text" required autocomplete="name">
+              </div>
+              <div class="f">
+                <label for="f-phone">聯絡電話 <span class="req">必填</span>
+                  <span class="hint">手機十碼，09 開頭</span></label>
+                <input id="f-phone" name="phone" type="tel" required pattern="09[0-9]{8}" autocomplete="tel">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset data-obj="PetProfile">
+            <legend>寵物基本資料</legend>
+            <div class="pair">
+              <div class="f">
+                <label for="f-pet">寵物名字 <span class="req">必填</span></label>
+                <input id="f-pet" name="petName" type="text" required>
+              </div>
+              <div class="f">
+                <label for="f-breed">品種 <span class="req">必填</span>
+                  <span class="hint">米克斯也請寫「米克斯」</span></label>
+                <input id="f-breed" name="breed" type="text" required>
+              </div>
+              <div class="f">
+                <label for="f-age">年齡 <span class="req">必填</span>
+                  <span class="hint">幾歲幾個月都可以</span></label>
+                <input id="f-age" name="age" type="text" required>
+              </div>
+              <div class="f">
+                <label for="f-weight">體重（公斤） <span class="req">必填</span>
+                  <span class="hint">大概的數字就好，到店會再秤一次</span></label>
+                <input id="f-weight" name="weight" type="text" required inputmode="decimal">
+              </div>
+              <div class="f">
+                <label for="f-neutered">是否結紮</label>
+                <select id="f-neutered" name="neutered">
+                  <option value="未填">先不填</option>
+                  <option value="已結紮">已結紮</option>
+                  <option value="未結紮">未結紮</option>
+                </select>
+              </div>
+              <div class="f">
+                <label for="f-service">要做的服務 <span class="req">必填</span></label>
+                <select id="f-service" name="service" required>
+                  <option value="">請選擇</option>
+                  <option>基礎洗澡烘乾</option>
+                  <option>洗澡＋全身修剪</option>
+                  <option>貓咪洗澡烘乾</option>
+                  <option>指甲修剪＋耳道清潔</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset data-obj="HealthNote">
+            <legend>健康狀況</legend>
+            <p class="note" style="margin:0 0 18px">
+              這一段是你告訴我們的既往狀況，不是我們的判斷。我們只記錄，不做任何疾病判定。</p>
+            <div class="f">
+              <label for="f-skin">皮膚與毛況
+                <span class="hint">例如：背上有一塊會癢、上次洗完有紅點</span></label>
+              <textarea id="f-skin" name="skinNote"></textarea>
+            </div>
+            <div class="pair">
+              <div class="f">
+                <label for="f-allergy">過敏
+                  <span class="hint">對哪種清潔劑或食物過敏</span></label>
+                <input id="f-allergy" name="allergy" type="text">
+              </div>
+              <div class="f">
+                <label for="f-surgery">近期手術
+                  <span class="hint">一個月內開過刀請務必填</span></label>
+                <input id="f-surgery" name="surgery" type="text">
+              </div>
+            </div>
+            <div class="f">
+              <label for="f-history">你要告知我們的既往病史
+                <span class="hint">例如心臟病、癲癇。這欄是你的告知，我們照著調整流程，不做診斷。</span></label>
+              <input id="f-history" name="history" type="text">
+            </div>
+          </fieldset>
+
+          <fieldset data-obj="BehaviorNote">
+            <legend>行為特徵</legend>
+            <p class="note" style="margin:0 0 14px">勾起來的項目會直接影響我們排哪一位美容師、用哪一種工具。</p>
+            <div class="checks">
+              <label class="chk"><input type="checkbox" name="behavior" value="怕吹風">怕吹風</label>
+              <label class="chk"><input type="checkbox" name="behavior" value="會咬人">會咬人或試圖咬人</label>
+              <label class="chk"><input type="checkbox" name="behavior" value="分離焦慮">分離焦慮，離開飼主會叫</label>
+              <label class="chk"><input type="checkbox" name="behavior" value="需戴口罩">需要戴口罩才能作業</label>
+              <label class="chk"><input type="checkbox" name="behavior" value="曾有不良經驗">曾經在美容時受過驚嚇或受傷</label>
+              <label class="chk"><input type="checkbox" name="behavior" value="怕剪指甲">特別怕剪指甲</label>
+            </div>
+            <div class="f" style="margin-top:20px">
+              <label for="f-note">其他想先說的
+                <span class="hint">任何你覺得我們應該先知道的事</span></label>
+              <textarea id="f-note" name="note"></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset data-obj="ScheduleSlot">
+            <legend>時段</legend>
+            <div class="f">
+              <label for="f-slot">要約哪一個時段 <span class="req">必填</span>
+                <span class="hint">額滿的時段不會出現在這裡</span></label>
+              <select id="f-slot" name="slot" required></select>
+            </div>
+          </fieldset>
+
+          <fieldset data-obj="RiskConsent">
+            <legend>風險告知與同意</legend>
+            <div class="pair">
+              <div class="f">
+                <label for="f-em-name">緊急聯絡人 <span class="req">必填</span>
+                  <span class="hint">當天聯絡不到你時我們打給誰</span></label>
+                <input id="f-em-name" name="emergencyName" type="text" required>
+              </div>
+              <div class="f">
+                <label for="f-em-phone">緊急聯絡電話 <span class="req">必填</span></label>
+                <input id="f-em-phone" name="emergencyPhone" type="tel" required>
+              </div>
+            </div>
+            <div class="checks">
+              <label class="chk wide">
+                <input type="checkbox" name="consentRisk" required>
+                <span><span class="req">必填　</span>我已據實告知上面的健康與行為狀況，並理解：高齡、疾病、過度緊張或服務中發現異常時，美容可能被暫停；暫停時你們會先拍照並通知我。</span>
+              </label>
+              <label class="chk wide">
+                <input type="checkbox" name="photoConsent">
+                <span>我同意店家把我家寵物的服務前後照片用在店內與網站的服務案例（不勾也完全不影響預約）。</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="blocked" id="blocked" hidden></div>
+          <button class="send" type="submit">送出預約資料</button>
+          <p class="note" style="margin-top:14px">送出後不會扣款，費用一律到店服務完成後結算。</p>
+        </form>
+
+
+        <div class="done" id="done" hidden>
+          <h4 id="done-title">預約完成，時段已經保留給你</h4>
+          <ul>
+            <li>你選的時段已經保留，<strong>上面的時段表也已經扣掉這一組名額</strong>。</li>
+            <li>服務前一天我們會用電話或 LINE 提醒你，順便確認牠當天的精神與皮膚狀況。</li>
+            <li>要改期或取消，請在前一天 18:00 前來電或用 LINE 說一聲，免費。</li>
+            <li>下面是這次填的資料，到店那天我們照著這一份安排。</li>
+          </ul>
+          <dl id="echo"></dl>
+        </div>
+      </div>
+
+      <aside class="side">
+        <h3>為什麼要問這麼多</h3>
+        <div class="why">只留姓名和電話，我們就只能在你把牠交出來之後才發現牠怕吹風。上面每一欄都有它要影響的那個決定，沒有一欄是拿來填版面的。</div>
+        <p><strong>品種、年齡、體重</strong>決定用哪一台吹風機、剪多長、排多久。</p>
+        <p><strong>皮膚與過敏</strong>決定用哪一瓶清潔劑，也決定今天到底能不能洗。</p>
+        <p><strong>既往病史</strong>是你的告知，我們照著調整節奏——例如心臟不好就不連續作業太久。我們不會拿它來判斷牠有什麼病。</p>
+        <p><strong>行為特徵</strong>決定今天由誰接手、要不要戴口罩、需不需要兩個人一起。</p>
+        <p><strong>緊急聯絡人</strong>是為了那個我們都不希望發生的下午。</p>
+        <p class="note">健康與行為備註只用在這次服務的安排與紀錄，不會拿去做任何行銷用途。</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="block" id="rules" data-obj="Policy">
+  <div class="sheet">
+    <div class="head">
+      <h2>價格與規則</h2>
+      <p>先寫清楚，就不用在門口爭執</p>
+    </div>
+    <div class="rules">
+      <article>
+        <h3>取消與改期</h3>
+        <p>預約前一天 18:00 前來電或用 LINE 說一聲，免費改期或取消。</p>
+        <p>當天取消不收費；但同一個月第三次當天取消之後，之後改成電話預約。</p>
+      </article>
+      <article>
+        <h3>退款</h3>
+        <p>本站不收線上訂金、不做線上付款，費用一律到店服務完成後結算。</p>
+        <p>到店評估後如果我們判斷今天不適合服務，直接請你帶回，不收任何費用。</p>
+      </article>
+      <article>
+        <h3>隱私</h3>
+        <p>健康與行為備註只用於這次服務的安排與服務紀錄，不作行銷用途，也不轉給第三方。</p>
+        <p>服務前後照片沒有在表單裡勾同意，就不會出現在店內或網站上。</p>
+      </article>
+      <article>
+        <h3>服務邊界</h3>
+        <p>美容師只記錄看得見的外觀徵象並建議你就醫，不做任何疾病判定。</p>
+        <p>不提供超音波洗牙、深層肛門腺引流這類獸醫醫療行為，也不推銷任何號稱洗了就會好的護理方案。</p>
+      </article>
+      <article>
+        <h3>價格怎麼算</h3>
+        <p>價格依體重級距，以到店實秤為準。拆結超過三十分鐘才另計，而且一定先打電話問過你。</p>
+        <p>不會在你不在場的時候先做再算錢。</p>
+      </article>
+      <article>
+        <h3>發現異常的時候</h3>
+        <p>先停手、先拍照、先通知你，必要時建議暫停美容並就醫。</p>
+        <p>我們不會在那通電話裡推銷任何護理方案——那是獸醫的事，不是我們的事。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="block alt" id="contact">
+  <div class="sheet">
+    <div class="head">
+      <h2>聯絡我們</h2>
+      <p>約不到時段、想先來看看店，都可以直接打電話</p>
+    </div>
+    <div class="contact">
+      <dl>
+        <dt>電話</dt><dd><a href="tel:0200000000" class="num">02-0000-0000</a></dd>
+        <dt>LINE</dt><dd>官方帳號 @example-grooming</dd>
+        <dt>Email</dt><dd><a href="mailto:hello@example.com">hello@example.com</a></dd>
+        <dt>地址</dt><dd>台北市文山區</dd>
+        <dt>交通</dt><dd>捷運站步行約 7 分鐘，店門口可臨停約三分鐘上下車。</dd>
+        <dt>營業</dt><dd>週二至週日 10:00–19:00，週一公休。當日最後收件 17:00。</dd>
+        <dt>怎麼回你</dt><dd>線上送出就算約成，時段直接保留給你；<strong>服務前一天</strong>我們會用電話或 LINE 提醒。</dd>
+      </dl>
+      <div class="mapbox">
+        <svg viewBox="0 0 420 260" role="img" aria-label="插圖：店面位置的簡化街道圖，主要道路與巷口的相對位置">
+          <rect width="420" height="260" fill="#eee9dc"/>
+          <rect x="0" y="108" width="420" height="34" fill="#dcd5c3"/>
+          <rect x="248" y="0" width="26" height="260" fill="#dcd5c3"/>
+          <line x1="0" y1="125" x2="420" y2="125" stroke="#f7f4ea" stroke-width="3" stroke-dasharray="14 12"/>
+          <line x1="261" y1="0" x2="261" y2="260" stroke="#f7f4ea" stroke-width="3" stroke-dasharray="14 12"/>
+          <rect x="40" y="40" width="76" height="52" fill="#d3ccb9"/>
+          <rect x="150" y="30" width="62" height="62" fill="#d3ccb9"/>
+          <rect x="300" y="46" width="86" height="46" fill="#d3ccb9"/>
+          <rect x="60" y="164" width="70" height="60" fill="#d3ccb9"/>
+          <rect x="300" y="170" width="84" height="54" fill="#d3ccb9"/>
+
+          <rect x="160" y="158" width="72" height="66" fill="#20564a"/>
+          <circle cx="196" cy="191" r="13" fill="#f4f1e9"/>
+          <circle cx="196" cy="191" r="5" fill="#20564a"/>
+          <text x="152" y="246" font-size="17" fill="#1b2420" font-family="sans-serif">小毛屋寵物美容</text>
+          <text x="12" y="100" font-size="16" fill="#4a544e" font-family="sans-serif">主要道路</text>
+          <text x="282" y="26" font-size="16" fill="#4a544e" font-family="sans-serif">巷口</text>
+        </svg>
+        <p>店在主要道路與巷口的轉角。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="sheet">
+    <div>
+      <h3>小毛屋寵物美容</h3>
+      <p>台北市文山區</p>
+      <p>週二至週日 10:00–19:00｜週一公休</p>
+      <p class="num">02-0000-0000</p>
+    </div>
+    <div>
+      <h3>服務</h3>
+      <p>基礎洗澡烘乾</p>
+      <p>洗澡＋全身修剪</p>
+      <p>貓咪洗澡烘乾</p>
+      <p>指甲修剪＋耳道清潔</p>
+    </div>
+    <div>
+      <h3>規則</h3>
+      <p><a href="#rules">取消與改期</a></p>
+      <p><a href="#rules">退款與結算</a></p>
+      <p><a href="#rules">隱私與照片同意</a></p>
+      <p><a href="#rules">服務邊界</a></p>
+    </div>
+    <p class="fine">
+      價格與時段以店家實際公告為準；改期或取消請在預約前一天 18:00 前來電或用 LINE 告知。<br>
+      美容服務不是醫療行為：本站的任何文字都不構成疾病診斷或治療建議，寵物的健康問題請找獸醫。
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ──────────────────────────────────────────────────────────────
+   1) 預約狀態機（允許轉移表）
+   2) 時段名額（ScheduleSlot）：剩餘 = 名額 − 已預約
+   3) 表單送出：重複預約擋下、名額真的減、確認訊息逐欄回顯
+   全部只跑在這個分頁的記憶體裡：沒有 localStorage、沒有 fetch。
+   ────────────────────────────────────────────────────────────── */
+
+/* ── 七個狀態與允許的轉移 ── */
+/* 順序跟上面那條軌一致：主線五站，再接兩條支線狀態 */
+var STATES = ["已預約","已到店","服務中","等待接回","已完成","風險暫停","已取消"];
+var FLOW = {
+  "已預約":   ["已到店","已取消"],
+  "已到店":   ["服務中","已取消"],
+  "服務中":   ["等待接回","風險暫停"],
+  "等待接回": ["已完成"],
+  "風險暫停": ["服務中","已取消"],
+  "已完成":   [],   /* 終態，不可再轉移 */
+  "已取消":   []    /* 終態，不可再轉移 */
+};
+var SAY = {
+  "已預約":"預約已經成立，還沒到店。到店那一刻我們會按「已到店」，你在這一頁就看得到。",
+  "已到店":"人跟狗都到了，正在做服務前的檢查與拍照，還沒開始洗。",
+  "服務中":"正在洗或正在剪。這段時間我們會傳一到兩張照片給你。",
+  "等待接回":"做完了，正在獨立籠位休息等你來接。健康回報單也整理好了。",
+  "已完成":"你已經把牠接回去了。這一筆單到這裡結束，不會再變動。",
+  "已取消":"這一筆預約已經取消，時段已經釋出。要再約請重新填一次表單。",
+  "風險暫停":"我們在服務中看到需要先停下來的狀況，已經拍照並打電話給你。等你回覆再決定要繼續還是取消。"
+};
+/* 主線六站＋一條支線，用來畫上面那條軌 */
+var TRACK = [
+  {k:"已預約"},{k:"已到店"},{k:"服務中"},{k:"等待接回"},{k:"已完成"},
+  {k:"風險暫停",branch:true},{k:"已取消",branch:true}
+];
+
+var state = "已預約";
+var logs = ["建立預約單，狀態為「已預約」。"];
+
+var $ = function(id){ return document.getElementById(id); };
+
+function stamp(){
+  var d = new Date();
+  var hh = ("0"+d.getHours()).slice(-2), mm = ("0"+d.getMinutes()).slice(-2);
+  return hh + ":" + mm;
+}
+
+function drawMachine(){
+  $("state-now").textContent = state;
+  $("state-say").textContent = SAY[state];
+  var box = $("machine");
+  box.className = "machine" + (state === "風險暫停" ? " risk" :
+                  (state === "已完成" || state === "已取消") ? " over" : "");
+  $("risk-say").hidden = (state !== "風險暫停");
+
+  /* 軌：目前站點打亮，主線上已經走過的也打亮 */
+  var main = ["已預約","已到店","服務中","等待接回","已完成"];
+  var idx = main.indexOf(state);
+  var track = $("track");
+  track.innerHTML = "";
+  TRACK.forEach(function(t){
+    var el = document.createElement("span");
+    var cls = "st";
+    if (t.branch) cls += " branch";
+    if (t.k === state) cls += " on";
+    else if (idx >= 0 && main.indexOf(t.k) >= 0 && main.indexOf(t.k) < idx) cls += " past";
+    el.className = cls;
+    el.textContent = t.k;
+    track.appendChild(el);
+  });
+
+  /* 七顆鍵固定都在，不能轉的就 disabled —— 這樣「不能亂跳」是看得到的 */
+  var keys = $("keys");
+  keys.innerHTML = "";
+  STATES.forEach(function(s){
+    if (s === state) return;
+    var b = document.createElement("button");
+    b.type = "button";
+    var ok = FLOW[state].indexOf(s) >= 0;
+    b.disabled = !ok;
+    b.className = (s === "風險暫停" || s === "已取消") ? "risky" : "";
+    b.textContent = "改成「" + s + "」";
+    if (!ok) b.title = "從「" + state + "」不能直接轉到「" + s + "」";
+    b.addEventListener("click", function(){ go(s); });
+    keys.appendChild(b);
+  });
+
+  var ol = $("log-list");
+  ol.innerHTML = "";
+  logs.forEach(function(t){
+    var li = document.createElement("li");
+    li.textContent = t;
+    ol.appendChild(li);
+  });
+}
+
+function go(next){
+  if (FLOW[state].indexOf(next) < 0) return;   /* 第二道鎖：就算按鈕被改過也轉不了 */
+  var from = state;
+  state = next;
+  logs.push(stamp() + "　" + from + " → " + next +
+            (next === "風險暫停" ? "（已拍照並通知飼主）" : ""));
+  drawMachine();
+}
+
+$("reset-state").addEventListener("click", function(){
+  state = "已預約";
+  logs = ["建立預約單，狀態為「已預約」。"];
+  drawMachine();
+});
+
+/* ── 時段：名額與狀態算出來，不寫死 ── */
+var SLOTS = [
+  {id:"s1", date:"10 月 3 日（六）", time:"10:00–12:30", groomer:"林美容師", job:"洗澡烘乾", cap:2, booked:0},
+  {id:"s2", date:"10 月 3 日（六）", time:"14:00–17:00", groomer:"吳美容師", job:"洗剪全套", cap:1, booked:1},
+  {id:"s3", date:"10 月 4 日（日）", time:"10:00–12:30", groomer:"林美容師", job:"洗澡烘乾", cap:1, booked:0},
+  {id:"s4", date:"10 月 4 日（日）", time:"14:00–17:00", groomer:"吳美容師", job:"洗剪全套", cap:1, booked:0},
+  {id:"s5", date:"10 月 6 日（二）", time:"10:00–12:30", groomer:"吳美容師", job:"貓咪洗澡", cap:1, booked:0},
+  {id:"rest", date:"10 月 5 日（一）", time:"全日", groomer:"—", job:"—", cap:0, booked:0, rest:true}
+];
+var booked = [];   /* 送出成功的預約：{slot, name, phone} */
+
+function label(s){ return s.date + " " + s.time + "　" + s.groomer + "（" + s.job + "）"; }
+function left(s){ return s.cap - s.booked; }
+
+function drawSlots(){
+  var tb = $("slot-rows");
+  tb.innerHTML = "";
+  SLOTS.forEach(function(s){
+    var tr = document.createElement("tr");
+    var full = !s.rest && left(s) <= 0;
+    if (s.rest || full) tr.className = "off";
+    var cells = [
+      ["日期", s.date],
+      ["時段", s.time],
+      ["美容師", s.rest ? "—" : s.groomer + "（" + s.job + "）"],
+      ["名額", s.rest ? "—" : (left(s) + " / " + s.cap)]
+    ];
+    cells.forEach(function(c){
+      var td = document.createElement("td");
+      td.setAttribute("data-th", c[0]);
+      td.textContent = c[1];
+      tr.appendChild(td);
+    });
+    var td = document.createElement("td");
+    td.setAttribute("data-th","狀態");
+    var pill = document.createElement("span");
+    pill.className = "pill" + (s.rest ? " rest" : full ? " full" : "");
+    pill.textContent = s.rest ? "週一公休" : full ? "已額滿" : "可預約";
+    td.appendChild(pill);
+    tr.appendChild(td);
+    tb.appendChild(tr);
+  });
+
+  /* 下拉選單只留還有名額的時段 */
+  var sel = $("f-slot");
+  var keep = sel.value;
+  sel.innerHTML = "";
+  var first = document.createElement("option");
+  first.value = ""; first.textContent = "請選擇";
+  sel.appendChild(first);
+  SLOTS.forEach(function(s){
+    if (s.rest || left(s) <= 0) return;
+    var o = document.createElement("option");
+    o.value = s.id; o.textContent = s.date.replace(/ /g, "") + " " + s.time + "・" + s.job;
+    sel.appendChild(o);
+  });
+  if (keep && sel.querySelector('option[value="' + keep + '"]')) sel.value = keep;
+}
+
+/* ── 送出 ── */
+var form = $("book-form");
+form.addEventListener("submit", function(e){
+  e.preventDefault();   /* 在頁面上處理，不送伺服器 */
+  var d = new FormData(form);
+  var slotId = d.get("slot");
+  var s = SLOTS.filter(function(x){ return x.id === slotId; })[0];
+  var name = (d.get("ownerName") || "").trim();
+  var phone = (d.get("phone") || "").trim();
+  var warn = $("blocked");
+
+  /* 防線一：同一個人、同一個時段，第二次擋下來 */
+  var dup = booked.some(function(b){
+    return b.slot === slotId && b.name === name && b.phone === phone;
+  });
+  if (dup) {
+    warn.hidden = false;
+    warn.textContent = "這個時段已經有一筆用相同姓名與電話的預約了。同一組客人同一個時段只能約一次，" +
+      "再送一次並不會多留一個位子。要改時間請先打 02-0000-0000 取消原本那筆。";
+    $("done").hidden = true;
+    warn.scrollIntoView({block:"center"});
+    return;
+  }
+  /* 防線二：名額已經沒了就不再收，名額不會變成負的 */
+  if (!s || left(s) <= 0) {
+    warn.hidden = false;
+    warn.textContent = "這個時段剛剛被約走了，請在上面重新挑一個還有名額的時段。";
+    $("done").hidden = true;
+    drawSlots();
+    warn.scrollIntoView({block:"center"});
+    return;
+  }
+
+  warn.hidden = true;
+  s.booked += 1;
+  booked.push({slot:slotId, name:name, phone:phone});
+  drawSlots();
+
+  var behaviors = d.getAll("behavior");
+  var rows = [
+    ["飼主", name],
+    ["聯絡電話", phone],
+    ["寵物", (d.get("petName")||"") + "（" + (d.get("breed")||"") + "）"],
+    ["年齡體重", (d.get("age")||"") + "，" + (d.get("weight")||"") + " 公斤，" + (d.get("neutered")||"")],
+    ["服務項目", d.get("service")||""],
+    ["時段", label(s)],
+    ["皮膚與毛況", (d.get("skinNote")||"").trim() || "（未填）"],
+    ["過敏／手術", ((d.get("allergy")||"").trim() || "無") + "／" + ((d.get("surgery")||"").trim() || "無")],
+    ["既往病史告知", (d.get("history")||"").trim() || "（未填）"],
+    ["行為特徵", behaviors.length ? behaviors.join("、") : "（未勾選）"],
+    ["其他備註", (d.get("note")||"").trim() || "（未填）"],
+    ["緊急聯絡", (d.get("emergencyName")||"") + "　" + (d.get("emergencyPhone")||"")],
+    ["風險同意", d.get("consentRisk") ? "已勾選，同意時間 " + stamp() : "未勾選"],
+    ["照片使用", d.get("photoConsent") ? "同意作為服務案例" : "不同意，照片只給飼主本人"]
+  ];
+  var dl = $("echo");
+  dl.innerHTML = "";
+  rows.forEach(function(r){
+    var dt = document.createElement("dt");
+    var dd = document.createElement("dd");
+    dt.textContent = r[0];
+    /* 用 textContent 而不是 innerHTML：飼主打進來的字一律當成文字，不當成 HTML。
+       也就是顯示前先逸出。 */
+    dd.textContent = r[1];
+    dl.appendChild(dt); dl.appendChild(dd);
+  });
+  $("done").hidden = false;
+  $("done").scrollIntoView({block:"start"});
+});
+
+drawSlots();
+drawMachine();
+</script>
+<style id="site-audit-fix">
+img,video{max-width:100%}
+select{max-width:100%;text-overflow:ellipsis}
+a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-space:nowrap}
+.done dl dd{word-break:keep-all;overflow-wrap:anywhere}
+label[for=f-history] .hint{word-break:keep-all;overflow-wrap:anywhere}
+@media (max-width:760px){
+  .sheet{padding-left:20px;padding-right:20px}
+  .keys{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .keys button{padding:12px 10px;font-size:17px}
+  .bar nav{gap:0 14px;flex-wrap:nowrap}
+  .bar nav a{white-space:nowrap;font-size:16px}
+  .bar nav a.key{padding:9px 12px}
+  .bar nav a[href="#trust"]{display:none}
+  #f-slot{font-size:15px}
+}
+</style>
+</body>
+</html>

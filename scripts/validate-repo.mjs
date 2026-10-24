@@ -115,7 +115,7 @@ async function validateManifest() {
     return;
   }
 
-  const validStates = new Set(["published", "preparing", "planned"]);
+  const validStates = new Set(["published", "prepared", "preparing", "planned"]);
   const numbers = new Set();
   const slugs = new Set();
 
@@ -133,7 +133,7 @@ async function validateManifest() {
       report(`EP${expectedNumber} 缺少標題、說明或有效狀態。`);
     }
 
-    if (episode.state !== "published") {
+    if (episode.state !== "published" && episode.state !== "prepared") {
       continue;
     }
 
@@ -153,7 +153,16 @@ async function validateManifest() {
     if (!episode.image || !(await exists(episode.image))) {
       report(`EP${expectedNumber} 的首頁預覽圖不存在：${episode.image || "未設定"}`);
     }
-    if (!episode.downloadUrl?.startsWith("https://github.com/")) {
+    if (episode.state === "prepared") {
+      // Prepared packages must work locally; never advertise a release that does not exist.
+      if (!/^downloads\/ep\d{2}-[a-z0-9-]+\.zip$/.test(episode.downloadUrl || "")
+          || !(await exists(episode.downloadUrl))) {
+        report(`EP${expectedNumber} 缺少本機原始碼下載檔。`);
+      }
+      if (!(await exists(path.join("episodes", episode.slug, "index.html")))) {
+        report(`EP${expectedNumber} 缺少可閱讀的教學入口。`);
+      }
+    } else if (!episode.downloadUrl?.startsWith("https://github.com/")) {
       report(`EP${expectedNumber} 缺少 GitHub Release 下載連結。`);
     }
 

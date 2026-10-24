@@ -1,0 +1,90 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP15 諮商預約網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP15 諮商預約網站</h1><p>尊重敏感情境、資料邊界與求助者的選擇。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep15-counseling.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP15 施工規格</h1>
+<p>本規格整理自《網頁設計》第 15 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<h2>網站目標</h2>
+<p>諮商師介紹、服務邊界、隱私說明、預約與取消規則</p>
+<h2>使用者情境</h2>
+<p>使用者第一次進入網站時，需要在手機上快速判斷這個服務是否適合自己，並能完成主要行動：讓來談者理解諮商師、服務邊界、隱私政策與預約方式。</p>
+<h2>必要區塊</h2>
+<ol>
+<li>Hero 首頁：名稱、定位、主張、主要行動按鈕</li>
+<li>信任證據：真實照片、資歷、評論、規則或案例</li>
+<li>核心流程：讓來談者理解諮商師、服務邊界、隱私政策與預約方式</li>
+<li>資料表單：姓名、聯絡方式、情境欄位、備註</li>
+<li>規則說明：價格、限制、取消或退款規則</li>
+<li>聯絡與後續：電話、LINE、Email、地圖或確認訊息</li>
+</ol>
+<h2>資料欄位</h2>
+<p>請在頁面中示範下列資料結構（對應表 15-3 的七類資料物件）：</p>
+<ol>
+<li>TherapistProfile：諮商師姓名、證照、取向、服務對象、不可服務範圍</li>
+<li>ServiceType：個別諮商、伴侶諮商、線上諮商、初談</li>
+<li>AvailabilitySlot：日期、時段、服務方式、是否可預約</li>
+<li>IntakeRequest：稱呼、聯絡方式、偏好時段、簡短需求</li>
+<li>PrivacyConsent：保密說明、例外情況、資料保存期限、同意時間</li>
+<li>CrisisResource：緊急電話、急診、生命線、張老師等資源</li>
+<li>CancellationRule：取消期限、改期次數、費用規則</li>
+</ol>
+<h2>設計要求</h2>
+<ol>
+<li>請使用清楚的 HTML結構與 CSS，做成單一 index.html。</li>
+<li>請使用 RWD，手機、平板、桌機都要可讀。</li>
+<li>請避免假評價、假資歷、假價格或過度承諾。</li>
+<li>表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。</li>
+<li>預約表單只收必要欄位（稱呼、聯絡方式、偏好時段、簡短需求），不要病史或詳細個人故事。</li>
+</ol>
+<h2>本練習包的素材</h2>
+<p>照片版位使用原創 SVG 示意圖，保留分類、燈箱與版面操作；實際照片由學員另備合法素材。來源記錄見 <code>ATTRIBUTION.md</code>。</p>
+</section>
+<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP15 對話提示卡</h1>
+<p>以下為第 15 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
+<h2>教材提示詞</h2>
+<pre><code class="language-text">你是網頁設計老師與前端工程師。
+請幫我做成一個可以直接打開的「諮商預約網站」單頁原型。
+
+【網站目標】
+諮商師介紹、服務邊界、隱私說明、預約與取消規則
+
+【使用者情境】
+使用者第一次進入網站時，需要在手機上快速判斷這個服務是否適合自己，並能完成主要行動：讓來談者理解諮商師、服務邊界、隱私政策與預約方式。
+
+【必要區塊】
+1. Hero 首頁：名稱、定位、主張、主要行動按鈕
+2. 信任證據：真實照片、資歷、評論、規則或案例
+3. 核心流程：讓來談者理解諮商師、服務邊界、隱私政策與預約方式
+4. 資料表單：姓名、聯絡方式、情境欄位、備註
+5. 規則說明：價格、限制、取消或退款規則
+6. 聯絡與後續：電話、LINE、Email、地圖或確認訊息
+
+【資料欄位】
+請在頁面中示範下列資料結構（對應表 15-3 的七類資料物件）：
+1. TherapistProfile：諮商師姓名、證照、取向、服務對象、不可服務範圍
+2. ServiceType：個別諮商、伴侶諮商、線上諮商、初談
+3. AvailabilitySlot：日期、時段、服務方式、是否可預約
+4. IntakeRequest：稱呼、聯絡方式、偏好時段、簡短需求
+5. PrivacyConsent：保密說明、例外情況、資料保存期限、同意時間
+6. CrisisResource：緊急電話、急診、生命線、張老師等資源
+7. CancellationRule：取消期限、改期次數、費用規則
+
+【設計要求】
+1. 請使用清楚的 HTML結構與 CSS，做成單一 index.html。
+2. 請使用 RWD，手機、平板、桌機都要可讀。
+3. 請避免假評價、假資歷、假價格或過度承諾。
+4. 表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。
+5. 預約表單只收必要欄位（稱呼、聯絡方式、偏好時段、簡短需求），不要病史或詳細個人故事。
+</code></pre>
+</section>
+<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP15 驗收清單</h1>
+<h2>逐項檢查</h2>
+<p>AI 產出後，不要只看第一眼漂不漂亮。請依序檢查：</p>
+<ul>
+<li>[ ] 首頁第一屏是否說清楚服務適合誰與下一步。</li>
+<li>[ ] 表單是否只收預約必要資料，沒有要求填寫過度敏感內容。</li>
+<li>[ ] 保密義務與例外情況是否白話說明。</li>
+<li>[ ] 收到的最少資料也要安全：顯示前逸出、查詢用參數化——見第 17 講。</li>
+<li>[ ] 是否清楚列出危機資源，並說明線上表單不適合立即危機、服務邊界說清楚（諮商不是急診、不是醫療診斷）。</li>
+<li>[ ] 手機版是否能完成主要行動，且文字與按鈕不重疊。</li>
+</ul>
+<h2>主動測試</h2>
+<p>這講是<strong>預約站</strong>——有時段、有狀態、有取消規則，看不見的錯更多。最招牌的一個觸發：<strong>用 <code>Ctrl/⌘+F</code> 在頁面上逐字核對危機電話（119、1925、1995、1980），看 AI 有沒有抄錯一位數、湊出不存在的專線。</strong></p>
+<p>記住：<strong>AI 是被告不是法官，畫面才是證據。</strong> 電話真假、表單收了什麼，都是畫面說了算，不能信 AI 嘴上說「都對」。</p>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>

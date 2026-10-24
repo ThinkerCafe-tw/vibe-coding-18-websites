@@ -1,0 +1,90 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP02 健身房網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP02 健身房網站</h1><p>資料一改，上一輪成功也要跟著撤回。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep02-gym.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP02 施工規格</h1>
+<p>本規格整理自《網頁設計》第 2 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<h2>網站目標</h2>
+<p>單頁健身房網站，強調視覺風格、教練信任、課程方案、首次體驗流程與透明退費。</p>
+<h2>使用者情境</h2>
+<p>使用者第一次進入網站時，需要在手機上快速判斷這個服務是否適合自己，並能完成主要行動：預約首次體驗、查看課程方案、理解退費規則。</p>
+<h2>必要區塊</h2>
+<ol>
+<li>Hero 首頁：場館名稱、定位、主張、首次體驗按鈕</li>
+<li>教練團隊：姓名、證照、專長、適合族群</li>
+<li>課程方案：團課、私教、月費、年費、入會費</li>
+<li>體驗流程：預約、抵達、器材介紹、不強迫推銷承諾</li>
+<li>空間設備：器材、尖峰提醒、更衣室、女性友善區</li>
+<li>退費與合約：月繳、年繳、終止規則、客服窗口</li>
+</ol>
+<h2>資料欄位</h2>
+<p>請在頁面中示範下列資料結構：</p>
+<ol>
+<li>GymProfile：場館名稱、地區、定位、營業時間</li>
+<li>Coach：姓名、證照、專長、適合對象</li>
+<li>TrainingPlan：方案名稱、價格、期間、限制、退費規則</li>
+<li>TrialBooking：姓名、聯絡方式、時段、目標、是否首次</li>
+<li>FacilityFeature：設備名稱、說明、是否提供</li>
+<li>TrustEvidence：學員見證、照片來源、評論摘要</li>
+</ol>
+<h2>設計要求</h2>
+<ol>
+<li>請使用清楚的 HTML結構與 CSS，建成一個可以直接打開的單一 index.html，CSS 寫在同一個檔案裡。</li>
+<li>請使用 RWD（響應式網頁設計），用 CSS media query 讓手機、平板、桌機都可讀、可點。</li>
+<li>請避免假評價、假資歷、假價格或過度承諾。</li>
+<li>表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。</li>
+<li>全文用繁體中文；價格、教練資歷、學員見證等以示意內容佔位，並用 HTML 註解標出日後須替換為真實資料的欄位。</li>
+</ol>
+<h2>本練習包的素材</h2>
+<p>照片版位使用原創 SVG 示意圖，保留分類、燈箱與版面操作；實際照片由學員另備合法素材。來源記錄見 <code>ATTRIBUTION.md</code>。</p>
+</section>
+<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP02 對話提示卡</h1>
+<p>以下為第 2 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
+<h2>教材提示詞</h2>
+<pre><code class="language-text">你是網頁設計老師與前端工程師。
+請幫我建成一個「健身房網站」的單頁網站原型，做成一個可以直接打開的單一 index.html。
+
+【網站目標】
+單頁健身房網站，強調視覺風格、教練信任、課程方案、首次體驗流程與透明退費。
+
+【使用者情境】
+使用者第一次進入網站時，需要在手機上快速判斷這個服務是否適合自己，並能完成主要行動：預約首次體驗、查看課程方案、理解退費規則。
+
+【必要區塊】
+1. Hero 首頁：場館名稱、定位、主張、首次體驗按鈕
+2. 教練團隊：姓名、證照、專長、適合族群
+3. 課程方案：團課、私教、月費、年費、入會費
+4. 體驗流程：預約、抵達、器材介紹、不強迫推銷承諾
+5. 空間設備：器材、尖峰提醒、更衣室、女性友善區
+6. 退費與合約：月繳、年繳、終止規則、客服窗口
+
+【資料欄位】
+請在頁面中示範下列資料結構：
+1. GymProfile：場館名稱、地區、定位、營業時間
+2. Coach：姓名、證照、專長、適合對象
+3. TrainingPlan：方案名稱、價格、期間、限制、退費規則
+4. TrialBooking：姓名、聯絡方式、時段、目標、是否首次
+5. FacilityFeature：設備名稱、說明、是否提供
+6. TrustEvidence：學員見證、照片來源、評論摘要
+
+【設計要求】
+1. 請使用清楚的 HTML結構與 CSS，建成一個可以直接打開的單一 index.html，CSS 寫在同一個檔案裡。
+2. 請使用 RWD（響應式網頁設計），用 CSS media query 讓手機、平板、桌機都可讀、可點。
+3. 請避免假評價、假資歷、假價格或過度承諾。
+4. 表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。
+5. 全文用繁體中文；價格、教練資歷、學員見證等以示意內容佔位，並用 HTML 註解標出日後須替換為真實資料的欄位。
+</code></pre>
+</section>
+<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP02 驗收清單</h1>
+<h2>逐項檢查</h2>
+<p>AI 產出後不要只看第一眼漂不漂亮，請依序檢查。第一版提示詞只要求表 2-2 的基本欄位，下列幾項（如私教課包堂數、會籍冷靜期）第一版可能還沒有——這不是做錯，而是要請 AI 補強的下一步：</p>
+<ul>
+<li>[ ] 首頁第一屏是否說清楚場館適合誰，而非只放肌肉照。</li>
+<li>[ ] 教練證照、價格、退費規則是否為真實資料。</li>
+<li>[ ] 體驗預約是否有日期、時段、教練與確認狀態。</li>
+<li>[ ] 私教課包是否有堂數、有效期限、剩餘堂數與退費規則。</li>
+<li>[ ] 會籍暫停、轉讓、終止與冷靜期是否清楚。</li>
+<li>[ ] 補充品或體態成果是否避免保證式、恐嚇式文案。</li>
+<li>[ ] 首次體驗流程是否讓新手知道進門後會發生什麼。</li>
+<li>[ ] 手機版按鈕是否好點，預約入口是否清楚。</li>
+</ul>
+<h2>主動測試</h2>
+<p>本講的網站是「會請客人填東西」的體驗預約表單站（會收一張表，但不會真的鎖場次、不扣錢）。最招牌的一測：什麼都不填就按「預約首次體驗」，看它擋不擋、有沒有提示哪格必填。</p>
+<p><strong>AI 是被告不是法官，畫面才是證據</strong>——它說表單沒問題不算數，親手送一次、回頁面看反應才算數。</p>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>

@@ -1,0 +1,1252 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>基石體能｜周教練個人訓練｜台北市大安區</title>
+<meta name="description" content="基石體能．周教練個人訓練。服務久坐上班族與訓練中斷者，台北市大安區合作場館，早晚與週末有時段。課程包堂數、有效期限、請假與退費規則、剩餘堂數查詢都寫在這一頁。">
+<style>
+
+
+:root{
+  --paper:#f5f3ee;
+  --paper-2:#eceae2;
+  --paper-3:#e3e0d6;
+  --ink:#191c1a;
+  --ink-soft:#565e5a;
+  --rule:#cfcabc;
+  --accent:#23395b;
+  --accent-deep:#16243a;
+  --accent-wash:#e4e8f0;
+  --warn:#8a5a08;
+  --warn-wash:#f2ead8;
+  --done:#5f6662;
+  --done-wash:#e6e6e1;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei","Heiti TC",system-ui,sans-serif;
+  font-size:19px;
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+}
+
+.n{
+  font-family:"SF Mono","Menlo","Consolas",ui-monospace,monospace;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-.01em;
+}
+h1,h2,h3,h4{margin:0}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1300px;margin:0 auto;padding:0 48px}
+
+
+.topbar{position:sticky;top:0;z-index:40;background:rgba(245,243,238,.96);border-bottom:1px solid var(--rule);backdrop-filter:blur(6px)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+.mark{display:flex;align-items:baseline;gap:12px}
+.mark b{font-size:22px;font-weight:700;letter-spacing:.04em}
+.mark span{font-size:16px;color:var(--ink-soft)}
+.topbar nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.topbar nav a{font-size:17px;color:var(--ink-soft);text-decoration:none;padding:6px 0;border-bottom:2px solid transparent;transition:color .18s,border-color .18s}
+.topbar nav a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+.topbar nav a.go{background:var(--accent);color:#f2f4f8;border:0;padding:11px 20px;font-size:17px;font-weight:700}
+.topbar nav a.go:hover{background:var(--accent-deep);color:#f2f4f8}
+
+
+.hero{border-bottom:1px solid var(--rule);background:linear-gradient(174deg,#f7f6f1 0%,var(--paper) 46%,var(--paper-2) 100%)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,1fr);gap:64px;padding-top:70px;padding-bottom:0;align-items:stretch}
+.hero .say{display:flex;flex-direction:column}
+.fears{margin-top:auto}
+.hero h1{font-size:62px;line-height:1.1;font-weight:700;letter-spacing:.01em;margin-bottom:14px}
+.hero h1 em{font-style:normal;display:block;font-size:24px;font-weight:500;letter-spacing:.24em;color:var(--accent);margin-bottom:16px;line-height:1.4}
+.claim{font-size:31px;line-height:1.5;font-weight:700;margin-bottom:16px;text-wrap:balance}
+.claim .seg{display:inline-block}
+.locate{font-size:19px;line-height:1.75;color:var(--ink-soft);margin-bottom:32px;max-width:23em}
+.acts{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.btn1,.btn2{font-size:19px;font-weight:700;text-decoration:none;padding:16px 28px;line-height:1.3;transition:background-color .18s,color .18s,border-color .18s;display:inline-block}
+.btn1{background:var(--accent);color:#f2f4f8;border:2px solid var(--accent)}
+.btn1:hover{background:var(--accent-deep);border-color:var(--accent-deep)}
+.btn2{color:var(--ink);border:2px solid var(--ink);background:transparent}
+.btn2:hover{background:var(--ink);color:var(--paper)}
+.acts-note{font-size:16px;color:var(--ink-soft);margin-top:-22px;margin-bottom:34px}
+
+.fears{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule);margin-bottom:0}
+.fears div{padding:20px 22px 30px 0}
+.fears div+div{padding-left:22px;border-left:1px solid var(--rule)}
+.fears b{display:block;font-size:16px;font-weight:500;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:4px}
+.fears p{font-size:18px;line-height:1.6;font-weight:700}
+
+
+.plate{padding-bottom:40px}
+.figure{background:linear-gradient(160deg,#eef0ea 0%,#e6e6dd 58%,#dedcd0 100%);border:1px solid var(--rule);padding:16px 20px 10px}
+.figure svg{display:block;width:100%;height:auto}
+.figure figcaption{font-size:16px;line-height:1.6;color:var(--ink-soft);padding-top:12px;border-top:1px solid var(--rule);margin-top:10px}
+.gauges{margin-top:26px;border-top:2px solid var(--ink)}
+.gauges>b{display:block;font-size:16px;font-weight:700;letter-spacing:.08em;padding:12px 0 4px}
+.gauge{padding:11px 0;border-bottom:1px solid var(--rule)}
+.gauge .lab{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:2px 12px;font-size:17px;margin-bottom:4px}
+.gauge .lab span{color:var(--ink);font-weight:700}
+.gauge .lab strong{font-size:16px;font-weight:500;color:var(--accent);letter-spacing:.04em}
+.gauge .how{font-size:16px;line-height:1.6;color:var(--ink-soft);text-wrap:balance}
+.gauges .foot{font-size:16px;color:var(--ink-soft);padding-top:12px;line-height:1.6}
+
+
+.body-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:56px;align-items:start}
+.body-grid>.col{min-width:0}
+.rail{position:sticky;top:96px;align-self:start;border:2px solid var(--ink);background:var(--paper-3)}
+.rail h4{font-size:18px;font-weight:700;letter-spacing:.06em;padding:14px 20px;border-bottom:1px solid var(--rule);background:var(--ink);color:var(--paper)}
+.rail .pad{padding:18px 20px 22px}
+.rail .big{font-size:52px;line-height:1;font-weight:700;color:var(--accent)}
+.rail .big small{font-size:18px;font-weight:500;color:var(--ink-soft);margin-left:6px;letter-spacing:.02em}
+.rail dl{margin:16px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:9px;font-size:17px}
+.rail dt{color:var(--ink-soft)}
+.rail dd{margin:0;text-align:right;font-weight:700}
+.rail .tagline{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:16px;line-height:1.65;color:var(--ink-soft)}
+.rail .go2{display:block;margin-top:16px;text-align:center;background:var(--accent);color:#f2f4f8;text-decoration:none;font-size:18px;font-weight:700;padding:14px 10px}
+.rail .go2:hover{background:var(--accent-deep)}
+
+
+.block{border-bottom:1px solid var(--rule)}
+.block.alt{background:var(--paper-2)}
+.block .wrap{padding-top:66px;padding-bottom:66px}
+.block>.inner{padding-top:66px;padding-bottom:66px}
+.head{display:flex;align-items:baseline;gap:20px;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:30px;flex-wrap:wrap}
+.head h2{font-size:40px;font-weight:700;line-height:1.3;letter-spacing:.01em}
+.head p{font-size:17px;color:var(--ink-soft)}
+.lede{font-size:19px;color:var(--ink-soft);max-width:40em;margin-bottom:34px;line-height:1.8}
+.disclaim{background:var(--paper-3);border-left:5px solid var(--accent);padding:16px 20px;font-size:17px;line-height:1.7;margin-top:26px}
+.block.alt .disclaim{background:#e6e3d9}
+.small{font-size:16px;color:var(--ink-soft);line-height:1.65}
+
+
+.fit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.fit>div{padding:26px 30px 30px}
+.fit>div+div{border-left:1px solid var(--rule)}
+.fit h3{font-size:24px;font-weight:700;margin-bottom:6px}
+.fit .k{font-size:16px;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:14px}
+.fit li{font-size:18px;line-height:1.7;padding-left:22px;position:relative;margin-bottom:10px}
+.fit li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--accent)}
+.fit .no li::before{background:var(--ink-soft)}
+
+
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--ink)}
+.pillars>div{padding:24px 26px 28px;border-bottom:1px solid var(--rule)}
+.pillars>div+div{border-left:1px solid var(--rule)}
+.pillars b{display:block;font-size:16px;letter-spacing:.14em;color:var(--accent);margin-bottom:10px}
+.pillars h3{font-size:22px;font-weight:700;margin-bottom:10px;line-height:1.4}
+.pillars p{font-size:17px;line-height:1.7;color:var(--ink-soft)}
+.who{display:grid;grid-template-columns:220px minmax(0,1fr);gap:0;border:2px solid var(--ink);margin-bottom:0}
+.who .id{background:var(--accent);color:#f2f4f8;padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+.who .id em{font-style:normal;font-size:88px;font-weight:700;line-height:1}
+
+.who .portrait{flex:1 1 auto;min-height:260px;margin:-22px -22px 18px;background:var(--accent-deep)}
+.who .portrait:has(>.ph.is-missing){display:none}
+.who .id span{font-size:16px;line-height:1.5;margin-top:10px}
+.who dl{margin:0;display:grid;grid-template-columns:7.5em minmax(0,1fr)}
+.who dt{padding:14px 16px;font-size:17px;color:var(--ink-soft);border-bottom:1px solid var(--rule);background:var(--paper-3)}
+.who dd{margin:0;padding:14px 18px;font-size:18px;line-height:1.7;border-bottom:1px solid var(--rule)}
+.who dl>:nth-last-child(1),.who dl>:nth-last-child(2){border-bottom:0}
+
+
+.cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.case{border:2px solid var(--ink);background:var(--paper);display:flex;flex-direction:column}
+.case .origin{font-size:19px;font-weight:700;line-height:1.55;word-break:keep-all;padding:18px 20px;background:var(--paper-3);border-bottom:1px solid var(--rule)}
+.case dl{margin:0;padding:4px 20px 0;flex:1 1 auto}
+.case dt{font-size:16px;color:var(--ink-soft);letter-spacing:.06em;padding-top:14px}
+.case dd{margin:0;font-size:18px;line-height:1.7;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.case dd.result{font-weight:700}
+.case dd,.case .origin{text-wrap:pretty}
+.case .limit{font-size:16px;line-height:1.6;color:var(--ink-soft);padding:14px 20px;border-top:2px solid var(--ink);background:var(--paper-2)}
+.cases-note{margin-top:26px}
+
+
+.plans{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.prow{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.7fr) minmax(0,.9fr) minmax(0,1.15fr) minmax(0,1.5fr);gap:22px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--rule)}
+.prow:last-child{border-bottom:0}
+.prow.th{padding:12px 0;border-bottom:2px solid var(--ink)}
+.prow.th b{font-size:16px;font-weight:700;letter-spacing:.1em;color:var(--ink-soft)}
+.prow .nm{font-size:22px;font-weight:700;line-height:1.4}
+.prow .nm small{display:block;font-size:16px;font-weight:500;color:var(--ink-soft);margin-top:2px;letter-spacing:.02em}
+.prow .qt,.prow .per{font-size:19px}
+.prow .amt{font-size:26px;font-weight:700;color:var(--accent)}
+.prow .amt u{display:block;text-decoration:none;font-size:16px;font-weight:500;color:var(--ink-soft);letter-spacing:.04em}
+
+.prow .amt .ask{display:block;font-size:19px;letter-spacing:.04em;line-height:1.45;margin:0 0 6px}
+.prow .for{font-size:17px;line-height:1.65;color:var(--ink-soft)}
+.prow.online{background:var(--accent-wash)}
+.money-note{margin-top:20px}
+
+
+.ledger{border-top:2px solid var(--ink)}
+.lrow{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1.9fr) minmax(0,.8fr) minmax(0,1.15fr);gap:26px;align-items:start;padding:24px 0;border-bottom:1px solid var(--rule)}
+.lrow:last-of-type{border-bottom:2px solid var(--ink)}
+.lhead{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1.9fr) minmax(0,.8fr) minmax(0,1.15fr);gap:26px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.lhead b{font-size:16px;font-weight:700;letter-spacing:.1em;color:var(--ink-soft)}
+.lhead b:nth-child(3),.lrow .left{text-align:right}
+.lrow .pkg{font-size:20px;font-weight:700;line-height:1.45}
+.lrow .pkg small{display:block;font-size:16px;font-weight:500;color:var(--ink-soft);margin-top:3px;letter-spacing:.02em}
+.counts{display:flex;flex-wrap:wrap;gap:2px 22px;font-size:17px;margin-bottom:12px}
+.counts div{white-space:nowrap}
+.counts span{color:var(--ink-soft)}
+.counts strong{font-weight:700}
+.lrow .bar{height:10px;background:var(--paper-3);margin-bottom:8px}
+.lrow .bar i{display:block;height:100%;background:var(--accent);border-radius:0 4px 4px 0;transition:width .26s ease}
+.lrow.is-near .bar i{background:var(--warn)}
+.lrow.is-over .bar i{background:var(--done)}
+.lrow .exp{font-size:16px;color:var(--ink-soft);line-height:1.6}
+.lrow .left{font-size:54px;line-height:1;font-weight:700;color:var(--accent)}
+@keyframes tickA{0%{transform:translateY(-12px);color:var(--ink)}100%{transform:translateY(0)}}
+.left.ticked{animation:tickA .26s ease-out}
+@media (prefers-reduced-motion:reduce){.left.ticked{animation:none;outline:3px solid var(--accent);outline-offset:4px}}
+.lrow .left u{display:block;text-decoration:none;font-size:16px;font-weight:500;color:var(--ink-soft);letter-spacing:.08em;margin-top:6px}
+.lrow.is-near .left{color:var(--warn)}
+.lrow.is-over .left{color:var(--done)}
+.state{display:inline-block;font-size:17px;font-weight:700;letter-spacing:.06em;padding:6px 12px;border:2px solid var(--accent);color:var(--accent);background:var(--accent-wash)}
+.lrow.is-near .state{border-color:var(--warn);color:var(--warn);background:var(--warn-wash)}
+.lrow.is-over .state{border-color:var(--done);color:var(--done);background:var(--done-wash)}
+.lrow .note{grid-column:1/-1;font-size:17px;color:var(--ink-soft);line-height:1.7;margin:14px 0 0;max-width:62em}
+.ops{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.ops button{font-family:inherit;font-size:17px;font-weight:700;padding:11px 15px;background:transparent;color:var(--ink);border:2px solid var(--ink);cursor:pointer;line-height:1.3;transition:background-color .18s,color .18s,border-color .18s}
+.ops button:hover:not(:disabled){background:var(--ink);color:var(--paper)}
+.ops button:disabled{color:var(--done);border-color:var(--rule);cursor:not-allowed}
+.ops button.reset{border-color:var(--rule);color:var(--ink-soft);font-weight:500}
+.ops button.reset:hover{background:var(--rule);color:var(--ink)}
+.logline{margin-top:16px;border-left:5px solid var(--accent);background:var(--paper-3);padding:14px 18px;font-size:17px;line-height:1.7}
+.block.alt .logline{background:#e6e3d9}
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:2px solid var(--ink);margin-top:34px}
+.rules>div{padding:20px 24px;border-bottom:1px solid var(--rule)}
+.rules>div:nth-child(odd){border-right:1px solid var(--rule)}
+.rules>div:nth-last-child(1),.rules>div:nth-last-child(2){border-bottom:0}
+.rules b{display:block;font-size:17px;letter-spacing:.06em;color:var(--accent);margin-bottom:6px}
+.rules p{font-size:18px;line-height:1.7}
+.five{margin-top:30px;border-top:1px solid var(--rule);padding-top:22px}
+.five li{font-size:18px;line-height:1.75;padding-left:30px;position:relative;margin-bottom:8px}
+.five li::before{content:attr(data-i);position:absolute;left:0;top:0;font-size:16px;font-weight:700;color:var(--accent);font-family:"SF Mono","Menlo",ui-monospace,monospace}
+
+
+.flowline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;border:2px solid var(--ink);margin-bottom:34px;background:var(--paper)}
+.stop{padding:18px 16px 20px;position:relative}
+.stop+.stop{border-left:1px solid var(--rule)}
+.stop b{display:block;font-size:16px;font-family:"SF Mono","Menlo",ui-monospace,monospace;color:var(--accent);margin-bottom:6px}
+.stop p{font-size:17px;line-height:1.55;font-weight:700;word-break:keep-all}
+.stop svg{position:absolute;right:-9px;top:50%;transform:translateY(-50%);width:16px;height:16px;z-index:2}
+.stop:last-child svg{display:none}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.step{border-top:2px solid var(--ink);padding-top:16px}
+.step b{display:block;font-size:16px;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:6px}
+.step h3{font-size:21px;font-weight:700;line-height:1.45;margin-bottom:8px}
+.step p{font-size:17px;line-height:1.7;color:var(--ink-soft)}
+
+
+.supp{border:2px solid var(--accent);background:var(--accent-wash);padding:26px 30px 30px}
+.supp h3{font-size:24px;font-weight:700;margin-bottom:14px}
+.supp .quote{font-size:20px;line-height:1.8;font-weight:500;padding-left:18px;border-left:4px solid var(--accent);margin-bottom:20px}
+.supp ul{display:grid;gap:10px}
+.supp li{font-size:18px;line-height:1.7;padding-left:22px;position:relative}
+.supp li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--accent)}
+
+
+.terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.terms>div{padding:22px 26px 26px}
+.terms>div+div{border-left:1px solid var(--rule)}
+.terms b{display:block;font-size:17px;letter-spacing:.06em;color:var(--accent);margin-bottom:10px}
+.terms li{font-size:18px;line-height:1.75;margin-bottom:8px;padding-left:18px;position:relative}
+.terms li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:2px;background:var(--ink-soft)}
+
+
+
+.askgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:30px}
+.askgrid .sidebox{order:-1}
+.askgrid .field,.askgrid .consent,.askgrid .send{max-width:34em}
+.askgrid .done{max-width:44em}
+.sidebox ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:18px;font-weight:700;margin-bottom:7px}
+.field .hint{display:block;font-size:16px;font-weight:400;color:var(--ink-soft);line-height:1.6;margin-top:2px}
+.field input[type=text],.field input[type=tel],.field input[type=email],.field select,.field textarea{
+  width:100%;font-family:inherit;font-size:19px;line-height:1.6;padding:13px 14px;
+  border:2px solid var(--ink);background:#fbfaf6;color:var(--ink);border-radius:0}
+.field textarea{min-height:104px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid var(--accent);outline-offset:2px}
+.consent{display:flex;gap:13px;align-items:flex-start;padding:16px 18px;border:2px solid var(--rule);background:var(--paper);font-size:17px;line-height:1.7;cursor:pointer;margin-bottom:22px}
+.consent input{width:22px;height:22px;margin:5px 0 0;flex:0 0 auto;accent-color:var(--accent)}
+.send{font-family:inherit;font-size:21px;font-weight:700;padding:17px 36px;background:var(--accent);color:#f2f4f8;border:2px solid var(--accent);cursor:pointer;transition:background-color .18s}
+.send:hover{background:var(--accent-deep)}
+.sidebox{border:2px solid var(--ink);background:var(--paper-3);padding:22px 24px 26px;align-self:start}
+.sidebox h3{font-size:22px;font-weight:700;margin-bottom:12px;line-height:1.4}
+.sidebox li{font-size:17px;line-height:1.7;margin-bottom:9px;padding-left:20px;position:relative}
+.sidebox li::before{content:"";position:absolute;left:0;top:.75em;width:9px;height:2px;background:var(--accent)}
+.done{border-top:4px solid var(--accent);margin-top:28px;padding-top:22px}
+.done h3{font-size:25px;font-weight:700;margin-bottom:12px}
+.done .bounds{margin:0 0 20px;display:grid;gap:9px}
+.done .bounds li{font-size:17px;line-height:1.7;padding-left:22px;position:relative}
+.done .bounds li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--accent)}
+.done dl{margin:0;display:grid;grid-template-columns:8em minmax(0,1fr);column-gap:18px;row-gap:10px;border-top:1px solid var(--rule);padding-top:18px;font-size:17px}
+.done dt{color:var(--ink-soft)}
+.done dd{margin:0;line-height:1.65}
+
+
+footer{background:var(--ink);color:#e8e7e1;border-top:2px solid var(--ink)}
+footer .wrap{padding-top:52px;padding-bottom:46px}
+footer .cols{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:40px;padding-bottom:28px;border-bottom:1px solid #3a3f3c}
+footer h4{font-size:20px;font-weight:700;margin-bottom:12px}
+footer p,footer li{font-size:17px;line-height:1.8;color:#c9c8c1}
+footer a{text-decoration:none;border-bottom:1px solid #5d625e}
+footer a:hover{border-bottom-color:#e8e7e1}
+footer .fine{padding-top:22px;font-size:16px;line-height:1.75;color:#a7a6a0}
+footer .fine strong{color:#e8e7e1;font-weight:700}
+
+
+.photo{position:relative;overflow:hidden}
+.photo>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.photo>.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;color:transparent}
+.photo>.ph.is-missing{visibility:hidden}
+.venue{margin:-12px 0 22px}
+.venue-shot{aspect-ratio:7/2;border:1px solid var(--rule);background:linear-gradient(160deg,#eef0ea 0%,#e6e6dd 58%,#dedcd0 100%)}
+
+
+@media (max-width:900px){
+  body{font-size:18px}
+  .wrap{padding:0 20px}
+
+  .topbar{position:static;backdrop-filter:none}
+  .topbar .wrap{padding-top:12px;padding-bottom:12px;gap:12px}
+  .topbar nav{gap:14px;width:100%}
+  .topbar nav a{font-size:16px}
+  .topbar nav a.go{margin-left:auto;padding:10px 16px;font-size:16px}
+  .hero .wrap{grid-template-columns:1fr;gap:34px;padding-top:40px}
+  .hero h1{font-size:40px;line-height:1.16}
+  .hero h1 em{font-size:19px;letter-spacing:.18em}
+  .claim{font-size:26px}
+  .locate{font-size:18px;max-width:none}
+  .acts{gap:12px}
+  .btn1,.btn2{width:100%;text-align:center;font-size:18px;padding:16px 20px}
+  .acts-note{font-size:16px;margin-top:-20px}
+  .fears{grid-template-columns:1fr}
+  .fears div{padding:16px 0 18px}
+  .fears div+div{padding-left:0;border-left:0;border-top:1px solid var(--rule)}
+  .fears p{font-size:18px}
+  .plate{padding-bottom:30px}
+  .body-grid{grid-template-columns:1fr;gap:0}
+  .rail{position:static;margin-top:36px}
+  .block .wrap{padding-top:44px;padding-bottom:44px}
+  .block>.inner{padding-top:44px;padding-bottom:44px}
+  .head{gap:8px;margin-bottom:24px}
+  .head h2{font-size:32px}
+  .head p{font-size:16px}
+  .lede{font-size:18px;margin-bottom:26px}
+  .fit,.pillars,.cases,.rules,.terms,.steps,.askgrid,.flowline{grid-template-columns:1fr}
+  .fit>div+div,.pillars>div+div,.terms>div+div,.stop+.stop{border-left:0;border-top:1px solid var(--rule)}
+  .fit>div,.pillars>div,.terms>div{padding:20px 0 24px}
+  .rules>div{padding:18px 20px}
+  .rules>div:nth-child(odd){border-right:0}
+  .rules>div:nth-last-child(2){border-bottom:1px solid var(--rule)}
+  .stop svg{display:none}
+  .who{grid-template-columns:1fr}
+  .who .id{flex-direction:row;align-items:baseline;gap:14px;padding:18px 20px}
+  .who dl{grid-template-columns:1fr}
+  .who dt{padding:12px 16px 4px;border-bottom:0}
+  .who dd{padding:0 16px 14px}
+  .who dl>:nth-last-child(2){border-bottom:0}
+  .cases{gap:20px}
+  .prow,.lhead,.lrow{grid-template-columns:1fr;gap:12px}
+  .prow.th,.lhead{display:none}
+  .prow{padding:20px 0;border-bottom:1px solid var(--rule)}
+  .prow .amt{font-size:30px}
+  .prow.online{padding-left:16px;padding-right:16px}
+  .lrow{padding:22px 0}
+  .lrow .note,.lrow .ops{grid-column:auto}
+  .lrow .left{text-align:left;font-size:44px;display:flex;align-items:baseline;gap:12px}
+  .lrow .left u{margin-top:0;font-size:16px}
+  .counts{grid-template-columns:1fr 1fr;gap:4px 18px}
+  .ops button{font-size:16px;padding:12px 14px}
+  .askgrid{gap:24px}
+  .sidebox ul{grid-template-columns:1fr}
+  .sidebox{padding:20px 18px 24px}
+  .send{width:100%;font-size:19px}
+  .supp{padding:22px 20px 26px}
+  .supp .quote{font-size:19px}
+  footer .cols{grid-template-columns:1fr;gap:26px}
+  .venue-shot{aspect-ratio:2/1}
+  .who .id{align-items:center;justify-content:flex-start}
+  .who .portrait{width:96px;flex:0 0 96px;min-height:0;aspect-ratio:4/5;margin:0}
+  .who .id em{font-size:44px}
+}
+</style>
+</head>
+<body>
+<aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
+
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="mark"><b>基石體能</b><span>周教練個人訓練</span></div>
+    <nav aria-label="主要區塊">
+      <a href="#fit">適合誰</a>
+      <a href="#coach">教練定位</a>
+      <a href="#cases">常見起點</a>
+      <a href="#plans">課程方案</a>
+      <a href="#ledger">課程包與耗課</a>
+      <a href="#flow">諮詢流程</a>
+      <a href="#terms">規則說明</a>
+      <a class="go" href="#ask">預約免費諮詢</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+
+  <section class="hero" data-obj="TrainerProfile">
+    <div class="wrap">
+      <div class="say">
+        <h1><em>個人教練．一對一訓練</em>基石體能</h1>
+        <p class="claim"><span class="seg">先把你現在做得到的</span><span class="seg">動作做對，</span><span class="seg">再談加重量。</span></p>
+        <p class="locate">服務久坐上班族與訓練中斷者。台北市大安區合作場館，平日早晚與週六有時段。第一次見面是 <span style="white-space:nowrap">60 分鐘</span>的適配課，不是推銷。</p>
+        <div class="acts">
+          <a class="btn1" href="#ask">預約免費諮詢</a>
+          <a class="btn2" href="#plans">先看方案與規則</a>
+        </div>
+        <p class="acts-note">兩顆按鈕都不會直接收錢。先確認適不適合，再談要不要買課。</p>
+
+        <figure class="venue">
+          <div class="photo venue-shot">
+            <svg viewBox="0 0 600 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+              <defs>
+                <pattern id="gridV" width="24" height="24" patternUnits="userSpaceOnUse">
+                  <path d="M24 0H0V24" fill="none" stroke="#cfcabc" stroke-width="1" opacity=".5"/>
+                </pattern>
+                <linearGradient id="beamV" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#fbfaf6" stop-opacity=".95"/>
+                  <stop offset="1" stop-color="#fbfaf6" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <rect width="600" height="200" fill="url(#gridV)"/>
+
+              <path d="M122 150L214 150L340 186L170 186Z" fill="url(#beamV)"/>
+              <path d="M122 30H214V150H122Z M168 30V150 M122 90H214" fill="#f3f2ec" stroke="#565e5a" stroke-width="1.5"/>
+
+              <path d="M0 186H600" stroke="#191c1a" stroke-width="2.5"/>
+
+              <path d="M246 183H344" stroke="#23395b" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+              <path d="M366 186V128H430V186" fill="none" stroke="#191c1a" stroke-width="2"/>
+              <path d="M366 148H430" stroke="#191c1a" stroke-width="1" opacity=".45"/>
+              <circle cx="458" cy="170" r="15" fill="none" stroke="#23395b" stroke-width="2.5"/>
+              <path d="M448 158V148H468V158" fill="none" stroke="#23395b" stroke-width="2.5" stroke-linejoin="round"/>
+              <circle cx="488" cy="174" r="11" fill="none" stroke="#23395b" stroke-width="2.5"/>
+              <path d="M481 165V158H495V165" fill="none" stroke="#23395b" stroke-width="2.5" stroke-linejoin="round"/>
+            </svg>
+            <img class="ph" src="images/hero.svg" alt="課程版面示意圖片" width="1916" height="821">
+          </div>
+        </figure>
+        <div class="fears">
+          <div>
+            <b>你可能在擔心</b>
+            <p>走進健身房會被人打量</p>
+          </div>
+          <div>
+            <b>你可能在擔心</b>
+            <p>付了錢卻感覺不到進展</p>
+          </div>
+          <div>
+            <b>你可能在擔心</b>
+            <p>動作做錯反而把身體弄傷</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="plate">
+
+        <figure class="figure">
+          <svg viewBox="0 100 420 305" role="img" aria-label="側面深蹲動作線稿：髖與膝同高，標出大腿平行的水平參考線與膝關節角度">
+            <defs>
+              <pattern id="gridA" width="28" height="28" patternUnits="userSpaceOnUse">
+                <path d="M28 0H0V28" fill="none" stroke="#cfcabc" stroke-width="1" opacity=".5"/>
+              </pattern>
+            </defs>
+            <rect x="0" y="100" width="420" height="305" fill="url(#gridA)"/>
+
+            <path d="M28 384H392" stroke="#191c1a" stroke-width="2.5"/>
+            <path d="M28 391H392" stroke="#191c1a" stroke-width="1" opacity=".45"/>
+
+            <path d="M96 268H392" stroke="#23395b" stroke-width="2" stroke-dasharray="9 7"/>
+
+            <path d="M232 268A46 46 0 0 1 214 304" fill="none" stroke="#23395b" stroke-width="2"/>
+
+            <path d="M158 384L246 268L158 268L134 168" fill="none" stroke="#191c1a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M158 384H214" stroke="#191c1a" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="126" cy="140" r="23" fill="none" stroke="#191c1a" stroke-width="5"/>
+            <path d="M134 168L196 208" fill="none" stroke="#191c1a" stroke-width="4" stroke-linecap="round"/>
+
+            <circle cx="158" cy="384" r="6" fill="#23395b"/>
+            <circle cx="246" cy="268" r="6" fill="#23395b"/>
+            <circle cx="158" cy="268" r="6" fill="#23395b"/>
+
+            <path d="M356 268V384" stroke="#565e5a" stroke-width="1.5"/>
+            <path d="M348 268H364M348 384H364" stroke="#565e5a" stroke-width="1.5"/>
+            <path d="M356 306V346" stroke="#f5f3ee" stroke-width="12"/>
+          </svg>
+          <figcaption>髖關節下到與膝同高，就是檢查點裡的「深蹲可過大腿平行」。</figcaption>
+        </figure>
+
+
+        <div class="gauges" data-obj="ProgressRecord">
+          <b>我會幫你記的三個數字</b>
+          <div class="gauge">
+            <div class="lab"><span>握力（左右手）</span><strong>握力計</strong></div>
+            <p class="how">幾秒鐘就量完。握力跟全身肌力相關。</p>
+          </div>
+          <div class="gauge">
+            <div class="lab"><span>深蹲深度</span><strong>髖與膝的高低</strong></div>
+            <p class="how">從側面看髖有沒有到膝的高度。看的是活動範圍，不是重量。</p>
+          </div>
+          <div class="gauge">
+            <div class="lab"><span>六分鐘步行距離</span><strong>同一段路線</strong></div>
+            <p class="how">走六分鐘能走多遠，跟爬樓梯會不會喘直接相關。</p>
+          </div>
+          <p class="foot">這三項難造假，也不需要脫掉衣服拍照。第一堂量起始值，之後每 4 週對一次，紀錄給你留著。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="body-grid">
+      <div class="col">
+
+
+      <section class="block" id="fit">
+        <div class="inner">
+          <div class="head">
+            <h2>這裡適合誰</h2>
+            <p>先看這一段，再決定要不要往下看方案</p>
+          </div>
+          <div class="fit">
+            <div>
+              <p class="k">適合</p>
+              <h3>我主要在陪這三種人</h3>
+              <ul>
+                <li>久坐辦公、沒有訓練經驗，連第一步該做什麼都不確定的人。</li>
+                <li>以前練過、中斷了一兩年，現在不敢照舊課表硬上的人。</li>
+                <li>身體某個部位會不舒服，需要把動作拆慢一點做的人。</li>
+              </ul>
+            </div>
+            <div class="no">
+              <p class="k">這裡幫不上什麼</p>
+              <h3>這三件事我不接</h3>
+              <ul>
+                <li>短期速成的體態改造。我不會給你「幾週變成什麼樣子」的保證。</li>
+                <li>疾病、疼痛的診斷與治療。那是醫師與物理治療師的專業範圍。</li>
+                <li>比賽選手的專項週期。那需要更專門的教練。</li>
+              </ul>
+            </div>
+          </div>
+          <p class="small" style="margin-top:18px">看完覺得不合，直接關掉也沒關係。這一段寫在前面，就是想省下你來回問的時間。</p>
+        </div>
+      </section>
+
+
+      <section class="block" id="coach" data-obj="TrainerProfile">
+        <div class="inner">
+          <div class="head">
+            <h2>教練定位</h2>
+            <p>能力、善意、正直，三件事分開講</p>
+          </div>
+          <div class="pillars">
+            <div>
+              <b>能力</b>
+              <h3>依據講得出來</h3>
+              <p>每個動作為什麼這樣排、這週為什麼不加重量，我在課堂上就說清楚，不用專業術語把你繞過去。</p>
+            </div>
+            <div>
+              <b>善意</b>
+              <h3>課後還在追蹤</h3>
+              <p>課表是照你的生活排的，不是把同一份表發給每個人。下課之後的睡眠與吃飯狀況，我會問。</p>
+            </div>
+            <div>
+              <b>正直</b>
+              <h3>不好的結果也說</h3>
+              <p>做不到的事先講，進度卡住也照實說。我自己第一年也練錯過，那段寫在下面。</p>
+            </div>
+          </div>
+          <div class="who" style="margin-top:34px">
+            <div class="id">
+
+              <div class="photo portrait">
+                <img class="ph" src="images/coach.svg" alt="課程版面示意圖片" width="1122" height="1402">
+              </div>
+              <em>周</em>
+              <span>周教練</span>
+            </div>
+            <dl>
+              <dt>專長族群</dt>
+              <dd>久坐上班族、訓練中斷者、40 歲以上初次接觸重量訓練的人。</dd>
+              <dt>證照</dt>
+              <dd>體適能指導類證照、運動傷害防護基礎課程、成人心肺復甦術訓練。證照可在適配課當面查看。</dd>
+              <dt>訓練場地</dt>
+              <dd>台北市大安區合作場館，地址於預約確認時告知。採場租分潤，只在帶課時向場館計費。</dd>
+              <dt>我自己練錯的那一年</dt>
+              <dd>剛開始訓練時，我照網路上的大重量課表硬做了十一個月，下背痛了半年才知道是動作順序的問題。那之後我才把「先做對再加重」放在第一位。</dd>
+              <dt>服務限制</dt>
+              <dd>不提供疾病診斷、不開立治療計畫、不承諾體重或體脂數字。有疼痛或慢性病史，請先看醫師再回來排課。</dd>
+            </dl>
+          </div>
+          <p class="disclaim">本網站僅供諮詢與資訊參考，不取代醫師或物理治療師的當面評估。</p>
+        </div>
+      </section>
+
+
+      <section class="block alt" id="cases">
+        <div class="inner">
+          <div class="head">
+            <h2>常見起點與做法</h2>
+            <p>先找跟你像的起點，再看前 8 週怎麼排</p>
+          </div>
+          <p class="lede">下面三種是最常來問的起點，共同點是「一開始都不會」。每一種都寫了前 8 週怎麼排、怎麼記錄，你可以自己判斷這個節奏在你的生活裡排不排得進去。</p>
+          <div class="cases">
+            <article class="case">
+              <p class="origin">久坐上班族・無訓練經驗・怕受傷</p>
+              <dl>
+                <dt>常見狀況</dt><dd>下班很累、不知道第一步做什麼，怕一用力就受傷</dd>
+                <dt>前 8 週怎麼排</dt><dd>每週 1 次一對一、自主訓練 1 次；前四週只練坐站、推牆與走路節奏，第五週起才加負重</dd>
+                <dt>怎麼記錄</dt><dd>每堂記組數與動作深度；每 4 週量一次握力與六分鐘步行</dd>
+                <dt>想達到的檢查點</dt><dd class="result">第八週：深蹲可過大腿平行，爬樓梯不再喘</dd>
+              </dl>
+              <p class="limit">個人結果不代表保證成果</p>
+            </article>
+            <article class="case">
+              <p class="origin">訓練中斷一兩年・有基礎・怕拉傷</p>
+              <dl>
+                <dt>常見狀況</dt><dd>以前練過，動作還記得、身體跟不上；照以前的重量做，最容易拉傷</dd>
+                <dt>前 8 週怎麼排</dt><dd>每週 1 到 2 次；重量從以前的一半以下起，先把動作順序找回來</dd>
+                <dt>怎麼記錄</dt><dd>每堂記重量、次數與隔天痠痛程度；痠痛超過兩天就退一階</dd>
+                <dt>想達到的檢查點</dt><dd class="result">第八週：主要動作用穩定的節奏做完，隔天痠痛不影響上班</dd>
+              </dl>
+              <p class="limit">個人結果不代表保證成果</p>
+            </article>
+            <article class="case">
+              <p class="origin">產後回歸・時間零碎・下背易緊</p>
+              <dl>
+                <dt>常見狀況</dt><dd>有訓練基礎，但核心控制還沒回來，抱小孩久了下背會緊</dd>
+                <dt>前 8 週怎麼排</dt><dd>每週 1 次一對一、在家每天 <span style="white-space:nowrap">10 分鐘</span>呼吸與核心；不排體重目標，開始前先經醫師評估</dd>
+                <dt>怎麼記錄</dt><dd>記核心動作能做幾組，以及抱小孩後下背緊繃的自評分數</dd>
+                <dt>想達到的檢查點</dt><dd class="result">第八週：抱起小孩、彎腰撿東西時，下背不再一用力就緊</dd>
+              </dl>
+              <p class="limit">個人結果不代表保證成果</p>
+            </article>
+          </div>
+          <div class="disclaim cases-note">
+            <strong>這一頁不放學員的體態對比照，也不放學員評語。</strong>前後對比照的差距有一部分來自拍攝角度、光線與修圖，而且只放成功的那幾位、不放放棄的那幾位，會讓你看到的比例失真。所以我改成把每週次數、做法與記錄方式寫出來，讓你算得出這個節奏合不合。
+          </div>
+        </div>
+      </section>
+
+
+      <section class="block" id="plans" data-obj="TrainingPackage">
+        <div class="inner">
+          <div class="head">
+            <h2>課程方案</h2>
+            <p>實體與線上並列，先從最小的那個開始就好</p>
+          </div>
+          <div class="plans">
+            <div class="prow th" aria-hidden="true">
+              <b>方案</b><b>堂數</b><b>有效期限</b><b>金額</b><b>適合誰</b>
+            </div>
+            <div class="prow">
+              <div class="nm">首次適配課<small>每人限一次</small></div>
+              <div class="qt"><span class="n">1</span> 堂</div>
+              <div class="per"><span class="n">30</span> 天</div>
+              <div class="amt"><span class="ask">預約時告知</span><u>單堂計價</u></div>
+              <div class="for">還在判斷適不適合的人。<span style="white-space:nowrap">60 分鐘</span>做動作評估與問答，結束不必決定買課。</div>
+            </div>
+            <div class="prow">
+              <div class="nm">基礎包<small>從零開始的第一季</small></div>
+              <div class="qt"><span class="n">12</span> 堂</div>
+              <div class="per"><span class="n">6</span> 個月</div>
+              <div class="amt"><span class="ask">評估後報價</span><u>報價附單堂價</u></div>
+              <div class="for">沒有訓練經驗、需要有人在旁邊看動作的人。每週一次，剛好排得完。</div>
+            </div>
+            <div class="prow">
+              <div class="nm">續訓包<small>上完基礎包才開放</small></div>
+              <div class="qt"><span class="n">24</span> 堂</div>
+              <div class="per"><span class="n">12</span> 個月</div>
+              <div class="amt"><span class="ask">評估後報價</span><u>報價附單堂價</u></div>
+              <div class="for">已經有固定節奏、想把動作往上疊的人。不開放第一次就買，避免買了排不完。</div>
+            </div>
+            <div class="prow online">
+              <div class="nm">線上自主訓練包<small>影片課程</small></div>
+              <div class="qt">—</div>
+              <div class="per"><span class="n">3</span> 個月</div>
+              <div class="amt"><span class="ask">諮詢時告知</span><u>不含一對一</u></div>
+              <div class="for">通勤遠、或先想在家試試看的人。看得懂再考慮實體課，不必先買大包。</div>
+            </div>
+          </div>
+          <p class="small money-note"><strong>費用在適配課之後，依你的目標與堂數評估報價；報價單會寫明單堂價與總額。</strong>這一頁沒有「買幾堂送幾堂」的折扣：堂數一次買太多、期限內排不完，對你並不划算。續訓包刻意不對新學員開放，就是這個原因。</p>
+        </div>
+      </section>
+
+
+      <section class="block alt" id="ledger" data-obj="SessionLedger">
+        <div class="inner">
+          <div class="head">
+            <h2>課程包與耗課紀錄</h2>
+            <p>剩餘堂數＝已購堂數 − 已上堂數，兩邊隨時對得上</p>
+          </div>
+          <p class="lede">買課之後最容易失控的不是課表，是堂數。下面是三份課包在不同階段的樣子：一份還在上、一份快到期、一份已經結束。你可以按第一份的按鈕，看剩餘堂數怎麼動。</p>
+
+          <div class="ledger">
+            <div class="lhead" aria-hidden="true">
+              <b>課包</b><b>堂數與到期</b><b>剩餘</b><b>狀態</b>
+            </div>
+
+            <div class="lrow" id="row-A">
+              <div class="pkg">續訓包<small>2026/03/02 售出・<wbr>王先生</small></div>
+              <div>
+                <div class="counts">
+                  <div><span>已購</span> <strong class="n" data-f="bought">—</strong></div>
+                  <div><span>已上</span> <strong class="n" data-f="used">—</strong></div>
+                  <div><span>剩餘</span> <strong class="n" data-f="left">—</strong></div>
+                </div>
+                <div class="bar"><i data-f="bar"></i></div>
+                <p class="exp">到期日 <span class="n" data-f="due">—</span><span style="white-space:nowrap">（還有 <span class="n" data-f="days">—</span> 天）</span></p>
+              </div>
+              <div class="left"><span data-f="big">—</span><u>剩餘堂數</u></div>
+              <div class="act">
+                <span class="state" data-f="state">—</span>
+              </div>
+              <p class="note" data-f="says">—</p>
+              <div class="ops">
+                <button type="button" data-do="attend">完成一堂課</button>
+                <button type="button" data-do="leave">請假改期</button>
+                <button type="button" data-do="noshow">逾期未補課</button>
+                <button type="button" class="reset" data-do="reset">回到初始狀態</button>
+              </div>
+            </div>
+            <div class="lrow is-near" id="row-B">
+              <div class="pkg">基礎包<small>2026/01/20 售出・<wbr>陳小姐</small></div>
+              <div>
+                <div class="counts">
+                  <div><span>已購</span> <strong class="n">12</strong></div>
+                  <div><span>已上</span> <strong class="n">9</strong></div>
+                  <div><span>剩餘</span> <strong class="n">3</strong></div>
+                </div>
+                <div class="bar"><i style="width:75%"></i></div>
+                <p class="exp">到期日 <span class="n">2026/07/20</span><span style="white-space:nowrap">（還有 <span class="n">21</span> 天）</span></p>
+              </div>
+              <div class="left">3<u>剩餘堂數</u></div>
+              <div class="act">
+                <span class="state">即將到期</span>
+              </div>
+              <p class="note">距到期日 30 天內、還有剩餘堂數，就會轉成這個狀態。剩下 3 堂請在 7 月 20 日前排完；排不完可以申請延期一次。</p>
+            </div>
+            <div class="lrow is-over" id="row-C">
+              <div class="pkg">基礎包<small>2025/08/11 售出・<wbr>林先生</small></div>
+              <div>
+                <div class="counts">
+                  <div><span>已購</span> <strong class="n">12</strong></div>
+                  <div><span>已上</span> <strong class="n">12</strong></div>
+                  <div><span>剩餘</span> <strong class="n">0</strong></div>
+                </div>
+                <div class="bar"><i style="width:100%"></i></div>
+                <p class="exp">到期日 <span class="n">2026/02/11</span>（已結算）</p>
+              </div>
+              <div class="left">0<u>剩餘堂數</u></div>
+              <div class="act">
+                <span class="state">完成</span>
+              </div>
+              <p class="note">堂數用完就結算成這個狀態，不會自己延長，也不會在你不知道的時候被扣。要再上課是重新買一份新的課包。</p>
+            </div>
+          </div>
+
+          <p class="logline" id="log" role="status">按上面第一份課包的按鈕，這裡會寫出剛剛發生了什麼事，以及堂數有沒有被扣。</p>
+
+
+          <ul class="five">
+            <li data-i="01">課包有效期限：基礎包 <span style="white-space:nowrap">6 個月</span>、續訓包 <span style="white-space:nowrap">12 個月</span>，從售出日起算，寫在每一份課包上。</li>
+            <li data-i="02">請假與改期：上課前 12 小時以電話或 LINE 告知，可免費改期，<strong>不扣堂數</strong>；當日才取消或沒有出現，計為一堂。</li>
+            <li data-i="03">剩餘堂數怎麼查：每堂課結束當場對一次數字，另外每月 1 日用 LINE 給你一份紀錄。你也可以隨時要當月明細。</li>
+            <li data-i="04">課後紀錄：每堂課後會給一份當天做了什麼、下次要注意什麼的簡短紀錄，這份是給你留著的。</li>
+            <li data-i="05">進度照片：<strong>要不要拍、拍了要不要公開，都要你另外簽同意</strong>。不同意照樣可以上課，也照樣有訓練表現的數字紀錄。</li>
+          </ul>
+
+          <div class="rules">
+            <div>
+              <b>有效期限</b>
+              <p>從售出日起算。期限內排不完，可申請延期一次（基礎包 <span style="white-space:nowrap">1 個月</span>、續訓包 <span style="white-space:nowrap">2 個月</span>），需在到期前提出。</p>
+            </div>
+            <div>
+              <b>請假與改期</b>
+              <p>上課前 12 小時前告知不扣堂。同一份課包內改期次數不限，但連續兩個月完全沒有排課會主動找你確認。</p>
+            </div>
+            <div>
+              <b>轉讓</b>
+              <p>整份課包可轉讓一次給指定的一位親友，需雙方書面確認，剩餘堂數與到期日照原本的走，不重新起算。</p>
+            </div>
+            <div>
+              <b>退費</b>
+              <p>未上完的堂數依未使用比例退費，扣除的行政費比例在購買前以書面寫明。已上的堂數依原方案單堂價計算，不用折扣價回推。</p>
+            </div>
+          </div>
+          <p class="small" style="margin-top:18px">上面四條會寫進每一份課包的書面約定，購買前逐條跟你確認。</p>
+        </div>
+      </section>
+
+
+      <section class="block" id="flow">
+        <div class="inner">
+          <div class="head">
+            <h2>諮詢流程</h2>
+            <p>從看到這一頁，到決定要不要買課，總共六步</p>
+          </div>
+          <div class="flowline">
+            <div class="stop">
+              <b>01</b><p>看見首頁</p>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="#191c1a" stroke-width="2"/></svg>
+            </div>
+            <div class="stop">
+              <b>02</b><p>判斷<br>是否適合</p>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="#191c1a" stroke-width="2"/></svg>
+            </div>
+            <div class="stop">
+              <b>03</b><p>查看<br>信任證據</p>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="#191c1a" stroke-width="2"/></svg>
+            </div>
+            <div class="stop">
+              <b>04</b><p>進入<br>核心流程</p>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="#191c1a" stroke-width="2"/></svg>
+            </div>
+            <div class="stop">
+              <b>05</b><p>填寫<br>必要資料</p>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="#191c1a" stroke-width="2"/></svg>
+            </div>
+            <div class="stop">
+              <b>06</b><p>看到確認<br>或下一步</p>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="#191c1a" stroke-width="2"/></svg>
+            </div>
+          </div>
+          <div class="steps" data-obj="SessionBooking">
+            <div class="step">
+              <b>第一步</b>
+              <h3>你填表</h3>
+              <p>下面那張表大約兩分鐘。訓練經驗與主要顧慮兩格最重要，那決定第一堂課要做什麼。</p>
+            </div>
+            <div class="step">
+              <b>第二步</b>
+              <h3>我看表並回訊</h3>
+              <p>一個工作日內用 LINE 或電話回你，先講清楚我判斷適不適合，再約時間。不合適的話會直說。</p>
+            </div>
+            <div class="step">
+              <b>第三步</b>
+              <h3><span style="white-space:nowrap">60 分鐘</span>適配課</h3>
+              <p>這 <span style="white-space:nowrap">60 分鐘</span>我主要在聽與看：聽你的生活與顧慮、看你現在的動作。這一堂結束不必決定買課。</p>
+            </div>
+            <div class="step">
+              <b>第四步</b>
+              <h3>一起決定</h3>
+              <p>把方案、期限與規則講一遍，你回去想幾天都可以。要買再談付款，這一頁不收線上付款。</p>
+            </div>
+          </div>
+          <p class="disclaim">目前線上只到「送出諮詢表」這一步。約時間、確認場地、付款都還是人工處理：我會用電話或 LINE 跟你確認，這一頁不會自動幫你排進行事曆。</p>
+        </div>
+      </section>
+
+
+      <section class="block alt" id="supp" data-obj="NutritionDisclosure">
+        <div class="inner">
+          <div class="head">
+            <h2>飲食與補充品</h2>
+            <p>先把利益關係講在前面</p>
+          </div>
+          <div class="supp">
+            <h3>要先說清楚的三件事</h3>
+            <p class="quote">本教練可能依需求提供飲食與補充品建議，但補充品為選購，是否購買不影響課程安排。若涉及疾病、藥物或特殊飲食限制，請先諮詢醫師或營養師。</p>
+            <ul>
+              <li><strong>建議的範圍到哪裡：</strong>一般的三餐結構、進食時間與水分，這些是體能訓練的配套。不設計治療用飲食、不計算病理指標。</li>
+              <li><strong>利益關係：</strong>我沒有販售任何補充品，也沒有跟任何品牌抽成或分潤。如果日後有了，會在這一段寫明品牌與方式。</li>
+              <li><strong>不是醫療行為：</strong>以上都不構成醫療、營養治療或疾病診斷建議。有慢性病、服藥中或懷孕，請先諮詢醫師或營養師。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="block" id="terms">
+        <div class="inner">
+          <div class="head">
+            <h2>付款前要先知道的事</h2>
+            <p>這一段刻意放在表單前面</p>
+          </div>
+          <div class="terms">
+            <div>
+              <b>什麼時候付、付什麼</b>
+              <ul>
+                <li>適配課結束、你決定要買之後才付款；這一頁不收線上付款。</li>
+                <li>費用依目標與堂數評估後報價，報價單寫明單堂價與總額。</li>
+                <li>沒有入會費、沒有綁約、沒有自動續約；場地費已含在課程費裡。</li>
+                <li>課程包不含補充品、飲食菜單設計與課外自主訓練的場地使用。</li>
+              </ul>
+            </div>
+            <div>
+              <b>限制</b>
+              <ul>
+                <li>首次適配課每人限一次。</li>
+                <li>續訓包要上完基礎包才開放購買。</li>
+                <li>不提供疾病診斷與治療計畫。</li>
+                <li>不承諾體重、體脂或圍度的具體數字。</li>
+              </ul>
+            </div>
+            <div>
+              <b>取消與退款</b>
+              <ul>
+                <li>單堂：上課前 12 小時前告知可免費改期；當日才取消或沒有出現，計為一堂。</li>
+                <li>課包：未上完堂數依比例退費，行政費比例購買前書面告知。</li>
+                <li>教練因故無法帶課，該堂不扣並補回期限。</li>
+                <li>轉讓一次，剩餘堂數與到期日不重新起算。</li>
+              </ul>
+            </div>
+          </div>
+          <p class="small" style="margin-top:18px">以上條款以購買時的書面約定為準；如有調整，會先公告再適用。</p>
+        </div>
+      </section>
+
+
+      <section class="block alt" id="ask">
+        <div class="inner">
+          <div class="head">
+            <h2>預約免費諮詢</h2>
+            <p>兩分鐘填完，一個工作日內回覆</p>
+          </div>
+          <div class="askgrid">
+            <div>
+              <form id="ask-form">
+                <div class="field">
+                  <label for="f-name">你的姓名或稱呼 <span class="hint">稱呼也可以，不一定要全名。</span></label>
+                  <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="例如：王先生">
+                </div>
+                <div class="field">
+                  <label for="f-phone">手機 <span class="hint">09 開頭共十碼。這是主要的回覆方式。</span></label>
+                  <input id="f-phone" name="phone" type="tel" required pattern="09[0-9]{8}" autocomplete="tel" placeholder="0900000000">
+                </div>
+                <div class="field">
+                  <label for="f-line">LINE ID <span class="hint">選填。填了我會優先用 LINE 回你。</span></label>
+                  <input id="f-line" name="line_id" type="text" autocomplete="off">
+                </div>
+                <div class="field">
+                  <label for="f-exp">你目前的訓練狀況</label>
+                  <select id="f-exp" name="experience" required>
+                    <option value="">請選擇</option>
+                    <option>完全沒有訓練經驗</option>
+                    <option>以前練過，已中斷一年以上</option>
+                    <option>目前有在動，但沒有人看動作</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="f-care">你最在意的一件事</label>
+                  <select id="f-care" name="concern" required>
+                    <option value="">請選擇</option>
+                    <option>怕動作做錯受傷</option>
+                    <option>不知道從哪裡開始</option>
+                    <option>以前練了沒有感覺到變化</option>
+                    <option>身體某個部位會不舒服</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="f-slot">你排得出來的時段</label>
+                  <select id="f-slot" name="slot_pref" required>
+                    <option value="">請選擇</option>
+                    <option>平日早上 07:00–12:00</option>
+                    <option>平日晚上 18:00–21:00</option>
+                    <option>週六 09:00–17:00</option>
+                    <option>還不確定，想先聊</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="f-note">想先讓我知道的事 <span class="hint">選填。例如受傷史、服藥中、只能固定某一天。</span></label>
+                  <textarea id="f-note" name="note" placeholder="例如：兩年前膝蓋開過刀，上下樓梯還是會緊。"></textarea>
+                </div>
+                <label class="consent" for="f-photo">
+                  <input id="f-photo" name="photo_consent" type="checkbox">
+                  <span>我同意在訓練過程中拍攝進度照片，僅供我本人與教練之間追蹤使用。<strong>這一格不勾也可以上課</strong>，進度一樣有數字紀錄；要不要公開是另外一份同意書。</span>
+                </label>
+                <button class="send" type="submit">送出諮詢資料</button>
+                <p class="small" style="margin-top:14px">送出後你會在這一頁看到確認訊息。看不到就是沒送出去，可以直接打電話給我。</p>
+              </form>
+
+              <div class="done" id="done" hidden>
+                <h3>已收到你的諮詢資料</h3>
+                <ul class="bounds">
+                  <li>送出不代表已經排課：<strong>我會在一個工作日內用電話或 LINE 跟你確認時間</strong>。</li>
+                  <li>下面列出你這次填的內容，請看一下手機號碼有沒有打錯。</li>
+                  <li>頁面上那份課包卡是說明用的；你自己的堂數，以每堂課後當場核對的紀錄為準。</li>
+                  <li>急著排課，可以直接打 02-0000-0000。</li>
+                </ul>
+                <dl id="echo"></dl>
+              </div>
+            </div>
+
+            <aside class="sidebox">
+              <h3>填之前先知道</h3>
+              <ul>
+                <li>這張表不會收到錢，也不會直接把你排進課表。</li>
+                <li>第一次見面是 <span style="white-space:nowrap">60 分鐘</span>的適配課，那一堂結束不必決定買課。</li>
+                <li>手機與 LINE 只用來回覆這次的諮詢，不會拿去發行銷訊息。</li>
+                <li>你隨時可以要求把資料刪掉，一句話就好。</li>
+                <li>續訓包那一份的剩餘堂數：<strong class="n" data-f="left">—</strong> 堂（跟上面耗課紀錄第一列同一個來源）。</li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      </div>
+
+
+      <aside class="rail" aria-label="課程包狀態卡">
+        <h4>買課之後長這樣</h4>
+        <div class="pad">
+          <p class="big"><span class="n" data-f="left">—</span><small>堂可用</small></p>
+          <dl>
+            <dt>課包</dt><dd>續訓包</dd>
+            <dt>已購堂數</dt><dd class="n" data-f="bought">—</dd>
+            <dt>已上堂數</dt><dd class="n" data-f="used">—</dd>
+            <dt>到期日</dt><dd class="n" data-f="due">—</dd>
+            <dt>狀態</dt><dd data-f="state">—</dd>
+          </dl>
+          <p class="tagline">你現在還沒有課包；買課之後，你的課包卡就長這樣。它跟耗課紀錄那一列讀的是同一個數字——哪一天兩邊對不上，就是有地方算錯了。</p>
+          <a class="go2" href="#ask">預約免費諮詢</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>基石體能・周教練個人訓練</h4>
+        <p>台北市大安區合作場館，地址於預約確認時告知。採場租分潤，只在帶課時向場館計費。</p>
+        <p>平日 07:00–12:00、18:00–21:00｜週六 09:00–17:00｜週日不排課</p>
+      </div>
+      <div>
+        <h4>聯絡</h4>
+        <ul>
+          <li>電話 <a href="tel:0200000000" class="n">02-0000-0000</a></li>
+          <li>LINE：填表時留下 ID 即可</li>
+        </ul>
+      </div>
+      <div>
+        <h4>下一步</h4>
+        <ul>
+          <li><a href="#ask">預約免費諮詢</a></li>
+          <li><a href="#terms">付款前要先知道的事</a></li>
+          <li><a href="#ledger">課程包與耗課紀錄</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">
+      <strong>本網站僅供諮詢與資訊參考，不取代醫師或物理治療師的當面評估。</strong>
+      本頁沒有販售任何補充品，也沒有與任何品牌的抽成或分潤關係。
+      費用與可排時段，以預約確認時告知的為準。
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   課程包耗課狀態機（SessionLedger）
+   規則：
+     · 完成一堂課       → 已上堂數 +1（剩餘 −1）
+     · 請假改期         → 只改 SessionBooking 的狀態，不扣堂數
+     · 逾期未補課       → 才扣堂
+     · 剩餘 > 0 且距到期 ≤ 30 天 → 即將到期
+     · 剩餘歸零或已逾期結算       → 完成
+   最重要的一條：剩餘堂數 = bought − used，永遠算出來，
+   而且畫面上三處（耗課列、右側欄、表單旁）都讀同一個值。
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  "use strict";
+
+  var NEAR_DAYS = 30;                 // 距到期 30 天內、還有剩餘堂數，算「即將到期」
+  var START = { bought: 24, used: 17, due: "2027/03/02", days: 246 };
+  var pkg = { bought: START.bought, used: START.used, due: START.due, days: START.days };
+  var moved = 0;                      // 改期次數（SessionBooking 的狀態變化，不動堂數）
+
+  var row = document.getElementById("row-A");
+  var log = document.getElementById("log");
+
+  function left() { return pkg.bought - pkg.used; }          // 唯一的算法
+
+  function stateOf() {
+    if (left() <= 0) return "完成";
+    if (pkg.days <= NEAR_DAYS) return "即將到期";
+    return "使用中";
+  }
+
+  function says(state) {
+    if (state === "完成") {
+      return "堂數已經用完，這份課包結算成「完成」。不會自己延長，也不會在你不知道的時候被扣。要再上課是重新買一份新的課包。";
+    }
+    if (state === "即將到期") {
+      return "距到期日 " + NEAR_DAYS + " 天內、還有剩餘堂數，就會轉成這個狀態。剩下的堂數請在到期日前排完，排不完可以申請延期一次。";
+    }
+    return "每完成一堂課，剩餘堂數就少一堂。請假改期不扣堂；只有當日取消或沒有出現，才會計為一堂。改期次數目前 " + moved + " 次。";
+  }
+
+  /* 三處顯示同一個值：耗課列、右側欄、表單旁的 data-f="left" 全部一起寫 */
+  function paint(ticked) {
+    var state = stateOf();
+    var pct = pkg.bought ? Math.round((pkg.used / pkg.bought) * 100) : 0;
+
+    document.querySelectorAll('[data-f="left"]').forEach(function (el) { el.textContent = left(); });
+    document.querySelectorAll('[data-f="bought"]').forEach(function (el) { el.textContent = pkg.bought; });
+    document.querySelectorAll('[data-f="used"]').forEach(function (el) { el.textContent = pkg.used; });
+    document.querySelectorAll('[data-f="due"]').forEach(function (el) { el.textContent = pkg.due; });
+    document.querySelectorAll('[data-f="state"]').forEach(function (el) { el.textContent = state; });
+    document.querySelectorAll('[data-f="days"]').forEach(function (el) { el.textContent = pkg.days; });
+
+    var big = row.querySelector('[data-f="big"]');
+    if (big) big.textContent = left();
+    var bar = row.querySelector('[data-f="bar"]');
+    if (bar) bar.style.width = pct + "%";
+    var sy = row.querySelector('[data-f="says"]');
+    if (sy) sy.textContent = says(state);
+
+    row.classList.toggle("is-near", state === "即將到期");
+    row.classList.toggle("is-over", state === "完成");
+
+    var out = left() <= 0;
+    row.querySelectorAll('button[data-do="attend"],button[data-do="leave"],button[data-do="noshow"]').forEach(function (b) {
+      b.disabled = out;
+      if (b.dataset.do === "attend") b.textContent = out ? "課包已結束" : "完成一堂課";
+    });
+
+    if (ticked && big) {
+      big.classList.remove("ticked");
+      void big.offsetWidth;
+      big.classList.add("ticked");
+    }
+  }
+
+  function write(msg) { log.textContent = msg; }
+
+  row.querySelectorAll("button[data-do]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var act = btn.dataset.do;
+
+      if (act === "reset") {
+        pkg = { bought: START.bought, used: START.used, due: START.due, days: START.days };
+        moved = 0;
+        paint(false);
+        write("已回到初始狀態：已購 " + pkg.bought + " 堂、已上 " + pkg.used + " 堂、剩餘 " + left() + " 堂。");
+        return;
+      }
+
+      if (left() <= 0) return;
+
+      if (act === "attend") {
+        pkg.used += 1;
+        paint(true);
+        write("完成一堂課：已上堂數 " + (pkg.used - 1) + " → " + pkg.used + "，剩餘堂數 " + (left() + 1) + " → " + left() + " 堂。" +
+              (left() <= 0 ? "堂數用完了，這份課包結算成「完成」。" : "右邊那張卡與表單旁的數字同時改成了 " + left() + "。"));
+        return;
+      }
+
+      if (act === "leave") {
+        moved += 1;
+        paint(false);
+        write("請假改期（第 " + moved + " 次）：這一堂的狀態從「已預約」改成「已改期」，剩餘堂數還是 " + left() + " 堂——請假不扣堂，這是課包規則裡寫明的。");
+        return;
+      }
+
+      if (act === "noshow") {
+        pkg.used += 1;
+        paint(true);
+        write("逾期未補課：當日取消或沒有出現，這一堂計為已上。已上堂數 " + (pkg.used - 1) + " → " + pkg.used + "，剩餘堂數 " + (left() + 1) + " → " + left() + " 堂。" +
+              "這是唯一會在沒上到課的情況下扣堂的狀況，規則寫在下面第 02 條。");
+      }
+    });
+  });
+
+  paint(false);
+
+  /* ── 諮詢表單：不送伺服器，改成在頁面上顯示確認訊息 ── */
+  var form = document.getElementById("ask-form");
+  var done = document.getElementById("done");
+  var echo = document.getElementById("echo");
+
+  var LABEL = {
+    name: "姓名或稱呼", phone: "手機", line_id: "LINE ID",
+    experience: "訓練狀況", concern: "最在意的事", slot_pref: "可排時段",
+    note: "想先讓我知道的事", photo_consent: "進度照片同意"
+  };
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var data = new FormData(form);
+    echo.textContent = "";
+    Object.keys(LABEL).forEach(function (key) {
+      var val;
+      if (key === "photo_consent") {
+        val = document.getElementById("f-photo").checked ? "同意拍攝，僅供本人與教練追蹤" : "不同意拍攝（不影響上課）";
+      } else {
+        val = (data.get(key) || "").toString().trim() || "（未填）";
+      }
+      var dt = document.createElement("dt");
+      dt.textContent = LABEL[key];
+      var dd = document.createElement("dd");
+      dd.textContent = val;
+      echo.appendChild(dt);
+      echo.appendChild(dd);
+    });
+    done.hidden = false;
+    done.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+})();
+</script>
+
+<script>
+/* 照片層：images/ 底下的圖載不到時，把 img 藏起來，讓墊底的 SVG 與漸層露出來，
+   不露破圖示、不露 alt 字。 */
+(function () {
+  document.querySelectorAll("img.ph").forEach(function (im) {
+    function miss() { im.classList.add("is-missing"); }
+    if (im.complete && im.naturalWidth === 0) { miss(); } else { im.addEventListener("error", miss); }
+  });
+})();
+</script>
+<style id="site-audit-fix">
+img,video{max-width:100%}
+select{max-width:100%;text-overflow:ellipsis}
+a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-space:nowrap}
+.block.alt>.inner{padding-left:36px;padding-right:36px}
+.prow{padding-left:16px;padding-right:16px}
+.block .head{padding-bottom:16px}
+@media (max-width:900px){
+  .block.alt>.inner{padding-left:20px;padding-right:20px}
+  .prow,.prow.online{padding-left:20px;padding-right:20px}
+  .topbar nav{gap:0 14px;flex-wrap:nowrap}
+  .topbar nav a{font-size:15px;white-space:nowrap}
+  .topbar nav a.go{padding:9px 12px;font-size:15px}
+  .topbar nav a[href="#fit"],.topbar nav a[href="#coach"],.topbar nav a[href="#cases"],.topbar nav a[href="#flow"],.topbar nav a[href="#terms"]{display:none}
+}
+.state{padding-left:16px;padding-right:16px}
+.lrow,.lhead{grid-template-columns:minmax(0,1.2fr) minmax(0,2.15fr) minmax(0,.7fr) minmax(0,1.05fr)}
+.lrow .pkg small{word-break:keep-all}
+.prow .per{white-space:nowrap}
+@media (max-width:900px){.lrow,.lhead{grid-template-columns:1fr}}
+</style>
+</body>
+</html>

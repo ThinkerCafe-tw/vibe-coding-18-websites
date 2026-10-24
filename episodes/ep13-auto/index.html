@@ -1,0 +1,92 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP13 汽車保養網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP13 汽車保養網站</h1><p>服務項目、車況與預約資訊保持一致。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep13-auto.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP13 施工規格</h1>
+<p>本規格整理自《網頁設計》第 13 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<h2>網站目標</h2>
+<p>服務項目、預約、車籍資料、里程提醒與透明報價</p>
+<h2>使用者情境</h2>
+<p>使用者第一次進入網站時，需要在手機上快速判斷這個服務是否適合自己，並能完成主要行動：查詢服務項目、預約保養、記錄車籍與下次回廠提醒。</p>
+<h2>必要區塊</h2>
+<ol>
+<li>Hero 首頁：名稱、定位、主張、主要行動按鈕</li>
+<li>信任證據：真實照片、資歷、評論、規則或案例</li>
+<li>服務項目與透明報價：保養項目、參考價格，並示範一張把「零件」與「工資」分欄、每列帶車主同意狀態的估價單</li>
+<li>預約與車籍：預約保養的表單，以及記錄車牌、車型、目前里程的車籍區塊</li>
+<li>保養紀錄與下次提醒：列出完成項目與里程，並依里程門檻或時間間隔顯示「下次回廠提醒」文案</li>
+<li>聯絡與後續：電話、LINE、Email、地圖或確認訊息</li>
+</ol>
+<h2>資料欄位</h2>
+<p>請在頁面中示範下列資料結構（對應表 13-3）：</p>
+<ol>
+<li>VehicleProfile：車牌、品牌、車型、年份、目前里程</li>
+<li>CustomerProfile：車主姓名、電話、Email、聯絡偏好</li>
+<li>ServiceMenu：保養項目、參考價格、所需時間、適用車型</li>
+<li>Appointment：日期、時段、車輛、服務項目、狀態</li>
+<li>WorkOrder：檢查項目、建議維修、車主同意狀態、完工狀態</li>
+<li>EstimateLine：零件、工資、數量、單價、是否同意</li>
+<li>MaintenanceRecord：日期、里程、完成項目、照片、下次建議</li>
+<li>ReminderRule：里程門檻、時間間隔、提醒內容</li>
+</ol>
+<h2>設計要求</h2>
+<ol>
+<li>請用清楚的 HTML結構與 CSS，建成一個可以直接打開的單一 index.html，CSS 寫在同一個檔案裡。</li>
+<li>請使用 RWD，手機、平板、桌機都要可讀。</li>
+<li>請避免假評價、假資歷、假價格或過度承諾。</li>
+<li>表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。</li>
+<li>請在每個區塊用佔位文字標註上線前要替換的真實內容，不要編造店家資歷、價格與評論。</li>
+</ol>
+<h2>本練習包的素材</h2>
+<p>照片版位使用原創 SVG 示意圖，保留分類、燈箱與版面操作；實際照片由學員另備合法素材。來源記錄見 <code>ATTRIBUTION.md</code>。</p>
+</section>
+<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP13 對話提示卡</h1>
+<p>以下為第 13 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
+<h2>教材提示詞</h2>
+<pre><code class="language-text">你是網頁設計老師與前端工程師。
+請幫我做成一個可以直接打開的「汽車保養網站」單頁原型。
+
+【網站目標】
+服務項目、預約、車籍資料、里程提醒與透明報價
+
+【使用者情境】
+使用者第一次進入網站時，需要在手機上快速判斷這個服務是否適合自己，並能完成主要行動：查詢服務項目、預約保養、記錄車籍與下次回廠提醒。
+
+【必要區塊】
+1. Hero 首頁：名稱、定位、主張、主要行動按鈕
+2. 信任證據：真實照片、資歷、評論、規則或案例
+3. 服務項目與透明報價：保養項目、參考價格，並示範一張把「零件」與「工資」分欄、每列帶車主同意狀態的估價單
+4. 預約與車籍：預約保養的表單，以及記錄車牌、車型、目前里程的車籍區塊
+5. 保養紀錄與下次提醒：列出完成項目與里程，並依里程門檻或時間間隔顯示「下次回廠提醒」文案
+6. 聯絡與後續：電話、LINE、Email、地圖或確認訊息
+
+【資料欄位】
+請在頁面中示範下列資料結構（對應表 13-3）：
+1. VehicleProfile：車牌、品牌、車型、年份、目前里程
+2. CustomerProfile：車主姓名、電話、Email、聯絡偏好
+3. ServiceMenu：保養項目、參考價格、所需時間、適用車型
+4. Appointment：日期、時段、車輛、服務項目、狀態
+5. WorkOrder：檢查項目、建議維修、車主同意狀態、完工狀態
+6. EstimateLine：零件、工資、數量、單價、是否同意
+7. MaintenanceRecord：日期、里程、完成項目、照片、下次建議
+8. ReminderRule：里程門檻、時間間隔、提醒內容
+
+【設計要求】
+1. 請用清楚的 HTML結構與 CSS，建成一個可以直接打開的單一 index.html，CSS 寫在同一個檔案裡。
+2. 請使用 RWD，手機、平板、桌機都要可讀。
+3. 請避免假評價、假資歷、假價格或過度承諾。
+4. 表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。
+5. 請在每個區塊用佔位文字標註上線前要替換的真實內容，不要編造店家資歷、價格與評論。
+</code></pre>
+</section>
+<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP13 驗收清單</h1>
+<h2>逐項檢查</h2>
+<p>AI 產出後不要只看漂不漂亮，請依序檢查：</p>
+<ul>
+<li>[ ] 首頁第一屏是否說清楚服務適合誰與下一步。</li>
+<li>[ ] 是否收集車籍、年份、里程與服務需求以支撐核心流程，而非只留姓名電話。</li>
+<li>[ ] 是否有工單與報價明細，能區分零件、工資與車主同意狀態。</li>
+<li>[ ] 是否能記錄保養完成項目與下次提醒條件。</li>
+<li>[ ] 是否避免恐嚇式語言推銷維修。</li>
+<li>[ ] 價格、限制、取消或隱私規則是否清楚。</li>
+<li>[ ] 手機版是否能完成主要行動，且文字與按鈕不重疊。</li>
+</ul>
+<h2>主動測試</h2>
+<p>本講是會卡住、排隊的<strong>預約站</strong>，外加一張會算錢的報價單，屬於要主動戳邊界的預約加報價站。最招牌的一戳：<strong>同一個時段、同一張車牌訂兩次</strong>——靜態原型幾乎一定擋不住（這正說明真正要防重複訂位得靠後端），但你親手撞一次，就懂為什麼這個名額在原型裡是假的。<strong>AI 是被告不是法官，畫面才是證據</strong>——它幾乎一定回「做好了」，得回畫面親手訂第二次、親手用計算機把報價單加一次才算數。</p>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>

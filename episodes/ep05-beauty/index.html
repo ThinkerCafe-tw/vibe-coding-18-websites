@@ -1,0 +1,101 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP05 美容院會員網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP05 美容院會員網站</h1><p>把會員總額還原成可核對的逐筆流水。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep05-beauty.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP05 施工規格</h1>
+<p>本規格整理自《網頁設計》第 5 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<h2>網站目標</h2>
+<p>讓客人能理解美容院服務、註冊會員、查看點數與儲值餘額、預約服務，並看懂點數與預付卡規則。</p>
+<h2>必要區塊</h2>
+<ol>
+<li>首頁：店名、品牌主張、會員入口、預約按鈕</li>
+<li>服務項目：服務名稱、時間、價格、適合對象</li>
+<li>會員註冊表單：姓名、手機、生日、偏好服務、個資同意</li>
+<li>會員儀表板示意：會員等級、點數、儲值餘額、最近消費、下次預約</li>
+<li>預約表單：服務、美容師、日期、時段、備註</li>
+<li>點數與儲值規則：累積方式、到期日、退款、不可轉讓限制</li>
+<li>消費紀錄表：日期、服務、金額、點數變動、儲值餘額</li>
+</ol>
+<h2>資料模型</h2>
+<p>請在頁面中用表格或卡片示範這些資料：Member、Service、Appointment、PointLedger、StoredValueLedger、ConsentRecord。</p>
+<h2>互動示意</h2>
+<p>請做出不需後端、只用少量 JavaScript 就能在同一頁完成的小互動：選擇服務後顯示所需時間與價格；送出預約後顯示「待確認」，並用文字或標籤示意預約會經過「待確認／已完成／已取消」等狀態（原型先簡化示意，完整流程見圖 5-1）；點數區要顯示可用點數與即將到期點數。</p>
+<h2>設計要求</h2>
+<p>請做成一個可以直接打開的單一 index.html，CSS與少量 JavaScript都寫在同一個檔案裡。使用 RWD，手機上也能查看會員卡、預約表單與消費紀錄。不要使用假醫療效果、假見證或誇大療效。</p>
+<h2>預約狀態對照</h2>
+<p>預約狀態如圖 5-1。</p>
+<table>
+<thead>
+<tr>
+<th>目前狀態</th>
+<th>可轉到的下一狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>待確認</td>
+<td>已確認、已取消、未到</td>
+</tr>
+<tr>
+<td>已確認</td>
+<td>已到店、已取消、未到</td>
+</tr>
+<tr>
+<td>已到店</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>已完成</td>
+<td>終態，不可再轉移</td>
+</tr>
+<tr>
+<td>已取消</td>
+<td>終態，不可再轉移</td>
+</tr>
+<tr>
+<td>未到</td>
+<td>終態，不可再轉移</td>
+</tr>
+</tbody>
+</table>
+<p><strong>圖 5-1　預約狀態的典型流轉（狀態轉移表）</strong></p>
+</section>
+<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP05 對話提示卡</h1>
+<p>以下為第 5 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
+<h2>教材提示詞</h2>
+<pre><code class="language-text">你是網頁設計老師與前端工程師。
+請幫我製作一個「美容院會員網站」單頁原型。
+
+【網站目標】
+讓客人能理解美容院服務、註冊會員、查看點數與儲值餘額、預約服務，並看懂點數與預付卡規則。
+
+【必要區塊】
+1. 首頁：店名、品牌主張、會員入口、預約按鈕
+2. 服務項目：服務名稱、時間、價格、適合對象
+3. 會員註冊表單：姓名、手機、生日、偏好服務、個資同意
+4. 會員儀表板示意：會員等級、點數、儲值餘額、最近消費、下次預約
+5. 預約表單：服務、美容師、日期、時段、備註
+6. 點數與儲值規則：累積方式、到期日、退款、不可轉讓限制
+7. 消費紀錄表：日期、服務、金額、點數變動、儲值餘額
+
+【資料模型】
+請在頁面中用表格或卡片示範這些資料：Member、Service、Appointment、PointLedger、StoredValueLedger、ConsentRecord。
+
+【互動示意】
+請做出不需後端、只用少量 JavaScript 就能在同一頁完成的小互動：選擇服務後顯示所需時間與價格；送出預約後顯示「待確認」，並用文字或標籤示意預約會經過「待確認／已完成／已取消」等狀態（原型先簡化示意，完整流程見 SPEC.md 的預約狀態對照）；點數區要顯示可用點數與即將到期點數。
+
+【設計要求】
+請做成一個可以直接打開的單一 index.html，CSS與少量 JavaScript都寫在同一個檔案裡。使用 RWD，手機上也能查看會員卡、預約表單與消費紀錄。不要使用假醫療效果、假見證或誇大療效。
+</code></pre>
+</section>
+<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP05 驗收清單</h1>
+<h2>逐項檢查</h2>
+<p>AI 產出後，請用這份清單檢查：</p>
+<ul>
+<li>[ ] 會員資料是否包含個資同意，而不是只留下電話。</li>
+<li>[ ] 點數是否有流水帳概念，而不是只顯示一個神秘總數。</li>
+<li>[ ] 儲值餘額是否能看出儲值、扣款、退款的來源。</li>
+<li>[ ] 頁面或規則區是否用文字／標籤示意預約會經過待確認、已完成、已取消等狀態（對照 SPEC.md 的預約狀態對照，不必能點擊切換）。</li>
+<li>[ ] 手機版是否能清楚看到會員卡、點數、預約與規則。</li>
+<li>[ ] 會員密碼不可明文儲存（明文＝原封不動把「abc123」直接存進資料庫，被偷看就全曝光）、要雜湊（hash＝把密碼用一種單向公式攪成一串亂碼存起來，可以驗對不對、但反推不回原密碼，就算資料庫外洩也看不到真密碼）、登入盡量交給成熟服務、收個資與登入頁要全程 HTTPS（網址開頭的加密連線，資料在路上傳輸時被鎖住、外人攔不到，瀏覽器網址列那個鎖頭就是它）——見第 17 講三個資安必查。</li>
+</ul>
+<h2>主動測試</h2>
+<p>本講是這套書到目前<strong>最高風險</strong>的一講：會算餘額、會扣款、會退款，不是只給人看的形象頁。最招牌的一招：<strong>把消費紀錄裡每一筆儲值、扣款、退款用計算機加一遍，看是否等於儀表板的「儲值餘額」</strong> — 對不上，畫面再漂亮都是壞的。</p>
+<p><strong>AI 是被告不是法官，畫面才是證據</strong>：餘額對不對、退款有沒有退回、取消後發不發點，都要親手撥、親眼看，AI 說沒事不算。</p>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>

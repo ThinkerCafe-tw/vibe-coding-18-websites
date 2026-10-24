@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>和明診所｜台北市中山區｜耳鼻喉科．家醫科</title>
+
+
+
+<style>
+
+
+:root{
+  --sand:#f2eee4;
+  --sand-2:#e6e0d1;
+  --ink:#13211f;
+  --ink-soft:#4a5a56;
+  --rule:#c3bca9;
+  --teal:#0f4c4a;
+  --teal-deep:#093432;
+  --stop:#8a3a1a;
+  --done:#6f7873;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--sand);
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Heiti TC",system-ui,sans-serif;
+  font-size:20px;
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+.num{
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+  font-variant-numeric:lining-nums tabular-nums;
+  font-feature-settings:"tnum" 1;
+}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.sheet{max-width:1320px;margin:0 auto;padding:0 56px}
+
+
+.bar-top{border-bottom:3px solid var(--ink);background:var(--sand)}
+.bar-top .sheet{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
+.brand{margin:0;font-size:24px;font-weight:900;letter-spacing:.06em}
+.brand small{font-size:16px;font-weight:500;letter-spacing:.14em;color:var(--ink-soft);margin-left:14px}
+.bar-top nav{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.bar-top nav a{font-size:18px;font-weight:500;color:var(--ink-soft);text-decoration:none;padding:8px 0;border-bottom:3px solid transparent;transition:color .2s,border-color .2s}
+.bar-top nav a:hover{color:var(--ink);border-bottom-color:var(--teal)}
+.bar-top nav a.key{background:var(--teal);color:#f1efe6;border:0;padding:12px 24px;font-weight:700}
+.bar-top nav a.key:hover{background:var(--teal-deep);color:#f1efe6}
+
+
+.split{display:grid;grid-template-columns:1.06fr 1fr;border-bottom:3px solid var(--ink);min-height:calc(100vh - 78px)}
+.split .say{display:flex;flex-direction:column;justify-content:center;padding:72px 64px 0 56px;max-width:816px;margin-left:auto;width:100%}
+.split .say-wrap{padding-left:0}
+.split h1{margin:0 0 12px;font-size:76px;line-height:1.06;font-weight:900;letter-spacing:-.02em;white-space:nowrap}
+.dept{margin:0 0 30px;font-size:19px;font-weight:700;letter-spacing:.3em;color:var(--teal)}
+.claim{margin:0 0 18px;font-size:32px;line-height:1.5;font-weight:700;text-wrap:balance}
+.sub{margin:0 0 38px;font-size:20px;line-height:1.75;color:var(--ink-soft);text-wrap:balance}
+.clause{display:inline-block}
+.keys{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:42px}
+.k1,.k2{font-size:20px;font-weight:700;text-decoration:none;padding:18px 34px;line-height:1.3;transition:background-color .2s,color .2s,border-color .2s}
+.k1{background:var(--teal);color:#f1efe6;border:3px solid var(--teal)}
+.k1:hover{background:var(--teal-deep);border-color:var(--teal-deep)}
+.k2{color:var(--ink);border:3px solid var(--ink);background:transparent}
+.k2:hover{background:var(--ink);color:var(--sand)}
+
+.lamp{border-top:3px solid var(--ink);display:grid;grid-template-columns:1.3fr 1fr 1fr;margin-top:auto}
+.lamp div{padding:18px 26px;border-left:1px solid var(--rule)}
+.lamp div:first-child{padding-left:0;border-left:0}
+.lamp b{display:block;font-size:16px;font-weight:500;letter-spacing:.12em;color:var(--ink-soft)}
+.lamp div > span{display:block;font-size:21px;font-weight:700;line-height:1.5;white-space:nowrap}
+.lamp .big{font-size:44px;line-height:1.1;color:var(--teal);font-weight:700}
+.lamp em{font-style:normal;font-size:16px;font-weight:500;color:var(--ink-soft);margin-left:8px}
+.split .shot{
+  border-left:3px solid var(--ink);min-height:420px;
+  background-image:
+    linear-gradient(to bottom,rgba(242,238,228,.18) 0%,rgba(242,238,228,0) 40%),
+    url("images/hero.svg"),
+    linear-gradient(118deg,rgba(255,252,244,0) 34%,rgba(255,252,244,.62) 52%,rgba(255,252,244,0) 70%),
+    linear-gradient(200deg,#a8a293 0%,#c6c0ae 28%,#dfdacb 62%,#efece2 100%);
+  background-size:cover,cover,cover,cover;
+  background-position:center,center,center,center;
+  background-repeat:no-repeat;background-color:var(--sand-2);
+}
+
+
+.block{border-bottom:3px solid var(--ink)}
+.block.alt{background:var(--sand-2)}
+.block .sheet{padding-top:82px;padding-bottom:82px}
+.title{display:flex;align-items:baseline;gap:22px;border-bottom:3px solid var(--ink);padding-bottom:14px;flex-wrap:wrap}
+.title h2{margin:0;font-size:44px;font-weight:900;line-height:1.3;letter-spacing:.01em}
+.title p{margin:0;font-size:18px;color:var(--ink-soft)}
+.lede{margin:24px 0 44px;max-width:36em;font-size:20px;color:var(--ink-soft)}
+.note{font-size:18px;color:var(--ink-soft);line-height:1.75}
+.disclaim{margin-top:30px;background:var(--sand-2);border-left:6px solid var(--teal);padding:18px 24px;font-size:19px;line-height:1.75;max-width:46em}
+.block.alt .disclaim{background:#efe9da}
+
+
+#booking .sheet{padding-top:92px;padding-bottom:92px}
+.boardhead,.row{display:grid;grid-template-columns:1.5fr .95fr 1.6fr .8fr 1.1fr;align-items:center;gap:26px}
+.boardhead{border-bottom:3px solid var(--ink);padding-bottom:12px}
+.boardhead b{font-size:16px;font-weight:700;letter-spacing:.14em;color:var(--ink-soft)}
+.boardhead b:last-child,.row .act{text-align:right}
+.row{border-bottom:1px solid var(--rule);padding:26px 0;transition:background-color .2s}
+.row:last-of-type{border-bottom:3px solid var(--ink)}
+.row .when{font-size:24px;font-weight:700;line-height:1.35;white-space:nowrap}
+.row .when small{display:block;font-size:18px;font-weight:500;color:var(--ink-soft);margin-top:2px}
+.row .who{font-size:19px;line-height:1.5}
+.row .who small{display:block;font-size:18px;color:var(--ink-soft)}
+.gauge{display:flex;flex-direction:column;gap:9px}
+.gauge .txt{font-size:18px;color:var(--ink-soft);line-height:1.5}
+.gauge .bar{height:14px;background:#d6cfbd}
+.gauge .bar i{display:block;height:100%;background:var(--teal);transition:width .28s ease}
+.row.is-full .gauge .bar i{background:var(--stop)}
+.row.is-stopped .gauge .bar i,.row.is-done .gauge .bar i{background:var(--done)}
+.row .left{font-size:64px;font-weight:700;line-height:1;color:var(--teal);letter-spacing:-.03em}
+.row .left.off{font-size:26px;line-height:1.4;letter-spacing:.02em;white-space:nowrap}
+.row .left u{display:block;text-decoration:none;font-size:16px;font-weight:500;color:var(--ink-soft);letter-spacing:.1em;margin-top:4px}
+.row.is-full .left,.row.is-stopped .left,.row.is-done .left{color:var(--done)}
+.row .tag{display:inline-block;font-size:18px;font-weight:700;letter-spacing:.08em;padding:7px 14px;border:3px solid var(--teal);color:var(--teal);margin-bottom:10px}
+.row.is-near .tag{border-color:var(--stop);color:var(--stop)}
+.row.is-full .tag{border-color:var(--stop);background:var(--stop);color:#f4efe6}
+.row.is-stopped .tag,.row.is-done .tag{border-color:var(--done);color:var(--done)}
+.row .pick{font-family:inherit;font-size:19px;font-weight:700;padding:15px 22px;width:100%;
+  background:var(--teal);color:#f1efe6;border:3px solid var(--teal);cursor:pointer;transition:background-color .2s,border-color .2s}
+.row .pick:hover:not(:disabled){background:var(--teal-deep);border-color:var(--teal-deep)}
+.row .pick:disabled{background:transparent;color:var(--done);border-color:var(--rule);cursor:not-allowed}
+.row.is-chosen{background:rgba(15,76,74,.09)}
+.row.is-chosen .pick{background:var(--ink);border-color:var(--ink)}
+
+.row.is-chosen .pick:disabled{background:transparent;color:var(--done);border-color:var(--rule)}
+.row .why{grid-column:1/-1;margin:14px 0 0;font-size:18px;color:var(--ink-soft);line-height:1.7}
+@keyframes tick{0%{transform:translateY(-14px);background:rgba(15,76,74,.18)}100%{transform:translateY(0);background:transparent}}
+.left.ticked{animation:tick .28s ease-out}
+@media (prefers-reduced-motion:reduce){.left.ticked{animation:none;outline:3px solid var(--teal);outline-offset:4px}}
+
+
+.formwrap{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;margin-top:56px}
+.formwrap h3{margin:0 0 10px;font-size:30px;font-weight:900;line-height:1.35}
+.field{margin-bottom:26px}
+.field label{display:block;font-size:19px;font-weight:700;margin-bottom:8px}
+.field .hint{display:block;font-size:17px;font-weight:400;color:var(--ink-soft);line-height:1.6;margin-top:2px}
+.field input[type=text],.field input[type=tel],.field select,.field textarea{
+  width:100%;font-family:inherit;font-size:20px;line-height:1.6;padding:15px 16px;
+  border:3px solid var(--ink);background:#f7f4ec;color:var(--ink);border-radius:0}
+.field textarea{min-height:112px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid var(--teal);outline-offset:2px}
+.check{display:flex;gap:14px;align-items:flex-start;padding:16px 0;font-size:19px;line-height:1.7;cursor:pointer}
+.check input{width:24px;height:24px;margin:6px 0 0;flex:0 0 auto;accent-color:var(--teal)}
+.submit{font-family:inherit;font-size:22px;font-weight:700;padding:19px 42px;background:var(--teal);color:#f1efe6;border:3px solid var(--teal);cursor:pointer;transition:background-color .2s}
+.submit:hover{background:var(--teal-deep)}
+.chosen-line{border:3px solid var(--ink);padding:18px 22px;margin-bottom:26px;font-size:19px;line-height:1.7}
+.alarm{border-left:6px solid var(--stop);background:rgba(138,58,26,.10);padding:18px 22px;margin-bottom:26px;font-size:19px;line-height:1.8;color:#6b2c11}
+.result{border-top:5px solid var(--teal);padding-top:24px}
+.result h4{margin:0 0 16px;font-size:28px;font-weight:900;line-height:1.35}
+.result ul{margin:0 0 24px;padding-left:1.3em;font-size:19px;line-height:1.85}
+.result dl{margin:0;display:grid;grid-template-columns:7em 1fr;column-gap:20px;row-gap:12px;border-top:1px solid var(--rule);padding-top:20px}
+.result dt{color:var(--ink-soft);font-size:17px}
+.result dd{margin:0;font-size:19px}
+.toolbar{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.ghost{font-family:inherit;font-size:19px;font-weight:700;padding:15px 26px;background:transparent;color:var(--ink);border:3px solid var(--ink);cursor:pointer;transition:background-color .2s,color .2s}
+.ghost:hover{background:var(--ink);color:var(--sand)}
+.status{margin-top:20px;font-size:19px;line-height:1.8;color:var(--ink-soft);min-height:1.8em}
+
+
+.docs{display:grid;grid-template-columns:repeat(2,1fr);gap:52px}
+.doc{border-top:5px solid var(--ink);padding-top:24px}
+.doc .badge{display:inline-block;background:var(--teal);color:#f1efe6;font-size:56px;font-weight:900;line-height:1;padding:18px 24px;margin-bottom:18px}
+.doc h3{margin:0 0 18px;font-size:27px;font-weight:900;line-height:1.35}
+.doc h3 small{display:block;font-size:18px;font-weight:500;color:var(--ink-soft);letter-spacing:.06em;margin-top:4px}
+.doc dl{margin:0;display:grid;grid-template-columns:5em 1fr;column-gap:20px;row-gap:14px}
+.doc dt{color:var(--ink-soft);font-size:17px;font-weight:500}
+.doc dd{margin:0;font-size:19px;line-height:1.75}
+
+
+table{width:100%;border-collapse:collapse;font-size:19px}
+caption{text-align:left;font-size:18px;color:var(--ink-soft);padding-bottom:14px}
+th,td{text-align:left;padding:22px 20px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.7}
+th{font-size:18px;font-weight:700;letter-spacing:.12em;color:var(--ink-soft);border-bottom:3px solid var(--ink);padding-top:0}
+td:first-child,th:first-child{padding-left:0}
+td:last-child,th:last-child{padding-right:0}
+tbody tr:last-child td{border-bottom:3px solid var(--ink)}
+.closed td{color:var(--stop);font-weight:500}
+
+
+.band{
+  min-height:400px;display:flex;align-items:flex-end;border-bottom:3px solid var(--ink);
+  background-image:
+    linear-gradient(to top,rgba(242,238,228,.88) 0%,rgba(242,238,228,.48) 32%,rgba(242,238,228,.02) 60%),
+    url("images/room.svg"),
+    linear-gradient(150deg,#b3ac9c 0%,#ccc6b4 40%,#e4dfd0 74%,#f0ede3 100%);
+  background-size:cover,cover,cover;background-position:center,center 42%,center;
+  background-repeat:no-repeat;background-color:var(--sand-2);
+}
+.band .sheet{padding-top:56px;padding-bottom:42px;width:100%}
+.band p{margin:0;font-size:32px;font-weight:900;line-height:1.45;max-width:20em;text-wrap:balance}
+.band span{display:block;margin-top:12px;font-size:19px;font-weight:400;color:var(--ink-soft)}
+
+
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:46px}
+.edu article{border-top:5px solid var(--ink);padding-top:22px}
+.edu h3{margin:0 0 14px;font-size:26px;font-weight:900;line-height:1.35}
+.edu p{margin:0 0 14px;font-size:19px;line-height:1.85}
+.edu p:last-child{margin-bottom:0}
+
+
+.access{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.access dl{margin:0;display:grid;grid-template-columns:6em 1fr;column-gap:22px;row-gap:18px}
+.access dt{color:var(--ink-soft);font-size:17px;font-weight:500}
+.access dd{margin:0;font-size:20px;line-height:1.75}
+.queue{border-top:5px solid var(--teal);padding-top:24px}
+.queue .now{font-size:104px;font-weight:700;line-height:1;color:var(--teal);letter-spacing:-.03em}
+
+
+footer{background:var(--ink);color:#e9e6dc}
+footer .sheet{padding-top:52px;padding-bottom:52px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+footer h3{margin:0 0 12px;font-size:22px;font-weight:900;letter-spacing:.06em}
+footer p{margin:0 0 8px;font-size:19px;line-height:1.8;color:#c2c6bf}
+footer a{color:#e9e6dc}
+footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;margin-top:8px;font-size:17px;color:#a6aca6;line-height:1.8}
+
+
+@media (max-width:900px){
+  .sheet{padding:0 20px}
+  body{font-size:18px}
+  .bar-top .sheet{gap:12px}
+  .bar-top nav{gap:16px}
+  .bar-top nav a.key{padding:10px 18px}
+
+  .split{display:flex;flex-direction:column;min-height:0}
+  .split .shot{order:-1;border-left:0;border-bottom:3px solid var(--ink);min-height:230px;height:230px;
+    background-size:100% 230px,auto 230px,100% 230px,100% 230px;
+    background-position:center top,center top,center top,center top}
+  .split .say{padding:34px 20px 0;max-width:100%;margin:0}
+  .split .say-wrap{padding-left:0}
+  .split h1{font-size:44px;white-space:normal}
+  .claim{font-size:25px}
+  .sub{font-size:18px}
+  .keys{display:block;margin-bottom:30px}
+  .k1,.k2{display:block;text-align:center;margin-bottom:12px}
+  .lamp{grid-template-columns:1fr 1fr}
+  .lamp div{padding:16px 0;border-left:0;border-bottom:1px solid var(--rule)}
+  .lamp div:nth-child(even){padding-left:14px;border-left:1px solid var(--rule)}
+  .lamp div:last-child{grid-column:1/-1;border-left:0;padding-left:0}
+  .lamp .big{font-size:36px}
+  .block .sheet,#booking .sheet{padding-top:48px;padding-bottom:48px}
+  .title h2{font-size:33px}
+  .boardhead{display:none}
+  .row{grid-template-columns:1fr;gap:12px;padding:24px 0}
+  .row .act{text-align:left}
+  .row .left{font-size:58px}
+  .row .left u{display:inline;margin-left:10px}
+  .docs,.formwrap,.edu,.access,footer .sheet{grid-template-columns:1fr;gap:36px}
+  .queue .now{font-size:82px}
+  .band{min-height:0;display:block;background-size:100% 210px,auto 210px,100% 210px;
+    background-position:center top,center top,center top;padding-top:210px}
+  .band .sheet{padding-top:26px;padding-bottom:34px}
+  .band p{font-size:25px}
+  table,thead,tbody,th,td,tr{display:block}
+  thead{display:none}
+  tbody tr{border-bottom:3px solid var(--ink);padding:16px 0}
+  tbody tr:last-child td{border-bottom:0}
+  td{border-bottom:0;padding:4px 0}
+  td:before{content:attr(data-th) "：";color:var(--ink-soft);font-size:17px}
+  .result dl,.doc dl,.access dl{grid-template-columns:1fr;row-gap:4px}
+  .doc dt,.access dt,.result dt{margin-top:10px}
+}
+</style>
+</head>
+<body>
+<aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
+
+<header class="bar-top">
+  <div class="sheet">
+    <p class="brand">和明診所<small>耳鼻喉科．家醫科</small></p>
+    <nav aria-label="主要導覽">
+      <a href="#doctors">醫師簡介</a>
+      <a href="#sessions">診次表</a>
+      <a href="#edu">衛教資訊</a>
+      <a href="#access">交通與候診</a>
+      <a href="#booking" class="key">預約門診</a>
+    </nav>
+  </div>
+</header>
+
+
+<section class="split" data-obj="ClinicProfile" aria-label="和明診所首頁">
+  <div class="say">
+    <div class="say-wrap">
+      <h1>和明診所</h1>
+      <p class="dept">耳鼻喉科　家醫科</p>
+      <p class="claim"><span class="clause">開哪一種藥、為什麼這樣開，</span><span class="clause">在診間講完再讓你走。</span></p>
+      <p class="sub"><span class="clause">台北市中山區。</span><span class="clause">每一診還剩幾個名額，</span><span class="clause">出門前在手機上就看得到。</span></p>
+      <div class="keys">
+        <a class="k1" href="#booking">預約門診</a>
+        <a class="k2" href="#sessions">查看今日診次</a>
+      </div>
+    </div>
+
+    <div class="lamp">
+      <div>
+        <b>目前看診號碼</b>
+        <span class="big num">32<em>號（僅供參考）</em></span>
+      </div>
+      <div>
+        <b>今日診次</b>
+        <span>上午一般門診</span>
+      </div>
+      <div>
+        <b>現場候診</b>
+        <span><span class="num">7</span> 人</span>
+      </div>
+    </div>
+  </div>
+  <div class="shot" role="img" aria-label="和明診所候診空間，自然光"></div>
+</section>
+
+
+<section class="block" id="booking" data-obj="AppointmentSlot">
+  <div class="sheet">
+    <div class="title">
+      <h2>診次名額板</h2>
+      <p>大數字是這一診還剩幾個線上名額</p>
+    </div>
+    <p class="lede">名額用完就不能再按。停診和額滿原因不同，分成兩種標示；現場掛號另有保留名額，不在這塊板上。</p>
+
+    <div class="boardhead" aria-hidden="true">
+      <b>日期與診次</b><b>科別與醫師</b><b>線上名額</b><b>剩餘</b><b>狀態</b>
+    </div>
+    <div id="slot-board"></div>
+
+    <div class="formwrap" data-obj="PatientRequest">
+      <div>
+        <h3>填寫預約資料</h3>
+        <p class="note" style="margin-bottom:26px">姓名與聯絡方式是櫃檯確認身分用的；症狀備註只讓醫師先有個底，不會拿來判斷病情。</p>
+
+        <div class="chosen-line" id="chosen-line" aria-live="polite">尚未選擇時段：請先在上面的名額板挑一個還有名額的診次。</div>
+        <div class="alarm" id="alarm" hidden role="alert"></div>
+
+        <form id="booking-form">
+          <div class="field">
+            <label for="f-name">姓名</label>
+            <input type="text" id="f-name" name="name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-phone">聯絡電話
+              <span class="hint">台灣手機，09 開頭共十碼，例如 0912000000</span>
+            </label>
+            <input type="tel" id="f-phone" name="phone" required pattern="09[0-9]{8}" inputmode="numeric" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="f-dept">科別</label>
+            <select id="f-dept" name="department" required>
+              <option value="耳鼻喉科">耳鼻喉科</option>
+              <option value="家醫科">家醫科</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-slot">時段</label>
+            <select id="f-slot" name="slot" required>
+              <option value="">請先選擇時段</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-note">症狀備註<span class="hint">選填。不必寫得完整，診間會再問一次。</span></label>
+            <textarea id="f-note" name="symptom_note"></textarea>
+          </div>
+          <label class="check">
+            <input type="checkbox" id="f-chronic" name="is_chronic">
+            <span>這次是慢性病連續處方箋（慢箋）相關</span>
+          </label>
+
+          <div data-obj="ReminderPreference">
+            <label class="check">
+              <input type="checkbox" id="f-sms" name="sms_reminder" checked>
+              <span>若您願意，我們可在建議複診日前一天以簡訊提醒。此提醒僅用於本次療程相關照護，不會作為其他行銷用途。</span>
+            </label>
+            <p class="note">取消規則：預約後可在看診前一天 21:00 前打 <span class="num">02-0000-0000</span> 取消，名額會釋出給其他病患。</p>
+          </div>
+          <div class="toolbar">
+            <button type="submit" class="submit">送出預約</button>
+            <button type="button" class="ghost" id="btn-reset">回到初始狀態</button>
+          </div>
+          <p class="status" id="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div>
+        <div class="result" id="result" hidden>
+          <h4 id="result-title">已收到你的預約資料</h4>
+          <ul id="result-bounds">
+            <li>收到<b>不代表掛號已經完成</b>：這一頁不會直接連到健保或掛號系統，診所會再與你電話確認。</li>
+            <li>你填寫的姓名與電話<b>僅顯示於這個畫面，並未被保存</b>，如需異動請直接來電。</li>
+            <li>目前顯示的剩餘名額<b>僅供參考</b>，實際名額仍以現場或電話確認為準。</li>
+            <li>真的要掛號請打 <span class="num">02-0000-0000</span> 或到櫃檯。本網站僅供預約與資訊參考，不取代醫師當面診斷。</li>
+          </ul>
+          <dl id="result-echo"></dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="block alt" id="doctors" data-obj="Doctor">
+  <div class="sheet">
+    <div class="title"><h2>醫師簡介</h2><p>看診的是誰，寫在你走進來之前</p></div>
+    <p class="lede">本站不放醫師的個人生活照，也不寫任何排名、頭銜比較，或對治療結果的承諾。</p>
+    <div class="docs">
+
+      <article class="doc">
+        <span class="badge">陳</span>
+        <h3>陳醫師<small>耳鼻喉科　主治醫師</small></h3>
+        <dl>
+          <dt>專長</dt><dd>鼻過敏、慢性鼻竇問題、成人與兒童喉嚨發炎、耳部檢查</dd>
+          <dt>學經歷</dt><dd>醫學系畢業，醫學中心耳鼻喉部住院醫師、總醫師訓練完成</dd>
+          <dt>看診理念</dt><dd>先問你白天要做什麼工作，再決定開哪一類藥。會不會想睡，是進診間就該講清楚的事。</dd>
+        </dl>
+      </article>
+      <article class="doc">
+        <span class="badge">王</span>
+        <h3>王醫師<small>家醫科　主治醫師</small></h3>
+        <dl>
+          <dt>專長</dt><dd>慢性病追蹤與慢箋、成人健檢判讀、一般感冒與腸胃不適</dd>
+          <dt>學經歷</dt><dd>醫學系畢業，家庭醫學科專科訓練完成，社區醫療服務經驗</dd>
+          <dt>看診理念</dt><dd>慢性病是一起顧好幾年的事。你上次為什麼停藥，講出來比隱瞞有用。</dd>
+        </dl>
+      </article>
+    </div>
+    <p class="disclaim">本網站僅供預約與資訊參考，不取代醫師當面診斷。</p>
+  </div>
+</section>
+
+
+<section class="block" id="sessions" data-obj="SessionType">
+  <div class="sheet">
+    <div class="title"><h2>診次表</h2><p>固定的看診規則</p></div>
+    <p class="lede">這裡是每週固定的診次；某一天實際還能約幾個人，要看上面那塊名額板。</p>
+    <table>
+      <caption>名額上限是該診次的線上預約上限，另有現場保留名額，兩者分開計算。</caption>
+      <thead>
+        <tr><th scope="col">診次名稱</th><th scope="col">星期</th><th scope="col">開始</th><th scope="col">結束</th><th scope="col">線上名額上限</th></tr>
+      </thead>
+      <tbody>
+        <tr><td data-th="診次名稱">一般門診（上午）</td><td data-th="星期">週一至週六</td><td data-th="開始" class="num">09:00</td><td data-th="結束" class="num">12:00</td><td data-th="線上名額上限"><span class="num">20</span> 名</td></tr>
+        <tr><td data-th="診次名稱">一般門診（下午）</td><td data-th="星期">週一至週五</td><td data-th="開始" class="num">14:30</td><td data-th="結束" class="num">17:30</td><td data-th="線上名額上限"><span class="num">20</span> 名</td></tr>
+        <tr><td data-th="診次名稱">一般門診（夜診）</td><td data-th="星期">週一、週五</td><td data-th="開始" class="num">18:30</td><td data-th="結束" class="num">21:00</td><td data-th="線上名額上限"><span class="num">16</span> 名</td></tr>
+        <tr><td data-th="診次名稱">兒童專診</td><td data-th="星期">週三</td><td data-th="開始" class="num">18:30</td><td data-th="結束" class="num">21:00</td><td data-th="線上名額上限"><span class="num">12</span> 名</td></tr>
+        <tr class="closed"><td data-th="診次名稱">休診</td><td data-th="星期">週日全天、週六下午與夜間</td><td data-th="開始">—</td><td data-th="結束">—</td><td data-th="線上名額上限">不開放</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:24px">國定假日與醫師臨時停診另行公告。停診與額滿是兩件事，名額板上分開標示。</p>
+  </div>
+</section>
+
+<section class="band" aria-label="診間">
+  <div class="sheet">
+    <p>每一診收幾個人，是先算過的。
+      <span>名額上限不是在限制你，是留住你在診間裡的那幾分鐘。</span></p>
+  </div>
+</section>
+
+
+<section class="block alt" id="edu">
+  <div class="sheet">
+    <div class="title"><h2>衛教資訊</h2><p>一般性說明，不是針對你的診斷</p></div>
+    <p class="lede">真正該吃什麼、要不要回診，以診間醫師當面說的為準。</p>
+    <div class="edu">
+      <article>
+        <h3>常見症狀</h3>
+        <p>鼻塞、流鼻水、喉嚨痛、咳嗽、耳朵悶，是門診最常見的幾種不舒服。</p>
+        <p>症狀持續超過一週、或出現高燒、呼吸急促、耳朵劇痛，請盡快就醫，不要等下一次門診。</p>
+      </article>
+      <article>
+        <h3>用藥提醒</h3>
+        <p>部分抗組織胺與感冒藥會讓人想睡。需要開車、騎車或操作機具的人，請在診間就先說，醫師會換一種成分。</p>
+        <p>藥吃完前症狀就好了，仍請先問過醫師再停；有其他慢性病用藥，看診時一起帶來或拍照給醫師看。</p>
+      </article>
+      <article>
+        <h3>複診說明</h3>
+        <p>醫師建議複診時，會在診間直接說明時間與原因，並在病歷上註記。</p>
+        <p>慢箋病患請依處方箋上的領藥期間回診，由醫師確認病情後再開下一張。</p>
+      </article>
+    </div>
+    <p class="disclaim">以上為一般衛教資訊。本網站僅供預約與資訊參考，不取代醫師當面診斷。</p>
+  </div>
+</section>
+
+
+<section class="block" id="access" data-obj="ClinicProfile">
+  <div class="sheet">
+    <div class="title"><h2>交通與候診</h2><p>地址與電話，頁尾也有一份</p></div>
+    <div class="access">
+      <div>
+        <dl>
+          <dt>地址</dt><dd>台北市中山區</dd>
+          <dt>電話</dt><dd class="num">02-0000-0000</dd>
+          <dt>捷運</dt><dd>捷運站出口步行約 6 分鐘</dd>
+          <dt>停車</dt><dd>診所不附設停車位。鄰近有公有停車場，尖峰時段建議搭乘大眾運輸。</dd>
+          <dt>無障礙</dt><dd>一樓門口無台階。候診區座位 18 席，走道保留給輪椅與嬰兒推車。</dd>
+        </dl>
+      </div>
+      <div class="queue">
+        <p class="note" style="margin:0 0 6px">目前看診號碼</p>
+        <p class="now num" style="margin:0">32</p>
+        <p class="note" style="margin:10px 0 0">號碼每三到五分鐘更新一次，只是參考，實際仍以現場叫號為準。</p>
+        <p class="note" style="margin:14px 0 0">線上預約只佔用線上名額，現場掛號另有保留名額；網站不會承諾超過現場實際容量。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="sheet">
+    <div>
+      <h3>和明診所</h3>
+      <p>耳鼻喉科．家醫科</p>
+      <p>台北市中山區</p>
+      <p><a href="tel:+886200000000" class="num">02-0000-0000</a></p>
+    </div>
+    <div>
+      <h3>門診時間</h3>
+      <p>上午 09:00–12:00（週一至週六）</p>
+      <p>下午 14:30–17:30（週一至週五）</p>
+      <p>夜診 18:30–21:00（週一、週五）</p>
+      <p>週三夜間為兒童專診</p>
+    </div>
+    <div>
+      <h3>就診提醒</h3>
+      <p>初診請攜帶健保卡與身分證件</p>
+      <p>慢箋回診請帶上一張處方箋</p>
+      <p>取消預約請於看診前一天 21:00 前來電</p>
+    </div>
+    <p class="fine">本網站僅供預約與資訊參考，不取代醫師當面診斷。<br>© 2026 和明診所</p>
+  </div>
+</footer>
+
+<script>
+/* ──────────────────────────────────────────────
+   AppointmentSlot：時段名額狀態機
+   五種狀態：可預約／接近額滿／額滿／停診休診／已結束
+   規則：剩餘 = 線上名額上限 − 已預約人數
+         剩餘 <= 0            → 額滿，按鈕停用
+         0 < 剩餘 <= NEAR     → 接近額滿
+         停診與已結束是外部給定，不由人數決定
+   ────────────────────────────────────────────── */
+(function () {
+  var NEAR = 3;
+
+  // 範例資料。上午診線上 20 名、現場保留 10 名。
+  var SEED = [
+    { id:"s1", date:"2026/06/01", day:"週一", name:"上午診", type:"一般門診", doctor:"陳醫師", dept:"耳鼻喉科", cap:20, onsite:10, booked:12, fixed:null },
+    { id:"s2", date:"2026/06/01", day:"週一", name:"下午診", type:"一般門診", doctor:"王醫師", dept:"家醫科", cap:20, onsite:10, booked:19, fixed:null },
+    { id:"s3", date:"2026/06/01", day:"週一", name:"夜診",   type:"一般門診", doctor:"陳醫師", dept:"耳鼻喉科", cap:16, onsite:8,  booked:9,  fixed:null },
+    { id:"s4", date:"2026/06/02", day:"週二", name:"上午診", type:"一般門診", doctor:"王醫師", dept:"家醫科", cap:20, onsite:10, booked:5,  fixed:null },
+    { id:"s5", date:"2026/06/03", day:"週三", name:"夜間專診", type:"兒童專診", doctor:"陳醫師", dept:"耳鼻喉科", cap:12, onsite:6, booked:0, fixed:"stopped", why:"醫師公假，本診次停診。停診不是額滿，名額不會釋出。" },
+    { id:"s6", date:"2026/05/29", day:"週五", name:"上午診", type:"一般門診", doctor:"王醫師", dept:"家醫科", cap:20, onsite:10, booked:20, fixed:"done", why:"該診次時間已結束，不再開放預約。" }
+  ];
+
+  var slots = SEED.map(function (s) { return Object.assign({}, s); });
+  var lastBooked = null;   // 剛剛送出的那一筆，用來在該診次變額滿之後仍然交代得清楚
+  var taken = [];            // 已送出的預約（PatientRequest），只存在記憶體
+  var chosen = null;
+
+  var board   = document.getElementById("slot-board"),
+      selSlot = document.getElementById("f-slot"),
+      chosenLine = document.getElementById("chosen-line"),
+      alarm   = document.getElementById("alarm"),
+      form    = document.getElementById("booking-form"),
+      result  = document.getElementById("result"),
+      echo    = document.getElementById("result-echo"),
+      status  = document.getElementById("status"),
+      btnReset= document.getElementById("btn-reset");
+
+  function left(s) { return s.cap - s.booked; }
+
+  function stateOf(s) {
+    if (s.fixed === "stopped") return "stopped";
+    if (s.fixed === "done") return "done";
+    if (left(s) <= 0) return "full";
+    if (left(s) <= NEAR) return "near";
+    return "open";
+  }
+
+  var LABEL = { open:"可預約", near:"接近額滿", full:"額滿", stopped:"停診／休診", done:"已結束" };
+
+  function label(s) { return s.date + "（" + s.day + "）" + s.name; }
+  function bookable(s) { var k = stateOf(s); return k === "open" || k === "near"; }
+
+  function tick(el) {
+    el.classList.remove("ticked");
+    void el.offsetWidth;
+    el.classList.add("ticked");
+    setTimeout(function () { el.classList.remove("ticked"); }, 340);
+  }
+
+  function cell(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  function render(flashId) {
+    board.innerHTML = "";
+    slots.forEach(function (s) {
+      var st = stateOf(s), l = Math.max(0, left(s));
+      var row = document.createElement("div");
+      row.className = "row is-" + st + (chosen === s.id ? " is-chosen" : "");
+      row.setAttribute("data-slot", s.id);
+
+      var when = cell("div", "when", s.date + "（" + s.day + "）");
+      var sm = document.createElement("small");
+      sm.textContent = s.name + "　" + s.type;
+      when.appendChild(sm);
+      row.appendChild(when);
+
+      var who = cell("div", "who", s.doctor);
+      var sm2 = document.createElement("small");
+      sm2.textContent = s.dept;
+      who.appendChild(sm2);
+      row.appendChild(who);
+
+      var g = document.createElement("div");
+      g.className = "gauge";
+      g.appendChild(cell("span", "txt",
+        (st === "stopped" || st === "done")
+          ? "線上上限 " + s.cap + " 名"
+          : "已預約 " + s.booked + "／線上上限 " + s.cap + " 名，現場另保留 " + s.onsite + " 名"));
+      var bar = document.createElement("div"); bar.className = "bar";
+      var fill = document.createElement("i");
+      fill.style.width = Math.min(100, (s.booked / s.cap) * 100) + "%";
+      bar.appendChild(fill); g.appendChild(bar);
+      row.appendChild(g);
+
+      var big = document.createElement("div");
+      big.className = "left num";
+      if (st === "stopped" || st === "done") {
+        big.textContent = "不開放";
+        big.classList.add("off");
+      } else {
+        big.textContent = String(l);
+        var u = document.createElement("u");
+        u.textContent = "剩餘名額";
+        big.appendChild(u);
+      }
+      row.appendChild(big);
+
+      var act = document.createElement("div");
+      act.className = "act";
+      act.appendChild(cell("span", "tag", LABEL[st]));
+      var btn = document.createElement("button");
+      btn.type = "button"; btn.className = "pick";
+      btn.disabled = !bookable(s);
+      btn.textContent = bookable(s)
+        ? (chosen === s.id ? "已選擇" : "選這個時段")
+        : "無法預約";
+      btn.addEventListener("click", function () { choose(s.id); });
+      act.appendChild(btn);
+      row.appendChild(act);
+
+      var why = document.createElement("p");
+      why.className = "why";
+      if (s.why) why.textContent = s.why;
+      else if (st === "full") why.textContent = "線上名額已用完。現場保留名額請直接來電詢問。";
+      else if (st === "near") why.textContent = "只剩最後幾個名額，送出後就會變成額滿。";
+      else why.textContent = "還可以約 " + l + " 人。";
+      row.appendChild(why);
+
+      board.appendChild(row);
+      if (flashId === s.id) tick(big);
+    });
+
+    var keep = selSlot.value;
+    selSlot.innerHTML = "";
+    var ph = document.createElement("option");
+    ph.value = ""; ph.textContent = "請先選擇時段";
+    selSlot.appendChild(ph);
+    slots.forEach(function (s) {
+      if (!bookable(s)) return;
+      var o = document.createElement("option");
+      o.value = s.id;
+      o.textContent = s.date.slice(5) + "（" + s.day.slice(-1) + "）" + s.name + "・" + s.type + "・剩 " + left(s) + " 名";
+      selSlot.appendChild(o);
+    });
+    selSlot.value = (chosen && bookable(byId(chosen))) ? chosen
+      : (keep && selSlot.querySelector('option[value="' + keep + '"]') ? keep : "");
+    if (!selSlot.value) chosen = null;
+    paintChosen();
+  }
+
+  function byId(id) { for (var i = 0; i < slots.length; i++) if (slots[i].id === id) return slots[i]; return null; }
+
+  function paintChosen() {
+    var s = chosen ? byId(chosen) : null;
+    if (!s && lastBooked) {
+      var b = byId(lastBooked);
+      chosenLine.textContent = "上一筆已送出：" + label(b) + "，該診次目前「" + LABEL[stateOf(b)]
+        + "」，不再開放選擇。要再約其他診次，請在上面重新挑一個。";
+    } else if (!s) {
+      chosenLine.textContent = "尚未選擇時段：請先在上面的名額板挑一個還有名額的診次。";
+    } else {
+      chosenLine.innerHTML = "";
+      var b = document.createElement("b");
+      b.textContent = label(s);
+      chosenLine.appendChild(document.createTextNode("已選擇："));
+      chosenLine.appendChild(b);
+      chosenLine.appendChild(document.createTextNode("　" + s.type + "　" + s.doctor + "　目前剩 " + left(s) + " 個名額。"));
+    }
+  }
+
+  function choose(id) {
+    var s = byId(id);
+    if (!s || !bookable(s)) return;
+    chosen = id; selSlot.value = id; lastBooked = null;
+    hideAlarm(); render(id);            // 選中的那一列數字也跑一次過場，看得出是哪一列
+    document.getElementById("f-name").focus({ preventScroll: true });
+  }
+
+  selSlot.addEventListener("change", function () {
+    chosen = selSlot.value || null;
+    hideAlarm(); render(chosen);
+  });
+
+  function showAlarm(msg) {
+    alarm.textContent = msg;
+    alarm.removeAttribute("hidden");
+    alarm.scrollIntoView({ behavior: "smooth", block: "center" });   // 擋下來的訊息要讓人當場看到
+  }
+  function hideAlarm() { alarm.setAttribute("hidden", ""); alarm.textContent = ""; }
+
+  /* 送出：原生驗證先擋（form 沒有 novalidate，四個欄位有 required、電話有 pattern）。
+     通過之後才進來這裡做三件事：檢查有沒有選時段、檢查重複預約、真的把名額減一。 */
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();                       // 這是靜態範例頁，不會送到任何伺服器
+
+    var s = chosen ? byId(chosen) : null;
+    if (!s) { showAlarm("還沒有選時段。請先在名額板挑一個還有名額的診次，再送出。"); return; }
+    if (!bookable(s)) { showAlarm("這個時段已經不能預約了（" + LABEL[stateOf(s)] + "）。請改選其他診次。"); render(); return; }
+
+    var name = document.getElementById("f-name").value.trim();
+    var phone = document.getElementById("f-phone").value.trim();
+
+    // 重複預約檢查：同一個人（姓名＋電話）不能重複約同一個時段
+    var dup = taken.some(function (t) { return t.slot === s.id && t.name === name && t.phone === phone; });
+    if (dup) {
+      showAlarm("這個時段已經有一筆用相同姓名與電話的預約了（" + label(s) + "）。"
+        + "同一個人同一診次只能約一次。要改時間請先打 02-0000-0000 取消原本那筆，或改選其他診次。");
+      result.setAttribute("hidden", "");
+      status.textContent = "第二次送出已被擋下，名額沒有再減，仍是 " + left(s) + " 個。";
+      return;
+    }
+
+    // 真的佔用一個名額
+    s.booked += 1;
+    taken.push({
+      slot: s.id, name: name, phone: phone,
+      department: document.getElementById("f-dept").value,
+      note: document.getElementById("f-note").value.trim(),
+      chronic: document.getElementById("f-chronic").checked,
+      sms: document.getElementById("f-sms").checked
+    });
+
+    hideAlarm();
+    lastBooked = s.id;
+    var st;
+    render(s.id);
+    st = stateOf(s);
+
+    echo.innerHTML = "";
+    [["姓名", name],
+     ["聯絡方式", phone],
+     ["科別", document.getElementById("f-dept").value],
+     ["時段", label(s) + "　" + s.type + "　" + s.doctor],
+     ["症狀備註", document.getElementById("f-note").value.trim() || "（未填）"],
+     ["是否慢箋", document.getElementById("f-chronic").checked ? "是" : "否"],
+     ["簡訊提醒", document.getElementById("f-sms").checked ? "同意，僅用於本次療程相關照護" : "不需要"]
+    ].forEach(function (p) {
+      var dt = document.createElement("dt"); dt.textContent = p[0];
+      var dd = document.createElement("dd"); dd.textContent = p[1];
+      echo.appendChild(dt); echo.appendChild(dd);
+    });
+    result.removeAttribute("hidden");
+
+    status.textContent = "已佔用 " + label(s) + " 一個名額："
+      + "已預約 " + s.booked + " 人，剩 " + Math.max(0, left(s)) + " 個，狀態「" + LABEL[st] + "」。"
+      + (st === "full" ? " 這一診已經額滿，按鈕停用。" : "");
+
+    result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+
+  btnReset.addEventListener("click", function () {
+    slots = SEED.map(function (s) { return Object.assign({}, s); });
+    taken = []; chosen = null; lastBooked = null;
+    hideAlarm();
+    result.setAttribute("hidden", "");
+    form.reset();
+    document.getElementById("f-sms").checked = true;
+    render();
+    status.textContent = "已回到初始狀態：六個診次的名額都還原了，送出過的預約也清掉。";
+  });
+
+  render();
+})();
+</script>
+
+<style id="site-audit-fix">
+img,video{max-width:100%}
+select{max-width:100%;text-overflow:ellipsis}
+a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-space:nowrap}
+.row.is-stopped .tag,.row.is-done .tag{color:#56605b;border-color:#56605b}
+#chosen-line,.result dd{word-break:keep-all;overflow-wrap:anywhere}
+.field select{font-size:18px}
+@media (max-width:900px){
+  caption{display:block;width:auto}
+  .field select{font-size:16px;padding-left:12px;padding-right:12px}
+  .bar-top nav{gap:0 12px;flex-wrap:nowrap}
+  .bar-top nav a{font-size:15px;white-space:nowrap}
+  .bar-top nav a.key{padding:8px 12px}
+  .bar-top nav a[href="#edu"]{display:none}
+}
+@media (min-width:901px){.boardhead,.row{padding-left:16px;padding-right:16px;column-gap:18px}}
+@media (max-width:900px){.row{padding-left:20px;padding-right:20px}.row .gauge .txt,.row .why{word-break:keep-all;overflow-wrap:anywhere}}
+</style>
+</body>
+</html>

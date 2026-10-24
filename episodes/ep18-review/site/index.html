@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<link rel="icon" href="data:,">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>總複習｜網站專案技術地圖、報價、交付與驗收</title>
+  <style>
+    :root{
+      --bg:#f4f1ea;
+      --surface:#fffdf8;
+      --surface-2:#ebe6dc;
+      --ink:#1f2523;
+      --muted:#626b66;
+      --line:#d4cec1;
+      --accent:#365e52;
+      --accent-2:#dbe7df;
+      --warm:#8a5b39;
+      --warm-bg:#f3e5d8;
+      --danger:#8a4541;
+      --danger-bg:#f6e5e2;
+      --ok:#3e6851;
+      --ok-bg:#e4eee7;
+      --radius:24px;
+      --shadow:0 16px 40px rgba(37,42,39,.07);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:var(--bg);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      font-size:18px;
+      line-height:1.75;
+    }
+
+    button,input,select,textarea{font:inherit}
+    button,a{touch-action:manipulation}
+    a{color:inherit}
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible{
+      outline:4px solid rgba(54,94,82,.22);
+      outline-offset:3px;
+    }
+
+    .wrap{
+      width:min(1180px,calc(100% - 40px));
+      margin:auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:30;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:24px;
+      padding:16px max(20px,calc((100% - 1180px)/2));
+      background:rgba(244,241,234,.94);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(16px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      font-weight:900;
+      font-size:20px;
+      letter-spacing:.04em;
+    }
+
+    .brand-mark{
+      display:grid;
+      place-items:center;
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      color:#fff;
+      background:var(--accent);
+      font-weight:900;
+    }
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .nav a{
+      padding:8px 11px;
+      text-decoration:none;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:16px;
+      font-weight:700;
+    }
+
+    .nav a:hover{background:var(--surface);color:var(--ink)}
+
+    main{overflow:hidden}
+
+    .hero{
+      padding:86px 0 54px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin:0 0 18px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:var(--accent-2);
+      color:var(--accent);
+      font-size:16px;
+      font-weight:900;
+      letter-spacing:.04em;
+    }
+
+    h1,h2,h3,p{margin-top:0}
+    h1{
+      max-width:900px;
+      margin-bottom:24px;
+      font-size:clamp(44px,7vw,82px);
+      line-height:1.02;
+      letter-spacing:-.055em;
+    }
+
+    h2{
+      margin-bottom:14px;
+      font-size:clamp(34px,4vw,50px);
+      line-height:1.12;
+      letter-spacing:-.035em;
+    }
+
+    h3{
+      margin-bottom:10px;
+      font-size:24px;
+      line-height:1.3;
+    }
+
+    .lead{
+      max-width:820px;
+      margin-bottom:32px;
+      color:var(--muted);
+      font-size:22px;
+    }
+
+    .hero-actions,.button-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+    }
+
+    .btn{
+      min-height:52px;
+      padding:12px 19px;
+      border:1px solid transparent;
+      border-radius:14px;
+      cursor:pointer;
+      text-decoration:none;
+      font-size:16px;
+      font-weight:850;
+      transition:.16s ease;
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.secondary{background:var(--surface);border-color:var(--line);color:var(--ink)}
+    .btn.danger{background:var(--danger-bg);color:var(--danger);border-color:#e7c6c1}
+
+    .hero-note{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:46px;
+    }
+
+    .mini-card{
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(255,253,248,.62);
+    }
+
+    .mini-card strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:20px;
+    }
+
+    .mini-card span{color:var(--muted);font-size:16px}
+
+    section{
+      padding:68px 0;
+      border-top:1px solid rgba(212,206,193,.75);
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:28px;
+      margin-bottom:30px;
+    }
+
+    .section-head p{
+      max-width:590px;
+      margin-bottom:0;
+      color:var(--muted);
+    }
+
+    .section-index{
+      color:var(--accent);
+      font-weight:900;
+      font-size:16px;
+      letter-spacing:.08em;
+    }
+
+    .type-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:14px;
+    }
+
+    .type-card{
+      position:relative;
+      min-height:330px;
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--surface);
+      box-shadow:var(--shadow);
+    }
+
+    .type-card .number{
+      display:inline-grid;
+      place-items:center;
+      width:42px;
+      height:42px;
+      margin-bottom:34px;
+      border-radius:50%;
+      color:var(--accent);
+      background:var(--accent-2);
+      font-weight:900;
+    }
+
+    .level{
+      margin:0 0 12px;
+      color:var(--accent);
+      font-size:16px;
+      font-weight:900;
+    }
+
+    .risk{
+      margin-top:18px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .panel{
+      padding:30px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--surface);
+      box-shadow:var(--shadow);
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    label{font-weight:800}
+
+    input,select,textarea{
+      width:100%;
+      min-height:54px;
+      padding:12px 14px;
+      border:1px solid #bdb7ac;
+      border-radius:12px;
+      color:var(--ink);
+      background:#fff;
+      font-size:17px;
+    }
+
+    textarea{min-height:120px;resize:vertical}
+
+    .full{grid-column:1/-1}
+
+    .status{
+      display:none;
+      margin-top:18px;
+      padding:14px 16px;
+      border-radius:12px;
+      background:var(--ok-bg);
+      color:var(--ok);
+      font-weight:800;
+      font-size:16px;
+    }
+
+    .status.show{display:block}
+
+    .object{
+      margin-top:26px;
+      padding:20px;
+      border-left:5px solid var(--accent);
+      border-radius:0 16px 16px 0;
+      background:var(--accent-2);
+    }
+
+    .object code{
+      font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+      font-size:16px;
+      white-space:normal;
+    }
+
+    .object strong{
+      display:block;
+      margin-bottom:8px;
+    }
+
+    .quote-layout{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:18px;
+    }
+
+    .table-wrap{
+      overflow-x:auto;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:var(--surface);
+    }
+
+    table{
+      width:100%;
+      min-width:720px;
+      border-collapse:collapse;
+    }
+
+    th,td{
+      padding:17px 18px;
+      border-bottom:1px solid var(--line);
+      text-align:left;
+      vertical-align:top;
+      font-size:16px;
+    }
+
+    th{
+      background:var(--surface-2);
+      font-weight:900;
+    }
+
+    tr:last-child td{border-bottom:0}
+
+    .badge{
+      display:inline-block;
+      padding:5px 10px;
+      border-radius:999px;
+      font-size:16px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .include{background:var(--ok-bg);color:var(--ok)}
+    .exclude{background:var(--danger-bg);color:var(--danger)}
+    .extra{background:var(--warm-bg);color:var(--warm)}
+
+    .boundary-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .boundary{
+      padding:17px;
+      border-radius:16px;
+      background:var(--bg);
+      border:1px solid var(--line);
+    }
+
+    .boundary strong{
+      display:block;
+      margin-bottom:4px;
+    }
+
+    .boundary span{font-size:16px;color:var(--muted)}
+
+    .delivery-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .delivery-card{
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:var(--surface);
+    }
+
+    .delivery-card .icon{
+      display:grid;
+      place-items:center;
+      width:44px;
+      height:44px;
+      margin-bottom:18px;
+      border-radius:14px;
+      background:var(--surface-2);
+      font-weight:900;
+    }
+
+    .delivery-card p{
+      margin-bottom:0;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .check-list{
+      display:grid;
+      gap:10px;
+    }
+
+    .check-row{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      gap:14px;
+      align-items:center;
+      padding:17px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:var(--surface);
+    }
+
+    .check-row input{
+      width:22px;
+      height:22px;
+      min-height:auto;
+      accent-color:var(--accent);
+    }
+
+    .check-row strong{display:block}
+    .check-row span{font-size:16px;color:var(--muted)}
+
+    .result{
+      min-width:86px;
+      text-align:center;
+      padding:6px 9px;
+      border-radius:999px;
+      background:var(--surface-2);
+      font-size:16px;
+      font-weight:900;
+    }
+
+    .rule-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+    }
+
+    .rule{
+      padding:24px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:var(--surface);
+    }
+
+    .rule p{color:var(--muted);margin-bottom:0}
+
+    .important{
+      margin-top:24px;
+      padding:24px;
+      border-radius:20px;
+      background:#242c29;
+      color:#fff;
+    }
+
+    .important h3{color:#fff}
+    .important p{margin-bottom:0;color:#e4ebe7}
+
+    .summary{
+      padding:42px;
+      border-radius:30px;
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .summary h2{color:#fff}
+    .summary p{color:#e5eee9}
+    .summary .btn.secondary{
+      background:#fff;
+      border-color:#fff;
+    }
+
+    .saved-box{
+      margin-top:20px;
+      padding:18px;
+      border:1px dashed var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.08);
+      font-size:16px;
+    }
+
+    footer{
+      padding:44px 0 60px;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    footer strong{color:var(--ink)}
+
+    @media(max-width:920px){
+      .type-grid{grid-template-columns:repeat(2,1fr)}
+      .delivery-grid{grid-template-columns:repeat(2,1fr)}
+      .quote-layout{grid-template-columns:1fr}
+      .hero-note{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 640px){
+      body{font-size:18px;line-height:1.7}
+      .wrap{width:min(100% - 28px,1180px)}
+
+      .site-header{
+        position:relative;
+        flex-direction:column;
+        align-items:flex-start;
+        padding:18px 14px;
+      }
+
+      .nav{
+        width:100%;
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        padding-bottom:4px;
+      }
+
+      .nav a{
+        flex:0 0 auto;
+        font-size:16px;
+      }
+
+      .hero{padding:58px 0 38px}
+      h1{font-size:46px}
+      h2{font-size:32px}
+      h3{font-size:23px}
+      .lead{font-size:20px}
+      p,li{font-size:18px}
+
+      section{padding:52px 0}
+
+      .section-head{
+        display:block;
+        margin-bottom:24px;
+      }
+
+      .section-index{margin-bottom:8px}
+
+      .type-grid,
+      .rule-grid,
+      .form-grid,
+      .delivery-grid{
+        grid-template-columns:1fr;
+      }
+
+      .full{grid-column:auto}
+
+      .type-card{min-height:auto}
+      .panel{padding:20px}
+      .summary{padding:26px 22px}
+
+      input,select,textarea{font-size:18px}
+
+      .btn,
+      .eyebrow,
+      .level,
+      .risk,
+      .mini-card span,
+      .boundary span,
+      .delivery-card p,
+      .check-row span,
+      .result,
+      .status,
+      th,td,
+      footer,
+      .object code,
+      .saved-box{
+        font-size:16px;
+      }
+
+      .check-row{
+        grid-template-columns:auto 1fr;
+      }
+
+      .result{
+        grid-column:2;
+        justify-self:start;
+      }
+    }
+
+.site-header{position:relative!important}
+
+@media(max-width:640px){
+ table{min-width:0!important;width:100%!important} thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ tbody{display:block} tr{display:block;border:1px solid var(--line,#d4cec1);border-radius:16px;margin:0 0 18px;padding:16px;background:var(--surface,#fffdf8)}
+ td{display:block!important;min-width:0!important;width:auto!important;border:0!important;padding:7px 0!important;overflow-wrap:anywhere;font-size:18px!important}
+ td[data-label]:before{content:attr(data-label);display:block;font-size:16px;font-weight:700;color:var(--muted,#626b66)}
+ .table-wrap,.table-scroll{overflow:visible!important} .site-header,header{position:relative!important}
+}
+@media(max-width:640px){.site-header{flex-direction:column;align-items:flex-start}.site-nav{gap:12px}.type-grid,.rule-grid,.form-grid,.delivery-grid{grid-template-columns:1fr}.btn{display:block;width:100%;text-align:center}}
+</style>
+<style>@media(min-width:900px){header{position:static!important}.quote-layout{grid-template-columns:minmax(0,1.8fr) minmax(0,1fr)!important;align-items:start}#quote th,#quote td{padding:18px 14px}#quote .panel{padding:26px}}</style><style id="lesson-style">
+.textbook-block{max-width:1120px;margin:48px auto;padding:32px;background:#fffdf9;border:1px solid #d9ddd8;border-radius:20px;color:#1f2825;font-size:20px;line-height:1.7}
+.textbook-block h2{font-size:32px;line-height:1.45;margin:0 0 20px}.textbook-block p{margin:16px 0}.textbook-block summary{cursor:pointer;font-size:22px;padding:16px 20px}.textbook-block details{border:1px solid #d9ddd8;border-radius:12px;margin:16px 0;padding:8px}.textbook-block details p{padding:0 20px 16px}.textbook-block button,.textbook-block select{font:inherit;padding:14px 22px;min-height:52px;margin:8px;border:1px solid #1f5b4d;border-radius:10px;background:white;color:#1f2825}.textbook-block .selected{background:#1f5b4d;color:white}.textbook-block .booked{background:#eee;color:#666}.textbook-block code{font-size:18px;word-break:break-word}
+@media(max-width:640px){.textbook-block{margin:24px 16px;padding:24px}.textbook-block button,.textbook-block select{max-width:100%;margin:8px 0}}
+</style><style id="lesson-layout-fix">h1,h2,h3{text-wrap:balance}.unit-safe{white-space:nowrap}#quoteResponsibility{max-width:1120px;margin:0 auto 24px;padding:0 24px}.result{color:#48514c!important}.summary .eyebrow{color:#fff!important;background:transparent!important}.boundary{padding:22px!important}.check-row{padding-right:24px!important} @media(max-width:640px){.wrap{width:calc(100% - 48px)!important}.site-header{padding:24px!important}.site-nav{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:12px!important}.panel{padding:24px!important}}</style></head>
+
+<body>
+<aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
+  <header class="site-header">
+    <a class="brand" href="#top">
+      <span class="brand-mark">總</span>
+      <span>網站製作總複習</span>
+    </a>
+
+    <nav class="nav site-nav" aria-label="主要導覽">
+      <a href="#types">技術地圖</a>
+      <a href="#interview">需求訪談</a>
+      <a href="#quote">報價</a>
+      <a href="#delivery">交付</a>
+      <a href="#acceptance">驗收</a>
+      <a href="#maintenance">維護</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">教學虛構示例 · 單頁網站專案總複習</p>
+        <h1>不是先問「網站多少錢」，而是先把邊界說清楚。</h1>
+        <p class="lead">
+          從網站類型、需求訪談、功能層級，到報價、交付、驗收與維護，
+          把一個網站專案真正需要確認的六個模組放在同一張地圖上。
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#types">開始整理專案</a>
+          <a class="btn secondary" href="#acceptance">直接看驗收表</a>
+        </div>
+
+        <div class="hero-note">
+          <div class="mini-card">
+            <strong>先分類</strong>
+            <span>先判斷是形象、作品部署、預約、會員，還是交易平台。</span>
+          </div>
+          <div class="mini-card">
+            <strong>再畫邊界</strong>
+            <span>包含、不包含、新增另計，必須在製作之前說清楚。</span>
+          </div>
+          <div class="mini-card">
+            <strong>最後才驗收</strong>
+            <span>手機、表單、資料、付款與 SEO 分開檢查，不用一句「做好了」帶過。</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="types">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-index">01 · WebsiteType</div>
+            <h2>五張等級卡：先看你正在做哪一種網站</h2>
+          </div>
+          <p>
+            網站類型會直接影響資料、帳號、後端與驗收方式。
+            功能越接近「預約、會員、付款與多人協作」，責任邊界就越需要被明確定義。
+          </p>
+        </div>
+
+        <div class="type-grid">
+          <article class="type-card">
+            <div class="number">1</div>
+            <p class="level">功能等級 · 基礎</p>
+            <h3>形象</h3>
+            <p>適合需要說清楚品牌、服務、聯絡方式與核心行動的店家或個人。</p>
+            <div class="risk"><strong>主要風險：</strong>資訊過時、聯絡方式失效、手機閱讀不佳。</div>
+          </article>
+
+          <article class="type-card">
+            <div class="number">2</div>
+            <p class="level">功能等級 · 展示＋發布</p>
+            <h3>作品與部署</h3>
+            <p>適合作品集、活動頁、專案展示，需處理版本、網域與部署網址。</p>
+            <div class="risk"><strong>主要風險：</strong>圖片過重、部署權限不清、正式版與舊版混淆。</div>
+          </article>
+
+          <article class="type-card">
+            <div class="number">3</div>
+            <p class="level">功能等級 · 流程</p>
+            <h3>預約與排程</h3>
+            <p>適合診所、教練、工作室、住宿等，需要選日期、時段與人員的服務。</p>
+            <div class="risk"><strong>主要風險：</strong>重複預約、狀態不一致、前端顯示不等於後端鎖位。</div>
+          </article>
+
+          <article class="type-card">
+            <div class="number">4</div>
+            <p class="level">功能等級 · 身分＋資料</p>
+            <h3>會員與課程</h3>
+            <p>適合登入、課程紀錄、堂數、會員資料與個人化內容。</p>
+            <div class="risk"><strong>主要風險：</strong>權限、個資保存、堂數與交易紀錄無法追溯。</div>
+          </article>
+
+          <article class="type-card">
+            <div class="number">5</div>
+            <p class="level">功能等級 · 交易＋平台</p>
+            <h3>交易與平台</h3>
+            <p>涉及付款、訂單、退款、平台角色或第三方服務整合。</p>
+            <div class="risk"><strong>主要風險：</strong>金流通知、訂單一致性、退款與權限責任界線。</div>
+          </article>
+        </div>
+
+        <div class="object">
+          <strong>WebsiteType 物件示例</strong>
+          <code>{ 名稱、功能等級、適合業態、風險 }</code>
+        </div>
+      </div>
+    </section>
+
+    <section id="interview">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-index">02 · 需求訪談（本機暫存）</div>
+            <h2>網站開始之前，先問四件事</h2>
+          </div>
+          <p>先確認業態、客群、核心行動與資料來源。本原型的訪談只暫存於 localStorage，尚未寫入六個接案物件。</p>
+        </div>
+
+        <div class="panel">
+          <form id="projectForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="business">業態</label>
+                <input id="business" name="business" placeholder="例如：教學虛構的攝影工作室" />
+              </div>
+
+              <div class="field">
+                <label for="audience">主要客群</label>
+                <input id="audience" name="audience" placeholder="例如：第一次找攝影師的家庭客" />
+              </div>
+
+              <div class="field">
+                <label for="action">核心行動</label>
+                <select id="action" name="action">
+                  <option value="">請選擇</option>
+                  <option>閱讀服務後提出詢問</option>
+                  <option>預約時段</option>
+                  <option>建立會員資料</option>
+                  <option>購買或付款</option>
+                  <option>瀏覽作品並前往部署頁</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="source">資料來源</label>
+                <input id="source" name="source" placeholder="業主確認的服務與價格" />
+              </div>
+
+              <div class="field full">
+                <label for="boundary">資料與個資保存邊界</label>
+                <textarea id="boundary" name="boundary" placeholder="例如：教學原型只存在本機瀏覽器；正式會員資料不得只靠 localStorage，需由正式後端與權限系統管理。"></textarea>
+              </div>
+            </div>
+
+            <div class="button-row" style="margin-top:20px">
+              <button class="btn primary" type="button" id="saveInterview">教學模擬：儲存訪談</button>
+              <button class="btn secondary" type="button" id="clearInterview">清除本機測試資料</button>
+            </div>
+
+            <div class="status" id="interviewStatus" role="status">
+              教學模擬：資料已保存在此瀏覽器的 localStorage，沒有送往伺服器。
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="quote"><p id="quoteResponsibility">報價差異在責任變重，不在頁數變多。</p>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-index">03 · ScopeItem + QuoteLine</div>
+            <h2>報價不是一個總價，要拆成可以驗收的工作</h2>
+          </div>
+          <p>
+            報價拆分為工作項目、估時、價格與備註。
+            真正報價應依頁面數、功能數、整合範圍、時程與維護責任重新估算。
+          </p>
+        </div>
+
+        <div class="quote-layout">
+          <div class="table-wrap">
+            <table>
+<thead>
+<tr>
+<th>工作項目</th>
+<th>範圍</th>
+<th>估時</th>
+<th>價格</th>
+<th>驗收方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="工作項目">單頁資訊架構與 RWD</td>
+<td data-label="範圍"><span class="badge include">包含</span></td>
+<td data-label="估時">6 小時</td>
+<td data-label="價格"><span class="unit-safe">—</span></td>
+<td data-label="驗收方式">手機、平板、桌機閱讀測試</td>
+</tr>
+<tr>
+<td data-label="工作項目">靜態表單互動</td>
+<td data-label="範圍"><span class="badge include">包含</span></td>
+<td data-label="估時">3 小時</td>
+<td data-label="價格"><span class="unit-safe">—</span></td>
+<td data-label="驗收方式">欄位狀態與成功提示可操作</td>
+</tr>
+<tr>
+<td data-label="工作項目">正式會員資料庫</td>
+<td data-label="範圍"><span class="badge exclude">不包含</span></td>
+<td data-label="估時">—</td>
+<td data-label="價格">—</td>
+<td data-label="驗收方式">此版本沒有建立正式會員後端</td>
+</tr>
+<tr>
+<td data-label="工作項目">第三方金流串接</td>
+<td data-label="範圍"><span class="badge extra">新增另計</span></td>
+<td data-label="估時">另估</td>
+<td data-label="價格">另估</td>
+<td data-label="驗收方式">需包含付款通知與訂單狀態驗證</td>
+</tr>
+<tr>
+<td data-label="工作項目">上線後內容維護</td>
+<td data-label="範圍"><span class="badge extra">新增另計</span></td>
+<td data-label="估時">按次或週期</td>
+<td data-label="價格">另議</td>
+<td data-label="驗收方式">依更新紀錄逐項確認</td>
+</tr>
+</tbody>
+</table>
+          </div>
+
+          <aside class="panel">
+            <h3>報價四個拆分軸</h3>
+            <div class="boundary-list">
+              <div class="boundary">
+                <strong>頁面數</strong>
+                <span>首頁、服務、作品、會員頁等，是否屬於不同頁面。</span>
+              </div>
+              <div class="boundary">
+                <strong>功能數</strong>
+                <span>搜尋、表單、預約、登入、付款，各自是不同功能責任。</span>
+              </div>
+              <div class="boundary">
+                <strong>整合項目</strong>
+                <span>網域、分析、地圖、行事曆、資料庫、金流等第三方服務。</span>
+              </div>
+              <div class="boundary">
+                <strong>維護</strong>
+                <span>誰更新、多久更新、異常怎麼回報，與製作本身分開。</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="object">
+          <strong>ScopeItem 物件示例</strong>
+          <code>{ 項目、是否包含、驗收方式 }</code>
+        </div>
+
+        <div class="object">
+          <strong>QuoteLine 物件示例</strong>
+          <code>{ 工作項目、估時、價格、備註 }</code>
+        </div>
+      </div>
+    </section>
+
+    <section id="delivery">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-index">04 · DeliveryAsset</div>
+            <h2>網站交付，不只有一個網址</h2>
+          </div>
+          <p>專案結束前，把原始檔、網址、帳號權限與文件逐一交回，避免未來只有製作者本人知道網站怎麼運作。</p>
+        </div>
+
+        <div class="delivery-grid">
+          <article class="delivery-card">
+            <div class="icon">01</div>
+            <h3>原始檔</h3>
+            <p>HTML、CSS、JS、合法可交付素材與最終版本檔案。</p>
+          </article>
+
+          <article class="delivery-card">
+            <div class="icon">02</div>
+            <h3>部署網址</h3>
+            <p>正式網址、部署平台位置，以及哪一個版本目前對外公開。</p>
+          </article>
+
+          <article class="delivery-card">
+            <div class="icon">03</div>
+            <h3>帳號權限</h3>
+            <p>帳號歸屬、管理權限、交接方式。密碼不直接寫進公開文件。</p>
+          </article>
+
+          <article class="delivery-card">
+            <div class="icon">04</div>
+            <h3>文件</h3>
+            <p>更新方式、部署流程、功能限制、第三方服務與維護規則。</p>
+          </article>
+        </div>
+
+        <div class="object">
+          <strong>DeliveryAsset 物件示例</strong>
+          <code>{ 檔案、帳號、網址、文件 }</code>
+        </div>
+      </div>
+    </section>
+
+    <section id="acceptance">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-index">05 · AcceptanceCheck</div>
+            <h2>驗收不是「看起來可以」，而是一項一項測</h2>
+          </div>
+          <p>下面可以直接勾選。勾選結果只保存在本機，用來示範驗收表的互動方式。</p>
+        </div>
+
+        <div class="check-list" id="checkList">
+          <label class="check-row">
+            <input type="checkbox" data-key="mobile" />
+            <span>
+              <strong>手機版</strong>
+              字級、換行、按鈕尺寸、表格與導覽在窄螢幕仍可閱讀與操作。
+            </span>
+            <em class="result">未驗收</em>
+          </label>
+
+          <label class="check-row">
+            <input type="checkbox" data-key="form" />
+            <span>
+              <strong>表單</strong>
+              必填、錯誤、送出提示與狀態文案清楚；教學模擬不可宣稱真的已送到伺服器。
+            </span>
+            <em class="result">未驗收</em>
+          </label>
+
+          <label class="check-row">
+            <input type="checkbox" data-key="data" />
+            <span>
+              <strong>資料</strong>
+              顯示資料與來源一致，敏感資料的保存位置與權限有被確認。
+            </span>
+            <em class="result">未驗收</em>
+          </label>
+
+          <label class="check-row">
+            <input type="checkbox" data-key="payment" />
+            <span>
+              <strong>付款</strong>
+              前端成功頁只能呈現畫面狀態；正式交易仍需由後端接收並驗證金流通知，再更新訂單。
+            </span>
+            <em class="result">未驗收</em>
+          </label>
+
+          <label class="check-row">
+            <input type="checkbox" data-key="seo" />
+            <span>
+              <strong>SEO</strong>
+              title、description、標題層級、可索引內容與正式網址設定符合專案需求。
+            </span>
+            <em class="result">未驗收</em>
+          </label>
+        </div>
+
+        <div class="button-row" style="margin-top:20px">
+          <button class="btn primary" type="button" id="saveChecks">教學模擬：保存驗收結果</button>
+          <button class="btn secondary" type="button" id="resetChecks">重設驗收表</button>
+        </div>
+
+        <div class="status" id="checkStatus" role="status">
+          教學模擬：驗收結果已保存於此瀏覽器，沒有寫入正式專案系統。
+        </div>
+
+        <div class="object">
+          <strong>AcceptanceCheck 物件示例</strong>
+          <code>{ 檢查項目、結果、修正方式 }</code>
+        </div>
+      </div>
+    </section>
+
+    <section id="maintenance">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-index">06 · MaintenanceRule</div>
+            <h2>交付不是結束，還要先講清楚誰負責維護</h2>
+          </div>
+          <p>網站最容易出問題的時候，往往不是製作當天，而是幾個月後內容改了、帳號換人、服務失效，卻沒有人知道誰處理。</p>
+        </div>
+
+        <div class="rule-grid">
+          <article class="rule">
+            <h3>更新頻率</h3>
+            <p>定義內容是每週、每月、活動前更新，還是僅在收到需求時修改。</p>
+          </article>
+
+          <article class="rule">
+            <h3>責任人</h3>
+            <p>指定誰提供正確資料、誰更新網站、誰能操作正式帳號。</p>
+          </article>
+
+          <article class="rule">
+            <h3>費用</h3>
+            <p>分清原專案保固、內容更新、功能新增與第三方服務費，不混成一筆。</p>
+          </article>
+
+          <article class="rule">
+            <h3>回復流程</h3>
+            <p>異常先記錄網址、時間、操作步驟與畫面，再判斷是內容、前端、後端或第三方服務。</p>
+          </article>
+        </div>
+
+        <div class="important">
+          <h3>兩條不能混在一起的責任線</h3>
+          <p>
+            <strong>個資保存：</strong>這個教學原型可用 localStorage 保存測試資料，但正式會員、預約、訂單與敏感個資不應只存在使用者瀏覽器，必須依正式系統需求設計後端、權限與保存規則。
+            <br><br>
+            <strong>付款成功：</strong>使用者看到「成功頁」不等於商家已確認收款。正式交易應由後端驗證金流服務的付款通知與交易狀態，再決定訂單是否成立。
+          </p>
+        </div>
+
+        <div class="object">
+          <strong>MaintenanceRule 物件示例</strong>
+          <code>{ 更新頻率、責任人、費用 }</code>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="summary">
+          <p class="eyebrow">總複習</p>
+          <h2>一個能交付的網站，要同時回答六個問題。</h2>
+          <p>
+            這是哪一類網站？需求從哪裡來？哪些工作包含在報價裡？
+            最後交付什麼？怎麼驗收？上線後誰負責？
+            六件事都能回答，專案才真正有邊界。
+          </p>
+
+          <div class="button-row">
+            <a class="btn secondary" href="#types">重新看技術地圖</a>
+            <button class="btn secondary" type="button" id="showSummary">教學模擬：查看本機摘要</button>
+          </div>
+
+          <div class="saved-box" id="savedSummary" hidden>
+            尚未讀取本機資料。
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <strong>教學示範原型。</strong>
+      本頁所有數字、價格、業態與案例皆為示意，不含真實營業資料、真人資歷、學員成果或評論。
+
+    </div>
+  </footer>
+
+  <script>
+    const interviewFields = ["business","audience","action","source","boundary"];
+    const interviewKey = "review_demo_interview";
+    const checksKey = "review_demo_checks";
+
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => [...document.querySelectorAll(selector)];
+
+    function loadInterview(){
+      const saved = JSON.parse(localStorage.getItem(interviewKey) || "{}");
+      interviewFields.forEach(id => {
+        const el = document.getElementById(id);
+        if(el && saved[id]) el.value = saved[id];
+      });
+    }
+
+    $("#saveInterview").addEventListener("click", () => {
+      const data = {};
+      interviewFields.forEach(id => data[id] = document.getElementById(id).value.trim());
+      localStorage.setItem(interviewKey, JSON.stringify(data));
+      $("#interviewStatus").textContent = "教學模擬：資料已保存在此瀏覽器的 localStorage，沒有送往伺服器。";
+      $("#interviewStatus").classList.add("show");
+    });
+
+    $("#clearInterview").addEventListener("click", () => {
+      localStorage.removeItem(interviewKey);
+      interviewFields.forEach(id => document.getElementById(id).value = "");
+      $("#interviewStatus").textContent = "教學模擬：本機訪談測試資料已清除。";
+      $("#interviewStatus").classList.add("show");
+    });
+
+    function refreshCheckLabels(){
+      $$("#checkList .check-row").forEach(row => {
+        const input = row.querySelector("input");
+        const result = row.querySelector(".result");
+        result.textContent = input.checked ? "已通過" : "未驗收";
+        result.style.background = input.checked ? "var(--ok-bg)" : "var(--surface-2)";
+        result.style.color = input.checked ? "var(--ok)" : "var(--muted)";
+      });
+    }
+
+    function loadChecks(){
+      const saved = JSON.parse(localStorage.getItem(checksKey) || "{}");
+      $$("#checkList input").forEach(input => {
+        input.checked = Boolean(saved[input.dataset.key]);
+      });
+      refreshCheckLabels();
+    }
+
+    $$("#checkList input").forEach(input => {
+      input.addEventListener("change", refreshCheckLabels);
+    });
+
+    $("#saveChecks").addEventListener("click", () => {
+      const data = {};
+      $$("#checkList input").forEach(input => data[input.dataset.key] = input.checked);
+      localStorage.setItem(checksKey, JSON.stringify(data));
+      $("#checkStatus").classList.add("show");
+    });
+
+    $("#resetChecks").addEventListener("click", () => {
+      localStorage.removeItem(checksKey);
+      $$("#checkList input").forEach(input => input.checked = false);
+      refreshCheckLabels();
+      $("#checkStatus").textContent = "教學模擬：驗收結果已重設。";
+      $("#checkStatus").classList.add("show");
+    });
+
+    $("#showSummary").addEventListener("click", () => {
+      const interview = JSON.parse(localStorage.getItem(interviewKey) || "{}");
+      const checks = JSON.parse(localStorage.getItem(checksKey) || "{}");
+
+      const completed = Object.values(checks).filter(Boolean).length;
+      const business = interview.business || "尚未填寫";
+      const action = interview.action || "尚未選擇";
+
+      const box = $("#savedSummary");
+      box.hidden = false;
+      box.innerHTML =
+        "<strong>教學模擬本機摘要</strong><br>" +
+        "業態：" + escapeHTML(business) + "<br>" +
+        "核心行動：" + escapeHTML(action) + "<br>" +
+        "五項驗收完成：" + completed + " / 5<br>" +
+        "資料來源：僅此瀏覽器的 localStorage，未連接正式後端。";
+    });
+
+    function escapeHTML(value){
+      return String(value).replace(/[&<>"']/g, char => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
+      }[char]));
+    }
+
+    loadInterview();
+    loadChecks();
+  </script>
+<section class="textbook-block" id="emotionalNeeds"><h2>客人購買的核心是情緒狀態的轉變</h2><label for="emotionSelect">這個專案要回應的情緒需求</label><select id="emotionSelect"><option>請選擇</option><option>安全與孤獨</option><option>焦慮的轉移</option><option>自我形象的投射</option><option>代為盡責與被款待</option></select><p id="emotionList">安全與孤獨、焦慮的轉移、自我形象的投射、代為盡責與被款待。</p></section>
+<section class="textbook-block" id="textbookAcceptance"><h2>交付驗收補充</h2><details id="accessibility"><summary>無障礙</summary><p>圖片有 alt、表單欄位有 label、文字與背景對比足夠；用鍵盤 Tab 走完整個流程。</p></details><details id="validationPerformance"><summary>輸入驗證與效能</summary><p>email／電話有格式檢查，不只必填；後端會再驗一次。圖片壓縮與 lazy-load 延遲載入；手機首屏不應空白數秒，用 Lighthouse 看分數。</p></details><details id="rollback"><summary>版本回復方式</summary><p>出錯時把線上版本回退到前一個成功的 commit，回到上一版。</p></details></section>
+<section class="textbook-block" id="psychology"><h2>回頭核對情緒與信任</h2><details id="principles"><summary>全書四項心理學原理</summary><p>五十毫秒第一印象；信任三支柱：能力、善意、正直；損失規避；社會證明。</p></details></section></body>
+</html>

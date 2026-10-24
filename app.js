@@ -12,6 +12,10 @@ let activeFilter = "all";
 let searchTerm = "";
 let completed = loadProgress();
 
+function isReady(episode) {
+  return episode.state === "published" || episode.state === "prepared";
+}
+
 function loadProgress() {
   try {
     const value = JSON.parse(localStorage.getItem(progressKey) || "[]");
@@ -28,8 +32,8 @@ function saveProgress() {
 function isVisible(episode) {
   const matchesFilter =
     activeFilter === "all"
-    || (activeFilter === "published" && episode.state === "published")
-    || (activeFilter === "upcoming" && episode.state !== "published");
+    || (activeFilter === "published" && isReady(episode))
+    || (activeFilter === "upcoming" && !isReady(episode));
   const searchable = `EP${episode.number} ${episode.title} ${episode.description}`
     .toLocaleLowerCase("zh-Hant");
   return matchesFilter && searchable.includes(searchTerm);
@@ -60,13 +64,13 @@ function renderPublishedCard(episode) {
             <i data-lucide="play" aria-hidden="true"></i>
             線上成品
           </a>
-          <a href="https://github.com/ThinkerCafe-tw/vibe-coding-18-websites/tree/main/episodes/${episode.slug}">
+          <a href="episodes/${episode.slug}/">
             <i data-lucide="book-open" aria-hidden="true"></i>
             本集資源
           </a>
-          <a href="${episode.downloadUrl}">
+          <a href="${episode.downloadUrl}" download>
             <i data-lucide="download" aria-hidden="true"></i>
-            下載
+            下載原始碼
           </a>
           <button
             class="progress-toggle${done ? " completed" : ""}"
@@ -102,7 +106,7 @@ function renderEpisodes() {
   const visibleEpisodes = episodes.filter(isVisible);
   episodeGrid.innerHTML = visibleEpisodes
     .map((episode) =>
-      episode.state === "published"
+      isReady(episode)
         ? renderPublishedCard(episode)
         : renderUpcomingCard(episode),
     )
@@ -131,13 +135,13 @@ function bindProgressButtons() {
 function updateProgressStat() {
   const publishedSlugs = new Set(
     episodes
-      .filter((episode) => episode.state === "published")
+      .filter(isReady)
       .map((episode) => episode.slug),
   );
   const completedCount = [...completed].filter((slug) =>
     publishedSlugs.has(slug),
   ).length;
-  releaseStat.textContent = `${publishedSlugs.size} / ${episodes.length} 已發布`;
+  releaseStat.textContent = `${publishedSlugs.size} / ${episodes.length} 可開啟`;
   progressStat.textContent = `${completedCount} / ${publishedSlugs.size} 已完成`;
 }
 

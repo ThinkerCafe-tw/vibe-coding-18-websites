@@ -1,0 +1,1400 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>後盾家教媒合｜先審核，再推薦｜桃園．新北．台北</title>
+<meta name="description" content="後盾家教媒合：家長提交需求、平台審核師資、推薦 3 到 5 位已驗證老師、免費試教一次再決定。">
+
+
+
+<style>
+
+
+
+:root{
+  --bg:#fbfaff;
+  --bg-2:#f2f1fb;
+  --card:#ffffff;
+  --ink:#151a2e;
+  --ink-soft:#5a6178;
+  --line:#e2e2f0;
+  --indigo:#2a3a8f;
+  --indigo-deep:#1d2a6d;
+  --indigo-soft:#eceefb;
+  --amber:#9f590b;
+  --amber-soft:#fcf2e4;
+  --green:#1f6b53;
+  --green-soft:#e8f3ef;
+  --grey:#5f667b;
+  --stop:#a1382a;
+  --r:16px;
+  --sh:0 1px 2px rgba(21,26,46,.05),0 8px 24px rgba(21,26,46,.06);
+  --sh-lift:0 2px 4px rgba(21,26,46,.06),0 16px 40px rgba(21,26,46,.10);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Heiti TC",system-ui,sans-serif;
+  font-size:19px;line-height:1.85;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-weight:900;letter-spacing:-.01em}
+.num{font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-variant-numeric:lining-nums tabular-nums}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
+.sheet{max-width:1160px;margin:0 auto;padding:0 40px}
+.narrow{max-width:760px;margin:0 auto}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+
+.top{background:rgba(251,250,255,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.top .sheet{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
+.mark{display:flex;align-items:center;gap:11px;margin:0;font-size:22px;font-weight:900;letter-spacing:.01em}
+.mark svg{flex:0 0 auto}
+.mark small{font-size:16px;font-weight:500;color:var(--ink-soft);letter-spacing:.04em}
+.top nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.top nav a{font-size:17px;color:var(--ink-soft);text-decoration:none}
+.top nav a:hover{color:var(--indigo)}
+.top nav a.go{background:var(--indigo);color:#fff;padding:12px 24px;border-radius:999px;font-weight:700}
+.top nav a.go:hover{background:var(--indigo-deep);color:#fff}
+
+
+.hero{background:radial-gradient(120% 90% at 50% -10%,#eef0fd 0%,#fbfaff 58%,#fbfaff 100%);border-bottom:1px solid var(--line)}
+.hero .sheet{padding-top:78px;padding-bottom:64px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;margin:0 0 22px;font-size:17px;font-weight:700;letter-spacing:.1em;
+  color:var(--indigo);background:var(--indigo-soft);padding:9px 20px;border-radius:999px}
+.hero h1{margin:0 auto 22px;font-size:60px;line-height:1.22;max-width:17em;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--indigo)}
+
+.hero .claim{margin:0 auto 32px;font-size:21px;line-height:1.8;color:var(--ink-soft);max-width:30em;text-wrap:balance}
+.pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:0 0 34px;padding:0;list-style:none}
+.pills li{font-size:17px;font-weight:700;padding:9px 22px;border-radius:999px;background:var(--card);border:1px solid var(--line);box-shadow:var(--sh)}
+.acts{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.b1,.b2{font-size:19px;font-weight:700;text-decoration:none;padding:17px 36px;border-radius:999px;line-height:1.3;display:inline-block}
+.b1{background:var(--indigo);color:#fff;box-shadow:0 10px 26px rgba(42,58,143,.26)}
+.b1:hover{background:var(--indigo-deep);color:#fff}
+.b2{background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:var(--sh)}
+.b2:hover{border-color:var(--indigo);color:var(--indigo)}
+.art{margin:52px auto 0;max-width:980px}
+.art svg{display:block;width:100%;height:auto}
+.art figcaption{margin-top:14px;font-size:17px;color:var(--ink-soft)}
+
+.artkey{display:none}
+@media (max-width:920px){
+  .art .svgtxt{display:none}
+  .artkey{display:block;margin-bottom:8px;font-weight:700;color:var(--ink)}
+}
+
+
+.promise{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px;box-shadow:var(--sh)}
+.pcard svg{margin-bottom:14px}
+.pcard b{display:block;font-size:34px;font-weight:900;line-height:1.25;margin-bottom:6px}
+.pcard h3{margin:0 0 8px;font-size:21px;line-height:1.45}
+.pcard p{margin:0;font-size:17px;line-height:1.8;color:var(--ink-soft)}
+
+
+.block{border-bottom:1px solid var(--line)}
+.block.alt{background:var(--bg-2)}
+.block .sheet{padding-top:86px;padding-bottom:86px}
+.head{margin-bottom:44px;max-width:38em}
+.head span{display:inline-block;font-size:16px;font-weight:700;letter-spacing:.14em;color:var(--indigo);margin-bottom:12px}
+.head h2{margin:0 0 14px;font-size:42px;line-height:1.32}
+.head p{margin:0;font-size:19px;line-height:1.85;color:var(--ink-soft)}
+.head.mid{margin-left:auto;margin-right:auto;text-align:center}
+.note{font-size:17px;color:var(--ink-soft);line-height:1.8}
+
+
+.formcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:40px 40px 34px;box-shadow:var(--sh)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px}
+.f{margin-bottom:26px}
+.f.wide{grid-column:1/-1}
+.f label{display:block;font-size:17px;font-weight:700;margin-bottom:9px}
+.f .hint{display:block;font-size:16px;font-weight:400;color:var(--ink-soft);line-height:1.6}
+.f input,.f select,.f textarea{width:100%;font-family:inherit;font-size:18px;line-height:1.6;padding:15px 16px;
+  border:1px solid #cfd1e4;border-radius:10px;background:#fcfcff;color:var(--ink)}
+.f textarea{min-height:112px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{outline:3px solid var(--indigo);outline-offset:1px;border-color:var(--indigo)}
+.send{font-family:inherit;font-size:20px;font-weight:700;padding:18px 42px;background:var(--indigo);color:#fff;border:0;border-radius:999px;cursor:pointer;box-shadow:0 10px 26px rgba(42,58,143,.26)}
+.send:hover{background:var(--indigo-deep)}
+.ghost{font-family:inherit;font-size:17px;font-weight:700;padding:15px 26px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;cursor:pointer}
+.ghost:hover{border-color:var(--indigo);color:var(--indigo)}
+.bar{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:6px}
+.said{margin-top:18px;font-size:17px;color:var(--ink-soft);min-height:1.8em}
+.alarm{border-radius:12px;background:#fdeeeb;border:1px solid #f0c9c1;padding:16px 20px;margin-bottom:24px;font-size:17px;line-height:1.8;color:#7a2a1c}
+.aside{margin-top:26px;background:var(--indigo-soft);border-radius:var(--r);padding:26px 28px}
+.aside h3{margin:0 0 10px;font-size:20px;line-height:1.45}
+.aside p{margin:0 0 12px;font-size:17px;line-height:1.8;color:#3f4666}
+.aside p:last-child{margin-bottom:0}
+.aside .why{font-weight:700;color:var(--indigo)}
+.recap{margin-top:26px;background:var(--green-soft);border:1px solid #c8e2d8;border-radius:var(--r);padding:30px 30px 26px}
+.recap h3{margin:0 0 14px;font-size:23px;line-height:1.42;color:#164e3d}
+.recap ul{margin:0 0 22px;padding-left:1.3em;font-size:17px;line-height:1.85;color:#2c4a41}
+.recap dl{margin:0;display:grid;grid-template-columns:7.5em minmax(0,1fr);column-gap:18px;row-gap:11px;border-top:1px solid #c8e2d8;padding-top:20px}
+.recap dt{color:#4a6a60;font-size:16px}
+.recap dd{margin:0;font-size:17px;line-height:1.7}
+
+
+.sift{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);
+  padding:26px 28px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin-bottom:26px}
+.sift label{display:block;font-size:16px;font-weight:700;color:var(--ink-soft);margin-bottom:7px}
+.sift select{width:100%;font-family:inherit;font-size:17px;padding:13px 14px;border:1px solid #cfd1e4;border-radius:10px;background:#fcfcff;color:var(--ink)}
+.count{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.count b{font-size:24px;font-weight:900}
+.count span{font-size:17px;color:var(--ink-soft)}
+.empty{background:var(--card);border:1px dashed #c9cbe0;border-radius:var(--r);padding:38px 32px;font-size:18px;line-height:1.85;color:var(--ink-soft);margin-bottom:30px}
+
+
+
+#board{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:26px}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);
+  padding:30px 28px 28px;display:flex;flex-direction:column;transition:box-shadow .2s,border-color .2s}
+.tcard:hover{box-shadow:var(--sh-lift)}
+.tcard.is-picked{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(42,58,143,.16),var(--sh-lift)}
+.who{display:flex;align-items:center;gap:15px;margin-bottom:18px}
+.seal{flex:0 0 auto;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--indigo-soft);color:var(--indigo);font-size:26px;font-weight:900}
+.who h3{margin:0;font-size:24px;line-height:1.3}
+.who h3 small{display:block;font-size:16px;font-weight:500;color:var(--ink-soft);margin-top:2px}
+
+.facts{margin:0 0 20px}
+.facts dt{color:var(--ink-soft);font-size:16px;margin-top:13px}
+.facts dt:first-child{margin-top:0}
+.facts dd{margin:0;font-size:17px;line-height:1.7}
+.nw{white-space:nowrap}
+.rate{display:flex;align-items:baseline;gap:8px;margin:0 0 20px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rate span{font-size:32px;font-weight:900;line-height:1.1;color:var(--indigo)}
+.rate em{font-style:normal;font-size:16px;color:var(--ink-soft)}
+.fit{margin-bottom:20px}
+.fit b{display:block;font-size:16px;font-weight:700;color:var(--indigo);margin-bottom:8px}
+.fit p{margin:0 0 12px;font-size:17px;line-height:1.8}
+.meter{height:8px;border-radius:999px;background:#e8e9f4;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--indigo);border-radius:999px}
+.meter+span{display:block;font-size:16px;color:var(--ink-soft);margin-top:7px}
+.clip{background:var(--amber-soft);border-radius:12px;padding:16px 18px;margin-bottom:18px}
+.clip svg{display:block;width:100%;height:auto;margin-bottom:10px}
+.clip b{display:block;font-size:16px;font-weight:700;color:var(--amber)}
+.checks{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.checks li{display:inline-flex;gap:7px;align-items:center;font-size:16px;font-weight:700;line-height:1.4;padding:6px 13px;border-radius:999px;background:var(--green-soft);color:var(--green)}
+.checks li.no{background:var(--amber-soft);color:var(--amber)}
+.checks li svg{flex:0 0 auto}
+.pick{margin-top:auto;font-family:inherit;font-size:18px;font-weight:700;padding:15px 24px;width:100%;
+  background:var(--indigo);color:#fff;border:0;border-radius:999px;cursor:pointer}
+.pick:hover:not(:disabled){background:var(--indigo-deep)}
+.pick:disabled{background:#e6e7f1;color:var(--grey);cursor:not-allowed}
+.disclose{margin-top:34px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 30px;font-size:17px;line-height:1.85;color:var(--ink-soft)}
+.disclose b{color:var(--ink)}
+
+
+.line{list-style:none;margin:0;padding:0;position:relative}
+.line:before{content:"";position:absolute;left:23px;top:16px;bottom:16px;width:2px;background:var(--line)}
+.line>li{position:relative;padding:0 0 22px 70px;min-height:48px}
+.line>li>.dot{position:absolute;left:0;top:0;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--card);border:2px solid var(--line);color:var(--grey);font-size:18px;font-weight:700;z-index:1}
+.line>li>.nm{display:block;font-size:19px;font-weight:700;color:var(--grey);padding-top:9px}
+.line>li>.nm u{display:block;text-decoration:none;font-size:16px;font-weight:400;color:var(--grey)}
+.line>li.is-done>.dot{background:var(--green-soft);border-color:#bfe0d4;color:var(--green)}
+.line>li.is-done>.nm{color:var(--ink)}
+.line>li.is-now>.dot{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.line>li.is-now>.nm{color:var(--ink);font-size:21px}
+.line>li.is-stop>.dot{background:#fbeae6;border-color:#eec3b9;color:var(--stop)}
+.line>li.is-stop>.nm{color:var(--stop)}
+.now{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-lift);padding:30px 32px 28px}
+.now .tag{display:inline-block;font-size:16px;font-weight:700;padding:6px 16px;border-radius:999px;background:var(--indigo-soft);color:var(--indigo);margin-bottom:14px}
+.now.s-matched .tag{background:var(--green-soft);color:var(--green)}
+.now.s-stop .tag{background:#fbeae6;color:var(--stop)}
+.now h3{margin:0 0 10px;font-size:27px;line-height:1.36}
+.now p{margin:0 0 8px;font-size:18px;line-height:1.82;color:var(--ink-soft)}
+.now .wait{font-weight:700;color:var(--ink)}
+.moves{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.moves button{font-family:inherit;font-size:17px;font-weight:700;padding:14px 22px;border-radius:999px;cursor:pointer;
+  background:var(--card);color:var(--ink);border:1px solid #cfd1e4}
+.moves button:hover{border-color:var(--indigo);color:var(--indigo)}
+.moves button.key{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.moves button.key:hover{background:var(--indigo-deep);border-color:var(--indigo-deep);color:#fff}
+.moves button.stopish{color:var(--stop);border-color:#eec3b9}
+.moves button.stopish:hover{background:#fbeae6;border-color:var(--stop);color:var(--stop)}
+.moves .note{flex:1 1 100%;margin:0}
+.trial{margin-top:24px;background:var(--amber-soft);border-radius:12px;padding:22px 24px}
+.trial h4{margin:0 0 14px;font-size:20px;line-height:1.4;color:var(--amber)}
+.trial dl{margin:0;display:grid;grid-template-columns:6em minmax(0,1fr);column-gap:18px;row-gap:10px}
+.trial dt{color:var(--ink-soft);font-size:16px}
+.trial dd{margin:0;font-size:17px;line-height:1.7}
+.logbox{margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 30px}
+.logbox h3{margin:0 0 6px;font-size:20px;line-height:1.45}
+.logbox .note{margin-bottom:16px}
+.loglist{list-style:none;margin:0;padding:0}
+.logrow{display:grid;grid-template-columns:5.5em minmax(0,1fr);column-gap:18px;padding:12px 0;border-top:1px solid var(--line);font-size:17px;line-height:1.7}
+.logrow:first-child{border-top:0}
+.logrow time{color:var(--ink-soft);font-size:16px}
+.logrow b{font-weight:700}
+.logrow u{text-decoration:none;color:var(--ink-soft);font-size:16px}
+.keep{margin-top:20px;font-size:17px;line-height:1.8;color:var(--ink-soft);background:var(--indigo-soft);border-radius:12px;padding:16px 20px}
+
+
+.gates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-bottom:34px}
+.gate{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;box-shadow:var(--sh)}
+.gate .ic{width:52px;height:52px;border-radius:14px;background:var(--indigo-soft);color:var(--indigo);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.gate h3{margin:0 0 10px;font-size:20px;line-height:1.45}
+.gate p{margin:0;font-size:17px;line-height:1.82;color:var(--ink-soft)}
+.queue{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px 32px;box-shadow:var(--sh)}
+.queue h3{margin:0 0 6px;font-size:22px;line-height:1.45}
+.queue table{width:100%;border-collapse:collapse;font-size:17px;margin-top:18px}
+.queue th{text-align:left;font-size:16px;font-weight:700;color:var(--ink-soft);border-bottom:1px solid var(--line);padding:0 16px 11px 0}
+.queue td{padding:14px 16px 14px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.66}
+.queue th:last-child,.queue td:last-child{padding-right:0}
+.queue tr:last-child td{border-bottom:0}
+.st{display:inline-block;font-size:16px;font-weight:700;padding:4px 13px;border-radius:999px}
+.st.wait{background:var(--amber-soft);color:var(--amber)}
+.st.doing{background:var(--indigo-soft);color:var(--indigo)}
+.st.no{background:#fbeae6;color:var(--stop)}
+.st.ok{background:var(--green-soft);color:var(--green)}
+.privacy{margin-top:26px;background:var(--bg-2);border-radius:var(--r);padding:26px 30px;font-size:17px;line-height:1.85;color:#40465f}
+.privacy b{color:var(--ink)}
+
+
+.money{width:100%;border-collapse:separate;border-spacing:0;font-size:18px;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.money caption{text-align:left;font-size:17px;color:var(--ink-soft);padding-bottom:16px;line-height:1.8}
+.money th,.money td{text-align:left;padding:18px 22px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.72}
+.money thead th{font-size:16px;font-weight:700;color:var(--ink-soft);background:var(--bg-2)}
+.money tbody tr:last-child td{border-bottom:0}
+.money td:first-child{font-weight:700}
+.nope{margin-top:30px;background:var(--card);border:1px solid #eec3b9;border-radius:var(--r);padding:30px 32px}
+.nope h3{margin:0 0 14px;font-size:22px;line-height:1.45;color:var(--stop)}
+.nope ul{margin:0;padding-left:1.3em;font-size:17px;line-height:1.9}
+
+
+footer{background:#12162a;color:#d9dcea}
+footer .sheet{padding-top:58px;padding-bottom:50px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:38px}
+footer h3{margin:0 0 12px;font-size:19px;color:#fff}
+footer p{margin:0 0 8px;font-size:17px;line-height:1.8;color:#a3aac1}
+footer a{color:#d9dcea}
+footer .end{grid-column:1/-1;border-top:1px solid #2b3150;padding-top:22px;margin-top:8px;font-size:16px;color:#8f96ad;line-height:1.8}
+
+
+.shot{margin:0}
+.shot .frame{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--line);box-shadow:var(--sh-lift);background:linear-gradient(180deg,#eef0fd 0%,#f7f5ff 100%)}
+.shot .under,.shot img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.shot img{object-fit:cover;object-position:center}
+.shot img[hidden]{display:none}
+.shot .under.m{display:none}
+.shot-hero{margin:52px auto 0;max-width:880px}
+.shot-hero .frame{aspect-ratio:2/1}
+.shot-band{margin:0 0 40px}
+.shot-band .frame{aspect-ratio:21/9}
+
+
+@media (max-width:920px){
+  .sheet{padding:0 20px}
+  body{font-size:18px}
+  .top .sheet{gap:12px;padding-top:12px;padding-bottom:12px}
+  .top nav{gap:15px}
+  .top nav a.go{padding:10px 18px}
+  .hero .sheet{padding-top:44px;padding-bottom:40px}
+  .hero h1{font-size:36px}
+  .hero .claim{font-size:18px}
+  .shot-hero{margin-top:36px}
+  .shot-hero .frame,.shot-band .frame{aspect-ratio:4/3;border-radius:16px}
+  .shot .under.d{display:none}
+  .shot .under.m{display:block}
+  .acts{display:block}
+  .b1,.b2{display:block;text-align:center;margin-bottom:12px}
+  .art{margin-top:34px}
+  .promise{grid-template-columns:minmax(0,1fr);gap:16px}
+  .pcard{padding:24px 22px}
+  .block .sheet{padding-top:48px;padding-bottom:48px}
+  .head{margin-bottom:30px}
+  .head h2{font-size:31px}
+  .head p{font-size:18px}
+
+  .count span{flex:1 1 100%}
+  .formcard{padding:24px 20px 22px}
+  .grid2{grid-template-columns:minmax(0,1fr)}
+  .sift{grid-template-columns:minmax(0,1fr);padding:22px 20px;gap:16px}
+  #board{grid-template-columns:minmax(0,1fr)}
+  .tcard{padding:24px 20px 22px}
+  .facts,.trial dl,.recap dl,.logrow{grid-template-columns:minmax(0,1fr);row-gap:2px}
+  .facts dt,.trial dt,.recap dt{margin-top:10px}
+  .logrow{row-gap:0;padding:14px 0}
+  .line:before{left:19px}
+  .line>li{padding-left:58px}
+  .line>li>.dot{width:40px;height:40px;font-size:17px}
+  .line>li>.nm{padding-top:6px}
+  .now{padding:24px 20px 22px}
+  .now h3{font-size:23px}
+  .moves button{width:100%}
+  .logbox,.queue,.privacy,.nope,.aside,.recap,.disclose{padding:22px 20px}
+  .gates{grid-template-columns:minmax(0,1fr);gap:16px}
+  .gate{padding:24px 20px}
+
+  .queue table,.queue thead,.queue tbody,.queue th,.queue td,.queue tr,
+  .money,.money thead,.money tbody,.money th,.money td,.money tr{display:block}
+  .queue thead,.money thead{display:none}
+  .money caption{display:block}
+  .money{border-radius:var(--r);padding:6px 18px}
+  .queue tbody tr,.money tbody tr{border-bottom:1px solid var(--line);padding:14px 0}
+  .queue tbody tr:last-child,.money tbody tr:last-child{border-bottom:0}
+  .queue td,.money td{border-bottom:0;padding:3px 0}
+  .queue td:before,.money td:before{content:attr(data-th) "：";color:var(--ink-soft);font-size:16px}
+  footer .sheet{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:40px;padding-bottom:36px}
+}
+
+img,video{max-width:100%}
+select{max-width:100%;text-overflow:ellipsis}
+a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-space:nowrap}
+.hero .claim{text-wrap:wrap}
+@media (max-width:920px){
+  .clip{padding-left:20px;padding-right:20px}
+  .top nav{gap:0 14px;flex-wrap:nowrap}
+  .top nav a{font-size:15px;white-space:nowrap}
+  .top nav a.go{padding:9px 14px}
+  .top nav a[href="#audit"]{display:none}
+}
+
+</style>
+</head>
+<body>
+<aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
+
+
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-id" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8.5" cy="10.5" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.8 16.6c.7-1.8 2.1-2.7 3.7-2.7s3 .9 3.7 2.7M14.5 9.5h5M14.5 13h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="M12 4.2 22 9l-10 4.8L2 9l10-4.8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 11.2V16c0 1.6 2.7 2.9 6 2.9s6-1.3 6-2.9v-4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 20 6v6.1c0 4.2-3.2 7.3-8 8.9-4.8-1.6-8-4.7-8-8.9V6l8-3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.4 11.8 2.5 2.5 4.7-4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-talk" viewBox="0 0 24 24"><path d="M3.5 5.5h17v11h-9.4L6 20.2V16.5H3.5v-11Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7.5 9.5h9M7.5 12.8h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m6.2 10.2 2.6 2.6 5-5.4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-dot" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-dasharray="3 3"/><path d="M6.4 10h7.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-funnel" viewBox="0 0 24 24"><path d="M3.5 5h17l-6.6 7.6v5.9l-3.8 2.2v-8.1L3.5 5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-free" viewBox="0 0 24 24"><path d="M4 6.5h16v11H4v-11Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 6.5v11M8 10.2h2.6M8 13.4h2.6M15.9 10.2h-2.5v3.2h2.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="sheet">
+    <p class="mark">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true" focusable="false"><path d="M15 2.6 26.4 7v9.1c0 6.2-4.6 10.7-11.4 12.3C8.2 26.8 3.6 22.3 3.6 16.1V7L15 2.6Z" fill="#eceefb" stroke="#2a3a8f" stroke-width="2.1" stroke-linejoin="round"/><path d="m10.2 15.1 3.3 3.4 6.4-7" fill="none" stroke="#2a3a8f" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      後盾家教媒合<small>先審核，再推薦</small>
+    </p>
+    <nav aria-label="主要導覽">
+      <a href="#tutors">精選教師</a>
+      <a href="#flow">媒合流程</a>
+      <a href="#audit">審核說明</a>
+      <a href="#fees">費用與保障</a>
+      <a href="#ask" class="go">開始媒合</a>
+    </nav>
+  </div>
+</header>
+
+
+<section class="hero" aria-label="後盾家教媒合首頁">
+  <div class="sheet">
+    <p class="eyebrow">
+      <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-shield"></use></svg>
+      先審核，再推薦
+    </p>
+    <h1><span class="nw">替孩子找家教，</span><em><span class="nw">你要的是</span><span class="nw">一個能交代的決定。</span></em></h1>
+    <p class="claim">我們不丟給你兩百位老師自己挑。需求送進來，先過平台審核，再推薦 3 到 5 位已驗證的老師——一次一步，走到哪裡你都看得到。</p>
+    <ul class="pills">
+      <li>數學</li><li>英文</li><li>自然</li><li>國文</li>
+    </ul>
+    <div class="acts">
+      <a class="b1" href="#ask">開始媒合</a>
+      <a class="b2" href="#flow">先看媒合流程</a>
+    </div>
+
+    <figure class="shot shot-hero">
+      <div class="frame"><svg class="under d" viewBox="0 0 840 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect x="0" y="274" width="840" height="146" fill="#e3e5f6"/><path d="M0 274H840" stroke="#2a3a8f" stroke-width="2"/><g transform="translate(255,60)"><rect x="8" y="10" width="118" height="118" rx="6" fill="#d4d8f3" stroke="#2a3a8f" stroke-width="2"/><path d="M67 10v118M8 69h118" stroke="#2a3a8f" stroke-width="2"/><circle cx="98" cy="40" r="9" fill="#b4660f"/><path d="M98 23v5M98 52v5M81 40h5M110 40h5M86 28l3.5 3.5M110 52l-3.5-3.5M110 28l-3.5 3.5M86 52l3.5-3.5" fill="none" stroke="#b4660f" stroke-width="2.2" stroke-linecap="round"/><path d="M126 128 L292 214 L170 214 L8 128Z" fill="rgba(252,242,228,.95)"/><path d="M116 228 L200 222 L202 270 L110 278Z" fill="#ffffff" stroke="#2a3a8f" stroke-width="2" stroke-linejoin="round"/><path d="M200 222 L284 228 L292 278 L202 270Z" fill="#ffffff" stroke="#2a3a8f" stroke-width="2" stroke-linejoin="round"/><path d="M128 240l60-4M127 252l62-4M126 264l40-3M214 236l58 4M214 248l60 4M215 260l34 2" stroke="#c9cde8" stroke-width="2.2" stroke-linecap="round"/><path d="M236 258l12 3" stroke="#b4660f" stroke-width="2.6" stroke-linecap="round"/><path d="M232 292 L312 280" stroke="#2a3a8f" stroke-width="4" stroke-linecap="round"/><path d="M312 280 L322 278.5" stroke="#b4660f" stroke-width="4" stroke-linecap="round"/><rect x="40" y="226" width="34" height="38" rx="6" fill="#ffffff" stroke="#2a3a8f" stroke-width="2"/><path d="M74 234c12 0 12 20 0 20" fill="none" stroke="#2a3a8f" stroke-width="2"/></g></svg><svg class="under m" viewBox="0 0 560 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect x="0" y="274" width="560" height="146" fill="#e3e5f6"/><path d="M0 274H560" stroke="#2a3a8f" stroke-width="2"/><g transform="translate(115,60)"><rect x="8" y="10" width="118" height="118" rx="6" fill="#d4d8f3" stroke="#2a3a8f" stroke-width="2"/><path d="M67 10v118M8 69h118" stroke="#2a3a8f" stroke-width="2"/><circle cx="98" cy="40" r="9" fill="#b4660f"/><path d="M98 23v5M98 52v5M81 40h5M110 40h5M86 28l3.5 3.5M110 52l-3.5-3.5M110 28l-3.5 3.5M86 52l3.5-3.5" fill="none" stroke="#b4660f" stroke-width="2.2" stroke-linecap="round"/><path d="M126 128 L292 214 L170 214 L8 128Z" fill="rgba(252,242,228,.95)"/><path d="M116 228 L200 222 L202 270 L110 278Z" fill="#ffffff" stroke="#2a3a8f" stroke-width="2" stroke-linejoin="round"/><path d="M200 222 L284 228 L292 278 L202 270Z" fill="#ffffff" stroke="#2a3a8f" stroke-width="2" stroke-linejoin="round"/><path d="M128 240l60-4M127 252l62-4M126 264l40-3M214 236l58 4M214 248l60 4M215 260l34 2" stroke="#c9cde8" stroke-width="2.2" stroke-linecap="round"/><path d="M236 258l12 3" stroke="#b4660f" stroke-width="2.6" stroke-linecap="round"/><path d="M232 292 L312 280" stroke="#2a3a8f" stroke-width="4" stroke-linecap="round"/><path d="M312 280 L322 278.5" stroke="#b4660f" stroke-width="4" stroke-linecap="round"/><rect x="40" y="226" width="34" height="38" rx="6" fill="#ffffff" stroke="#2a3a8f" stroke-width="2"/><path d="M74 234c12 0 12 20 0 20" fill="none" stroke="#2a3a8f" stroke-width="2"/></g></svg>
+        <img src="images/hero.svg" alt="課程版面示意圖片" width="1672" height="941" onerror="this.hidden=true">
+      </div>
+    </figure>
+
+    <figure class="art">
+      <svg viewBox="0 0 960 300" role="img" aria-label="左邊是一大片灰色的未審核名單，中間一道審核閘門把大部分擋下，右邊只剩三張通過審核的教師卡片。">
+        <defs>
+          <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#d7d9ea" stop-opacity=".95"/>
+            <stop offset="100%" stop-color="#d7d9ea" stop-opacity=".35"/>
+          </linearGradient>
+          <linearGradient id="pick" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff"/><stop offset="100%" stop-color="#f4f5fd"/>
+          </linearGradient>
+        </defs>
+
+        <g fill="url(#fade)">
+          <rect x="16" y="22" width="86" height="26" rx="7"/><rect x="112" y="22" width="86" height="26" rx="7"/><rect x="208" y="22" width="86" height="26" rx="7"/>
+          <rect x="16" y="58" width="86" height="26" rx="7"/><rect x="112" y="58" width="86" height="26" rx="7"/><rect x="208" y="58" width="86" height="26" rx="7"/>
+          <rect x="16" y="94" width="86" height="26" rx="7"/><rect x="112" y="94" width="86" height="26" rx="7"/><rect x="208" y="94" width="86" height="26" rx="7"/>
+          <rect x="16" y="130" width="86" height="26" rx="7"/><rect x="112" y="130" width="86" height="26" rx="7"/><rect x="208" y="130" width="86" height="26" rx="7"/>
+          <rect x="16" y="166" width="86" height="26" rx="7"/><rect x="112" y="166" width="86" height="26" rx="7"/><rect x="208" y="166" width="86" height="26" rx="7"/>
+          <rect x="16" y="202" width="86" height="26" rx="7"/><rect x="112" y="202" width="86" height="26" rx="7"/><rect x="208" y="202" width="86" height="26" rx="7"/>
+          <rect x="16" y="238" width="86" height="26" rx="7"/><rect x="112" y="238" width="86" height="26" rx="7"/><rect x="208" y="238" width="86" height="26" rx="7"/>
+        </g>
+        <text class="svgtxt" x="16" y="292" font-family="Noto Sans TC, sans-serif" font-size="17" fill="#5a6178">搜尋結果：一長串，全部沒查過</text>
+
+        <g>
+          <rect x="358" y="94" width="196" height="102" rx="18" fill="#2a3a8f"/>
+          <g transform="translate(442,118)" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">
+            <path d="M14 1 27 5.9v7.4c0 5.1-3.9 8.9-13 10.8-9.1-1.9-13-5.7-13-10.8V5.9L14 1Z"/>
+            <path d="m8.6 12.4 4 4 7.6-7.8" stroke-linecap="round"/>
+          </g>
+          <text class="svgtxt" x="456" y="176" font-family="Noto Sans TC, sans-serif" font-size="19" font-weight="700" fill="#fff">審核</text>
+          <g stroke="#c3c7e4" stroke-width="1.6" fill="none">
+            <path d="M300 60h44c8 0 12 8 12 18v14M300 96h56M300 132h44c8 0 12-8 12-18v-4"/>
+            <path d="M300 168h30M300 204h30M300 240h30"/>
+          </g>
+          <g stroke="#a1382a" stroke-width="1.8" stroke-linecap="round" opacity=".7">
+            <path d="m334 162 10 12M344 162l-10 12M334 198l10 12M344 198l-10 12M334 234l10 12M344 234l-10 12"/>
+          </g>
+          <text class="svgtxt" x="300" y="292" font-family="Noto Sans TC, sans-serif" font-size="17" fill="#a1382a">沒通過的不推薦</text>
+        </g>
+
+        <g>
+          <g stroke="#c3c7e4" stroke-width="1.6" fill="none"><path d="M556 118h36c8 0 12-10 12-22v-6h34M556 145h82M556 172h36c8 0 12 10 12 22v6h34"/></g>
+          <g>
+            <rect x="676" y="58" width="268" height="62" rx="16" fill="url(#pick)" stroke="#2a3a8f" stroke-width="2"/>
+            <circle cx="712" cy="89" r="17" fill="#eceefb"/>
+            <text class="svgtxt" x="712" y="96" text-anchor="middle" font-family="Noto Sans TC, sans-serif" font-size="18" font-weight="900" fill="#2a3a8f">林</text>
+            <rect x="740" y="74" width="104" height="9" rx="4.5" fill="#cbcfe6"/>
+            <rect x="740" y="92" width="68" height="9" rx="4.5" fill="#e0e2ef"/>
+            <g transform="translate(886,80)" fill="none" stroke="#1f6b53" stroke-width="2"><circle cx="9" cy="9" r="8.2"/><path d="m5 9.3 2.7 2.7 5.4-5.8" stroke-linecap="round" stroke-linejoin="round"/></g>
+          </g>
+          <g>
+            <rect x="676" y="130" width="268" height="62" rx="16" fill="url(#pick)" stroke="#2a3a8f" stroke-width="2"/>
+            <circle cx="712" cy="161" r="17" fill="#eceefb"/>
+            <text class="svgtxt" x="712" y="168" text-anchor="middle" font-family="Noto Sans TC, sans-serif" font-size="18" font-weight="900" fill="#2a3a8f">陳</text>
+            <rect x="740" y="146" width="88" height="9" rx="4.5" fill="#cbcfe6"/>
+            <rect x="740" y="164" width="76" height="9" rx="4.5" fill="#e0e2ef"/>
+            <g transform="translate(886,152)" fill="none" stroke="#1f6b53" stroke-width="2"><circle cx="9" cy="9" r="8.2"/><path d="m5 9.3 2.7 2.7 5.4-5.8" stroke-linecap="round" stroke-linejoin="round"/></g>
+          </g>
+          <g>
+            <rect x="676" y="202" width="268" height="62" rx="16" fill="url(#pick)" stroke="#2a3a8f" stroke-width="2"/>
+            <circle cx="712" cy="233" r="17" fill="#eceefb"/>
+            <text class="svgtxt" x="712" y="240" text-anchor="middle" font-family="Noto Sans TC, sans-serif" font-size="18" font-weight="900" fill="#2a3a8f">郭</text>
+            <rect x="740" y="218" width="96" height="9" rx="4.5" fill="#cbcfe6"/>
+            <rect x="740" y="236" width="62" height="9" rx="4.5" fill="#e0e2ef"/>
+            <g transform="translate(886,224)" fill="none" stroke="#1f6b53" stroke-width="2"><circle cx="9" cy="9" r="8.2"/><path d="m5 9.3 2.7 2.7 5.4-5.8" stroke-linecap="round" stroke-linejoin="round"/></g>
+          </g>
+          <text class="svgtxt" x="676" y="292" font-family="Noto Sans TC, sans-serif" font-size="17" fill="#2a3a8f">推薦名單：3 位，每位都附理由</text>
+        </g>
+      </svg>
+      <figcaption><b class="artkey">左邊是沒查過的一長串，中間是審核，右邊是通過審核的 3 位。</b>二十四種口味的果醬攤位吸引更多人駐足，購買率卻只有六種攤位的十分之一。選項太多，人的直覺是不要做決定。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block">
+  <div class="sheet">
+    <div class="promise">
+      <article class="pcard">
+        <svg width="34" height="34" style="color:#2a3a8f" aria-hidden="true" focusable="false"><use href="#i-shield"></use></svg>
+        <b>3 個步驟</b>
+        <h3>審核過才推薦</h3>
+        <p>身分核對、學歷文件、試教評估三步都通過的才算數。審核中與未通過的老師不會出現在你的推薦名單裡。</p>
+      </article>
+      <article class="pcard">
+        <svg width="34" height="34" style="color:#2a3a8f" aria-hidden="true" focusable="false"><use href="#i-funnel"></use></svg>
+        <b>3 到 5 位</b>
+        <h3>一次只推這麼多</h3>
+        <p>不是我們手上只有這些，是給你五十位只會讓你想「明天再看」。每一位都附一段為什麼推他的理由。</p>
+      </article>
+      <article class="pcard">
+        <svg width="34" height="34" style="color:#2a3a8f" aria-hidden="true" focusable="false"><use href="#i-free"></use></svg>
+        <b>免費一次</b>
+        <h3>先試教再決定</h3>
+        <p>每一筆媒合都有一次 60 分鐘的免費試教。不滿意可以換人，不必重付刊登費。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="block alt" id="ask" data-obj="ParentRequest">
+  <div class="sheet">
+    <div class="narrow">
+      <div class="head mid">
+        <span>第 1 步</span>
+        <h2>先告訴我們孩子卡在哪</h2>
+        <p>六個欄位，兩分鐘。最重要的是最後那一格——只寫「想進步」，我們只能靠學歷排序給你；寫出孩子卡在哪，我們才推得出「會教你家孩子」的那一位。</p>
+      </div>
+      <div class="formcard">
+        <div class="alarm" id="alarm" hidden role="alert"></div>
+        <form id="ask-form">
+          <div class="grid2">
+            <div class="f">
+              <label for="f-grade">年級</label>
+              <select id="f-grade" name="grade" required>
+                <option value="國一">國一</option>
+                <option value="國二">國二</option>
+                <option value="國三" selected>國三</option>
+                <option value="高一">高一</option>
+                <option value="高二">高二</option>
+                <option value="高三">高三</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="f-subject">科目</label>
+              <select id="f-subject" name="subject" required>
+                <option value="math" selected>數學</option>
+                <option value="english">英文</option>
+                <option value="science">自然</option>
+                <option value="chinese">國文</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="f-area">地區</label>
+              <select id="f-area" name="area" required>
+                <option value="taoyuan" selected>桃園市</option>
+                <option value="newtaipei">新北市</option>
+                <option value="taipei">台北市</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="f-budget">每小時預算</label>
+              <select id="f-budget" name="budget" required>
+                <option value="lt500">500 元以下</option>
+                <option value="500-650" selected>500 至 650 元</option>
+                <option value="650-800">650 至 800 元</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="f-time">可上課時間</label>
+              <select id="f-time" name="available_time" required>
+                <option value="weekday-evening" selected>平日晚上</option>
+                <option value="weekend-am">週末上午</option>
+                <option value="weekend-pm">週末下午</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="f-mode">上課方式</label>
+              <select id="f-mode" name="mode" required>
+                <option value="any" selected>都可以</option>
+                <option value="online">線上</option>
+                <option value="onsite">實體</option>
+              </select>
+            </div>
+            <div class="f wide">
+              <label for="f-goal">這次想解決什麼
+                <span class="hint">寫孩子卡在哪，比寫「希望考上第一志願」有用得多</span>
+              </label>
+              <textarea id="f-goal" name="goal" required>應用題一看就停筆，聽不懂也不敢問。希望先把讀題跟列式補起來，不是先趕進度。</textarea>
+            </div>
+            <div class="f wide">
+              <label for="f-contact">聯絡電話
+                <span class="hint">台灣手機，09 開頭共十碼</span>
+              </label>
+              <input type="tel" id="f-contact" name="contact" required pattern="09[0-9]{8}" inputmode="numeric" autocomplete="tel">
+            </div>
+          </div>
+          <div class="bar">
+            <button type="submit" class="send">送出需求</button>
+            <button type="button" class="ghost" id="btn-reset">回到初始狀態</button>
+          </div>
+          <p class="said" id="said" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div class="aside" id="aside">
+        <h3>這張表送出去之後會怎樣</h3>
+        <p>科目、地區、預算、上課方式、時段五個條件先把名單縮小。時段是拿你勾的那一格去比對老師登記的可上課時間，對不上的不會推給你。<span class="why">「這次想解決什麼」</span>則是人看的——推薦理由那一段就是從這裡寫出來的。</p>
+        <p>審核沒過的老師不會出現在推薦名單裡，不管他學歷多好。這是「先審核，再推薦」的意思。</p>
+        <p>你填的電話只用來聯絡這一筆媒合；平台推薦老師之前，不會把電話交給任何老師。</p>
+      </div>
+      <div class="recap" id="recap" hidden>
+        <h3 id="recap-title">需求已建檔</h3>
+        <ul>
+          <li>平台會在 <b>1 個工作天內</b>打電話跟你確認需求細節。</li>
+          <li>你的電話<b>不會公開</b>，推薦之前不會交給任何老師。</li>
+          <li>推薦名單只放三個審核步驟都通過的老師。</li>
+          <li>刊登費、免費試教與退費規則寫在下面的「費用與保障」。</li>
+        </ul>
+        <dl id="recap-echo"></dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="block" id="tutors" data-obj="TutorProfile">
+  <div class="sheet">
+    <div class="head">
+      <span>第 3 步</span>
+      <h2>推薦給你的老師</h2>
+      <p>每一張卡片只講一位老師：他教什麼、怎麼教、什麼時候有空、通過了哪幾個審核步驟，以及我們為什麼覺得他適合你家孩子。</p>
+    </div>
+
+    <div class="sift" data-obj="AvailabilitySlot">
+      <div>
+        <label for="s-subject">科目</label>
+        <select id="s-subject">
+          <option value="all">全部科目</option>
+          <option value="math" selected>數學</option>
+          <option value="english">英文</option>
+          <option value="science">自然</option>
+          <option value="chinese">國文</option>
+        </select>
+      </div>
+      <div>
+        <label for="s-area">地區</label>
+        <select id="s-area">
+          <option value="all" selected>不限地區</option>
+          <option value="taoyuan">桃園市</option>
+          <option value="newtaipei">新北市</option>
+          <option value="taipei">台北市</option>
+        </select>
+      </div>
+      <div>
+        <label for="s-budget">每小時預算</label>
+        <select id="s-budget">
+          <option value="all" selected>不限預算</option>
+          <option value="lt500">500 元以下</option>
+          <option value="500-650">500 至 650 元</option>
+          <option value="650-800">650 至 800 元</option>
+        </select>
+      </div>
+      <div>
+        <label for="s-mode">上課方式</label>
+        <select id="s-mode">
+          <option value="all" selected>線上或實體</option>
+          <option value="online">線上</option>
+          <option value="onsite">實體</option>
+        </select>
+      </div>
+      <div>
+        <label for="s-time">可上課時段</label>
+        <select id="s-time">
+          <option value="all" selected>不限時段</option>
+          <option value="weekday-evening">平日晚上</option>
+          <option value="weekend-am">週末上午</option>
+          <option value="weekend-pm">週末下午</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="count">
+      <b id="tally-n">符合的老師 3 位</b>
+      <span id="tally-say">已驗證師資 5 位，依你勾的條件收斂到 3 位。</span>
+    </div>
+
+    <div id="board"></div>
+    <div class="empty" id="empty" hidden>
+      這組條件下目前沒有已驗證的老師。放寬預算或改成線上都可以；也可以直接送出需求，平台會替你去找，審核通過才會推給你——我們不會為了湊數把審核中的老師端上來。
+    </div>
+
+    <p class="disclose">卡片上的綠色標記，是這位老師通過的<b>審核步驟</b>；每一步審什麼，寫在下面的「審核說明」。卡片不寫學校名，<b>學歷是入場券，不是賣點</b>。</p>
+  </div>
+</section>
+
+
+<section class="block alt" id="flow" data-obj="MatchCandidate">
+  <div class="sheet">
+    <div class="narrow">
+      <div class="head">
+        <span>全部五步</span>
+        <h2>你現在在哪一步</h2>
+        <p>媒合不是搜尋結果。搜尋只找出可能名單，媒合要走完一整條狀態。每一步能轉到哪裡是寫死的規則，不是想跳哪就跳哪——所以這裡一次只亮一步，其餘的先不吵你。</p>
+      </div>
+
+      <ol class="line" id="rail-steps">
+        <li data-step="1"><span class="dot num">1</span><b class="nm">提交需求<u>把孩子卡在哪寫給我們</u></b></li>
+        <li data-step="2"><span class="dot num">2</span><b class="nm">平台審核<u>1 個工作天內完成</u></b></li>
+        <li data-step="3"><span class="dot num">3</span><b class="nm">推薦老師<u>3 到 5 位，每位附理由</u></b></li>
+        <li data-step="4"><span class="dot num">4</span><b class="nm">試教<u>60 分鐘，免費一次</u></b></li>
+        <li data-step="5"><span class="dot num">5</span><b class="nm">確認<u>雙方都說好，媒合才成立</u></b></li>
+      </ol>
+
+
+      <div class="now" id="now">
+        <span class="tag" id="now-tag">尚未送出需求</span>
+        <h3 id="now-title">還沒有這一筆媒合</h3>
+        <p id="now-say">填好上面的家長需求表並送出，平台才會建立一筆媒合紀錄。</p>
+        <p class="wait" id="now-wait"></p>
+        <div class="moves" id="moves"></div>
+        <div class="trial" id="trial" hidden data-obj="TrialLesson">
+          <h4>試教紀錄</h4>
+          <dl id="trial-dl"></dl>
+        </div>
+      </div>
+
+      <p class="note" id="rail-say" aria-live="polite" style="margin-top:22px">你還沒有送出需求。填完上面那張表，這條進度就會開始走。</p>
+
+      <div class="logbox">
+        <h3>走過的每一步</h3>
+        <p class="note">狀態變動會一筆一筆記下來：什麼時候、從哪個狀態轉到哪個狀態、是誰動的。</p>
+        <div id="log-wrap"></div>
+        <p class="keep" id="keep-say">這條狀態存在瀏覽器分頁裡，<b>重新整理不會跳回「待推薦」</b>，會停在你離開時的那一步。換一台裝置打開則是全新的一筆。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="block" id="audit" data-obj="TutorVerification">
+  <div class="sheet">
+    <div class="head">
+      <span>第 2 步在做的事</span>
+      <h2>老師要過的三個審核步驟</h2>
+      <p>「嚴選師資」四個字不是證據。下面每一步都記在老師的資料上，你在教師卡片看到的綠色標記就是從這裡來的——每多一個環節，信任就多一層。</p>
+    </div>
+    <div class="gates">
+      <article class="gate">
+        <span class="ic"><svg width="28" height="28" aria-hidden="true" focusable="false"><use href="#i-id"></use></svg></span>
+        <h3>身分核對</h3>
+        <p>本人證件、手機號碼與警察刑事紀錄證明（良民證）核對，並完成一次電話面試。老師要進的是有未成年孩子的家，良民證<b>只在審核當下查驗，不長期留存</b>。</p>
+      </article>
+      <article class="gate">
+        <span class="ic"><svg width="28" height="28" aria-hidden="true" focusable="false"><use href="#i-cap"></use></svg></span>
+        <h3>學歷文件</h3>
+        <p>畢業證明正本核對。通過只寫「已核對」，我們不把校名做成賣點——學歷是入場券，不是保命符。</p>
+      </article>
+      <article class="gate">
+        <span class="ic"><svg width="28" height="28" aria-hidden="true" focusable="false"><use href="#i-talk"></use></svg></span>
+        <h3>試教評估</h3>
+        <p>由平台承辦人員旁聽一堂試教，看老師是不是從孩子卡住的地方開始教。沒過的不進推薦名單。</p>
+      </article>
+    </div>
+
+    <div class="queue">
+      <h3>審核佇列</h3>
+      <p class="note">老師的審核狀態只有四種：待補資料、審核中、已驗證、未通過。<b>只有「已驗證」會進入推薦名單</b>，其餘不會出現在上面的教師區——這就是「先審核，再推薦」。</p>
+      <table>
+        <thead>
+          <tr><th scope="col">案號</th><th scope="col">科目</th><th scope="col">目前狀態</th><th scope="col">卡在哪／備註</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-th="案號" class="num">T-2043</td><td data-th="科目">國文</td><td data-th="目前狀態"><span class="st wait">待補資料</span></td><td data-th="卡在哪">學歷文件尚未上傳。補齊後轉「審核中」。</td></tr>
+          <tr><td data-th="案號" class="num">T-2051</td><td data-th="科目">數學</td><td data-th="目前狀態"><span class="st doing">審核中</span></td><td data-th="卡在哪">身分核對與學歷文件已完成，試教評估已排定。</td></tr>
+          <tr><td data-th="案號" class="num">T-2038</td><td data-th="科目">英文</td><td data-th="目前狀態"><span class="st no">未通過</span></td><td data-th="卡在哪">學歷文件與所填不符，終止審核。終態，不再轉移。</td></tr>
+          <tr><td data-th="案號" class="num">T-1017</td><td data-th="科目">數學</td><td data-th="目前狀態"><span class="st ok">已驗證</span></td><td data-th="卡在哪">三個步驟全部通過，已進入推薦名單。終態，不再轉移。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="privacy"><b>高敏個資怎麼處理：</b>良民證與證件影本只在審核當下使用，不長期囤積；傳輸與儲存都加密；後台只有承辦人員看得到，不是全員可查。收個資的頁面全程走 HTTPS，不會有表單留在明文連線上。</p>
+  </div>
+</section>
+
+
+<section class="block alt" id="fees" data-obj="TrialLesson">
+  <div class="sheet">
+    <div class="head">
+      <span>先說清楚</span>
+      <h2>費用與保障</h2>
+      <p>先寫清楚我們不負責什麼，比寫「保證滿意」可信。</p>
+    </div>
+
+    <figure class="shot shot-band">
+      <div class="frame"><svg class="under d" viewBox="0 0 840 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect x="0" y="236" width="840" height="124" fill="#e3e5f6"/><path d="M0 236H840" stroke="#2a3a8f" stroke-width="2"/><path d="M70 236c-26-34-18-62 0-78 18 16 26 44 0 78Z" fill="#9fc4b3"/><path d="M70 236c-40-20-54-44-50-62 22 2 44 26 50 62Z" fill="#9fc4b3" opacity=".8"/><rect x="52" y="224" width="36" height="14" rx="6" fill="#2a3a8f"/><rect x="720" y="150" width="86" height="86" rx="6" fill="#ffffff" stroke="#2a3a8f" stroke-width="2"/><path d="M720 193h86" stroke="#2a3a8f" stroke-width="2"/><path d="M730 160v28M740 164v24M750 158v30M730 204v28M742 200v32" stroke="#c9cde8" stroke-width="5" stroke-linecap="round"/><g transform="translate(180,0)"><rect x="24" y="52" width="120" height="110" rx="6" fill="#f4f5fd" stroke="#2a3a8f" stroke-width="2"/><path d="M84 52v110M24 107h120" stroke="#2a3a8f" stroke-width="2"/><circle cx="400" cy="100" r="34" fill="#ffffff" stroke="#2a3a8f" stroke-width="2.4"/><path d="M400 100V78M400 100l15 9" stroke="#2a3a8f" stroke-width="2.6" stroke-linecap="round"/><path d="M400 66a34 34 0 0 1 34 34" fill="none" stroke="#b4660f" stroke-width="4" stroke-linecap="round"/><path d="M172 246 L240 240 L242 272 L166 278Z" fill="#ffffff" stroke="#2a3a8f" stroke-width="2" stroke-linejoin="round"/><path d="M240 240 L308 246 L314 278 L242 272Z" fill="#ffffff" stroke="#2a3a8f" stroke-width="2" stroke-linejoin="round"/><path d="M182 254l46-3M182 264l48-3M252 251l46 3M253 262l30 2" stroke="#c9cde8" stroke-width="2" stroke-linecap="round"/><path d="M264 262l12 1" stroke="#b4660f" stroke-width="2.6" stroke-linecap="round"/><g fill="#eceefb" stroke="#2a3a8f" stroke-width="2.4" stroke-linejoin="round"><rect x="52" y="172" width="104" height="112" rx="18"/><rect x="324" y="172" width="104" height="112" rx="18"/></g><path d="M78 190v76M104 190v76M130 190v76M350 190v76M376 190v76M402 190v76" stroke="#c9cde8" stroke-width="2" stroke-linecap="round"/><path d="M64 284v62M144 284v62M336 284v62M416 284v62" stroke="#2a3a8f" stroke-width="3" stroke-linecap="round"/></g></svg><svg class="under m" viewBox="0 0 480 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect x="0" y="236" width="480" height="124" fill="#e3e5f6"/><path d="M0 236H480" stroke="#2a3a8f" stroke-width="2"/><g transform="translate(0,0)"><rect x="24" y="52" width="120" height="110" rx="6" fill="#f4f5fd" stroke="#2a3a8f" stroke-width="2"/><path d="M84 52v110M24 107h120" stroke="#2a3a8f" stroke-width="2"/><circle cx="400" cy="100" r="34" fill="#ffffff" stroke="#2a3a8f" stroke-width="2.4"/><path d="M400 100V78M400 100l15 9" stroke="#2a3a8f" stroke-width="2.6" stroke-linecap="round"/><path d="M400 66a34 34 0 0 1 34 34" fill="none" stroke="#b4660f" stroke-width="4" stroke-linecap="round"/><path d="M172 246 L240 240 L242 272 L166 278Z" fill="#ffffff" stroke="#2a3a8f" stroke-width="2" stroke-linejoin="round"/><path d="M240 240 L308 246 L314 278 L242 272Z" fill="#ffffff" stroke="#2a3a8f" stroke-width="2" stroke-linejoin="round"/><path d="M182 254l46-3M182 264l48-3M252 251l46 3M253 262l30 2" stroke="#c9cde8" stroke-width="2" stroke-linecap="round"/><path d="M264 262l12 1" stroke="#b4660f" stroke-width="2.6" stroke-linecap="round"/><g fill="#eceefb" stroke="#2a3a8f" stroke-width="2.4" stroke-linejoin="round"><rect x="52" y="172" width="104" height="112" rx="18"/><rect x="324" y="172" width="104" height="112" rx="18"/></g><path d="M78 190v76M104 190v76M130 190v76M350 190v76M376 190v76M402 190v76" stroke="#c9cde8" stroke-width="2" stroke-linecap="round"/><path d="M64 284v62M144 284v62M336 284v62M416 284v62" stroke="#2a3a8f" stroke-width="3" stroke-linecap="round"/></g></svg>
+        <img src="images/trial.svg" alt="課程版面示意圖片" width="1916" height="821" onerror="this.hidden=true">
+      </div>
+    </figure>
+    <table class="money">
+      <caption>平台向兩邊收費：家長付刊登費讓老師看得到需求，老師在媒合成功後付介紹費。</caption>
+      <thead>
+        <tr><th scope="col">項目</th><th scope="col">誰付</th><th scope="col">金額</th><th scope="col">規則</th></tr>
+      </thead>
+      <tbody>
+        <tr><td data-th="項目">案件刊登費</td><td data-th="誰付">家長</td><td data-th="金額" class="num">NT$300／件</td><td data-th="規則">送出需求時收取，老師才看得到你的案件並報名。</td></tr>
+        <tr><td data-th="項目">首次試教</td><td data-th="誰付">—</td><td data-th="金額">免費一次，60 分鐘</td><td data-th="規則">每一筆媒合都有一次免費試教。試教前 <span style="white-space:nowrap">24 小時</span>內可免費取消。</td></tr>
+        <tr><td data-th="項目">媒合介紹費</td><td data-th="誰付">老師</td><td data-th="金額">等同前兩週授課鐘點費</td><td data-th="規則">只在媒合成功後收取。沒有媒合成功，老師一毛都不付。</td></tr>
+        <tr><td data-th="項目">媒合不成功</td><td data-th="誰付">—</td><td data-th="金額" class="num">退還刊登費 50%</td><td data-th="規則">推薦名單裡沒有一位合適、或三位都試教過仍不合適，退還 NT$150。</td></tr>
+        <tr><td data-th="項目">更換老師</td><td data-th="誰付">—</td><td data-th="金額">不另收費</td><td data-th="規則">試教後不滿意可申請更換，不必重新付刊登費。</td></tr>
+        <tr><td data-th="項目">不適任替換</td><td data-th="誰付">—</td><td data-th="金額">不另收費</td><td data-th="規則">正式上課後發生不適任情形，<span style="white-space:nowrap">24 小時</span>內提供替代老師。</td></tr>
+      </tbody>
+    </table>
+    <div class="nope">
+      <h3>我們不會做的四件事</h3>
+      <ul>
+        <li><b>不會拿「查看聯絡方式後費用即不退」綁你。</b>這種條款是把媒合風險整包丟給家長，定型化契約不該這樣寫。</li>
+        <li><b>不會刊登看起來很便宜的高學歷師資再說「老師排程已滿」</b>，然後轉推另一位。誘餌式刊登會把整個行業的資訊池弄髒。</li>
+        <li><b>不會為了衝數量放行沒查完的老師。</b>審核沒過就是不推薦，名單少一位也不補。</li>
+        <li><b>不會對分數、名次或錄取結果下任何承諾。</b>那不是平台做得到的事。我們能承諾的只有審核流程、試教機會與退費規則——這三件我們寫成規則，不是寫成口號。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="sheet">
+    <div>
+      <h3>後盾家教媒合</h3>
+      <p>先審核，再推薦</p>
+      <p>服務地區：桃園市、新北市、台北市</p>
+      <p>客服：<a href="tel:+886300000000" class="num">03-0000-0000</a>（週一至週六 <span style="white-space:nowrap">10:00–21:00</span>）</p>
+    </div>
+    <div>
+      <h3>服務科目</h3>
+      <p>數學、英文、自然、國文</p>
+      <p>國中與高中，線上或實體</p>
+      <p>需求審核時效：1 個工作天內</p>
+    </div>
+    <div>
+      <h3>給老師</h3>
+      <p><a href="#audit">申請成為老師</a>：三個審核步驟</p>
+      <p><a href="#fees">查看合作規則</a>：介紹費與退費</p>
+      <p>審核沒通過不會收取任何費用</p>
+    </div>
+    <p class="end">價格與時段以平台實際公告為準。<br>© 2026 後盾家教媒合</p>
+  </div>
+</footer>
+
+<script>
+
+/* ──────────────────────────────────────────────────────────────
+   互動分三塊：
+   (1) 教師用三欄大卡片，一張卡只講一位老師
+   (2) 媒合流程是一條直式時間軸，「現在這一步」那張卡會被搬進目前的節點底下
+   (3) 走過的每一步用時間軸列出，不做成表格
+   持久化一樣走 sessionStorage：重整之後停在原處（課文第 260 行要測的就是這個）。
+   ────────────────────────────────────────────────────────────── */
+(function () {
+  "use strict";
+
+  /* ── TutorProfile ＋ TutorVerification ＋ AvailabilitySlot ＋ MatchCandidate ──
+     卡片只放科目、教法、可上課時段，加上這位老師通過了哪幾個審核步驟。
+     不寫學校名與學歷細節，也不放家長評語。 */
+  var STEPS = ["身分核對", "學歷文件", "試教評估"];
+  var TUTORS = [
+    {
+      id: "T-1017", surname: "林", name: "林老師",
+      subject: "math", subjectName: "數學", level: "國中",
+      rate: 600, area: "taoyuan", areaName: "桃園市中壢區", mode: "both",
+      method: "先拆讀題再列式：一句一句把題目改寫成式子，找出孩子從哪一個字開始卡住，不先講公式。",
+      slots: [
+        { day: "週二", from: "19:00", to: "21:00", how: "實體", band: "weekday-evening" },
+        { day: "週四", from: "19:00", to: "21:00", how: "實體", band: "weekday-evening" },
+        { day: "週六", from: "09:00", to: "11:00", how: "線上", band: "weekend-am" }
+      ],
+      passed: ["身分核對", "學歷文件", "試教評估"],
+      clip: "3 分 12 秒",
+      score: 92,
+      why: "你寫「應用題一看就停筆」，他的教法就是從讀題開始拆，不是先講公式。週⁠二、週⁠四晚上對得上你勾的平日晚上。"
+    },
+    {
+      id: "T-1024", surname: "陳", name: "陳老師",
+      subject: "math", subjectName: "數學", level: "國小高年級、國中",
+      rate: 520, area: "taoyuan", areaName: "桃園市桃園區", mode: "online",
+      method: "線上共用白板：算錯的步驟留在畫面上不擦掉，兩個人一起找出錯在第幾行。",
+      slots: [
+        { day: "週三", from: "20:00", to: "22:00", how: "線上", band: "weekday-evening" },
+        { day: "週日", from: "14:00", to: "16:00", how: "線上", band: "weekend-pm" }
+      ],
+      passed: ["身分核對", "學歷文件", "試教評估"],
+      clip: "2 分 48 秒",
+      score: 78,
+      why: "時薪在你的預算下緣，週⁠三晚上有空。線上課會把白板存成圖檔給你，錯在哪一步你自己看得到。"
+    },
+    {
+      id: "T-1031", surname: "郭", name: "郭老師",
+      subject: "math", subjectName: "數學", level: "國中、高中",
+      rate: 680, area: "newtaipei", areaName: "新北市板橋區", mode: "onsite",
+      method: "把考卷改成錯題來源表：讀錯題、觀念沒有、計算失誤分三欄，先修哪一欄一起討論。",
+      slots: [
+        { day: "週六", from: "14:00", to: "17:00", how: "實體", band: "weekend-pm" },
+        { day: "週日", from: "09:00", to: "12:00", how: "實體", band: "weekend-am" }
+      ],
+      passed: ["身分核對", "學歷文件", "試教評估"],
+      clip: "4 分 05 秒",
+      score: 71,
+      why: "錯題來源表適合想先弄清楚問題出在哪的孩子，但他只收實體、而且在板橋——跟你勾的桃園與平日晚上對不上，放進來是讓你知道這個價位帶還有誰。"
+    },
+    {
+      id: "T-1042", surname: "張", name: "張老師",
+      subject: "english", subjectName: "英文", level: "國中",
+      rate: 560, area: "taoyuan", areaName: "桃園市八德區", mode: "both",
+      method: "看不懂的短文先不查單字，只圈出動詞，把句子的骨架拉出來，再回頭補字義。",
+      slots: [
+        { day: "週一", from: "19:30", to: "21:00", how: "線上", band: "weekday-evening" },
+        { day: "週六", from: "10:00", to: "12:00", how: "實體", band: "weekend-am" }
+      ],
+      passed: ["身分核對", "學歷文件", "試教評估"],
+      clip: "3 分 30 秒",
+      score: 66,
+      why: "科目跟你勾的不同，列在這裡是因為同一個孩子常常數學英文一起補；週⁠一晚上與你的時段相容。"
+    },
+    {
+      id: "T-1056", surname: "吳", name: "吳老師",
+      subject: "science", subjectName: "自然", level: "國中理化",
+      rate: 750, area: "taipei", areaName: "台北市大安區", mode: "online",
+      method: "實驗題先讓學生猜結果，猜錯了再一起算；用家裡的杯子與吸管就能做的實驗帶觀念。",
+      slots: [
+        { day: "週五", from: "19:00", to: "21:00", how: "線上", band: "weekday-evening" },
+        { day: "週日", from: "10:00", to: "12:00", how: "線上", band: "weekend-am" }
+      ],
+      passed: ["身分核對", "學歷文件", "試教評估"],
+      clip: "3 分 58 秒",
+      score: 58,
+      why: "價位在你的預算之上，科目也不同。放在名單最後是讓你看到全部已驗證的五位，不是只給你看便宜的。"
+    }
+  ];
+
+  /* ── 媒合狀態機（課文第 163–174 行的轉移表，逐條對應） ── */
+  var LABEL = {
+    none: "尚未送出需求",
+    pending: "待推薦", recommended: "已推薦", trial: "試教安排中",
+    done: "試教完成", rejected: "老師拒絕", cancelled: "家長取消",
+    re: "重新推薦", matched: "媒合成功"
+  };
+  var NEXT = {
+    pending:     [{ to: "recommended", act: "平台完成審核，推薦 3 位老師", by: "平台", key: true }],
+    recommended: [{ to: "trial", act: "家長選擇試教", by: "家長", key: true }],
+    trial:       [{ to: "done", act: "試教完成", by: "雙方", key: true },
+                  { to: "rejected", act: "老師拒絕", by: "老師", stop: true },
+                  { to: "cancelled", act: "家長取消", by: "家長", stop: true },
+                  { to: "re", act: "重新推薦", by: "家長" }],
+    done:        [{ to: "matched", act: "雙方確認，媒合成功", by: "雙方", key: true }],
+    re:          [{ to: "pending", act: "回到待推薦", by: "平台", key: true }],
+    rejected: [], cancelled: [], matched: []
+  };
+  var STEP = { pending: 2, recommended: 3, re: 3, trial: 4, done: 4, rejected: 4, cancelled: 4, matched: 5 };
+  var SAY = {
+    pending: "需求已收到，平台正在審核。1 個工作天內會推薦 3 到 5 位已驗證的老師給你。",
+    recommended: "已經推薦 3 位老師。看完卡片，挑一位安排免費試教。",
+    trial: "試教已排定。老師可以接受或拒絕；你也可以取消，或請平台重新推薦別人。",
+    done: "試教完成了。雙方回饋都收到，確認之後這筆媒合才算成立。",
+    matched: "媒合成功。介紹費在這一刻才向老師收取，你不必再付第二次刊登費。",
+    rejected: "老師婉拒了這一筆。這是終態，不會再轉移。你可以重新送一次需求，刊登費不重複收。",
+    cancelled: "你取消了這一筆。這是終態，不會再轉移。刊登費依規則退還五成。",
+    re: "已要求重新推薦。平台會把這筆退回待推薦，重新挑人。"
+  };
+  var WAIT = {
+    pending: "現在等的是：平台。", recommended: "現在等的是：你。",
+    trial: "現在等的是：老師與你。", done: "現在等的是：雙方確認。",
+    matched: "不必再等了。", rejected: "不必再等了。", cancelled: "不必再等了。", re: "現在等的是：平台。"
+  };
+
+  var TRIAL = {
+    when: "2026-09-28（週日）10:00–11:00",
+    fee: "首次免費（60 分鐘）",
+    place: "線上，或桃園市中壢區實體皆可"
+  };
+
+  var KEY = "houdun-match-b";
+  var STAY_NOTE = "這條狀態存在瀏覽器分頁裡，重新整理不會跳回「待推薦」，會停在你離開時的那一步。";
+
+  var st = { state: "none", log: [], req: null, tutor: null };
+
+  /* 持久化：狀態寫進 sessionStorage，重整之後讀回來（課文第 260 行要測的就是這一段）。
+     file:// 開啟或瀏覽器擋 storage 時會丟例外，所以兩邊都包 try。 */
+  function save() {
+    try { sessionStorage.setItem(KEY, JSON.stringify(st)); } catch (e) { /* 存不進去就算了，畫面照常 */ }
+  }
+  function load() {
+    try {
+      var raw = sessionStorage.getItem(KEY);
+      if (!raw) return null;
+      var o = JSON.parse(raw);
+      return (o && LABEL[o.state]) ? o : null;
+    } catch (e) { return null; }
+  }
+
+  var $ = function (id) { return document.getElementById(id); };
+  var board = $("board"), empty = $("empty");
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function icon(href, size, color) {
+    var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    s.setAttribute("width", size); s.setAttribute("height", size);
+    s.setAttribute("aria-hidden", "true"); s.setAttribute("focusable", "false");
+    if (color) s.style.color = color;
+    var u = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    u.setAttribute("href", href);
+    s.appendChild(u);
+    return s;
+  }
+
+  /* 每一個時段包成一顆不准斷行的片段，避免「（實／體）」被切成兩行 */
+  function slotSpans(t) {
+    var frag = document.createDocumentFragment();
+    t.slots.forEach(function (s, i) {
+      if (i) frag.appendChild(document.createTextNode("、"));
+      frag.appendChild(el("span", "nw", s.day + " " + s.from + "–" + s.to + "（" + s.how + "）"));
+    });
+    return frag;
+  }
+
+  /* ── 篩選：五個條件（課文第 196 行） ── */
+  function inBudget(rate, band) {
+    if (band === "all") return true;
+    if (band === "lt500") return rate < 500;
+    if (band === "500-650") return rate >= 500 && rate <= 650;
+    if (band === "650-800") return rate > 650 && rate <= 800;
+    return true;
+  }
+  function modeFits(t, want) {
+    if (want === "all") return true;
+    if (t.mode === "both") return true;
+    return t.mode === want;
+  }
+  function timeFits(t, want) {
+    if (want === "all") return true;
+    return t.slots.some(function (s) { return s.band === want; });
+  }
+  function picked() {
+    var sub = $("s-subject").value, area = $("s-area").value,
+        bud = $("s-budget").value, mode = $("s-mode").value, time = $("s-time").value;
+    return TUTORS.filter(function (t) {
+      return (sub === "all" || t.subject === sub)
+        && (area === "all" || t.area === area)
+        && inBudget(t.rate, bud)
+        && modeFits(t, mode)
+        && timeFits(t, time);
+    });
+  }
+
+  /* 試教影片卡：播放圖示與一條 SVG 聲音軌 */
+  function trialStripSvg() {
+    var bars = "", x = 54;
+    var hs = [16, 28, 10, 36, 14, 24, 7, 32, 18, 9, 26, 13, 20, 34, 11, 22, 6, 30, 15, 19, 8, 28, 12, 21, 5, 25, 14, 10, 27, 17];
+    for (var i = 0; i < hs.length; i++) {
+      var h = hs[i], y = (48 - h) / 2;
+      bars += '<rect x="' + x + '" y="' + y + '" width="4" height="' + h + '" rx="2"/>';
+      x += 8;
+    }
+    return '<svg viewBox="0 0 306 48" role="img" aria-label="試教影片">' +
+      '<circle cx="24" cy="24" r="15" fill="#b4660f"/>' +
+      '<path d="M20 16.5 31 24l-11 7.5Z" fill="#fff"/>' +
+      '<g fill="#e3c69c">' + bars + '</g></svg>';
+  }
+
+  function cardFor(t) {
+    var c = el("article", "tcard" + (st.tutor === t.id ? " is-picked" : ""));
+    c.setAttribute("data-tutor", t.id);
+
+    var who = el("div", "who");
+    who.appendChild(el("span", "seal", t.surname));
+    var h3 = el("h3", null, t.name);
+    h3.appendChild(el("small", null, t.subjectName + "　" + t.areaName));
+    who.appendChild(h3);
+    c.appendChild(who);
+
+    /* 通過的審核步驟：一個步驟一個綠色標記 */
+    var ul = el("ul", "checks");
+    STEPS.forEach(function (k) {
+      var ok = t.passed.indexOf(k) >= 0;
+      var li = el("li", ok ? null : "no");
+      li.appendChild(icon(ok ? "#i-ok" : "#i-dot", 17));
+      li.appendChild(document.createTextNode(k + (ok ? "" : "（未完成）")));
+      ul.appendChild(li);
+    });
+    c.appendChild(ul);
+
+    /* 科目、教法、可上課時段 */
+    var dl = el("dl", "facts");
+    [["科目", t.subjectName + "（" + t.level + "）"],
+     ["教法", t.method],
+     ["可上課", "@slots"]
+    ].forEach(function (p) {
+      dl.appendChild(el("dt", null, p[0]));
+      var dd = el("dd");
+      if (p[1] === "@slots") dd.appendChild(slotSpans(t)); else dd.textContent = p[1];
+      dl.appendChild(dd);
+    });
+    c.appendChild(dl);
+
+    var rate = el("div", "rate");
+    rate.appendChild(el("span", "num", "NT$" + t.rate));
+    rate.appendChild(el("em", null, "／小時"));
+    c.appendChild(rate);
+
+    var fit = el("div", "fit");
+    fit.appendChild(el("b", null, "為什麼推這一位"));
+    fit.appendChild(el("p", null, t.why));
+    var meter = el("div", "meter");
+    var bar = el("i"); bar.style.width = t.score + "%";
+    meter.appendChild(bar);
+    fit.appendChild(meter);
+    fit.appendChild(el("span", null, "條件相符程度（參考用，真正該看的是上面那段理由）"));
+    c.appendChild(fit);
+
+    var clip = el("div", "clip");
+    clip.innerHTML = trialStripSvg();
+    clip.appendChild(el("b", null, "試教影片　" + t.clip));
+    c.appendChild(clip);
+
+    var btn = el("button", "pick", st.tutor === t.id ? "已選擇這一位" : "選這位安排試教");
+    btn.type = "button";
+    btn.addEventListener("click", function () { choose(t.id); });
+    c.appendChild(btn);
+
+    return c;
+  }
+
+  function renderBoard() {
+    var list = picked();
+    board.innerHTML = "";
+    list.forEach(function (t) { board.appendChild(cardFor(t)); });
+    if (list.length === 0) {
+      empty.removeAttribute("hidden");
+      $("tally-n").textContent = "符合的老師 0 位";
+      $("tally-say").textContent = "已驗證師資 " + TUTORS.length + " 位，這組條件下沒有人對得上。";
+    } else {
+      empty.setAttribute("hidden", "");
+      $("tally-n").textContent = "符合的老師 " + list.length + " 位";
+      $("tally-say").textContent = "已驗證師資 " + TUTORS.length + " 位，依你勾的條件收斂到 "
+        + list.length + " 位。" + (list.length > 5 ? "" : "一次最多只推 5 位。");
+    }
+  }
+
+  ["s-subject", "s-area", "s-budget", "s-mode", "s-time"].forEach(function (id) {
+    $(id).addEventListener("change", renderBoard);
+  });
+
+  /* ── 媒合狀態機 ── */
+  function byId(id) {
+    for (var i = 0; i < TUTORS.length; i++) if (TUTORS[i].id === id) return TUTORS[i];
+    return null;
+  }
+  function stamp() {
+    var d = new Date();
+    var p = function (n) { return (n < 10 ? "0" : "") + n; };
+    return p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds());
+  }
+  function move(to, act, by) {
+    st.log.push({ at: stamp(), from: LABEL[st.state], to: LABEL[to], act: act, by: by });
+    st.state = to;
+    save();
+    renderFlow();
+    renderBoard();
+  }
+
+  function renderFlow() {
+    var s = st.state;
+    var now = $("now"), tag = $("now-tag"), title = $("now-title"),
+        say = $("now-say"), wait = $("now-wait"), moves = $("moves"),
+        trial = $("trial"), tdl = $("trial-dl");
+
+    now.className = "now" + (s === "matched" ? " s-matched" : "")
+      + (s === "rejected" || s === "cancelled" ? " s-stop" : "");
+    tag.textContent = LABEL[s];
+
+    if (s === "none") {
+      title.textContent = "還沒有這一筆媒合";
+      say.textContent = "填好上面的家長需求表並送出，平台才會建立一筆媒合紀錄。";
+      wait.textContent = "";
+    } else {
+      var t = st.tutor ? byId(st.tutor) : null;
+      // 「編號 M-…」包成不准斷行的片段，否則手機上會把「編／號」切成兩行
+      title.textContent = "";
+      if (st.req) {
+        title.appendChild(document.createTextNode(
+          st.req.grade + "　" + st.req.subjectName + "　" + st.req.areaName + "　"));
+        title.appendChild(el("span", "nw", "編號 " + st.req.id));
+      } else {
+        title.textContent = "媒合紀錄";
+      }
+      say.textContent = SAY[s] + (t && (s === "trial" || s === "done" || s === "matched")
+        ? "　目前這一筆對到的是 " + t.name + "（" + t.subjectName + "）。" : "");
+      wait.textContent = WAIT[s] || "";
+    }
+
+    moves.innerHTML = "";
+    (NEXT[s] || []).forEach(function (m) {
+      var b = el("button", m.key ? "key" : (m.stop ? "stopish" : null), m.act);
+      b.type = "button";
+      b.setAttribute("data-to", m.to);
+      b.addEventListener("click", function () { move(m.to, m.act, m.by); });
+      moves.appendChild(b);
+    });
+    if (s !== "none" && (NEXT[s] || []).length === 0) {
+      moves.appendChild(el("p", "note", "這是終態，不能再轉移。按「回到初始狀態」可以重跑一次。"));
+    }
+
+    /* TrialLesson：試教安排中之後才有東西可以記 */
+    if (s === "trial" || s === "done" || s === "matched") {
+      var t2 = st.tutor ? byId(st.tutor) : null;
+      tdl.innerHTML = "";
+      var rows = [
+        ["老師", t2 ? t2.name + "（" + t2.subjectName + "）" : "—"],
+        ["試教時間", TRIAL.when],
+        ["地點", TRIAL.place],
+        ["費用", TRIAL.fee],
+        ["結果", s === "trial" ? "尚未進行" : "已完成"]
+      ];
+      if (s === "done" || s === "matched") {
+        rows.push(["雙方回饋", "已收到，只給你、老師與平台承辦人員看"]);
+      }
+      rows.forEach(function (p) {
+        tdl.appendChild(el("dt", null, p[0]));
+        tdl.appendChild(el("dd", null, p[1]));
+      });
+      trial.removeAttribute("hidden");
+    } else {
+      trial.setAttribute("hidden", "");
+    }
+
+    renderRail();
+    renderLog();
+  }
+
+  /* 直式時間軸：走過的收成一行、現在這一步把 #now 那張卡搬進來、還沒到的灰著 */
+  function renderRail() {
+    var s = st.state, at = STEP[s] || 1;
+    var stop = (s === "rejected" || s === "cancelled");
+    var lis = $("rail-steps").children;
+    for (var i = 0; i < lis.length; i++) {
+      var n = i + 1;
+      lis[i].className = n < at ? "is-done" : (n === at ? (stop ? "is-stop" : "is-now") : "");
+      if (s === "matched") lis[i].className = n < 5 ? "is-done" : "is-now";
+      if (s === "none") lis[i].className = n === 1 ? "is-now" : "";
+    }
+    var host = lis[Math.min(at, 5) - 1];
+    if (s === "none") host = lis[0];
+    if ($("now").parentNode !== host) host.appendChild($("now"));
+
+    $("rail-say").textContent = s === "none"
+      ? "你還沒有送出需求。填完上面那張表，這條進度就會開始走。"
+      : ("第 " + (STEP[s] || 1) + " 步／共 5 步：" + LABEL[s] + "。" + (WAIT[s] || ""));
+  }
+
+  function renderLog() {
+    var wrap = $("log-wrap");
+    wrap.innerHTML = "";
+    if (st.log.length === 0) {
+      wrap.appendChild(el("p", "note", "還沒有任何異動。送出需求之後，這裡會開始長出紀錄。"));
+      return;
+    }
+    var ol = el("ol", "loglist");
+    st.log.slice().reverse().forEach(function (r) {
+      var li = el("li", "logrow");
+      var time = el("time", null, r.at);
+      li.appendChild(time);
+      var box = el("div");
+      var b = el("b", null, r.from + " → " + r.to);
+      box.appendChild(b);
+      box.appendChild(el("u", null, "　" + r.act + "（" + r.by + "）"));
+      li.appendChild(box);
+      ol.appendChild(li);
+    });
+    wrap.appendChild(ol);
+  }
+
+  function choose(id) {
+    if (st.state === "none") {
+      showAlarm("還沒有送出需求，所以還沒有可以掛上去的媒合紀錄。請先填完上面那張家長需求表。");
+      return;
+    }
+    if (st.state !== "recommended" && st.state !== "pending") {
+      showAlarm("這一筆已經走到「" + LABEL[st.state] + "」，不能在這個狀態換人。要換老師請在媒合流程那一區按「重新推薦」。");
+      return;
+    }
+    st.tutor = id;
+    save();
+    renderBoard();
+    var t = byId(id);
+    $("said").textContent = "已選擇 " + t.name + "。到下面的媒合流程按「家長選擇試教」，狀態才會往前走。";
+    document.getElementById("flow").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function showAlarm(msg) {
+    var a = $("alarm");
+    a.textContent = msg;
+    a.removeAttribute("hidden");
+    a.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+  function hideAlarm() { $("alarm").setAttribute("hidden", ""); $("alarm").textContent = ""; }
+
+  var AREA = { taoyuan: "桃園市", newtaipei: "新北市", taipei: "台北市" };
+  var SUBJ = { math: "數學", english: "英文", science: "自然", chinese: "國文" };
+  var BUD = { lt500: "500 元以下", "500-650": "500 至 650 元", "650-800": "650 至 800 元" };
+  var TIME = { "weekday-evening": "平日晚上", "weekend-am": "週末上午", "weekend-pm": "週末下午" };
+  var MODE = { any: "都可以", online: "線上", onsite: "實體" };
+
+  /* 送出需求：原生驗證先擋（表單沒有 novalidate，必填欄位有 required、電話有 pattern），
+     通過之後才建立 MatchCandidate，狀態從「尚未送出需求」進到「待推薦」。 */
+  $("ask-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    hideAlarm();
+    if (st.state !== "none") {
+      showAlarm("這一筆需求已經在跑了（目前狀態：" + LABEL[st.state] + "）。同一份需求不重複建檔，"
+        + "要重來請按「回到初始狀態」。");
+      return;
+    }
+    var g = $("f-goal").value.trim();
+    st.req = {
+      id: "M-2026-0918",
+      grade: $("f-grade").value,
+      subject: $("f-subject").value, subjectName: SUBJ[$("f-subject").value],
+      area: $("f-area").value, areaName: AREA[$("f-area").value],
+      budget: BUD[$("f-budget").value],
+      time: TIME[$("f-time").value],
+      mode: MODE[$("f-mode").value],
+      goal: g,
+      contact: $("f-contact").value.trim()
+    };
+    st.state = "pending";
+    st.log.push({ at: stamp(), from: LABEL.none, to: LABEL.pending, act: "家長送出需求", by: "家長" });
+    save();
+
+    var echo = $("recap-echo");
+    echo.innerHTML = "";
+    [["需求編號", st.req.id],
+     ["年級", st.req.grade],
+     ["科目", st.req.subjectName],
+     ["地區", st.req.areaName],
+     ["每小時預算", st.req.budget],
+     ["可上課時間", st.req.time],
+     ["上課方式", st.req.mode],
+     ["想解決什麼", st.req.goal],
+     ["聯絡電話", st.req.contact]
+    ].forEach(function (p) {
+      echo.appendChild(el("dt", null, p[0]));
+      echo.appendChild(el("dd", null, p[1]));
+    });
+    $("aside").setAttribute("hidden", "");
+    $("recap").removeAttribute("hidden");
+    $("said").textContent = "需求已建檔，狀態進到「待推薦」。" + STAY_NOTE;
+
+    renderFlow();
+    renderBoard();
+    $("recap").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+
+  $("btn-reset").addEventListener("click", function () {
+    st = { state: "none", log: [], req: null, tutor: null };
+    try { sessionStorage.removeItem(KEY); } catch (e) { /* 清不掉也不影響畫面 */ }
+    hideAlarm();
+    $("recap").setAttribute("hidden", "");
+    $("aside").removeAttribute("hidden");
+    $("ask-form").reset();
+    $("said").textContent = "已回到初始狀態：媒合紀錄清空，狀態回到「尚未送出需求」。";
+    renderFlow();
+    renderBoard();
+  });
+
+  /* 開頁：先把上一輪的狀態讀回來，讀得到就接著走，讀不到才從頭 */
+  var back = load();
+  if (back) {
+    st = back;
+    if (st.req) {
+      var echo2 = $("recap-echo");
+      echo2.innerHTML = "";
+      [["需求編號", st.req.id], ["年級", st.req.grade], ["科目", st.req.subjectName],
+       ["地區", st.req.areaName], ["每小時預算", st.req.budget], ["可上課時間", st.req.time],
+       ["上課方式", st.req.mode], ["想解決什麼", st.req.goal], ["聯絡電話", st.req.contact]
+      ].forEach(function (p) {
+        echo2.appendChild(el("dt", null, p[0]));
+        echo2.appendChild(el("dd", null, p[1]));
+      });
+      $("aside").setAttribute("hidden", "");
+      $("recap").removeAttribute("hidden");
+      $("said").textContent = "這是重新整理後讀回來的狀態，停在「" + LABEL[st.state] + "」。";
+    }
+  }
+  renderFlow();
+  renderBoard();
+})();
+
+</script>
+
+</body>
+</html>

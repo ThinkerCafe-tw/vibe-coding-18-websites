@@ -1,0 +1,145 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP03 攝影師作品集｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP03 攝影師作品集</h1><p>分清本機完成、版本保存與公開網站。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep03-photographer.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP03 施工規格</h1>
+<p>本規格整理自《網頁設計》第 3 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<h2>攝影師資料</h2>
+<p>名稱：小柯攝影工作室
+地區：台中
+服務類型：婚紗、婚禮紀錄、形象照
+品牌主張：自然、不過度修飾，重視情緒與現場關係
+主要客群：準新人、小型品牌主、需要形象照的專業工作者</p>
+<h2>網站目標</h2>
+<ol>
+<li>讓第一次來的客人快速看懂攝影風格</li>
+<li>讓作品依照類型清楚分類</li>
+<li>說明拍攝流程、方案內容、交件時間與加選規則</li>
+<li>引導客人填寫詢問表單</li>
+<li>讓網站可部署為單頁靜態網站（靜態網站＝內容固定、伺服器原樣送出的網頁，不需後端程式即時運算，最省事也最好部署）</li>
+</ol>
+<h2>必要區塊</h2>
+<ol>
+<li>首頁主視覺：攝影師名稱、服務類型、一句話主張、兩個按鈕「看作品」「詢問檔期」</li>
+<li>作品分類：婚紗、婚禮紀錄、形象照，每類 4 到 8 張示意圖（placeholder）</li>
+<li>案例說明：每一類用 2 到 3 句說明拍攝情境</li>
+<li>服務方案：方案名稱、內容、價格區間、交件時間、加選規則</li>
+<li>拍攝流程：詢問、溝通、拍攝、精修、交件</li>
+<li>關於我：攝影師介紹與工作方式</li>
+<li>詢問表單：姓名、聯絡方式、拍攝類型、日期、地點、預算、留言</li>
+<li>頁尾：Email、Instagram、服務地區、版權聲明</li>
+</ol>
+<h2>視覺風格</h2>
+<p>照片優先、留白、專業、安靜、不要過度裝飾。
+背景可以用白色、深灰或低飽和米色。
+按鈕要清楚，但不要太花。</p>
+<h2>技術要求</h2>
+<ol>
+<li>請做成一個可以直接打開的單一 index.html 檔案。</li>
+<li>CSS 寫在同一個檔案內。</li>
+<li>使用語意化 HTML，例如 header、main、section、footer。</li>
+<li>圖片先用免費圖庫（如 Unsplash）的示意圖，並用註解標出日後要替換的圖片檔名。</li>
+<li>每張圖片都要有 alt 文字。</li>
+<li>使用響應式設計，桌機作品集可三欄，手機改為單欄。</li>
+<li>文字在手機上至少要容易閱讀，按鈕要容易點。</li>
+<li>表單不需要真的送出到後端，但要有清楚欄位與送出按鈕。</li>
+<li>不要編造得獎紀錄、客戶評價或合作品牌。</li>
+<li>請在 HTML title 與 meta description 放入適合 SEO 的文字。</li>
+</ol>
+<h2>本練習包的素材</h2>
+<p>照片版位使用原創 SVG 示意圖，保留分類、燈箱與版面操作；實際照片由學員另備合法素材。來源記錄見 <code>ATTRIBUTION.md</code>。</p>
+</section>
+<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP03 對話提示卡</h1>
+<p>以下為第 3 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
+<h2>教材提示詞</h2>
+<pre><code class="language-text">你是網頁設計老師與前端工程師。
+請幫我做成一個攝影師作品集網站，並讓它適合上傳到 GitHub 和 Vercel 部署。
+
+【攝影師資料】
+名稱：小柯攝影工作室
+地區：台中
+服務類型：婚紗、婚禮紀錄、形象照
+品牌主張：自然、不過度修飾，重視情緒與現場關係
+主要客群：準新人、小型品牌主、需要形象照的專業工作者
+
+【網站目標】
+1. 讓第一次來的客人快速看懂攝影風格
+2. 讓作品依照類型清楚分類
+3. 說明拍攝流程、方案內容、交件時間與加選規則
+4. 引導客人填寫詢問表單
+5. 讓網站可部署為單頁靜態網站（靜態網站＝內容固定、伺服器原樣送出的網頁，不需後端程式即時運算，最省事也最好部署）
+
+【必要區塊】
+1. 首頁主視覺：攝影師名稱、服務類型、一句話主張、兩個按鈕「看作品」「詢問檔期」
+2. 作品分類：婚紗、婚禮紀錄、形象照，每類 4 到 8 張示意圖（placeholder）
+3. 案例說明：每一類用 2 到 3 句說明拍攝情境
+4. 服務方案：方案名稱、內容、價格區間、交件時間、加選規則
+5. 拍攝流程：詢問、溝通、拍攝、精修、交件
+6. 關於我：攝影師介紹與工作方式
+7. 詢問表單：姓名、聯絡方式、拍攝類型、日期、地點、預算、留言
+8. 頁尾：Email、Instagram、服務地區、版權聲明
+
+【視覺風格】
+照片優先、留白、專業、安靜、不要過度裝飾。
+背景可以用白色、深灰或低飽和米色。
+按鈕要清楚，但不要太花。
+
+【技術要求】
+1. 請做成一個可以直接打開的單一 index.html 檔案。
+2. CSS 寫在同一個檔案內。
+3. 使用語意化 HTML，例如 header、main、section、footer。
+4. 圖片先用免費圖庫（如 Unsplash）的示意圖，並用註解標出日後要替換的圖片檔名。
+5. 每張圖片都要有 alt 文字。
+6. 使用響應式設計，桌機作品集可三欄，手機改為單欄。
+7. 文字在手機上至少要容易閱讀，按鈕要容易點。
+8. 表單不需要真的送出到後端，但要有清楚欄位與送出按鈕。
+9. 不要編造得獎紀錄、客戶評價或合作品牌。
+10. 請在 HTML title 與 meta description 放入適合 SEO 的文字。
+</code></pre>
+<h2>原有對話流程</h2>
+<h1>EP03 對話卡</h1>
+<p>這張卡的重點不是背指令，而是把「畫面完成」一路推進到「公開網址可重做驗收」。</p>
+<h2>1. 先交代目標與素材</h2>
+<blockquote>
+<p>我想做一個攝影師作品集。請先核對我提供的服務、方案、圖片和授權，不要補寫獎項、評價、品牌或客戶姓名。先整理成可批准的規格，不要施工。</p>
+</blockquote>
+<h2>2. 批准後完成本機作品</h2>
+<blockquote>
+<p>規格已確認，可以開始。請做手機優先的網站，第一屏要說清楚服務與自然、不過度修飾的風格，接著呈現作品、方案、關於與詢問入口。</p>
+</blockquote>
+<h2>3. 要求可重做的驗收</h2>
+<blockquote>
+<p>請分別檢查桌機、一般手機與最窄手機；實際測試表單必填、13 張圖片路徑與 SEO。不要只告訴我程式看起來正確。</p>
+</blockquote>
+<h2>4. 保存與發布</h2>
+<blockquote>
+<p>本機驗收通過後，建立內容清楚的版本並推到公開 repo 的 main。等待已連結的 Vercel 完成部署，再開啟固定 production URL 驗收。</p>
+</blockquote>
+<h2>5. 最後只看四個停點</h2>
+<blockquote>
+<p>請用白話回報：作品已整理、手機已檢查、版本已保存、公開網址可驗收；每個停點都要有實際證據支持。</p>
+</blockquote>
+</section>
+<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP03 驗收清單</h1>
+<h2>逐項檢查</h2>
+<p>AI 產出後，先做五種檢查。</p>
+<p>第一，檢查內容是否真實。刪掉 AI 自動編出來的評價、品牌合作、獎項與客戶名稱。</p>
+<p>第二，檢查 HTML 結構。至少要能看到 <code>header</code>、<code>main</code>、多個 <code>section</code>、<code>footer</code>，作品集不要全部塞在沒有意義的單一大區塊裡。</p>
+<p>第三，檢查 CSS 是否包含手機版規則。media query（媒體查詢）是 CSS 的條件式語法，意思是「當螢幕寬度小於某個值時，套用另一組版面規則」，響應式設計（RWD）就靠它切換欄數，寫法如下：</p>
+<pre><code class="language-css">.gallery { display: grid; grid-template-columns: repeat(3, 1fr); }  /* 桌機三欄 */
+@media (max-width: 768px) {
+  .gallery { grid-template-columns: 1fr; }  /* 寬度小於斷點 768px 時改單欄 */
+}
+</code></pre>
+<p>手機版 RWD 的詳細做法沿用第 2 講，這裡只需搜尋 <code>@media</code>，確認 AI 是否有針對小螢幕調整欄位、圖片與按鈕。若沒有，請 AI 補上：</p>
+<pre><code class="language-text">請補上手機版 RWD 規則。桌機作品集維持三欄，平板兩欄，手機單欄。表單欄位在手機上全部改成單欄，按鈕高度至少 44px。
+</code></pre>
+<p>第四，檢查圖片路徑。若 HTML 寫的是：</p>
+<pre><code class="language-html">&lt;img src=&quot;images/wedding-01.jpg&quot; alt=&quot;台中戶外婚紗作品&quot;&gt;
+</code></pre>
+<p>那你的 GitHub repository 裡就必須真的有：</p>
+<pre><code class="language-text">images/wedding-01.jpg
+</code></pre>
+<p>圖片路徑錯誤是部署後最常見的失敗之一：本機正常，不代表上線後正常。大小寫、資料夾名稱、副檔名都要一致。</p>
+<p>第五，檢查 SEO 標籤。<code>title</code>（網頁標題）是瀏覽器分頁與搜尋結果第一行的文字，<code>meta description</code>（網頁描述）是搜尋結果標題下方那段說明，兩者都是 Google 判讀網站的依據。在 <code>index.html</code> 裡搜尋 <code>&lt;title&gt;</code> 與 <code>&lt;meta name=&quot;description&quot;</code>，確認有寫到攝影師名稱、服務類型與地區（例如 <code>&lt;title&gt;小柯攝影工作室｜台中婚紗婚禮紀錄&lt;/title&gt;</code>）；若沒有或內容空泛，就請 AI 補上。</p>
+<h2>主動測試</h2>
+<p>這一講會讓客人<strong>填詢問表單</strong>，填完不會卡住、不扣錢，最容易出的是「沉默失敗」——看起來能寄的表單其實沒寄出去。最招牌的一撞，就是把表單<strong>全空白直接送、Email 亂填</strong>，看它擋不擋、送出後有沒有一句確認。</p>
+<p>記住一句：<strong>AI 是被告不是法官，畫面才是證據。</strong> 問寫網站的 AI「表單會寄出去嗎？」它幾乎一定回「沒問題」，但會不會寄、有沒有編造、圖片連不連得上，都由畫面說了算。</p>
+<p>逐項測試動作（抓編造、撞表單、撞圖片、撞分享）的完整清單，見書末〈附錄：主動測試卡〉。</p>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>

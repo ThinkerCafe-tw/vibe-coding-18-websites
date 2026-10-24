@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>靜語美容院｜台北市大安區｜會員預約</title>
+
+<style>
+:root{
+  --bg:#f8efe9;
+  --bg2:#f1e2da;
+  --card:#fffaf6;
+  --ink:#3b2a30;
+  --ink2:#6b555c;
+  --rose:#a2455c;
+  --rose-d:#7f3348;
+  --rose-t:#f4dcdf;
+  --sage:#3f6650;
+  --sage-t:#dde9df;
+  --line:#e6d2c9;
+  --ff:"PingFang TC","Noto Sans TC","Microsoft JhengHei","Heiti TC",system-ui,sans-serif;
+  --fk:"Kaiti TC","BiauKai","DFKai-SB","STKaiti","Noto Serif TC",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ff);font-size:19px;line-height:1.75;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--fk);font-weight:700;line-height:1.35;margin:0;color:var(--ink)}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.num,.val,.price{font-variant-numeric:tabular-nums lining-nums}
+
+
+.top{background:var(--bg);border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;gap:28px;height:76px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--fk);font-size:27px;font-weight:700;text-decoration:none;color:var(--ink)}
+.brand svg{width:30px;height:30px;flex:none}
+.top nav{margin-left:auto;display:flex;gap:26px}
+.top nav a{font-size:18px;text-decoration:none;color:var(--ink2);padding:6px 2px}
+.top nav a:hover{color:var(--rose)}
+.pill{display:inline-block;font-size:18px;font-weight:600;text-decoration:none;color:#fff;background:var(--rose);padding:9px 22px;border-radius:999px}
+.pill:hover{background:var(--rose-d)}
+
+
+.hero{padding:64px 0 76px}
+.hero-in{display:grid;grid-template-columns:1.12fr .88fr;gap:64px;align-items:center}
+.eyebrow{font-size:18px;color:var(--rose-d);letter-spacing:.06em;margin-bottom:20px}
+.hero h1{font-size:44px;letter-spacing:.02em;text-wrap:balance}
+.hero h1 span{display:block}
+.lead{margin-top:26px;font-size:21px;color:var(--ink2);max-width:30em}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{display:inline-block;font-family:var(--ff);font-size:20px;font-weight:600;text-decoration:none;padding:15px 34px;border-radius:999px;border:2px solid var(--rose);cursor:pointer;line-height:1.3}
+.btn.primary{background:var(--rose);color:#fff}
+.btn.primary:hover{background:var(--rose-d);border-color:var(--rose-d)}
+.btn.ghost{background:transparent;color:var(--rose-d)}
+.btn.ghost:hover{background:var(--rose-t)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:34px 0 0;padding:0;list-style:none}
+.chips li{font-size:17px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 18px}
+.hours{margin-top:22px;font-size:18px;color:var(--ink2)}
+.art{position:relative;aspect-ratio:3/4;max-width:430px;width:100%;margin-left:auto;border-radius:999px 999px 30px 30px;overflow:hidden;background:#ecc9c0}
+.art svg,.art .photo{position:absolute;inset:0;width:100%;height:100%}
+.photo{background-size:cover;background-position:center}
+.art .photo{background-image:url("images/hero.jpg")}
+
+
+section{padding:84px 0}
+section.alt{background:var(--bg2)}
+.h2wrap{margin-bottom:38px;max-width:40em}
+h2{font-size:40px}
+.sub{margin-top:12px;color:var(--ink2);font-size:19px}
+
+
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px 32px;display:flex;flex-direction:column;gap:6px;position:relative}
+.svc h3{font-size:27px}
+.svc .meta{color:var(--ink2);font-size:18px}
+.svc .price{font-size:38px;font-weight:700;color:var(--rose-d);margin:8px 0 4px;line-height:1.2}
+.svc .price small{font-size:18px;font-weight:500;color:var(--ink2);margin-right:4px}
+.svc .who{font-size:18px}
+.svc .who b{color:var(--ink2);font-weight:600;margin-right:6px}
+.svc .go{margin-top:14px;align-self:flex-start;font-size:18px;font-weight:600;color:var(--rose-d);text-decoration:none;border-bottom:2px solid var(--rose)}
+.badge{position:absolute;top:24px;right:26px;font-size:16px;font-weight:600;background:var(--rose-t);color:var(--rose-d);padding:3px 14px;border-radius:999px}
+.promise{display:grid;grid-template-columns:1.1fr .9fr;gap:0;margin-top:34px;background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden}
+.promise .say{padding:44px 44px;display:flex;flex-direction:column;justify-content:center}
+.promise blockquote{margin:0;font-family:var(--fk);font-size:30px;line-height:1.55;font-weight:700}
+.promise .say p{margin-top:16px;color:var(--ink2);font-size:18px}
+.room{position:relative;min-height:280px;background:#e8cfc8}
+.room svg,.room .photo{position:absolute;inset:0;width:100%;height:100%}
+.room .photo{background-image:url("images/room.jpg")}
+
+
+.two{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.two.rev{grid-template-columns:1.2fr .8fr}
+.side h2{margin-bottom:14px}
+.side ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+.side li{padding-left:34px;position:relative;font-size:18px}
+.side li:before{content:"";position:absolute;left:0;top:.5em;width:18px;height:18px;border-radius:50%;background:var(--rose-t);border:2px solid var(--rose)}
+form{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:36px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:20px 22px}
+.fields .full{grid-column:1/-1}
+label,.lbl{display:block;font-size:17px;font-weight:600;color:var(--ink2);margin-bottom:6px}
+input,select,textarea{width:100%;font-family:var(--ff);font-size:19px;color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:16px;padding:12px 16px;line-height:1.4}
+textarea{min-height:104px;resize:vertical}
+input:focus,select:focus,textarea:focus,.btn:focus-visible,a:focus-visible{outline:3px solid var(--rose);outline-offset:2px}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:17px;font-weight:400;color:var(--ink)}
+.check input{width:24px;height:24px;flex:none;margin-top:4px;accent-color:var(--rose)}
+form .btn{margin-top:26px}
+.info{grid-column:1/-1;font-size:18px;color:var(--rose-d);background:var(--rose-t);border-radius:16px;padding:10px 18px}
+.result{margin-top:24px;padding:24px 28px;border-radius:20px;background:var(--sage-t);border:2px solid var(--sage);font-size:18px}
+.result[hidden]{display:none}
+.result h3{font-size:24px;margin-bottom:8px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0;padding:0;list-style:none}
+.flow li{font-size:17px}
+.flow .arrow{color:var(--ink2)}
+
+
+.tag{display:inline-block;font-size:16px;font-weight:600;padding:1px 12px;border-radius:999px;line-height:1.6;white-space:nowrap}
+.tag-wait{background:#f7e6c8;color:#6f4a00}
+.tag-ok{background:#d8e8f0;color:#1f4e66}
+.tag-done{background:var(--sage-t);color:var(--sage)}
+.tag-cancel{background:#ececec;color:#55525a}
+.tag-cur{outline:3px solid var(--rose);outline-offset:2px}
+
+
+.dash{display:grid;grid-template-columns:.85fr 1.15fr;gap:32px;align-items:start}
+.mcard{border-radius:30px;padding:34px 34px 30px;color:#fff;background:linear-gradient(140deg,#b85469 0%,#8c3a4f 62%,#6f2c40 100%);min-height:280px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.mcard:after{content:"";position:absolute;right:-70px;top:-70px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.12)}
+.mcard .shop{font-family:var(--fk);font-size:26px;font-weight:700;position:relative;z-index:1}
+.mcard .who{font-size:32px;font-family:var(--fk);font-weight:700;margin-top:34px;position:relative;z-index:1}
+.mcard .lv{display:inline-block;margin-top:10px;font-size:17px;border:1.5px solid rgba(255,255,255,.85);padding:2px 16px;border-radius:999px;position:relative;z-index:1}
+.mcard .since{font-size:18px;margin-top:22px;opacity:.95;position:relative;z-index:1}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px 26px}
+.tile.wide{grid-column:1/-1}
+.lab{font-size:18px;color:var(--ink2);font-weight:600}
+.val{font-size:46px;font-weight:700;color:var(--rose-d);line-height:1.2;margin-top:4px}
+.val small{font-size:19px;font-weight:500;color:var(--ink2);margin-left:6px}
+.tile .sub2{font-size:18px;margin-top:2px}
+.tile.warn{background:#fdf0e3;border-color:#efc9a2}
+.tile.warn .val{color:#8a4a12}
+.eq{margin-top:10px;font-size:18px;background:var(--bg2);border-radius:14px;padding:8px 14px;font-variant-numeric:tabular-nums}
+.line1{font-size:19px;margin-top:4px}
+
+
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.rule{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:28px 32px}
+.rule h3{font-size:26px;margin-bottom:8px}
+.rule p{font-size:19px}
+.flowbox{margin-top:22px;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:22px 32px;font-size:18px}
+.flowbox .flow{margin:10px 0 6px}
+
+
+.tbl{width:100%;border-collapse:collapse;background:var(--card);border-radius:24px;overflow:hidden;border:1px solid var(--line);font-size:18px}
+.tbl th{font-size:17px;text-align:left;color:var(--ink2);font-weight:600;padding:14px 18px;background:#f6e6df;border-bottom:1px solid var(--line)}
+.tbl td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .num{text-align:right;font-variant-numeric:tabular-nums}
+.tbl .neg{color:#8f2e43}
+
+.dm-grid{display:grid;gap:22px}
+.dm{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:24px 26px}
+.dm h3{font-size:25px;margin-bottom:12px}
+.dm h3 small{font-family:var(--ff);font-size:17px;font-weight:500;color:var(--ink2);margin-left:10px}
+.dm .tbl{border-radius:16px;font-size:17px}
+.kv{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 22px;margin:0}
+.kv div{display:flex;flex-direction:column}
+.kv dt{font-size:16px;color:var(--ink2);font-weight:600}
+.kv dd{margin:0;font-size:18px}
+
+footer{padding:40px 0 52px;background:var(--bg2);font-size:17px;color:var(--ink2)}
+footer b{font-family:var(--fk);color:var(--ink);font-size:22px;margin-right:12px}
+footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
+.legal span{white-space:nowrap}
+
+@media (max-width:900px){
+  .hero-in,.two,.two.rev,.dash,.promise{grid-template-columns:1fr}
+  .art{margin:0 auto;max-width:340px}
+  .top nav{display:none}
+  .top .pill{margin-left:auto}
+}
+@media (max-width:600px){
+  body{font-size:18px}
+  .wrap{padding:0 20px}
+  .top-in{height:68px;gap:12px}
+  .brand{font-size:23px}
+  .hero{padding:36px 0 52px}
+  .hero h1{font-size:32px}
+  .lead{font-size:18px}
+  section{padding:56px 0}
+  h2{font-size:32px}
+  .svc-grid,.rules,.fields,.tiles{grid-template-columns:1fr}
+  .svc{padding:26px 22px}
+  .badge{position:static;align-self:flex-start;margin-bottom:6px}
+  .promise .say{padding:28px 22px}
+  .promise blockquote{font-size:25px}
+  .room{min-height:220px}
+  form{padding:24px 20px}
+  .mcard{padding:26px 22px;min-height:250px}
+  .val{font-size:40px}
+  .rule{padding:24px 22px}
+  .kv{grid-template-columns:1fr}
+  .btn{width:100%;text-align:center}
+  .tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+  .tbl tr{padding:12px 4px;border-bottom:2px solid var(--line)}
+  .tbl tr:last-child{border-bottom:0}
+  .tbl td{border:0;padding:4px 16px;display:flex;gap:14px;justify-content:space-between;text-align:right}
+  .tbl td:before{content:attr(data-label);color:var(--ink2);font-weight:600;font-size:16px;text-align:left;flex:none}
+  .tbl .num{text-align:right}
+  .dm{padding:22px 16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#top"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M15 27 C15 18 15 12 15 4" fill="none" stroke="#a2455c" stroke-width="2" stroke-linecap="round"/><path d="M15 16 C8 15 5 10 6 5 C12 5 15 10 15 16Z" fill="#f4dcdf" stroke="#a2455c" stroke-width="1.6"/><path d="M15 21 C22 20 25 15 24 10 C18 10 15 15 15 21Z" fill="#dde9df" stroke="#3f6650" stroke-width="1.6"/></svg>靜語美容院</a>
+    <nav aria-label="頁面導覽"><a href="#services">服務項目</a><a href="#register">加入會員</a><a href="#dashboard">我的會員卡</a><a href="#booking">預約</a><a href="#rules">點數規則</a><a href="#history">消費紀錄</a></nav>
+    <a class="pill" href="#booking">預約</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="h-hero">
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow">靜語美容院｜台北市大安區</p>
+      <h1 id="h-hero"><span>我們不在意你有沒有卡，</span><span>只在意你今天的皮膚狀況。</span></h1>
+      <p class="lead">療程中不進行銷售對話，美容師無業績制度。從進門到離開，你只需要安靜躺著。</p>
+      <div class="cta">
+        <a class="btn primary" href="#booking">立即預約</a>
+        <a class="btn ghost" href="#dashboard">會員入口</a>
+      </div>
+      <ul class="chips"><li>療程中不進行銷售對話</li><li>美容師無業績制度</li><li>點數與餘額每一筆都查得到</li></ul>
+      <p class="hours">營業時間　週二至週日 11:00–20:00（週一公休）</p>
+    </div>
+    <div class="art">
+      <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7dfd5"/><stop offset="1" stop-color="#e8bcb3"/></linearGradient>
+          <path id="lf" d="M0 0 C11 -14 11 -36 0 -54 C-11 -36 -11 -14 0 0Z"/>
+        </defs>
+        <rect width="300" height="400" fill="url(#ag)"/>
+        <circle cx="208" cy="118" r="58" fill="#fdeee4"/>
+        <circle cx="208" cy="118" r="36" fill="#fbe0d0"/>
+        <path d="M0 292 C62 254 124 262 176 290 C226 316 264 296 300 274 L300 400 L0 400Z" fill="#d8a29c" opacity=".55"/>
+        <path d="M0 332 C72 298 142 318 202 338 C242 350 276 338 300 324 L300 400 L0 400Z" fill="#a2455c" opacity=".34"/>
+        <path d="M0 370 C60 352 120 362 180 372 C230 380 270 372 300 362 L300 400 L0 400Z" fill="#7f3348" opacity=".3"/>
+        <path d="M96 400 C98 340 104 282 126 206" fill="none" stroke="#5b3446" stroke-width="2.4" stroke-linecap="round"/>
+        <g fill="#f4dcdf" stroke="#5b3446" stroke-width="1.8" stroke-linejoin="round">
+          <use href="#lf" transform="translate(126 206) rotate(-8) scale(1.05)"/>
+          <use href="#lf" transform="translate(120 240) rotate(-58) scale(.95)"/>
+          <use href="#lf" transform="translate(112 268) rotate(52) scale(.95)" fill="#dde9df"/>
+          <use href="#lf" transform="translate(106 300) rotate(-62) scale(.85)" fill="#dde9df"/>
+          <use href="#lf" transform="translate(101 328) rotate(56) scale(.8)"/>
+        </g>
+        <g fill="none" stroke="#5b3446" stroke-width="1.6" stroke-linecap="round">
+          <path d="M226 400 C224 350 230 314 246 270"/>
+          <path d="M246 270 C238 262 236 250 240 240 C248 246 250 258 246 270Z" fill="#dde9df"/>
+          <path d="M235 312 C226 306 222 296 226 286 C235 292 238 302 235 312Z" fill="#f4dcdf"/>
+        </g>
+        <circle cx="52" cy="70" r="5" fill="#fff" opacity=".85"/><circle cx="84" cy="44" r="3.4" fill="#fff" opacity=".75"/><circle cx="34" cy="112" r="3" fill="#fff" opacity=".7"/>
+      </svg>
+      <div class="photo"></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="alt" aria-labelledby="h-services">
+  <div class="wrap">
+    <div class="h2wrap"><h2 id="h-services">服務項目</h2><p class="sub">價格公開，先看清楚再決定要不要預約。</p></div>
+    <div class="svc-grid">
+      <article class="svc"><span class="badge">新客體驗價</span><h3>新客體驗・基礎清潔</h3><p class="meta">所需時間 60 分鐘</p><p class="price"><small>NT$</small>388</p><p class="who"><b>適合對象</b>第一次來，想先看看環境與手法的人</p><a class="go" href="#booking" data-svc="trial">預約這項</a></article>
+      <article class="svc"><h3>基礎清潔護理</h3><p class="meta">所需時間 60 分鐘</p><p class="price"><small>NT$</small>880</p><p class="who"><b>適合對象</b>想維持日常保養、膚況穩定的人</p><a class="go" href="#booking" data-svc="clean">預約這項</a></article>
+      <article class="svc"><h3>舒緩保濕護理</h3><p class="meta">所需時間 75 分鐘</p><p class="price"><small>NT$</small>1,280</p><p class="who"><b>適合對象</b>換季乾燥、臉容易緊繃的人</p><a class="go" href="#booking" data-svc="moist">預約這項</a></article>
+      <article class="svc"><h3>溫和舒緩護理</h3><p class="meta">所需時間 90 分鐘</p><p class="price"><small>NT$</small>1,680</p><p class="who"><b>適合對象</b>膚況比較敏感、想慢慢來的人</p><a class="go" href="#booking" data-svc="calm">預約這項</a></article>
+    </div>
+    <div class="promise">
+      <div class="say"><blockquote>體驗價就是體驗價：療程中不進行銷售對話，也不會要你當天辦卡。</blockquote><p>想辦會員或儲值，等你離開之後、回到家自己決定。</p></div>
+      <div class="room">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="400" height="300" fill="#ead2ca"/>
+          <rect x="34" y="34" width="112" height="176" rx="56" fill="#f9ece4"/>
+          <rect x="34" y="34" width="112" height="176" rx="56" fill="none" stroke="#c98f8f" stroke-width="2"/>
+          <path d="M90 34 V210 M34 122 H146" stroke="#c98f8f" stroke-width="1.6"/>
+          <rect x="176" y="34" width="112" height="176" rx="56" fill="#f9ece4" opacity=".7"/>
+          <rect x="176" y="34" width="112" height="176" rx="56" fill="none" stroke="#c98f8f" stroke-width="2"/>
+          <path d="M232 34 V210 M176 122 H288" stroke="#c98f8f" stroke-width="1.6"/>
+          <rect x="0" y="236" width="400" height="64" fill="#d3a49d" opacity=".6"/>
+          <path d="M318 236 C316 196 322 168 336 140 M336 140 C326 134 324 122 328 112 C337 118 339 130 336 140Z M326 190 C318 186 315 178 318 170 C326 174 329 182 326 190Z" fill="#dde9df" stroke="#5b3446" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <div class="photo"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="register" aria-labelledby="h-register">
+  <div class="wrap two">
+    <div class="side">
+      <h2 id="h-register">加入會員</h2>
+      <p class="sub">註冊只要一分鐘。會員資料只用在預約與會員服務，不會拿去做別的用途。</p>
+      <ul><li>隨時查點數與儲值餘額</li><li>每一筆消費都留紀錄，可以回頭核對</li><li>預約時不必每次重填資料</li></ul>
+    </div>
+    <div>
+      <form id="reg-form">
+        <div class="fields">
+          <div><label for="r-name">姓名</label><input id="r-name" name="name" type="text" required autocomplete="name"></div>
+          <div><label for="r-phone">手機</label><input id="r-phone" name="phone" type="tel" required pattern="09[0-9]{8}" inputmode="numeric" placeholder="例如 0912000000" autocomplete="tel"></div>
+          <div><label for="r-birth">生日</label><input id="r-birth" name="birthday" type="date"></div>
+          <div><label for="r-service">偏好服務</label><select id="r-service" name="service"><option value="">還沒決定</option></select></div>
+          <div class="full"><label class="check" for="r-consent"><input id="r-consent" name="consent" type="checkbox" required><span>我同意店家為了預約與會員服務，使用我填寫的姓名、手機與生日。這些資料不會用在其他行銷用途。</span></label></div>
+        </div>
+        <button class="btn primary" type="submit">送出註冊</button>
+        <div id="reg-result" class="result" hidden><h3>已收到註冊資料</h3><p id="reg-echo"></p><p>送出後，櫃檯會在營業時間內傳簡訊跟你確認入會。</p></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard" class="alt" aria-labelledby="h-dash">
+  <div class="wrap">
+    <div class="h2wrap"><h2 id="h-dash">我的會員卡</h2><p class="sub">會員登入後看到的畫面（資料截至 <span style="white-space:nowrap">2026-09-23</span>）。</p></div>
+    <div class="dash">
+      <div class="mcard"><div><p class="shop">靜語美容院</p><p class="who">林小姐</p><span class="lv">一般會員</span></div><p class="since">2025-01-01 加入</p></div>
+      <div class="tiles">
+        <div class="tile wide">
+          <p class="lab">儲值餘額</p>
+          <p class="val"><span id="storedValue">—</span><small>元</small></p>
+          <p class="eq">對帳：<span id="equation">—</span></p>
+        </div>
+        <div class="tile"><p class="lab">可用點數</p><p class="val"><span id="points">—</span><small>點</small></p></div>
+        <div class="tile warn"><p class="lab">即將到期點數</p><p class="val"><span id="expiringPoints">—</span><small>點</small></p><p class="sub2"><span id="expiryDate">—</span> 前未使用歸零</p></div>
+        <div class="tile"><p class="lab">最近消費</p><p class="line1" id="lastVisit">—</p></div>
+        <div class="tile"><p class="lab">下次預約</p><p class="line1" id="nextVisit">—</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="booking" aria-labelledby="h-book">
+  <div class="wrap two rev">
+    <div>
+      <form id="book-form">
+        <div class="fields">
+          <div class="full"><label for="b-service">服務</label><select id="b-service" name="service" required><option value="">請選擇服務</option></select></div>
+          <p class="info" id="svc-info" aria-live="polite">選擇服務後，這裡會顯示所需時間與價格。</p>
+          <div><label for="b-staff">美容師</label><select id="b-staff" name="staff" required><option>不指定</option><option>Jenny</option><option>小雨</option></select></div>
+          <div><label for="b-date">日期</label><input id="b-date" name="date" type="date" required min="2026-09-24"></div>
+          <div class="full"><label for="b-time">時段</label><select id="b-time" name="time" required><option value="">請選擇時段</option><option>11:00</option><option>13:00</option><option>14:30</option><option>16:00</option><option>18:00</option></select></div>
+          <div class="full"><label for="b-note">備註</label><textarea id="b-note" name="note" placeholder="例如：膚況、過敏史、想要安靜的療程"></textarea></div>
+        </div>
+        <button class="btn primary" type="submit">送出預約</button>
+        <div id="book-result" class="result" hidden>
+          <h3>已收到預約　狀態：待確認</h3>
+          <p id="book-echo"></p>
+          <ol class="flow" aria-label="預約狀態"><li><span class="tag tag-wait tag-cur">待確認</span></li><li class="arrow" aria-hidden="true">→</li><li><span class="tag tag-done">已完成</span></li><li class="arrow">／</li><li><span class="tag tag-cancel">已取消</span></li></ol>
+          <p>待確認時不扣款、不發點。走到「已完成」，才會在流水帳新增一列。</p>
+        </div>
+      </form>
+    </div>
+    <div class="side">
+      <h2 id="h-book">預約服務</h2>
+      <p class="sub">選好服務就會看到時間與價格。送出後先是「待確認」，店家確認、療程完成後才會扣款與發點。</p>
+      <ul><li>營業時間　週二至週日 11:00–20:00</li><li>週一公休，選到週一會提醒你換日期</li><li>備註可以寫下膚況與想要的節奏</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="rules" class="alt" aria-labelledby="h-rules">
+  <div class="wrap">
+    <div class="h2wrap"><h2 id="h-rules">點數與儲值規則</h2><p class="sub">先把規則寫在網站上，避免之後才有誤會。</p></div>
+    <div class="rules">
+      <div class="rule"><h3>累積方式</h3><p>療程完成後，每消費 10 元得 1 點；入會先送 500 點。預約取消或沒有到場，都不發點。</p></div>
+      <div class="rule"><h3>到期日</h3><p>點數有效期兩年，到期未使用歸零。入會贈點的到期日是 2026-12-31；每一筆點數的到期日都記在流水帳裡。</p></div>
+      <div class="rule"><h3>退款</h3><p>未使用的儲值餘額可以申請退回。退款會在流水帳新增一列，餘額與點數一起扣回，不會只改一個總數。</p></div>
+      <div class="rule"><h3>不可轉讓</h3><p>儲值金與點數只限本人使用，不可轉讓給他人，也不能兌換現金。</p></div>
+    </div>
+    <div class="flowbox"><b>預約狀態怎麼走</b>
+      <ol class="flow"><li><span class="tag tag-wait">待確認</span></li><li class="arrow" aria-hidden="true">→</li><li><span class="tag tag-done">已完成</span></li><li>才會發點、才會扣款</li></ol>
+      <ol class="flow"><li><span class="tag tag-wait">待確認</span></li><li class="arrow" aria-hidden="true">→</li><li><span class="tag tag-cancel">已取消</span></li><li>不發點、不扣款</li></ol>
+    </div>
+  </div>
+</section>
+
+<section id="history" aria-labelledby="h-records">
+  <div class="wrap">
+    <div class="h2wrap"><h2 id="h-records">消費紀錄</h2><p class="sub">每一列都是一筆交易。儲值餘額是把所有列的金額加起來，不是另外存的數字。</p></div>
+    <div id="records"></div>
+  </div>
+</section>
+
+<section id="model" class="alt" aria-labelledby="h-model">
+  <div class="wrap">
+    <div class="h2wrap"><h2 id="h-model">資料模型</h2><p class="sub">這個會員系統背後的六張表。點數與儲值金各自是一本流水帳，一筆交易一列。</p></div>
+    <div class="dm-grid">
+      <article class="dm"><h3>Member<small>會員</small></h3><div id="dm-member"></div></article>
+      <article class="dm"><h3>Service<small>服務</small></h3><div id="dm-service"></div></article>
+      <article class="dm"><h3>Appointment<small>預約</small></h3><div id="dm-appointment"></div></article>
+      <article class="dm"><h3>PointLedger<small>點數流水帳</small></h3><div id="dm-pointledger"></div></article>
+      <article class="dm"><h3>StoredValueLedger<small>儲值金流水帳</small></h3><div id="dm-storedledger"></div></article>
+      <article class="dm"><h3>ConsentRecord<small>個資同意紀錄</small></h3><div id="dm-consent"></div></article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><b>靜語美容院</b><p class="legal">服務價格、點數與儲值規則以店內公告為準。<span>© 2026 靜語美容院</span></p></div></footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ── 資料：六張表的初始資料。點數與儲值金都是「一交易一列」的流水帳，不存總數 ── */
+  var TODAY = "2026-09-23"; // 「即將到期」以這天起算
+  var SERVICES = [
+    { id: "trial", name: "新客體驗・基礎清潔", min: 60, price: 388, who: "第一次來，想先看看環境與手法的人", staff: "Jenny、小雨" },
+    { id: "clean", name: "基礎清潔護理", min: 60, price: 880, who: "想維持日常保養、膚況穩定的人", staff: "Jenny、小雨" },
+    { id: "moist", name: "舒緩保濕護理", min: 75, price: 1280, who: "換季乾燥、臉容易緊繃的人", staff: "Jenny" },
+    { id: "calm", name: "溫和舒緩護理", min: 90, price: 1680, who: "膚況比較敏感、想慢慢來的人", staff: "小雨" }
+  ];
+  var MEMBER = { id: "M-0001", name: "林小姐", phone: "0912000000", birthday: "1990-06-15", level: "一般會員", created: "2025-01-01" };
+  var APPTS = [
+    { id: "A-0412", date: "2026-04-12", time: "14:00", svc: "moist", who: "Jenny", status: "已完成" },
+    { id: "A-0517", date: "2026-05-17", time: "11:00", svc: "clean", who: "Jenny", status: "已完成" },
+    { id: "A-0620", date: "2026-06-20", time: "16:00", svc: "clean", who: "小雨", status: "已取消" },
+    { id: "A-1003", date: "2026-10-03", time: "14:00", svc: "moist", who: "Jenny", status: "已確認" }
+  ];
+  var SV = [
+    { id: "SV-001", date: "2026-03-08", type: "topup", amt: 5000, appt: "—" },
+    { id: "SV-002", date: "2026-04-12", type: "charge", amt: -1280, appt: "A-0412" },
+    { id: "SV-003", date: "2026-05-17", type: "charge", amt: -880, appt: "A-0517" },
+    { id: "SV-004", date: "2026-05-17", type: "refund", amt: 160, appt: "A-0517" }
+  ];
+  var PL = [
+    { id: "PL-001", date: "2025-01-01", type: "earn", pts: 500, src: "入會贈點", exp: "2026-12-31" },
+    { id: "PL-002", date: "2026-04-12", type: "earn", pts: 128, src: "A-0412", exp: "2028-04-12" },
+    { id: "PL-003", date: "2026-05-17", type: "earn", pts: 88, src: "A-0517", exp: "2028-05-17" },
+    { id: "PL-004", date: "2026-05-17", type: "refund", pts: -16, src: "SV-004", exp: "—" }
+  ];
+  var CONSENT = { id: "CR-001", member: "M-0001", item: "個資使用同意", at: "2025-01-01 10:12", ver: "v1" };
+  /* 消費紀錄表：每列把「哪一天、發生什麼、動到哪幾筆流水帳」串起來，餘額逐列累加 */
+  var TIMELINE = [
+    { date: "2025-01-01", label: "入會贈點", sv: [], pl: ["PL-001"] },
+    { date: "2026-03-08", label: "儲值", sv: ["SV-001"], pl: [] },
+    { date: "2026-04-12", label: "舒緩保濕護理", sv: ["SV-002"], pl: ["PL-002"] },
+    { date: "2026-05-17", label: "基礎清潔護理", sv: ["SV-003"], pl: ["PL-003"] },
+    { date: "2026-05-17", label: "退款更正", sv: ["SV-004"], pl: ["PL-004"] }
+  ];
+  var TYPE_SV = { topup: "儲值", charge: "扣款", refund: "退款" };
+  var TYPE_PL = { earn: "獲得", redeem: "折抵", expire: "到期", refund: "沖銷" };
+
+  /* ── 小工具 ── */
+  function $(id) { return document.getElementById(id); }
+  function fmt(n) { return Math.abs(n).toLocaleString("en-US"); }
+  function signed(n) { return n === 0 ? "—" : (n > 0 ? "+" : "−") + fmt(n); }
+  function sum(list, key) { return list.reduce(function (s, x) { return s + x[key]; }, 0); }
+  function byId(list, id) { return list.filter(function (x) { return x.id === id; })[0]; }
+  function svc(id) { return byId(SERVICES, id); }
+  function addDays(iso, d) { var t = new Date(iso + "T00:00:00Z"); t.setUTCDate(t.getUTCDate() + d); return t.toISOString().slice(0, 10); }
+
+  function table(cls, cols, rows) {
+    var head = "<thead><tr>" + cols.map(function (c) { return "<th scope=\"col\">" + c + "</th>"; }).join("") + "</tr></thead>";
+    var body = "<tbody>" + rows.map(function (r) {
+      return "<tr>" + r.map(function (cell, i) {
+        var cls2 = typeof cell === "object" ? " class=\"" + cell.cls + "\"" : "";
+        var txt = typeof cell === "object" ? cell.t : cell;
+        return "<td data-label=\"" + cols[i] + "\"" + cls2 + ">" + txt + "</td>";
+      }).join("") + "</tr>";
+    }).join("") + "</tbody>";
+    return "<table class=\"" + cls + "\">" + head + body + "</table>";
+  }
+  function tag(kind, text) { return "<span class=\"tag tag-" + kind + "\">" + text + "</span>"; }
+  function statusTag(s) { return tag({ "待確認": "wait", "已確認": "ok", "已完成": "done", "已取消": "cancel" }[s] || "wait", s); }
+  function num(v, extra) { return { t: v, cls: "num" + (extra ? " " + extra : "") }; }
+
+  /* ── 消費紀錄表：餘額由流水帳逐列加總，不另存 ── */
+  function renderRecords() {
+    var run = 0;
+    var rows = TIMELINE.map(function (t) {
+      var amt = 0, pts = 0;
+      t.sv.forEach(function (id) { amt += byId(SV, id).amt; });
+      t.pl.forEach(function (id) { pts += byId(PL, id).pts; });
+      run += amt;
+      return [t.date, t.label, num(signed(amt), amt < 0 ? "neg" : ""), num(signed(pts), pts < 0 ? "neg" : ""), num(fmt(run))];
+    });
+    $("records").innerHTML = table("tbl stack", ["日期", "服務", "金額", "點數變動", "儲值餘額"], rows);
+  }
+
+  /* ── 資料模型：六張表 ── */
+  function dl(pairs) {
+    return "<dl class=\"kv\">" + pairs.map(function (p) { return "<div><dt>" + p[0] + "</dt><dd>" + p[1] + "</dd></div>"; }).join("") + "</dl>";
+  }
+  function renderModel() {
+    $("dm-member").innerHTML = dl([["id", MEMBER.id], ["姓名", MEMBER.name], ["手機", MEMBER.phone], ["生日", MEMBER.birthday], ["會員等級", MEMBER.level], ["建立日期", MEMBER.created]]);
+    $("dm-service").innerHTML = table("tbl stack", ["id", "服務名稱", "所需時間", "價格", "可預約美容師"], SERVICES.map(function (s) {
+      return [s.id, s.name, s.min + " 分鐘", num("NT$ " + fmt(s.price)), s.staff];
+    }));
+    $("dm-appointment").innerHTML = table("tbl stack", ["id", "日期與時段", "服務", "美容師", "狀態"], APPTS.map(function (a) {
+      return [a.id, a.date + " " + a.time, svc(a.svc).name, a.who, statusTag(a.status)];
+    }));
+    $("dm-pointledger").innerHTML = table("tbl stack", ["id", "交易日", "類型", "點數", "來源", "到期日"], PL.map(function (p) {
+      return [p.id, p.date, TYPE_PL[p.type], num(signed(p.pts), p.pts < 0 ? "neg" : ""), p.src, p.exp];
+    }));
+    $("dm-storedledger").innerHTML = table("tbl stack", ["id", "交易日", "類型", "金額", "關聯預約"], SV.map(function (r) {
+      return [r.id, r.date, TYPE_SV[r.type], num(signed(r.amt), r.amt < 0 ? "neg" : ""), r.appt];
+    }));
+    $("dm-consent").innerHTML = dl([["id", CONSENT.id], ["會員", CONSENT.member], ["同意項目", CONSENT.item], ["同意時間", CONSENT.at], ["版本", CONSENT.ver]]);
+  }
+
+  /* ── 會員儀表板：數字全部由流水帳加總算出，不是寫死的 ── */
+  function renderDash() {
+    var balance = sum(SV, "amt");
+    var points = sum(PL, "pts");
+    var cutoff = addDays(TODAY, 120);
+    var expiring = PL.filter(function (p) { return p.type === "earn" && p.exp >= TODAY && p.exp <= cutoff; });
+    var expPts = sum(expiring, "pts");
+    var expDate = expiring.length ? expiring[0].exp : "";
+    var charges = SV.filter(function (r) { return r.type === "charge"; });
+    var last = charges[charges.length - 1];
+    var lastAppt = byId(APPTS, last.appt);
+    var next = APPTS.filter(function (a) { return a.date >= TODAY && (a.status === "已確認" || a.status === "待確認"); })[0];
+    $("storedValue").textContent = fmt(balance);
+    $("points").textContent = fmt(points);
+    $("expiringPoints").textContent = fmt(expPts);
+    $("expiryDate").textContent = expDate;
+    $("lastVisit").textContent = last.date + "　" + svc(lastAppt.svc).name + "　" + fmt(last.amt) + " 元";
+    $("nextVisit").textContent = next ? next.date + "　" + next.time + "　" + svc(next.svc).name + "　" + next.who : "目前沒有預約";
+    $("equation").textContent = SV.map(function (r, i) {
+      return i === 0 ? fmt(r.amt) : (r.amt < 0 ? "− " : "+ ") + fmt(r.amt);
+    }).join(" ") + " = " + fmt(balance);
+  }
+
+  /* ── 服務下拉：選了就顯示所需時間與價格 ── */
+  function fillServiceSelect(sel, withPrice) {
+    SERVICES.forEach(function (s) {
+      var o = document.createElement("option");
+      o.value = s.id;
+      o.textContent = withPrice ? s.name + "（" + s.min + " 分鐘・NT$ " + fmt(s.price) + "）" : s.name;
+      sel.appendChild(o);
+    });
+  }
+  function bindForms() {
+    var bookSvc = $("b-service"), info = $("svc-info");
+    fillServiceSelect($("r-service"), false);
+    fillServiceSelect(bookSvc, false);
+    bookSvc.addEventListener("change", function () {
+      var s = svc(bookSvc.value);
+      info.textContent = s ? "所需時間 " + s.min + " 分鐘・價格 NT$ " + fmt(s.price) : "選擇服務後，這裡會顯示所需時間與價格。";
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-svc]"), function (a) {
+      a.addEventListener("click", function () {
+        bookSvc.value = a.getAttribute("data-svc");
+        bookSvc.dispatchEvent(new Event("change"));
+      });
+    });
+
+    /* 週一公休：日期選到週一就由瀏覽器擋下 */
+    var date = $("b-date");
+    date.addEventListener("change", function () {
+      var d = date.value ? new Date(date.value + "T00:00:00Z").getUTCDay() : -1;
+      date.setCustomValidity(d === 1 ? "週一公休，請選其他日期。" : "");
+    });
+
+    /* 預約送出：先攔下換頁，狀態從「待確認」開始；此時還不扣款、不發點 */
+    $("book-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var s = svc(bookSvc.value);
+      $("book-echo").textContent = s.name + "｜" + $("b-staff").value + "｜" + $("b-date").value + " " + $("b-time").value + "｜NT$ " + fmt(s.price);
+      $("book-result").hidden = false;
+      $("book-result").scrollIntoView({ block: "nearest" });
+    });
+    $("reg-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      $("reg-echo").textContent = $("r-name").value + "｜" + $("r-phone").value + "｜偏好：" + (svc($("r-service").value) ? svc($("r-service").value).name : "尚未選擇");
+      $("reg-result").hidden = false;
+      $("reg-result").scrollIntoView({ block: "nearest" });
+    });
+  }
+
+  renderRecords();
+  renderModel();
+  renderDash();
+  bindForms();
+})();
+</script>
+<style id="site-audit-fix">
+img,video{max-width:100%}
+select{max-width:100%;text-overflow:ellipsis}
+a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-space:nowrap}
+.hero h1{text-wrap:wrap;font-size:40px}
+.hero h1 span{word-break:keep-all;overflow-wrap:anywhere}
+.hero .lead{word-break:keep-all;overflow-wrap:anywhere}
+@media (max-width:600px){
+  .hero h1{font-size:28px}
+  .dm h3 small{display:block;margin-left:0}
+  .dm{padding-left:20px;padding-right:20px}
+  .eq{padding-left:20px;padding-right:20px}
+}
+</style>
+</body>
+</html>

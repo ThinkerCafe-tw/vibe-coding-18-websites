@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>晨動健身工作室｜台北市中山區｜社區型健身工作室</title>
+
+
+
+<style>
+
+
+:root{
+  --paper:#eef0ea;
+  --paper-2:#e4e7df;
+  --ink:#1b2019;
+  --ink-soft:#4e584a;
+  --rule:#bcc5b3;
+  --pine:#144c40;
+  --pine-lite:#17594a;
+  --warn:#8a3b1e;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Noto Serif TC","Songti TC","Source Han Serif TC",serif;
+  font-size:19px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+}
+.num{
+  font-family:"Newsreader",Georgia,"Times New Roman",serif;
+  font-variant-numeric:lining-nums tabular-nums;
+  font-feature-settings:"tnum" 1;
+}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pine);outline-offset:3px}
+
+.sheet{max-width:1360px;margin:0 auto;padding:0 60px}
+
+
+.masthead{border-bottom:1px solid var(--rule);background:var(--paper)}
+.masthead .sheet{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-top:20px;padding-bottom:16px}
+.wordmark{font-size:23px;font-weight:600;letter-spacing:.08em;margin:0}
+.masthead nav{display:flex;gap:26px;flex-wrap:wrap}
+.masthead nav a{font-size:17px;color:var(--ink-soft);text-decoration:none;padding:10px 0;line-height:1.5;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.masthead nav a:hover{color:var(--ink);border-bottom-color:var(--pine)}
+
+
+.opener{
+  position:relative;
+  min-height:calc(100vh - 72px);
+  display:flex;flex-direction:column;justify-content:center;
+  background-image:
+    linear-gradient(to left,rgba(238,240,234,.62) 0%,rgba(238,240,234,.48) 26%,rgba(238,240,234,.18) 48%,rgba(238,240,234,0) 62%),
+    url("images/hero.svg"),
+    linear-gradient(100deg,#9b9e8d 0%,#c3c8ba 30%,#dfe2d8 58%,#eef0e9 100%);
+  background-size:cover,cover,cover;
+  background-position:center,center,center;
+  background-repeat:no-repeat;
+  background-color:var(--paper);
+}
+.opener .sheet{padding-top:80px;padding-bottom:132px;width:100%}
+.plate{max-width:53%;margin-left:auto}
+.plate h1{margin:0 0 24px;font-size:80px;white-space:nowrap;line-height:1.04;font-weight:600;letter-spacing:-.035em;text-indent:-.04em}
+.plate .claim{margin:0 0 16px;font-size:30px;line-height:1.55;font-weight:500;text-wrap:balance}
+.plate .sub{margin:0 0 36px;font-size:20px;line-height:1.75;color:var(--ink-soft);text-wrap:balance}
+.clause{display:inline-block}
+.actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.cta-main,.cta-sub{font-size:20px;font-weight:600;text-decoration:none;padding:17px 34px;line-height:1.3;transition:background-color .2s,color .2s,border-color .2s}
+.cta-main{background:var(--pine);color:#f2f5ee;border:2px solid var(--pine)}
+.cta-main:hover{background:#0d3a30;border-color:#0d3a30}
+.cta-sub{color:var(--ink);border:2px solid var(--ink);background:rgba(238,240,234,.55)}
+.cta-sub:hover{background:var(--ink);color:var(--paper)}
+
+.factbar{position:absolute;left:0;right:0;bottom:0;background:rgba(238,240,234,.93);border-top:2px solid var(--ink)}
+.factbar .sheet{display:grid;grid-template-columns:repeat(4,1fr);padding-top:0;padding-bottom:0}
+.factbar div{padding:18px 30px;border-left:1px solid var(--rule)}
+.factbar div:first-child{padding-left:0;border-left:0}
+.factbar b{display:block;font-size:16px;font-weight:400;letter-spacing:.14em;color:var(--ink-soft)}
+.factbar span{display:block;margin-top:2px;font-size:20px;font-weight:500}
+
+
+.chapter{border-bottom:1px solid var(--rule)}
+.chapter.alt{background:var(--paper-2)}
+.chapter .sheet{padding-top:88px;padding-bottom:88px}
+.head{border-bottom:2px solid var(--ink);padding-bottom:14px}
+.head h2{margin:0;font-size:40px;font-weight:600;line-height:1.35;letter-spacing:.02em}
+.intro{margin:22px 0 46px;max-width:34em;color:var(--ink-soft);font-size:19px}
+
+
+.coaches{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.coach{border-top:3px solid var(--ink);padding-top:22px}
+.coach .mark{
+  display:block;font-size:104px;line-height:.95;font-weight:600;
+  color:var(--pine);letter-spacing:-.04em;margin:0 0 6px;text-indent:-.05em;
+}
+.coach .who{margin:0 0 18px;font-size:25px;font-weight:600;line-height:1.4}
+.coach .who small{display:block;font-size:17px;font-weight:400;color:var(--ink-soft);letter-spacing:.04em;margin-top:2px}
+.coach dl{margin:0;display:grid;grid-template-columns:4.5em 1fr;column-gap:18px;row-gap:12px}
+.coach dt{color:var(--ink-soft);font-size:17px}
+.coach dd{margin:0;font-size:18px;line-height:1.7}
+
+
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.plan{border-top:3px solid var(--ink);padding-top:22px;display:flex;flex-direction:column}
+.plan h3{margin:0;font-size:25px;font-weight:600;line-height:1.4}
+.plan .price{margin:16px 0 4px;font-size:62px;line-height:1;color:var(--pine)}
+.plan .price-note{margin:0 0 22px;font-size:17px;color:var(--ink-soft)}
+.plan dl{margin:0;display:grid;grid-template-columns:4em 1fr;column-gap:18px;row-gap:12px;border-top:1px solid var(--rule);padding-top:18px}
+.plan dt{color:var(--ink-soft);font-size:17px}
+.plan dd{margin:0;font-size:18px;line-height:1.7}
+.note{margin:44px 0 0;font-size:18px;color:var(--ink-soft);line-height:1.8;max-width:46em}
+
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.steps li{list-style:none}
+.steps .n{display:block;font-family:"Newsreader",Georgia,serif;font-size:72px;line-height:.9;color:var(--pine);font-weight:500}
+.steps h3{margin:16px 0 12px;padding-top:14px;border-top:2px solid var(--ink);font-size:23px;font-weight:600}
+.steps p{margin:0;font-size:18px;line-height:1.75;color:var(--ink-soft)}
+
+
+.band{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.band .sheet{min-height:440px;display:flex;align-items:center;padding-top:72px;padding-bottom:72px}
+.band .say{max-width:46%;margin-left:auto}
+.band .say p{margin:0;font-size:31px;line-height:1.55;font-weight:500;text-wrap:balance}
+.band .say .by{margin-top:18px;font-size:18px;color:var(--ink-soft);font-weight:400;line-height:1.7}
+
+.band-still{
+  background-image:
+    linear-gradient(to left,rgba(238,240,234,.78) 0%,rgba(238,240,234,.6) 28%,rgba(238,240,234,.2) 50%,rgba(238,240,234,0) 64%),
+    url("images/still.svg"),
+    linear-gradient(100deg,#a8a99a 0%,#c9cbbd 34%,#e2e4da 62%,#eef0e9 100%);
+  background-size:cover;background-position:center;background-repeat:no-repeat;background-color:var(--paper);
+}
+
+.band-detail{
+  background-image:
+    linear-gradient(to left,rgba(238,240,234,.8) 0%,rgba(238,240,234,.62) 30%,rgba(238,240,234,.22) 52%,rgba(238,240,234,0) 66%),
+    url("images/detail.svg"),
+    linear-gradient(100deg,#93968a 0%,#bfc3b6 32%,#dee1d7 60%,#eef0e9 100%);
+  background-size:cover;background-position:center;background-repeat:no-repeat;background-color:var(--paper);
+}
+.band-detail .sheet{min-height:360px}
+
+
+table.grid-tbl{width:100%;border-collapse:collapse;font-size:18px}
+table.grid-tbl caption{text-align:left;font-size:17px;color:var(--ink-soft);padding-bottom:14px}
+table.grid-tbl th{text-align:left;font-weight:500;font-size:17px;letter-spacing:.1em;color:var(--ink-soft);padding:0 0 14px;border-bottom:2px solid var(--ink)}
+table.grid-tbl td{padding:26px 0;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.75}
+table.grid-tbl td:first-child{font-weight:500;width:13em;padding-right:28px;font-size:20px}
+table.grid-tbl td:last-child{width:8em;text-align:right;color:var(--pine);font-weight:500}
+table.grid-tbl td.no{color:var(--ink-soft);font-weight:400}
+
+
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:8px}
+.board .cell{border-top:3px solid var(--ink);padding-top:18px}
+.board .cell b{display:block;font-size:17px;font-weight:400;letter-spacing:.14em;color:var(--ink-soft)}
+.board .cell .v{display:block;font-size:76px;line-height:1.08;margin-top:6px}
+.board .cell .v.small{font-size:38px;line-height:2.16}
+.board .cell.hot{border-top-color:var(--pine)}
+.board .cell.hot .v{font-size:96px;color:var(--pine);font-weight:600}
+
+@keyframes tick{
+  0%{transform:translateY(-14px);background-color:rgba(20,76,64,.22)}
+  100%{transform:translateY(0);background-color:rgba(20,76,64,0)}
+}
+.v.ticked{animation:tick .28s ease-out}
+@media (prefers-reduced-motion:reduce){
+  .v.ticked{animation:none;outline:3px solid var(--pine);outline-offset:4px}
+}
+.bar{margin-top:36px;height:14px;background:var(--rule)}
+.bar i{display:block;height:100%;background:var(--pine);transition:width .28s ease-out}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.bar-cap{display:flex;justify-content:space-between;margin:12px 0 0;font-size:17px;color:var(--ink-soft)}
+.rule-line{margin:34px 0 0;font-size:19px;color:var(--ink-soft);line-height:1.8;max-width:46em}
+.ledger-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:30px}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--pine);color:#f2f5ee;border:2px solid var(--pine);border-radius:0;font-size:19px;font-weight:600;padding:16px 32px;transition:background-color .2s,border-color .2s,color .2s}
+.btn:hover{background:#0d3a30;border-color:#0d3a30}
+.btn[disabled]{background:transparent;color:var(--ink-soft);border-color:var(--rule);cursor:not-allowed}
+.btn.quiet{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.quiet:hover{background:var(--ink);color:var(--paper)}
+#ledger-msg{margin:24px 0 0;font-size:20px;color:var(--pine);min-height:1.9em;font-weight:500}
+#ledger-detail[hidden]{display:none}
+#ledger-detail{margin-top:40px;border-top:2px solid var(--ink);padding-top:26px}
+#ledger-detail h3{margin:0 0 4px;font-size:23px;font-weight:600}
+#ledger-detail .cap{margin:0 0 20px;font-size:17px;color:var(--ink-soft)}
+table.log{width:100%;border-collapse:collapse;font-size:18px}
+table.log th{text-align:left;font-weight:500;font-size:17px;letter-spacing:.1em;color:var(--ink-soft);padding:0 0 12px;border-bottom:1px solid var(--ink)}
+table.log td{padding:18px 0;border-bottom:1px solid var(--rule)}
+table.log td:last-child,table.log th:last-child{text-align:right;color:var(--pine);font-weight:500}
+table.log tr:last-child td{font-weight:500}
+
+
+.terms{display:grid;grid-template-columns:repeat(2,1fr);column-gap:60px;margin:0}
+.terms div{padding:26px 0;border-top:1px solid var(--rule)}
+.terms dt{font-weight:600;font-size:21px}
+.terms dd{margin:6px 0 0;color:var(--ink-soft);font-size:18px;line-height:1.8}
+
+
+.pledges{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.pledges div{border-top:3px solid var(--pine);padding-top:20px}
+.pledges h3{margin:0 0 10px;font-size:23px;font-weight:600;line-height:1.45}
+.pledges p{margin:0;font-size:18px;line-height:1.75;color:var(--ink-soft)}
+
+
+form{max-width:720px}
+.field{margin-bottom:28px}
+.field label{display:block;font-size:18px;margin-bottom:10px}
+.field label .req{color:var(--warn);margin-left:4px}
+.field input[type=text],.field select,.field textarea{
+  width:100%;font:inherit;font-size:19px;color:var(--ink);
+  background:rgba(255,255,255,.6);border:1px solid var(--rule);border-bottom:2px solid var(--ink);
+  border-radius:0;padding:15px 16px;line-height:1.6;
+}
+.field textarea{resize:vertical;min-height:104px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--pine);background:#fff}
+.field input:invalid:not(:placeholder-shown){border-bottom-color:var(--warn)}
+.field .hint{margin:10px 0 0;font-size:17px;color:var(--ink-soft)}
+.check{display:flex;align-items:flex-start;gap:14px;margin-bottom:32px;font-size:18px;line-height:1.7;padding:6px 0}
+.check input{width:24px;height:24px;margin:5px 0 0;accent-color:var(--pine);flex:none}
+#booking-result[hidden]{display:none}
+#booking-result{margin-top:36px;padding:28px 32px;background:rgba(255,255,255,.62);border-left:5px solid var(--pine)}
+#booking-result h3{margin:0 0 12px;font-size:25px;font-weight:600;color:var(--pine)}
+#booking-result p{margin:0 0 10px;font-size:18px;line-height:1.8}
+#booking-result dl{margin:20px 0 0;display:grid;grid-template-columns:7em 1fr;column-gap:20px;row-gap:10px;font-size:18px}
+#booking-result dt{color:var(--ink-soft)}
+#booking-result dd{margin:0}
+
+
+footer{background:var(--ink);color:#dfe3d9}
+footer .sheet{padding-top:60px;padding-bottom:60px}
+footer .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;font-size:18px;line-height:1.95}
+footer b{display:block;font-size:17px;font-weight:400;letter-spacing:.14em;color:#93b3a5;margin-bottom:6px}
+footer a{color:#dfe3d9;text-decoration:none;border-bottom:1px solid rgba(223,227,217,.4)}
+footer a:hover{border-bottom-color:#93b3a5}
+footer .disc{margin:36px 0 0;padding-top:22px;border-top:1px solid rgba(223,227,217,.25);font-size:17px;color:#a8b0a2;line-height:1.85}
+
+
+@media (max-width:1100px){
+  .sheet{padding:0 36px}
+  .plate{max-width:64%}
+  .plate h1{font-size:60px}
+  .factbar .sheet{grid-template-columns:repeat(2,1fr)}
+  .factbar div:nth-child(3){padding-left:0;border-left:0}
+  .factbar div:nth-child(n+3){border-top:1px solid var(--rule)}
+  .coaches,.plans,.steps,.board,.pledges{grid-template-columns:repeat(2,1fr);gap:36px}
+  .band .say{max-width:60%}
+}
+
+
+@media (max-width:640px){
+  body{font-size:18px}
+  .sheet{padding:0 20px}
+  .masthead .sheet{flex-direction:column;align-items:flex-start;gap:6px}
+  .masthead nav{gap:18px}
+
+  .opener{
+    min-height:0;display:block;
+    background-size:100% 250px,auto 250px,100% 250px;
+    background-position:center top,18% top,center top;
+  }
+  .opener .sheet{padding-top:286px;padding-bottom:44px}
+  .plate{max-width:none}
+  .plate h1{font-size:44px;white-space:normal;letter-spacing:-.03em;margin-bottom:18px}
+  .plate .claim{font-size:24px;margin-bottom:12px}
+  .plate .sub{font-size:18px;margin-bottom:28px}
+  .actions{gap:12px}
+  .cta-main,.cta-sub{flex:1 1 100%;text-align:center;padding:17px 18px}
+  .factbar{position:static;border-top:2px solid var(--ink);background:var(--paper-2)}
+  .factbar .sheet{grid-template-columns:1fr;padding-top:6px;padding-bottom:6px}
+  .factbar div{padding:16px 0;border-left:0;border-top:1px solid var(--rule)}
+  .factbar div:first-child{border-top:0}
+
+  .chapter .sheet{padding-top:56px;padding-bottom:56px}
+  .head h2{font-size:32px}
+  .intro{margin-bottom:34px}
+  .coaches,.plans,.steps,.board,.pledges,.terms{grid-template-columns:1fr;gap:38px}
+  .terms{column-gap:0}
+  .coach .mark{font-size:80px}
+  .plan .price{font-size:52px}
+  .steps .n{font-size:58px}
+  .board .cell .v{font-size:64px}
+  .board .cell.hot .v{font-size:80px}
+  .band .sheet,.band-detail .sheet{min-height:0;display:block;padding-top:290px;padding-bottom:52px}
+  .band,.band-detail{background-size:100% 250px,auto 250px,100% 250px;background-position:center top,30% top,center top}
+  .band .say{max-width:none;margin-left:0}
+  .band .say p{font-size:25px}
+  table.grid-tbl td{padding:20px 0}
+  table.grid-tbl td:first-child{width:auto;font-size:19px}
+  table.grid-tbl td:last-child{width:5.5em}
+  .btn{padding:16px 22px}
+  footer .cols{grid-template-columns:1fr;gap:24px}
+}
+</style>
+</head>
+<body>
+<aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
+
+<header class="masthead">
+  <div class="sheet">
+    <p class="wordmark">晨動健身工作室</p>
+    <nav aria-label="主選單">
+      <a href="#coaches">教練團隊</a>
+      <a href="#plans">課程方案</a>
+      <a href="#trial">體驗流程</a>
+      <a href="#space">空間設備</a>
+      <a href="#ledger">課包耗課</a>
+      <a href="#refund">退費與合約</a>
+      <a href="#booking">預約體驗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+
+  <section class="opener" data-obj="GymProfile" aria-labelledby="hero-title">
+    <div class="sheet">
+      <div class="plate">
+        <h1 id="hero-title">晨動健身工作室</h1>
+        <p class="claim"><span class="clause">你現在用的每一小時，</span><span class="clause">是你七十歲能不能自己站起來的存款。</span></p>
+        <p class="sub"><span class="clause">社區型的小空間，小班教練課為主，</span><span class="clause">女性友善，月費制、不綁約。</span></p>
+        <div class="actions">
+          <a class="cta-main" href="#booking">預約首次體驗</a>
+          <a class="cta-sub" href="#plans">查看課程方案</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="factbar">
+      <div class="sheet">
+        <div><b>地區</b><span>台北市中山區</span></div>
+        <div><b>平日</b><span class="num">06:00–23:00</span></div>
+        <div><b>週末</b><span class="num">08:00–21:00</span></div>
+        <div><b>櫃檯</b><span class="num"><a href="tel:0200000000">02-0000-0000</a></span></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="chapter" id="coaches" data-obj="Coach" aria-labelledby="coaches-title">
+    <div class="sheet">
+      <div class="head"><h2 id="coaches-title">教練團隊</h2></div>
+      <p class="intro">每位教練的證照、專長與適合對象都寫在這裡。體驗當天你會知道是誰帶你，不是到現場才被分配。</p>
+      <div class="coaches">
+
+        <div class="coach">
+          <span class="mark" aria-hidden="true">林</span>
+          <p class="who">林教練<small>年資 8 年（示意）</small></p>
+          <dl>
+            <dt>證照</dt><dd>肌力與體能訓練證照、急救證照（示意資料）</dd>
+            <dt>專長</dt><dd>基礎動作建立、深蹲與硬舉入門</dd>
+            <dt>適合</dt><dd>完全沒碰過器材、擔心動作做錯會受傷的人</dd>
+          </dl>
+        </div>
+        <div class="coach">
+          <span class="mark" aria-hidden="true">陳</span>
+          <p class="who">陳教練<small>年資 6 年（示意）</small></p>
+          <dl>
+            <dt>證照</dt><dd>團體運動指導證照、體適能檢測證照（示意資料）</dd>
+            <dt>專長</dt><dd>產後恢復、低衝擊有氧、體態不對稱調整</dd>
+            <dt>適合</dt><dd>久坐上班族、需要女性教練陪同的初學者</dd>
+          </dl>
+        </div>
+        <div class="coach">
+          <span class="mark" aria-hidden="true">黃</span>
+          <p class="who">黃教練<small>年資 11 年（示意）</small></p>
+          <dl>
+            <dt>證照</dt><dd>肌力與體能訓練證照、銀髮族運動指導證照（示意資料）</dd>
+            <dt>專長</dt><dd>五十歲以上肌力維持、關節不適者的替代動作</dd>
+            <dt>適合</dt><dd>長輩、術後復健結束想開始訓練的人</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="chapter alt" id="plans" data-obj="TrainingPlan" aria-labelledby="plans-title">
+    <div class="sheet">
+      <div class="head"><h2 id="plans-title">課程方案</h2></div>
+      <p class="intro">價格、期間、限制與退費規則寫在同一張表上，不需要加好友問價。</p>
+
+      <div class="plans">
+        <div class="plan">
+          <h3>月繳會籍<br>（含小班課）</h3>
+          <p class="price"><span class="num">1,280</span></p>
+          <p class="price-note">元／月・入會費 <span class="num">1,500</span> 元</p>
+          <dl>
+            <dt>期間</dt><dd>逐月計費，無合約期</dd>
+            <dt>限制</dt><dd>全時段可用；小班課每班 6 人以內，需線上預約，每週上限 4 堂</dd>
+            <dt>退費</dt><dd>當月不退；次期扣款日前 7 天提出即停止續扣，無違約金</dd>
+          </dl>
+        </div>
+        <div class="plan">
+          <h3>年繳會籍<br>（含小班課）</h3>
+          <p class="price"><span class="num">13,800</span></p>
+          <p class="price-note">元／年・免入會費</p>
+          <dl>
+            <dt>期間</dt><dd>自開卡日起 12 個月</dd>
+            <dt>限制</dt><dd>同月繳；可申請暫停，全期累計上限 60 天</dd>
+            <dt>退費</dt><dd>依未使用月數比例退費，手續費上限 3%；贈送月份不另計違約金</dd>
+          </dl>
+        </div>
+        <div class="plan">
+          <h3>私教課包<br>20 堂</h3>
+          <p class="price"><span class="num">20,800</span></p>
+          <p class="price-note">元／20 堂・單堂 <span class="num">1,200</span> 元</p>
+          <dl>
+            <dt>期間</dt><dd>有效期限 12 個月，逾期未上不自動延展</dd>
+            <dt>限制</dt><dd>每堂 50 分鐘；指定教練；請假須於 12 小時前取消</dd>
+            <dt>退費</dt><dd>依未上堂數以單堂價結算退費，扣除手續費上限 3%</dd>
+          </dl>
+        </div>
+      </div>
+      <p class="note">價格為新臺幣。本頁不做預售、不販售未開幕據點的會籍，也不以體態數字促成簽約。</p>
+    </div>
+  </section>
+
+
+  <section class="chapter" id="trial" data-obj="TrialBooking" aria-labelledby="trial-title">
+    <div class="sheet">
+      <div class="head"><h2 id="trial-title">首次體驗流程</h2></div>
+      <p class="intro">第一次來會發生什麼，全部寫在這裡：怎麼預約、到場找誰、待多久、會不會被推銷、結束後怎麼決定。</p>
+      <ol class="steps">
+        <li>
+          <span class="n num">01</span>
+          <h3>線上預約</h3>
+          <p>填下方表單選時段，我們在一個工作天內用你留的聯絡方式回覆確認，並告訴你當天帶你的教練是誰。</p>
+        </li>
+        <li>
+          <span class="n num">02</span>
+          <h3>抵達櫃檯</h3>
+          <p>報姓名即可，不需要出示任何證件。櫃檯會給你一張場館平面圖，更衣室與置物櫃位置都標在上面。</p>
+        </li>
+        <li>
+          <span class="n num">03</span>
+          <h3>器材介紹</h3>
+          <p>教練帶你走一輪，示範五台最常用的器材怎麼調、怎麼收。全程約 50 分鐘，你可以只看不做。</p>
+        </li>
+        <li>
+          <span class="n num">04</span>
+          <h3>結束後你自己決定</h3>
+          <p>體驗結束直接離場，不安排銷售談話。要方案資料我們寄給你，你在家看完再決定。</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+
+  <section class="band band-still" aria-labelledby="pledge-title">
+    <div class="sheet">
+      <div class="say">
+        <p id="pledge-title">體驗全程不推銷。教練不會在課中提私教課報價，結束後也不會電話追蹤。</p>
+        <p class="by">要不要繼續，你在家看完方案再決定；我們寧可你慢一點，也不要你後悔。</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="chapter" id="space" data-obj="FacilityFeature" aria-labelledby="space-title">
+    <div class="sheet">
+      <div class="head"><h2 id="space-title">空間與設備</h2></div>
+      <p class="intro">有什麼、沒有什麼都列出來。沒有的不寫成「即將推出」。</p>
+      <table class="grid-tbl">
+        <caption>下列設備與時段資訊為示意，上線前須依實際場館替換。</caption>
+        <thead>
+          <tr><th scope="col">設備名稱</th><th scope="col">說明</th><th scope="col">是否提供</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>自由重量區</td><td>深蹲架 2 座、臥推椅 2 組、啞鈴 2–30 公斤、壺鈴 4–24 公斤、TRX 4 組。初學者可請櫃檯協助調整安全槓。</td><td>提供</td></tr>
+          <tr><td>女性友善區</td><td>獨立分區，配置固定式器材與有氧設備，鄰近女更衣室。</td><td>提供</td></tr>
+          <tr><td>更衣室與淋浴間</td><td>男女分間，淋浴間為獨立隔間、附門鎖；置物櫃 60 個，自備鎖。</td><td>提供</td></tr>
+          <tr><td>尖峰時段提醒</td><td>平日 19:00–21:00 為尖峰，同時段上限約 12 人，器材平均等待 5–10 分鐘；離峰為平日上午與下午。</td><td>提供</td></tr>
+          <tr><td>有氧器材</td><td>跑步機 3 台、划船機 2 台、飛輪 4 台，皆附中文操作說明卡。</td><td>提供</td></tr>
+          <tr><td>游泳池</td><td>工作室空間不足，未設置；不列入未來規劃。</td><td class="no">未提供</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <section class="chapter alt" id="ledger" data-obj="LessonLedger" aria-labelledby="ledger-title">
+    <div class="sheet">
+      <div class="head"><h2 id="ledger-title">我的私教課包</h2></div>
+      <p class="intro">買了幾堂、上了幾堂、剩幾堂、什麼時候到期，你自己查得到，也對得起來。</p>
+
+      <div class="board">
+        <div class="cell"><b>購買堂數</b><span class="v num" id="v-bought">20</span></div>
+        <div class="cell"><b>已上堂數</b><span class="v num" id="v-used">8</span></div>
+        <div class="cell hot"><b>剩餘堂數</b><span class="v num" id="v-left">12</span></div>
+        <div class="cell"><b>到期日</b><span class="v small num" id="v-due">2027-03-31</span></div>
+      </div>
+      <div class="bar" role="presentation"><i id="bar-fill" style="width:40%"></i></div>
+      <p class="bar-cap"><span>已上 <span class="num" id="cap-used">8</span> 堂</span><span>課包共 <span class="num">20</span> 堂</span></p>
+
+      <p class="rule-line">對帳規則：剩餘堂數 ＝ 購買堂數 － 已上堂數。每完成一堂，已上加一、剩餘減一；請假補課時到期日依場館規則順延。</p>
+
+      <div class="ledger-actions">
+        <button type="button" class="btn" id="btn-complete">完成一堂</button>
+        <button type="button" class="btn quiet" id="btn-detail" aria-expanded="false" aria-controls="ledger-detail">展開耗課明細</button>
+        <button type="button" class="btn quiet" id="btn-reset">回到初始狀態</button>
+      </div>
+      <p id="ledger-msg" role="status" aria-live="polite"></p>
+
+      <div id="ledger-detail" hidden>
+        <h3>耗課明細</h3>
+        <p class="cap">示意資料，日後由後台課程紀錄帶入。最後一列就是最近上完的那一堂。</p>
+        <table class="log">
+          <thead>
+            <tr><th scope="col">日期</th><th scope="col">教練</th><th scope="col">項目</th><th scope="col">當下剩餘</th></tr>
+          </thead>
+          <tbody id="log-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="band band-detail" aria-labelledby="refund-lead">
+    <div class="sheet">
+      <div class="say">
+        <p id="refund-lead">條款寫得愈清楚，你愈不需要賭。</p>
+        <p class="by">下面每一條都可以在櫃檯要到紙本，也都由專責窗口處理，不經教練轉達。</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="chapter" id="refund" data-obj="ContractConsent" aria-labelledby="refund-title">
+    <div class="sheet">
+      <div class="head"><h2 id="refund-title">退費與合約</h2></div>
+      <dl class="terms">
+
+        <div><dt>冷靜期</dt><dd>簽約後 7 日內，未使用任何服務可全額解除，填一張表即可，不需要說明理由。</dd></div>
+        <div><dt>月繳終止</dt><dd>於次期扣款日前 7 天提出，當期用到期滿即停止，無違約金、無扣抵。</dd></div>
+        <div><dt>年繳終止</dt><dd>依未使用月數比例退費，手續費上限 3%。贈送月份不折算成違約金。</dd></div>
+        <div><dt>暫停</dt><dd>病假、出差、懷孕、受傷可申請暫停，附證明即可，全期累計上限 60 天，期限順延。</dd></div>
+        <div><dt>轉讓</dt><dd>會籍與私教課包皆可轉讓一次，手續費 500 元；受讓人不需再付入會費。</dd></div>
+        <div><dt>客服窗口</dt><dd>退費與合約問題由專責窗口處理：<a href="tel:0200000000" class="num">02-0000-0000</a>（平日 10:00–19:00）／service@example.com</dd></div>
+      </dl>
+      <p class="note">補充品說明：若你需要補充品建議，教練會先了解你的飲食、訓練頻率與健康狀況，再提供可選擇的建議。是否購買不影響課程安排。</p>
+    </div>
+  </section>
+
+
+  <section class="chapter alt" id="evidence" data-obj="TrustEvidence" aria-labelledby="evidence-title">
+    <div class="sheet">
+      <div class="head"><h2 id="evidence-title">我們怎麼收學員見證</h2></div>
+      <p class="intro">這一頁上看不到學員見證，是因為我們還沒有收到符合下面三條的見證。網路上找得到的好評，我們一則都不會貼過來。</p>
+      <div class="pledges">
+        <div>
+          <h3>本人寫、本人同意</h3>
+          <p>見證只收學員自己寫的文字，並附上一份同意公開的書面。學員隨時可以要求撤下，我們當天處理。</p>
+        </div>
+        <div>
+          <h3>一律附日期</h3>
+          <p>每一則見證都標明撰寫日期與當時的訓練階段。沒有日期的推薦，看的人無從判斷，我們就不放。</p>
+        </div>
+        <div>
+          <h3>可以點回原文</h3>
+          <p>來自公開評論平台的內容，一律附上原始連結與擷取日期，讓你自己去看完整版，包括不好的那幾則。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="chapter" id="booking" data-obj="TrialBooking" aria-labelledby="booking-title">
+    <div class="sheet">
+      <div class="head"><h2 id="booking-title">預約首次體驗</h2></div>
+      <p class="intro">填完按送出就好，不會扣款、不會綁約。我們會在一個工作天內回覆，確認教練與場次。</p>
+
+      <form id="trial-form">
+        <div class="field">
+          <label for="f-name">姓名<span class="req" aria-hidden="true">＊</span></label>
+          <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="王小明">
+        </div>
+        <div class="field">
+          <label for="f-contact">聯絡方式（手機或 Email）<span class="req" aria-hidden="true">＊</span></label>
+          <input type="text" id="f-contact" name="contact" required autocomplete="tel" placeholder="0912-000-000">
+          <p class="hint">我們只用這組聯絡方式確認場次，不加入行銷名單。</p>
+        </div>
+        <div class="field">
+          <label for="f-slot">希望時段<span class="req" aria-hidden="true">＊</span></label>
+          <select id="f-slot" name="slot" required>
+            <option value="">請選擇</option>
+            <option>平日上午 06:00–12:00（離峰）</option>
+            <option>平日下午 12:00–18:00（離峰）</option>
+            <option>平日晚上 18:00–23:00（尖峰，需等候）</option>
+            <option>週末 08:00–21:00</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-goal">運動目標<span class="req" aria-hidden="true">＊</span></label>
+          <textarea id="f-goal" name="goal" required placeholder="例如：想先學會安全地深蹲，不追求短期減重。"></textarea>
+        </div>
+        <label class="check" for="f-first">
+          <input type="checkbox" id="f-first" name="is_first" value="1" checked>
+          <span>這是我第一次到健身房體驗（勾選後我們會安排較長的器材介紹時間）</span>
+        </label>
+        <button type="submit" class="btn" id="btn-submit">送出預約</button>
+      </form>
+
+      <div id="booking-result" role="status" aria-live="polite" hidden>
+        <h3>已收到你的預約</h3>
+        <p>目前狀態：<b>待場館確認</b>。我們會在一個工作天內用你留的聯絡方式回覆，並告訴你當天帶你的教練是誰。</p>
+        <p>這個頁面只收下你填的資料，不會鎖場次、不會扣款；排定教練與場次是由櫃檯人工完成的。沒收到回覆請直接打 <a href="tel:0200000000" class="num">02-0000-0000</a>。</p>
+        <dl id="booking-echo"></dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="sheet">
+    <div class="cols">
+      <div><b>場館</b>晨動健身工作室<br>台北市中山區</div>
+      <div><b>營業時間</b>週一至週五 <span class="num">06:00–23:00</span><br>週六日 <span class="num">08:00–21:00</span></div>
+      <div><b>服務窗口</b><a href="tel:0200000000" class="num">02-0000-0000</a><br>service@example.com</div>
+    </div>
+    <p class="disc">本頁為教學示範用網站。場館、教練、價格、退費條款與設備資訊均為示意內容，非真實營業據點；表單不會真的送出到任何伺服器。</p>
+  </div>
+</footer>
+
+<script>
+/* ──────────────────────────────────────────────
+   LessonLedger：耗課流水帳
+   對帳規則：剩餘堂數 = 購買堂數 − 已上堂數
+   每完成一堂：已上 +1、剩餘 −1，明細補一列，變動的數字閃一次過場。
+   ────────────────────────────────────────────── */
+(function () {
+  var BOUGHT = 20, START_USED = 8, DUE = "2027-03-31";
+
+  // 初始明細（示意資料，日後由後台課程紀錄帶入）
+  var SEED = [
+    { d: "2026-07-02", c: "林教練", t: "動作評估與暖身" },
+    { d: "2026-07-09", c: "林教練", t: "深蹲：徒手到空槓" },
+    { d: "2026-07-16", c: "林教練", t: "硬舉：髖關節鉸鏈" },
+    { d: "2026-07-23", c: "林教練", t: "上肢推：臥推入門" },
+    { d: "2026-07-30", c: "林教練", t: "上肢拉：滑輪下拉" },
+    { d: "2026-08-06", c: "陳教練", t: "核心與呼吸" },
+    { d: "2026-08-13", c: "林教練", t: "深蹲：加重與安全槓" },
+    { d: "2026-08-20", c: "林教練", t: "全身課表複習" }
+  ];
+
+  var used = START_USED, log = SEED.slice();
+  var elUsed = document.getElementById("v-used"),
+      elLeft = document.getElementById("v-left"),
+      elDue = document.getElementById("v-due"),
+      elMsg = document.getElementById("ledger-msg"),
+      elBody = document.getElementById("log-body"),
+      elDetail = document.getElementById("ledger-detail"),
+      elBar = document.getElementById("bar-fill"),
+      elCapUsed = document.getElementById("cap-used"),
+      btnComplete = document.getElementById("btn-complete"),
+      btnDetail = document.getElementById("btn-detail"),
+      btnReset = document.getElementById("btn-reset");
+
+  function today() {
+    var t = new Date();
+    return t.getFullYear() + "-" + String(t.getMonth() + 1).padStart(2, "0") + "-" + String(t.getDate()).padStart(2, "0");
+  }
+
+  // 數字變動時的過場：重新觸發一次 .ticked 動畫（280ms）
+  function tick(el) {
+    el.classList.remove("ticked");
+    void el.offsetWidth;
+    el.classList.add("ticked");
+    setTimeout(function () { el.classList.remove("ticked"); }, 320);
+  }
+
+  function render() {
+    var left = BOUGHT - used;           // 對帳規則就寫在這一行
+    elUsed.textContent = used;
+    elLeft.textContent = left;
+    elDue.textContent = DUE;
+    elCapUsed.textContent = used;
+    elBar.style.width = (used / BOUGHT * 100) + "%";
+
+    elBody.innerHTML = "";
+    log.forEach(function (row, i) {
+      var tr = document.createElement("tr");
+      [row.d, row.c, row.t, String(BOUGHT - (i + 1))].forEach(function (v, j) {
+        var td = document.createElement("td");
+        td.textContent = v;
+        if (j === 0 || j === 3) td.className = "num";
+        tr.appendChild(td);
+      });
+      elBody.appendChild(tr);
+    });
+
+    btnComplete.disabled = left <= 0;
+    btnComplete.textContent = left <= 0 ? "課包已用完" : "完成一堂";
+  }
+
+  btnComplete.addEventListener("click", function () {
+    if (BOUGHT - used <= 0) return;
+    used += 1;
+    log.push({ d: today(), c: "林教練", t: "本次課程" });
+    render();
+    tick(elUsed); tick(elLeft);
+    var left = BOUGHT - used;
+    elMsg.textContent = left > 0
+      ? "已記一堂：已上 " + used + " 堂，剩餘 " + left + " 堂，到期日 " + DUE + "。"
+      : "已記一堂：課包 " + BOUGHT + " 堂全數上完，剩餘 0 堂。續購前可先看退費規則。";
+  });
+
+  btnDetail.addEventListener("click", function () {
+    var open = elDetail.hasAttribute("hidden");
+    if (open) { elDetail.removeAttribute("hidden"); } else { elDetail.setAttribute("hidden", ""); }
+    btnDetail.setAttribute("aria-expanded", String(open));
+    btnDetail.textContent = open ? "收合耗課明細" : "展開耗課明細";
+  });
+
+  btnReset.addEventListener("click", function () {
+    used = START_USED; log = SEED.slice();
+    render(); tick(elUsed); tick(elLeft);
+    elMsg.textContent = "已回到初始狀態：購買 " + BOUGHT + " 堂、已上 " + START_USED + " 堂、剩餘 " + (BOUGHT - START_USED) + " 堂。";
+  });
+
+  render();
+})();
+
+/* ──────────────────────────────────────────────
+   TrialBooking：體驗預約表單
+   空白送出交給瀏覽器原生驗證擋（欄位有 required，表單沒有 novalidate）。
+   通過驗證才走到這裡：攔下送出、把填的資料回顯成確認訊息。
+   ────────────────────────────────────────────── */
+(function () {
+  var form = document.getElementById("trial-form"),
+      result = document.getElementById("booking-result"),
+      echo = document.getElementById("booking-echo");
+  var LABEL = { name: "姓名", contact: "聯絡方式", slot: "希望時段", goal: "運動目標", is_first: "是否首次" };
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();               // 示範站不送到伺服器
+    var data = new FormData(form);
+    echo.innerHTML = "";
+    ["name", "contact", "slot", "goal", "is_first"].forEach(function (k) {
+      var dt = document.createElement("dt"); dt.textContent = LABEL[k];
+      var dd = document.createElement("dd");
+      dd.textContent = k === "is_first" ? (data.get(k) ? "是" : "否") : (data.get(k) || "");
+      echo.appendChild(dt); echo.appendChild(dd);
+    });
+    result.removeAttribute("hidden");
+    result.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+})();
+</script>
+
+<style id="site-audit-fix">
+img,video{max-width:100%}
+select{max-width:100%;text-overflow:ellipsis}
+a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-space:nowrap}
+.factbar>.sheet:first-child{padding-left:60px;padding-right:60px}
+@media (max-width:1100px){.factbar>.sheet:first-child{padding-left:36px;padding-right:36px}}
+@media (max-width:640px){
+  .factbar>.sheet:first-child{padding-left:20px;padding-right:20px}
+  table.grid-tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  table.grid-tbl,table.grid-tbl tbody{display:block;width:100%}
+  table.grid-tbl caption{display:block;text-align:left}
+  table.grid-tbl tr{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;padding:18px 0;border-bottom:1px solid var(--rule)}
+  table.grid-tbl td,table.grid-tbl td:first-child,table.grid-tbl td:last-child{display:block;width:auto;padding:0;border:0}
+  table.grid-tbl td:first-child{grid-column:1;grid-row:1}
+  table.grid-tbl td:last-child{grid-column:2;grid-row:1}
+  table.grid-tbl td:nth-child(2){grid-column:1/-1;grid-row:2;margin-top:6px;font-size:17px}
+  .plate h1,.coach .mark{text-indent:0}
+  #f-slot{font-size:15px}
+  .masthead nav{gap:0 18px;flex-wrap:nowrap}
+  .masthead nav a{white-space:nowrap}
+  .masthead nav a[href="#trial"],.masthead nav a[href="#space"],.masthead nav a[href="#refund"]{display:none}
+}
+#log-body td.num{white-space:nowrap}
+</style>
+</body>
+</html>

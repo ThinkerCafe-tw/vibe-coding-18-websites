@@ -1,0 +1,1350 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>山邊晨光民宿｜宜蘭礁溪｜三間房的手作民宿</title>
+<meta name="description" content="宜蘭礁溪的三間房手作民宿。一面房務板把三間房未來兩週的房況全部攤開，價格、取消規則、訂房流程都在同一頁。">
+<style>
+
+
+:root{
+  --paper:#f3efe4;
+  --paper-2:#e8e2d2;
+  --card:#fbf9f2;
+  --ink:#1c2420;
+  --ink-soft:#5a6660;
+  --moss:#24463a;
+  --moss-2:#16302a;
+  --wood:#8a6742;
+  --wood-2:#6b4c2d;
+  --rule:#cfc6ae;
+  --stop:#8d4a22;
+  --hold:#a8781a;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Heiti TC",system-ui,sans-serif;
+  font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  overflow-wrap:break-word;
+}
+.num{font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"tnum" 1}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--moss);outline-offset:2px}
+svg{max-width:100%}
+[id]{scroll-margin-top:96px}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.band{padding:68px 0;border-bottom:1px solid var(--rule)}
+.band.tint{background:var(--paper-2)}
+.head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:28px}
+.head h2{margin:0;font-size:32px;font-weight:700;line-height:1.4;letter-spacing:.01em}
+.head p{margin:0;font-size:17px;color:var(--ink-soft)}
+.lede{margin:0 0 30px;max-width:58em;font-size:18px;color:var(--ink-soft);line-height:1.8}
+.note{font-size:16px;line-height:1.8;color:var(--ink-soft)}
+.card{background:var(--card);border:1px solid var(--rule);padding:24px}
+.tag{display:inline-block;font-size:16px;font-weight:700;letter-spacing:.1em;color:var(--moss);
+  border:1px solid var(--moss);padding:3px 10px;margin-bottom:12px}
+
+
+.top{border-bottom:2px solid var(--ink);background:var(--paper)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+.mark{margin:0;font-size:21px;font-weight:700;letter-spacing:.04em}
+.mark span{font-size:16px;font-weight:400;color:var(--ink-soft);margin-left:12px;letter-spacing:.1em}
+.top nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.top nav a{font-size:17px;color:var(--ink-soft);text-decoration:none;padding:8px 0;border-bottom:2px solid transparent}
+.top nav a:hover{color:var(--ink);border-bottom-color:var(--moss)}
+.top nav a.go{background:var(--moss);color:#eef1e8;border:0;padding:11px 20px;font-weight:700}
+.top nav a.go:hover{background:var(--moss-2);color:#eef1e8}
+
+
+.hero{border-bottom:1px solid var(--rule)}
+.ridge{display:block;width:100%;height:auto}
+.ridge-ph{border-bottom:2px solid var(--ink);line-height:0}
+.ridge-ph > img{object-position:30% 55%}
+
+
+.ph{position:relative}
+.ph > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease}
+.ph > img.is-loaded{opacity:1}
+@media (prefers-reduced-motion:reduce){.ph > img{transition:none}}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:44px;padding-top:44px;padding-bottom:52px;align-items:start}
+.hero h1{margin:0 0 16px;font-size:46px;line-height:1.3;font-weight:700;letter-spacing:.01em}
+.hero .lead{margin:0 0 14px;font-size:21px;line-height:1.7;max-width:26em}
+.hero .sub{margin:0 0 24px;font-size:18px;color:var(--ink-soft);max-width:30em}
+.deal{border-left:5px solid var(--wood);background:var(--card);padding:12px 18px;margin:0 0 24px;font-size:17px;line-height:1.7;color:var(--wood-2)}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;font-family:inherit;font-size:18px;line-height:1.4;padding:15px 26px;text-decoration:none;cursor:pointer;min-height:44px}
+.btn.solid{background:var(--moss);color:#eef1e8;border:2px solid var(--moss)}
+.btn.solid:hover{background:var(--moss-2)}
+.btn.line{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.line:hover{background:var(--ink);color:var(--paper)}
+.snap{border:2px solid var(--ink);background:var(--card)}
+.snap h2{margin:0;font-size:18px;font-weight:700;letter-spacing:.1em;padding:12px 18px;background:var(--ink);color:var(--paper)}
+.snap dl{margin:0;padding:6px 18px 16px}
+.snap dt{font-size:16px;color:var(--ink-soft);margin-top:12px}
+.snap dd{margin:2px 0 0;font-size:19px;font-weight:700;line-height:1.5}
+.snap dd .big{font-size:34px;color:var(--moss);line-height:1.2}
+.snap dd small{display:block;font-size:16px;font-weight:400;color:var(--ink-soft);line-height:1.6}
+
+
+.cols3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.cols3 article{background:var(--card);border:1px solid var(--rule);border-top:4px solid var(--wood);padding:22px}
+.cols3 h3{margin:0 0 10px;font-size:22px;font-weight:700;line-height:1.5}
+.cols3 p{margin:0 0 10px;font-size:17px;line-height:1.8}
+.cols3 p:last-child{margin-bottom:0}
+
+
+.rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:22px}
+.rt{background:var(--card);border:1px solid var(--rule);display:flex;flex-direction:column}
+.rt .pic{border-bottom:1px solid var(--rule);line-height:0}
+.rt .pic svg{display:block;width:100%;height:auto}
+.rt .body{padding:22px}
+.rt h3{margin:0 0 4px;font-size:25px;font-weight:700;line-height:1.4}
+.rt .meta{margin:0 0 16px;font-size:16px;color:var(--ink-soft)}
+.rt table{width:100%;border-collapse:collapse;margin-bottom:16px}
+.rt th,.rt td{text-align:left;font-size:17px;padding:9px 0;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.6}
+.rt th{font-weight:500;color:var(--ink-soft);width:6.5em;font-size:16px}
+.rt td .p{font-size:22px;font-weight:700;color:var(--wood-2)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px;padding:0;list-style:none}
+.tags li{font-size:16px;border:1px solid var(--rule);background:var(--paper);padding:4px 10px;color:var(--ink-soft)}
+.limit{margin:0;font-size:16px;color:var(--stop);line-height:1.75}
+
+
+.picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;margin-bottom:22px;align-items:end}
+.f label{display:block;font-size:16px;font-weight:700;margin-bottom:6px}
+.f .hint{display:block;font-size:16px;font-weight:400;color:var(--ink-soft);line-height:1.6;margin-top:2px}
+.f input,.f select,.f textarea{width:100%;font-family:inherit;font-size:18px;line-height:1.5;padding:12px;
+  border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:0;min-height:48px}
+.f textarea{min-height:104px;resize:vertical}
+.types{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.types button{font-family:inherit;font-size:17px;padding:12px 18px;min-height:44px;cursor:pointer;
+  background:transparent;border:2px solid var(--ink);color:var(--ink);line-height:1.4}
+.types button[aria-pressed="true"]{background:var(--moss);border-color:var(--moss);color:#eef1e8}
+
+.legend{display:flex;gap:8px 18px;flex-wrap:wrap;margin:0 0 14px;padding:0;list-style:none;font-size:16px;color:var(--ink-soft)}
+.legend li{display:flex;align-items:center;gap:7px}
+.chip{width:15px;height:15px;display:inline-block;flex:0 0 auto;border:1px solid rgba(0,0,0,.22)}
+.s-open{background:#5f8a5a}.s-hold{background:#c8921f}.s-booked{background:#9c6b45}
+.s-stay{background:#4e7f86}.s-clean{background:#8e8878}.s-block{background:#8d4a22}
+
+.board{display:flex;border:2px solid var(--ink);background:var(--card);overflow:hidden}
+.labels{flex:0 0 118px;border-right:2px solid var(--ink)}
+.labels div{height:44px;display:flex;align-items:center;padding:0 12px;font-size:16px;font-weight:700;border-top:1px solid var(--rule)}
+.labels div.h{height:106px;border-top:0;font-weight:500;color:var(--ink-soft);font-size:16px;line-height:1.4}
+.labels div small{display:block;font-size:16px;font-weight:400;color:var(--ink-soft)}
+.days{display:flex;flex:1 1 auto;min-width:0}
+.col{flex:1 1 0;min-width:0;border-left:1px solid var(--rule)}
+.col:first-child{border-left:0}
+.dayhead{display:block;width:100%;height:106px;border:0;border-bottom:1px solid var(--rule);background:transparent;
+  font-family:inherit;color:var(--ink);cursor:pointer;padding:8px 4px;text-align:center;line-height:1.35}
+.dayhead:disabled{background:#eae4d5;color:var(--ink-soft);cursor:not-allowed}
+.dayhead .d{display:block;font-size:17px;font-weight:700}
+.dayhead .w{display:block;font-size:16px;color:var(--ink-soft)}
+.dayhead .p{display:block;font-size:16px;color:var(--wood-2)}
+.dayhead .lf{display:block;font-size:16px}
+.col.wk .dayhead{background:rgba(138,103,66,.09)}
+.col.wk .dayhead .p{font-weight:700}
+.col.is-mid{background:rgba(36,70,58,.10)}
+.col.is-in .dayhead,.col.is-out .dayhead{box-shadow:inset 0 0 0 3px var(--moss)}
+.rcell{height:44px;display:flex;align-items:center;justify-content:center;gap:6px;
+  border-top:1px solid var(--rule);font-size:16px;line-height:1.3;text-align:center}
+.rcell .rn{display:none}
+.rcell .dotc{width:11px;height:11px;flex:0 0 auto;border:1px solid rgba(0,0,0,.2)}
+.avail{margin:18px 0 0;font-size:18px;line-height:1.75;border-left:5px solid var(--moss);background:var(--card);padding:14px 18px}
+.avail.bad{border-left-color:var(--stop);background:rgba(141,74,34,.09);color:#6f330f}
+
+
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
+.bill{margin:0}
+.bill .li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:17px;line-height:1.6}
+.bill .li span:last-child{white-space:nowrap;font-weight:500}
+.bill .li.off span:last-child{color:var(--moss)}
+.bill .tot{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;padding:16px 0 0;font-size:17px}
+.bill .tot .amt{text-align:right;white-space:nowrap;flex:0 0 auto}
+.bill .tot .amt b{display:block;font-size:16px;font-weight:500;letter-spacing:.1em;color:var(--ink-soft)}
+.bill .tot strong{display:block;font-size:34px;font-weight:700;color:var(--wood-2);line-height:1.25}
+.formula{margin:14px 0 0;font-size:16px;color:var(--ink-soft);line-height:1.8;border-top:1px solid var(--rule);padding-top:12px}
+.policy{margin:0;padding:0;list-style:none}
+.policy li{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:17px;line-height:1.6}
+.policy li b{font-weight:500}
+.policy li.now{background:rgba(36,70,58,.11);padding-left:10px;padding-right:10px;font-weight:700}
+.policy li.now b{font-weight:700}
+.policy .pct{white-space:nowrap}
+
+
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.full{grid-column:1/-1}
+.send{font-family:inherit;font-size:19px;padding:16px 32px;min-height:52px;background:var(--moss);color:#eef1e8;border:2px solid var(--moss);cursor:pointer}
+.send:hover{background:var(--moss-2)}
+.ghost{font-family:inherit;font-size:17px;padding:13px 20px;min-height:46px;background:transparent;color:var(--ink);border:2px solid var(--ink);cursor:pointer;line-height:1.4}
+.ghost:hover{background:var(--ink);color:var(--paper)}
+.ghost.warn{border-color:var(--stop);color:var(--stop)}
+.ghost.warn:hover{background:var(--stop);color:var(--paper)}
+.ghost:disabled{opacity:.4;cursor:not-allowed}
+.ghost:disabled:hover{background:transparent;color:var(--ink)}
+.ghost.warn:disabled:hover{background:transparent;color:var(--stop)}
+.row-btn{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:22px}
+.alarm{border-left:5px solid var(--stop);background:rgba(141,74,34,.1);color:#6f330f;padding:14px 18px;margin-bottom:20px;font-size:17px;line-height:1.8}
+.mach h3{margin:0 0 12px;font-size:21px;font-weight:700;line-height:1.5}
+.mach .note{margin:0 0 26px;max-width:56em}
+.mach .note b{color:var(--ink);font-weight:700}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;list-style:none;margin:0 0 12px;padding:0}
+.flow .st{border:2px solid var(--ink);background:var(--card);padding:8px 14px;font-size:17px;line-height:1.4}
+.flow .st.back{border-style:dashed;color:var(--ink-soft)}
+.flow .st.end{background:var(--moss);border-color:var(--moss);color:#eef1e8}
+.flow .ar{font-size:16px;color:var(--ink-soft);line-height:1.4}
+.flow .ar.br{flex-basis:100%;color:var(--wood-2);padding-top:4px}
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2px;background:var(--rule);border:2px solid var(--ink);margin:0 0 20px}
+.track{background:var(--card);padding:14px 16px}
+.track b{display:block;font-size:16px;letter-spacing:.1em;color:var(--ink-soft);font-weight:500}
+.track .v{font-size:24px;font-weight:700;line-height:1.4}
+.track.ok .v{color:var(--moss)}
+.track.wait .v{color:var(--hold)}
+.track.bad .v{color:var(--stop)}
+.hold-line{font-size:17px;line-height:1.75;background:var(--paper-2);padding:12px 16px;margin:0 0 20px}
+.hold-line strong{font-size:21px;color:var(--wood-2)}
+.recap{margin:0;display:grid;grid-template-columns:7em minmax(0,1fr);column-gap:18px;row-gap:9px;font-size:17px}
+.recap dt{color:var(--ink-soft);font-size:16px}
+.recap dd{margin:0;line-height:1.6}
+.log{margin:22px 0 0;padding:0;list-style:none;border-top:1px solid var(--rule)}
+.log li{font-size:16px;line-height:1.7;padding:9px 0;border-bottom:1px solid var(--rule);color:var(--ink-soft);display:flex;gap:12px}
+.log li b{color:var(--ink);font-weight:500;flex:0 0 auto}
+.bounds{margin:22px 0 0;padding:0 0 0 1.2em;font-size:16px;line-height:1.8;color:var(--ink-soft)}
+.bounds b{color:var(--ink)}
+
+
+.access{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.access dl{margin:0}
+.access dt{font-size:16px;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:4px}
+.access dd{margin:0 0 18px;font-size:17px;line-height:1.8}
+.access dd:last-child{margin-bottom:0}
+.faq details{background:var(--card);border:1px solid var(--rule);margin-bottom:10px}
+.faq summary{cursor:pointer;font-size:19px;font-weight:700;padding:16px 20px;line-height:1.6;
+  list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";color:var(--wood);flex:0 0 auto}
+.faq details[open] summary::after{content:"－"}
+.faq .ans{margin:0;padding:0 20px 18px;font-size:17px;line-height:1.85;color:var(--ink-soft)}
+
+
+.honest{background:var(--moss);color:#e7ece1}
+.honest .wrap{padding-top:56px;padding-bottom:56px}
+.honest h2{margin:0 0 14px;font-size:30px;font-weight:700;line-height:1.45}
+.honest p{margin:0 0 14px;font-size:17px;line-height:1.85;color:#cbd5c7;max-width:52em}
+.honest .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2px;background:#456052;margin-top:24px;border:1px solid #456052}
+.honest .grid div{background:var(--moss);padding:18px}
+.honest .grid b{display:block;font-size:18px;margin-bottom:6px;color:#eff3ea}
+.honest .grid span{font-size:16px;line-height:1.75;color:#bdc9b8}
+footer{background:var(--ink);color:#d6cfc0}
+footer .wrap{padding-top:44px;padding-bottom:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:28px}
+footer h3{margin:0 0 10px;font-size:19px;font-weight:700;letter-spacing:.04em}
+footer p{margin:0 0 6px;font-size:16px;line-height:1.8;color:#ada494}
+footer a{color:#d6cfc0;display:inline-block;padding:9px 0;min-height:44px}
+footer .fine{grid-column:1/-1;border-top:1px solid #3c443e;padding-top:18px;font-size:16px;line-height:1.8;color:#948c7f}
+
+
+@media (max-width:900px){
+  .wrap{padding:0 20px}
+  .band{padding:44px 0}
+  .head h2{font-size:26px}
+
+  .ridge{height:170px}
+  .hero .wrap{grid-template-columns:1fr;gap:28px;padding-top:30px;padding-bottom:36px}
+  .hero h1{font-size:32px}
+  .hero .lead{font-size:19px}
+
+  .board{display:block;border:0;background:transparent}
+  .labels{display:none}
+  .days{display:block}
+  .col{border-left:0;border:1px solid var(--rule);background:var(--card);margin-bottom:8px}
+  .col.is-mid{background:rgba(36,70,58,.12)}
+  .dayhead{height:auto;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;text-align:left;padding:12px 14px;min-height:48px}
+  .dayhead .d{font-size:18px}
+  .dayhead .lf{margin-left:auto}
+  .rcell{height:auto;padding:9px 6px;border-top:1px solid var(--rule);justify-content:flex-start}
+  .rcell .rn{display:inline;color:var(--ink-soft)}
+  .col .cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .col .cells .rcell{border-left:1px solid var(--rule)}
+  .col .cells .rcell:first-child{border-left:0}
+  .recap{grid-template-columns:1fr;row-gap:2px}
+  .recap dt{margin-top:10px}
+  .honest h2{font-size:25px}
+}
+</style>
+</head>
+<body>
+<aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
+
+<header class="top">
+  <div class="wrap">
+    <p class="mark">山邊晨光民宿<span>宜蘭礁溪．三間房</span></p>
+    <nav aria-label="主要導覽">
+      <a href="#rooms">房型</a>
+      <a href="#dates">房務板</a>
+      <a href="#guide">在地指南</a>
+      <a href="#faq">常見問答</a>
+      <a href="#dates" class="go">開始訂房</a>
+    </nav>
+  </div>
+</header>
+
+
+<section class="hero" id="home">
+
+  <div class="ph ridge-ph">
+  <svg class="ridge" viewBox="0 0 1440 280" preserveAspectRatio="xMinYMid slice" role="img" aria-label="清晨山稜線插畫：礁溪山邊的一棟老屋，三扇窗亮著燈">
+    <defs>
+      <linearGradient id="b-sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e7ecdf"/><stop offset="1" stop-color="#f6f0e0"/>
+      </linearGradient>
+      <linearGradient id="b-win" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffeec2"/><stop offset="1" stop-color="#f5d98c"/>
+      </linearGradient>
+    </defs>
+    <rect width="1440" height="280" fill="url(#b-sky)"/>
+    <circle cx="1140" cy="86" r="34" fill="#fdf1cd"/>
+    <circle cx="1140" cy="86" r="54" fill="#fdf1cd" opacity=".36"/>
+
+    <path d="M0 150 C120 104 214 140 318 116 C430 90 508 134 610 112 C726 86 812 130 924 110 C1046 88 1140 126 1254 106 C1330 92 1390 116 1440 104 V280 H0 Z" fill="#b6c5b0"/>
+    <path d="M0 186 C128 150 224 180 340 160 C466 138 540 176 664 158 C790 140 872 174 996 156 C1120 138 1220 168 1330 152 C1382 144 1414 156 1440 150 V280 H0 Z" fill="#8ca188"/>
+    <path d="M0 224 C160 200 268 222 396 208 C536 192 616 216 748 204 C888 190 972 214 1104 202 C1226 190 1330 208 1440 198 V280 H0 Z" fill="#5f7a60"/>
+
+    <rect y="246" width="1440" height="34" fill="#c9bd9c"/>
+    <path d="M0 262 H1440" stroke="#b0a284" stroke-width="2"/>
+
+    <g>
+      <path d="M232 196 L352 140 L472 196 Z" fill="#6b4c2d"/>
+      <rect x="248" y="194" width="208" height="62" fill="#efe7d3" stroke="#3b2d1d" stroke-width="3"/>
+      <rect x="268" y="210" width="42" height="34" fill="url(#b-win)" stroke="#3b2d1d" stroke-width="3"/>
+      <rect x="331" y="210" width="42" height="34" fill="url(#b-win)" stroke="#3b2d1d" stroke-width="3"/>
+      <rect x="394" y="210" width="42" height="34" fill="url(#b-win)" stroke="#3b2d1d" stroke-width="3"/>
+      <rect x="228" y="190" width="248" height="8" fill="#3b2d1d"/>
+    </g>
+
+    <path d="M556 256 V228 M556 228 C540 224 534 206 548 200 C548 186 570 184 572 198 C588 198 588 220 570 226 Z" fill="#4c6b4e" stroke="#3d5940" stroke-width="2"/>
+    <path d="M620 256 V234 M620 234 C608 230 604 218 614 214 C614 204 630 203 631 213 C643 213 643 229 630 233 Z" fill="#4c6b4e" stroke="#3d5940" stroke-width="2"/>
+    <path d="M160 256 V232 M160 232 C147 228 143 214 154 210 C154 199 172 198 173 209 C186 209 186 227 172 231 Z" fill="#4c6b4e" stroke="#3d5940" stroke-width="2"/>
+  </svg>
+  <img src="images/hero.svg" alt="課程版面示意圖片" width="1916" height="821" decoding="async">
+  </div>
+
+  <div class="wrap">
+    <div>
+      <h1>三間房的房況，<br>一次攤在你面前。</h1>
+      <p class="lead">宜蘭礁溪的山邊老屋。兩間檜木雙人房、一間晨光四人房，未來兩週每一間每一晚是什麼狀態，往下捲就看得完。</p>
+      <p class="sub">不必先匯款、不必傳訊息問空房。價格、加人費、清潔費、取消退多少，全部寫在同一頁。</p>
+      <p class="deal">官網直訂，比平台價格省 8%，並附入住前在地散步地圖。</p>
+      <div class="acts">
+        <a class="btn solid" href="#rooms">查看房型</a>
+        <a class="btn line" href="#dates">查詢日期</a>
+      </div>
+    </div>
+    <div class="snap">
+      <h2>今天的狀況</h2>
+      <dl>
+        <dt>今晚還可以訂</dt>
+        <dd><span class="big num" id="tonight-free">—</span> 間<small id="tonight-detail">三間房裡，扣掉已住、整理中與房東鎖住的</small></dd>
+        <dt>最低房價</dt>
+        <dd><span class="num">NT$3,200</span> 起<small>檜木雙人房平日價，週末 NT$3,800</small></dd>
+        <dt>取消規則</dt>
+        <dd>入住 30 天前退 100%<small>越晚取消退越少，四階寫在訂房摘要那一區</small></dd>
+        <dt>早餐</dt>
+        <dd>含在房價<small>08:00–09:30，一桌一起吃</small></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+
+<section class="band tint" id="story">
+  <div class="wrap">
+    <div class="head"><h2>空間故事</h2><p>為什麼只做三間房</p></div>
+    <p class="lede">想讓你在訂房之前，先知道自己會住進什麼地方。這一段是主人自己寫的。</p>
+    <div class="cols3">
+      <article>
+        <h3>從台北搬回礁溪</h3>
+        <p>我是阿宜。在台北做了十一年的餐飲內場，二〇二二年搬回礁溪照顧家裡的老房子，順手把二樓、三樓整理出三個房間。</p>
+        <p>本來想做六間，後來只做三間——六間的話，早餐就得改成自助吧，我會變成一個補菜的人。</p>
+      </article>
+      <article>
+        <h3>早餐的材料從哪裡來</h3>
+        <p>米跟當季的菜來自礁溪和員山的小農，蛋固定跟三星的蛋場拿。醬菜是自己醃的，一次醃兩罐，賣完就沒有。</p>
+        <p>早餐 08:00 到 09:30，一桌一起吃。前一天會問你要不要留，不留也沒關係。</p>
+      </article>
+      <article>
+        <h3>我們不做的事</h3>
+        <p>沒有制式的接待流程，也沒有加價的一日遊行程。想去哪裡我們就講去哪裡，不抽佣。</p>
+        <p>房間照片會拍到牆角跟門後，不會只拍好看的那一角。小房間就是小房間。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="band" id="rooms" data-obj="RoomType">
+  <div class="wrap">
+    <div class="head"><h2>房型</h2><p>兩種房型，三個房間</p></div>
+    <p class="lede">房型是對外的分類，房間是實際能出租的那一間。檜木雙人房有 201、202 兩間，晨光四人房只有 301 一間——所以四人房的日期會比較難搶，這件事在下面的房務板上一眼就看得到。</p>
+    <div class="rooms">
+
+      <article class="rt">
+        <div class="pic ph">
+
+          <svg viewBox="0 0 400 190" role="img" aria-label="檜木雙人房線稿：一張加大雙人床、木窗與床邊立燈">
+            <rect width="400" height="190" fill="#efe8d6"/>
+            <rect x="34" y="26" width="98" height="72" fill="#e2dcc4" stroke="#6b4c2d" stroke-width="4"/>
+            <path d="M83 26 V98 M34 62 H132" stroke="#6b4c2d" stroke-width="4"/>
+            <rect x="196" y="52" width="140" height="18" fill="#ddd2b4" stroke="#6b4c2d" stroke-width="3"/>
+            <rect x="62" y="122" width="248" height="20" fill="#c7ad89" stroke="#6b4c2d" stroke-width="3"/>
+            <rect x="70" y="98" width="232" height="26" rx="4" fill="#f4efe2" stroke="#6b4c2d" stroke-width="3"/>
+            <rect x="88" y="105" width="62" height="16" rx="4" fill="#ffffff" stroke="#a98f6d" stroke-width="2"/>
+            <rect x="166" y="105" width="62" height="16" rx="4" fill="#ffffff" stroke="#a98f6d" stroke-width="2"/>
+            <path d="M70 142 v26 M302 142 v26" stroke="#6b4c2d" stroke-width="5"/>
+            <path d="M344 168 v-44" stroke="#6b4c2d" stroke-width="4"/>
+            <path d="M328 124 h32 l-7 -24 h-18z" fill="#f2e2b8" stroke="#6b4c2d" stroke-width="3"/>
+            <path d="M24 168 H376" stroke="#6b4c2d" stroke-width="4"/>
+          </svg>
+          <img src="images/room-double.svg" alt="課程版面示意圖片" width="1672" height="941" decoding="async">
+        </div>
+        <div class="body">
+          <h3>檜木雙人房</h3>
+          <p class="meta">房間 201、202　｜　8 坪　｜　二樓，無電梯</p>
+          <table>
+            <tr><th>可住人數</th><td>基本 2 人，最多加 1 人（加人費 NT$800／人／晚）</td></tr>
+            <tr><th>床型</th><td>一張加大雙人床 180×200，實木床架</td></tr>
+            <tr><th>平日價</th><td><span class="p num">NT$3,200</span> ／晚</td></tr>
+            <tr><th>週末價</th><td><span class="p num">NT$3,800</span> ／晚（<span style="white-space:nowrap">週五、週六</span>入住的那一晚）</td></tr>
+          </table>
+          <ul class="tags"><li>獨立衛浴（淋浴）</li><li>檜木浴桶</li><li>除濕機</li><li>小冰箱</li><li>免費停車</li><li>不放電視</li></ul>
+          <p class="limit">限制：二樓沒有電梯。行李較重或行動不便，請在備註先說，我們下來幫忙提。</p>
+        </div>
+      </article>
+
+      <article class="rt">
+        <div class="pic ph">
+
+          <svg viewBox="0 0 400 190" role="img" aria-label="晨光四人房線稿：兩張雙人床與一扇看得見山的大窗">
+            <rect width="400" height="190" fill="#efe8d6"/>
+            <rect x="130" y="18" width="176" height="80" fill="#e4ebdc" stroke="#6b4c2d" stroke-width="4"/>
+            <path d="M130 74 C166 52 192 68 226 56 C258 45 280 62 306 56 V98 H130 Z" fill="#94ab90"/>
+            <path d="M218 18 V98 M130 58 H306" stroke="#6b4c2d" stroke-width="4"/>
+            <rect x="34" y="124" width="138" height="18" fill="#c7ad89" stroke="#6b4c2d" stroke-width="3"/>
+            <rect x="40" y="102" width="126" height="24" rx="4" fill="#f4efe2" stroke="#6b4c2d" stroke-width="3"/>
+            <rect x="228" y="124" width="138" height="18" fill="#c7ad89" stroke="#6b4c2d" stroke-width="3"/>
+            <rect x="234" y="102" width="126" height="24" rx="4" fill="#f4efe2" stroke="#6b4c2d" stroke-width="3"/>
+            <path d="M40 142 v24 M166 142 v24 M234 142 v24 M360 142 v24" stroke="#6b4c2d" stroke-width="5"/>
+            <rect x="182" y="146" width="24" height="22" fill="#ddd2b4" stroke="#6b4c2d" stroke-width="3"/>
+            <path d="M22 168 H378" stroke="#6b4c2d" stroke-width="4"/>
+          </svg>
+          <img src="images/room-quad.svg" alt="課程版面示意圖片" width="1672" height="941" decoding="async">
+        </div>
+        <div class="body">
+          <h3>晨光四人房</h3>
+          <p class="meta">房間 301　｜　12 坪　｜　三樓，無電梯</p>
+          <table>
+            <tr><th>可住人數</th><td>基本 4 人，最多加 2 人（加人費 NT$800／人／晚）</td></tr>
+            <tr><th>床型</th><td>兩張標準雙人床 150×200，可併床</td></tr>
+            <tr><th>平日價</th><td><span class="p num">NT$4,800</span> ／晚</td></tr>
+            <tr><th>週末價</th><td><span class="p num">NT$5,600</span> ／晚（<span style="white-space:nowrap">週五、週六</span>入住的那一晚）</td></tr>
+          </table>
+          <ul class="tags"><li>獨立衛浴（浴缸）</li><li>面山大窗</li><li>除濕機</li><li>小冰箱</li><li>免費停車</li><li>備兒童枕與小椅</li></ul>
+          <p class="limit">限制：只有這一間，同一晚賣掉就沒有了。三樓，一樣沒有電梯。</p>
+        </div>
+      </article>
+
+    </div>
+    <p class="note" style="margin-top:20px">每筆訂單另收清潔費 NT$300（不隨晚數增加）；住滿 3 晚，房費打 9 折。</p>
+  </div>
+</section>
+
+
+<section class="band tint" id="dates" data-obj="Availability">
+  <div class="wrap">
+    <div class="head"><h2>房務板</h2><p>三間房，從今天起 14 天</p></div>
+    <p class="lede">這就是我們自己牆上那張表。灰掉的日期是真的不能訂——已預訂、別人正在付款、房東鎖起來維修，三種原因分開標，不會混成一句「已滿」。點上面那排日期可以直接帶入入住日與退房日。</p>
+
+    <div class="types" role="group" aria-label="選擇房型">
+      <button type="button" data-type="hinoki" aria-pressed="true">檜木雙人房（2 間）</button>
+      <button type="button" data-type="morning" aria-pressed="false">晨光四人房（1 間）</button>
+    </div>
+
+    <div class="picker">
+      <div class="f">
+        <label for="in-date">入住日</label>
+        <input type="date" id="in-date" name="check_in" required>
+      </div>
+      <div class="f">
+        <label for="out-date">退房日</label>
+        <input type="date" id="out-date" name="check_out" required>
+      </div>
+      <div class="f">
+        <label for="guests">入住人數<span class="hint">超過基本人數每人每晚加 NT$800</span></label>
+        <select id="guests" name="guests" required>
+          <option value="1">1 人</option>
+          <option value="2" selected>2 人</option>
+          <option value="3">3 人</option>
+          <option value="4">4 人</option>
+          <option value="5">5 人</option>
+          <option value="6">6 人</option>
+        </select>
+      </div>
+    </div>
+
+    <ul class="legend">
+      <li><span class="chip s-open"></span>可訂</li>
+      <li><span class="chip s-hold"></span>保留中（有人正在付款）</li>
+      <li><span class="chip s-booked"></span>已預訂</li>
+      <li><span class="chip s-stay"></span>入住中</li>
+      <li><span class="chip s-clean"></span>清潔中</li>
+      <li><span class="chip s-block"></span>封鎖／維修</li>
+    </ul>
+
+    <div class="board">
+      <div class="labels" aria-hidden="true">
+        <div class="h">房間</div>
+        <div>201</div>
+        <div>202</div>
+        <div>301</div>
+      </div>
+      <div class="days" id="board"></div>
+    </div>
+    <p class="avail" id="avail-msg" aria-live="polite">請先選入住日與退房日。</p>
+    <p class="note" style="margin-top:12px">日期列的房價是目前選的房型當晚價格（新台幣），週末那幾格底色較深。過去的日期選不到。</p>
+  </div>
+</section>
+
+
+<section class="band" id="summary">
+  <div class="wrap">
+    <div class="head"><h2>訂房摘要</h2><p>這趟總共多少錢，取消退多少</p></div>
+    <div class="sum">
+      <div class="card">
+        <span class="tag">計價明細</span>
+        <div class="bill" id="quote"></div>
+        <p class="formula" id="formula">計價公式：房費（逐晚，平日／週末不同價）－ 連住折扣 ＋ 加人費 × 人 × 晚 ＋ 清潔費（每筆訂單一次）</p>
+      </div>
+      <div class="card">
+        <span class="tag">階梯式取消政策</span>
+        <ul class="policy" id="policy">
+          <li data-tier="30"><b>入住日 30 天以上</b><span class="pct">退 100%</span></li>
+          <li data-tier="14"><b>入住日前 14 到 30 天</b><span class="pct">退 75%</span></li>
+          <li data-tier="3"><b>入住日前 3 到 14 天</b><span class="pct">退 50%</span></li>
+          <li data-tier="0"><b>入住日前 3 天內</b><span class="pct">不退，可改期一次</span></li>
+        </ul>
+        <p class="note" style="margin-top:14px">越早取消退越多，是因為越晚我們越難把房間再賣出去。規則寫在這裡，不用私訊問。你現在選的日期落在哪一階，會自己標起來。改期需在 3 天前來電，同一筆訂單限一次。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="band tint" id="book" data-obj="Order">
+  <div class="wrap">
+    <div class="head"><h2>訂房表單</h2><p>送出後房間會被保留 15 分鐘</p></div>
+    <p class="lede">送出之後，你選的那幾晚會從「可訂」轉成「<strong>保留中</strong>」，這段時間別人訂不到同一間房。15 分鐘內沒完成付款，房間自動放回可訂。</p>
+    <div class="card">
+      <div class="alarm" id="alarm" hidden role="alert"></div>
+      <form id="book-form">
+        <div class="form-grid">
+          <div class="f">
+            <label for="f-name">姓名</label>
+            <input type="text" id="f-name" name="name" required autocomplete="name">
+          </div>
+          <div class="f">
+            <label for="f-email">Email<span class="hint">訂房確認信會寄到這裡</span></label>
+            <input type="email" id="f-email" name="email" required autocomplete="email">
+          </div>
+          <div class="f">
+            <label for="f-phone">電話<span class="hint">0 開頭，手機或市話都可以</span></label>
+            <input type="tel" id="f-phone" name="phone" required pattern="0[0-9]{8,9}" inputmode="numeric" autocomplete="tel">
+          </div>
+          <div class="f full">
+            <label for="f-note">備註<span class="hint">選填。抵達時間、飲食禁忌、行李需要幫忙都寫這裡。</span></label>
+            <textarea id="f-note" name="note"></textarea>
+          </div>
+        </div>
+        <div class="row-btn">
+          <button type="submit" class="send">送出訂房</button>
+          <button type="button" class="ghost" id="btn-reset">全部重來</button>
+        </div>
+        <p class="note" style="margin-top:16px">送出後，我們會在 2 小時內確認房況並回覆。如需異動請直接來電。</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<section class="band" id="pay" data-obj="Payment">
+  <div class="wrap">
+    <div class="head"><h2>付款模擬</h2><p>兩條狀態機，同一刻要對上</p></div>
+    <p class="lede">訂單從「待付款」變「已確認」的同一刻，房況要從「保留中」變「已預訂」。下面先把兩條狀態機攤開，再用三條軌看它有沒有真的發生。</p>
+
+
+    <div class="card mach">
+      <h3>房況：同一間房、同一晚</h3>
+      <ol class="flow">
+        <li class="st">可訂</li><li class="ar">送出訂房 →</li>
+        <li class="st">保留中</li><li class="ar">付款成功 →</li>
+        <li class="st">已預訂</li><li class="ar">入住日到 →</li>
+        <li class="st">入住中</li><li class="ar">退房日到 →</li>
+        <li class="st">清潔中</li><li class="ar">整理完成 →</li>
+        <li class="st back">可訂</li>
+      </ol>
+      <p class="note">兩條回頭路：<b>保留中</b>過了 15 分鐘沒付款、或旅客取消，直接回到<b>可訂</b>；<b>已預訂</b>取消退款後也回到<b>可訂</b>。<b>封鎖／維修</b>是房東手動鎖的，跟上面這條主線各走各的，只有房東自己能開回可訂。</p>
+
+      <h3>訂單：這一筆預訂走到哪裡</h3>
+      <ol class="flow">
+        <li class="st">待付款</li><li class="ar">付款成功 →</li>
+        <li class="st">已確認</li><li class="ar">退房日到 →</li>
+        <li class="st end">已完成（終態）</li>
+        <li class="ar br">待付款或已確認都可以 →</li>
+        <li class="st">已取消</li><li class="ar">退款完成 →</li>
+        <li class="st end">已退款（終態）</li>
+      </ol>
+      <p class="note" style="margin-bottom:0">付款自己也有五種狀態：未付款 → 付款中 → 付款成功／付款失敗 → 已退款。<b>付款失敗不等於訂單結束</b>——保留還沒到期，旅客可以再付一次，所以房間這時候還不能放掉。</p>
+    </div>
+
+    <div class="card" id="order-card" hidden style="margin-top:22px">
+      <p class="hold-line" id="hold-line"></p>
+      <div class="tracks">
+        <div class="track" id="t-order"><b>訂單狀態</b><span class="v" id="st-order">—</span></div>
+        <div class="track" id="t-room"><b>房況狀態</b><span class="v" id="st-room">—</span></div>
+        <div class="track" id="t-pay"><b>付款狀態</b><span class="v" id="st-pay">—</span></div>
+      </div>
+      <dl class="recap" id="recap"></dl>
+      <div class="row-btn">
+        <button type="button" class="ghost" id="btn-pay-ok">模擬付款成功</button>
+        <button type="button" class="ghost warn" id="btn-pay-fail">模擬付款失敗</button>
+        <button type="button" class="ghost" id="btn-timeout">模擬保留 15 分鐘到期</button>
+        <button type="button" class="ghost warn" id="btn-cancel">取消訂房</button>
+        <button type="button" class="ghost" id="btn-refund">完成退款</button>
+      </div>
+      <ul class="log" id="log"></ul>
+      <ul class="bounds">
+        <li><b>網站上不收信用卡資料，也不必先匯款。</b>畫面上沒有信用卡欄位，也不會有。</li>
+        <li><b>付款結果以金流公司通知我們的為準</b>。付款後跳回來的頁面只是提示，訂房是否成立以確認信為準。</li>
+        <li>畫面上的房況僅供參考，實際以確認信或電話確認為準。</li>
+        <li>有任何問題，請打 <span class="num">03-000-0000</span> 或寫信到 stay@example.com。送出後，我們會在 2 小時內確認房況並回覆。</li>
+      </ul>
+    </div>
+    <p class="note" id="pay-empty" style="margin-top:18px">還沒有訂單。先在房務板選日期、填資料、送出訂房，這裡才會出現訂單卡與三條狀態軌。</p>
+  </div>
+</section>
+
+
+<section class="band tint" id="guide">
+  <div class="wrap">
+    <div class="head"><h2>在地指南</h2><p>走路到得了的三個地方</p></div>
+    <p class="lede">不指名店家，因為店會換。這是我們自己每週在走的路線，入住當天會給你一張紙本的散步地圖。</p>
+    <div class="cols3">
+      <article>
+        <h3>溫泉公園的清晨圈</h3>
+        <p>出門左轉走 9 分鐘。六點半到八點人最少，公園旁有一段免費的泡腳池，走完早餐剛好做好。</p>
+        <p>建議帶自己的小毛巾，池邊沒有供應。</p>
+      </article>
+      <article>
+        <h3>早市的那一條巷子</h3>
+        <p>步行 12 分鐘。賣菜的攤子六點開，中午前就散。我們的早餐蔬菜有一半在這裡買。</p>
+        <p>想試試看自己挑菜，前一晚跟我們說，早上一起走過去。</p>
+      </article>
+      <article>
+        <h3>雨天備案：山邊的舊書店咖啡</h3>
+        <p>開車 6 分鐘、搭公車兩站。宜蘭下雨的機率不低，這是我們自己躲雨的地方，坐一整個下午沒人趕。</p>
+        <p>週二公休。出門前可以先問我們今天有沒有開。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="band" id="access">
+  <div class="wrap">
+    <div class="head"><h2>交通指引</h2><p>怎麼來，最後那 300 公尺怎麼走</p></div>
+    <p class="lede">地址在訂房確認後會連同導航連結一起寄給你。這裡先寫大方向，讓你估得出時間。</p>
+    <div class="access">
+      <div class="card">
+        <span class="tag">怎麼到</span>
+        <dl>
+          <dt>開車</dt>
+          <dd>國道五號下礁溪交流道，順著往山邊的路走約 8 分鐘。最後 300 公尺是單線的產業道路，會車要靠邊，慢慢開。</dd>
+          <dt>搭車</dt>
+          <dd>台鐵礁溪站下車步行 12 分鐘，全程平路。轉運站有客運，班次少，建議先查回程時間。</dd>
+          <dt>停車</dt>
+          <dd>門口兩個車位，先到先停，不另外收費。滿了的話，走路 3 分鐘有一個公有停車場。</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <span class="tag">夜間抵達</span>
+        <dl>
+          <dt>路燈</dt>
+          <dd>晚上 19:00 之後那段產業道路沒有路燈。門口的木牌我們會開一盞暖燈，看到燈就是到了。</dd>
+          <dt>太晚到</dt>
+          <dd>預計 21:00 後才會到，請先來電 <span class="num">03-000-0000</span>，我們會在門口等。不加收費用，但沒講我們可能已經睡了。</dd>
+          <dt>入住與退房</dt>
+          <dd>入住 15:00–21:00，退房 11:00 前。當天沒有下一組客人時可以延到 12:00，前一晚問我們就好。</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="band tint" id="faq">
+  <div class="wrap">
+    <div class="head"><h2>常見問答</h2><p>問得最多的五件事</p></div>
+    <div class="faq">
+      <details open>
+        <summary>幾點可以入住？</summary>
+        <p class="ans">15:00 到 21:00 之間。比較早到可以先把行李放下，房間還在整理就先去散步。21:00 之後抵達請先來電，不然我們可能已經休息了。</p>
+      </details>
+      <details>
+        <summary>幾點要退房？</summary>
+        <p class="ans">11:00 前。當天沒有下一組客人時可以延到 12:00，前一晚問我們就好，不另外收費。</p>
+      </details>
+      <details>
+        <summary>早餐有嗎？要另外付錢嗎？</summary>
+        <p class="ans">有，含在房價裡。08:00 到 09:30，一桌一起吃。有飲食禁忌請在訂房備註寫，我們會換一道。不吃早餐不退費，但可以前一晚跟我們說，免得做太多。</p>
+      </details>
+      <details>
+        <summary>可以帶寵物嗎？</summary>
+        <p class="ans">不行。房間是木地板加布沙發，也有其他客人會過敏，這一條沒有例外。附近有寵物旅館，需要的話我們可以幫你查。</p>
+      </details>
+      <details>
+        <summary>臨時不能來，錢退得回來嗎？</summary>
+        <p class="ans">依階梯式取消政策：入住日 30 天以上退 100%、14 到 30 天退 75%、3 到 14 天退 50%、3 天內不退但可以改期一次。取消請來電 <span class="num">03-000-0000</span>，我們當場跟你算清楚退多少，不用等回覆。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>山邊晨光民宿</h3>
+      <p>宜蘭縣礁溪鄉</p>
+      <p><a href="tel:+886300000000" class="num">03-000-0000</a></p>
+      <p><a href="mailto:stay@example.com">stay@example.com</a></p>
+    </div>
+    <div>
+      <h3>入住資訊</h3>
+      <p>入住 15:00–21:00</p>
+      <p>退房 11:00 前</p>
+      <p>早餐 08:00–09:30，含在房價</p>
+      <p>全館不接待寵物</p>
+    </div>
+    <div>
+      <h3>取消規則</h3>
+      <p>30 天以上退 100%</p>
+      <p>14 到 30 天退 75%</p>
+      <p>3 到 14 天退 50%</p>
+      <p>3 天內不退，可改期一次</p>
+    </div>
+    <p class="fine">價格與房況以民宿實際公告及確認信為準。<br>© 2026 山邊晨光民宿</p>
+  </div>
+</footer>
+
+<script>
+/* 照片層：圖真的載到了才顯示；載不到就留著底下的 SVG 插畫（見 CSS 的 .ph） */
+document.querySelectorAll(".ph > img").forEach(function (img) {
+  function ok() {
+    if (!img.naturalWidth) { return; }
+    img.classList.add("is-loaded");
+    var art = img.parentNode.querySelector("svg");
+    if (art) { art.setAttribute("aria-hidden", "true"); }   // 有照片時，插畫退成純裝飾
+  }
+  if (img.complete) { ok(); } else { img.addEventListener("load", ok); }
+});
+</script>
+<script>
+/* ──────────────────────────────────────────────────────────────
+   訂房狀態機
+   房況 Availability：可訂 → 保留中 → 已預訂 → 入住中 → 清潔中 → 可訂
+                      保留中 --付款逾時／取消--> 可訂
+                      封鎖／維修 --房東手動--> 可訂
+   訂單 Order：待付款 → 已確認 → 已完成 ／ 待付款・已確認 → 已取消 → 已退款
+   付款 Payment：未付款 → 付款中 → 付款成功／付款失敗 → 已退款
+   連動點：訂單「待付款→已確認」的同一刻，房況「保留中→已預訂」。
+
+   正式版要換掉的地方都標了 正式系統接點：
+   - 房況查詢要打後端 API，不能只讀前端陣列
+   - 送出訂房要在資料庫層用交易式處理鎖房，不能只改記憶體
+   - 付款狀態要由金流 webhook 更新，不能由前端按鈕決定
+   ────────────────────────────────────────────────────────────── */
+(function () {
+  "use strict";
+
+  var DAYS = 14;
+  var HOLD_MINUTES = 15;
+  var FEE_CLEAN = 300;
+  var FEE_EXTRA = 800;
+  var LONG_NIGHTS = 3, LONG_RATE = 0.9;
+
+  var TYPES = {
+    hinoki:  { id:"hinoki",  name:"檜木雙人房", base:2, max:3, weekday:3200, weekend:3800, rooms:["201","202"] },
+    morning: { id:"morning", name:"晨光四人房", base:4, max:6, weekday:4800, weekend:5600, rooms:["301"] }
+  };
+  var ALL_ROOMS = ["201", "202", "301"];
+
+  var STATE_TEXT = {
+    open:"可訂", hold:"保留中", booked:"已預訂",
+    stay:"入住中", clean:"清潔中", block:"封鎖／維修"
+  };
+  var STATE_SHORT = {
+    open:"可訂", hold:"保留中", booked:"已預訂",
+    stay:"入住中", clean:"清潔中", block:"維修"
+  };
+
+  /* 房況初始資料。用「距今天幾天」而不是寫死日期，這樣任何一天打開，
+     「日期不可選到過去」與六種狀態都還看得到。正式版這些來自資料庫。 */
+  var SEED = [
+    { room:"301", off:0,  state:"stay",   why:"目前有房客住在裡面" },
+    { room:"301", off:1,  state:"clean",  why:"前一組退房後整理，當天不出租" },
+    { room:"201", off:3,  state:"booked", why:"已經有一張付過款的訂單" },
+    { room:"201", off:4,  state:"booked", why:"已經有一張付過款的訂單" },
+    { room:"202", off:5,  state:"hold",   why:"另一位旅客正在付款，保留中還沒到期" },
+    { room:"301", off:6,  state:"booked", why:"已經有一張付過款的訂單" },
+    { room:"301", off:7,  state:"booked", why:"已經有一張付過款的訂單" },
+    /* 兩間檜木房同一天一起不能賣，日期列才看得到「不可訂」——
+       只鎖一間的話，房型層級永遠還剩一間，就永遠不會出現不可訂的日期。 */
+    { room:"201", off:8,  state:"block",  why:"熱水器保養，房東手動鎖住" },
+    { room:"202", off:8,  state:"block",  why:"熱水器保養，兩間一起做" },
+    { room:"201", off:9,  state:"booked", why:"已經有一張付過款的訂單" },
+    { room:"202", off:9,  state:"booked", why:"已經有一張付過款的訂單" },
+    { room:"201", off:10, state:"hold",   why:"另一位旅客正在付款，保留中還沒到期" },
+    { room:"202", off:10, state:"booked", why:"已經有一張付過款的訂單" },
+    { room:"301", off:10, state:"block",  why:"房東自住" },
+    { room:"202", off:11, state:"block",  why:"房東自住" },
+    { room:"201", off:12, state:"stay",   why:"目前有房客住在裡面" },
+    { room:"202", off:12, state:"stay",   why:"目前有房客住在裡面" },
+    { room:"201", off:13, state:"clean",  why:"前一組退房後整理，當天不出租" },
+    { room:"202", off:13, state:"clean",  why:"前一組退房後整理，當天不出租" }
+  ];
+
+  var WEEKDAY_CH = ["日","一","二","三","四","五","六"];
+
+  function today() { var d = new Date(); d.setHours(0,0,0,0); return d; }
+  function shift(base, n) { var d = new Date(base.getTime()); d.setDate(d.getDate() + n); return d; }
+  function iso(d) {
+    return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+  }
+  function fromIso(s) { var p = s.split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
+  function human(s) { var d = fromIso(s); return (d.getMonth()+1) + "/" + d.getDate() + "⁠（" + WEEKDAY_CH[d.getDay()] + "）"; }
+  function isWeekend(d) { var w = d.getDay(); return w === 5 || w === 6; }
+  function nightsBetween(a, b) { return Math.round((fromIso(b) - fromIso(a)) / 86400000); }
+  function money(n) { return "NT$" + n.toLocaleString("en-US"); }
+  function plain(n) { return n.toLocaleString("en-US"); }
+
+  var T0 = today();
+  var WINDOW = [];
+  for (var i = 0; i < DAYS; i++) WINDOW.push(iso(shift(T0, i)));
+
+  /* Availability：每房每日一筆 */
+  var avail = {};
+  function buildAvail() {
+    avail = {};
+    ALL_ROOMS.forEach(function (room) {
+      WINDOW.forEach(function (day) { avail[room + "|" + day] = { state:"open", why:"" }; });
+    });
+    SEED.forEach(function (s) {
+      var key = s.room + "|" + iso(shift(T0, s.off));
+      if (avail[key]) avail[key] = { state:s.state, why:s.why };
+    });
+  }
+  function cellOf(room, day) { return avail[room + "|" + day] || { state:"open", why:"" }; }
+  function setCell(room, day, state, why) {
+    var key = room + "|" + day;
+    if (avail[key]) avail[key] = { state:state, why:why || "" };
+  }
+
+  var typeId = "hinoki";
+  var order = null, payment = null, holdTimer = null, events = [];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var board = $("board"), availMsg = $("avail-msg"), quote = $("quote"), policy = $("policy"),
+      inDate = $("in-date"), outDate = $("out-date"), guests = $("guests"),
+      form = $("book-form"), alarm = $("alarm"),
+      card = $("order-card"), payEmpty = $("pay-empty"),
+      holdLine = $("hold-line"), recap = $("recap"), log = $("log"),
+      stOrder = $("st-order"), stRoom = $("st-room"), stPay = $("st-pay"),
+      tOrder = $("t-order"), tRoom = $("t-room"), tPay = $("t-pay");
+
+  /* 正式系統接點：正式版改成向後端 API 查房況，並在同一筆交易裡鎖房。 */
+  function nightsOf(a, b) {
+    var out = [], n = nightsBetween(a, b);
+    for (var i = 0; i < n; i++) out.push(iso(shift(fromIso(a), i)));
+    return out;
+  }
+  function findRoom(tid, a, b) {
+    var list = TYPES[tid].rooms, nights = nightsOf(a, b);
+    for (var i = 0; i < list.length; i++) {
+      var ok = nights.every(function (d) {
+        return WINDOW.indexOf(d) >= 0 && cellOf(list[i], d).state === "open";
+      });
+      if (ok) return list[i];
+    }
+    return null;
+  }
+  function freeCount(tid, day) {
+    return TYPES[tid].rooms.filter(function (r) { return cellOf(r, day).state === "open"; }).length;
+  }
+  var RANK = ["hold", "booked", "stay", "clean", "block"];
+  function dayState(tid, day) {
+    var rooms = TYPES[tid].rooms;
+    if (freeCount(tid, day) > 0) return { state:"open", why:"" };
+    for (var k = 0; k < RANK.length; k++) {
+      for (var i = 0; i < rooms.length; i++) {
+        var c = cellOf(rooms[i], day);
+        if (c.state === RANK[k]) return c;
+      }
+    }
+    return { state:"booked", why:"" };
+  }
+
+  /* 計價：房價、加人費、清潔費、折扣 */
+  function quoteOf(tid, a, b, people) {
+    var t = TYPES[tid], nights = nightsOf(a, b), lines = [], room = 0, wk = 0;
+    nights.forEach(function (d) {
+      var w = isWeekend(fromIso(d)), p = w ? t.weekend : t.weekday;
+      room += p; if (w) wk++;
+      lines.push({ day:d, weekend:w, price:p });
+    });
+    var discount = nights.length >= LONG_NIGHTS ? Math.round(room * (1 - LONG_RATE)) : 0;
+    var extraPeople = Math.max(0, people - t.base);
+    var extra = extraPeople * FEE_EXTRA * nights.length;
+    return { nights:nights, lines:lines, weekendNights:wk, room:room, discount:discount,
+             extraPeople:extraPeople, extra:extra, clean:FEE_CLEAN,
+             total: room - discount + extra + FEE_CLEAN };
+  }
+
+  /* 取消政策：四階，30 天以上／14 到 30 天／3 到 14 天／3 天內，
+     算入住日距今天幾天，落在哪一階 */
+  function tierOf(inIso) {
+    var days = Math.round((fromIso(inIso) - T0) / 86400000);
+    if (days >= 30) return { key:"30", pct:100 };
+    if (days >= 14) return { key:"14", pct:75 };
+    if (days >= 3)  return { key:"3",  pct:50 };
+    return { key:"0", pct:0 };
+  }
+
+  /* ── 房務板：一天一欄，欄頭可點選日期，下面三格是三間房的實際狀態 ── */
+  function renderBoard() {
+    board.innerHTML = "";
+    var a = inDate.value, b = outDate.value;
+    WINDOW.forEach(function (day) {
+      var d = fromIso(day), st = dayState(typeId, day), free = freeCount(typeId, day);
+      var col = document.createElement("div");
+      col.className = "col" + (isWeekend(d) ? " wk" : "");
+      if (a && b && day >= a && day < b) col.classList.add("is-mid");
+      if (day === a) col.classList.add("is-in");
+      if (day === b) col.classList.add("is-out");
+
+      var btn = document.createElement("button");
+      btn.type = "button"; btn.className = "dayhead";
+      btn.setAttribute("data-day", day);
+      btn.setAttribute("data-state", st.state);
+      btn.disabled = st.state !== "open";
+      if (st.why) btn.title = st.why;
+
+      var dd = document.createElement("span"); dd.className = "d num";
+      dd.textContent = (d.getMonth()+1) + "/" + d.getDate();
+      var ww = document.createElement("span"); ww.className = "w";
+      ww.textContent = "週" + WEEKDAY_CH[d.getDay()];
+      var pp = document.createElement("span"); pp.className = "p num";
+      pp.textContent = plain(isWeekend(d) ? TYPES[typeId].weekend : TYPES[typeId].weekday);
+      var lf = document.createElement("span"); lf.className = "lf";
+      lf.textContent = st.state === "open" ? ("剩 " + free + " 間") : STATE_SHORT[st.state];
+      btn.appendChild(dd); btn.appendChild(ww); btn.appendChild(pp); btn.appendChild(lf);
+      btn.addEventListener("click", function () { onDayClick(day); });
+      col.appendChild(btn);
+
+      var cells = document.createElement("div");
+      cells.className = "cells";
+      ALL_ROOMS.forEach(function (room) {
+        var c = cellOf(room, day);
+        var cell = document.createElement("div");
+        cell.className = "rcell";
+        cell.setAttribute("data-room", room);
+        cell.setAttribute("data-cell-state", c.state);
+        if (c.why) cell.title = room + " 號房 " + human(day) + "：" + c.why;
+        var dot = document.createElement("span");
+        dot.className = "dotc s-" + c.state;
+        var rn = document.createElement("span"); rn.className = "rn"; rn.textContent = room;
+        var tx = document.createElement("span"); tx.textContent = STATE_SHORT[c.state];
+        cell.appendChild(dot); cell.appendChild(rn); cell.appendChild(tx);
+        cells.appendChild(cell);
+      });
+      col.appendChild(cells);
+      board.appendChild(col);
+    });
+
+    /* 首屏「今晚還可以訂」：三間房裡今天狀態是可訂的有幾間 */
+    var tonight = ALL_ROOMS.filter(function (r) { return cellOf(r, WINDOW[0]).state === "open"; }).length;
+    $("tonight-free").textContent = String(tonight);
+    $("tonight-detail").textContent = "三間房裡，扣掉已住、整理中與房東鎖住的（" + human(WINDOW[0]) + "）";
+  }
+
+  var awaitingOut = false;
+  function onDayClick(day) {
+    if (!awaitingOut || day <= inDate.value) {
+      inDate.value = day;
+      outDate.value = iso(shift(fromIso(day), 1));
+      awaitingOut = true;
+    } else {
+      outDate.value = day;
+      awaitingOut = false;
+    }
+    refresh();
+  }
+
+  function lineEl(left, right, isOff) {
+    var el = document.createElement("div");
+    el.className = "li" + (isOff ? " off" : "");
+    var x = document.createElement("span"); x.textContent = left;
+    var y = document.createElement("span"); y.className = "num"; y.textContent = right;
+    el.appendChild(x); el.appendChild(y);
+    return el;
+  }
+
+  function renderQuote() {
+    var a = inDate.value, b = outDate.value, people = parseInt(guests.value, 10) || 1;
+    var t = TYPES[typeId];
+    quote.innerHTML = "";
+    policy.querySelectorAll("li").forEach(function (li) { li.classList.remove("now"); });
+
+    if (!a || !b || nightsBetween(a, b) < 1) {
+      availMsg.className = "avail";
+      availMsg.textContent = "請先選入住日與退房日。退房日要比入住日晚至少一天。";
+      quote.appendChild(lineEl("目前還沒有可以算的價格", "—"));
+      return;
+    }
+    if (people > t.max) {
+      availMsg.className = "avail bad";
+      availMsg.textContent = t.name + "最多住 " + t.max + " 人（基本 " + t.base + " 人，最多加 " + (t.max - t.base) + " 人）。請改人數或換房型。";
+      quote.appendChild(lineEl("人數超過這個房型的上限", "—"));
+      return;
+    }
+
+    var q = quoteOf(typeId, a, b, people), room = findRoom(typeId, a, b);
+    q.lines.forEach(function (l) {
+      quote.appendChild(lineEl(human(l.day) + "　" + (l.weekend ? "週末價" : "平日價"), money(l.price)));
+    });
+    if (q.discount > 0) quote.appendChild(lineEl("連住 " + q.nights.length + " 晚，房費 9 折", "－" + money(q.discount), true));
+    if (q.extra > 0) quote.appendChild(lineEl("加人費　" + q.extraPeople + " 人 × " + q.nights.length + " 晚 × " + money(FEE_EXTRA), money(q.extra)));
+    quote.appendChild(lineEl("清潔費（每筆訂單一次）", money(q.clean)));
+
+    var tot = document.createElement("div");
+    tot.className = "tot";
+    var lab = document.createElement("span");
+    lab.textContent = t.name + "　共 " + q.nights.length + "\u00A0晚（其中 " + q.weekendNights + "\u00A0晚週末價），" + people + "\u00A0人";
+    var amt = document.createElement("span"); amt.className = "amt";
+    var cap = document.createElement("b"); cap.textContent = "應付總計";
+    var val = document.createElement("strong"); val.className = "num"; val.id = "quote-total"; val.textContent = money(q.total);
+    amt.appendChild(cap); amt.appendChild(val);
+    tot.appendChild(lab); tot.appendChild(amt);
+    quote.appendChild(tot);
+
+    var tier = tierOf(a);
+    var li = policy.querySelector('li[data-tier="' + tier.key + '"]');
+    if (li) li.classList.add("now");
+
+    if (room) {
+      availMsg.className = "avail";
+      availMsg.textContent = "這幾晚有房：" + t.name + "還有 " + roomsFree(typeId, a, b) + " 間可以訂（系統會排到 "
+        + room + " 號房）。" + human(a) + " 入住、" + human(b) + " 退房，共 " + q.nights.length + " 晚。";
+    } else {
+      availMsg.className = "avail bad";
+      availMsg.textContent = "這幾晚沒有房：" + t.name + "在 " + human(a) + " 到 " + human(b)
+        + " 之間沒有任何一間從頭空到尾。" + whyNoRoom(typeId, a, b) + "請改日期或換房型。";
+    }
+  }
+  function roomsFree(tid, a, b) {
+    var nights = nightsOf(a, b);
+    return TYPES[tid].rooms.filter(function (r) {
+      return nights.every(function (d) { return cellOf(r, d).state === "open"; });
+    }).length;
+  }
+  function whyNoRoom(tid, a, b) {
+    var nights = nightsOf(a, b), reasons = [];
+    TYPES[tid].rooms.forEach(function (r) {
+      nights.forEach(function (d) {
+        var c = cellOf(r, d);
+        if (c.state !== "open") reasons.push(r + " 號房 " + human(d) + " " + STATE_TEXT[c.state]);
+      });
+    });
+    return reasons.length ? "（" + reasons.slice(0, 3).join("、") + "）" : "";
+  }
+
+  function refresh() { renderBoard(); renderQuote(); }
+
+  /* 送出訂房：把房間鎖成「保留中」
+     正式系統接點：正式版要在資料庫同一筆交易裡做，房況保留與訂單建立要一起成功或一起失敗。 */
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    hideAlarm();
+
+    /* 只有「待付款」會擋：那一筆還鎖著房間。已確認／已取消／已退款都能直接送下一筆，
+       同一間房同一晚再訂一次時，交給下面的房況檢查來擋。 */
+    if (order && order.status === "待付款") {
+      showAlarm("目前這一筆還在「保留中」。請先完成付款、等保留逾時，或按「取消訂房」，再送下一筆。");
+      return;
+    }
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    var a = inDate.value, b = outDate.value, people = parseInt(guests.value, 10) || 1;
+    if (!a || !b || nightsBetween(a, b) < 1) { showAlarm("請先選好入住日與退房日，退房日要比入住日晚至少一天。"); return; }
+
+    var room = findRoom(typeId, a, b);
+    if (!room) {
+      showAlarm("擋下來了：" + TYPES[typeId].name + "在 " + human(a) + " 到 " + human(b)
+        + " 之間已經沒有可訂的房間。" + whyNoRoom(typeId, a, b)
+        + "同一間房同一晚只能賣一次，所以這一筆不會成立。請改日期或換房型。");
+      return;
+    }
+
+    var q = quoteOf(typeId, a, b, people);
+    order = {
+      no: "SBM-" + iso(T0).replace(/-/g, "") + "-001",
+      type: typeId, room: room, checkIn: a, checkOut: b, people: people,
+      nights: q.nights, total: q.total,
+      name: $("f-name").value.trim(), email: $("f-email").value.trim(),
+      phone: $("f-phone").value.trim(), note: $("f-note").value.trim(),
+      status: "待付款", holdUntil: new Date(Date.now() + HOLD_MINUTES * 60000),
+      tier: tierOf(a), refund: 0
+    };
+    payment = { status: "未付款", txn: "—" };
+    q.nights.forEach(function (d) { setCell(room, d, "hold", "你剛剛送出的訂房，保留中"); });
+
+    events = [];
+    push("送出訂房", room + " 號房的 " + q.nights.length + " 晚轉成「保留中」，訂單建立為「待付款」。");
+    startHold();
+    refresh(); renderOrder();
+    card.scrollIntoView({ behavior:"smooth", block:"start" });
+  });
+
+  function startHold() {
+    stopHold();
+    holdTimer = setInterval(function () {
+      if (!order || order.status !== "待付款") { stopHold(); return; }
+      if (Date.now() >= order.holdUntil.getTime()) { timeout(true); return; }
+      paintHoldLine();
+    }, 1000);
+  }
+  function stopHold() { if (holdTimer) { clearInterval(holdTimer); holdTimer = null; } }
+
+  function paintHoldLine() {
+    if (!order) return;
+    if (order.status === "待付款") {
+      var ms = Math.max(0, order.holdUntil.getTime() - Date.now());
+      var mm = String(Math.floor(ms / 60000)).padStart(2, "0");
+      var ss = String(Math.floor(ms % 60000 / 1000)).padStart(2, "0");
+      holdLine.innerHTML = "";
+      holdLine.appendChild(document.createTextNode("房間已保留，倒數 "));
+      var s = document.createElement("strong"); s.className = "num"; s.textContent = mm + ":" + ss;
+      holdLine.appendChild(s);
+      holdLine.appendChild(document.createTextNode("　這段時間別人訂不到 " + order.room + " 號房的這幾晚；時間到沒付款，房間自動放回可訂。"));
+    } else if (order.status === "已確認") {
+      holdLine.textContent = "付款已確認，" + order.room + " 號房的這幾晚從「保留中」轉成「已預訂」。訂單編號 " + order.no + "。";
+    } else if (order.status === "已取消") {
+      holdLine.textContent = "訂單已取消，" + order.room + " 號房的這幾晚已經放回「可訂」，別人現在訂得到了。";
+    } else if (order.status === "已退款") {
+      holdLine.textContent = "退款完成（終態）。這筆訂單不會再變動，房間也已經回到「可訂」。";
+    }
+  }
+
+  $("btn-pay-ok").addEventListener("click", function () {
+    if (!order || order.status !== "待付款") return;
+    payment.status = "付款中";
+    renderOrder();
+    push("付款中", "等待金流公司回傳付款結果。");
+    setTimeout(function () {
+      if (!order || order.status !== "待付款") return;
+      payment.status = "付款成功";
+      payment.txn = "TXN-" + Math.floor(Math.random() * 900000 + 100000);
+      order.status = "已確認";
+      /* 連動點：訂單「待付款→已確認」的同一刻，房況「保留中→已預訂」 */
+      order.nights.forEach(function (d) { setCell(order.room, d, "booked", "已確認的訂單"); });
+      stopHold();
+      push("付款成功", "金流公司通知付款成功，訂單轉「已確認」、房況同一刻從「保留中」轉「已預訂」。交易號 " + payment.txn + "。");
+      refresh(); renderOrder();
+    }, 420);
+  });
+
+  $("btn-pay-fail").addEventListener("click", function () {
+    if (!order || order.status !== "待付款") return;
+    payment.status = "付款失敗";
+    push("付款失敗", "訂單留在「待付款」，房況留在「保留中」——保留還沒到期，旅客可以再付一次。");
+    renderOrder();
+  });
+
+  $("btn-timeout").addEventListener("click", function () { timeout(false); });
+
+  function timeout(auto) {
+    if (!order || order.status !== "待付款") return;
+    order.nights.forEach(function (d) { setCell(order.room, d, "open", ""); });
+    order.status = "已取消";
+    payment.status = "未付款";
+    stopHold();
+    push("保留逾時", (auto ? "倒數歸零" : "模擬 15 分鐘到期") + "：房況從「保留中」放回「可訂」，訂單轉「已取消」。");
+    refresh(); renderOrder();
+  }
+
+  $("btn-cancel").addEventListener("click", function () {
+    if (!order || (order.status !== "已確認" && order.status !== "待付款")) return;
+    var wasPaid = order.status === "已確認";
+    order.nights.forEach(function (d) { setCell(order.room, d, "open", ""); });
+    order.status = "已取消";
+    order.refund = wasPaid ? Math.round(order.total * order.tier.pct / 100) : 0;
+    if (!wasPaid) payment.status = "未付款";
+    stopHold();
+    push("取消訂房", "房況立刻放回「可訂」。" + (wasPaid
+      ? ("入住日距今落在「退 " + order.tier.pct + "%」那一階，應退 " + money(order.refund) + "。按「完成退款」走到終態。")
+      : "這筆還沒付過款，沒有退款金額。"));
+    refresh(); renderOrder();
+  });
+
+  $("btn-refund").addEventListener("click", function () {
+    if (!order || order.status !== "已取消") return;
+    order.status = "已退款";
+    payment.status = "已退款";
+    push("已退款", "退 " + money(order.refund) + "（" + order.tier.pct + "%）。訂單與付款都進終態，不可再轉移。");
+    renderOrder();
+  });
+
+  $("btn-reset").addEventListener("click", function () {
+    stopHold(); buildAvail();
+    order = null; payment = null; events = [];
+    form.reset(); setDefaults(); hideAlarm();
+    card.setAttribute("hidden", "");
+    payEmpty.removeAttribute("hidden");
+    refresh();
+  });
+
+  function push(what, detail) {
+    var now = new Date();
+    events.unshift({
+      t: String(now.getHours()).padStart(2,"0") + ":" + String(now.getMinutes()).padStart(2,"0") + ":" + String(now.getSeconds()).padStart(2,"0"),
+      what: what, detail: detail
+    });
+  }
+
+  function roomStateNow() {
+    if (!order) return "—";
+    return STATE_TEXT[cellOf(order.room, order.nights[0]).state];
+  }
+
+  function renderOrder() {
+    if (!order) { card.setAttribute("hidden",""); payEmpty.removeAttribute("hidden"); return; }
+    card.removeAttribute("hidden");
+    payEmpty.setAttribute("hidden","");
+
+    stOrder.textContent = order.status;
+    stRoom.textContent = roomStateNow();
+    stPay.textContent = payment.status;
+    tOrder.className = "track " + (order.status === "已確認" ? "ok" : order.status === "待付款" ? "wait" : "bad");
+    tRoom.className  = "track " + (roomStateNow() === "已預訂" ? "ok" : roomStateNow() === "保留中" ? "wait" : "");
+    tPay.className   = "track " + (payment.status === "付款成功" ? "ok" : payment.status === "付款失敗" ? "bad" : "wait");
+
+    paintHoldLine();
+
+    recap.innerHTML = "";
+    [["訂單編號", order.no],
+     ["房型與房間", TYPES[order.type].name + "　" + order.room + " 號房"],
+     ["入住／退房", human(order.checkIn) + " 15:00 － " + human(order.checkOut) + " 11:00"],
+     ["晚數與人數", order.nights.length + " 晚　" + order.people + " 人"],
+     ["總金額", money(order.total)],
+     ["取消條件", "目前落在「退 " + order.tier.pct + "%」那一階"],
+     ["旅客", order.name + "　" + order.phone + "　" + order.email],
+     ["備註", order.note || "（未填）"]
+    ].forEach(function (p) {
+      var dt = document.createElement("dt"); dt.textContent = p[0];
+      var dd = document.createElement("dd"); dd.textContent = p[1];
+      recap.appendChild(dt); recap.appendChild(dd);
+    });
+
+    log.innerHTML = "";
+    events.forEach(function (e) {
+      var li = document.createElement("li");
+      var b = document.createElement("b"); b.className = "num"; b.textContent = e.t;
+      var s = document.createElement("span"); s.textContent = e.what + "：" + e.detail;
+      li.appendChild(b); li.appendChild(s); log.appendChild(li);
+    });
+
+    $("btn-pay-ok").disabled   = order.status !== "待付款";
+    $("btn-pay-fail").disabled = order.status !== "待付款";
+    $("btn-timeout").disabled  = order.status !== "待付款";
+    $("btn-cancel").disabled   = order.status !== "已確認" && order.status !== "待付款";
+    $("btn-refund").disabled   = order.status !== "已取消";
+  }
+
+  function showAlarm(msg) {
+    alarm.textContent = msg;
+    alarm.removeAttribute("hidden");
+    alarm.scrollIntoView({ behavior:"smooth", block:"center" });
+  }
+  function hideAlarm() { alarm.setAttribute("hidden",""); alarm.textContent = ""; }
+
+  document.querySelectorAll(".types button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      typeId = b.getAttribute("data-type");
+      document.querySelectorAll(".types button").forEach(function (x) {
+        x.setAttribute("aria-pressed", String(x === b));
+      });
+      var t = TYPES[typeId];
+      if (parseInt(guests.value, 10) > t.max) guests.value = String(t.base);
+      refresh();
+    });
+  });
+
+  [inDate, outDate, guests].forEach(function (el) {
+    el.addEventListener("change", function () {
+      if (inDate.value && outDate.value && nightsBetween(inDate.value, outDate.value) < 1) {
+        outDate.value = iso(shift(fromIso(inDate.value), 1));
+      }
+      refresh();
+    });
+  });
+
+  /* 初始值：日期不可選到過去 */
+  function setDefaults() {
+    inDate.min = iso(T0); inDate.max = iso(shift(T0, DAYS - 1));
+    outDate.min = iso(shift(T0, 1)); outDate.max = iso(shift(T0, DAYS));
+    inDate.value = iso(shift(T0, 3));
+    outDate.value = iso(shift(T0, 5));
+    guests.value = "2";
+    typeId = "hinoki";
+    document.querySelectorAll(".types button").forEach(function (x) {
+      x.setAttribute("aria-pressed", String(x.getAttribute("data-type") === "hinoki"));
+    });
+  }
+
+  buildAvail();
+  setDefaults();
+  refresh();
+})();
+</script>
+
+<style id="site-audit-fix">
+img,video{max-width:100%}
+select{max-width:100%;text-overflow:ellipsis}
+a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-space:nowrap}
+@media (min-width:901px){
+  .dayhead{padding-top:12px;padding-bottom:12px;height:auto;min-height:106px}
+}
+.dayhead .w,.rcell .rn{color:#47524c}
+@media (max-width:900px){
+  .top nav{gap:0 12px;flex-wrap:nowrap}
+  .top nav a{font-size:15px;white-space:nowrap}
+  .top nav a.go{padding:9px 12px}
+}
+</style>
+</body>
+</html>

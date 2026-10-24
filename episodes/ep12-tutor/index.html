@@ -1,0 +1,65 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP12 家教媒合網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP12 家教媒合網站</h1><p>媒合條件與雙方責任不能被表單掩蓋。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep12-tutor.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP12 施工規格</h1>
+<p>本規格整理自《網頁設計》第 12 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<h2>網站目標</h2>
+<p>讓家長能提交需求、瀏覽少量精選教師卡片、理解師資審核、試教與媒合流程。</p>
+<h2>必要區塊</h2>
+<ol>
+<li>首頁：平台主張、服務科目、開始媒合按鈕</li>
+<li>家長需求表：年級、科目、地區、預算、目標、可上課時間</li>
+<li>教師卡片：姓名、科目、學歷、年資、時薪、可授課方式、審核狀態</li>
+<li>篩選條件：科目、地區、預算、線上/實體、時段</li>
+<li>媒合流程：提交需求、平台審核、推薦老師、試教、確認</li>
+<li>審核說明：身分驗證、學歷查核、試教回饋、推薦人</li>
+<li>費用保障：媒合費、試教費、取消、退款、替換老師</li>
+</ol>
+<h2>資料模型</h2>
+<p>請示範 ParentRequest、TutorProfile、TutorVerification、AvailabilitySlot、MatchCandidate、TrialLesson。</p>
+<h2>互動示意</h2>
+<p>用少量 JavaScript示範：選擇科目與預算後，教師卡片會被篩選；每位老師顯示「匹配理由」而不是只顯示分數；媒合流程用狀態條呈現。</p>
+<h2>設計要求</h2>
+<p>請做成一個可以直接打開的單一 index.html（HyperText Markup Language，超文字標記語言）檔案，CSS 寫在同檔，使用 RWD。不要出現假學歷、假保證錄取、保證進步等誇大文案。教師卡片最多顯示 3 到 5 位，避免選擇超載。</p>
+<h2>本練習包的素材</h2>
+<p>照片版位使用原創 SVG 示意圖，保留分類、燈箱與版面操作；實際照片由學員另備合法素材。來源記錄見 <code>ATTRIBUTION.md</code>。</p>
+</section>
+<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP12 對話提示卡</h1>
+<p>以下為第 12 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
+<h2>教材提示詞</h2>
+<pre><code class="language-text">你是網頁設計老師與前端工程師。
+幫我做成一個「家教媒合網站」單頁原型。
+
+【網站目標】
+讓家長能提交需求、瀏覽少量精選教師卡片、理解師資審核、試教與媒合流程。
+
+【必要區塊】
+1. 首頁：平台主張、服務科目、開始媒合按鈕
+2. 家長需求表：年級、科目、地區、預算、目標、可上課時間
+3. 教師卡片：姓名、科目、學歷、年資、時薪、可授課方式、審核狀態
+4. 篩選條件：科目、地區、預算、線上/實體、時段
+5. 媒合流程：提交需求、平台審核、推薦老師、試教、確認
+6. 審核說明：身分驗證、學歷查核、試教回饋、推薦人
+7. 費用保障：媒合費、試教費、取消、退款、替換老師
+
+【資料模型】
+請示範 ParentRequest、TutorProfile、TutorVerification、AvailabilitySlot、MatchCandidate、TrialLesson。
+
+【互動示意】
+用少量 JavaScript示範：選擇科目與預算後，教師卡片會被篩選；每位老師顯示「匹配理由」而不是只顯示分數；媒合流程用狀態條呈現。
+
+【設計要求】
+請做成一個可以直接打開的單一 index.html（HyperText Markup Language，超文字標記語言）檔案，CSS 寫在同檔，使用 RWD。不要出現假學歷、假保證錄取、保證進步等誇大文案。教師卡片最多顯示 3 到 5 位，避免選擇超載。
+</code></pre>
+</section>
+<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP12 驗收清單</h1>
+<h2>逐項檢查</h2>
+<p>AI 產出後，請檢查：</p>
+<ul>
+<li>[ ] 家長需求是否包含年級、科目、地區、預算與時段。</li>
+<li>[ ] 教師卡片是否有審核狀態，而不是只寫名校或高分。</li>
+<li>[ ] 搜尋結果是否控制在 3 到 5 位精選，而不是丟出一長串。</li>
+<li>[ ] 媒合流程是否有狀態，不是送出表單後就結束。</li>
+<li>[ ] 費用、試教、取消與替換老師規則是否清楚。</li>
+</ul>
+<h2>主動測試</h2>
+<p>這一講是<strong>媒合站</strong>：有狀態、會卡關，最危險的不是做不出來，是看起來在媒合、其實狀態根本沒走。最招牌的一招：<strong>媒合流程走到一半按重整</strong>，看狀態條是停在原處，還是整個跳回「待推薦」。</p>
+<p><strong>AI 是被告不是法官，畫面才是證據。</strong> 它說沒事不算數，你得自己回畫面親眼看。</p>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>

@@ -1,0 +1,87 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP04 診所預約網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP04 診所預約網站</h1><p>同一診次只保留一份來源，畫面不能假裝已正式鎖位。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep04-clinic.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP04 施工規格</h1>
+<p>本規格整理自《網頁設計》第 4 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<h2>網站目標</h2>
+<p>單頁診所網站，包含醫師簡介、診次表、預約時段選擇、額滿狀態、衛教資訊與交通方式。</p>
+<h2>使用者情境</h2>
+<p>使用者第一次進入網站時，需要在手機上快速判斷這個服務是否適合自己，並能完成主要行動：查看診次、預約時段、理解候診與用藥說明。</p>
+<h2>必要區塊</h2>
+<ol>
+<li>Hero 首頁：診所名稱、科別、醫師主張、預約按鈕</li>
+<li>醫師簡介：學經歷、專長、看診理念</li>
+<li>診次表：一般門診、特殊診別、休診日</li>
+<li>預約時段：日期、時段、名額上限、額滿狀態</li>
+<li>衛教資訊：常見症狀、用藥提醒、複診說明</li>
+<li>交通與候診：地址、停車、即時號碼示意</li>
+</ol>
+<h2>資料欄位</h2>
+<p>請在頁面中示範下列資料結構：</p>
+<ol>
+<li>ClinicProfile：診所名稱、科別、地址、電話</li>
+<li>Doctor：姓名、專長、學經歷、理念</li>
+<li>SessionType：診次名稱、星期、開始時間、結束時間、名額上限</li>
+<li>AppointmentSlot：日期、時段、已預約人數、狀態</li>
+<li>PatientRequest：姓名、聯絡方式、症狀備註、是否慢箋</li>
+<li>ReminderPreference：簡訊提醒、複診提醒、取消規則</li>
+</ol>
+<h2>設計要求</h2>
+<ol>
+<li>請用清楚的 HTML結構與 CSS，幫我做成一個可以直接打開的單一 index.html，CSS 就寫在同一個檔案裡。</li>
+<li>請使用 RWD，手機、平板、桌機都要可讀。</li>
+<li>請避免假評價、假資歷、假價格或過度承諾。</li>
+<li>表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。</li>
+<li>請在容易被誤讀成醫療建議的文字旁加註「本網站僅供預約與資訊參考，不取代醫師當面診斷」。</li>
+</ol>
+<h2>本練習包的素材</h2>
+<p>照片版位使用原創 SVG 示意圖，保留分類、燈箱與版面操作；實際照片由學員另備合法素材。來源記錄見 <code>ATTRIBUTION.md</code>。</p>
+</section>
+<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP04 對話提示卡</h1>
+<p>以下為第 4 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
+<h2>教材提示詞</h2>
+<pre><code class="language-text">你是網頁設計老師與前端工程師。
+請幫我建出一個「診所預約網站」的單頁網站原型。
+
+【網站目標】
+單頁診所網站，包含醫師簡介、診次表、預約時段選擇、額滿狀態、衛教資訊與交通方式。
+
+【使用者情境】
+使用者第一次進入網站時，需要在手機上快速判斷這個服務是否適合自己，並能完成主要行動：查看診次、預約時段、理解候診與用藥說明。
+
+【必要區塊】
+1. Hero 首頁：診所名稱、科別、醫師主張、預約按鈕
+2. 醫師簡介：學經歷、專長、看診理念
+3. 診次表：一般門診、特殊診別、休診日
+4. 預約時段：日期、時段、名額上限、額滿狀態
+5. 衛教資訊：常見症狀、用藥提醒、複診說明
+6. 交通與候診：地址、停車、即時號碼示意
+
+【資料欄位】
+請在頁面中示範下列資料結構：
+1. ClinicProfile：診所名稱、科別、地址、電話
+2. Doctor：姓名、專長、學經歷、理念
+3. SessionType：診次名稱、星期、開始時間、結束時間、名額上限
+4. AppointmentSlot：日期、時段、已預約人數、狀態
+5. PatientRequest：姓名、聯絡方式、症狀備註、是否慢箋
+6. ReminderPreference：簡訊提醒、複診提醒、取消規則
+
+【設計要求】
+1. 請用清楚的 HTML結構與 CSS，幫我做成一個可以直接打開的單一 index.html，CSS 就寫在同一個檔案裡。
+2. 請使用 RWD，手機、平板、桌機都要可讀。
+3. 請避免假評價、假資歷、假價格或過度承諾。
+4. 表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。
+5. 請在容易被誤讀成醫療建議的文字旁加註「本網站僅供預約與資訊參考，不取代醫師當面診斷」。
+</code></pre>
+</section>
+<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP04 驗收清單</h1>
+<h2>逐項檢查</h2>
+<p>AI 產出後，不要只看第一眼漂不漂亮——版面不拘，下列各項齊全就算合格初版。請依序檢查：</p>
+<ul>
+<li>[ ] 每個時段是否有名額上限；額滿時是否改為「額滿」或「候補」，不能再點選。</li>
+<li>[ ] 診次是否能區分可預約、接近額滿、額滿、停診與已結束 — 停診和額滿原因不同，要分開呈現。</li>
+<li>[ ] 是否保留現場掛號或候診資訊，避免網站承諾超過實際現場容量。</li>
+<li>[ ] 複診提醒是否有明確同意文字，且沒有混入行銷授權。</li>
+<li>[ ] 醫療文案是否避免療效保證與恐嚇式語言，手機上是否能快速找到電話、地址與預約入口。</li>
+</ul>
+<h2>主動測試</h2>
+<p>這一講裡病患會<strong>填表</strong>、而且填完<strong>會卡住</strong>（名額、額滿、候補），最容易出「看起來能約、其實後端沒擋」的沉默失敗。最招牌的一撞：選一個「可預約」時段送出，再回去<strong>選同一時段再送一次</strong>，看第二次擋不擋——前端示意常常照收，這就是超賣的破口。</p>
+<p><strong>AI 是被告不是法官，畫面才是證據。</strong> 問寫網站的 AI「額滿會擋住嗎？」它幾乎一定回「會」，但真相只能你自己送兩次、看第二次擋沒擋。</p>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>

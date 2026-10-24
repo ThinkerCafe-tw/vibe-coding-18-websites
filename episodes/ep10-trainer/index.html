@@ -1,0 +1,91 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP10 個人教練網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP10 個人教練網站</h1><p>把專業定位、方案與諮詢流程連成一條路。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep10-trainer.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP10 施工規格</h1>
+<p>本規格整理自《網頁設計》第 10 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<h2>網站目標</h2>
+<p>個人品牌首頁、案例、方案、諮詢表單與課程包說明</p>
+<h2>使用者情境</h2>
+<p>使用者第一次進入網站時，需要在手機上快速判斷這個服務是否適合自己，並能完成主要行動：查看教練定位、案例、方案、諮詢流程與付款前說明。</p>
+<h2>必要區塊</h2>
+<ol>
+<li>Hero 首頁：名稱、定位、主張、主要行動按鈕</li>
+<li>信任證據：真實照片、資歷、評論、規則或案例</li>
+<li>核心流程：查看教練定位、案例、方案、諮詢流程與付款前說明</li>
+<li>課程包與耗課說明：堂數、有效期限、請假／轉讓／退費規則，並示範剩餘堂數查詢（隨上課遞減、接近到期顯示狀態）</li>
+<li>補充品揭露：補充品為選購、是否有利益關係、非醫療聲明</li>
+<li>資料表單：姓名、聯絡方式、情境欄位、備註</li>
+<li>規則說明：價格、限制、取消或退款規則</li>
+<li>聯絡與後續：電話、LINE、Email、地圖或確認訊息</li>
+</ol>
+<h2>資料欄位</h2>
+<p>請在頁面中示範下列資料結構（與表 10-2 一致）：</p>
+<ol>
+<li>TrainerProfile：教練定位、證照、專長、服務對象、限制</li>
+<li>TrainingPackage：堂數、價格、有效期限、適合對象、退費規則</li>
+<li>SessionBooking：日期、地點、課程類型、狀態</li>
+<li>SessionLedger：已購堂數、已上堂數、剩餘堂數、到期日、狀態（使用中／即將到期／完成）</li>
+<li>ProgressRecord：體重、圍度、照片、訓練表現、紀錄日期</li>
+<li>NutritionDisclosure：飲食建議範圍、補充品利益揭露、非醫療聲明</li>
+</ol>
+<h2>設計要求</h2>
+<ol>
+<li>請用清楚的 HTML結構與 CSS，做成一個可以直接打開的單一 index.html，CSS 就寫在同一個檔案裡。</li>
+<li>請使用 RWD，手機、平板、桌機都要可讀。</li>
+<li>請避免假評價、假資歷、假價格或過度承諾。</li>
+<li>表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。</li>
+<li>請在每個區塊用佔位文字標註上線前要替換的真實內容，不要編造資歷、價格與評價。</li>
+</ol>
+<h2>本練習包的素材</h2>
+<p>照片版位使用原創 SVG 示意圖，保留分類、燈箱與版面操作；實際照片由學員另備合法素材。來源記錄見 <code>ATTRIBUTION.md</code>。</p>
+</section>
+<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP10 對話提示卡</h1>
+<p>以下為第 10 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
+<h2>教材提示詞</h2>
+<pre><code class="language-text">你是網頁設計老師與前端工程師。
+請幫我建成一個「個人教練網站」的單頁網站原型。
+
+【網站目標】
+個人品牌首頁、案例、方案、諮詢表單與課程包說明
+
+【使用者情境】
+使用者第一次進入網站時，需要在手機上快速判斷這個服務是否適合自己，並能完成主要行動：查看教練定位、案例、方案、諮詢流程與付款前說明。
+
+【必要區塊】
+1. Hero 首頁：名稱、定位、主張、主要行動按鈕
+2. 信任證據：真實照片、資歷、評論、規則或案例
+3. 核心流程：查看教練定位、案例、方案、諮詢流程與付款前說明
+4. 課程包與耗課說明：堂數、有效期限、請假／轉讓／退費規則，並示範剩餘堂數查詢（隨上課遞減、接近到期顯示狀態）
+5. 補充品揭露：補充品為選購、是否有利益關係、非醫療聲明
+6. 資料表單：姓名、聯絡方式、情境欄位、備註
+7. 規則說明：價格、限制、取消或退款規則
+8. 聯絡與後續：電話、LINE、Email、地圖或確認訊息
+
+【資料欄位】
+請在頁面中示範下列資料結構（與表 10-2 一致）：
+1. TrainerProfile：教練定位、證照、專長、服務對象、限制
+2. TrainingPackage：堂數、價格、有效期限、適合對象、退費規則
+3. SessionBooking：日期、地點、課程類型、狀態
+4. SessionLedger：已購堂數、已上堂數、剩餘堂數、到期日、狀態（使用中／即將到期／完成）
+5. ProgressRecord：體重、圍度、照片、訓練表現、紀錄日期
+6. NutritionDisclosure：飲食建議範圍、補充品利益揭露、非醫療聲明
+
+【設計要求】
+1. 請用清楚的 HTML結構與 CSS，做成一個可以直接打開的單一 index.html，CSS 就寫在同一個檔案裡。
+2. 請使用 RWD，手機、平板、桌機都要可讀。
+3. 請避免假評價、假資歷、假價格或過度承諾。
+4. 表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。
+5. 請在每個區塊用佔位文字標註上線前要替換的真實內容，不要編造資歷、價格與評價。
+</code></pre>
+</section>
+<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP10 驗收清單</h1>
+<h2>逐項檢查</h2>
+<p>AI 產出後，不要只看第一眼漂不漂亮，請依序檢查：</p>
+<ul>
+<li>[ ] 首頁第一屏是否說清楚服務適合誰與下一步是什麼。</li>
+<li>[ ] 課程包是否有堂數、有效期限、請假、轉讓與退費規則，並有耗課紀錄概念讓學員知道剩餘堂數。</li>
+<li>[ ] 成果案例是否避免保證效果或只展示極端成功者。</li>
+<li>[ ] 補充品建議是否清楚揭露選購性與服務邊界。</li>
+<li>[ ] 手機版是否能完成主要行動，且文字與按鈕不重疊。</li>
+</ul>
+<h2>主動測試</h2>
+<p>這一講把學員當客人領進門，業態風險等級偏高——最危險的不是版面醜，是<strong>耗課與課程包的數字看起來對、其實算錯</strong>。最招牌的一個觸發：找「已購 10、已上 3、剩 7」這類數字，自己拿計算機核一遍，再逐頁搜同一個堂數看三處一不一致。</p>
+<p><strong>AI 是被告不是法官，畫面才是證據</strong>——它嘴上說「都對了」不算數，回畫面親手核過才算。</p>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>
