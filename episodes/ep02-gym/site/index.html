@@ -301,7 +301,7 @@ footer .disc{margin:36px 0 0;padding-top:22px;border-top:1px solid rgba(223,227,
   footer .cols{grid-template-columns:1fr;gap:24px}
 }
 </style>
-<script src="../../../assets/form-validation.js?v=20261025fix6" defer></script>
+<script src="../../../assets/form-validation.js?v=20261025fix7" defer></script>
 </head>
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -415,11 +415,11 @@ footer .disc{margin:36px 0 0;padding-top:22px;border-top:1px solid rgba(223,227,
         <div class="plan">
           <h3>私教課包<br>20 堂</h3>
           <p class="price"><span class="num">20,800</span></p>
-          <p class="price-note">元／20 堂・單堂 <span class="num">1,200</span> 元</p>
+          <p class="price-note">元／20 堂・課包平均每堂 <span class="num">1,040</span> 元<br>單次購買每堂 <span class="num">1,200</span> 元</p>
           <dl>
             <dt>期間</dt><dd>有效期限 12 個月，逾期未上不自動延展</dd>
             <dt>限制</dt><dd>每堂 50 分鐘；指定教練；請假須於 12 小時前取消</dd>
-            <dt>退費</dt><dd>依未上堂數以單堂價結算退費，扣除手續費上限 3%</dd>
+            <dt>退費</dt><dd>可退本金＝實付課包金額 × 未上堂數 ÷ 購買堂數；手續費為可退本金的 3%，實退四捨五入至整元。例：實付 20,800 元、上 1 堂，退費＝20,800 × 19 ÷ 20 × 97%＝19,167 元，不以單次購買價計算，且不超過可退本金。</dd>
           </dl>
         </div>
       </div>
@@ -588,7 +588,7 @@ footer .disc{margin:36px 0 0;padding-top:22px;border-top:1px solid rgba(223,227,
         </div>
         <div class="field">
           <label for="f-contact">聯絡方式（手機或 Email）<span class="req" aria-hidden="true">＊</span></label>
-          <input type="text" id="f-contact" name="contact" required autocomplete="tel" placeholder="0912-000-000">
+          <input type="text" id="f-contact" data-contact-kind="email-or-mobile" name="contact" required autocomplete="tel" placeholder="0912-000-000">
           <p class="hint">我們只用這組聯絡方式確認場次，不加入行銷名單。</p>
         </div>
         <div class="field">
@@ -701,12 +701,14 @@ footer .disc{margin:36px 0 0;padding-top:22px;border-top:1px solid rgba(223,227,
       elBody.appendChild(tr);
     });
 
-    btnComplete.disabled = left <= 0;
-    btnComplete.textContent = left <= 0 ? "課包已用完" : "完成一堂";
+    var expired = today() > DUE;
+    btnComplete.disabled = left <= 0 || expired;
+    btnComplete.textContent = expired ? "課包已到期" : left <= 0 ? "課包已用完" : "完成一堂";
+    if (expired) elMsg.textContent = "課包已於 " + DUE + " 到期，剩餘 " + left + " 堂保留供結算，不再扣堂。";
   }
 
   btnComplete.addEventListener("click", function () {
-    if (BOUGHT - used <= 0) return;
+    if (BOUGHT - used <= 0 || today() > DUE) { render(); return; }
     used += 1;
     log.push({ d: today(), c: "林教練", t: "本次課程" });
     render();
@@ -727,9 +729,12 @@ footer .disc{margin:36px 0 0;padding-top:22px;border-top:1px solid rgba(223,227,
   btnReset.addEventListener("click", function () {
     used = START_USED; log = SEED.slice();
     render(); tick(elUsed); tick(elLeft);
+    if (today() > DUE) return;
     elMsg.textContent = "已回到初始狀態：購買 " + BOUGHT + " 堂、已上 " + START_USED + " 堂、剩餘 " + (BOUGHT - START_USED) + " 堂。";
   });
 
+  window.addEventListener("focus", render);
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) render(); });
   render();
 })();
 

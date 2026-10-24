@@ -1929,7 +1929,8 @@
 .textbook-block h2{font-size:32px;line-height:1.45;margin:0 0 20px}.textbook-block p{margin:16px 0}.textbook-block summary{cursor:pointer;font-size:22px;padding:16px 20px}.textbook-block details{border:1px solid #d9ddd8;border-radius:12px;margin:16px 0;padding:8px}.textbook-block details p{padding:0 20px 16px}.textbook-block button,.textbook-block select{font:inherit;padding:14px 22px;min-height:52px;margin:8px;border:1px solid #1f5b4d;border-radius:10px;background:white;color:#1f2825}.textbook-block .selected{background:#1f5b4d;color:white}.textbook-block .booked{background:#eee;color:#666}.textbook-block code{font-size:18px;word-break:break-word}
 @media(max-width:640px){.textbook-block{margin:24px 16px;padding:24px}.textbook-block button,.textbook-block select{max-width:100%;margin:8px 0}}
 </style><style id="lesson-gate-fix">h1,h2,h3{text-wrap:balance}button:disabled{opacity:1!important;color:#394640!important;background:#e2e7e3!important} @media(max-width:640px){.wrap{width:calc(100% - 48px)!important}.textbook-block{padding:24px 20px}.textbook-block h2{font-size:32px;line-height:1.5} #registrationForm .card{padding:20px} #ticket{padding:10px 12px}}
-</style></head>
+</style><script src="../../../assets/form-validation.js?v=20261025fix7" defer></script>
+</head>
 
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -2383,7 +2384,7 @@
             </div>
           </article>
 
-          <form id="waitlistForm" class="card waitlist-form">
+          <form id="waitlistForm" class="card waitlist-form" data-form-feedback="waitlistValidation" data-required-text-message="請填寫候補姓名與聯絡方式。">
             <span class="overline">教學模擬</span>
             <h3>加入早鳥票候補</h3>
 
@@ -2394,7 +2395,7 @@
 
             <div class="field" style="margin-top:16px">
               <label for="waitlistContact">聯絡方式</label>
-              <input id="waitlistContact" placeholder="電子郵件或手機" />
+              <input id="waitlistContact" required data-contact-kind="email-or-mobile" placeholder="電子郵件或手機" />
             </div>
 
             <p id="waitlistValidation" class="validation" aria-live="polite"></p>
@@ -2467,7 +2468,7 @@
         </div>
 
         <div class="form-layout">
-          <form id="registrationForm" class="card" novalidate>
+          <form id="registrationForm" class="card" novalidate data-form-feedback="formValidation" data-required-text-message="請先填寫姓名與聯絡方式。">
             <p data-demo-clock class="note"></p>
             <div class="fields form-grid">
               <div class="field">
@@ -2477,7 +2478,7 @@
 
               <div class="field">
                 <label for="contact">聯絡方式</label>
-                <input id="contact" name="contact" required placeholder="電子郵件或手機" />
+                <input id="contact" data-contact-kind="email-or-mobile" name="contact" required placeholder="電子郵件或手機" />
               </div>
 
               <div class="field full">

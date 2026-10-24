@@ -291,7 +291,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3b4643;padding-top:20px;marg
   footer .sheet{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:36px;padding-bottom:36px}
 }
 </style>
-<script src="../../../assets/form-validation.js?v=20261025fix6" defer></script>
+<script src="../../../assets/form-validation.js?v=20261025fix7" defer></script>
 </head>
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -718,8 +718,8 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3b4643;padding-top:20px;marg
               </div>
               <div class="f">
                 <label for="f-age">年齡 <span class="req">必填</span>
-                  <span class="hint">幾歲幾個月都可以</span></label>
-                <input id="f-age" name="age" type="text" required>
+                  <span class="hint">填非負整數，例如 3歲、0歲3個月或3歲6個月；歲後月份為 0 至 11</span></label>
+                <input id="f-age" data-age-format="pet" name="age" type="text" required>
               </div>
               <div class="f">
                 <label for="f-weight">體重（公斤） <span class="req">必填</span>
@@ -812,7 +812,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3b4643;padding-top:20px;marg
               </div>
               <div class="f">
                 <label for="f-em-phone">緊急聯絡電話 <span class="req">必填</span></label>
-                <input id="f-em-phone" name="emergencyPhone" type="tel" required>
+                <input id="f-em-phone" data-contact-kind="phone" name="emergencyPhone" type="tel" required>
               </div>
             </div>
             <div class="checks">

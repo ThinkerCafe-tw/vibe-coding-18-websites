@@ -284,7 +284,7 @@ footer b{color:var(--y);font-size:20px}
 table.est td.c-st::before{padding-bottom:12px}
 .slot{padding:14px 16px!important;line-height:1.5!important}
 </style>
-<script src="../../../assets/form-validation.js?v=20261025fix6" defer></script>
+<script src="../../../assets/form-validation.js?v=20261025fix7" defer></script>
 </head>
 <body data-picker="grid">
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -692,7 +692,17 @@ table.est td.c-st::before{padding-bottom:12px}
     return yy + "/" + String(mm).padStart(2, "0") + "/" + String(d).padStart(2, "0");
   }
 
+  // Queries and booking confirmations share the last completed maintenance record.
+  let queriedPlate = normPlate($("#q-plate").value);
+  function maintenanceBasis(plate) {
+    if (normPlate(plate) !== VEHICLE.plate) return null;
+    const last = RECORDS[0];
+    return { last, nextKm: last.km + RULE.km, nextDate: addMonths(last.date, RULE.months) };
+  }
+
   function renderRecords(plate) {
+    queriedPlate = normPlate(plate);
+    renderReminder();
     const found = normPlate(plate) === VEHICLE.plate;
     const box = $("#rec-list");
     const head = $("#rec-head");
@@ -720,8 +730,17 @@ table.est td.c-st::before{padding-bottom:12px}
     target.textContent=message; target.hidden=!message;
   }
   function renderReminder() {
-    const last = RECORDS[0];
-    const nextKm = last.km + RULE.km;
+    const basis = maintenanceBasis(queriedPlate);
+    if (!basis) {
+      $("#rail").replaceChildren();
+      $("#rem-km").textContent = "車牌 " + queriedPlate + " 尚無已完成保養紀錄，無法依歷史推算下次保養里程與日期。";
+      $("#rem-prog").textContent = "完成保養並登錄紀錄後，再依該車紀錄計算。";
+      $("#rem-time").textContent = "";
+      $("#rem-out").dataset.reached = "0";
+      mileageError($("#cur-mi"), $("#cur-mi-error"), "");
+      return;
+    }
+    const { last, nextKm, nextDate } = basis;
     const value = $("#cur-mi").value.trim();
     const ok = validMileage(value), cur = ok ? Number(value) : NaN;
     mileageError($("#cur-mi"), $("#cur-mi-error"), ok ? "" : "請填 0 至 9999999 的整數公里數，不含負號、小數或文字。");
@@ -733,9 +752,9 @@ table.est td.c-st::before{padding-bottom:12px}
     $("#rail").innerHTML =
       "<div class=\"rail-bar\" role=\"img\" aria-label=\"里程進度 " + pct + "%\"><i style=\"width:" + pct + "%\"></i></div>" +
       "<ol class=\"rail-ticks\"><li><b>" + fmt(last.km) + "</b><span>上次保養</span></li><li><b>" + (ok ? fmt(cur) : "—") + "</b><span>目前</span></li><li><b>" + fmt(nextKm) + "</b><span>建議檢查</span></li></ol>";
-    $("#rem-km").textContent = "上次保養紀錄顯示您的車輛里程為 " + fmt(last.km) + " 公里，建議在 " + fmt(nextKm) + " 公里左右檢查機油與濾芯。若近期已在其他地方保養，可忽略此提醒。";
+    $("#rem-km").textContent = "車牌 " + queriedPlate + " 的上次保養紀錄顯示里程為 " + fmt(last.km) + " 公里，建議在 " + fmt(nextKm) + " 公里左右檢查機油與濾芯。若近期已在其他地方保養，可忽略此提醒。";
     $("#rem-prog").textContent = prog;
-    $("#rem-time").textContent = "時間提醒：距離上次保養（" + last.date + "）滿 " + RULE.months + " 個月的日期是 " + addMonths(last.date, RULE.months) + "；里程與時間，先到的那一個提醒您。";
+    $("#rem-time").textContent = "時間提醒：距離上次保養（" + last.date + "）滿 " + RULE.months + " 個月的日期是 " + nextDate + "；里程與時間，先到的那一個提醒您。";
     $("#rem-out").dataset.reached = ok && cur >= nextKm ? "1" : "0";
   }
 
@@ -785,9 +804,10 @@ table.est td.c-st::before{padding-bottom:12px}
     $("#c-when").textContent = day.md + "（週" + day.wd + "）" + slot.t;
     $("#c-plate").textContent = plate;
     $("#c-svc").textContent = svc.length ? svc.join("、") : "到廠後一起檢查";
-    $("#c-next").textContent = Number.isFinite(mileage) && mileage >= 0
-      ? "目前 " + fmt(mileage) + " 公里，約 " + fmt(mileage + RULE.km) + " 公里或 " + RULE.months + " 個月後（先到的那一個）提醒您回廠；提醒文字以上次紀錄為據，隨時可以請我們停止提醒。"
-      : "里程請到廠時補登；時間提醒是 " + RULE.months + " 個月後，隨時可以請我們停止提醒。";
+    const basis = maintenanceBasis(plate);
+    $("#c-next").textContent = basis
+      ? "車牌 " + plate + " 上次完成保養為 " + basis.last.date + "、" + fmt(basis.last.km) + " 公里；下次建議 " + fmt(basis.nextKm) + " 公里或 " + basis.nextDate + "（先到者）。本次僅預約，不會重設保養週期；隨時可以請我們停止提醒。"
+      : "車牌 " + plate + " 尚無已完成保養紀錄，無法依歷史推算下次保養里程與日期。本次僅預約；完成保養並登錄後再計算。";
     $("#confirm").hidden = false;
     if (leftOf(day, slot) <= 0) sel.slot = null;
     renderAll();

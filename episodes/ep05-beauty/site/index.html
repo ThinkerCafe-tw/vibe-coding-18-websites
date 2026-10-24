@@ -212,7 +212,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<script src="../../../assets/form-validation.js?v=20261025fix6" defer></script>
+<script src="../../../assets/form-validation.js?v=20261025fix7" defer></script>
 </head>
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -592,11 +592,11 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
         staffError("這位美容師不提供所選服務，請重新選擇。"); staff.focus(); return;
       }
       if (!$("book-form").reportValidity()) return;
-      var appointment = {id:"A-NEW-"+String(++appointmentSequence).padStart(3,"0"),date:date.value,time:$("b-time").value,svc:s.id,who:staff.value,status:"待確認"};
+      var appointment = {id:"A-NEW-"+String(++appointmentSequence).padStart(3,"0"),date:date.value,time:$("b-time").value,svc:s.id,who:staff.value,note:$("b-note").value.trim(),status:"待確認"};
       APPTS.push(appointment);
       renderModel(); renderDash();
-      renderDemoRecords("book-result", APPTS.filter(function(a){return a.id.indexOf("A-NEW-")===0;}).map(function(a){return {id:a.id,title:svc(a.svc).name+"｜"+a.status,fields:[["日期與時段",a.date+" "+a.time],["服務",svc(a.svc).name],["美容師",a.who],["價格", "NT$ "+fmt(svc(a.svc).price)],["狀態",a.status]]};}));
-      $("book-echo").textContent = appointment.id + "｜" + s.name + "｜" + $("b-staff").value + "｜" + $("b-date").value + " " + $("b-time").value + "｜NT$ " + fmt(s.price);
+      renderDemoRecords("book-result", APPTS.filter(function(a){return a.id.indexOf("A-NEW-")===0;}).map(function(a){return {id:a.id,title:svc(a.svc).name+"｜"+a.status,fields:[["日期與時段",a.date+" "+a.time],["服務",svc(a.svc).name],["美容師",a.who],["價格", "NT$ "+fmt(svc(a.svc).price)],["狀態",a.status],["備註",a.note||"未填"]]};}));
+      $("book-echo").textContent = appointment.id + "｜" + s.name + "｜" + appointment.who + "｜" + appointment.date + " " + appointment.time + "｜NT$ " + fmt(s.price) + "｜備註：" + (appointment.note || "未填");
       $("book-result").hidden = false;
       $("book-result").scrollIntoView({ block: "nearest" });
     });
