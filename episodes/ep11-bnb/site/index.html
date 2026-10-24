@@ -1122,6 +1122,13 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     hideAlarm();
+    // Refresh the lower bound when submitting a page left open across midnight.
+    inDate.min = iso(today());
+    outDate.min = iso(shift(today(), 1));
+    if (inDate.value && inDate.value < inDate.min) {
+      showAlarm("入住日不能早於今天（" + inDate.min + "），請重新選擇日期。");
+      return;
+    }
 
     /* 只有「待付款」會擋：那一筆還鎖著房間。已確認／已取消／已退款都能直接送下一筆，
        同一間房同一晚再訂一次時，交給下面的房況檢查來擋。 */

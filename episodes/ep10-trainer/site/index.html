@@ -730,8 +730,8 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
               <p class="note" data-f="says">—</p>
               <div class="ops">
                 <button type="button" data-do="attend">完成一堂課</button>
-                <button type="button" data-do="leave">請假改期</button>
-                <button type="button" data-do="noshow">當日取消／未出席（扣一堂）</button>
+                <button type="button" data-do="leave">提前至少 12 小時請假改期</button>
+                <button type="button" data-do="noshow">未滿 12 小時取消／未出席（扣一堂）</button>
                 <button type="button" class="reset" data-do="reset">回到初始狀態</button>
               </div>
             </div>
@@ -776,7 +776,7 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
 
           <ul class="five">
             <li data-i="01">課包有效期限：基礎包 <span style="white-space:nowrap">6 個月</span>、續訓包 <span style="white-space:nowrap">12 個月</span>，從售出日起算，寫在每一份課包上。</li>
-            <li data-i="02">請假與改期：上課前 12 小時以電話或 LINE 告知，可免費改期，<strong>不扣堂數</strong>；當日取消／未出席，計為一堂。</li>
+            <li data-i="02">請假與改期：至少於上課前 12 小時以電話或 LINE 告知（含恰好 12 小時），可免費改期，<strong>不扣堂數</strong>；未滿 12 小時取消／未出席，計為一堂。</li>
             <li data-i="03">剩餘堂數怎麼查：每堂課結束當場對一次數字，另外每月 1 日用 LINE 給你一份紀錄。你也可以隨時要當月明細。</li>
             <li data-i="04">課後紀錄：每堂課後會給一份當天做了什麼、下次要注意什麼的簡短紀錄，這份是給你留著的。</li>
             <li data-i="05">進度照片：<strong>要不要拍、拍了要不要公開，都要你另外簽同意</strong>。不同意照樣可以上課，也照樣有訓練表現的數字紀錄。</li>
@@ -789,7 +789,7 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
             </div>
             <div>
               <b>請假與改期</b>
-              <p>至少於上課前 12 小時告知不扣堂。同一份課包內改期次數不限，但連續兩個月完全沒有排課會主動找你確認。</p>
+              <p>至少於上課前 12 小時告知不扣堂（含恰好 12 小時），即使是上課當天也相同；未滿 12 小時取消或未出席才扣一堂。同一份課包內改期次數不限，但連續兩個月完全沒有排課會主動找你確認。</p>
             </div>
             <div>
               <b>轉讓</b>
@@ -911,7 +911,7 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
             <div>
               <b>取消與退款</b>
               <ul>
-                <li>單堂：至少於上課前 12 小時告知可免費改期；當日取消／未出席，計為一堂。</li>
+                <li>單堂：至少於上課前 12 小時告知（含恰好 12 小時）可免費改期，不扣堂；未滿 12 小時取消／未出席，計為一堂。</li>
                 <li>課包：未上完堂數依比例退費，行政費比例購買前書面告知。</li>
                 <li>教練因故無法帶課，該堂不扣並補回期限。</li>
                 <li>轉讓一次，剩餘堂數與到期日不重新起算。</li>
@@ -1072,7 +1072,7 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
    規則：
      · 完成一堂課       → 已上堂數 +1（剩餘 −1）
      · 請假改期         → 只改 SessionBooking 的狀態，不扣堂數
-     · 當日取消／未出席       → 才扣堂
+     · 未滿 12 小時取消／未出席       → 才扣堂
      · 剩餘 > 0 且距到期 ≤ 30 天 → 即將到期
      · 剩餘歸零或已逾期結算       → 完成
    最重要的一條：剩餘堂數 = bought − used，永遠算出來，
@@ -1121,7 +1121,7 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
     if (state === "即將到期") {
       return "距到期日 " + NEAR_DAYS + " 天內、還有剩餘堂數，就會轉成這個狀態。剩下的堂數請在到期日前排完，排不完可以申請延期一次。";
     }
-    return "每完成一堂課，剩餘堂數就少一堂。請假改期不扣堂；只有當日取消／未出席，才會計為一堂。改期次數目前 " + moved + " 次。";
+    return "每完成一堂課，剩餘堂數就少一堂。提前至少 12 小時請假改期不扣堂；只有未滿 12 小時取消／未出席，才會計為一堂。改期次數目前 " + moved + " 次。";
   }
 
   /* 三處顯示同一個值：耗課列、右側欄、表單旁的 data-f="left" 全部一起寫 */
@@ -1196,14 +1196,14 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
       if (act === "leave") {
         moved += 1;
         paint(false);
-        write("請假改期（第 " + moved + " 次）：這一堂的狀態從「已預約」改成「已改期」，剩餘堂數還是 " + left() + " 堂——請假不扣堂，這是課包規則裡寫明的。");
+        write("提前至少 12 小時請假改期（第 " + moved + " 次）：這一堂的狀態從「已預約」改成「已改期」，剩餘堂數還是 " + left() + " 堂——請假不扣堂，這是課包規則裡寫明的。");
         return;
       }
 
       if (act === "noshow") {
         pkg.used += 1;
         paint(true);
-        write("當日取消／未出席：當日取消／未出席，這一堂計為已上。已上堂數 " + (pkg.used - 1) + " → " + pkg.used + "，剩餘堂數 " + (left() + 1) + " → " + left() + " 堂。" +
+        write("未滿 12 小時取消／未出席：未滿 12 小時取消／未出席，這一堂計為已上。已上堂數 " + (pkg.used - 1) + " → " + pkg.used + "，剩餘堂數 " + (left() + 1) + " → " + left() + " 堂。" +
               "這是唯一會在沒上到課的情況下扣堂的狀況，規則寫在下面第 02 條。");
       }
     });

@@ -365,7 +365,8 @@ table.est td.c-st::before{padding-bottom:12px}
     <div class="sec-head"><p class="tag">03／06　預約與車籍</p><h2>看排程板，選一格，預約保養</h2><p>每個時段收 3 台，灰色斜紋的是已額滿，點不下去。選好時段再填車主與車輛資料。</p></div>
     <div class="book">
       <div class="board">
-        <h3>本週時段</h3>
+        <h3>示範時段</h3>
+        <p id="demo-date">固定教學基準日：2026/10/09。下列為 2026/10/09–10/14 的示範時段與名額，供預約流程練習。</p>
         <div id="slot-list" role="group" aria-label="選日期與時段"></div>
         <p id="pick-summary" aria-live="polite">還沒選時段</p>
       </div>
@@ -725,28 +726,36 @@ table.est td.c-st::before{padding-bottom:12px}
   function validMileage(value) {
     return /^[0-9]{1,7}$/.test(value) && Number.isSafeInteger(Number(value));
   }
+  function mileageMessage(value, plate, optional) {
+    if (!value && optional) return "";
+    if (!validMileage(value)) return "請填 0 至 9999999 的整數公里數，不含負號、小數或文字。";
+    const basis = maintenanceBasis(plate);
+    return basis && Number(value) < basis.last.km
+      ? "目前里程不得低於同車最後完成保養的 " + fmt(basis.last.km) + " 公里。請核對車牌與里程；若曾更換儀表，請先聯絡店家核實紀錄。"
+      : "";
+  }
   function mileageError(input, target, message) {
     input.setCustomValidity(message); input.setAttribute("aria-invalid", String(!!message));
     target.textContent=message; target.hidden=!message;
   }
   function renderReminder() {
     const basis = maintenanceBasis(queriedPlate);
+    const value = $("#cur-mi").value.trim();
+    const message = mileageMessage(value, queriedPlate, false);
+    const ok = !message, cur = ok ? Number(value) : NaN;
+    mileageError($("#cur-mi"), $("#cur-mi-error"), message);
     if (!basis) {
       $("#rail").replaceChildren();
       $("#rem-km").textContent = "車牌 " + queriedPlate + " 尚無已完成保養紀錄，無法依歷史推算下次保養里程與日期。";
       $("#rem-prog").textContent = "完成保養並登錄紀錄後，再依該車紀錄計算。";
       $("#rem-time").textContent = "";
       $("#rem-out").dataset.reached = "0";
-      mileageError($("#cur-mi"), $("#cur-mi-error"), "");
       return;
     }
     const { last, nextKm, nextDate } = basis;
-    const value = $("#cur-mi").value.trim();
-    const ok = validMileage(value), cur = ok ? Number(value) : NaN;
-    mileageError($("#cur-mi"), $("#cur-mi-error"), ok ? "" : "請填 0 至 9999999 的整數公里數，不含負號、小數或文字。");
     const pct = ok ? Math.max(0, Math.min(100, Math.round((cur - last.km) / RULE.km * 100))) : 0;
     let prog;
-    if (!ok) prog = "輸入目前里程，就能看到距離下次建議里程還有多遠。";
+    if (!ok) prog = "請先核對目前里程，再計算距離下次保養的公里數。";
     else if (cur < nextKm) prog = "目前 " + fmt(cur) + " 公里，距離 " + fmt(nextKm) + " 公里還有 " + fmt(nextKm - cur) + " 公里。";
     else prog = "目前 " + fmt(cur) + " 公里，已到建議的 " + fmt(nextKm) + " 公里，下次進廠可以一併檢查機油與濾芯。";
     $("#rail").innerHTML =
@@ -785,7 +794,7 @@ table.est td.c-st::before{padding-bottom:12px}
   form.addEventListener("submit", e => {
     e.preventDefault();
     const rawMileage=$("#f-mileage").value.trim();
-    mileageError($("#f-mileage"), $("#mileage-error"), !rawMileage || validMileage(rawMileage) ? "" : "里程請填 0 至 9999999 的整數。");
+    mileageError($("#f-mileage"), $("#mileage-error"), mileageMessage(rawMileage, $("#f-plate").value, true));
     if (!form.reportValidity()) return;
     if (!sel.slot) { say("請先選一個日期與時段。", "warn"); return; }
     const day = dayOf(sel.day), slot = slotOf(sel.slot);
@@ -817,10 +826,14 @@ table.est td.c-st::before{padding-bottom:12px}
   /* ---------- 其他互動 ---------- */
   $("#q-form").addEventListener("submit", e => { e.preventDefault(); renderRecords($("#q-plate").value); });
   $("#cur-mi").addEventListener("input", renderReminder);
-  $("#f-mileage").addEventListener("input", () => {
-    const value=$("#f-mileage").value.trim();
-    mileageError($("#f-mileage"), $("#mileage-error"), !value || validMileage(value) ? "" : "里程請填 0 至 9999999 的整數。");
-    $("#confirm").hidden=true;
+  function validateBookingMileage() {
+    const value = $("#f-mileage").value.trim();
+    mileageError($("#f-mileage"), $("#mileage-error"), mileageMessage(value, $("#f-plate").value, true));
+    $("#confirm").hidden = true;
+  }
+  ["#f-mileage", "#f-plate"].forEach(id => {
+    $(id).addEventListener("input", validateBookingMileage);
+    $(id).addEventListener("change", validateBookingMileage);
   });
 
   renderServices();

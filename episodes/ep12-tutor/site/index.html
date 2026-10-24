@@ -721,6 +721,8 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
         </div>
       </div>
 
+      <div class="trial" id="trial-history" hidden><h3>歷次試教紀錄</h3><div id="trial-history-list"></div></div>
+
       <p class="note" id="rail-say" aria-live="polite" style="margin-top:22px">你還沒有送出需求。填完上面那張表，這條進度就會開始走。</p>
 
       <div class="logbox">
@@ -947,7 +949,8 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
                   { to: "rejected", act: "老師拒絕", by: "老師", stop: true },
                   { to: "cancelled", act: "家長取消", by: "家長", stop: true },
                   { to: "re", act: "重新推薦", by: "家長" }],
-    done:        [{ to: "matched", act: "雙方確認，媒合成功", by: "雙方", key: true }],
+    done:        [{ to: "matched", act: "雙方確認，媒合成功", by: "雙方", key: true },
+                  { to: "re", act: "重新推薦", by: "家長" }],
     re:          [{ to: "pending", act: "回到待推薦", by: "平台", key: true }],
     rejected: [], cancelled: [], matched: []
   };
@@ -956,7 +959,7 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
     pending: "需求已收到，平台正在審核。1 個工作天內會推薦 3 到 5 位已驗證的老師給你。",
     recommended: "請從符合這筆需求的老師中挑選一位，才可安排免費試教。",
     trial: "試教已排定。老師可以接受或拒絕；你也可以取消，或請平台重新推薦別人。",
-    done: "試教完成了。雙方回饋都收到，確認之後這筆媒合才算成立。",
+    done: "試教完成了。滿意可由雙方確認媒合成功；不滿意可按「重新推薦」更換老師，需求與原試教紀錄會保留。",
     matched: "媒合成功。介紹費在這一刻才向老師收取，你不必再付第二次刊登費。",
     rejected: "老師婉拒了這一筆。這是終態，不會再轉移。你可以重新送一次需求，刊登費不重複收。",
     cancelled: "你取消了這一筆。這是終態，不會再轉移。刊登費依規則退還五成。",
@@ -1161,7 +1164,20 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
       var hour=String(Number(slot.from.split(":")[0])+1).padStart(2,"0")+":"+slot.from.split(":")[1];
       st.trialRecord={teacherId:teacher.id,when:slot.day+" "+slot.from+"–"+hour+"（日期待雙方確認）",place:slot.how==="線上"?"線上":teacher.areaName+"實體，地址待雙方確認",fee:"首次免費（60 分鐘）"};
     }
-    if (to==="re") { st.tutor=null; st.trialRecord=null; }
+    if (to === "re") {
+      // Archive a snapshot before selecting another tutor; the original request stays locked.
+      if (st.trialRecord) {
+        st.trialHistory = st.trialHistory || [];
+        st.trialHistory.push(Object.assign({}, st.trialRecord, {
+          result: st.state === "done" ? "已完成，申請更換老師" : "安排中，申請重新推薦",
+          feedback: st.state === "done" ? "已收到雙方回饋" : "尚未進行",
+          archivedAt: stamp()
+        }));
+      }
+      st.tutor = null;
+      st.trialRecord = null;
+    }
+    hideAlarm();
     st.log.push({ at: stamp(), from: LABEL[st.state], to: LABEL[to], act: act, by: by });
     st.state = to;
     save();
@@ -1238,6 +1254,20 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
       trial.setAttribute("hidden", "");
     }
 
+    var history = st.trialHistory || [];
+    $("trial-history").hidden = history.length === 0;
+    $("trial-history-list").replaceChildren();
+    history.forEach(function (record, i) {
+      var teacher = byId(record.teacherId);
+      var item = el("article");
+      item.appendChild(el("h4", null, "第 " + (i + 1) + " 次：" + (teacher ? teacher.name : record.teacherId)));
+      var dl = el("dl");
+      [["時間", record.when], ["地點", record.place], ["費用", record.fee],
+       ["結果", record.result], ["回饋", record.feedback]].forEach(function (row) {
+        dl.appendChild(el("dt", null, row[0])); dl.appendChild(el("dd", null, row[1]));
+      });
+      item.appendChild(dl); $("trial-history-list").appendChild(item);
+    });
     renderRail();
     renderLog();
   }
@@ -1289,12 +1319,17 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
       showAlarm("還沒有送出需求，所以還沒有可以掛上去的媒合紀錄。請先填完上面那張家長需求表。");
       return;
     }
-    if (st.state !== "recommended" && st.state !== "pending") {
-      showAlarm("這一筆已經走到「" + LABEL[st.state] + "」，不能在這個狀態換人。要換老師請在媒合流程那一區按「重新推薦」。");
-      return;
-    }
     if (!fitsRequest(byId(id))) {
       showAlarm("這位老師與已送出的年級、科目、預算、地區或時段不符，請選擇符合需求的老師。"); return;
+    }
+    if (st.state !== "recommended") {
+      var action = st.state === "trial" || st.state === "done"
+        ? "要換老師請在媒合流程按「重新推薦」。"
+        : st.state === "re" ? "請先按「回到待推薦」，再完成平台審核。"
+        : st.state === "pending" ? "請先按「平台完成審核，查看符合需求的老師」。"
+        : "這筆已結束；另建需求請按「回到初始狀態」。";
+      showAlarm("這一筆目前是「" + LABEL[st.state] + "」。" + action);
+      return;
     }
     hideAlarm();
     st.tutor = id;

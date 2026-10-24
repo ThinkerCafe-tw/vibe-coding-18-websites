@@ -311,7 +311,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
         <div class="fields">
           <div><label for="r-name">姓名</label><input id="r-name" name="name" type="text" required autocomplete="name"></div>
           <div><label for="r-phone">手機</label><input id="r-phone" name="phone" type="tel" required pattern="09[0-9]{8}" inputmode="numeric" placeholder="例如 0912000000" autocomplete="tel"></div>
-          <div><label for="r-birth">生日</label><input id="r-birth" name="birthday" type="date"></div>
+          <div><label for="r-birth">生日</label><input id="r-birth" name="birthday" type="date" aria-describedby="birth-tip birth-error"><p class="sub" id="birth-tip">選填；生日不得晚於固定教學基準日 <span id="birth-limit"></span>。</p><p class="sub" id="birth-error" role="alert" hidden></p></div>
           <div><label for="r-service">偏好服務</label><select id="r-service" name="service"><option value="">還沒決定</option></select></div>
           <div class="full"><label class="check" for="r-consent"><input id="r-consent" name="consent" type="checkbox" required><span>我同意店家為了預約與會員服務，使用我填寫的姓名、手機與生日。這些資料不會用在其他行銷用途。</span></label></div>
         </div>
@@ -603,8 +603,23 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
     ["input", "change", "invalid"].forEach(function (event) {
       $("book-form").addEventListener(event, function () { $("book-result").hidden = true; }, true);
     });
+    var birth = $("r-birth");
+    birth.max = TODAY;
+    $("birth-limit").textContent = TODAY;
+    function validateBirth() {
+      var message = birth.value && birth.value > TODAY ? "生日不得晚於教學基準日 " + TODAY + "，請核對出生日期。" : "";
+      birth.setCustomValidity(message);
+      birth.setAttribute("aria-invalid", String(!!message));
+      $("birth-error").textContent = message;
+      $("birth-error").hidden = !message;
+    }
+    ["input", "change", "invalid"].forEach(function (type) { birth.addEventListener(type, validateBirth); });
+    $("reg-form").addEventListener("reset", function () { birth.setCustomValidity(""); $("birth-error").hidden = true; });
     $("reg-form").addEventListener("submit", function (e) {
       e.preventDefault();
+      $("reg-result").hidden = true;
+      validateBirth();
+      if (!$("reg-form").reportValidity()) return;
       $("reg-echo").textContent = $("r-name").value + "｜" + $("r-phone").value + "｜偏好：" + (svc($("r-service").value) ? svc($("r-service").value).name : "尚未選擇");
       $("reg-result").hidden = false;
       $("reg-result").scrollIntoView({ block: "nearest" });

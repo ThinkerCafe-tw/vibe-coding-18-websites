@@ -3044,6 +3044,12 @@
         document.querySelector("#process").scrollIntoView({ behavior: "smooth" });
       }
 
+      function normalizedContact(value) {
+        const trimmed = value.trim();
+        return trimmed.includes("@") ? trimmed.toLowerCase()
+          : trimmed.replace(/[()\s-]/g, "").replace(/^\+886/, "0");
+      }
+
       function addWaitlist(event) {
         event.preventDefault();
 
@@ -3067,11 +3073,12 @@
         }
 
         const duplicate = state.waitlist.some(
-          item => item.name === name && ["waiting", "reserved"].includes(item.status)
+          item => item.name.trim() === name && normalizedContact(item.contact) === normalizedContact(contact)
+            && ["waiting", "reserved"].includes(item.status)
         );
 
         if (duplicate) {
-          $("#waitlistValidation").textContent = "這個姓名已有進行中的候補紀錄。";
+          $("#waitlistValidation").textContent = "這個姓名與聯絡方式已有進行中的候補紀錄。";
           return;
         }
 

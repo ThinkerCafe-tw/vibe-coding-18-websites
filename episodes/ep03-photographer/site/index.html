@@ -591,8 +591,9 @@ footer .fine{margin:44px 0 0;padding-top:24px;border-top:1px solid var(--line);f
         <div class="pair">
           <div class="f">
             <label for="f-date">預計日期<span class="star" aria-hidden="true">＊</span></label>
-            <input type="date" id="f-date" name="shoot_date" required>
-            <p class="tip">還沒定案沒關係，先填一個大概的日期就好。</p>
+            <input type="date" id="f-date" name="shoot_date" required aria-describedby="date-tip date-error">
+            <p class="tip" id="date-tip">請填今天或之後的日期，以裝置當地日期為準。還沒定案可先填預估日期。</p>
+            <p class="tip" id="date-error" role="alert" hidden></p>
           </div>
           <div class="f">
             <label for="f-place">拍攝地點<span class="star" aria-hidden="true">＊</span></label>
@@ -837,8 +838,29 @@ var Table = (function () {
     name: "姓名", email: "Email", phone: "電話", shoot_type: "拍攝類型",
     shoot_date: "預計日期", location: "拍攝地點", budget: "預算區間", message: "需求說明"
   };
+  var shootDate = document.getElementById("f-date");
+  function validateDate() {
+    var now = new Date();
+    var today = now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0") + "-" + String(now.getDate()).padStart(2, "0");
+    shootDate.min = today;
+    var message = shootDate.value && shootDate.value < today ? "預計日期不能早於今天（" + today + "），請重新選擇。" : "";
+    shootDate.setCustomValidity(message);
+    shootDate.setAttribute("aria-invalid", String(!!message));
+    document.getElementById("date-error").textContent = message;
+    document.getElementById("date-error").hidden = !message;
+    return !message;
+  }
+  shootDate.addEventListener("input", validateDate);
+  shootDate.addEventListener("change", validateDate);
+  shootDate.addEventListener("invalid", validateDate);
+  form.addEventListener("reset", function () { shootDate.setCustomValidity(""); document.getElementById("date-error").hidden = true; });
+  validateDate();
   form.addEventListener("submit", function (e) {
     e.preventDefault();                 // 示範站不送到伺服器
+    done.hidden = true;
+    // Recheck at submission so a page left open across midnight uses the new day.
+    validateDate();
+    if (!form.reportValidity()) return;
     var data = new FormData(form);
     echo.innerHTML = "";
     Object.keys(LABEL).forEach(function (k) {

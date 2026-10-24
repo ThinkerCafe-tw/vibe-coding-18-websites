@@ -174,6 +174,10 @@
 <ul>
 <li>報價與送出共用房型人數驗證：入住人數必須為正整數且不超過房型上限；檜木雙人房最多 3 人，四人房最多 6 人。無效時不建立訂單、不保留房間、不開放付款；換房型後重新核對。</li>
 </ul>
+<h2>跨日日期驗證</h2>
+<ul>
+<li>入住日不得早於裝置當地今天；頁面跨午夜後送出仍更新日期下界並阻擋昨日入住，不新增訂單或保留房間。一般未來日期的訂房與付款流程維持可用。</li>
+</ul>
 </section>
 <section id="prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0" hidden><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP11 對話提示卡</h1>
 <p>以下為第 11 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
@@ -230,6 +234,10 @@
 <li><p>沿用本公開套件時，請保留 ZIP 內的共用驗證程式與相對路徑，解壓後可直接開啟 index.html。</p>
 </li>
 </ul>
+<h2>跨日日期驗證</h2>
+<ul>
+<li>入住日不得早於裝置當地今天；頁面跨午夜後送出仍更新日期下界並阻擋昨日入住，不新增訂單或保留房間。一般未來日期的訂房與付款流程維持可用。</li>
+</ul>
 </section>
 <section id="verify" role="tabpanel" aria-labelledby="tab-verify" tabindex="0" hidden><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP11 驗收清單</h1>
 <h2>逐項檢查</h2>
@@ -277,5 +285,9 @@
 <ul>
 <li>[ ] 檜木雙人房選 4 或 6 人，填完合法聯絡資料送出，應顯示人數錯誤且無新訂單、無保留房；3 人可建單及付款。</li>
 <li>[ ] 四人房 6 人可正常訂房；從四人房改雙人房後，依新房型上限重新核對。</li>
+</ul>
+<h2>跨日日期驗證回驗</h2>
+<ul>
+<li>[ ] 入住日不得早於裝置當地今天；頁面跨午夜後送出仍更新日期下界並阻擋昨日入住，不新增訂單或保留房間。一般未來日期的訂房與付款流程維持可用。</li>
 </ul>
 </section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer><noscript><style>[role="tabpanel"][hidden]{display:block}</style><p>未啟用 JavaScript，以下內容以連續段落呈現；可使用標題連結瀏覽。</p></noscript></body></html>
