@@ -43,7 +43,7 @@ function renderPublishedCard(episode) {
   const done = completed.has(episode.slug);
   return `
     <article class="episode-card published">
-      <div class="episode-thumb">
+      <a class="episode-thumb" href="episodes/${episode.slug}/site/" aria-label="開啟 EP${episode.number} ${episode.title}">
         <img
           src="${episode.image}"
           alt="EP${episode.number} ${episode.title}成品預覽"
@@ -52,12 +52,12 @@ function renderPublishedCard(episode) {
           loading="lazy"
         >
         <span class="episode-status">${episode.stateLabel}</span>
-      </div>
+      </a>
       <div class="episode-body">
         <div class="episode-meta">
           <span class="episode-number">EP${episode.number}</span>
         </div>
-        <h3>${episode.title}</h3>
+        <h3><a href="episodes/${episode.slug}/site/">${episode.title}</a></h3>
         <p class="episode-description">${episode.description}</p>
         <div class="episode-actions">
           <a href="episodes/${episode.slug}/site/">
@@ -164,7 +164,7 @@ searchInput.addEventListener("input", () => {
 
 async function startCourse() {
   try {
-    const response = await fetch("episodes/manifest.json");
+    const response = await fetch("episodes/manifest.json?v=20261024b", { cache: "no-cache" });
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }

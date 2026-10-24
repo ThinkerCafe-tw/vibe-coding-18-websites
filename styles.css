@@ -730,3 +730,7 @@ footer p {
     scroll-behavior: auto;
   }
 }
+
+.episode-thumb{display:block;color:inherit;text-decoration:none}
+.episode-card h3 a{color:inherit;text-decoration:none}
+.episode-card h3 a:hover{text-decoration:underline}
