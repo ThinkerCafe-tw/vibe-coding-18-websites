@@ -52,3 +52,21 @@
 ## 本練習包的素材
 
 網站內含行業情境照片。來源說明見 `ATTRIBUTION.md`。
+
+
+## 本頁資料與操作一致性
+
+- 圖片替代文字依目前照片可見內容描述，避免沿用舊構圖、人物身分或無法由照片確認的地名。
+- `images/hero.jpg`：夕陽下，新人在海邊濕沙上牽手同行。
+- `images/wedding-01.jpg`：新人牽手走過老街騎樓，新娘頭紗隨風飄起。
+- `images/wedding-02.jpg`：新娘坐在木窗旁整理白色裙襬。
+- `images/wedding-03.jpg`：雲霧山谷前，新娘站在山路邊。
+- `images/wedding-04.jpg`：新人並肩站在欄杆前俯瞰城市夜景。
+- `images/ceremony-01.jpg`：窗邊的新娘與協助整理禮服的親友。
+- `images/ceremony-02.jpg`：新郎為新娘戴上戒指的手部特寫。
+- `images/ceremony-03.jpg`：暖色燈光下，新娘走過婚宴廳走道。
+- `images/ceremony-04.jpg`：擺有花飾與餐具的婚宴圓桌。
+- `images/portrait-01.jpg`：穿淺色西裝的人站在窗旁。
+- `images/portrait-02.jpg`：烘豆機前，工作者用雙手檢視咖啡豆。
+- `images/portrait-03.jpg`：工作者背對鏡頭坐在窗邊書桌前。
+- `images/portrait-04.jpg`：雙手在皮革工作檯上縫製皮件。

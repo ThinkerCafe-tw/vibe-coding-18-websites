@@ -332,7 +332,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3c443e;padding-top:18px;font
     <path d="M620 256 V234 M620 234 C608 230 604 218 614 214 C614 204 630 203 631 213 C643 213 643 229 630 233 Z" fill="#4c6b4e" stroke="#3d5940" stroke-width="2"/>
     <path d="M160 256 V232 M160 232 C147 228 143 214 154 210 C154 199 172 198 173 209 C186 209 186 227 172 231 Z" fill="#4c6b4e" stroke="#3d5940" stroke-width="2"/>
   </svg>
-  <img src="images/hero.jpg" alt="清晨的礁溪山邊：一棟兩層半的老屋，背後是層層山稜，前面是稻田" width="1916" height="821" decoding="async">
+  <img src="images/hero.jpg" alt="稻田與山巒前的三層民宿" width="1916" height="821" decoding="async">
   </div>
 
   <div class="wrap">
@@ -411,7 +411,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3c443e;padding-top:18px;font
             <path d="M328 124 h32 l-7 -24 h-18z" fill="#f2e2b8" stroke="#6b4c2d" stroke-width="3"/>
             <path d="M24 168 H376" stroke="#6b4c2d" stroke-width="4"/>
           </svg>
-          <img src="images/room-double.jpg" alt="檜木雙人房：一張加大雙人床、實木床架，床邊木窗透進白天的光" width="1672" height="941" decoding="async">
+          <img src="images/room-double.jpg" alt="木地板雙人房，床旁有木框窗與椅子" width="1672" height="941" decoding="async">
         </div>
         <div class="body">
           <h3>檜木雙人房</h3>
@@ -443,7 +443,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3c443e;padding-top:18px;font
             <rect x="182" y="146" width="24" height="22" fill="#ddd2b4" stroke="#6b4c2d" stroke-width="3"/>
             <path d="M22 168 H378" stroke="#6b4c2d" stroke-width="4"/>
           </svg>
-          <img src="images/room-quad.jpg" alt="晨光四人房：兩張雙人床並排，大窗外是清晨的山" width="1672" height="941" decoding="async">
+          <img src="images/room-quad.jpg" alt="設有兩張雙人床的客房，窗外可見山景" width="1672" height="941" decoding="async">
         </div>
         <div class="body">
           <h3>晨光四人房</h3>
@@ -605,10 +605,16 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3c443e;padding-top:18px;font
         <li class="st">已確認</li><li class="ar">退房日到 →</li>
         <li class="st end">已完成（終態）</li>
         <li class="ar br">待付款或已確認都可以 →</li>
-        <li class="st">已取消</li><li class="ar">退款完成 →</li>
+        <li class="st">已取消</li><li class="ar">已收款且符合退款資格，退款完成 →</li>
         <li class="st end">已退款（終態）</li>
       </ol>
-      <p class="note" style="margin-bottom:0">付款自己也有五種狀態：未付款 → 付款中 → 付款成功／付款失敗 → 已退款。<b>付款失敗不等於訂單結束</b>——保留還沒到期，旅客可以再付一次，所以房間這時候還不能放掉。</p>
+      <p class="note" style="margin-bottom:0">付款自己也有五種狀態：未付款 → 付款中 → 付款成功／付款失敗；只有付款成功且符合退款資格，才能完成退款。未付款取消或逾時維持「已取消／未付款」。<b>付款失敗不等於訂單結束</b>，保留還沒到期，旅客可以再付一次。</p>
+    </div>
+
+    <div class="card" style="margin-top:22px">
+      <h3>本頁訂單</h3>
+      <p class="note">每筆訂單各自保存付款與房況，可點編號切回查看及操作。重新整理或按「全部重來」，會清空本頁全部訂單、付款與房況，回到初始示例。</p>
+      <div class="row-btn" id="order-list" aria-label="切換訂單"></div>
     </div>
 
     <div class="card" id="order-card" hidden style="margin-top:22px">
@@ -771,8 +777,8 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
    房況 Availability：可訂 → 保留中 → 已預訂 → 入住中 → 清潔中 → 可訂
                       保留中 --付款逾時／取消--> 可訂
                       封鎖／維修 --房東手動--> 可訂
-   訂單 Order：待付款 → 已確認 → 已完成 ／ 待付款・已確認 → 已取消 → 已退款
-   付款 Payment：未付款 → 付款中 → 付款成功／付款失敗 → 已退款
+   訂單 Order：待付款 → 已確認 → 已完成 ／ 待付款・已確認 → 已取消；已收款且符合資格才可 → 已退款
+   付款 Payment：未付款 → 付款中 → 付款成功／付款失敗；付款成功且符合資格才可 → 已退款
    連動點：訂單「待付款→已確認」的同一刻，房況「保留中→已預訂」。
 
    正式版要換掉的地方都標了 正式系統接點：
@@ -861,13 +867,28 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
     });
   }
   function cellOf(room, day) { return avail[room + "|" + day] || { state:"open", why:"" }; }
-  function setCell(room, day, state, why) {
+  function setCell(room, day, state, why, orderNo) {
     var key = room + "|" + day;
-    if (avail[key]) avail[key] = { state:state, why:why || "" };
+    if (avail[key]) avail[key] = { state:state, why:why || "", orderNo:orderNo || null };
   }
 
   var typeId = "hinoki";
   var order = null, payment = null, holdTimer = null, events = [];
+  var orders = [], orderSequence = 0;
+
+  function selectOrder(record) {
+    order = record; payment = record.payment; events = record.events;
+    renderOrder();
+  }
+  function releaseRoom(record) {
+    record.nights.forEach(function (day) {
+      if (cellOf(record.room, day).orderNo === record.no) setCell(record.room, day, "open", "");
+    });
+  }
+  function canRefund(record) {
+    return record && record.status === "已取消" && record.payment.status === "付款成功" &&
+      record.payment.received > 0 && record.refund > 0;
+  }
 
   var $ = function (id) { return document.getElementById(id); };
   var board = $("board"), availMsg = $("avail-msg"), quote = $("quote"), policy = $("policy"),
@@ -975,6 +996,7 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
         cell.className = "rcell";
         cell.setAttribute("data-room", room);
         cell.setAttribute("data-cell-state", c.state);
+        if (c.orderNo) cell.setAttribute("data-order-id", c.orderNo);
         if (c.why) cell.title = room + " 號房 " + human(day) + "：" + c.why;
         var dot = document.createElement("span");
         dot.className = "dotc s-" + c.state;
@@ -1094,7 +1116,7 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
 
     /* 只有「待付款」會擋：那一筆還鎖著房間。已確認／已取消／已退款都能直接送下一筆，
        同一間房同一晚再訂一次時，交給下面的房況檢查來擋。 */
-    if (order && order.status === "待付款") {
+    if (orders.some(function (record) { return record.status === "待付款"; })) {
       showAlarm("目前這一筆還在「保留中」。請先完成付款、等保留逾時，或按「取消訂房」，再送下一筆。");
       return;
     }
@@ -1113,7 +1135,7 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
 
     var q = quoteOf(typeId, a, b, people);
     order = {
-      no: "SBM-" + iso(T0).replace(/-/g, "") + "-001",
+      no: "SBM-" + iso(T0).replace(/-/g, "") + "-" + String(++orderSequence).padStart(3, "0"),
       type: typeId, room: room, checkIn: a, checkOut: b, people: people,
       nights: q.nights, total: q.total,
       name: $("f-name").value.trim(), email: $("f-email").value.trim(),
@@ -1121,10 +1143,11 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
       status: "待付款", holdUntil: new Date(Date.now() + HOLD_MINUTES * 60000),
       tier: tierOf(a), refund: 0
     };
-    payment = { status: "未付款", txn: "—" };
-    q.nights.forEach(function (d) { setCell(room, d, "hold", "你剛剛送出的訂房，保留中"); });
+    payment = order.payment = { status: "未付款", txn: "—", received: 0, attempt: 0 };
+    q.nights.forEach(function (d) { setCell(room, d, "hold", "訂單 " + order.no + "，保留中", order.no); });
 
-    events = [];
+    events = order.events = [];
+    orders.push(order);
     push("送出訂房", room + " 號房的 " + q.nights.length + " 晚轉成「保留中」，訂單建立為「待付款」。");
     startHold();
     refresh(); renderOrder();
@@ -1133,10 +1156,11 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
 
   function startHold() {
     stopHold();
+    var pending = order;
     holdTimer = setInterval(function () {
-      if (!order || order.status !== "待付款") { stopHold(); return; }
-      if (Date.now() >= order.holdUntil.getTime()) { timeout(true); return; }
-      paintHoldLine();
+      if (pending.status !== "待付款") { stopHold(); return; }
+      if (Date.now() >= pending.holdUntil.getTime()) { timeout(true, pending); return; }
+      if (order === pending) paintHoldLine();
     }, 1000);
   }
   function stopHold() { if (holdTimer) { clearInterval(holdTimer); holdTimer = null; } }
@@ -1162,25 +1186,31 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
   }
 
   $("btn-pay-ok").addEventListener("click", function () {
-    if (!order || order.status !== "待付款") return;
+    if (!order || order.status !== "待付款" || payment.status === "付款中") return;
+    var target = order, targetPayment = payment, attempt = ++payment.attempt;
     payment.status = "付款中";
-    renderOrder();
     push("付款中", "等待金流公司回傳付款結果。");
+    renderOrder();
     setTimeout(function () {
-      if (!order || order.status !== "待付款") return;
-      payment.status = "付款成功";
-      payment.txn = "TXN-" + Math.floor(Math.random() * 900000 + 100000);
-      order.status = "已確認";
+      // 回呼綁定發起時的訂單與付款嘗試，切單、取消或重設後不會更新別筆。
+      if (orders.indexOf(target) < 0 || target.status !== "待付款" ||
+          targetPayment.attempt !== attempt || targetPayment.status !== "付款中") return;
+      if (Date.now() >= target.holdUntil.getTime()) { timeout(true, target); return; }
+      targetPayment.status = "付款成功";
+      targetPayment.txn = "TXN-" + target.no;
+      targetPayment.received = target.total;
+      target.status = "已確認";
       /* 連動點：訂單「待付款→已確認」的同一刻，房況「保留中→已預訂」 */
-      order.nights.forEach(function (d) { setCell(order.room, d, "booked", "已確認的訂單"); });
+      target.nights.forEach(function (d) { setCell(target.room, d, "booked", "已確認的訂單 " + target.no, target.no); });
       stopHold();
-      push("付款成功", "金流公司通知付款成功，訂單轉「已確認」、房況同一刻從「保留中」轉「已預訂」。交易號 " + payment.txn + "。");
+      push("付款成功", "金流公司通知付款成功，訂單轉「已確認」、房況同一刻從「保留中」轉「已預訂」。交易號 " + targetPayment.txn + "。", target);
       refresh(); renderOrder();
     }, 420);
   });
 
   $("btn-pay-fail").addEventListener("click", function () {
     if (!order || order.status !== "待付款") return;
+    payment.attempt += 1;
     payment.status = "付款失敗";
     push("付款失敗", "訂單留在「待付款」，房況留在「保留中」——保留還沒到期，旅客可以再付一次。");
     renderOrder();
@@ -1188,33 +1218,36 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
 
   $("btn-timeout").addEventListener("click", function () { timeout(false); });
 
-  function timeout(auto) {
-    if (!order || order.status !== "待付款") return;
-    order.nights.forEach(function (d) { setCell(order.room, d, "open", ""); });
-    order.status = "已取消";
-    payment.status = "未付款";
+  function timeout(auto, record) {
+    record = record || order;
+    if (!record || record.status !== "待付款") return;
+    releaseRoom(record);
+    record.status = "已取消";
+    record.payment.status = "未付款";
+    record.payment.attempt += 1;
     stopHold();
-    push("保留逾時", (auto ? "倒數歸零" : "模擬 15 分鐘到期") + "：房況從「保留中」放回「可訂」，訂單轉「已取消」。");
+    push("保留逾時", (auto ? "倒數歸零" : "模擬 15 分鐘到期") + "：房況從「保留中」放回「可訂」，訂單轉「已取消」，付款維持「未付款」。", record);
     refresh(); renderOrder();
   }
 
   $("btn-cancel").addEventListener("click", function () {
     if (!order || (order.status !== "已確認" && order.status !== "待付款")) return;
-    var wasPaid = order.status === "已確認";
+    var wasPaid = payment.status === "付款成功" && payment.received > 0;
     order.tier = tierOf(order.checkIn);
-    order.nights.forEach(function (d) { setCell(order.room, d, "open", ""); });
+    releaseRoom(order);
     order.status = "已取消";
-    order.refund = wasPaid ? Math.round(order.total * order.tier.pct / 100) : 0;
+    order.refund = wasPaid ? Math.round(payment.received * order.tier.pct / 100) : 0;
+    payment.attempt += 1;
     if (!wasPaid) payment.status = "未付款";
-    stopHold();
+    if (!wasPaid) stopHold();
     push("取消訂房", "房況立刻放回「可訂」。" + (wasPaid
-      ? ("入住日距今落在「退 " + order.tier.pct + "%」那一階，應退 " + money(order.refund) + "。按「完成退款」走到終態。")
+      ? (order.refund > 0 ? "入住日距今落在「退 " + order.tier.pct + "%」那一階，應退 " + money(order.refund) + "。按「完成退款」走到終態。" : "距入住日未滿 3 天，不符合退款資格；訂單維持已取消，保留原收款紀錄。")
       : "這筆還沒付過款，沒有退款金額。"));
     refresh(); renderOrder();
   });
 
   $("btn-refund").addEventListener("click", function () {
-    if (!order || order.status !== "已取消") return;
+    if (!canRefund(order)) return;
     order.status = "已退款";
     payment.status = "已退款";
     push("已退款", "退 " + money(order.refund) + "（" + order.tier.pct + "%）。訂單與付款都進終態，不可再轉移。");
@@ -1223,16 +1256,16 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
 
   $("btn-reset").addEventListener("click", function () {
     stopHold(); buildAvail();
-    order = null; payment = null; events = [];
+    order = null; payment = null; events = []; orders = [];
     form.reset(); setDefaults(); hideAlarm();
     card.setAttribute("hidden", "");
     payEmpty.removeAttribute("hidden");
-    refresh();
+    refresh(); renderOrder();
   });
 
-  function push(what, detail) {
+  function push(what, detail, record) {
     var now = new Date();
-    events.unshift({
+    (record ? record.events : events).unshift({
       t: String(now.getHours()).padStart(2,"0") + ":" + String(now.getMinutes()).padStart(2,"0") + ":" + String(now.getSeconds()).padStart(2,"0"),
       what: what, detail: detail
     });
@@ -1240,10 +1273,23 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
 
   function roomStateNow() {
     if (!order) return "—";
+    if (order.status === "已取消" || order.status === "已退款") return "已釋放";
     return STATE_TEXT[cellOf(order.room, order.nights[0]).state];
   }
 
   function renderOrder() {
+    var list = $("order-list");
+    list.replaceChildren();
+    orders.forEach(function (record) {
+      var button = document.createElement("button");
+      button.type = "button"; button.className = "ghost";
+      button.dataset.orderId = record.no;
+      button.setAttribute("aria-pressed", String(record === order));
+      button.textContent = record.no + "｜" + record.name + "｜" + record.status;
+      button.style.cssText = "white-space:normal;overflow-wrap:anywhere;text-align:left";
+      button.addEventListener("click", function () { selectOrder(record); });
+      list.appendChild(button);
+    });
     if (!order) { card.setAttribute("hidden",""); payEmpty.removeAttribute("hidden"); return; }
     card.removeAttribute("hidden");
     payEmpty.setAttribute("hidden","");
@@ -1264,6 +1310,7 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
      ["入住／退房", human(order.checkIn) + " 15:00 － " + human(order.checkOut) + " 11:00"],
      ["晚數與人數", order.nights.length + " 晚　" + order.people + " 人"],
      ["總金額", money(order.total)],
+     ["已收金額與交易號", money(payment.received) + "｜" + payment.txn],
      ["取消條件", "距入住日 30 天以上退 100%；14–29 天退 75%；3–13 天退 50%；未滿 3 天不退款。" +
        ((order.status === "已取消" || order.status === "已退款") ? "取消時適用 " : "目前適用 ") + order.tier.pct + "%"],
      ["改期條件", "距入住日 3 天以上可來電申請改期，每筆訂單限一次；未滿 3 天不接受改期。"],
@@ -1283,11 +1330,12 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
       li.appendChild(b); li.appendChild(s); log.appendChild(li);
     });
 
-    $("btn-pay-ok").disabled   = order.status !== "待付款";
+    $("btn-pay-ok").disabled   = order.status !== "待付款" || payment.status === "付款中";
     $("btn-pay-fail").disabled = order.status !== "待付款";
     $("btn-timeout").disabled  = order.status !== "待付款";
     $("btn-cancel").disabled   = order.status !== "已確認" && order.status !== "待付款";
-    $("btn-refund").disabled   = order.status !== "已取消";
+    $("btn-refund").disabled   = !canRefund(order);
+    $("btn-refund").hidden     = !canRefund(order);
   }
 
   function showAlarm(msg) {

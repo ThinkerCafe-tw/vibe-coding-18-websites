@@ -473,6 +473,7 @@ table.est td.c-st::before{padding-bottom:12px}
   </section>
 </main>
 <footer><b>開蓋車坊</b><br>營業時間：週一至週六 09:00–18:00，週日公休。服務範圍：桃園市中壢區。<br>價格以到廠檢查後的書面估價單為準，預約以電話確認為準。© 2026 開蓋車坊</footer>
+<script src="../../../assets/demo-records.js"></script>
 <script>
 (() => {
   "use strict";
@@ -752,7 +753,10 @@ table.est td.c-st::before{padding-bottom:12px}
     ).join("");
   }
 
-  function renderAll() { renderPick(); renderModel(); }
+  function renderAll() {
+    renderPick(); renderModel();
+    renderDemoRecords("confirm",bookings.map(r=>({id:r.no,title:r.plate+"｜已收到預約",fields:[["車主",r.name],["電話",r.phone],["車牌",r.plate],["日期與時段",dayOf(r.day).md+" "+slotOf(r.slot).t],["服務",r.svc.join("、")||"到廠後一起檢查"],["里程",r.mileage==null?"未填":String(r.mileage)],["Email",r.details.email],["聯絡偏好",r.details.pref],["品牌",r.details.brand],["車型",r.details.model],["年份",r.details.year],["目的",r.details.purpose],["備註",r.details.note]]})));
+  }
 
   /* ---------- 送出預約 ---------- */
   const form = $("#booking-form");
@@ -770,7 +774,7 @@ table.est td.c-st::before{padding-bottom:12px}
     const no = "KG-" + day.md.replace("/", "") + "-" + slot.id + "-" + String(usedOf(day, slot) + 1).padStart(2, "0");
     const svc = $$("input[name=svc]:checked").map(i => i.value);
     const mileage = rawMileage ? Number(rawMileage) : NaN;
-    bookings.push({ no, day: day.id, slot: slot.id, plate, name: $("#f-name").value.trim(), phone: $("#f-phone").value.trim(), svc });
+    bookings.push({ no, day: day.id, slot: slot.id, plate, name: $("#f-name").value.trim(), phone: $("#f-phone").value.trim(), mileage:Number.isFinite(mileage)?mileage:null, details:Object.fromEntries(new FormData(form)), svc });
     vehicles.add(plate);
     phones.add($("#f-phone").value.trim());
     say("");

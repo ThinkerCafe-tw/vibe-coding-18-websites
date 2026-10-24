@@ -328,6 +328,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--sage);outline:none}
 
 <footer class="foot">慢一拍瑜伽教室<p class="legal">課表、價格與堂數以教室公告為準。<span>© 2026 慢一拍瑜伽教室</span></p></footer>
 
+<script src="../../../assets/demo-records.js"></script>
 <script>
 /* ── 資料模型（Teacher、ClassType、ClassSession、Enrollment、WaitlistEntry、StudentNote）── */
 const teachers = [
@@ -440,25 +441,33 @@ function showResult(kind, s, rank) {
   box.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
+function renderHistory() {
+  renderDemoRecords("result", enrollments.concat(waitlist.filter(r=>r.noteId)).map(r=>{
+    const note=studentNotes.find(n=>n.id===r.noteId), s=sessionOf(r.sessionId);
+    return {id:r.id,title:r.student+"｜"+(r.status||r.notify),fields:[["學員",r.student],["電話",r.phone],["課程",sessionName(s)],["狀態",r.status||r.notify],["候補順位",r.rank?"第 "+r.rank+" 順位":"不適用"],["身體狀況",note.body],["經驗",note.experience]]};
+  }));
+}
 function onSubmit(ev) {
   ev.preventDefault();
+  if (!$("#enroll-form").reportValidity()) return;
   const s = sessionOf($("#f-class").value);
   if (!s) return;
   const student = $("#f-name").value.trim();
   studentNotes.push({ id: "n" + (studentNotes.length + 1), student, body: $("#f-body").value.trim(), experience: $("#f-exp").value });
   if (remaining(s) <= 0) {
     const rank = waitCount(s) + 1;
-    waitlist.push({ id: "w" + (waitlist.length + 1), student, sessionId: s.id, rank, notify: "候補中" });
+    waitlist.push({ id: "w" + (waitlist.length + 1), student, phone:$("#f-phone").value.trim(), noteId:studentNotes[studentNotes.length-1].id, sessionId: s.id, rank, notify: "候補中" });
     showResult("waitlist", s, rank);
   } else {
     s.confirmed += 1;
-    enrollments.push({ id: "e" + (enrollments.length + 1), student, sessionId: s.id, status: "已報名", at: Date.now() });
+    enrollments.push({ id: "e" + (enrollments.length + 1), student, phone:$("#f-phone").value.trim(), noteId:studentNotes[studentNotes.length-1].id, sessionId: s.id, status: "已報名", at: Date.now() });
     showResult("enrolled", s);
   }
   $("#enroll-form").reset();
   fillOptions();
   renderSchedule();
   showInfo();
+  renderHistory();
 }
 
 function fillOptions() {
@@ -481,7 +490,7 @@ function initCommon() {
   });
   $("#cta-trial").addEventListener("click", ev => { ev.preventDefault(); pick("s7"); });
   $("#reset-form").addEventListener("click", () => {
-    reset(); $("#enroll-form").reset(); $("#result").hidden = true; fillOptions(); renderSchedule(); showInfo();
+    reset(); $("#enroll-form").reset(); $("#result").hidden = true; renderHistory(); fillOptions(); renderSchedule(); showInfo();
   });
   fillOptions();
   renderSchedule();

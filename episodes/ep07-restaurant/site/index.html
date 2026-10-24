@@ -476,6 +476,7 @@ footer .legal{flex-basis:100%;line-height:1.7}
   </div>
 </footer>
 
+<script src="../../../assets/demo-records.js"></script>
 <script>
 (function () {
   "use strict";
@@ -707,6 +708,7 @@ footer .legal{flex-basis:100%;line-height:1.7}
   }
 
   function renderAll() {
+    renderDemoRecords("confirm", reservations.map(function(r){return {id:r.no,title:r.name+"｜"+r.status,fields:[["姓名",r.name],["手機",r.phone],["日期",fmtDay(r.day)],["時段",byId(TimeSlot,r.slot).start+"–"+byId(TimeSlot,r.slot).end],["桌型",byId(TableType,r.table).name],["人數",r.party],["特殊需求",r.needs.join("、")||"無"],["狀態",r.status]]};}));
     renderDays(); renderParty(); renderSlots(); renderTables(); renderSummary(); renderModel();
   }
 
@@ -714,6 +716,7 @@ footer .legal{flex-basis:100%;line-height:1.7}
   function onSubmit(e) {
     e.preventDefault();
     var form = $("booking-form");
+    if (!form.reportValidity()) return;
     if (!state.slot || !state.table) {
       say("還沒選好時段與桌型，請先在上方選好再送出。");
       $("slot-list").scrollIntoView({ behavior: "smooth", block: "center" });

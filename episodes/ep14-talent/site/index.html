@@ -421,6 +421,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
 <div class="wrap"><details class="model"><summary>資料模型（六個資料物件）</summary><div id="model-body"></div></details></div>
 </main>
 <footer><div class="wrap"><span>小步藝術教室</span><span>課程、名額與費用以教室公告及老師電話確認為準。© 2026</span></div></footer>
+<script src="../../../assets/demo-records.js"></script>
 <script>
 (function () {
   'use strict';
@@ -647,7 +648,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
     if (!w) { return; }
     w.state = '轉正式';
     state.seq.enroll += 1;
-    state.enrollments.push({ id: 'EN-' + c.id.toUpperCase() + '-' + pad(state.seq.enroll, 3), cid: c.id, child: w.who + '的孩子', age: w.age, name: w.who, phone: w.phone, state: '待繳費' });
+    state.enrollments.push({ id: 'EN-' + c.id.toUpperCase() + '-' + pad(state.seq.enroll, 3), cid: c.id, child: w.child || w.who + '的孩子', age: w.age, name: w.name || w.who, phone: w.phone, note: w.note || '', state: '待繳費' });
     wlSay(w.who + ' 回覆要報名，狀態改成「轉正式」，正式報名進入「待繳費」，目前人數加一。');
     renderAll();
   }
@@ -732,17 +733,17 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
     if (dup) { block(dupMsg(mode, cls, dup)); return; }
     if (mode === 'trial') {
       state.seq.trial += 1;
-      var t = { id: 'TB-' + cls.id.toUpperCase() + '-' + pad(state.seq.trial, 3), cid: cls.id, child: child, age: age, name: name, phone: phone, slot: $('f-trial').value, state: '已申請' };
+      var t = { id: 'TB-' + cls.id.toUpperCase() + '-' + pad(state.seq.trial, 3), cid: cls.id, child: child, age: age, name: name, phone: phone, note:$('f-note').value.trim(), slot: $('f-trial').value, state: '已申請' };
       state.trials.push(t);
       showResult('ok', '已收到試上申請', ['編號 ' + t.id + '，狀態：已申請。', child + '（' + age + ' 歲）・' + cls.name + '・' + t.slot, '下一步：老師會在一個工作天內打電話給 ' + name + '，確認試上時間，排定後狀態改成「已排定」。試上後三日內請回覆是否轉正式報名。']);
     } else if (mode === 'enroll') {
       state.seq.enroll += 1;
-      var e = { id: 'EN-' + cls.id.toUpperCase() + '-' + pad(state.seq.enroll, 3), cid: cls.id, child: child, age: age, name: name, phone: phone, state: '待繳費' };
+      var e = { id: 'EN-' + cls.id.toUpperCase() + '-' + pad(state.seq.enroll, 3), cid: cls.id, child: child, age: age, name: name, phone: phone, note:$('f-note').value.trim(), state: '待繳費' };
       state.enrollments.push(e);
       showResult('ok', '已收到正式報名', ['編號 ' + e.id + '，狀態：待繳費，名額已幫 ' + child + ' 保留。', cls.name + '，目前 ' + nowCount(cls) + ' 人（上限 ' + cls.cap + ' 人）。', '下一步：老師會電話通知繳費方式；繳費後狀態改成「已入班」。']);
     } else {
       state.seq.wait += 1;
-      var w = { id: 'WL-' + cls.id.toUpperCase() + '-' + pad(state.seq.wait, 3), cid: cls.id, who: name.charAt(0) + '家長', child: child, age: age, name: name, phone: phone, state: '候補中', deadline: '' };
+      var w = { id: 'WL-' + cls.id.toUpperCase() + '-' + pad(state.seq.wait, 3), cid: cls.id, who: name.charAt(0) + '家長', child: child, age: age, name: name, phone: phone, note:$('f-note').value.trim(), state: '候補中', deadline: '' };
       state.waitlist.push(w);
       showResult('ok', '已登記候補', ['編號 ' + w.id + '，狀態：候補中，目前是第 ' + position(w) + ' 順位。', child + '（' + age + ' 歲）・' + cls.name, '下一步：有人取消、名額空出時，第 1 順位會標成「已通知」，並有三日回覆期限；逾期未回覆就順移給下一位。']);
     }
@@ -772,6 +773,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
   }
 
   function renderAll() {
+    renderDemoRecords('result',state.trials.concat(state.enrollments,state.waitlist.filter(function(r){return r.id;})).map(function(r){return {id:r.id,title:(r.child||r.who)+'｜'+r.state,fields:[['學員',r.child||r.who+'的孩子'],['年齡',r.age],['家長',r.name||r.who],['電話',r.phone],['班級',byId(r.cid).name],['試上時段',r.slot||'不適用'],['狀態',r.state],['回覆期限',r.deadline||'不適用'],['備註',r.note||'未填']]};}));
     renderClasses();
     renderBoard();
     renderWait();

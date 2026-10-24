@@ -29,6 +29,8 @@ def build(episode):
              for p in (ROOT / 'episodes' / slug).rglob('*') if p.is_file()}
     for name in ['LICENSE', 'LICENSE-CONTENT', 'assets/teaching.css', 'assets/teaching.js']:
         files[name] = (ROOT / name).read_bytes()
+    if b'assets/demo-records.js' in files[f'episodes/{slug}/site/index.html']:
+        files['assets/demo-records.js'] = (ROOT / 'assets/demo-records.js').read_bytes()
     lesson = f'episodes/{slug}/index.html'
     files[lesson] = offline_lesson(files[lesson])
     files['index.html'] = entry.encode()

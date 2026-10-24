@@ -543,6 +543,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
   </div>
 </footer>
 
+<script src="../../../assets/demo-records.js"></script>
 <script>
 /* ──────────────────────────────────────────────
    AppointmentSlot：時段名額狀態機
@@ -568,6 +569,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
 
   var slots = SEED.map(function (s) { return Object.assign({}, s); });
   var lastBooked = null;   // 剛剛送出的那一筆，用來在該診次變額滿之後仍然交代得清楚
+  var requestSequence = 0;
   var taken = [];            // 已送出的預約（PatientRequest），只存在記憶體
   var chosen = null;
 
@@ -611,6 +613,10 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
   }
 
   function render(flashId) {
+    renderDemoRecords("result", taken.map(function (r) { return {
+      id:r.id, title:r.name + "｜已收到預約",
+      fields:[["姓名",r.name],["電話",r.phone],["科別",r.department],["診次",label(byId(r.slot))],["醫師",r.doctor],["症狀備註",r.note],["慢箋",r.chronic?"是":"否"],["簡訊提醒同意",r.sms?"同意":"不同意"]]
+    }; }));
     board.innerHTML = "";
     slots.forEach(function (s) {
       var st = stateOf(s), l = Math.max(0, left(s));
@@ -788,7 +794,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
     // 真的佔用一個名額
     s.booked += 1;
     taken.push({
-      slot: s.id, name: name, phone: phone,
+      id: "CL-" + String(++requestSequence).padStart(3,"0"), slot: s.id, name: name, phone: phone,
       department: s.dept, doctor: s.doctor,
       note: document.getElementById("f-note").value.trim(),
       chronic: document.getElementById("f-chronic").checked,
@@ -802,7 +808,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
     st = stateOf(s);
 
     echo.innerHTML = "";
-    [["姓名", name],
+    [["預約編號", taken[taken.length-1].id], ["姓名", name],
      ["聯絡方式", phone],
      ["科別", s.dept],
      ["時段", label(s) + "　" + s.type + "　" + s.doctor],

@@ -2902,17 +2902,18 @@
           paid: "已付款",
           confirmed: "已確認",
           payment_timeout: "付款逾時",
-          cancelled: "取消／退款",
+          cancelled: "已取消",
           waitlist_reserved: "候補名額保留中"
         })[status] || "未知";
       }
 
       function paymentStatusLabel(status) {
         return ({
-          pending: "待付款",
+          pending: "未付款",
+          unpaid: "未付款",
           success: "付款成功（教學模擬）",
-          timeout: "付款逾時（教學模擬）",
-          cancelled: "已取消（教學模擬）",
+          timeout: "未付款（保留逾時）",
+          cancelled: "未付款（已取消）",
           none: "尚未建立"
         })[status] || status;
       }
@@ -3230,19 +3231,20 @@
           releaseSeat(registration);
         }
 
+        const wasPaid = registration.paymentStatus === "success";
         registration.status = "cancelled";
-        registration.paymentStatus = "cancelled";
+        if (!wasPaid) registration.paymentStatus = "unpaid";
 
         const payment = state.payments.find(p => p.registrationId === registration.id);
-        if (payment) {
-          payment.result = "已取消（教學模擬）";
+        if (payment && !wasPaid) {
+          payment.result = "未付款，訂單已取消（教學模擬）";
         }
 
         state.notifications.unshift({
           id: uid("notice"),
           target: registration.name,
           content:
-            "報名已切換為取消狀態。本原型沒有真實扣款，因此也沒有真實退款。",
+            wasPaid ? "報名已取消，原模擬收款紀錄保留；尚未完成退款。" : "報名已取消，從未付款，不建立退款紀錄。",
           channel: "教學示意通道",
           status: "教學示意未發送",
           createdAt: nowISO()
@@ -3366,7 +3368,7 @@
           } else if (target.status === "payment_timeout") {
             description = "付款已逾時，原名額已依規則釋放。";
           } else if (target.status === "cancelled") {
-            description = target.cancelReason === "payment_timeout" ? "待付款 → 付款逾時 → 取消／退款，名額已釋放。" : "報名已取消。";
+            description = target.cancelReason === "payment_timeout" ? "待付款 → 保留逾時 → 已取消／未付款，名額已釋放。" : target.paymentStatus === "success" ? "報名已取消，保留原付款成功紀錄；尚未完成退款。" : "報名已取消／未付款，沒有退款。";
           }
 
           $("#registrationDescription").textContent = description;

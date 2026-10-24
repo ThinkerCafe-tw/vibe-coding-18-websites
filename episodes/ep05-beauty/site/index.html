@@ -410,6 +410,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
 
 <footer><div class="wrap"><b>靜語美容院</b><p class="legal">服務價格、點數與儲值規則以店內公告為準。<span>© 2026 靜語美容院</span></p></div></footer>
 
+<script src="../../../assets/demo-records.js"></script>
 <script>
 (function () {
   "use strict";
@@ -423,6 +424,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
     { id: "calm", name: "溫和舒緩護理", min: 90, price: 1680, who: "膚況比較敏感、想慢慢來的人", staff: ["小雨"] }
   ];
   var MEMBER = { id: "M-0001", name: "林小姐", phone: "0912000000", birthday: "1990-06-15", level: "一般會員", created: "2025-01-01" };
+  var appointmentSequence = 0;
   var APPTS = [
     { id: "A-0412", date: "2026-04-12", time: "14:00", svc: "moist", who: "Jenny", status: "已完成" },
     { id: "A-0517", date: "2026-05-17", time: "11:00", svc: "clean", who: "Jenny", status: "已完成" },
@@ -587,7 +589,11 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
         staffError("這位美容師不提供所選服務，請重新選擇。"); staff.focus(); return;
       }
       if (!$("book-form").reportValidity()) return;
-      $("book-echo").textContent = s.name + "｜" + $("b-staff").value + "｜" + $("b-date").value + " " + $("b-time").value + "｜NT$ " + fmt(s.price);
+      var appointment = {id:"A-NEW-"+String(++appointmentSequence).padStart(3,"0"),date:date.value,time:$("b-time").value,svc:s.id,who:staff.value,status:"待確認"};
+      APPTS.push(appointment);
+      renderModel(); renderDash();
+      renderDemoRecords("book-result", APPTS.filter(function(a){return a.id.indexOf("A-NEW-")===0;}).map(function(a){return {id:a.id,title:svc(a.svc).name+"｜"+a.status,fields:[["日期與時段",a.date+" "+a.time],["服務",svc(a.svc).name],["美容師",a.who],["價格", "NT$ "+fmt(svc(a.svc).price)],["狀態",a.status]]};}));
+      $("book-echo").textContent = appointment.id + "｜" + s.name + "｜" + $("b-staff").value + "｜" + $("b-date").value + " " + $("b-time").value + "｜NT$ " + fmt(s.price);
       $("book-result").hidden = false;
       $("book-result").scrollIntoView({ block: "nearest" });
     });

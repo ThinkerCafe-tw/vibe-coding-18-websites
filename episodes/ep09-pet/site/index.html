@@ -378,7 +378,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3b4643;padding-top:20px;marg
         <line x1="60" y1="416" x2="180" y2="20" stroke="#ffffff" stroke-opacity=".5" stroke-width="16"/>
       </svg>
 
-      <img src="images/hero.jpg" alt="隔著一整面玻璃看進美容區：美容桌上一隻剛洗好吹乾的白色小型犬，旁邊是吊臂吹風機" onload="this.parentNode.classList.add('loaded')" onerror="this.remove()">
+      <img src="images/hero.jpg" alt="玻璃窗後，白色小型犬站在美容桌上，旁邊有吹風設備" onload="this.parentNode.classList.add('loaded')" onerror="this.remove()">
       </div>
     </div>
 
@@ -489,7 +489,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3b4643;padding-top:20px;marg
         <line x1="0" y1="252" x2="560" y2="252" stroke="#c9c2ae" stroke-width="3"/>
       </svg>
 
-      <img src="images/glass.jpg" alt="美容區實景：玻璃隔間後面是不鏽鋼洗澡台與美容桌，桌面收拾乾淨，梳子與剪刀掛在牆上的工具架" onload="this.parentNode.classList.add('loaded')" onerror="this.remove()">
+      <img src="images/glass.jpg" alt="玻璃隔間後的寵物美容區，設有洗澡台與美容桌" onload="this.parentNode.classList.add('loaded')" onerror="this.remove()">
       </div>
       <dl>
         <dt>玻璃隔間</dt><dd>從等待區到美容區只隔一片玻璃，走道側不做遮蔽，站著就看得到洗澡台與美容桌。</dd>
@@ -973,6 +973,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3b4643;padding-top:20px;marg
   </div>
 </footer>
 
+<script src="../../../assets/demo-records.js"></script>
 <script>
 /* ──────────────────────────────────────────────────────────────
    1) 預約狀態機（允許轉移表）
@@ -1213,12 +1214,13 @@ form.addEventListener("submit", function(e){
 
   warn.hidden = true;
   s.booked += 1;
-  booked.push({slot:slotId, name:name, phone:phone});
+  var record = {id:"PET-"+String(booked.length+1).padStart(3,"0"),slot:slotId,name:name,phone:phone};
+  booked.push(record);
   drawSlots();
 
   var behaviors = d.getAll("behavior");
   var rows = [
-    ["飼主", name],
+    ["預約編號",record.id], ["飼主", name],
     ["聯絡電話", phone],
     ["寵物", (d.get("petName")||"") + "（" + (d.get("breed")||"") + "）"],
     ["年齡體重", (d.get("age")||"") + "，" + (d.get("weight")||"") + " 公斤，" + (d.get("neutered")||"")],
@@ -1233,6 +1235,8 @@ form.addEventListener("submit", function(e){
     ["風險同意", d.get("consentRisk") ? "已勾選，同意時間 " + stamp() : "未勾選"],
     ["照片使用", d.get("photoConsent") ? "同意作為服務案例" : "不同意，照片只給飼主本人"]
   ];
+  record.fields = rows;
+  renderDemoRecords("done",booked.map(function(r){return {id:r.id,title:r.name+"｜已收到預約",fields:r.fields};}));
   var dl = $("echo");
   dl.innerHTML = "";
   rows.forEach(function(r){

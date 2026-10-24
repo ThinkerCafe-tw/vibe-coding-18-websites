@@ -1562,6 +1562,13 @@ function makeSnapshot(record){
     planKey:record.plan,
     plan:plans[record.plan],
     slot:record.slot,
+    booking:{
+      id:record.bookingId,
+      companyType:record.companyType,
+      problem:record.problem,
+      budget:record.budget,
+      slot:record.slot
+    },
     terms:TERMS,
     acceptedAt:new Date().toISOString()
   }));
@@ -1571,6 +1578,7 @@ function clearAgreement(){
   state.orderSnapshot=null;
 }
 function newOrder(plan){
+  if (!lockedOrder()) saveCurrentForm(false);
   const {history,...previous}=state;
   const archived=JSON.parse(JSON.stringify(previous));
   const all=[...history,archived];
@@ -1602,6 +1610,7 @@ function renderHistory(){
       "退款條件："+(snapshot?snapshot.terms.refund:TERMS.refund),
       "不包含："+plan.exclusions,
       "交付："+plan.delivery,
+      "需求："+(snapshot && snapshot.booking ? snapshot.booking.problem : order.problem),
       snapshot?"同意時間："+(snapshot.acceptedAt?new Intl.DateTimeFormat("zh-TW",{dateStyle:"short",timeStyle:"medium",timeZone:"Asia/Taipei"}).format(new Date(snapshot.acceptedAt))+"（台北）":"舊示範資料未記錄"):"尚未建立付款快照"
     ].forEach(text=>{const line=document.createElement("p");line.textContent=text;article.appendChild(line);});
     container.appendChild(article);
@@ -1690,6 +1699,7 @@ function toast(msg){
 $$(".choose-plan").forEach(btn=>{
   btn.addEventListener("click",()=>{
     if (lockedOrder()) { newOrder(btn.dataset.plan); return; }
+    saveCurrentForm(false);
     if (state.plan!==btn.dataset.plan) clearAgreement();
     state.plan=btn.dataset.plan;
     save();
@@ -1698,22 +1708,44 @@ $$(".choose-plan").forEach(btn=>{
   });
 });
 
-$("#slot").addEventListener("change",e=>{
+// 所有入口都先讀目前表單；暫存可不完整，但付款必須通過同一份資料的驗證。
+function saveCurrentForm(validate){
+  const form=$("#bookingForm");
+  const problem=$("#problem");
+  problem.setCustomValidity(problem.value.trim() ? "" : "請填寫主要需求。");
+  if (validate && !form.reportValidity()) return false;
+  const draft={
+    companyType:$("#companyType").value,
+    problem:problem.value.trim(),
+    budget:$("#budget").value,
+    slot:$("#slot").value
+  };
+  if (Object.keys(draft).some(field=>state[field]!==draft[field])) {
+    clearAgreement();
+    $("#confirmTerms").checked=false;
+  }
+  Object.assign(state,draft);
+  save();
+  return true;
+}
+const draftNotice=document.createElement("p");
+draftNotice.className="small";
+draftNotice.id="draftStatus";
+draftNotice.textContent="輸入會自動暫存在此瀏覽器；付款前會驗證並保存目前資料，再建立付款快照。修改資料後請重新確認條款。";
+$("#bookingForm").appendChild(draftNotice);
+["input","change"].forEach(event=>$("#bookingForm").addEventListener(event,()=>{
+  if (!lockedOrder()) saveCurrentForm(false);
+}));
+$("#slot").addEventListener("change",()=>{
   if (lockedOrder()) return;
-  if (state.slot!==e.target.value) clearAgreement();
-  state.slot=e.target.value;
+  saveCurrentForm(false);
   render();
 });
 
 $("#bookingForm").addEventListener("submit",e=>{
   e.preventDefault();
   if (lockedOrder()) return;
-  if (state.slot!==$("#slot").value) clearAgreement();
-  state.companyType=$("#companyType").value;
-  state.problem=$("#problem").value.trim();
-  state.budget=$("#budget").value;
-  state.slot=$("#slot").value;
-  save();
+  if (!saveCurrentForm(true)) return;
   render();
   toast("教學預約資料已儲存在此瀏覽器。");
 });
@@ -1731,6 +1763,7 @@ $("#confirmTerms").addEventListener("change",()=>{
 let statusBeforeDialog="unpaid";
 $("#payBtn").addEventListener("click",()=>{
   if (lockedOrder()) return;
+  if (!saveCurrentForm(true)) return;
   if(!$("#confirmTerms").checked){
     alert("請先確認方案、總額、時間、退款條件與服務邊界。");
     return;
@@ -1797,6 +1830,7 @@ queryBtn.textContent="重新查詢訂單";
 queryBtn.style.marginTop="10px";
 queryBtn.style.width="100%";
 queryBtn.addEventListener("click",()=>{
+  if (!lockedOrder()) saveCurrentForm(false);
   try{
     state=normalizeState(JSON.parse(localStorage.getItem(key))||state);
   }catch(e){}
