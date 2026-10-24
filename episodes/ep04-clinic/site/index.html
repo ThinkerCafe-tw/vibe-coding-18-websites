@@ -365,9 +365,9 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
           </div>
           <div class="field">
             <label for="f-slot">時段</label>
-            <select id="f-slot" name="slot" required>
+            <select id="f-slot" name="slot" required aria-describedby="slot-error">
               <option value="">請先選擇時段</option>
-            </select>
+            </select><p id="slot-error" role="alert" style="color:#9b2c2c" hidden></p>
           </div>
           <div class="field">
             <label for="f-note">症狀備註<span class="hint">選填。不必寫得完整，診間會再問一次。</span></label>
@@ -554,6 +554,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
    ────────────────────────────────────────────── */
 (function () {
   var NEAR = 3;
+  var DOCTORS = { "陳醫師": "耳鼻喉科", "王醫師": "家醫科" };
 
   // 範例資料。上午診線上 20 名、現場保留 10 名。
   var SEED = [
@@ -685,13 +686,13 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
     ph.value = ""; ph.textContent = "請先選擇時段";
     selSlot.appendChild(ph);
     slots.forEach(function (s) {
-      if (!bookable(s)) return;
+      if (!bookable(s) || s.dept !== document.getElementById("f-dept").value) return;
       var o = document.createElement("option");
       o.value = s.id;
-      o.textContent = s.date.slice(5) + "（" + s.day.slice(-1) + "）" + s.name + "・" + s.type + "・剩 " + left(s) + " 名";
+      o.textContent = s.date.slice(5) + "（" + s.day.slice(-1) + "）" + s.name + "・" + s.doctor + "・" + s.type + "・剩 " + left(s) + " 名";
       selSlot.appendChild(o);
     });
-    selSlot.value = (chosen && bookable(byId(chosen))) ? chosen
+    selSlot.value = (chosen && byId(chosen) && byId(chosen).dept === document.getElementById("f-dept").value && bookable(byId(chosen))) ? chosen
       : (keep && selSlot.querySelector('option[value="' + keep + '"]') ? keep : "");
     if (!selSlot.value) chosen = null;
     paintChosen();
@@ -720,12 +721,32 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
   function choose(id) {
     var s = byId(id);
     if (!s || !bookable(s)) return;
+    document.getElementById("f-dept").value = s.dept;
+    clearSlotError(); result.hidden = true;
     chosen = id; selSlot.value = id; lastBooked = null;
     hideAlarm(); render(id);            // 選中的那一列數字也跑一次過場，看得出是哪一列
     document.getElementById("f-name").focus({ preventScroll: true });
   }
 
+  function clearSlotError() {
+    selSlot.setCustomValidity(""); selSlot.removeAttribute("aria-invalid");
+    document.getElementById("slot-error").hidden = true;
+  }
+  function slotError(message) {
+    selSlot.setCustomValidity(message); selSlot.setAttribute("aria-invalid", "true");
+    var error = document.getElementById("slot-error"); error.textContent = message; error.hidden = false;
+    result.hidden = true; selSlot.focus();
+  }
+  document.getElementById("f-dept").addEventListener("change", function () {
+    chosen = null; selSlot.value = ""; lastBooked = null; clearSlotError(); hideAlarm(); render();
+  });
+  form.addEventListener("input", function () { result.hidden = true; });
+  form.addEventListener("change", function () { result.hidden = true; });
+  selSlot.addEventListener("invalid", function () {
+    slotError(selSlot.validationMessage || "請選擇此科別可預約的診次。");
+  });
   selSlot.addEventListener("change", function () {
+    clearSlotError();
     chosen = selSlot.value || null;
     hideAlarm(); render(chosen);
   });
@@ -742,7 +763,12 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
   form.addEventListener("submit", function (e) {
     e.preventDefault();                       // 這是靜態範例頁，不會送到任何伺服器
 
-    var s = chosen ? byId(chosen) : null;
+    clearSlotError();
+    var s = byId(selSlot.value);
+    if (s && (s.dept !== document.getElementById("f-dept").value || DOCTORS[s.doctor] !== s.dept)) {
+      slotError("診次的科別或醫師不相符，請重新選擇此科別的診次。名額尚未扣除。"); return;
+    }
+    if (!form.reportValidity()) return;
     if (!s) { showAlarm("還沒有選時段。請先在名額板挑一個還有名額的診次，再送出。"); return; }
     if (!bookable(s)) { showAlarm("這個時段已經不能預約了（" + LABEL[stateOf(s)] + "）。請改選其他診次。"); render(); return; }
 
@@ -763,7 +789,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
     s.booked += 1;
     taken.push({
       slot: s.id, name: name, phone: phone,
-      department: document.getElementById("f-dept").value,
+      department: s.dept, doctor: s.doctor,
       note: document.getElementById("f-note").value.trim(),
       chronic: document.getElementById("f-chronic").checked,
       sms: document.getElementById("f-sms").checked
@@ -778,7 +804,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
     echo.innerHTML = "";
     [["姓名", name],
      ["聯絡方式", phone],
-     ["科別", document.getElementById("f-dept").value],
+     ["科別", s.dept],
      ["時段", label(s) + "　" + s.type + "　" + s.doctor],
      ["症狀備註", document.getElementById("f-note").value.trim() || "（未填）"],
      ["是否慢箋", document.getElementById("f-chronic").checked ? "是" : "否"],
@@ -798,6 +824,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
   });
 
   btnReset.addEventListener("click", function () {
+    clearSlotError();
     slots = SEED.map(function (s) { return Object.assign({}, s); });
     taken = []; chosen = null; lastBooked = null;
     hideAlarm();

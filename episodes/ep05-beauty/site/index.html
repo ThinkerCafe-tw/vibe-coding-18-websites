@@ -323,7 +323,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
 
 <section id="dashboard" class="alt" aria-labelledby="h-dash">
   <div class="wrap">
-    <div class="h2wrap"><h2 id="h-dash">我的會員卡</h2><p class="sub">會員登入後看到的畫面（資料截至 <span style="white-space:nowrap">2026-09-23</span>）。</p></div>
+    <div class="h2wrap"><h2 id="h-dash">我的會員卡</h2><p class="sub">會員登入後看到的畫面（固定教學基準日： <span style="white-space:nowrap">2026-09-23</span>）。</p></div>
     <div class="dash">
       <div class="mcard"><div><p class="shop">靜語美容院</p><p class="who">林小姐</p><span class="lv">一般會員</span></div><p class="since">2025-01-01 加入</p></div>
       <div class="tiles">
@@ -348,7 +348,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
         <div class="fields">
           <div class="full"><label for="b-service">服務</label><select id="b-service" name="service" required><option value="">請選擇服務</option></select></div>
           <p class="info" id="svc-info" aria-live="polite">選擇服務後，這裡會顯示所需時間與價格。</p>
-          <div><label for="b-staff">美容師</label><select id="b-staff" name="staff" required><option>不指定</option><option>Jenny</option><option>小雨</option></select></div>
+          <div><label for="b-staff">美容師</label><select id="b-staff" name="staff" required aria-describedby="staff-error"><option value="">請先選擇服務</option></select><p id="staff-error" role="alert" style="color:#9b2c2c" hidden></p></div>
           <div><label for="b-date">日期</label><input id="b-date" name="date" type="date" required min="2026-09-24"></div>
           <div class="full"><label for="b-time">時段</label><select id="b-time" name="time" required><option value="">請選擇時段</option><option>11:00</option><option>13:00</option><option>14:30</option><option>16:00</option><option>18:00</option></select></div>
           <div class="full"><label for="b-note">備註</label><textarea id="b-note" name="note" placeholder="例如：膚況、過敏史、想要安靜的療程"></textarea></div>
@@ -417,10 +417,10 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
   /* ── 資料：六張表的初始資料。點數與儲值金都是「一交易一列」的流水帳，不存總數 ── */
   var TODAY = "2026-09-23"; // 「即將到期」以這天起算
   var SERVICES = [
-    { id: "trial", name: "新客體驗・基礎清潔", min: 60, price: 388, who: "第一次來，想先看看環境與手法的人", staff: "Jenny、小雨" },
-    { id: "clean", name: "基礎清潔護理", min: 60, price: 880, who: "想維持日常保養、膚況穩定的人", staff: "Jenny、小雨" },
-    { id: "moist", name: "舒緩保濕護理", min: 75, price: 1280, who: "換季乾燥、臉容易緊繃的人", staff: "Jenny" },
-    { id: "calm", name: "溫和舒緩護理", min: 90, price: 1680, who: "膚況比較敏感、想慢慢來的人", staff: "小雨" }
+    { id: "trial", name: "新客體驗・基礎清潔", min: 60, price: 388, who: "第一次來，想先看看環境與手法的人", staff: ["Jenny", "小雨"] },
+    { id: "clean", name: "基礎清潔護理", min: 60, price: 880, who: "想維持日常保養、膚況穩定的人", staff: ["Jenny", "小雨"] },
+    { id: "moist", name: "舒緩保濕護理", min: 75, price: 1280, who: "換季乾燥、臉容易緊繃的人", staff: ["Jenny"] },
+    { id: "calm", name: "溫和舒緩護理", min: 90, price: 1680, who: "膚況比較敏感、想慢慢來的人", staff: ["小雨"] }
   ];
   var MEMBER = { id: "M-0001", name: "林小姐", phone: "0912000000", birthday: "1990-06-15", level: "一般會員", created: "2025-01-01" };
   var APPTS = [
@@ -497,7 +497,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
   function renderModel() {
     $("dm-member").innerHTML = dl([["id", MEMBER.id], ["姓名", MEMBER.name], ["手機", MEMBER.phone], ["生日", MEMBER.birthday], ["會員等級", MEMBER.level], ["建立日期", MEMBER.created]]);
     $("dm-service").innerHTML = table("tbl stack", ["id", "服務名稱", "所需時間", "價格", "可預約美容師"], SERVICES.map(function (s) {
-      return [s.id, s.name, s.min + " 分鐘", num("NT$ " + fmt(s.price)), s.staff];
+      return [s.id, s.name, s.min + " 分鐘", num("NT$ " + fmt(s.price)), s.staff.join("、")];
     }));
     $("dm-appointment").innerHTML = table("tbl stack", ["id", "日期與時段", "服務", "美容師", "狀態"], APPTS.map(function (a) {
       return [a.id, a.date + " " + a.time, svc(a.svc).name, a.who, statusTag(a.status)];
@@ -547,7 +547,20 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
     var bookSvc = $("b-service"), info = $("svc-info");
     fillServiceSelect($("r-service"), false);
     fillServiceSelect(bookSvc, false);
+    var staff = $("b-staff");
+    function staffError(message) {
+      staff.setCustomValidity(message); staff.setAttribute("aria-invalid", String(!!message));
+      $("staff-error").textContent = message; $("staff-error").hidden = !message;
+    }
+    staff.addEventListener("change", function () { staffError(""); });
+    staff.addEventListener("invalid", function () { staffError(staff.validationMessage); });
     bookSvc.addEventListener("change", function () {
+      staffError("");
+      var keep = staff.value, service = svc(bookSvc.value);
+      staff.replaceChildren(new Option("請選擇美容師", ""));
+      if (service) service.staff.forEach(function (name) { staff.add(new Option(name, name)); });
+      if (service && service.staff.indexOf(keep) >= 0) staff.value = keep;
+      $("book-result").hidden = true;
       var s = svc(bookSvc.value);
       info.textContent = s ? "所需時間 " + s.min + " 分鐘・價格 NT$ " + fmt(s.price) : "選擇服務後，這裡會顯示所需時間與價格。";
     });
@@ -569,9 +582,17 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
     $("book-form").addEventListener("submit", function (e) {
       e.preventDefault();
       var s = svc(bookSvc.value);
+      staffError(""); $("book-result").hidden = true;
+      if (!s || s.staff.indexOf(staff.value) < 0) {
+        staffError("這位美容師不提供所選服務，請重新選擇。"); staff.focus(); return;
+      }
+      if (!$("book-form").reportValidity()) return;
       $("book-echo").textContent = s.name + "｜" + $("b-staff").value + "｜" + $("b-date").value + " " + $("b-time").value + "｜NT$ " + fmt(s.price);
       $("book-result").hidden = false;
       $("book-result").scrollIntoView({ block: "nearest" });
+    });
+    ["input", "change", "invalid"].forEach(function (event) {
+      $("book-form").addEventListener(event, function () { $("book-result").hidden = true; }, true);
     });
     $("reg-form").addEventListener("submit", function (e) {
       e.preventDefault();

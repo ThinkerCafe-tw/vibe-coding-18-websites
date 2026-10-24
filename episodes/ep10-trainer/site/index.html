@@ -705,6 +705,7 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
           </div>
           <p class="lede">買課之後最容易失控的不是課表，是堂數。下面是三份課包在不同階段的樣子：一份還在上、一份快到期、一份已經結束。你可以按第一份的按鈕，看剩餘堂數怎麼動。</p>
 
+          <p id="demo-date" class="small"></p>
           <div class="ledger">
             <div class="lhead" aria-hidden="true">
               <b>課包</b><b>堂數與到期</b><b>剩餘</b><b>狀態</b>
@@ -719,7 +720,7 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
                   <div><span>剩餘</span> <strong class="n" data-f="left">—</strong></div>
                 </div>
                 <div class="bar"><i data-f="bar"></i></div>
-                <p class="exp">到期日 <span class="n" data-f="due">—</span><span style="white-space:nowrap">（還有 <span class="n" data-f="days">—</span> 天）</span></p>
+                <p class="exp">到期日 <span class="n" data-f="due">—</span><span style="white-space:nowrap">（<span class="n" data-f="remaining">—</span>）</span></p>
               </div>
               <div class="left"><span data-f="big">—</span><u>剩餘堂數</u></div>
               <div class="act">
@@ -742,7 +743,7 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
                   <div><span>剩餘</span> <strong class="n">3</strong></div>
                 </div>
                 <div class="bar"><i style="width:75%"></i></div>
-                <p class="exp">到期日 <span class="n">2026/07/20</span><span style="white-space:nowrap">（還有 <span class="n">21</span> 天）</span></p>
+                <p class="exp">到期日 <span class="n">2026/07/20</span><span style="white-space:nowrap">（<span data-package-days>—</span>）</span></p>
               </div>
               <div class="left">3<u>剩餘堂數</u></div>
               <div class="act">
@@ -759,7 +760,7 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
                   <div><span>剩餘</span> <strong class="n">0</strong></div>
                 </div>
                 <div class="bar"><i style="width:100%"></i></div>
-                <p class="exp">到期日 <span class="n">2026/02/11</span>（已結算）</p>
+                <p class="exp">到期日 <span class="n">2026/02/11</span>（<span data-package-days>—</span>）</p>
               </div>
               <div class="left">0<u>剩餘堂數</u></div>
               <div class="act">
@@ -787,7 +788,7 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
             </div>
             <div>
               <b>請假與改期</b>
-              <p>上課前 12 小時前告知不扣堂。同一份課包內改期次數不限，但連續兩個月完全沒有排課會主動找你確認。</p>
+              <p>至少於上課前 12 小時告知不扣堂。同一份課包內改期次數不限，但連續兩個月完全沒有排課會主動找你確認。</p>
             </div>
             <div>
               <b>轉讓</b>
@@ -909,7 +910,7 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
             <div>
               <b>取消與退款</b>
               <ul>
-                <li>單堂：上課前 12 小時前告知可免費改期；當日才取消或沒有出現，計為一堂。</li>
+                <li>單堂：至少於上課前 12 小時告知可免費改期；當日才取消或沒有出現，計為一堂。</li>
                 <li>課包：未上完堂數依比例退費，行政費比例購買前書面告知。</li>
                 <li>教練因故無法帶課，該堂不扣並補回期限。</li>
                 <li>轉讓一次，剩餘堂數與到期日不重新起算。</li>
@@ -1080,8 +1081,26 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
   "use strict";
 
   var NEAR_DAYS = 30;                 // 距到期 30 天內、還有剩餘堂數，算「即將到期」
-  var START = { bought: 24, used: 17, due: "2027/03/02", days: 246 };
-  var pkg = { bought: START.bought, used: START.used, due: START.due, days: START.days };
+  var DEMO_DATE = "2026-06-29";
+  var START = { bought: 24, used: 17, due: "2027/03/02" };
+  var EXAMPLES = [
+    { id: "row-B", bought: 12, used: 9, due: "2026/07/20" },
+    { id: "row-C", bought: 12, used: 12, due: "2026/02/11" }
+  ];
+  document.getElementById("demo-date").textContent = "固定教學基準日：" + DEMO_DATE.replace(/-/g, "/") + "。整頁剩餘天數與到期狀態都以此日計算。";
+  function daysUntil(due) {
+    return Math.round((Date.parse(due.split("/").join("-") + "T00:00:00Z") - Date.parse(DEMO_DATE + "T00:00:00Z")) / 86400000);
+  }
+  function remainingText(p) {
+    var days = daysUntil(p.due);
+    return days < 0 ? "已過期 " + Math.abs(days) + " 天" : days === 0 ? "今天到期" : "還有 " + days + " 天";
+  }
+  function packageState(p) {
+    if (p.bought - p.used <= 0) return "完成";
+    if (daysUntil(p.due) < 0) return "已到期";
+    return daysUntil(p.due) <= NEAR_DAYS ? "即將到期" : "使用中";
+  }
+  var pkg = { bought: START.bought, used: START.used, due: START.due };
   var moved = 0;                      // 改期次數（SessionBooking 的狀態變化，不動堂數）
 
   var row = document.getElementById("row-A");
@@ -1090,12 +1109,11 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
   function left() { return pkg.bought - pkg.used; }          // 唯一的算法
 
   function stateOf() {
-    if (left() <= 0) return "完成";
-    if (pkg.days <= NEAR_DAYS) return "即將到期";
-    return "使用中";
+    return packageState(pkg);
   }
 
   function says(state) {
+    if (state === "已到期") return "已超過課包到期日，停止使用；剩餘堂數保留供結算核對，不再扣堂。";
     if (state === "完成") {
       return "堂數已經用完，這份課包結算成「完成」。不會自己延長，也不會在你不知道的時候被扣。要再上課是重新買一份新的課包。";
     }
@@ -1115,7 +1133,17 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
     document.querySelectorAll('[data-f="used"]').forEach(function (el) { el.textContent = pkg.used; });
     document.querySelectorAll('[data-f="due"]').forEach(function (el) { el.textContent = pkg.due; });
     document.querySelectorAll('[data-f="state"]').forEach(function (el) { el.textContent = state; });
-    document.querySelectorAll('[data-f="days"]').forEach(function (el) { el.textContent = pkg.days; });
+    document.querySelectorAll('[data-f="remaining"]').forEach(function (el) { el.textContent = remainingText(pkg); });
+    EXAMPLES.forEach(function (p) {
+      var item = document.getElementById(p.id), status = packageState(p);
+      item.querySelector("[data-package-days]").textContent = remainingText(p);
+      item.querySelector(".state").textContent = status;
+      item.classList.toggle("is-near", status === "即將到期");
+      item.classList.toggle("is-over", status === "完成" || status === "已到期");
+      item.querySelector(".note").textContent = status === "即將到期"
+        ? "距到期日 " + daysUntil(p.due) + " 天，剩餘 " + (p.bought - p.used) + " 堂，請在到期日前安排；需延期請提前申請。"
+        : status === "已到期" ? "課包已到期，停止使用；剩餘堂數供結算核對。" : status === "完成" ? "堂數已用完，課包已結算。" : "課包使用中，剩餘天數依同一教學基準日計算。";
+    });
 
     var big = row.querySelector('[data-f="big"]');
     if (big) big.textContent = left();
@@ -1125,9 +1153,9 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
     if (sy) sy.textContent = says(state);
 
     row.classList.toggle("is-near", state === "即將到期");
-    row.classList.toggle("is-over", state === "完成");
+    row.classList.toggle("is-over", state === "完成" || state === "已到期");
 
-    var out = left() <= 0;
+    var out = left() <= 0 || daysUntil(pkg.due) < 0;
     row.querySelectorAll('button[data-do="attend"],button[data-do="leave"],button[data-do="noshow"]').forEach(function (b) {
       b.disabled = out;
       if (b.dataset.do === "attend") b.textContent = out ? "課包已結束" : "完成一堂課";
@@ -1147,14 +1175,14 @@ footer .fine strong{color:#e8e7e1;font-weight:700}
       var act = btn.dataset.do;
 
       if (act === "reset") {
-        pkg = { bought: START.bought, used: START.used, due: START.due, days: START.days };
+        pkg = { bought: START.bought, used: START.used, due: START.due };
         moved = 0;
         paint(false);
         write("已回到初始狀態：已購 " + pkg.bought + " 堂、已上 " + pkg.used + " 堂、剩餘 " + left() + " 堂。");
         return;
       }
 
-      if (left() <= 0) return;
+      if (left() <= 0 || daysUntil(pkg.due) < 0) return;
 
       if (act === "attend") {
         pkg.used += 1;

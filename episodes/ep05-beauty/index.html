@@ -27,8 +27,7 @@
 <th>可轉到的下一狀態</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>待確認</td>
 <td>已確認、已取消、未到</td>
 </tr>
@@ -52,9 +51,13 @@
 <td>未到</td>
 <td>終態，不可再轉移</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>圖 5-1　預約狀態的典型流轉（狀態轉移表）</strong></p>
+<h2>資料一致性規則</h2>
+<ul>
+<li>服務以美容師清單記錄可提供的人員。選定服務後，只能選該清單中的美容師；換服務時清除不相容的人員。</li>
+<li>送出前再次驗證服務與人員對應；不相符時在美容師欄位顯示錯誤，不顯示成功預約。會員資訊採明示的固定教學基準日 2026-09-23。</li>
+</ul>
 </section>
 <section id="prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0" hidden><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP05 對話提示卡</h1>
 <p>以下為第 5 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
@@ -83,6 +86,11 @@
 【設計要求】
 請做成一個可以直接打開的單一 index.html，CSS與少量 JavaScript都寫在同一個檔案裡。使用 RWD，手機上也能查看會員卡、預約表單與消費紀錄。不要使用假醫療效果、假見證或誇大療效。
 </code></pre>
+<h2>實作時補上的一致性條件</h2>
+<ul>
+<li>服務以美容師清單記錄可提供的人員。選定服務後，只能選該清單中的美容師；換服務時清除不相容的人員。</li>
+<li>送出前再次驗證服務與人員對應；不相符時在美容師欄位顯示錯誤，不顯示成功預約。會員資訊採明示的固定教學基準日 2026-09-23。</li>
+</ul>
 </section>
 <section id="verify" role="tabpanel" aria-labelledby="tab-verify" tabindex="0" hidden><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP05 驗收清單</h1>
 <h2>逐項檢查</h2>
@@ -98,4 +106,9 @@
 <h2>主動測試</h2>
 <p>本講是這套書到目前<strong>最高風險</strong>的一講：會算餘額、會扣款、會退款，不是只給人看的形象頁。最招牌的一招：<strong>把消費紀錄裡每一筆儲值、扣款、退款用計算機加一遍，看是否等於儀表板的「儲值餘額」</strong> — 對不上，畫面再漂亮都是壞的。</p>
 <p><strong>AI 是被告不是法官，畫面才是證據</strong>：餘額對不對、退款有沒有退回、取消後發不發點，都要親手撥、親眼看，AI 說沒事不算。</p>
+<h2>資料一致性主動回驗</h2>
+<ul>
+<li>[ ] 溫和舒緩護理只能選小雨，不能選 Jenny；改選舒緩保濕護理後只剩 Jenny。</li>
+<li>[ ] 錯誤的人員與服務組合不產生待確認；正確組合可送出。</li>
+</ul>
 </section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer><noscript><style>[role="tabpanel"][hidden]{display:block}</style><p>未啟用 JavaScript，以下內容以連續段落呈現；可使用標題連結瀏覽。</p></noscript></body></html>

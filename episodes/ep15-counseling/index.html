@@ -34,6 +34,10 @@
 </ol>
 <h2>本練習包的素材</h2>
 <p>首頁照片用於呈現安靜的心理諮商空間。練習重點是服務說明、可用時段、同意條件與預約申請；照片不代表真實諮商師、個案或療效。來源說明見 <code>ATTRIBUTION.md</code>。</p>
+<h2>資料一致性規則</h2>
+<ul>
+<li>切換服務時清空原時段，依服務可用的現場／線上方式篩選。送出前再次驗證服務方式、時段可用性、必填與同意；不相符時顯示欄位錯誤，不能建立請求。</li>
+</ul>
 </section>
 <section id="prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0" hidden><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP15 對話提示卡</h1>
 <p>以下為第 15 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
@@ -72,6 +76,10 @@
 4. 表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。
 5. 預約表單只收必要欄位（稱呼、聯絡方式、偏好時段、簡短需求），不要病史或詳細個人故事。
 </code></pre>
+<h2>實作時補上的一致性條件</h2>
+<ul>
+<li>切換服務時清空原時段，依服務可用的現場／線上方式篩選。送出前再次驗證服務方式、時段可用性、必填與同意；不相符時顯示欄位錯誤，不能建立請求。</li>
+</ul>
 </section>
 <section id="verify" role="tabpanel" aria-labelledby="tab-verify" tabindex="0" hidden><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP15 驗收清單</h1>
 <h2>逐項檢查</h2>
@@ -87,4 +95,9 @@
 <h2>主動測試</h2>
 <p>這講是<strong>預約站</strong>——有時段、有狀態、有取消規則，看不見的錯更多。最招牌的一個觸發：<strong>用 <code>Ctrl/⌘+F</code> 在頁面上逐字核對危機電話（119、1925、1995、1980），看 AI 有沒有抄錯一位數、湊出不存在的專線。</strong></p>
 <p>記住：<strong>AI 是被告不是法官，畫面才是證據。</strong> 電話真假、表單收了什麼，都是畫面說了算，不能信 AI 嘴上說「都對」。</p>
+<h2>資料一致性主動回驗</h2>
+<ul>
+<li>[ ] 線上諮商只列線上時段；換服務清空選擇。</li>
+<li>[ ] 送出服務方式不符或已無法預約的時段，應顯示錯誤；有效組合與必要同意仍可送出。</li>
+</ul>
 </section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer><noscript><style>[role="tabpanel"][hidden]{display:block}</style><p>未啟用 JavaScript，以下內容以連續段落呈現；可使用標題連結瀏覽。</p></noscript></body></html>

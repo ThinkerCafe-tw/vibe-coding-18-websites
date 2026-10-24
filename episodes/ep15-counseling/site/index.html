@@ -554,6 +554,9 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
   var form = $("#booking-form"), slotBox = $("#slot-list"), pickSlot = $("#pick-slot"), intake = $("#intake");
   var confirmBox = $("#confirm"), summary = $("#pick-summary"), stateLine = $("#state-line");
   var st = { svc: null, slot: null, submitted: false };
+  var slotError=el("p", "slot-error", "");
+  slotError.id="slot-error"; slotError.setAttribute("role", "alert"); slotError.style.color="#9b2c2c";
+  pickSlot.appendChild(slotError);
 
   function slotText(id) {
     if (id === "any") { return "都可以，由本所協調時間"; }
@@ -650,7 +653,7 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
     paintCount();
   }
   $$("#svc-list input[name=service]").forEach(function (r) {
-    r.addEventListener("change", function () { st.svc = r.value; st.slot = null; renderSlots(); sync(); });
+    r.addEventListener("change", function () { st.svc = r.value; st.slot = null; slotError.textContent=""; renderSlots(); sync(); });
   });
   ["#f-name", "#f-contact", "#f-need"].forEach(function (s) { $(s).addEventListener("input", paintCount); });
   $("input[name=consent]").addEventListener("change", sync);
@@ -658,6 +661,12 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    var service=SERVICES[st.svc], slot=SLOTS.filter(function(s){return s.id===st.slot;})[0];
+    if (!service || (st.slot!=="any" && (!slot || !slot.ok || service.modes.indexOf(slot.mode)<0))) {
+      slotError.textContent="服務方式與時段不相符，請重新選擇可預約的時段。"; pickSlot.scrollIntoView(); return;
+    }
+    slotError.textContent="";
+    if (!form.reportValidity() || !$("input[name=consent]").checked) return;
     var name = $("#f-name").value.trim(), contact = $("#f-contact").value.trim(), need = $("#f-need").value.trim();
     var d = new Date();
     var when = d.getFullYear() + "/" + pad(d.getMonth() + 1) + "/" + pad(d.getDate()) + " " + pad(d.getHours()) + ":" + pad(d.getMinutes());

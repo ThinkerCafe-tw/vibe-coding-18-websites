@@ -723,7 +723,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3b4643;padding-top:20px;marg
               <div class="f">
                 <label for="f-weight">體重（公斤） <span class="req">必填</span>
                   <span class="hint">大概的數字就好，到店會再秤一次</span></label>
-                <input id="f-weight" name="weight" type="text" required inputmode="decimal">
+                <input id="f-weight" name="weight" type="text" required inputmode="decimal" maxlength="6" pattern="[0-9]+([.][0-9]{1,2})?" aria-describedby="weight-help weight-error"><small id="weight-help">大於 0、最多 100 公斤，小數最多兩位。</small><p id="weight-error" role="alert" style="color:#9b2c2c" hidden></p>
               </div>
               <div class="f">
                 <label for="f-neutered">是否結紮</label>
@@ -797,7 +797,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3b4643;padding-top:20px;marg
             <div class="f">
               <label for="f-slot">要約哪一個時段 <span class="req">必填</span>
                 <span class="hint">額滿的時段不會出現在這裡</span></label>
-              <select id="f-slot" name="slot" required></select>
+              <select id="f-slot" name="slot" required aria-describedby="slot-error"></select><p id="slot-error" role="alert" style="color:#9b2c2c" hidden></p>
             </div>
           </fieldset>
 
@@ -1084,18 +1084,42 @@ $("reset-state").addEventListener("click", function(){
 });
 
 /* ── 時段：名額與狀態算出來，不寫死 ── */
+var GROOMERS = {
+  "林美容師": ["基礎洗澡烘乾", "指甲修剪＋耳道清潔"],
+  "吳美容師": ["洗澡＋全身修剪", "貓咪洗澡烘乾", "指甲修剪＋耳道清潔"]
+};
 var SLOTS = [
-  {id:"s1", date:"10 月 3 日（六）", time:"10:00–12:30", groomer:"林美容師", job:"洗澡烘乾", cap:2, booked:0},
-  {id:"s2", date:"10 月 3 日（六）", time:"14:00–17:00", groomer:"吳美容師", job:"洗剪全套", cap:1, booked:1},
-  {id:"s3", date:"10 月 4 日（日）", time:"10:00–12:30", groomer:"林美容師", job:"洗澡烘乾", cap:1, booked:0},
-  {id:"s4", date:"10 月 4 日（日）", time:"14:00–17:00", groomer:"吳美容師", job:"洗剪全套", cap:1, booked:0},
-  {id:"s5", date:"10 月 6 日（二）", time:"10:00–12:30", groomer:"吳美容師", job:"貓咪洗澡", cap:1, booked:0},
-  {id:"rest", date:"10 月 5 日（一）", time:"全日", groomer:"—", job:"—", cap:0, booked:0, rest:true}
+  {id:"s1", date:"10 月 3 日（六）", time:"10:00–12:30", groomer:"林美容師", job:"洗澡烘乾", services:["基礎洗澡烘乾", "指甲修剪＋耳道清潔"], cap:2, booked:0},
+  {id:"s2", date:"10 月 3 日（六）", time:"14:00–17:00", groomer:"吳美容師", job:"洗剪全套", services:["洗澡＋全身修剪", "指甲修剪＋耳道清潔"], cap:1, booked:1},
+  {id:"s3", date:"10 月 4 日（日）", time:"10:00–12:30", groomer:"林美容師", job:"洗澡烘乾", services:["基礎洗澡烘乾", "指甲修剪＋耳道清潔"], cap:1, booked:0},
+  {id:"s4", date:"10 月 4 日（日）", time:"14:00–17:00", groomer:"吳美容師", job:"洗剪全套", services:["洗澡＋全身修剪", "指甲修剪＋耳道清潔"], cap:1, booked:0},
+  {id:"s5", date:"10 月 6 日（二）", time:"10:00–12:30", groomer:"吳美容師", job:"貓咪洗澡", services:["貓咪洗澡烘乾", "指甲修剪＋耳道清潔"], cap:1, booked:0},
+  {id:"rest", date:"10 月 5 日（一）", time:"全日", groomer:"—", job:"—", services:[], cap:0, booked:0, rest:true}
 ];
 var booked = [];   /* 送出成功的預約：{slot, name, phone} */
 
 function label(s){ return s.date + " " + s.time + "　" + s.groomer + "（" + s.job + "）"; }
 function left(s){ return s.cap - s.booked; }
+function serves(s, service){
+  return !!s && !s.rest && s.services.indexOf(service) >= 0 &&
+    !!GROOMERS[s.groomer] && GROOMERS[s.groomer].indexOf(service) >= 0;
+}
+function fieldError(id, errorId, message){
+  $(id).setCustomValidity(message); $(id).setAttribute("aria-invalid", String(!!message));
+  $(errorId).textContent = message; $(errorId).hidden = !message;
+}
+function checkWeight(){
+  var value = $("f-weight").value.trim();
+  var ok = /^[0-9]+(?:\.[0-9]{1,2})?$/.test(value) && Number(value) > 0 && Number(value) <= 100;
+  fieldError("f-weight", "weight-error", ok ? "" : "請填大於 0、最多 100 公斤的數值，小數最多兩位（例如 8 或 8.25）。");
+  return ok;
+}
+$("f-weight").addEventListener("input", checkWeight);
+$("f-weight").addEventListener("invalid", checkWeight);
+$("f-service").addEventListener("change", function(){
+  $("f-slot").value = ""; fieldError("f-slot", "slot-error", ""); drawSlots();
+});
+$("f-slot").addEventListener("change", function(){ fieldError("f-slot", "slot-error", ""); });
 
 function drawSlots(){
   var tb = $("slot-rows");
@@ -1107,7 +1131,7 @@ function drawSlots(){
     var cells = [
       ["日期", s.date],
       ["時段", s.time],
-      ["美容師", s.rest ? "—" : s.groomer + "（" + s.job + "）"],
+      ["美容師", s.rest ? "—" : s.groomer + "（" + s.services.join("、") + "）"],
       ["名額", s.rest ? "—" : (left(s) + " / " + s.cap)]
     ];
     cells.forEach(function(c){
@@ -1134,9 +1158,9 @@ function drawSlots(){
   first.value = ""; first.textContent = "請選擇";
   sel.appendChild(first);
   SLOTS.forEach(function(s){
-    if (s.rest || left(s) <= 0) return;
+    if (!serves(s, $("f-service").value) || left(s) <= 0) return;
     var o = document.createElement("option");
-    o.value = s.id; o.textContent = s.date.replace(/ /g, "") + " " + s.time + "・" + s.job;
+    o.value = s.id; o.textContent = s.date.replace(/ /g, "") + " " + s.time + "・" + s.groomer + "・" + s.job;
     sel.appendChild(o);
   });
   if (keep && sel.querySelector('option[value="' + keep + '"]')) sel.value = keep;
@@ -1144,8 +1168,20 @@ function drawSlots(){
 
 /* ── 送出 ── */
 var form = $("book-form");
+["input", "change", "invalid"].forEach(function(event){
+  form.addEventListener(event, function(){ $("done").hidden = true; }, true);
+});
 form.addEventListener("submit", function(e){
   e.preventDefault();   /* 在頁面上處理，不送伺服器 */
+  $("done").hidden = true;
+  fieldError("f-slot", "slot-error", "");
+  if (!checkWeight()) { $("f-weight").focus(); return; }
+  var selectedSlot = SLOTS.filter(function(x){ return x.id === $("f-slot").value; })[0];
+  if (!serves(selectedSlot, $("f-service").value)) {
+    fieldError("f-slot", "slot-error", "服務與時段的美容師不相符，請重新選擇。名額尚未扣除。");
+    $("f-slot").focus(); return;
+  }
+  if (!form.reportValidity()) return;
   var d = new FormData(form);
   var slotId = d.get("slot");
   var s = SLOTS.filter(function(x){ return x.id === slotId; })[0];

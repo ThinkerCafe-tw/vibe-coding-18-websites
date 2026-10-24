@@ -1193,7 +1193,8 @@ dialog::backdrop{
 
         <div class="confirm-box">
           <strong>退款條件｜教學虛構示例</strong><br>
-          預約時間 48 小時前取消，可申請全額退款；48 小時內取消不退費，但可在一次範圍內申請改期。
+          <span id="refundTerms"></span>
+          <p id="termsVersion" class="small"></p>
 
         </div>
 
@@ -1208,6 +1209,8 @@ dialog::backdrop{
         <button class="btn btn-ghost" id="newOrderBtn" type="button" style="width:100%;margin-top:10px">建立另一筆教學訂單</button>
       </aside>
     </div>
+    <p class="help">付款後方案、金額、時間與條款快照會保留。再次選擇方案會建立新的待付款訂單，並重新確認條款。</p>
+    <div id="orderHistory" class="panel" style="margin-top:24px"></div>
   </div>
 </section>
 
@@ -1472,7 +1475,8 @@ const plans={
     tax:150,
     total:3150,
     duration:"60 分鐘",
-    delivery:"問題與優先順序摘要，以及會後一頁行動建議。"
+    delivery:"問題與優先順序摘要，以及會後一頁行動建議。",
+    exclusions:"網站實作、廣告代操、長期專案管理、法律／財稅意見、保證特定商業成果。"
   },
   workshop:{
     id:"PKG-002",
@@ -1481,13 +1485,22 @@ const plans={
     tax:400,
     total:8400,
     duration:"120 分鐘",
-    delivery:"現況流程與主要風險整理，以及會後兩頁執行優先順序。"
+    delivery:"現況流程與主要風險整理，以及會後兩頁執行優先順序。",
+    exclusions:"程式開發、正式 UI 設計稿、第三方系統採購、無限次修改、保證營收或轉換率。"
   }
 };
 
+const TERMS = {
+  version:"2026-10-24",
+  refund:"預約時間 48 小時前取消，可申請全額退款；48 小時內取消不退費，但可在一次範圍內申請改期。",
+  followup:"交付後 7 天內可就文件內容提出一次文字釐清，不等同新增工作範圍。"
+};
 const key="consultingPrototypeV1";
 const freshState=(sequence=1)=>({
   plan:"strategy",
+  termsConfirmed:false,
+  orderSnapshot:null,
+  history:[],
   orderId:"ORD-20261004-"+String(sequence).padStart(3,"0"),
   bookingId:"BKG-20261004-"+String(sequence).padStart(3,"0"),
   orderStatus:"pending_payment",
@@ -1512,6 +1525,15 @@ function normalizeState(saved){
     result.paymentStatus=saved.status;
   }
   if(result.orderStatus==="pending_payment" && result.paymentStatus==="cancelled") result.orderStatus="cancelled";
+  if (!plans[result.plan]) result.plan="strategy";
+  result.history=Array.isArray(result.history)?result.history:[];
+  // 舊教學資料只能保留當時已儲存的值；不猜測更早的交易內容。
+  if (result.orderStatus==="paid" && !result.orderSnapshot) {
+    result.orderSnapshot=makeSnapshot(result);
+    result.orderSnapshot.legacy=true;
+    result.orderSnapshot.acceptedAt=null;
+    result.termsConfirmed=true;
+  }
   delete result.status;
   return result;
 }
@@ -1532,8 +1554,62 @@ function statusLabel(s){
     cancelled:"使用者取消"
   }[s];
 }
+function lockedOrder(){
+  return ["paid","cancelled","completed","refunded"].includes(state.orderStatus);
+}
+function makeSnapshot(record){
+  return JSON.parse(JSON.stringify({
+    planKey:record.plan,
+    plan:plans[record.plan],
+    slot:record.slot,
+    terms:TERMS,
+    acceptedAt:new Date().toISOString()
+  }));
+}
+function clearAgreement(){
+  state.termsConfirmed=false;
+  state.orderSnapshot=null;
+}
+function newOrder(plan){
+  const {history,...previous}=state;
+  const archived=JSON.parse(JSON.stringify(previous));
+  const all=[...history,archived];
+  const sequence=Math.max(...all.map(order=>Number(order.orderId.split("-").pop())||0))+1;
+  state={...freshState(sequence),plan,history:all};
+  render();
+  toast("已保留原訂單並建立新訂單，請重新確認條款與付款。");
+}
+function renderHistory(){
+  const container=$("#orderHistory");
+  container.replaceChildren();
+  const title=document.createElement("h3"); title.textContent="先前訂單"; container.appendChild(title);
+  if (!state.history.length) {
+    const empty=document.createElement("p"); empty.textContent="尚無先前訂單。"; container.appendChild(empty); return;
+  }
+  state.history.slice().reverse().forEach(order=>{
+    const snapshot=order.orderSnapshot;
+    const plan=snapshot?snapshot.plan:plans[order.plan];
+    const article=document.createElement("article"); article.className="card"; article.dataset.orderId=order.orderId;
+    const heading=document.createElement("h4");
+    heading.style.cssText="display:flex;flex-wrap:wrap;gap:8px";
+    [order.orderId,statusLabel(order.paymentStatus)].forEach(text=>{
+      const part=document.createElement("span"); part.style.whiteSpace="nowrap"; part.textContent=text; heading.appendChild(part);
+    });
+    article.appendChild(heading);
+    [
+      plan.name+"｜"+money(plan.total)+"｜"+(snapshot?snapshot.slot:order.slot),
+      "條款版本："+(snapshot?snapshot.terms.version:"尚未同意")+"；同意："+(order.termsConfirmed?"已確認":"未確認"),
+      "退款條件："+(snapshot?snapshot.terms.refund:TERMS.refund),
+      "不包含："+plan.exclusions,
+      "交付："+plan.delivery,
+      snapshot?"同意時間："+(snapshot.acceptedAt?new Intl.DateTimeFormat("zh-TW",{dateStyle:"short",timeStyle:"medium",timeZone:"Asia/Taipei"}).format(new Date(snapshot.acceptedAt))+"（台北）":"舊示範資料未記錄"):"尚未建立付款快照"
+    ].forEach(text=>{const line=document.createElement("p");line.textContent=text;article.appendChild(line);});
+    container.appendChild(article);
+  });
+}
 function render(){
-  const p=plans[state.plan];
+  const snapshot=state.orderSnapshot;
+  const p=snapshot?snapshot.plan:plans[state.plan];
 
   $$(".package-card").forEach(el=>
     el.classList.toggle("selected",el.dataset.planCard===state.plan)
@@ -1544,7 +1620,12 @@ function render(){
   $("#sumAmount").textContent=money(p.amount);
   $("#sumTax").textContent=money(p.tax);
   $("#sumTotal").textContent=money(p.total);
-  $("#sumSlot").textContent=state.slot;
+  $("#sumSlot").textContent=snapshot?snapshot.slot:state.slot;
+  $("#refundTerms").textContent=snapshot?snapshot.terms.refund:TERMS.refund;
+  $("#termsVersion").textContent="條款版本："+(snapshot?snapshot.terms.version:TERMS.version);
+  $("#confirmTerms").checked=state.termsConfirmed;
+  $("#confirmTerms").disabled=lockedOrder();
+  $$("#bookingForm input,#bookingForm select,#bookingForm textarea,#bookingForm button").forEach(el=>{el.disabled=lockedOrder();});
 
   $("#modalOrder").textContent=state.orderId;
   $("#modalPlan").textContent=p.name;
@@ -1591,9 +1672,10 @@ function render(){
   const orderLabel={pending_payment:"待付款",paid:"已付款",payment_failed:"付款失敗",cancelled:"已取消",completed:"已完成",refunded:"已退款"}[state.orderStatus];
   box.innerHTML="<p id='stateOrderId'>訂單編號："+state.orderId+"</p><strong id='orderState'>訂單狀態："+orderLabel+"</strong><br><strong id='paymentState'>"+copy[0]+"</strong><p>"+copy[1]+" 本頁沒有執行真實金流簽章驗證。</p>";
   $$(".mock-result").forEach(btn=>{btn.disabled=state.orderStatus==="paid" || ["cancelled","completed","refunded"].includes(state.orderStatus)});
-  $("#payBtn").disabled=["cancelled","completed","refunded"].includes(state.orderStatus);
-  $("#payBtn").textContent=state.orderStatus==="cancelled"?"已取消，不能再付款":"前往付款｜教學模擬";
+  $("#payBtn").disabled=lockedOrder();
+  $("#payBtn").textContent=state.orderStatus==="paid"?"已付款，訂單內容已鎖定":lockedOrder()?"訂單已結束":"前往付款｜教學模擬";
   $("#delivery").classList.toggle("show",state.orderStatus==="paid");
+  renderHistory();
 
   save();
 }
@@ -1607,6 +1689,8 @@ function toast(msg){
 
 $$(".choose-plan").forEach(btn=>{
   btn.addEventListener("click",()=>{
+    if (lockedOrder()) { newOrder(btn.dataset.plan); return; }
+    if (state.plan!==btn.dataset.plan) clearAgreement();
     state.plan=btn.dataset.plan;
     save();
     render();
@@ -1615,12 +1699,16 @@ $$(".choose-plan").forEach(btn=>{
 });
 
 $("#slot").addEventListener("change",e=>{
+  if (lockedOrder()) return;
+  if (state.slot!==e.target.value) clearAgreement();
   state.slot=e.target.value;
   render();
 });
 
 $("#bookingForm").addEventListener("submit",e=>{
   e.preventDefault();
+  if (lockedOrder()) return;
+  if (state.slot!==$("#slot").value) clearAgreement();
   state.companyType=$("#companyType").value;
   state.problem=$("#problem").value.trim();
   state.budget=$("#budget").value;
@@ -1631,21 +1719,25 @@ $("#bookingForm").addEventListener("submit",e=>{
 });
 
 $("#newOrderBtn").addEventListener("click",()=>{
-  const sequence=Number(state.orderId.split("-").pop())+1;
-  const plan=state.plan;
-  state={...freshState(sequence),plan};
-  $("#confirmTerms").checked=false;
-  render();
-  toast("已建立另一筆教學訂單，請核對新編號並確認付款摘要。");
+  newOrder(state.plan);
 });
 
+$("#confirmTerms").addEventListener("change",()=>{
+  if (lockedOrder()) return;
+  state.termsConfirmed=$("#confirmTerms").checked;
+  state.orderSnapshot=null;
+  save();
+});
 let statusBeforeDialog="unpaid";
 $("#payBtn").addEventListener("click",()=>{
+  if (lockedOrder()) return;
   if(!$("#confirmTerms").checked){
     alert("請先確認方案、總額、時間、退款條件與服務邊界。");
     return;
   }
-  statusBeforeDialog=state.paymentStatus==="paid"?"paid":state.paymentStatus;
+  state.termsConfirmed=true;
+  state.orderSnapshot=makeSnapshot(state);
+  statusBeforeDialog=state.paymentStatus;
   if(["cancelled","completed","refunded"].includes(state.orderStatus)) return;
   if(state.orderStatus==="payment_failed") state.orderStatus="pending_payment";
   if(state.paymentStatus!=="paid") state.paymentStatus="processing";

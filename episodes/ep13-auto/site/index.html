@@ -381,7 +381,7 @@ table.est td.c-st::before{padding-bottom:12px}
         <fieldset><legend>車輛</legend>
           <div class="two">
             <label class="f">車牌<input type="text" id="f-plate" name="plate" required pattern="[A-Za-z0-9]{2,4}[\- ]?[A-Za-z0-9]{2,4}" placeholder="例 ABC-1234" autocapitalize="characters" title="例如 ABC-1234"></label>
-            <label class="f">目前里程（公里）<input type="number" id="f-mileage" name="mileage" min="0" inputmode="numeric"></label>
+            <label class="f">目前里程（公里）<input type="number" id="f-mileage" name="mileage" min="0" max="9999999" step="1" inputmode="numeric" aria-describedby="mileage-error"><span id="mileage-error" role="alert" style="color:#9b2c2c" hidden></span></label>
           </div>
           <div class="two">
             <label class="f">品牌<input type="text" id="f-brand" name="brand"></label>
@@ -425,7 +425,7 @@ table.est td.c-st::before{padding-bottom:12px}
       <div class="box">
         <h3>下次回廠提醒</h3>
         <div id="rem-out">
-          <label class="mi" for="cur-mi">目前里程（公里）<input type="text" id="cur-mi" inputmode="numeric" value="54300"></label>
+          <label class="mi" for="cur-mi">目前里程（公里）<input type="text" id="cur-mi" inputmode="numeric" value="54300" maxlength="7" aria-describedby="cur-mi-error"><span id="cur-mi-error" role="alert" style="color:#9b2c2c" hidden></span></label>
           <div id="rail"></div>
           <p id="rem-km"></p>
           <p id="rem-prog"></p>
@@ -708,11 +708,19 @@ table.est td.c-st::before{padding-bottom:12px}
     ).join("");
   }
 
+  function validMileage(value) {
+    return /^[0-9]{1,7}$/.test(value) && Number.isSafeInteger(Number(value));
+  }
+  function mileageError(input, target, message) {
+    input.setCustomValidity(message); input.setAttribute("aria-invalid", String(!!message));
+    target.textContent=message; target.hidden=!message;
+  }
   function renderReminder() {
     const last = RECORDS[0];
     const nextKm = last.km + RULE.km;
-    const cur = parseInt($("#cur-mi").value.replace(/[^0-9]/g, ""), 10);
-    const ok = Number.isFinite(cur) && cur > 0;
+    const value = $("#cur-mi").value.trim();
+    const ok = validMileage(value), cur = ok ? Number(value) : NaN;
+    mileageError($("#cur-mi"), $("#cur-mi-error"), ok ? "" : "請填 0 至 9999999 的整數公里數，不含負號、小數或文字。");
     const pct = ok ? Math.max(0, Math.min(100, Math.round((cur - last.km) / RULE.km * 100))) : 0;
     let prog;
     if (!ok) prog = "輸入目前里程，就能看到距離下次建議里程還有多遠。";
@@ -750,6 +758,8 @@ table.est td.c-st::before{padding-bottom:12px}
   const form = $("#booking-form");
   form.addEventListener("submit", e => {
     e.preventDefault();
+    const rawMileage=$("#f-mileage").value.trim();
+    mileageError($("#f-mileage"), $("#mileage-error"), !rawMileage || validMileage(rawMileage) ? "" : "里程請填 0 至 9999999 的整數。");
     if (!form.reportValidity()) return;
     if (!sel.slot) { say("請先選一個日期與時段。", "warn"); return; }
     const day = dayOf(sel.day), slot = slotOf(sel.slot);
@@ -759,7 +769,7 @@ table.est td.c-st::before{padding-bottom:12px}
     if (dup) { say("同一天、同一時段，車牌 " + plate + " 已經有一筆預約（編號 " + dup.no + "），這一筆不會重複送出。這個網頁只能在這一次瀏覽裡比對；真正防止重複預約，要靠店內預約系統的後端檢查。預約以來電確認為準。", "warn"); return; }
     const no = "KG-" + day.md.replace("/", "") + "-" + slot.id + "-" + String(usedOf(day, slot) + 1).padStart(2, "0");
     const svc = $$("input[name=svc]:checked").map(i => i.value);
-    const mileage = parseInt($("#f-mileage").value, 10);
+    const mileage = rawMileage ? Number(rawMileage) : NaN;
     bookings.push({ no, day: day.id, slot: slot.id, plate, name: $("#f-name").value.trim(), phone: $("#f-phone").value.trim(), svc });
     vehicles.add(plate);
     phones.add($("#f-phone").value.trim());
@@ -768,7 +778,7 @@ table.est td.c-st::before{padding-bottom:12px}
     $("#c-when").textContent = day.md + "（週" + day.wd + "）" + slot.t;
     $("#c-plate").textContent = plate;
     $("#c-svc").textContent = svc.length ? svc.join("、") : "到廠後一起檢查";
-    $("#c-next").textContent = Number.isFinite(mileage) && mileage > 0
+    $("#c-next").textContent = Number.isFinite(mileage) && mileage >= 0
       ? "目前 " + fmt(mileage) + " 公里，約 " + fmt(mileage + RULE.km) + " 公里或 " + RULE.months + " 個月後（先到的那一個）提醒您回廠；提醒文字以上次紀錄為據，隨時可以請我們停止提醒。"
       : "里程請到廠時補登；時間提醒是 " + RULE.months + " 個月後，隨時可以請我們停止提醒。";
     $("#confirm").hidden = false;
@@ -780,6 +790,11 @@ table.est td.c-st::before{padding-bottom:12px}
   /* ---------- 其他互動 ---------- */
   $("#q-form").addEventListener("submit", e => { e.preventDefault(); renderRecords($("#q-plate").value); });
   $("#cur-mi").addEventListener("input", renderReminder);
+  $("#f-mileage").addEventListener("input", () => {
+    const value=$("#f-mileage").value.trim();
+    mileageError($("#f-mileage"), $("#mileage-error"), !value || validMileage(value) ? "" : "里程請填 0 至 9999999 的整數。");
+    $("#confirm").hidden=true;
+  });
 
   renderServices();
   renderEstimate();

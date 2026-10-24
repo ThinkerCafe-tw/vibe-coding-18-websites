@@ -2218,6 +2218,7 @@
           </p>
         </div>
 
+        <p data-demo-clock class="note"></p>
         <div class="ticket-grid">
           <article class="card ticket active" data-ticket-card="early">
             <span class="tag">教學虛構示例</span>
@@ -2225,6 +2226,7 @@
             <div class="ticket-price">早鳥票 5,000 元</div>
             <div class="note">教學虛構示例價格</div>
 
+            <p class="ticket-state" role="status"></p>
             <div class="ticket-meta">
               <span>開賣：2026 / 10 / 01 09:00</span>
               <span>截止：2026 / 10 / 31 23:59</span>
@@ -2243,6 +2245,7 @@
             <div class="ticket-price">一般票 6,000 元</div>
             <div class="note">教學虛構示例價格</div>
 
+            <p class="ticket-state" role="status"></p>
             <div class="ticket-meta">
               <span>開賣：2026 / 11 / 01 09:00</span>
               <span>截止：2026 / 11 / 12 23:59</span>
@@ -2260,6 +2263,7 @@
             <div class="ticket-price">學生票 4,500 元</div>
             <div class="note">教學虛構示例價格｜現場資格驗證僅為說明</div>
 
+            <p class="ticket-state" role="status"></p>
             <div class="ticket-meta">
               <span>開賣：2026 / 10 / 01 09:00</span>
               <span>截止：2026 / 11 / 12 23:59</span>
@@ -2460,6 +2464,7 @@
 
         <div class="form-layout">
           <form id="registrationForm" class="card" novalidate>
+            <p data-demo-clock class="note"></p>
             <div class="fields form-grid">
               <div class="field">
                 <label for="name">姓名</label>
@@ -2744,6 +2749,7 @@
     (() => {
       "use strict";
 
+      const DEMO_NOW = "2026-10-24T12:00:00+08:00";
       const STORAGE_KEY = "event-registration-teaching-prototype-v1";
 
       const ticketCatalog = {
@@ -2823,8 +2829,18 @@
         return prefix + "-" + Date.now() + "-" + Math.random().toString(16).slice(2);
       }
 
-      function nowISO() {
-        return new Date().toISOString();
+      function nowISO() { return new Date(DEMO_NOW).toISOString(); }
+      function saleState(ticketKey) {
+        const ticket = ticketCatalog[ticketKey];
+        if (!ticket) return "無效票種";
+        const now = Date.parse(DEMO_NOW);
+        if (now < Date.parse(ticket.salesStart)) return "尚未開賣";
+        if (now > Date.parse(ticket.salesEnd)) return "已截止";
+        return "報名中";
+      }
+      function ticketState(ticketKey) {
+        const sale = saleState(ticketKey);
+        return sale === "報名中" && state.tickets[ticketKey] <= 0 ? "已售完" : sale;
       }
 
       function formatTime(iso) {
@@ -2835,7 +2851,8 @@
           day: "2-digit",
           hour: "2-digit",
           minute: "2-digit",
-          hour12: false
+          hour12: false,
+          timeZone: "Asia/Taipei"
         }).format(new Date(iso));
       }
 
@@ -2901,7 +2918,7 @@
       }
 
       function setSelectedTicket(ticketKey) {
-        if (!ticketCatalog[ticketKey]) return;
+        if (!ticketCatalog[ticketKey] || ticketState(ticketKey) !== "報名中") return;
         state.selectedTicket = ticketKey;
         saveState();
         $("#ticket").value = ticketKey;
@@ -2920,6 +2937,10 @@
         const marketing = $("#marketingConsent").checked;
 
         $("#formValidation").textContent = "";
+        if (saleState(ticketKey) !== "報名中") {
+          $("#formValidation").textContent = "此票種" + saleState(ticketKey) + "，沒有建立報名或扣除名額。";
+          return;
+        }
 
         if (!name || !contact) {
           $("#formValidation").textContent = "請先填寫姓名與聯絡方式。";
@@ -3019,6 +3040,9 @@
 
         $("#waitlistValidation").textContent = "";
 
+        if (saleState("early") !== "報名中") {
+          $("#waitlistValidation").textContent = "早鳥票" + saleState("early") + "，目前不開放候補。"; return;
+        }
         if (state.tickets.early > 0) {
           $("#waitlistValidation").textContent =
             "目前仍有早鳥票名額，候補入口尚未開啟。";
@@ -3129,7 +3153,7 @@
 
         const head = waiting[0];
 
-        if (!head || state.tickets.early <= 0) return null;
+        if (!head || state.tickets.early <= 0 || saleState("early") !== "報名中") return null;
 
         /*
           先有可用名額，再將一席保留給隊首。
@@ -3137,7 +3161,7 @@
         */
         state.tickets.early = Math.max(0, state.tickets.early - 1);
 
-        const now = new Date();
+        const now = new Date(DEMO_NOW);
         const reservedUntil = new Date(now.getTime() + 10 * 60 * 1000);
 
         head.status = "reserved";
@@ -3249,9 +3273,9 @@
         const waitButton = earlyCard.querySelector(".waitlist-open");
 
         earlyCard.classList.toggle("sold-out", soldOut);
-        earlyButton.disabled = soldOut;
+        earlyButton.disabled = ticketState("early") !== "報名中";
         earlyButton.textContent = soldOut ? "已售完" : "選擇早鳥票";
-        waitButton.hidden = !soldOut;
+        waitButton.hidden = !soldOut || saleState("early") !== "報名中";
 
         const formTicket = $("#ticket").value;
         const selected = ticketCatalog[formTicket];
@@ -3274,13 +3298,23 @@
           const optionElement = $(`#ticket option[value="${key}"]`);
 
           priceElement.textContent = displayName;
-          optionElement.textContent = displayName;
+          const status = ticketState(key);
+          optionElement.textContent = displayName + "（" + status + "）";
+          optionElement.disabled = status !== "報名中";
+          ticketCard.querySelector(".ticket-state").textContent = status;
+          ticketCard.querySelector(".ticket-meta strong").textContent = "剩餘名額：" + state.tickets[key] + " / " + ticket.capacity;
+          const selectButton = ticketCard.querySelector(".ticket-select");
+          selectButton.disabled = status !== "報名中";
+          selectButton.textContent = status === "報名中" ? "選擇" + ticket.name : status;
         });
 
         const submit = $("#registrationSubmit");
         const formWait = $("#formWaitlistButton");
 
-        if (formTicket === "early" && state.tickets.early <= 0) {
+        if (saleState(formTicket) !== "報名中") {
+          submit.disabled = true; submit.textContent = "此票種" + saleState(formTicket);
+          formWait.hidden = true;
+        } else if (formTicket === "early" && state.tickets.early <= 0) {
           submit.disabled = true;
           submit.textContent = "早鳥票已售完，停止報名";
           formWait.hidden = false;
@@ -3295,8 +3329,8 @@
         }
 
         const waitlistSubmit = $("#waitlistSubmit");
-        waitlistSubmit.disabled = !soldOut;
-        waitlistSubmit.textContent = soldOut
+        waitlistSubmit.disabled = !soldOut || saleState("early") !== "報名中";
+        waitlistSubmit.textContent = saleState("early") !== "報名中" ? "早鳥票" + saleState("early") : soldOut
           ? "加入候補"
           : "目前仍有早鳥名額";
       }
@@ -3516,6 +3550,7 @@
           state.tickets[key] = Math.max(0, Math.min(ticket.capacity, value));
         });
 
+        $$("[data-demo-clock]").forEach(el => { el.textContent = "固定教學時鐘：" + formatTime(DEMO_NOW) + "（台北時間）。票種開賣、截止、候補與通知時間均依此基準。"; });
         saveState();
         renderTickets();
         renderRegistration();

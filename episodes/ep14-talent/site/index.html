@@ -367,7 +367,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
         <button type="button" class="mode" data-mode="wait" aria-pressed="false">登記候補</button>
       </div>
       <h3 id="form-title"></h3>
-      <p id="form-hint"></p>
+      <p id="form-hint"></p><p id="demo-date" class="sub"></p>
       <form id="apply-form">
         <div class="fields">
           <div class="field wide"><label for="f-class">班級</label><select id="f-class" required></select></div>
@@ -375,7 +375,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
           <div class="field"><label for="f-age">孩子幾歲</label><select id="f-age" name="age" required><option value="">請選年齡</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></div>
           <div class="field"><label for="f-name">家長姓名</label><input id="f-name" name="name" required maxlength="12" autocomplete="name"></div>
           <div class="field"><label for="f-phone">手機</label><input id="f-phone" name="phone" required inputmode="numeric" pattern="09[0-9]{8}" placeholder="0912345678" autocomplete="tel"><span class="sub">十碼，09 開頭</span></div>
-          <div class="field wide" id="trial-row"><label for="f-trial">試上時段</label><select id="f-trial"></select></div>
+          <div class="field wide" id="trial-row"><label for="f-trial">試上時段</label><select id="f-trial" required aria-describedby="trial-error"></select><p id="trial-error" role="alert" style="color:#9b2c2c" hidden></p></div>
           <div class="field wide"><label for="f-note">備註</label><textarea id="f-note" name="note" maxlength="200"></textarea><span class="sub">例如：孩子慢熟、有沒有過敏、想坐哪一區</span></div>
         </div>
         <p class="rules-again"><b>送出前再看一次：</b>補課：上課前 24 小時請假，每期可補 2 次。退費：開課前學費全額退還；教材費與活動費的處理方式，都寫在下方的規則說明。</p>
@@ -467,6 +467,19 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
     return pad(d.getUTCMonth() + 1, 2) + '/' + pad(d.getUTCDate(), 2) + '(' + WEEK[d.getUTCDay()] + ')';
   }
   var DEADLINE = dateLabel(TODAY + 3 * 864e5) + ' 18:00 前';
+  $('demo-date').textContent = '固定教學基準日：' + new Date(TODAY).toISOString().slice(0,10).replace(/-/g,'/') + '。試上日期與候補三日回覆期限都以此日計算。';
+  function trialSlots(c) {
+    return [2, 9].map(function(add) {
+      var t=TODAY + add * 864e5;
+      while (new Date(t).getUTCDay() !== c.day) t += 864e5;
+      return dateLabel(t) + ' ' + c.start;
+    });
+  }
+  function trialError(message) {
+    $('f-trial').setCustomValidity(message); $('f-trial').setAttribute('aria-invalid', String(!!message));
+    $('trial-error').textContent=message; $('trial-error').hidden=!message;
+  }
+  $('f-trial').addEventListener('change', function(){ trialError(''); });
 
   /* ---- 名額狀態機:目前人數、保留名額、是否額滿 ---- */
   function activeEnroll(c) {
@@ -661,15 +674,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
     var ft = $('f-trial');
     var keep = ft.value;
     ft.textContent = '';
-    [2, 9].forEach(function (add) {
-      var t = TODAY + add * 864e5;
-      var d = new Date(t);
-      while (d.getUTCDay() !== c.day) { t += 864e5; d = new Date(t); }
-      var o = mk('option', null, dateLabel(t) + ' ' + c.start);
-      o.value = dateLabel(t) + ' ' + c.start;
-      ft.appendChild(o);
+    var available=trialSlots(c);
+    available.forEach(function (slot) {
+      var o = mk('option', null, slot); o.value=slot; ft.appendChild(o);
     });
-    if (keep) { ft.value = keep; }
+    ft.value=available.indexOf(keep)>=0 ? keep : available[0];
+    ft.required=state.form.mode==='trial'; ft.disabled=state.form.mode!=='trial';
+    trialError('');
   }
   function openForm(cid, mode) {
     state.form.cid = cid;
@@ -701,15 +712,20 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
   function onSubmit(ev) {
     ev.preventDefault();
     var form = $('apply-form');
-    if (!form.checkValidity()) { form.reportValidity(); return; }
     var cls = byId($('f-class').value);
+    if (!cls) { block('請選擇有效班級。'); return; }
+    trialError('');
+    if (state.form.mode==='trial' && trialSlots(cls).indexOf($('f-trial').value)<0) {
+      trialError('請選擇此班級可安排的試上時段。'); $('f-trial').focus(); return;
+    }
+    if (!form.checkValidity()) { form.reportValidity(); return; }
     var mode = state.form.mode;
     var child = $('f-child').value.trim();
-    var age = parseInt($('f-age').value, 10);
+    var age = Number($('f-age').value);
     var name = $('f-name').value.trim();
     var phone = $('f-phone').value.trim();
     var band = BANDS[cls.band];
-    if (age < band.min || age > band.max) { block(cls.name + '收 ' + band.label + '的孩子，' + age + ' 歲的孩子請選對應年齡層的班。'); return; }
+    if (!Number.isInteger(age) || age < band.min || age > band.max) { block(cls.name + '收 ' + band.label + '的孩子，' + age + ' 歲的孩子請選對應年齡層的班。'); return; }
     if (mode === 'wait' && !isFull(cls)) { block('這個班還有名額，不用候補，請改選預約試上或正式報名。'); switchMode('trial'); return; }
     if (mode !== 'wait' && isFull(cls)) { block('這個班目前額滿，不能直接試上或報名，已幫你切到登記候補；有名額空出會依順位通知。'); switchMode('wait'); return; }
     var dup = findDup(mode, cls, phone, child);
