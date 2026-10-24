@@ -284,7 +284,7 @@ footer b{color:var(--y);font-size:20px}
 table.est td.c-st::before{padding-bottom:12px}
 .slot{padding:14px 16px!important;line-height:1.5!important}
 </style>
-<script src="../../../assets/form-validation.js" defer></script>
+<script src="../../../assets/form-validation.js?v=20261025fix6" defer></script>
 </head>
 <body data-picker="grid">
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -369,7 +369,7 @@ table.est td.c-st::before{padding-bottom:12px}
         <div id="slot-list" role="group" aria-label="選日期與時段"></div>
         <p id="pick-summary" aria-live="polite">還沒選時段</p>
       </div>
-      <form class="formbox" id="booking-form">
+      <form class="formbox" id="booking-form" data-success-result="confirm" data-form-feedback="status">
         <fieldset><legend>車主</legend>
           <div class="two">
             <label class="f">姓名<input type="text" id="f-name" name="name" required autocomplete="name"></label>
@@ -565,6 +565,7 @@ table.est td.c-st::before{padding-bottom:12px}
     b.innerHTML = "<b>" + s.t + "</b><span>" + (full ? "已額滿" : PICKER === "grid" ? "剩 " + left + " 台" : "剩 " + left + " 個名額") + "</span>";
     b.addEventListener("click", () => {
       if (full) return;
+      $("#confirm").hidden = true; say("");
       sel.day = day.id;
       sel.slot = s.id;
       renderPick();
@@ -602,6 +603,7 @@ table.est td.c-st::before{padding-bottom:12px}
         c.setAttribute("aria-pressed", String(sel.day === day.id));
         c.innerHTML = "<b>" + day.md + "</b><span>" + (day.open ? "週" + day.wd : "公休") + "</span>";
         c.addEventListener("click", () => {
+          $("#confirm").hidden = true; say("");
           sel.day = day.id;
           if (sel.slot && leftOf(day, slotOf(sel.slot)) <= 0) sel.slot = null;
           renderPick();

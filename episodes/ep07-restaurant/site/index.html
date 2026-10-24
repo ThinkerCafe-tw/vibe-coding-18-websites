@@ -206,7 +206,7 @@ footer .legal{flex-basis:100%;line-height:1.7}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
-<script src="../../../assets/form-validation.js" defer></script>
+<script src="../../../assets/form-validation.js?v=20261025fix6" defer></script>
 </head>
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -403,7 +403,7 @@ footer .legal{flex-basis:100%;line-height:1.7}
 
       <p class="pick-summary is-empty" id="pick-summary">還沒選時段</p>
 
-      <form id="booking-form" autocomplete="off">
+      <form id="booking-form" data-success-result="confirm" data-form-feedback="status" autocomplete="off">
         <div class="fields">
           <div class="field"><label for="f-name">姓名</label><input id="f-name" name="name" type="text" required placeholder="例：林小姐"></div>
           <div class="field"><label for="f-phone">手機</label><input id="f-phone" name="phone" type="tel" required pattern="09[0-9]{8}" inputmode="numeric" placeholder="09 開頭共十碼，例如 0912000000"></div>
@@ -433,7 +433,7 @@ footer .legal{flex-basis:100%;line-height:1.7}
       <div class="confirm" id="confirm" hidden>
         <span class="ok">頁內模擬｜已確認</span>
         <div class="no" id="c-no"></div>
-        <p class="how">這是此頁的示範編號，資料未保存、未通知店內；訂位仍須來電確認。</p>
+        <p class="how">這是此頁的示範編號，資料僅保留本頁，重新整理即清空，未送到店家；訂位仍須來電確認。</p>
         <dl>
           <dt>日期</dt><dd id="c-date"></dd>
           <dt>時段</dt><dd id="c-slot"></dd>
@@ -575,6 +575,7 @@ footer .legal{flex-basis:100%;line-height:1.7}
   function fmtDay(id) { var d = dayObj(id); return d.label + "（" + d.dow + "）"; }
 
   function say(msg) { $("status").textContent = msg; }
+  function clearBookingFeedback() { $("confirm").hidden = true; say(""); }
 
   /* ===== 畫面 ===== */
   function renderDays() {
@@ -589,6 +590,7 @@ footer .legal{flex-basis:100%;line-height:1.7}
       b.innerHTML = '<span class="c-main">' + d.label + '</span><span class="c-sub">' + (d.open ? "週" + d.dow : "公休") + "</span>";
       if (!d.open) b.disabled = true;
       b.addEventListener("click", function () {
+        clearBookingFeedback();
         state.day = d.id; state.slot = null; state.table = null;
         renderAll();
       });
@@ -608,6 +610,7 @@ footer .legal{flex-basis:100%;line-height:1.7}
         b.setAttribute("aria-pressed", state.party === n ? "true" : "false");
         b.innerHTML = '<span class="c-main">' + n + '</span><span class="c-sub">人</span>';
         b.addEventListener("click", function () {
+          clearBookingFeedback();
           state.party = n; state.slot = null; state.table = null;
           renderAll();
         });
@@ -638,6 +641,7 @@ footer .legal{flex-basis:100%;line-height:1.7}
       b.disabled = isFull;
       b.addEventListener("click", function () {
         if (isFull) return;
+        clearBookingFeedback();
         state.slot = s.id;
         state.table = null;
         renderSlots(); renderTables(); renderSummary();
@@ -671,7 +675,7 @@ footer .legal{flex-basis:100%;line-height:1.7}
       inp.type = "radio"; inp.name = "table"; inp.value = t.id;
       inp.checked = state.table === t.id;
       inp.disabled = left <= 0;
-      inp.addEventListener("change", function () { state.table = t.id; renderSummary(); });
+      inp.addEventListener("change", function () { clearBookingFeedback(); state.table = t.id; renderSummary(); });
       lab.appendChild(inp);
       var txt = document.createElement("span");
       txt.className = "t-text";
@@ -749,7 +753,7 @@ footer .legal{flex-basis:100%;line-height:1.7}
     $("c-table").textContent = table.name;
     $("c-needs").textContent = needs.length ? needs.join("、") : "無";
     $("confirm").hidden = false;
-    say("頁內模擬已確認，示範編號 " + no + "；資料未保存，請電話確認正式訂位。");
+    say("頁內模擬已確認，示範編號 " + no + "；資料僅保留本頁，重新整理即清空，未送到店家；請電話確認正式訂位。");
     state.slot = null; state.table = null;
     renderAll();
     $("confirm").scrollIntoView({ behavior: "smooth", block: "nearest" });

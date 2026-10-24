@@ -301,7 +301,7 @@ footer .disc{margin:36px 0 0;padding-top:22px;border-top:1px solid rgba(223,227,
   footer .cols{grid-template-columns:1fr;gap:24px}
 }
 </style>
-<script src="../../../assets/form-validation.js" defer></script>
+<script src="../../../assets/form-validation.js?v=20261025fix6" defer></script>
 </head>
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -581,7 +581,7 @@ footer .disc{margin:36px 0 0;padding-top:22px;border-top:1px solid rgba(223,227,
       <div class="head"><h2 id="booking-title">預約首次體驗</h2></div>
       <p class="intro">填完按送出就好，不會扣款、不會綁約。我們會在一個工作天內回覆，確認教練與場次。</p>
 
-      <form id="trial-form">
+      <form id="trial-form" data-success-result="booking-result">
         <div class="field">
           <label for="f-name">姓名<span class="req" aria-hidden="true">＊</span></label>
           <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="王小明">

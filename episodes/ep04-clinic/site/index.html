@@ -274,7 +274,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
   .doc dt,.access dt,.result dt{margin-top:10px}
 }
 </style>
-<script src="../../../assets/form-validation.js" defer></script>
+<script src="../../../assets/form-validation.js?v=20261025fix6" defer></script>
 </head>
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -346,7 +346,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
         <div class="chosen-line" id="chosen-line" aria-live="polite">尚未選擇時段：請先在上面的名額板挑一個還有名額的診次。</div>
         <div class="alarm" id="alarm" hidden role="alert"></div>
 
-        <form id="booking-form">
+        <form id="booking-form" data-success-result="result">
           <div class="field">
             <label for="f-name">姓名</label>
             <input type="text" id="f-name" name="name" required autocomplete="name">

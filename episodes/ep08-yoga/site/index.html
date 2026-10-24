@@ -169,7 +169,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--sage);outline:none}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
-<script src="../../../assets/form-validation.js" defer></script>
+<script src="../../../assets/form-validation.js?v=20261025fix6" defer></script>
 </head>
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -253,7 +253,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--sage);outline:none}
       <p>額滿的課可以排候補，取消規則與方案請見下方「取消規則」。</p>
     </div>
     <div class="enroll-grid">
-      <form id="enroll-form" autocomplete="off">
+      <form id="enroll-form" data-success-result="result" autocomplete="off">
         <label>姓名
           <input id="f-name" name="name" type="text" required autocomplete="name">
         </label>
@@ -397,6 +397,7 @@ function actionFor(s) {
 }
 
 function pick(id) {
+  $("#result").hidden = true;
   const sel = $("#f-class");
   sel.value = id;
   showInfo();
@@ -455,20 +456,20 @@ function onSubmit(ev) {
   if (!s) return;
   const student = $("#f-name").value.trim();
   studentNotes.push({ id: "n" + (studentNotes.length + 1), student, body: $("#f-body").value.trim(), experience: $("#f-exp").value });
-  if (remaining(s) <= 0) {
-    const rank = waitCount(s) + 1;
+  const kind = remaining(s) <= 0 ? "waitlist" : "enrolled";
+  const rank = kind === "waitlist" ? waitCount(s) + 1 : 0;
+  if (kind === "waitlist") {
     waitlist.push({ id: "w" + (waitlist.length + 1), student, phone:$("#f-phone").value.trim(), noteId:studentNotes[studentNotes.length-1].id, sessionId: s.id, rank, notify: "候補中" });
-    showResult("waitlist", s, rank);
   } else {
     s.confirmed += 1;
     enrollments.push({ id: "e" + (enrollments.length + 1), student, phone:$("#f-phone").value.trim(), noteId:studentNotes[studentNotes.length-1].id, sessionId: s.id, status: "已報名", at: Date.now() });
-    showResult("enrolled", s);
   }
   $("#enroll-form").reset();
   fillOptions();
   renderSchedule();
   showInfo();
   renderHistory();
+  showResult(kind, s, rank);
 }
 
 function fillOptions() {

@@ -232,7 +232,7 @@ footer .legal{flex-basis:100%;margin:0;font-size:17px;line-height:1.7}
 @media (max-width:600px){.band::after{background:rgba(24,33,44,.86)}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
-<script src="../../../assets/form-validation.js" defer></script>
+<script src="../../../assets/form-validation.js?v=20261025fix6" defer></script>
 </head>
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -391,7 +391,7 @@ footer .legal{flex-basis:100%;margin:0;font-size:17px;line-height:1.7}
     <p class="sec-sub">填好之後按「提交案件初步資訊」。這一步只是把資料交給我們做初篩，還不是委任。</p>
     <div class="formgrid">
       <div>
-        <form id="intake" data-obj="IntakeRequest" autocomplete="off">
+        <form id="intake" data-success-result="confirm" data-obj="IntakeRequest" autocomplete="off">
           <fieldset>
             <div class="row">
               <div><label for="client_name">姓名</label><input id="client_name" name="client_name" type="text" required></div>

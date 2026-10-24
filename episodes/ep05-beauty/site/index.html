@@ -212,7 +212,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<script src="../../../assets/form-validation.js" defer></script>
+<script src="../../../assets/form-validation.js?v=20261025fix6" defer></script>
 </head>
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -307,7 +307,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
       <ul><li>隨時查點數與儲值餘額</li><li>每一筆消費都留紀錄，可以回頭核對</li><li>預約時不必每次重填資料</li></ul>
     </div>
     <div>
-      <form id="reg-form">
+      <form id="reg-form" data-success-result="reg-result">
         <div class="fields">
           <div><label for="r-name">姓名</label><input id="r-name" name="name" type="text" required autocomplete="name"></div>
           <div><label for="r-phone">手機</label><input id="r-phone" name="phone" type="tel" required pattern="09[0-9]{8}" inputmode="numeric" placeholder="例如 0912000000" autocomplete="tel"></div>
@@ -345,7 +345,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
 <section id="booking" aria-labelledby="h-book">
   <div class="wrap two rev">
     <div>
-      <form id="book-form">
+      <form id="book-form" data-success-result="book-result">
         <div class="fields">
           <div class="full"><label for="b-service">服務</label><select id="b-service" name="service" required><option value="">請選擇服務</option></select></div>
           <p class="info" id="svc-info" aria-live="polite">選擇服務後，這裡會顯示所需時間與價格。</p>
@@ -525,7 +525,9 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
     var charges = SV.filter(function (r) { return r.type === "charge"; });
     var last = charges[charges.length - 1];
     var lastAppt = byId(APPTS, last.appt);
-    var next = APPTS.filter(function (a) { return a.date >= TODAY && (a.status === "已確認" || a.status === "待確認"); })[0];
+    // ISO dates and zero-padded times sort chronologically; keep APPTS in record order.
+    var next = APPTS.filter(function (a) { return a.date >= TODAY && (a.status === "已確認" || a.status === "待確認"); })
+      .sort(function (a, b) { return (a.date + "T" + a.time).localeCompare(b.date + "T" + b.time); })[0];
     $("storedValue").textContent = fmt(balance);
     $("points").textContent = fmt(points);
     $("expiringPoints").textContent = fmt(expPts);

@@ -226,7 +226,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
 @media(max-width:600px){section{padding:56px 0}.hero{padding:36px 0 52px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
-<script src="../../../assets/form-validation.js" defer></script>
+<script src="../../../assets/form-validation.js?v=20261025fix6" defer></script>
 </head>
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -369,7 +369,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
       </div>
       <h3 id="form-title"></h3>
       <p id="form-hint"></p><p id="demo-date" class="sub"></p>
-      <form id="apply-form">
+      <form id="apply-form" data-success-result="result">
         <div class="fields">
           <div class="field wide"><label for="f-class">班級</label><select id="f-class" required></select></div>
           <div class="field"><label for="f-child">孩子的小名</label><input id="f-child" name="child" required maxlength="12" autocomplete="off"></div>
@@ -685,6 +685,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
     trialError('');
   }
   function openForm(cid, mode) {
+    $("result").hidden = true;
     state.form.cid = cid;
     state.form.mode = mode;
     syncForm();
@@ -795,7 +796,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
       openForm(b.closest('.class-card').getAttribute('data-cid'), b.getAttribute('data-act'));
     });
     [].forEach.call(document.querySelectorAll('#mode-list .mode'), function (b) {
-      b.addEventListener('click', function () { switchMode(b.getAttribute('data-mode')); });
+      b.addEventListener('click', function () { $('result').hidden = true; switchMode(b.getAttribute('data-mode')); });
     });
     fc.addEventListener('change', function () { state.form.cid = fc.value; syncForm(); });
     wc.addEventListener('change', renderWait);

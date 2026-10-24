@@ -2482,6 +2482,7 @@
 
               <div class="field full">
                 <label for="ticket">票種</label>
+                <p class="note" id="ticketPreview" aria-live="polite"></p>
                 <select id="ticket" name="ticket">
                   <option value="early">早鳥票 5,000 元</option>
                   <option value="general">一般票 6,000 元</option>
@@ -2526,8 +2527,9 @@
             </button>
           </form>
 
-          <aside class="card summary-card">
-            <span class="overline">報名摘要</span>
+          <aside class="card summary-card" aria-live="polite">
+            <span class="overline" id="summaryLabel">尚未送出的表單預覽</span>
+            <p class="note" id="summaryIdentity">尚未建立報名。</p>
             <h3 id="summaryTicket">早鳥票 5,000 元</h3>
 
             <div class="summary-list">
@@ -3288,11 +3290,8 @@
         waitButton.hidden = !soldOut || saleState("early") !== "報名中";
 
         const formTicket = $("#ticket").value;
-        const selected = ticketCatalog[formTicket];
-
-        $("#summaryTicket").textContent = ticketDisplayName(formTicket);
-        $("#summaryPrice").textContent = money(selected.price);
-        $("#summarySeats").textContent = `${Math.max(0, state.tickets[formTicket])} 名`;
+        $("#ticketPreview").textContent = "尚未送出的表單預覽：" + ticketDisplayName(formTicket) +
+          "；目前剩餘 " + Math.max(0, state.tickets[formTicket]) + " 名。送出後才建立新的報名與付款紀錄。";
 
         /*
           票價一致性核對：
@@ -3347,6 +3346,15 @@
 
       function renderRegistration() {
         const target = getSelectedRegistration();
+        // Every submitted summary field is tied to the same registration ID.
+        const payment = target && state.payments.find(record => record.registrationId === target.id);
+        const ticketKey = target ? target.ticketKey : $("#ticket").value;
+        const price = target ? payment?.amount : ticketCatalog[ticketKey].price;
+        $("#summaryLabel").textContent = target ? "已送出的報名摘要" : "尚未送出的表單預覽";
+        $("#summaryIdentity").textContent = target ? target.name + "｜報名編號：" + target.id : "尚未建立報名。";
+        $("#summaryTicket").textContent = target ? target.ticketName : ticketDisplayName(ticketKey);
+        $("#summaryPrice").textContent = price == null ? "尚無付款紀錄" : money(price);
+        $("#summarySeats").textContent = `${Math.max(0, state.tickets[ticketKey])} 名`;
         const active = target && ["pending_payment", "paid", "confirmed", "waitlist_reserved"].includes(target.status) ? target : null;
         const selection = $("#registrationSelect");
         selection.replaceChildren();

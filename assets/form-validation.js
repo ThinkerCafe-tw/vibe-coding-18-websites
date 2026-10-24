@@ -5,6 +5,22 @@
   const selector = 'input[required], textarea[required]';
   const textTypes = new Set(["text", "tel", "email", "url", "search"]);
 
+  // A confirmation belongs to the last submission, not the next draft.
+  // Only opt-in transient results are cleared; numbered records stay visible.
+  function clearConfirmation(form) {
+    const result = document.getElementById(form.dataset.successResult || "");
+    if (result) result.hidden = true;
+    const feedback = document.getElementById(form.dataset.formFeedback || "");
+    if (feedback) feedback.textContent = "";
+  }
+
+  for (const type of ["input", "change", "invalid", "reset"]) {
+    document.addEventListener(type, event => {
+      const form = event.target instanceof HTMLFormElement ? event.target : event.target.form;
+      if (form) clearConfirmation(form);
+    }, true);
+  }
+
   function isText(field) {
     return !field.disabled && !field.readOnly &&
       (field.tagName === "TEXTAREA" || textTypes.has(field.type));
@@ -44,6 +60,7 @@
   // Capture before any booking handler can create a record or reserve capacity.
   document.addEventListener("submit", event => {
     if (!(event.target instanceof HTMLFormElement)) return;
+    clearConfirmation(event.target);
     let firstInvalid;
     for (const field of event.target.querySelectorAll(selector)) {
       if (!isText(field)) continue;
