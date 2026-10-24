@@ -4,7 +4,7 @@
     "title": "咖啡廳網站",
     "description": "把自然對話整理成規格，再用電話、導航與手機畫面驗收。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep01-cafe",
     "image": "assets/ep01-preview.png",
     "downloadUrl": "downloads/ep01-cafe.zip"
@@ -14,7 +14,7 @@
     "title": "健身房網站",
     "description": "資料一改，上一輪成功也要跟著撤回。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep02-gym",
     "image": "assets/ep02-preview.png",
     "downloadUrl": "downloads/ep02-gym.zip"
@@ -24,7 +24,7 @@
     "title": "攝影師作品集",
     "description": "分清本機完成、版本保存與公開網站。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep03-photographer",
     "image": "assets/ep03-preview.png",
     "downloadUrl": "downloads/ep03-photographer.zip"
@@ -34,7 +34,7 @@
     "title": "診所預約網站",
     "description": "同一診次只保留一份來源，畫面不能假裝已正式鎖位。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep04-clinic",
     "image": "assets/ep04-preview.png",
     "downloadUrl": "downloads/ep04-clinic.zip"
@@ -44,7 +44,7 @@
     "title": "美容院會員網站",
     "description": "把會員總額還原成可核對的逐筆流水。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep05-beauty",
     "image": "assets/ep05-preview.png",
     "downloadUrl": "downloads/ep05-beauty.zip"
@@ -54,7 +54,7 @@
     "title": "法律事務所網站",
     "description": "必要條件失效時，舊的確認必須撤回。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep06-law",
     "image": "assets/ep06-preview.png",
     "downloadUrl": "downloads/ep06-law.zip"
@@ -64,7 +64,7 @@
     "title": "餐廳訂位網站",
     "description": "從訂位需求到可驗收的操作流程。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep07-restaurant",
     "image": "assets/ep07-preview.png",
     "downloadUrl": "downloads/ep07-restaurant.zip"
@@ -74,7 +74,7 @@
     "title": "瑜伽教室網站",
     "description": "讓課程、時段與適合對象清楚對位。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep08-yoga",
     "image": "assets/ep08-preview.png",
     "downloadUrl": "downloads/ep08-yoga.zip"
@@ -84,7 +84,7 @@
     "title": "寵物美容網站",
     "description": "服務條件與預約資訊不能藏在漂亮圖片後面。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep09-pet",
     "image": "assets/ep09-preview.png",
     "downloadUrl": "downloads/ep09-pet.zip"
@@ -94,7 +94,7 @@
     "title": "個人教練網站",
     "description": "把專業定位、方案與諮詢流程連成一條路。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep10-trainer",
     "image": "assets/ep10-preview.png",
     "downloadUrl": "downloads/ep10-trainer.zip"
@@ -104,7 +104,7 @@
     "title": "民宿訂房網站",
     "description": "房型、日期與入住規則必須能被核對。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep11-bnb",
     "image": "assets/ep11-preview.png",
     "downloadUrl": "downloads/ep11-bnb.zip"
@@ -114,7 +114,7 @@
     "title": "家教媒合網站",
     "description": "媒合條件與雙方責任不能被表單掩蓋。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep12-tutor",
     "image": "assets/ep12-preview.png",
     "downloadUrl": "downloads/ep12-tutor.zip"
@@ -124,7 +124,7 @@
     "title": "汽車保養網站",
     "description": "服務項目、車況與預約資訊保持一致。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep13-auto",
     "image": "assets/ep13-preview.png",
     "downloadUrl": "downloads/ep13-auto.zip"
@@ -134,7 +134,7 @@
     "title": "才藝教室網站",
     "description": "招生資訊要回答家長真正會問的問題。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep14-talent",
     "image": "assets/ep14-preview.png",
     "downloadUrl": "downloads/ep14-talent.zip"
@@ -144,7 +144,7 @@
     "title": "諮商預約網站",
     "description": "尊重敏感情境、資料邊界與求助者的選擇。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep15-counseling",
     "image": "assets/ep15-preview.png",
     "downloadUrl": "downloads/ep15-counseling.zip"
@@ -154,7 +154,7 @@
     "title": "活動報名網站",
     "description": "名額、資格與報名結果要能被驗證。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep16-event",
     "image": "assets/ep16-preview.png",
     "downloadUrl": "downloads/ep16-event.zip"
@@ -164,7 +164,7 @@
     "title": "顧問預約網站",
     "description": "把服務範圍、時間與期待說清楚。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep17-consultant",
     "image": "assets/ep17-preview.png",
     "downloadUrl": "downloads/ep17-consultant.zip"
@@ -174,7 +174,7 @@
     "title": "總複習",
     "description": "把需求、規格、批准、施工與驗收串成完整工作法。",
     "state": "prepared",
-    "stateLabel": "本機備妥",
+    "stateLabel": "可開啟",
     "slug": "ep18-review",
     "image": "assets/ep18-preview.png",
     "downloadUrl": "downloads/ep18-review.zip"
