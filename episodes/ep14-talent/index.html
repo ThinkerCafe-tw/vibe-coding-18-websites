@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP14 才藝教室網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP14 才藝教室網站</h1><p>招生資訊要回答家長真正會問的問題。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep14-talent.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP14 施工規格</h1>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP14 才藝教室網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style><link rel="stylesheet" href="../../assets/teaching.css?v=20261024fix"><script src="../../assets/teaching.js?v=20261024fix" defer></script></head><body><header><a href="../../">← 回到 18 講</a><h1>EP14 才藝教室網站</h1><p>招生資訊要回答家長真正會問的問題。</p><nav aria-label="本講網站與下載"><a href="site/">開啟網站</a><a href="../../downloads/ep14-talent.zip" download>下載網站原始碼</a></nav></header><main><nav class="lesson-tabs" role="tablist" aria-label="本講教學內容"><a id="tab-spec" role="tab" href="#spec" aria-controls="spec" aria-selected="true" tabindex="0">規格</a><a id="tab-prompt" role="tab" href="#prompt" aria-controls="prompt" aria-selected="false" tabindex="-1">對話提示卡</a><a id="tab-verify" role="tab" href="#verify" aria-controls="verify" aria-selected="false" tabindex="-1">驗收清單</a></nav><section id="spec" role="tabpanel" aria-labelledby="tab-spec" tabindex="0"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP14 施工規格</h1>
 <p>本規格整理自《網頁設計》第 14 講第 5.1 節的需求；是學員審閱與實作依據。</p>
 <h2>網站目標</h2>
 <p>招生頁、班級表、試上表單、名額狀態與報名流程</p>
@@ -32,9 +32,9 @@
 <li>班級名額請依狀態顯示：未滿時顯示「可申請試上」、額滿時顯示「可登記候補」；並示範候補遞補規則——有人取消、名額空出時，把候補順位第一位標成「已通知」並給回覆期限。不要用「最後一席」這類話術。</li>
 </ol>
 <h2>本練習包的素材</h2>
-<p>網站內含行業情境照片。來源說明見 <code>ATTRIBUTION.md</code>。</p>
+<p>首頁照片用於呈現才藝教室的學習情境。練習重點是試上、正式報名、繳費與額滿候補的遞補流程；更換照片時維持課程對象與教室描述一致。來源說明見 <code>ATTRIBUTION.md</code>。</p>
 </section>
-<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP14 對話提示卡</h1>
+<section id="prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0" hidden><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP14 對話提示卡</h1>
 <p>以下為第 14 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
 <h2>教材提示詞</h2>
 <pre><code class="language-text">你是網頁設計老師與前端工程師。
@@ -71,7 +71,7 @@
 5. 班級名額請依狀態顯示：未滿時顯示「可申請試上」、額滿時顯示「可登記候補」；並示範候補遞補規則——有人取消、名額空出時，把候補順位第一位標成「已通知」並給回覆期限。不要用「最後一席」這類話術。
 </code></pre>
 </section>
-<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP14 驗收清單</h1>
+<section id="verify" role="tabpanel" aria-labelledby="tab-verify" tabindex="0" hidden><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP14 驗收清單</h1>
 <h2>逐項檢查</h2>
 <p>AI 產出後，不要只看第一眼漂不漂亮，請依序檢查：</p>
 <ul>
@@ -84,4 +84,4 @@
 <h2>主動測試</h2>
 <p>這頁讓家長填完會卡進名額與候補的狀態流轉，所以最危險的是<strong>看起來對、其實壞掉</strong>的沉默失敗。最招牌的一招：對一個已寫「額滿」的班，連按兩次「報名」，看第二次是被擋下來、還是又默默收一筆。</p>
 <p>記住一句話：<strong>AI 是被告不是法官，畫面才是證據。</strong> 你問它「額滿會不會擋？候補會不會自動遞補？」它幾乎一定回「會」，就算它根本沒做。</p>
-</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer><noscript><style>[role="tabpanel"][hidden]{display:block}</style><p>未啟用 JavaScript，以下內容以連續段落呈現；可使用標題連結瀏覽。</p></noscript></body></html>

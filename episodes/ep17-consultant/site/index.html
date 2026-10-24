@@ -1688,7 +1688,7 @@ $("#paymentDialog").addEventListener("cancel",e=>{
 });
 
 $("#resetBtn").addEventListener("click",()=>{
-  if(confirm("要清除這個原型儲存在本機瀏覽器的教學測試資料嗎？")){
+  if(confirm("要清除此瀏覽器保存的預約示範資料嗎？")){
     localStorage.removeItem(key);
     state=freshState();
     $("#confirmTerms").checked=false;
@@ -1709,7 +1709,7 @@ queryBtn.addEventListener("click",()=>{
     state=normalizeState(JSON.parse(localStorage.getItem(key))||state);
   }catch(e){}
   render();
-  toast("已從本機教學資料重新讀取同一筆訂單。");
+  toast("已從此瀏覽器保存的示範資料重新讀取同一筆訂單。");
 });
 $("#orderPanel").appendChild(queryBtn);
 
@@ -1718,7 +1718,7 @@ render();
 <script>(()=>{const ids=['your-title','your-detail','your-boundary'];const defaults=["讓客人認識你的專長", "交付什麼，由你填入。", "不包含什麼，先說清楚。"];ids.forEach((id,i)=>{const input=document.getElementById('your-'+i);input.addEventListener('input',()=>{document.getElementById(id).textContent=input.value.trim()||defaults[i]})})})();</script><section class="textbook-block" id="trustMethods"><h2>付費前的信任依據</h2><p>信任三支柱：能力、善意、正直。資歷與成果、具名可查證的推薦人、可追蹤的方法論連結分別提供依據。</p><p>信號理論：高成本而難以模仿的深度文章是可信信號。</p><p>損失規避：損失的痛苦約為等值獲益的兩倍；用「不轉型的代價」檢查案例。</p></section>
 <section class="textbook-block" id="feeBreakdown"><h2>訂單費用拆分</h2><p>診斷費、執行費、成果獎金分開列示；各項金額依方案與合約填寫，不編造金額。</p><p>付款前核對金額、稅額、總額與退款規則。</p></section>
 <section class="textbook-block" id="closedLoop"><h2>從確認收款到完成交付</h2><p>確認收款 → 開立發票 → 完成交付</p><details id="refundBranch"><summary>訂單的退款分支</summary><p>已付款 → 申請退款 → 退款完成 → 已退款</p></details></section>
-<section class="textbook-block" id="slotTest"><h2>預約時段互動核對</h2><p>已被約走的時段不可選；換選時移除舊 selected，再寫回 booking.slotId。</p><button class="slot booked" data-id="booked">已被預約的時段</button><button class="slot" data-id="available-a">可用時段 A</button><button class="slot" data-id="available-b">可用時段 B</button><p id="slotValue">booking.slotId：尚未選取</p></section>
+<section class="textbook-block" id="slotTest"><h2>試選預約時段</h2><p>已被預約的時段無法選擇；改選另一個可用時段時，只保留最後一次選擇。這裡供練習選時段，不會建立正式預約。</p><button class="slot booked" data-id="booked" disabled>已被預約的時段</button><button class="slot" data-id="available-a" aria-pressed="false">可用時段 A</button><button class="slot" data-id="available-b" aria-pressed="false">可用時段 B</button><p id="slotValue">尚未選擇時段</p></section>
 <section class="textbook-block" id="textbookEnvironments"><h2>原型／sandbox／正式環境</h2><p>教學原型：用前端狀態模擬待付款、成功、失敗、取消與交付。</p><details id="envSandbox"><summary>測試環境 sandbox</summary><p>使用金流商測試商店與測試卡號跑完整流程；不使用真實信用卡，也不當正式營運。</p></details><details id="envProduction"><summary>正式環境 production</summary><p>使用商家正式帳號、正式網域、後端簽章與 Webhook；發票流程也要接上。不能共用老師或學校帳號，責任屬於實際商家。</p></details></section>
-<script>const booking={slotId:null};const slots=document.querySelectorAll('.slot');slots.forEach(slot=>slot.addEventListener('click',()=>{if(slot.classList.contains('booked'))return;slots.forEach(s=>s.classList.remove('selected'));slot.classList.add('selected');booking.slotId=slot.dataset.id;document.querySelector('#slotValue').textContent='booking.slotId：'+booking.slotId+' → ConsultationBooking.預約時間';}));</script></body>
+<script>const booking={slotId:null};const slots=document.querySelectorAll('.slot');slots.forEach(slot=>slot.addEventListener('click',()=>{if(slot.classList.contains('booked'))return;slots.forEach(s=>{s.classList.remove('selected');if(!s.disabled)s.setAttribute('aria-pressed','false');});slot.classList.add('selected');slot.setAttribute('aria-pressed','true');booking.slotId=slot.dataset.id;document.querySelector('#slotValue').textContent='已選時段：'+slot.textContent;}));</script></body>
 </html>

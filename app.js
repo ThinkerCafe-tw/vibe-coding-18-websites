@@ -61,15 +61,15 @@ function renderPublishedCard(episode) {
         <p class="episode-description">${episode.description}</p>
         <div class="episode-actions">
           <a href="episodes/${episode.slug}/site/">
-            <i data-lucide="play" aria-hidden="true"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 4 12 8-12 8z"/></svg>
             線上成品
           </a>
           <a href="episodes/${episode.slug}/">
-            <i data-lucide="book-open" aria-hidden="true"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5C8 2 4 3 2 3v16c4-1 7 0 10 2 3-2 6-3 10-2V3c-4-1-7 0-10 2v16"/></svg>
             本集資源
           </a>
           <a href="${episode.downloadUrl}" download>
-            <i data-lucide="download" aria-hidden="true"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>
             下載原始碼
           </a>
           <button
@@ -78,7 +78,7 @@ function renderPublishedCard(episode) {
             data-progress="${episode.slug}"
             aria-pressed="${String(done)}"
           >
-            <i data-lucide="${done ? "circle-check" : "circle"}" aria-hidden="true"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/>${done ? '<path d="m7 12 3 3 7-7"/>' : ""}</svg>
             ${done ? "已完成" : "標記完成"}
           </button>
         </div>
@@ -114,7 +114,6 @@ function renderEpisodes() {
   emptyState.hidden = visibleEpisodes.length > 0;
   bindProgressButtons();
   updateProgressStat();
-  window.lucide?.createIcons();
 }
 
 function bindProgressButtons() {
@@ -164,7 +163,7 @@ searchInput.addEventListener("input", () => {
 
 async function startCourse() {
   try {
-    const response = await fetch("episodes/manifest.json?v=20261024b", { cache: "no-cache" });
+    const response = await fetch("episodes/manifest.json?v=20261024fix", { cache: "no-cache" });
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }

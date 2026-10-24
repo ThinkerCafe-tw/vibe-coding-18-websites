@@ -1,0 +1,42 @@
+.lesson-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.lesson-tabs a {
+  min-width: 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 6px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.lesson-tabs [aria-selected="true"] {
+  color: white;
+  background: #1a6947;
+  border-color: #1a6947;
+  font-weight: 700;
+}
+
+.lesson-tabs a:focus-visible,
+[role="tabpanel"]:focus-visible {
+  outline: 3px solid #1a6947;
+  outline-offset: 3px;
+}
+
+[role="tabpanel"][hidden] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .lesson-tabs a { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

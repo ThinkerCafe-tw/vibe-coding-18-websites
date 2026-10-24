@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP02 健身房網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP02 健身房網站</h1><p>資料一改，上一輪成功也要跟著撤回。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep02-gym.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP02 施工規格</h1>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP02 健身房網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style><link rel="stylesheet" href="../../assets/teaching.css?v=20261024fix"><script src="../../assets/teaching.js?v=20261024fix" defer></script></head><body><header><a href="../../">← 回到 18 講</a><h1>EP02 健身房網站</h1><p>資料一改，上一輪成功也要跟著撤回。</p><nav aria-label="本講網站與下載"><a href="site/">開啟網站</a><a href="../../downloads/ep02-gym.zip" download>下載網站原始碼</a></nav></header><main><nav class="lesson-tabs" role="tablist" aria-label="本講教學內容"><a id="tab-spec" role="tab" href="#spec" aria-controls="spec" aria-selected="true" tabindex="0">規格</a><a id="tab-prompt" role="tab" href="#prompt" aria-controls="prompt" aria-selected="false" tabindex="-1">對話提示卡</a><a id="tab-verify" role="tab" href="#verify" aria-controls="verify" aria-selected="false" tabindex="-1">驗收清單</a></nav><section id="spec" role="tabpanel" aria-labelledby="tab-spec" tabindex="0"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP02 施工規格</h1>
 <p>本規格整理自《網頁設計》第 2 講第 5.1 節的需求；是學員審閱與實作依據。</p>
 <h2>網站目標</h2>
 <p>單頁健身房網站，強調視覺風格、教練信任、課程方案、首次體驗流程與透明退費。</p>
@@ -32,9 +32,9 @@
 <li>全文用繁體中文；價格、教練資歷、學員見證等以示意內容佔位，並用 HTML 註解標出日後須替換為真實資料的欄位。</li>
 </ol>
 <h2>本練習包的素材</h2>
-<p>網站內含行業情境照片。來源說明見 <code>ATTRIBUTION.md</code>。</p>
+<p>健身空間照片用於首頁主視覺、訓練理念與合約說明段落的背景。練習重點是教練與方案介紹、體驗預約，以及堂數扣抵與明細；更換照片時保留文字對比與手機裁切。來源說明見 <code>ATTRIBUTION.md</code>。</p>
 </section>
-<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP02 對話提示卡</h1>
+<section id="prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0" hidden><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP02 對話提示卡</h1>
 <p>以下為第 2 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
 <h2>教材提示詞</h2>
 <pre><code class="language-text">你是網頁設計老師與前端工程師。
@@ -71,7 +71,7 @@
 5. 全文用繁體中文；價格、教練資歷、學員見證等以示意內容佔位，並用 HTML 註解標出日後須替換為真實資料的欄位。
 </code></pre>
 </section>
-<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP02 驗收清單</h1>
+<section id="verify" role="tabpanel" aria-labelledby="tab-verify" tabindex="0" hidden><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP02 驗收清單</h1>
 <h2>逐項檢查</h2>
 <p>AI 產出後不要只看第一眼漂不漂亮，請依序檢查。第一版提示詞只要求表 2-2 的基本欄位，下列幾項（如私教課包堂數、會籍冷靜期）第一版可能還沒有——這不是做錯，而是要請 AI 補強的下一步：</p>
 <ul>
@@ -87,4 +87,4 @@
 <h2>主動測試</h2>
 <p>本講的網站是「會請客人填東西」的體驗預約表單站（會收一張表，但不會真的鎖場次、不扣錢）。最招牌的一測：什麼都不填就按「預約首次體驗」，看它擋不擋、有沒有提示哪格必填。</p>
 <p><strong>AI 是被告不是法官，畫面才是證據</strong>——它說表單沒問題不算數，親手送一次、回頁面看反應才算數。</p>
-</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer><noscript><style>[role="tabpanel"][hidden]{display:block}</style><p>未啟用 JavaScript，以下內容以連續段落呈現；可使用標題連結瀏覽。</p></noscript></body></html>

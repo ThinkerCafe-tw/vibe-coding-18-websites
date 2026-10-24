@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP08 瑜伽教室網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style></head><body><header><a href="../../">← 回到 18 講</a><h1>EP08 瑜伽教室網站</h1><p>讓課程、時段與適合對象清楚對位。</p><nav><a href="site/">開啟網站</a><a href="../../downloads/ep08-yoga.zip" download>下載網站原始碼</a><a href="#spec">施工規格</a><a href="#prompt">對話提示卡</a><a href="#verify">驗收清單</a></nav></header><main><section id="spec"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP08 施工規格</h1>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP08 瑜伽教室網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style><link rel="stylesheet" href="../../assets/teaching.css?v=20261024fix"><script src="../../assets/teaching.js?v=20261024fix" defer></script></head><body><header><a href="../../">← 回到 18 講</a><h1>EP08 瑜伽教室網站</h1><p>讓課程、時段與適合對象清楚對位。</p><nav aria-label="本講網站與下載"><a href="site/">開啟網站</a><a href="../../downloads/ep08-yoga.zip" download>下載網站原始碼</a></nav></header><main><nav class="lesson-tabs" role="tablist" aria-label="本講教學內容"><a id="tab-spec" role="tab" href="#spec" aria-controls="spec" aria-selected="true" tabindex="0">規格</a><a id="tab-prompt" role="tab" href="#prompt" aria-controls="prompt" aria-selected="false" tabindex="-1">對話提示卡</a><a id="tab-verify" role="tab" href="#verify" aria-controls="verify" aria-selected="false" tabindex="-1">驗收清單</a></nav><section id="spec" role="tabpanel" aria-labelledby="tab-spec" tabindex="0"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP08 施工規格</h1>
 <p>本規格整理自《網頁設計》第 8 講第 5.1 節的需求；是學員審閱與實作依據。</p>
 <h2>網站目標</h2>
 <p>讓學員能查看老師、課程類型、週課表、剩餘名額，並完成體驗課報名或候補登記。</p>
@@ -19,7 +19,7 @@
 <h2>設計要求</h2>
 <p>做成一個可以直接打開的單一 index.html（HyperText Markup Language，超文字標記語言）檔案，CSS寫在同一個檔案內，使用 RWD，手機上課表要能清楚閱讀。文案要避免神化老師、誇大療效或承諾治癒。</p>
 </section>
-<section id="prompt"><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP08 對話提示卡</h1>
+<section id="prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0" hidden><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP08 對話提示卡</h1>
 <p>以下為第 8 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
 <h2>教材提示詞</h2>
 <pre><code class="language-text">你是網頁設計老師與前端工程師。
@@ -47,7 +47,7 @@
 做成一個可以直接打開的單一 index.html（HyperText Markup Language，超文字標記語言）檔案，CSS寫在同一個檔案內，使用 RWD，手機上課表要能清楚閱讀。文案要避免神化老師、誇大療效或承諾治癒。
 </code></pre>
 </section>
-<section id="verify"><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP08 驗收清單</h1>
+<section id="verify" role="tabpanel" aria-labelledby="tab-verify" tabindex="0" hidden><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP08 驗收清單</h1>
 <h2>逐項檢查</h2>
 <p>AI 產出後，請檢查：</p>
 <ul>
@@ -59,4 +59,13 @@
 </ul>
 <p>若某一項不通過，把問題貼回 AI 並只指定那一點，例如：「這個網站的『額滿課程』還是可以直接報名，請只改成額滿時按鈕變『加入候補』，其他保持不變。」一次只改一處、明說「其他不動」，比重跑整份提示詞更不會把原本對的地方改壞。</p>
 <h2>主動測試</h2>
-</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer></body></html>
+<p>依《網頁設計》第 8 講第 4 節名額與候補流程、第 5.2 節可點候補按鈕與第 5.4 節主動測試，先重新整理成品頁，再依序操作。每次送出請使用不同的示意學員資料。</p>
+<ol>
+<li>最後名額轉候補：選週二 19:30 哈達，初始應剩 2 名。依序填兩位學員並送出，課表剩餘名額應由 2 變 1，再變 0；第三位應看到「加入候補」與「送出候補登記」，不得成為第 13 位正式報名者。</li>
+<li>額滿仍可登記候補：選週三 19:30 流動瑜伽，額滿按鈕必須可點。初始已有 2 人候補，送出後應顯示第 3 順位；再填另一位學員，應顯示第 4 順位，正式名額維持 12 人。</li>
+<li>課程資訊聯動：在週一陰瑜伽與週二哈達之間切換，老師應由林老師換為周老師，難度、適合對象、剩餘名額及報名／候補提示也應跟著更新，不能沿用上一堂資訊。</li>
+<li>必填與規則：不選課程、姓名或電話空白時不得送出；填入示意身體狀況與經驗後再送出。報名前應能讀到取消期限、未到扣堂與遲到規則，送出結果應是所選的課程。</li>
+<li>手機與示範重設：以 375 寬度查看每張課卡的老師、時間、教室、名額與狀態，並重做報名及候補。按「重新填寫」或重載會恢復初始示範名額與候補順位。</li>
+<li>原型範圍：結果只留在目前頁面。書稿中的取消釋位、簡訊通知、2 小時保留、逾時通知下一位及實際扣堂，需接正式後端後另測；本頁的狀態示意不能當成這些功能已上線。</li>
+</ol>
+</section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer><noscript><style>[role="tabpanel"][hidden]{display:block}</style><p>未啟用 JavaScript，以下內容以連續段落呈現；可使用標題連結瀏覽。</p></noscript></body></html>

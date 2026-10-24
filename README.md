@@ -1,8 +1,8 @@
 # 18 個網站學會 Vibe Coding
 
-華視空中進修學院《網頁設計》課程的公開學員資源。這裡提供每一講的可執行網站、依既有教材整理的施工規格、對話提示卡與驗收清單。
+[開啟 18 講線上網站](https://thinkercafe-tw.github.io/vibe-coding-18-websites/)：選一講，按「線上成品」看網站，按「本集資源」切換規格、對話提示卡與驗收清單；手機與電腦都可直接閱讀，不需安裝。
 
-[開啟學員網站](https://vibe-coding-18-websites.vercel.app/) · [開始 EP01](episodes/ep01-cafe/README.md) · [查看 EP03](episodes/ep03-photographer/README.md) · [回報問題](https://github.com/ThinkerCafe-tw/vibe-coding-18-websites/issues)
+這是華視空中進修學院《網頁設計》課程的公開學員資源。要離線查看，請在首頁或本講教學頁下載 ZIP、解壓縮後雙擊最外層 `index.html`，再按「開啟網站」。
 
 ## 這門課怎麼學
 
@@ -18,24 +18,24 @@
 
 | 講次 | 主題 | 網站與教學 | 原始碼 |
 |---|---|---|---|
-| EP01 | 咖啡廳網站 | [進入本講](episodes/ep01-cafe/) | [下載](downloads/ep01-cafe.zip) |
-| EP02 | 健身房網站 | [進入本講](episodes/ep02-gym/) | [下載](downloads/ep02-gym.zip) |
-| EP03 | 攝影師作品集 | [進入本講](episodes/ep03-photographer/) | [下載](downloads/ep03-photographer.zip) |
-| EP04 | 診所預約網站 | [進入本講](episodes/ep04-clinic/) | [下載](downloads/ep04-clinic.zip) |
-| EP05 | 美容院會員網站 | [進入本講](episodes/ep05-beauty/) | [下載](downloads/ep05-beauty.zip) |
-| EP06 | 法律事務所網站 | [進入本講](episodes/ep06-law/) | [下載](downloads/ep06-law.zip) |
-| EP07 | 餐廳訂位網站 | [進入本講](episodes/ep07-restaurant/) | [下載](downloads/ep07-restaurant.zip) |
-| EP08 | 瑜伽教室網站 | [進入本講](episodes/ep08-yoga/) | [下載](downloads/ep08-yoga.zip) |
-| EP09 | 寵物美容網站 | [進入本講](episodes/ep09-pet/) | [下載](downloads/ep09-pet.zip) |
-| EP10 | 個人教練網站 | [進入本講](episodes/ep10-trainer/) | [下載](downloads/ep10-trainer.zip) |
-| EP11 | 民宿訂房網站 | [進入本講](episodes/ep11-bnb/) | [下載](downloads/ep11-bnb.zip) |
-| EP12 | 家教媒合網站 | [進入本講](episodes/ep12-tutor/) | [下載](downloads/ep12-tutor.zip) |
-| EP13 | 汽車保養網站 | [進入本講](episodes/ep13-auto/) | [下載](downloads/ep13-auto.zip) |
-| EP14 | 才藝教室網站 | [進入本講](episodes/ep14-talent/) | [下載](downloads/ep14-talent.zip) |
-| EP15 | 諮商預約網站 | [進入本講](episodes/ep15-counseling/) | [下載](downloads/ep15-counseling.zip) |
-| EP16 | 活動報名網站 | [進入本講](episodes/ep16-event/) | [下載](downloads/ep16-event.zip) |
-| EP17 | 顧問預約網站 | [進入本講](episodes/ep17-consultant/) | [下載](downloads/ep17-consultant.zip) |
-| EP18 | 總複習 | [進入本講](episodes/ep18-review/) | [下載](downloads/ep18-review.zip) |
+| EP01 | 咖啡廳網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep01-cafe/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep01-cafe.zip) |
+| EP02 | 健身房網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep02-gym/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep02-gym.zip) |
+| EP03 | 攝影師作品集 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep03-photographer/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep03-photographer.zip) |
+| EP04 | 診所預約網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep04-clinic/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep04-clinic.zip) |
+| EP05 | 美容院會員網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep05-beauty/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep05-beauty.zip) |
+| EP06 | 法律事務所網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep06-law/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep06-law.zip) |
+| EP07 | 餐廳訂位網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep07-restaurant/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep07-restaurant.zip) |
+| EP08 | 瑜伽教室網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep08-yoga/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep08-yoga.zip) |
+| EP09 | 寵物美容網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep09-pet/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep09-pet.zip) |
+| EP10 | 個人教練網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep10-trainer/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep10-trainer.zip) |
+| EP11 | 民宿訂房網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep11-bnb/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep11-bnb.zip) |
+| EP12 | 家教媒合網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep12-tutor/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep12-tutor.zip) |
+| EP13 | 汽車保養網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep13-auto/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep13-auto.zip) |
+| EP14 | 才藝教室網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep14-talent/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep14-talent.zip) |
+| EP15 | 諮商預約網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep15-counseling/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep15-counseling.zip) |
+| EP16 | 活動報名網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep16-event/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep16-event.zip) |
+| EP17 | 顧問預約網站 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep17-consultant/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep17-consultant.zip) |
+| EP18 | 總複習 | [進入本講](https://thinkercafe-tw.github.io/vibe-coding-18-websites/episodes/ep18-review/) | [下載](https://thinkercafe-tw.github.io/vibe-coding-18-websites/downloads/ep18-review.zip) |
 
 ## 每集會拿到什麼
 
@@ -46,24 +46,17 @@
 
 網站中的店名、電話、地址、價格與人物資料都屬課程示意。使用於真實專案前，必須替換成有來源且經授權的資料。
 
-## 開啟方式
+## 進階：在自己的電腦修改網站
 
-本整理版先在自己的電腦開啟；公開站仍可能是先前版本。
-
-```bash
-python3 -m http.server 8000
-```
-
-開啟 `http://localhost:8000` 可使用全課程首頁與下載。各講 `site/index.html` 也能直接雙擊開啟。
-
-也可以下載本 repo：
+只看成品與教學時，使用上方線上網址或 ZIP 即可。需要修改完整專案時，可下載 repo 並啟動預覽：
 
 ```bash
 git clone https://github.com/ThinkerCafe-tw/vibe-coding-18-websites.git
 cd vibe-coding-18-websites
+python3 -m http.server 8000
 ```
 
-每集網站都可直接開啟 `site/index.html`。例如 EP03 位於 `episodes/ep03-photographer/site/index.html`。
+開啟 `http://localhost:8000` 瀏覽全課程首頁。各講的 `site/index.html` 也能直接雙擊開啟，例如 `episodes/ep03-photographer/site/index.html`。
 
 ## 提問與貢獻
 

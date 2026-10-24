@@ -21,6 +21,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
 body {
@@ -608,23 +609,32 @@ footer p {
   .topbar {
     min-height: 64px;
     padding: 8px 14px;
+    flex-wrap: wrap;
+    gap: 6px 12px;
   }
 
-  .brand small,
-  .topbar nav > a:not(.github-link),
-  .github-link span {
+  .brand small {
     display: none;
   }
 
   .topbar nav {
-    gap: 8px;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .topbar nav > a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 
   .github-link {
-    width: 40px;
-    padding: 0;
+    margin-left: auto;
+    padding: 0 12px;
     justify-content: center;
   }
+
+  html { scroll-padding-top: 110px; }
 
   main > section {
     padding-left: 14px;

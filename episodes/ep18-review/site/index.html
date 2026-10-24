@@ -749,10 +749,10 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <div class="section-index">02 · 需求訪談（本機暫存）</div>
+            <div class="section-index">02 · 需求訪談（此瀏覽器暫存）</div>
             <h2>網站開始之前，先問四件事</h2>
           </div>
-          <p>先確認業態、客群、核心行動與資料來源。本原型的訪談只暫存於 localStorage，尚未寫入六個接案物件。</p>
+          <p>先確認業態、客群、核心行動與資料來源。本頁的訪談內容只保存在此瀏覽器，可隨時清除。</p>
         </div>
 
         <div class="panel">
@@ -787,17 +787,17 @@
 
               <div class="field full">
                 <label for="boundary">資料與個資保存邊界</label>
-                <textarea id="boundary" name="boundary" placeholder="例如：教學原型只存在本機瀏覽器；正式會員資料不得只靠 localStorage，需由正式後端與權限系統管理。"></textarea>
+                <textarea id="boundary" name="boundary" placeholder="例如：示範資料只保存在此瀏覽器；正式會員資料需有安全的儲存與存取權限。"></textarea>
               </div>
             </div>
 
             <div class="button-row" style="margin-top:20px">
               <button class="btn primary" type="button" id="saveInterview">教學模擬：儲存訪談</button>
-              <button class="btn secondary" type="button" id="clearInterview">清除本機測試資料</button>
+              <button class="btn secondary" type="button" id="clearInterview">清除訪談示範資料</button>
             </div>
 
             <div class="status" id="interviewStatus" role="status">
-              教學模擬：資料已保存在此瀏覽器的 localStorage，沒有送往伺服器。
+              教學模擬：資料已保存在此瀏覽器，沒有送往伺服器。
             </div>
           </form>
         </div>
@@ -954,7 +954,7 @@
             <div class="section-index">05 · AcceptanceCheck</div>
             <h2>驗收不是「看起來可以」，而是一項一項測</h2>
           </div>
-          <p>下面可以直接勾選。勾選結果只保存在本機，用來示範驗收表的互動方式。</p>
+          <p>下面可以直接勾選。勾選結果只保存在此瀏覽器，用來示範驗收表的互動方式。</p>
         </div>
 
         <div class="check-list" id="checkList">
@@ -1081,11 +1081,11 @@
 
           <div class="button-row">
             <a class="btn secondary" href="#types">重新看技術地圖</a>
-            <button class="btn secondary" type="button" id="showSummary">教學模擬：查看本機摘要</button>
+            <button class="btn secondary" type="button" id="showSummary">教學模擬：查看已保存的摘要</button>
           </div>
 
           <div class="saved-box" id="savedSummary" hidden>
-            尚未讀取本機資料。
+            尚未讀取已保存的資料。
           </div>
         </div>
       </div>
@@ -1120,14 +1120,14 @@
       const data = {};
       interviewFields.forEach(id => data[id] = document.getElementById(id).value.trim());
       localStorage.setItem(interviewKey, JSON.stringify(data));
-      $("#interviewStatus").textContent = "教學模擬：資料已保存在此瀏覽器的 localStorage，沒有送往伺服器。";
+      $("#interviewStatus").textContent = "教學模擬：資料已保存在此瀏覽器，沒有送往伺服器。";
       $("#interviewStatus").classList.add("show");
     });
 
     $("#clearInterview").addEventListener("click", () => {
       localStorage.removeItem(interviewKey);
       interviewFields.forEach(id => document.getElementById(id).value = "");
-      $("#interviewStatus").textContent = "教學模擬：本機訪談測試資料已清除。";
+      $("#interviewStatus").textContent = "教學模擬：此瀏覽器的訪談示範資料已清除。";
       $("#interviewStatus").classList.add("show");
     });
 
@@ -1157,6 +1157,7 @@
       const data = {};
       $$("#checkList input").forEach(input => data[input.dataset.key] = input.checked);
       localStorage.setItem(checksKey, JSON.stringify(data));
+      $("#checkStatus").textContent = "教學模擬：驗收結果已保存於此瀏覽器，沒有寫入正式專案系統。";
       $("#checkStatus").classList.add("show");
     });
 
@@ -1179,7 +1180,7 @@
       const box = $("#savedSummary");
       box.hidden = false;
       box.innerHTML =
-        "<strong>教學模擬本機摘要</strong><br>" +
+        "<strong>教學模擬摘要</strong><br>" +
         "業態：" + escapeHTML(business) + "<br>" +
         "核心行動：" + escapeHTML(action) + "<br>" +
         "五項驗收完成：" + completed + " / 5<br>" +
