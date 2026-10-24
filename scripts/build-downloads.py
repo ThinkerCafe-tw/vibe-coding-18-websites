@@ -31,6 +31,8 @@ def build(episode):
         files[name] = (ROOT / name).read_bytes()
     if b'assets/demo-records.js' in files[f'episodes/{slug}/site/index.html']:
         files['assets/demo-records.js'] = (ROOT / 'assets/demo-records.js').read_bytes()
+    if b'assets/form-validation.js' in files[f'episodes/{slug}/site/index.html']:
+        files['assets/form-validation.js'] = (ROOT / 'assets/form-validation.js').read_bytes()
     lesson = f'episodes/{slug}/index.html'
     files[lesson] = offline_lesson(files[lesson])
     files['index.html'] = entry.encode()

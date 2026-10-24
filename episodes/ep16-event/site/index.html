@@ -2323,6 +2323,10 @@
               不代表真實付款、不會真的退款，也不會真的發送通知。
             </p>
 
+            <label for="registrationSelect">目前操作的報名</label>
+            <select id="registrationSelect" style="width:100%;max-width:100%" disabled></select>
+            <p id="registrationIdentity" class="note" style="overflow-wrap:anywhere" aria-live="polite">尚未建立報名。</p>
+
             <div class="controls">
               <button id="simulatePaid" class="primary" disabled>教學模擬：付款成功</button>
               <button id="simulateTimeout" class="warning" disabled>教學模擬：付款逾時</button>
@@ -2794,10 +2798,15 @@
         waitlist: [],
         notifications: [],
         consents: [],
-        selectedTicket: "early"
+        selectedTicket: "early",
+        selectedRegistrationId: null
       });
 
       let state = loadState();
+      // Older saved demos have no selection; choose their latest record once.
+      if (!state.registrations.some(r => r.id === state.selectedRegistrationId)) {
+        state.selectedRegistrationId = state.registrations.at(-1)?.id || null;
+      }
 
       const $ = (selector) => document.querySelector(selector);
       const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -2890,10 +2899,8 @@
         return record;
       }
 
-      function getActiveRegistration() {
-        return state.registrations.find(r =>
-          ["pending_payment", "paid", "confirmed", "waitlist_reserved"].includes(r.status)
-        ) || null;
+      function getSelectedRegistration() {
+        return state.registrations.find(r => r.id === state.selectedRegistrationId) || null;
       }
 
       function registrationStatusLabel(status) {
@@ -2993,6 +3000,7 @@
         };
 
         state.registrations.push(registration);
+        state.selectedRegistrationId = registration.id;
 
         state.payments.push({
           id: uid("payment"),
@@ -3093,7 +3101,7 @@
       }
 
       function simulatePaid() {
-        const registration = getActiveRegistration();
+        const registration = getSelectedRegistration();
         if (!registration || registration.status !== "pending_payment") return;
 
         registration.status = "paid";
@@ -3120,7 +3128,7 @@
       }
 
       function simulateConfirm() {
-        const registration = getActiveRegistration();
+        const registration = getSelectedRegistration();
         if (!registration || registration.status !== "paid") return;
 
         registration.status = "confirmed";
@@ -3183,7 +3191,7 @@
       }
 
       function simulateTimeout() {
-        const registration = getActiveRegistration();
+        const registration = getSelectedRegistration();
         if (!registration || registration.status !== "pending_payment") return;
 
         registration.status = "cancelled";
@@ -3222,8 +3230,8 @@
       }
 
       function simulateCancel() {
-        const registration = getActiveRegistration();
-        if (!registration) return;
+        const registration = getSelectedRegistration();
+        if (!registration || !["pending_payment", "paid", "confirmed", "waitlist_reserved"].includes(registration.status)) return;
 
         const shouldRelease = ["pending_payment", "paid", "confirmed"].includes(registration.status);
 
@@ -3338,10 +3346,17 @@
       }
 
       function renderRegistration() {
-        const active = getActiveRegistration();
-        const latest = state.registrations[state.registrations.length - 1] || null;
-
-        const target = active || latest;
+        const target = getSelectedRegistration();
+        const active = target && ["pending_payment", "paid", "confirmed", "waitlist_reserved"].includes(target.status) ? target : null;
+        const selection = $("#registrationSelect");
+        selection.replaceChildren();
+        selection.disabled = !state.registrations.length;
+        if (!state.registrations.length) selection.add(new Option("尚未建立報名", ""));
+        for (const record of state.registrations) {
+          selection.add(new Option(`${record.name}｜${record.ticketName}｜${registrationStatusLabel(record.status)}｜${record.id}`, record.id));
+        }
+        selection.value = target?.id || "";
+        $("#registrationIdentity").textContent = target ? "報名編號：" + target.id : "尚未建立報名。";
 
         if (!target) {
           $("#registrationBadge").className = "status-badge";
@@ -3591,6 +3606,13 @@
         document.querySelector("#waitlist").scrollIntoView({ behavior: "smooth" });
       });
 
+      $("#registrationSelect").addEventListener("change", event => {
+        const id = event.target.value;
+        if (!state.registrations.some(r => r.id === id)) return;
+        state.selectedRegistrationId = id;
+        saveState();
+        render();
+      });
       $("#simulatePaid").addEventListener("click", simulatePaid);
       $("#simulateTimeout").addEventListener("click", simulateTimeout);
       $("#simulateConfirm").addEventListener("click", simulateConfirm);
@@ -3618,6 +3640,7 @@
       });
 
       $("#ticket").value = state.selectedTicket || "early";
+      saveState();
       render();
     })();
   </script>

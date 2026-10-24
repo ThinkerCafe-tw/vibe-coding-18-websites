@@ -278,6 +278,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3c443e;padding-top:18px;font
   .honest h2{font-size:25px}
 }
 </style>
+<script src="../../../assets/form-validation.js" defer></script>
 </head>
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -1037,8 +1038,15 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
     return el;
   }
 
+  function guestError(tid, people) {
+    var t = TYPES[tid];
+    if (!t || !Number.isInteger(people) || people < 1) return "請選擇有效的入住人數。";
+    if (people > t.max) return t.name + "最多住 " + t.max + " 人（基本 " + t.base + " 人，最多加 " + (t.max - t.base) + " 人）。請改人數或換房型。";
+    return "";
+  }
+
   function renderQuote() {
-    var a = inDate.value, b = outDate.value, people = parseInt(guests.value, 10) || 1;
+    var a = inDate.value, b = outDate.value, people = Number(guests.value);
     var t = TYPES[typeId];
     quote.innerHTML = "";
     policy.querySelectorAll("li").forEach(function (li) { li.classList.remove("now"); });
@@ -1049,10 +1057,11 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
       quote.appendChild(lineEl("目前還沒有可以算的價格", "—"));
       return;
     }
-    if (people > t.max) {
+    var peopleError = guestError(typeId, people);
+    if (peopleError) {
       availMsg.className = "avail bad";
-      availMsg.textContent = t.name + "最多住 " + t.max + " 人（基本 " + t.base + " 人，最多加 " + (t.max - t.base) + " 人）。請改人數或換房型。";
-      quote.appendChild(lineEl("人數超過這個房型的上限", "—"));
+      availMsg.textContent = peopleError;
+      quote.appendChild(lineEl("請調整入住人數", "—"));
       return;
     }
 
@@ -1122,8 +1131,11 @@ document.querySelectorAll(".ph > img").forEach(function (img) {
     }
     if (!form.checkValidity()) { form.reportValidity(); return; }
 
-    var a = inDate.value, b = outDate.value, people = parseInt(guests.value, 10) || 1;
+    var a = inDate.value, b = outDate.value, people = Number(guests.value);
     if (!a || !b || nightsBetween(a, b) < 1) { showAlarm("請先選好入住日與退房日，退房日要比入住日晚至少一天。"); return; }
+
+    var peopleError = guestError(typeId, people);
+    if (peopleError) { showAlarm(peopleError); return; }
 
     var room = findRoom(typeId, a, b);
     if (!room) {

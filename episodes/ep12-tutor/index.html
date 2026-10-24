@@ -17,7 +17,7 @@
 <h2>互動示意</h2>
 <p>用少量 JavaScript示範：選擇科目與預算後，教師卡片會被篩選；每位老師顯示「匹配理由」而不是只顯示分數；媒合流程用狀態條呈現。</p>
 <h2>設計要求</h2>
-<p>請做成一個可以直接打開的單一 index.html（HyperText Markup Language，超文字標記語言）檔案，CSS 寫在同檔，使用 RWD。不要出現假學歷、假保證錄取、保證進步等誇大文案。教師卡片最多顯示 3 到 5 位，避免選擇超載。</p>
+<p>請做成一個可以直接打開的單一入口 index.html（HyperText Markup Language，超文字標記語言）檔案，CSS 寫在同檔，使用 RWD。不要出現假學歷、假保證錄取、保證進步等誇大文案。教師卡片最多顯示 3 到 5 位，避免選擇超載。</p>
 <h2>本練習包的素材</h2>
 <p>首頁找家教情境與試教照片用於需求說明及試教流程介紹。練習重點是科目篩選、家長需求、老師推薦與試教後的媒合狀態；照片不代表實際家長、學生或師資身分。來源說明見 <code>ATTRIBUTION.md</code>。</p>
 <h2>資料一致性規則</h2>
@@ -31,6 +31,10 @@
 <li>圖片替代文字依目前照片可見內容描述，避免沿用舊構圖、人物身分或無法由照片確認的地名。</li>
 <li><code>images/hero.jpg</code>：老師在桌邊指導學生寫數學作業，家長坐在旁邊。</li>
 <li><code>images/trial.jpg</code>：老師與學生在桌邊看講義，老師用鉛筆講解。</li>
+</ul>
+<h2>必填文字驗證</h2>
+<ul>
+<li>需求目標、聯絡方式等必填文字送出前去除首尾空白；空字串或只有空白時保留表單並提示，不建立紀錄、不占名額。內容中間的正常空格應保留。共用驗證程式隨本講 ZIP 提供，直接開檔也要生效。</li>
 </ul>
 </section>
 <section id="prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0" hidden><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP12 對話提示卡</h1>
@@ -72,6 +76,13 @@
 <li><code>images/hero.jpg</code>：老師在桌邊指導學生寫數學作業，家長坐在旁邊。</li>
 <li><code>images/trial.jpg</code>：老師與學生在桌邊看講義，老師用鉛筆講解。</li>
 </ul>
+<h2>必填文字驗證</h2>
+<ul>
+<li><p>需求目標、聯絡方式等必填文字送出前去除首尾空白；空字串或只有空白時保留表單並提示，不建立紀錄、不占名額。內容中間的正常空格應保留。共用驗證程式隨本講 ZIP 提供，直接開檔也要生效。</p>
+</li>
+<li><p>沿用本公開套件時，請保留 ZIP 內的共用驗證程式與相對路徑，解壓後可直接開啟 index.html。</p>
+</li>
+</ul>
 </section>
 <section id="verify" role="tabpanel" aria-labelledby="tab-verify" tabindex="0" hidden><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP12 驗收清單</h1>
 <h2>逐項檢查</h2>
@@ -95,5 +106,10 @@
 <ul>
 <li>[ ] 有效送出需求後不能改寫欄位；重載時需求與摘要相同。回到初始狀態後可修改並重送，舊流程與試教資料一併清空。</li>
 <li>[ ] 逐張對照目前照片與 alt；主體、動作與場景一致，換圖時同步修正替代文字與下載套件。</li>
+</ul>
+<h2>必填文字邊界回驗</h2>
+<ul>
+<li>[ ] 逐一把需求目標、聯絡方式填成三個半形空格（其餘必填合法）再送出，應保留表單並指出錯誤，紀錄與名額不變；全形空格與空字串也要攔阻。</li>
+<li>[ ] 改成正常資料後可送出一次。需求目標使用「  希望 改善數學  」時，保存或摘要應為「希望 改善數學」，保留中間空格；其他欄位須符合各自格式。</li>
 </ul>
 </section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer><noscript><style>[role="tabpanel"][hidden]{display:block}</style><p>未啟用 JavaScript，以下內容以連續段落呈現；可使用標題連結瀏覽。</p></noscript></body></html>

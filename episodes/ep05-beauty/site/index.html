@@ -212,6 +212,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
+<script src="../../../assets/form-validation.js" defer></script>
 </head>
 <body>
 <aside class="course-notice" style="padding:10px 16px;text-align:center;font:14px/1.6 sans-serif;background:#f2eee5;color:#303932">課程示意網站。店家、人物、聯絡方式與價格均為虛構；互動只作瀏覽器內教學模擬。</aside>
@@ -302,7 +303,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
   <div class="wrap two">
     <div class="side">
       <h2 id="h-register">加入會員</h2>
-      <p class="sub">註冊只要一分鐘。會員資料只用在預約與會員服務，不會拿去做別的用途。</p>
+      <p class="sub">此處示範會員資料填寫與個資同意；送出後顯示填寫摘要。下方會員卡與預約維持林小姐的固定示例。</p>
       <ul><li>隨時查點數與儲值餘額</li><li>每一筆消費都留紀錄，可以回頭核對</li><li>預約時不必每次重填資料</li></ul>
     </div>
     <div>
@@ -323,7 +324,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
 
 <section id="dashboard" class="alt" aria-labelledby="h-dash">
   <div class="wrap">
-    <div class="h2wrap"><h2 id="h-dash">我的會員卡</h2><p class="sub">會員登入後看到的畫面（固定教學基準日： <span style="white-space:nowrap">2026-09-23</span>）。</p></div>
+    <div class="h2wrap"><h2 id="h-dash">我的會員卡</h2><p class="sub">固定會員林小姐的示範畫面（固定教學基準日： <span style="white-space:nowrap">2026-09-23</span>）。</p></div>
     <div class="dash">
       <div class="mcard"><div><p class="shop">靜語美容院</p><p class="who">林小姐</p><span class="lv">一般會員</span></div><p class="since">2025-01-01 加入</p></div>
       <div class="tiles">
@@ -619,10 +620,10 @@ img,video{max-width:100%}
 select{max-width:100%;text-overflow:ellipsis}
 a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-space:nowrap}
 .hero h1{text-wrap:wrap;font-size:40px}
-.hero h1 span{word-break:keep-all;overflow-wrap:anywhere}
+.hero h1 span{word-break:normal;overflow-wrap:normal;line-break:strict;text-wrap:balance}
 .hero .lead{word-break:keep-all;overflow-wrap:anywhere}
 @media (max-width:600px){
-  .hero h1{font-size:28px}
+  .hero h1{font-size:clamp(24px,6.4vw,28px)}
   .dm h3 small{display:block;margin-left:0}
   .dm{padding-left:20px;padding-right:20px}
   .eq{padding-left:20px;padding-right:20px}
