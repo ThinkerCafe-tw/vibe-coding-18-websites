@@ -713,7 +713,9 @@ footer .fine{grid-column:1/-1;border-top:1px solid #3a4644;padding-top:22px;marg
     if (!s && lastBooked) {
       var b = byId(lastBooked);
       chosenLine.textContent = "上一筆已送出：" + label(b) + "，該診次目前「" + LABEL[stateOf(b)]
-        + "」，不再開放選擇。要再約其他診次，請在上面重新挑一個。";
+        + "」。" + (bookable(b)
+          ? "仍有名額，可在上面重新選擇此診次或其他診次。"
+          : "目前不再開放選擇，請在上面挑選其他仍有名額的診次。");
     } else if (!s) {
       chosenLine.textContent = "尚未選擇時段：請先在上面的名額板挑一個還有名額的診次。";
     } else {

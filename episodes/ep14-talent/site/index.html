@@ -319,8 +319,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
       <p>班級額滿時，新的意願只能進候補。有一位已入班學員取消、名額空出來，候補第 1 順位就會標成「已通知」，並有三日回覆期限；逾期沒回覆，就順移給下一位。按下面的按鈕，可以看名額和候補怎麼連動。</p>
       <div class="wl-bar"><label for="wl-class"><b>看哪一班</b></label><select id="wl-class"></select></div>
       <p class="wl-seats" id="wl-seats"></p>
+      <p id="wl-cancel-target"></p>
       <div class="wl-btns">
-        <button type="button" id="btn-cancel">一位已入班學員取消</button>
+        <button type="button" id="btn-cancel" aria-describedby="wl-cancel-target">一位已入班學員取消</button>
         <button type="button" id="btn-overdue">回覆期限到了，沒有回覆</button>
         <button type="button" id="btn-accept">已通知的家長回覆要報名</button>
       </div>
@@ -444,6 +445,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
     { id: 'c6', name: '週五 18:30 水彩創作班', course: '兒童畫畫', band: '10-12', level: '進階', teacher: '陳老師', day: 5, time: '18:30⁠–⁠20:00', start: '18:30', cap: 6, base: 3 }
   ];
   var state = {
+    result: null,
     enrollments: [],
     trials: [],
     waitlist: [
@@ -486,6 +488,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
   /* ---- 名額狀態機:目前人數、保留名額、是否額滿 ---- */
   function activeEnroll(c) {
     return state.enrollments.filter(function (e) { return e.cid === c.id && (e.state === '待繳費' || e.state === '已入班'); });
+  }
+  function enrolled(c) {
+    return state.enrollments.filter(function (e) { return e.cid === c.id && e.state === '已入班'; });
   }
   function nowCount(c) { return c.base + activeEnroll(c).length; }
   function waitOf(c) { return state.waitlist.filter(function (w) { return w.cid === c.id; }); }
@@ -617,15 +622,25 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
     }
     $('wl-seats').textContent = c.name + '：' + seatText(c) + (heldCount(c) ? '（' + heldCount(c) + ' 個名額保留給候補家長回覆）' : '');
     $('wl-seats').setAttribute('data-full', String(isFull(c)));
-    $('btn-cancel').disabled = nowCount(c) <= 0;
+    var confirmed = enrolled(c);
+    var target = confirmed[confirmed.length - 1];
+    $('btn-cancel').disabled = !target && c.base <= 0;
+    $('wl-cancel-target').textContent = target
+      ? '取消對象：' + target.id + '・' + target.child + '（已入班）。'
+      : c.base > 0
+        ? '取消對象：' + c.name + '的既有示例學員（已入班，目前 ' + c.base + ' 人）。本頁新增的待繳費申請保留。'
+        : '此班已無可取消的已入班學員；本頁待繳費申請保留。';
     $('btn-overdue').disabled = heldCount(c) === 0;
     $('btn-accept').disabled = heldCount(c) === 0;
   }
   function wlSay(t) { $('wl-note').textContent = t; }
   function doCancel() {
     var c = byId($('wl-class').value);
-    var mine = activeEnroll(c);
-    if (mine.length) { mine[mine.length - 1].state = '已取消'; } else { c.base -= 1; }
+    // 待繳費會保留名額，但不是這顆按鈕所指的已入班學員。
+    var mine = enrolled(c);
+    if (mine.length) { mine[mine.length - 1].state = '已取消'; }
+    else if (c.base > 0) { c.base -= 1; }
+    else { return; }
     var n = notifyNext(c);
     wlSay(n
       ? '一位已入班學員取消，名額空出。候補第 1 順位（' + n.who + '）已標成「已通知」，請在 ' + n.deadline + '回覆；這段時間名額保留給他，不對外開放。'
@@ -700,7 +715,28 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
     r.appendChild(mk('p', 'r-head', head));
     lines.forEach(function (t) { r.appendChild(mk('p', 'r-line', t)); });
   }
-  function block(reason) { showResult('blocked', '這次沒有送出', [reason]); }
+  function rememberResult(mode, record) {
+    state.result = { mode: mode, record: record };
+    $('result').hidden = false;
+  }
+  function renderResult() {
+    // 只更新仍可見的確認；已因編輯草稿撤回的確認不能重新出現。
+    if (!state.result || $('result').hidden) { return; }
+    var mode = state.result.mode, r = state.result.record, cls = byId(r.cid);
+    if (mode === 'trial') {
+      showResult('ok', '已收到試上申請', ['編號 ' + r.id + '，狀態：' + r.state + '。', r.child + '（' + r.age + ' 歲）・' + cls.name + '・' + r.slot, '下一步：老師會在一個工作天內打電話給 ' + r.name + '，確認試上時間，排定後狀態改成「已排定」。試上後三日內請回覆是否轉正式報名。']);
+    } else if (mode === 'enroll') {
+      var next = r.state === '待繳費' ? '下一步：老師會電話通知繳費方式；繳費後狀態改成「已入班」。' : r.state === '已取消' ? '這筆報名已取消，不再保留名額。' : '已完成繳費並入班。';
+      showResult('ok', r.state === '已取消' ? '正式報名已取消' : '已收到正式報名', ['編號 ' + r.id + '，狀態：' + r.state + (r.state === '待繳費' ? '，名額已幫 ' + r.child + ' 保留。' : '。'), cls.name + '，目前 ' + nowCount(cls) + ' 人（上限 ' + cls.cap + ' 人）。', next]);
+    } else {
+      var detail = r.state === '候補中' ? '目前是第 ' + position(r) + ' 順位。'
+        : r.state === '已通知' ? '名額已保留，請在 ' + r.deadline + '回覆。'
+        : r.state === '轉正式' ? '已轉為正式報名，狀態待繳費，名額已保留。'
+        : '已逾期未回覆，不再保留名額；請重新登記。';
+      showResult('ok', '候補申請狀態', ['編號 ' + r.id + '，狀態：' + r.state + '，' + detail, r.child + '（' + r.age + ' 歲）・' + cls.name]);
+    }
+  }
+  function block(reason) { state.result = null; showResult('blocked', '這次沒有送出', [reason]); }
   function findDup(mode, c, phone, child) {
     var pool = mode === 'trial' ? state.trials : mode === 'enroll' ? state.enrollments : state.waitlist;
     return pool.filter(function (x) {
@@ -737,17 +773,17 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
       state.seq.trial += 1;
       var t = { id: 'TB-' + cls.id.toUpperCase() + '-' + pad(state.seq.trial, 3), cid: cls.id, child: child, age: age, name: name, phone: phone, note:$('f-note').value.trim(), slot: $('f-trial').value, state: '已申請' };
       state.trials.push(t);
-      showResult('ok', '已收到試上申請', ['編號 ' + t.id + '，狀態：已申請。', child + '（' + age + ' 歲）・' + cls.name + '・' + t.slot, '下一步：老師會在一個工作天內打電話給 ' + name + '，確認試上時間，排定後狀態改成「已排定」。試上後三日內請回覆是否轉正式報名。']);
+      rememberResult('trial', t);
     } else if (mode === 'enroll') {
       state.seq.enroll += 1;
       var e = { id: 'EN-' + cls.id.toUpperCase() + '-' + pad(state.seq.enroll, 3), cid: cls.id, child: child, age: age, name: name, phone: phone, note:$('f-note').value.trim(), state: '待繳費' };
       state.enrollments.push(e);
-      showResult('ok', '已收到正式報名', ['編號 ' + e.id + '，狀態：待繳費，名額已幫 ' + child + ' 保留。', cls.name + '，目前 ' + nowCount(cls) + ' 人（上限 ' + cls.cap + ' 人）。', '下一步：老師會電話通知繳費方式；繳費後狀態改成「已入班」。']);
+      rememberResult('enroll', e);
     } else {
       state.seq.wait += 1;
       var w = { id: 'WL-' + cls.id.toUpperCase() + '-' + pad(state.seq.wait, 3), cid: cls.id, who: name.charAt(0) + '家長', child: child, age: age, name: name, phone: phone, note:$('f-note').value.trim(), state: '候補中', deadline: '' };
       state.waitlist.push(w);
-      showResult('ok', '已登記候補', ['編號 ' + w.id + '，狀態：候補中，目前是第 ' + position(w) + ' 順位。', child + '（' + age + ' 歲）・' + cls.name, '下一步：有人取消、名額空出時，第 1 順位會標成「已通知」，並有三日回覆期限；逾期未回覆就順移給下一位。']);
+      rememberResult('wait', w);
     }
     renderAll();
   }
@@ -775,6 +811,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
   }
 
   function renderAll() {
+    renderResult();
     renderDemoRecords('result',state.trials.concat(state.enrollments,state.waitlist.filter(function(r){return r.id;})).map(function(r){return {id:r.id,title:(r.child||r.who)+'｜'+r.state,fields:[['學員',r.child||r.who+'的孩子'],['年齡',r.age],['家長',r.name||r.who],['電話',r.phone],['班級',byId(r.cid).name],['試上時段',r.slot||'不適用'],['狀態',r.state],['回覆期限',r.deadline||'不適用'],['備註',r.note||'未填']]};}));
     renderClasses();
     renderBoard();

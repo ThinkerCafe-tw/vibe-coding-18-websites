@@ -319,6 +319,7 @@
     }
 
     .status.show{display:block}
+    .status.dirty{background:var(--surface-2);color:var(--muted)}
 
     .object{
       margin-top:26px;
@@ -1116,12 +1117,24 @@
       });
     }
 
+    function markUnsaved(selector){
+      const status = $(selector);
+      status.textContent = "有尚未保存的變更，請再次按儲存；重新載入只會保留上次儲存的內容。";
+      status.classList.add("show", "dirty");
+    }
+    interviewFields.forEach(id => {
+      ["input", "change"].forEach(event => {
+        document.getElementById(id).addEventListener(event, () => markUnsaved("#interviewStatus"));
+      });
+    });
+
     $("#saveInterview").addEventListener("click", () => {
       const data = {};
       interviewFields.forEach(id => data[id] = document.getElementById(id).value.trim());
       localStorage.setItem(interviewKey, JSON.stringify(data));
       $("#interviewStatus").textContent = "教學模擬：資料已保存在此瀏覽器，沒有送往伺服器。";
       $("#interviewStatus").classList.add("show");
+      $("#interviewStatus").classList.remove("dirty");
     });
 
     $("#clearInterview").addEventListener("click", () => {
@@ -1129,6 +1142,7 @@
       interviewFields.forEach(id => document.getElementById(id).value = "");
       $("#interviewStatus").textContent = "教學模擬：此瀏覽器的訪談示範資料已清除。";
       $("#interviewStatus").classList.add("show");
+      $("#interviewStatus").classList.remove("dirty");
     });
 
     function refreshCheckLabels(){
@@ -1150,7 +1164,10 @@
     }
 
     $$("#checkList input").forEach(input => {
-      input.addEventListener("change", refreshCheckLabels);
+      input.addEventListener("change", () => {
+        refreshCheckLabels();
+        markUnsaved("#checkStatus");
+      });
     });
 
     $("#saveChecks").addEventListener("click", () => {
@@ -1159,6 +1176,7 @@
       localStorage.setItem(checksKey, JSON.stringify(data));
       $("#checkStatus").textContent = "教學模擬：驗收結果已保存於此瀏覽器，沒有寫入正式專案系統。";
       $("#checkStatus").classList.add("show");
+      $("#checkStatus").classList.remove("dirty");
     });
 
     $("#resetChecks").addEventListener("click", () => {
@@ -1167,6 +1185,7 @@
       refreshCheckLabels();
       $("#checkStatus").textContent = "教學模擬：驗收結果已重設。";
       $("#checkStatus").classList.add("show");
+      $("#checkStatus").classList.remove("dirty");
     });
 
     $("#showSummary").addEventListener("click", () => {
