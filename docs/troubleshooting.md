@@ -6,7 +6,7 @@
 
 ## 圖片沒有顯示
 
-不要只複製 `index.html`。請保留整個 `site` 資料夾，因為圖片位於 `site/assets`。
+不要只複製 `index.html`。請保留解壓後的完整套件，尤其是整個 `site` 資料夾與原有相對位置。圖片資料夾依講次不同：EP01 使用 `site/assets`，EP02–15 使用 `site/images`；EP16–18 沒有另外附站內照片資料夾。以各講實際檔案為準，不要自行把 `images` 改名為 `assets`。
 
 ## AI 一開始就改了檔案
 

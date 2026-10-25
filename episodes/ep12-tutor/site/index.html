@@ -601,7 +601,7 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
 
       <div class="aside" id="aside">
         <h3>這張表送出去之後會怎樣</h3>
-        <p>科目、地區、預算、上課方式、時段五個條件先把名單縮小。時段是拿你勾的那一格去比對老師登記的可上課時間，對不上的不會推給你。<span class="why">「這次想解決什麼」</span>則是人看的——推薦理由那一段就是從這裡寫出來的。</p>
+        <p>送出後，教師卡會依這筆需求的年級、科目、預算、上課方式、地區與時段逐項說明符合或不符。方式、地區與時間必須對應同一個可排時段，六項都符合才能選擇試教。<span class="why">「這次想解決什麼」</span>會保留在需求摘要，供承辦人員與老師討論；本示意不會自動判斷文字目標與教法是否合適。</p>
         <p>審核沒過的老師不會出現在推薦名單裡，不管他學歷多好。這是「先審核，再推薦」的意思。</p>
         <p>你填的電話只用來聯絡這一筆媒合；平台推薦老師之前，不會把電話交給任何老師。</p>
       </div>
@@ -624,8 +624,8 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
   <div class="sheet">
     <div class="head">
       <span>第 3 步</span>
-      <h2>推薦給你的老師</h2>
-      <p>每一張卡片只講一位老師：他教什麼、怎麼教、什麼時候有空、通過了哪幾個審核步驟，以及我們為什麼覺得他適合你家孩子。</p>
+      <h2>已驗證教師名錄</h2>
+      <p>每一張卡片介紹一位老師的科目、教法、時段與審核狀態。送出需求後，卡片會顯示與這筆需求的比對理由；下方篩選只調整顯示名單，不會改寫已送出的需求。</p>
     </div>
 
     <div class="sift" data-obj="AvailabilitySlot">
@@ -873,9 +873,7 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
         { day: "週六", from: "09:00", to: "11:00", how: "線上", band: "weekend-am" }
       ],
       passed: ["身分核對", "學歷文件", "試教評估"],
-      clip: "3 分 12 秒",
-      score: 92,
-      why: "你寫「應用題一看就停筆」，他的教法就是從讀題開始拆，不是先講公式。週⁠二、週⁠四晚上對得上你勾的平日晚上。"
+      clip: "3 分 12 秒"
     },
     {
       id: "T-1024", surname: "陳", name: "陳老師",
@@ -887,9 +885,7 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
         { day: "週日", from: "14:00", to: "16:00", how: "線上", band: "weekend-pm" }
       ],
       passed: ["身分核對", "學歷文件", "試教評估"],
-      clip: "2 分 48 秒",
-      score: 78,
-      why: "時薪在你的預算下緣，週⁠三晚上有空。線上課會把白板存成圖檔給你，錯在哪一步你自己看得到。"
+      clip: "2 分 48 秒"
     },
     {
       id: "T-1031", surname: "郭", name: "郭老師",
@@ -901,9 +897,7 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
         { day: "週日", from: "09:00", to: "12:00", how: "實體", band: "weekend-am" }
       ],
       passed: ["身分核對", "學歷文件", "試教評估"],
-      clip: "4 分 05 秒",
-      score: 71,
-      why: "錯題來源表適合想先弄清楚問題出在哪的孩子，但他只收實體、而且在板橋——跟你勾的桃園與平日晚上對不上，放進來是讓你知道這個價位帶還有誰。"
+      clip: "4 分 05 秒"
     },
     {
       id: "T-1042", surname: "張", name: "張老師",
@@ -915,9 +909,7 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
         { day: "週六", from: "10:00", to: "12:00", how: "實體", band: "weekend-am" }
       ],
       passed: ["身分核對", "學歷文件", "試教評估"],
-      clip: "3 分 30 秒",
-      score: 66,
-      why: "科目跟你勾的不同，列在這裡是因為同一個孩子常常數學英文一起補；週⁠一晚上與你的時段相容。"
+      clip: "3 分 30 秒"
     },
     {
       id: "T-1056", surname: "吳", name: "吳老師",
@@ -929,9 +921,7 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
         { day: "週日", from: "10:00", to: "12:00", how: "線上", band: "weekend-am" }
       ],
       passed: ["身分核對", "學歷文件", "試教評估"],
-      clip: "3 分 58 秒",
-      score: 58,
-      why: "價位在你的預算之上，科目也不同。放在名單最後是讓你看到全部已驗證的五位，不是只給你看便宜的。"
+      clip: "3 分 58 秒"
     }
   ];
 
@@ -1085,13 +1075,25 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
     c.appendChild(rate);
 
     var fit = el("div", "fit");
-    fit.appendChild(el("b", null, "為什麼推這一位"));
-    fit.appendChild(el("p", null, t.why));
-    var meter = el("div", "meter");
-    var bar = el("i"); bar.style.width = t.score + "%";
-    meter.appendChild(bar);
-    fit.appendChild(meter);
-    fit.appendChild(el("span", null, "條件相符程度（參考用，真正該看的是上面那段理由）"));
+    var match = matchRequest(t);
+    fit.appendChild(el("b", null, st.req ? "與這筆需求的比對" : "尚未送出需求"));
+    if (match) {
+      match.checks.forEach(function (check) {
+        fit.appendChild(el("p", null, check.label + "：" + (check.ok ? "符合。" : "不符。") + check.reason));
+      });
+      var meter = el("div", "meter");
+      meter.setAttribute("role", "meter");
+      meter.setAttribute("aria-label", "已送出需求的條件相符比例");
+      meter.setAttribute("aria-valuemin", "0");
+      meter.setAttribute("aria-valuemax", "100");
+      meter.setAttribute("aria-valuenow", match.score);
+      var bar = el("i"); bar.style.width = match.score + "%";
+      meter.appendChild(bar);
+      fit.appendChild(meter);
+      fit.appendChild(el("span", null, "符合 " + match.count + " / 6 項（" + match.score + "%）。六項同權重，僅比對條件，不評價教學品質。"));
+    } else {
+      fit.appendChild(el("p", null, "目前僅供瀏覽教師資料。送出需求後，才依年級、科目、預算、方式、地區與時段顯示理由及相符比例。"));
+    }
     c.appendChild(fit);
 
     var clip = el("div", "clip");
@@ -1102,7 +1104,7 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
 
     var btn = el("button", "pick", st.tutor === t.id ? "已選擇這一位" : "選這位安排試教");
     btn.type = "button";
-    if (st.req && !fitsRequest(t)) { btn.textContent="與這筆需求不符"; btn.disabled=true; }
+    if (match && !match.eligible) { btn.textContent="與這筆需求不符"; btn.disabled=true; }
     btn.addEventListener("click", function () { choose(t.id); });
     c.appendChild(btn);
 
@@ -1139,28 +1141,38 @@ a[href^="tel:"],a[href^="mailto:"],span.num,a.num,b.num,strong.num,time{white-sp
     var p = function (n) { return (n < 10 ? "0" : "") + n; };
     return p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds());
   }
-  function requestSlots(t) {
-    if (!t || !st.req) return [];
-    var time=st.req.timeKey || Object.keys(TIME).find(function(k){return TIME[k]===st.req.time;});
-    var mode=st.req.modeKey || Object.keys(MODE).find(function(k){return MODE[k]===st.req.mode;});
-    return t.slots.filter(function(slot){
-      return (!time || slot.band===time) && (!mode || mode==="any" || slot.how===MODE[mode]);
-    });
+  function matchRequest(t) {
+    if (!t || !st.req) return null;
+    var req = st.req;
+    var time = req.timeKey || Object.keys(TIME).find(function (k) { return TIME[k] === req.time; });
+    var mode = req.modeKey || Object.keys(MODE).find(function (k) { return MODE[k] === req.mode; });
+    var budget = req.budgetKey || Object.keys(BUD).find(function (k) { return BUD[k] === req.budget; });
+    var level = req.grade && req.grade.charAt(0) === "高" ? "高中" : "國中";
+    // 方式、地區與時段必須落在同一可排時段，不能拼湊不同時段的條件。
+    var modeSlots = t.slots.filter(function (slot) { return mode === "any" || slot.how === MODE[mode]; });
+    var areaSlots = modeSlots.filter(function (slot) { return slot.how === "線上" || t.area === req.area; });
+    var slots = areaSlots.filter(function (slot) { return slot.band === time; });
+    var checks = [
+      { label: "年級", ok: t.level.indexOf(level) >= 0, reason: "需求為" + req.grade + "；老師授課範圍為" + t.level + "。" },
+      { label: "科目", ok: t.subject === req.subject, reason: "需求為" + req.subjectName + "；老師教授" + t.subjectName + "。" },
+      { label: "預算", ok: !!budget && inBudget(t.rate, budget), reason: "需求為每小時 " + req.budget + "；老師時薪為 " + t.rate + " 元。" },
+      { label: "方式", ok: modeSlots.length > 0, reason: "需求為" + req.mode + "；老師可排方式為" + Array.from(new Set(t.slots.map(function (slot) { return slot.how; }))).join("、") + "。" },
+      { label: "地區", ok: areaSlots.length > 0, reason: "需求地區為" + req.areaName + "；" + (areaSlots.some(function (slot) { return slot.how === "線上"; }) ? "可在線上授課，不受實體地區限制。" : "實體授課地區為" + t.areaName + "，須同時符合上課方式。") },
+      { label: "時段", ok: slots.length > 0, reason: slots.length ? "需求為" + req.time + "；可排 " + slots.map(function (slot) { return slot.day + " " + slot.from + "（" + slot.how + "）"; }).join("、") + "。" : "沒有同時符合" + req.time + "、上課方式與地區的時段。" }
+    ];
+    var count = checks.filter(function (check) { return check.ok; }).length;
+    return { checks: checks, count: count, score: Math.round(count / checks.length * 100), eligible: count === checks.length, slots: slots };
   }
   function fitsRequest(t) {
-    if (!t || !st.req) return false;
-    var budget=st.req.budgetKey || Object.keys(BUD).find(function(k){return BUD[k]===st.req.budget;});
-    var slots=requestSlots(t);
-    var level=st.req.grade && st.req.grade.charAt(0)==="高" ? "高中" : "國中";
-    return t.level.indexOf(level)>=0 && t.subject===st.req.subject && inBudget(t.rate,budget) &&
-      slots.some(function(slot){return slot.how==="線上" || t.area===st.req.area;});
+    var match = matchRequest(t);
+    return !!match && match.eligible;
   }
   function move(to, act, by) {
     if (!(NEXT[st.state]||[]).some(function(m){return m.to===to;})) return;
     if (to==="trial") {
       var teacher=byId(st.tutor);
       if (!fitsRequest(teacher)) { showAlarm("請先選擇符合這筆需求的年級、科目、預算、地區與上課時段的老師。"); return; }
-      var slot=requestSlots(teacher).find(function(slot){return slot.how==="線上" || teacher.area===st.req.area;});
+      var slot=matchRequest(teacher).slots[0];
       var hour=String(Number(slot.from.split(":")[0])+1).padStart(2,"0")+":"+slot.from.split(":")[1];
       st.trialRecord={teacherId:teacher.id,when:slot.day+" "+slot.from+"–"+hour+"（日期待雙方確認）",place:slot.how==="線上"?"線上":teacher.areaName+"實體，地址待雙方確認",fee:"首次免費（60 分鐘）"};
     }
