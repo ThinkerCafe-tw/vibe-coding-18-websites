@@ -2963,6 +2963,11 @@
           return;
         }
 
+        if (findActiveEntry(name, contact, ticketKey)) {
+          $("#formValidation").textContent = "這個姓名與聯絡方式已有此票種的有效報名或候補，請查閱原紀錄；沒有新增報名或扣除名額。";
+          return;
+        }
+
         /*
           教學版「原子檢查」：
           JavaScript 是單執行緒，因此在同一次同步操作中，
@@ -3050,6 +3055,14 @@
           : trimmed.replace(/[()\s-]/g, "").replace(/^\+886/, "0");
       }
 
+      function findActiveEntry(name, contact, ticketKey) {
+        const samePerson = item => item.name.trim().replace(/\s+/g, " ") === name.trim().replace(/\s+/g, " ") &&
+          normalizedContact(item.contact) === normalizedContact(contact) && item.ticketKey === ticketKey;
+        return state.registrations.find(item => samePerson(item) &&
+          ["pending_payment", "paid", "confirmed", "waitlist_reserved"].includes(item.status)) ||
+          state.waitlist.find(item => samePerson(item) && ["waiting", "reserved"].includes(item.status));
+      }
+
       function addWaitlist(event) {
         event.preventDefault();
 
@@ -3072,13 +3085,10 @@
           return;
         }
 
-        const duplicate = state.waitlist.some(
-          item => item.name.trim() === name && normalizedContact(item.contact) === normalizedContact(contact)
-            && ["waiting", "reserved"].includes(item.status)
-        );
+        const duplicate = findActiveEntry(name, contact, "early");
 
         if (duplicate) {
-          $("#waitlistValidation").textContent = "這個姓名與聯絡方式已有進行中的候補紀錄。";
+          $("#waitlistValidation").textContent = "這個姓名與聯絡方式已有此票種的有效報名或候補紀錄，沒有新增候補順位。";
           return;
         }
 

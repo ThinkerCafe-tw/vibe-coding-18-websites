@@ -455,14 +455,31 @@ function onSubmit(ev) {
   const s = sessionOf($("#f-class").value);
   if (!s) return;
   const student = $("#f-name").value.trim();
+  const phone = $("#f-phone").value.trim();
+  const normalizedName = value => value.trim().replace(/\s+/g, " ");
+  const normalizedPhone = value => value.trim().replace(/[()\s-]/g, "").replace(/^\+886/, "0");
+  // Check both collections before creating a note, occupying a seat, or assigning a rank.
+  const duplicate = enrollments.concat(waitlist).find(record =>
+    record.sessionId === s.id && normalizedName(record.student) === normalizedName(student) &&
+    normalizedPhone(record.phone || "") === normalizedPhone(phone) &&
+    !["已取消", "已完成", "逾期未回覆"].includes(record.status || record.notify));
+  if (duplicate) {
+    const box = $("#result");
+    box.replaceChildren(el("h3", "", "已有這堂課的報名或候補"),
+      el("p", "", duplicate.id + "｜" + student + "｜" + sessionName(s) + "｜" + (duplicate.status || duplicate.notify) +
+        (duplicate.rank ? "，第 " + duplicate.rank + " 順位" : "") + "。這次沒有新增紀錄或扣除名額，請查閱本頁紀錄。"));
+    box.hidden = false;
+    box.scrollIntoView({ block: "nearest" });
+    return;
+  }
   studentNotes.push({ id: "n" + (studentNotes.length + 1), student, body: $("#f-body").value.trim(), experience: $("#f-exp").value });
   const kind = remaining(s) <= 0 ? "waitlist" : "enrolled";
   const rank = kind === "waitlist" ? waitCount(s) + 1 : 0;
   if (kind === "waitlist") {
-    waitlist.push({ id: "w" + (waitlist.length + 1), student, phone:$("#f-phone").value.trim(), noteId:studentNotes[studentNotes.length-1].id, sessionId: s.id, rank, notify: "候補中" });
+    waitlist.push({ id: "w" + (waitlist.length + 1), student, phone, noteId:studentNotes[studentNotes.length-1].id, sessionId: s.id, rank, notify: "候補中" });
   } else {
     s.confirmed += 1;
-    enrollments.push({ id: "e" + (enrollments.length + 1), student, phone:$("#f-phone").value.trim(), noteId:studentNotes[studentNotes.length-1].id, sessionId: s.id, status: "已報名", at: Date.now() });
+    enrollments.push({ id: "e" + (enrollments.length + 1), student, phone, noteId:studentNotes[studentNotes.length-1].id, sessionId: s.id, status: "已報名", at: Date.now() });
   }
   $("#enroll-form").reset();
   fillOptions();

@@ -84,6 +84,10 @@
 <li>進行中的候補以「去除首尾空白的姓名＋正規化聯絡方式」判重，不以姓名單欄當唯一鍵。Email 忽略大小寫；手機去除空格、括號與連字號，+886 換成 0 後比較。</li>
 <li>同名但不同聯絡方式可各自候補；同姓名與相同聯絡方式的 waiting、reserved 紀錄不得重複建立，既有順位、通知與名額不變。</li>
 </ul>
+<h2>票種報名與候補防重</h2>
+<ul>
+<li>每個票種以姓名與正規化聯絡方式一併檢查有效報名、候補。姓名忽略首尾與連續空白差異；Email 不分大小寫，手機的空格、連字號與 +886 視為同一號碼。同票種待付款、已付款、已確認或候補保留者重送，不能再建報名、付款、同意、通知，也不能再扣名額或增加候補。已取消或付款逾時後可以重報；不同聯絡方式或不同票種各自核對。</li>
+</ul>
 </section>
 <section id="prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0" hidden><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP16 對話提示卡</h1>
 <p>以下為第 16 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
@@ -160,6 +164,10 @@
 <li>進行中的候補以「去除首尾空白的姓名＋正規化聯絡方式」判重，不以姓名單欄當唯一鍵。Email 忽略大小寫；手機去除空格、括號與連字號，+886 換成 0 後比較。</li>
 <li>同名但不同聯絡方式可各自候補；同姓名與相同聯絡方式的 waiting、reserved 紀錄不得重複建立，既有順位、通知與名額不變。</li>
 </ul>
+<h2>票種報名與候補防重</h2>
+<ul>
+<li>每個票種以姓名與正規化聯絡方式一併檢查有效報名、候補。姓名忽略首尾與連續空白差異；Email 不分大小寫，手機的空格、連字號與 +886 視為同一號碼。同票種待付款、已付款、已確認或候補保留者重送，不能再建報名、付款、同意、通知，也不能再扣名額或增加候補。已取消或付款逾時後可以重報；不同聯絡方式或不同票種各自核對。</li>
+</ul>
 </section>
 <section id="verify" role="tabpanel" aria-labelledby="tab-verify" tabindex="0" hidden><p><a class="source" href="VERIFY.md" download>下載 驗收清單原文</a></p><h1>EP16 驗收清單</h1>
 <h2>逐項檢查</h2>
@@ -213,5 +221,9 @@
 <ul>
 <li>[ ] 王小明／<a href="mailto:person-a@example.com">person-a@example.com</a> 與王小明／<a href="mailto:person-b@example.com">person-b@example.com</a> 可各建一筆；再送 王小明／<a href="mailto:PERSON-A@EXAMPLE.COM">PERSON-A@EXAMPLE.COM</a> 應擋下。</li>
 <li>[ ] 同一姓名的 0912-345-678 與 +886 912 345 678 視為同一聯絡方式；候補中及保留名額中都須阻擋重複，正常遞補流程仍可操作。</li>
+</ul>
+<h2>票種報名與候補防重</h2>
+<ul>
+<li>[ ] 用同姓名與 Email 連送學生票兩次，第二次改 Email 大小寫，確認只一筆報名，付款／同意／通知筆數與名額不變。付款後重送仍擋；取消或逾時後可重新建立。用早鳥票已報名者再登記早鳥候補，應擋下；換另一位可候補，其電話由 0912-000-001 改成 +886 912 000 001 重送，順位不增加。</li>
 </ul>
 </section></main><footer>課程示意原型。以教材內容為實作依據，逐項親手驗收。<br>程式碼 MIT；教學內容 CC BY-NC-SA 4.0。</footer><noscript><style>[role="tabpanel"][hidden]{display:block}</style><p>未啟用 JavaScript，以下內容以連續段落呈現；可使用標題連結瀏覽。</p></noscript></body></html>

@@ -1132,6 +1132,7 @@
       const data = {};
       interviewFields.forEach(id => data[id] = document.getElementById(id).value.trim());
       localStorage.setItem(interviewKey, JSON.stringify(data));
+      refreshOpenSummary();
       $("#interviewStatus").textContent = "教學模擬：資料已保存在此瀏覽器，沒有送往伺服器。";
       $("#interviewStatus").classList.add("show");
       $("#interviewStatus").classList.remove("dirty");
@@ -1139,6 +1140,7 @@
 
     $("#clearInterview").addEventListener("click", () => {
       localStorage.removeItem(interviewKey);
+      refreshOpenSummary();
       interviewFields.forEach(id => document.getElementById(id).value = "");
       $("#interviewStatus").textContent = "教學模擬：此瀏覽器的訪談示範資料已清除。";
       $("#interviewStatus").classList.add("show");
@@ -1174,6 +1176,7 @@
       const data = {};
       $$("#checkList input").forEach(input => data[input.dataset.key] = input.checked);
       localStorage.setItem(checksKey, JSON.stringify(data));
+      refreshOpenSummary();
       $("#checkStatus").textContent = "教學模擬：驗收結果已保存於此瀏覽器，沒有寫入正式專案系統。";
       $("#checkStatus").classList.add("show");
       $("#checkStatus").classList.remove("dirty");
@@ -1181,6 +1184,7 @@
 
     $("#resetChecks").addEventListener("click", () => {
       localStorage.removeItem(checksKey);
+      refreshOpenSummary();
       $$("#checkList input").forEach(input => input.checked = false);
       refreshCheckLabels();
       $("#checkStatus").textContent = "教學模擬：驗收結果已重設。";
@@ -1188,7 +1192,7 @@
       $("#checkStatus").classList.remove("dirty");
     });
 
-    $("#showSummary").addEventListener("click", () => {
+    function renderSummary(){
       const interview = JSON.parse(localStorage.getItem(interviewKey) || "{}");
       const checks = JSON.parse(localStorage.getItem(checksKey) || "{}");
 
@@ -1204,7 +1208,14 @@
         "核心行動：" + escapeHTML(action) + "<br>" +
         "五項驗收完成：" + completed + " / 5<br>" +
         "資料來源：僅此瀏覽器的 localStorage，未連接正式後端。";
-    });
+    }
+
+    function refreshOpenSummary(){
+      // Unsaved edits stay in the form; the summary always reads persisted data.
+      if (!$("#savedSummary").hidden) renderSummary();
+    }
+
+    $("#showSummary").addEventListener("click", renderSummary);
 
     function escapeHTML(value){
       return String(value).replace(/[&<>"']/g, char => ({

@@ -355,6 +355,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
           <div class="full"><label for="b-note">備註</label><textarea id="b-note" name="note" placeholder="例如：膚況、過敏史、想要安靜的療程"></textarea></div>
         </div>
         <button class="btn primary" type="submit">送出預約</button>
+        <p id="booking-conflict" role="alert" hidden></p>
         <div id="book-result" class="result" hidden>
           <h3>已收到預約　狀態：待確認</h3>
           <p id="book-echo"></p>
@@ -592,7 +593,21 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
         staffError("這位美容師不提供所選服務，請重新選擇。"); staff.focus(); return;
       }
       if (!$("book-form").reportValidity()) return;
-      var appointment = {id:"A-NEW-"+String(++appointmentSequence).padStart(3,"0"),date:date.value,time:$("b-time").value,svc:s.id,who:staff.value,note:$("b-note").value.trim(),status:"待確認"};
+      var time = $("b-time").value;
+      function minutes(value) { var parts = value.split(":"); return Number(parts[0]) * 60 + Number(parts[1]); }
+      // Service duration matters: a 14:00 appointment can still occupy the 14:30 slot.
+      var conflict = APPTS.filter(function (a) {
+        if (["待確認", "已確認", "已到店"].indexOf(a.status) < 0 || a.date !== date.value || a.who !== staff.value) return false;
+        return minutes(time) < minutes(a.time) + svc(a.svc).min && minutes(a.time) < minutes(time) + s.min;
+      })[0];
+      if (conflict) {
+        $("booking-conflict").textContent = (conflict.svc === s.id && conflict.time === time
+          ? "已有相同預約（" + conflict.id + "），請查閱原紀錄。"
+          : "這位美容師的服務時間與預約 " + conflict.id + " 重疊，請改選其他時段或美容師。") + "這次沒有新增預約，原備註保持不變。";
+        $("booking-conflict").hidden = false;
+        return;
+      }
+      var appointment = {id:"A-NEW-"+String(++appointmentSequence).padStart(3,"0"),date:date.value,time:time,svc:s.id,who:staff.value,note:$("b-note").value.trim(),status:"待確認"};
       APPTS.push(appointment);
       renderModel(); renderDash();
       renderDemoRecords("book-result", APPTS.filter(function(a){return a.id.indexOf("A-NEW-")===0;}).map(function(a){return {id:a.id,title:svc(a.svc).name+"｜"+a.status,fields:[["日期與時段",a.date+" "+a.time],["服務",svc(a.svc).name],["美容師",a.who],["價格", "NT$ "+fmt(svc(a.svc).price)],["狀態",a.status],["備註",a.note||"未填"]]};}));
@@ -601,7 +616,7 @@ footer .legal{margin:10px 0 0;font-size:17px;line-height:1.7}
       $("book-result").scrollIntoView({ block: "nearest" });
     });
     ["input", "change", "invalid"].forEach(function (event) {
-      $("book-form").addEventListener(event, function () { $("book-result").hidden = true; }, true);
+      $("book-form").addEventListener(event, function () { $("book-result").hidden = true; $("booking-conflict").hidden = true; }, true);
     });
     var birth = $("r-birth");
     birth.max = TODAY;

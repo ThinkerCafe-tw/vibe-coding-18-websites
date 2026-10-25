@@ -738,13 +738,15 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
   }
   function block(reason) { state.result = null; showResult('blocked', '這次沒有送出', [reason]); }
   function findDup(mode, c, phone, child) {
-    var pool = mode === 'trial' ? state.trials : mode === 'enroll' ? state.enrollments : state.waitlist;
+    // Trial requests can later become enrollments; enrollment and waitlist share one place.
+    var pool = mode === 'trial' ? state.trials : state.enrollments.concat(state.waitlist);
     return pool.filter(function (x) {
       var live = x.state !== '已取消' && x.state !== '逾期未回覆' && x.state !== '轉正式';
       return live && x.cid === c.id && x.phone === phone && x.child === child;
     })[0];
   }
   function dupMsg(mode, c, hit) {
+    if (mode !== 'trial') mode = state.waitlist.indexOf(hit) >= 0 ? 'wait' : 'enroll';
     var where = mode === 'wait' ? '候補第 ' + position(hit) + ' 順位' : mode === 'trial' ? '「' + hit.state + '」的試上申請' : '「' + hit.state + '」的正式報名';
     return hit.child + ' 已經在「' + c.name + '」' + where + '，不用再按一次。' + (mode === 'wait' ? '多按不會讓順位往前，也不會多占一個名額。' : '多按不會多收一筆。');
   }
@@ -765,10 +767,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
     var phone = $('f-phone').value.trim();
     var band = BANDS[cls.band];
     if (!Number.isInteger(age) || age < band.min || age > band.max) { block(cls.name + '收 ' + band.label + '的孩子，' + age + ' 歲的孩子請選對應年齡層的班。'); return; }
-    if (mode === 'wait' && !isFull(cls)) { block('這個班還有名額，不用候補，請改選預約試上或正式報名。'); switchMode('trial'); return; }
-    if (mode !== 'wait' && isFull(cls)) { block('這個班目前額滿，不能直接試上或報名，已幫你切到登記候補；有名額空出會依順位通知。'); switchMode('wait'); return; }
     var dup = findDup(mode, cls, phone, child);
     if (dup) { block(dupMsg(mode, cls, dup)); return; }
+    if (mode === 'wait' && !isFull(cls)) { block('這個班還有名額，不用候補，請改選預約試上或正式報名。'); switchMode('trial'); return; }
+    if (mode !== 'wait' && isFull(cls)) { block('這個班目前額滿，不能直接試上或報名，已幫你切到登記候補；有名額空出會依順位通知。'); switchMode('wait'); return; }
     if (mode === 'trial') {
       state.seq.trial += 1;
       var t = { id: 'TB-' + cls.id.toUpperCase() + '-' + pad(state.seq.trial, 3), cid: cls.id, child: child, age: age, name: name, phone: phone, note:$('f-note').value.trim(), slot: $('f-trial').value, state: '已申請' };
