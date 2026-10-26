@@ -42,7 +42,8 @@ a{color:var(--teald)}
 .hero{padding:52px 0 60px}
 .eyebrow{font-size:16px;font-weight:700;color:var(--teal);letter-spacing:.06em}
 .hero-grid{display:flex;gap:36px;align-items:center;margin:16px 0 18px}
-.zero{display:flex;align-items:baseline;gap:6px;color:var(--teal);flex:none}
+.zero{display:flex;align-items:baseline;gap:6px;color:var(--teal);flex:none;position:relative;padding-top:32px}
+.filled-label{position:absolute;top:0;left:4px;font-size:24px;line-height:1.2;font-weight:800}
 .zn{font-size:176px;line-height:.9;font-weight:800;letter-spacing:-.04em}
 .zu{font-size:44px;font-weight:800}
 h1{font-size:44px;letter-spacing:.02em}
@@ -284,7 +285,7 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
 <section class="hero" aria-labelledby="h1">
 <p class="eyebrow">台北市中山區　預約制　現場與線上</p>
 <div class="hero-grid">
-<div class="zero" aria-hidden="true"><span class="zn">0</span><span class="zu">項</span></div>
+<div class="zero" aria-label="已填項數"><span class="filled-label">已填</span><output class="zn" data-count>0</output><span class="zu">項</span></div>
 <h1 id="h1">瀏覽這一頁，<br>不需要交出任何資料。</h1>
 </div>
 <p class="sub">小徑心理諮商所提供成年人的個別諮商、伴侶諮商與線上諮商。適合想找人說說，但還沒決定要不要開始的您。預約只收稱呼、聯絡方式、偏好時段、服務類型，和一格可以不寫的簡短需求。</p>
@@ -416,7 +417,7 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
 <form id="booking-form" autocomplete="off">
 <fieldset class="pick" id="pick-svc">
 <legend>第 2 步：選擇服務</legend>
-<p class="hint">到這一步，本頁沒有向您要任何資料。</p>
+<p class="hint">到這一步，本頁還沒有向您要任何個人資料。</p>
 <div id="svc-list" class="svc-list">
 <label class="svc"><input type="radio" name="service" value="初談"><span class="svc-b"><span class="svc-name">初談</span><span class="svc-meta">30 分鐘・現場或線上</span><span class="svc-desc">先聊聊現在的狀況與想要的方向，一起看合不合適。</span></span></label>
 <label class="svc"><input type="radio" name="service" value="個別諮商"><span class="svc-b"><span class="svc-name">個別諮商</span><span class="svc-meta">50 分鐘・現場</span><span class="svc-desc">一對一，固定的時段，一起處理您想談的事。</span></span></label>
@@ -565,7 +566,7 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
   var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
   var form = $("#booking-form"), slotBox = $("#slot-list"), pickSlot = $("#pick-slot"), intake = $("#intake");
   var confirmBox = $("#confirm"), summary = $("#pick-summary"), stateLine = $("#state-line");
-  var st = { svc: null, slot: null, submitted: false };
+  var st = { svc: null, slot: null, submitted: false, enteredService: false };
   var consentStep = $("#consent-step"), consent = $("input[name=consent]"), submit = $("#submit");
   var slotError=el("p", "slot-error", "");
   slotError.id="slot-error"; slotError.setAttribute("role", "alert"); slotError.style.color="#9b2c2c";
@@ -640,7 +641,7 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
   }
   function step() {
     if (st.submitted) { return 5; }
-    if (!st.svc) { return 1; }
+    if (!st.svc) { return st.enteredService ? 2 : 1; }
     return consent.checked ? 4 : 3;
   }
   function sync() {
@@ -670,6 +671,14 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
     });
     paintCount();
   }
+  // Entering the service section is step 2, before a service is selected.
+  function enterService() {
+    if (!st.enteredService && !st.submitted) { st.enteredService = true; sync(); }
+  }
+  new IntersectionObserver(function (entries) {
+    if (entries.some(function (entry) { return entry.isIntersecting; })) { enterService(); }
+  }, { threshold: 0.2 }).observe($("#pick-svc"));
+  $("#pick-svc").addEventListener("focusin", enterService);
   $$("#svc-list input[name=service]").forEach(function (r) {
     r.addEventListener("change", function () {
       st.svc = r.value; consent.checked = false; clearDetails(); renderSlots(); sync();
