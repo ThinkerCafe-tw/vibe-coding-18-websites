@@ -1,5 +1,5 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>EP15 諮商預約網站｜網站與教學</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#203b30;background:#f7f8f5;font:17px/1.8 system-ui,-apple-system,"PingFang TC",sans-serif}header,main,footer{max-width:1000px;margin:auto;padding:28px}header{padding-top:42px}h1{font-size:clamp(28px,5vw,44px);line-height:1.3}h2,h3{line-height:1.5}a{color:#1a6947;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,.source{border:1px solid #c5d5ca;border-radius:7px;padding:8px 14px;background:white;text-decoration:none}section{background:white;padding:28px;margin:24px 0;border:1px solid #dbe3db;border-radius:12px}p,li,td,th{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#eff3ed;border-radius:8px;font-size:15px}code{font-size:.92em}blockquote{border-left:4px solid #abc3af;margin:18px 0;padding:4px 18px}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:15px}th,td{border:1px solid #cfdad0;padding:10px;text-align:left}img{max-width:100%}li{margin:6px 0}footer{font-size:14px}@media(max-width:600px){header,main,footer{padding:18px}section{padding:18px}table,thead,tbody,tr,th,td{display:block;width:100%}tr{margin:12px 0}th,td{border-bottom:0}tr>*:last-child{border-bottom:1px solid #cfdad0}pre{padding:12px}}</style><link rel="stylesheet" href="../../assets/teaching.css?v=20261024fix"><script src="../../assets/teaching.js?v=20261024fix" defer></script></head><body><header><a href="../../">← 回到 18 講</a><h1>EP15 諮商預約網站</h1><p>尊重敏感情境、資料邊界與求助者的選擇。</p><nav aria-label="本講網站與下載"><a href="site/">開啟網站</a><a href="../../downloads/ep15-counseling.zip" download>下載網站原始碼</a></nav></header><main><nav class="lesson-tabs" role="tablist" aria-label="本講教學內容"><a id="tab-spec" role="tab" href="#spec" aria-controls="spec" aria-selected="true" tabindex="0">規格</a><a id="tab-prompt" role="tab" href="#prompt" aria-controls="prompt" aria-selected="false" tabindex="-1">對話提示卡</a><a id="tab-verify" role="tab" href="#verify" aria-controls="verify" aria-selected="false" tabindex="-1">驗收清單</a></nav><section id="spec" role="tabpanel" aria-labelledby="tab-spec" tabindex="0"><p><a class="source" href="SPEC.md" download>下載 施工規格原文</a></p><h1>EP15 施工規格</h1>
-<p>本規格整理自《網頁設計》第 15 講第 5.1 節的需求；是學員審閱與實作依據。</p>
+<p>本規格整理自《網頁設計》第 15 講第 5.1 節，並對齊老師最終投影片與教師講稿；是學員審閱與實作依據。</p>
 <h2>網站目標</h2>
 <p>諮商師介紹、服務邊界、隱私說明、預約與取消規則</p>
 <h2>使用者情境</h2>
@@ -9,7 +9,7 @@
 <li>Hero 首頁：名稱、定位、主張、主要行動按鈕</li>
 <li>信任證據：真實照片、資歷、評論、規則或案例</li>
 <li>核心流程：讓來談者理解諮商師、服務邊界、隱私政策與預約方式</li>
-<li>資料表單：姓名、聯絡方式、情境欄位、備註</li>
+<li>資料表單：稱呼、聯絡方式、偏好時段、服務類型、簡短需求</li>
 <li>規則說明：價格、限制、取消或退款規則</li>
 <li>聯絡與後續：電話、LINE、Email、地圖或確認訊息</li>
 </ol>
@@ -19,7 +19,7 @@
 <li>TherapistProfile：諮商師姓名、證照、取向、服務對象、不可服務範圍</li>
 <li>ServiceType：個別諮商、伴侶諮商、線上諮商、初談</li>
 <li>AvailabilitySlot：日期、時段、服務方式、是否可預約</li>
-<li>IntakeRequest：稱呼、聯絡方式、偏好時段、簡短需求</li>
+<li>IntakeRequest：稱呼、聯絡方式、偏好時段、服務類型、簡短需求</li>
 <li>PrivacyConsent：保密說明、例外情況、資料保存期限、同意時間</li>
 <li>CrisisResource：緊急電話、急診、生命線、張老師等資源</li>
 <li>CancellationRule：取消期限、改期次數、費用規則</li>
@@ -30,8 +30,15 @@
 <li>請使用 RWD，手機、平板、桌機都要可讀。</li>
 <li>請避免假評價、假資歷、假價格或過度承諾。</li>
 <li>表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。</li>
-<li>預約表單只收必要欄位（稱呼、聯絡方式、偏好時段、簡短需求），不要病史或詳細個人故事。</li>
+<li>預約表單只收必要欄位（稱呼、聯絡方式、偏好時段、服務類型、簡短需求），不要病史或詳細個人故事。</li>
 </ol>
+<h2>同意順序、填入數與危機框</h2>
+<ul>
+<li>預約依序為 01 瀏覽匿名資訊 → 02 選擇服務 → 03 閱讀並勾選同意 → 04 送出最小資料 → 05 等待回覆。選好服務後先讀說明，勾選同意才顯示偏好時段、稱呼、聯絡方式及簡短需求。</li>
+<li>同意框保留 required。選好服務、讀完說明後，刻意讓同意框留空，直接按「送出預約請求」，應由瀏覽器阻擋並把焦點帶回同意框；勾選後再填資料與送出。</li>
+<li>填入數計算稱呼、聯絡方式、偏好時段、服務類型、簡短需求五項；每個非空白項目各加一，同意勾選不計入。只選服務時是 1 項，選時段、填稱呼與聯絡方式後是 4 項，簡短需求空白不計。填入還不等於送出。</li>
+<li>表單之前用 &lt;aside class=&quot;crisis&quot;&gt; 獨立放危機框，第一行為 &lt;strong&gt;如果現在就很危險&lt;/strong&gt;。保留 119、1925 安心專線、1995 生命線、1980 張老師及其電話連結；1925 數字在危機框與頁尾共兩處，立即協助清單只顯示安心專線名稱。</li>
+</ul>
 <h2>本練習包的素材</h2>
 <p>首頁照片用於呈現安靜的心理諮商空間。練習重點是服務說明、可用時段、同意條件與預約申請；照片不代表真實諮商師、個案或療效。來源說明見 <code>ATTRIBUTION.md</code>。</p>
 <h2>資料一致性規則</h2>
@@ -46,7 +53,7 @@
 <p>本站情境照片以 AI 生成，不代表真實店家、人員或服務成果。</p>
 </section>
 <section id="prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0" hidden><p><a class="source" href="PROMPT-CARD.md" download>下載 對話提示卡原文</a></p><h1>EP15 對話提示卡</h1>
-<p>以下為第 15 講第 5.1 節既有提示詞。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
+<p>以下以第 15 講第 5.1 節提示詞為底，依老師最終教材更新。請先核對需求與資料，再用自己的話與 AI 確認；示意資料不要當成真實商家資料。</p>
 <h2>教材提示詞</h2>
 <pre><code class="language-text">你是網頁設計老師與前端工程師。
 請幫我做成一個可以直接打開的「諮商預約網站」單頁原型。
@@ -61,7 +68,7 @@
 1. Hero 首頁：名稱、定位、主張、主要行動按鈕
 2. 信任證據：真實照片、資歷、評論、規則或案例
 3. 核心流程：讓來談者理解諮商師、服務邊界、隱私政策與預約方式
-4. 資料表單：姓名、聯絡方式、情境欄位、備註
+4. 資料表單：稱呼、聯絡方式、偏好時段、服務類型、簡短需求
 5. 規則說明：價格、限制、取消或退款規則
 6. 聯絡與後續：電話、LINE、Email、地圖或確認訊息
 
@@ -70,7 +77,7 @@
 1. TherapistProfile：諮商師姓名、證照、取向、服務對象、不可服務範圍
 2. ServiceType：個別諮商、伴侶諮商、線上諮商、初談
 3. AvailabilitySlot：日期、時段、服務方式、是否可預約
-4. IntakeRequest：稱呼、聯絡方式、偏好時段、簡短需求
+4. IntakeRequest：稱呼、聯絡方式、偏好時段、服務類型、簡短需求
 5. PrivacyConsent：保密說明、例外情況、資料保存期限、同意時間
 6. CrisisResource：緊急電話、急診、生命線、張老師等資源
 7. CancellationRule：取消期限、改期次數、費用規則
@@ -80,7 +87,14 @@
 2. 請使用 RWD，手機、平板、桌機都要可讀。
 3. 請避免假評價、假資歷、假價格或過度承諾。
 4. 表單與按鈕要有清楚的互動狀態，可以用靜態示意，不需要真的送出到伺服器。
-5. 預約表單只收必要欄位（稱呼、聯絡方式、偏好時段、簡短需求），不要病史或詳細個人故事。
+5. 預約表單只收必要欄位（稱呼、聯絡方式、偏好時段、服務類型、簡短需求），不要病史或詳細個人故事。
+
+
+【同意順序、填入數與危機框】
+1. 預約依序為 01 瀏覽匿名資訊 → 02 選擇服務 → 03 閱讀並勾選同意 → 04 送出最小資料 → 05 等待回覆。選好服務後先讀說明，勾選同意才顯示偏好時段、稱呼、聯絡方式及簡短需求。
+2. 同意框保留 required。選好服務、讀完說明後，刻意讓同意框留空，直接按「送出預約請求」，應由瀏覽器阻擋並把焦點帶回同意框；勾選後再填資料與送出。
+3. 填入數計算稱呼、聯絡方式、偏好時段、服務類型、簡短需求五項；每個非空白項目各加一，同意勾選不計入。只選服務時是 1 項，選時段、填稱呼與聯絡方式後是 4 項，簡短需求空白不計。填入還不等於送出。
+4. 表單之前用 &lt;aside class=&quot;crisis&quot;&gt; 獨立放危機框，第一行為 &lt;strong&gt;如果現在就很危險&lt;/strong&gt;。保留 119、1925 安心專線、1995 生命線、1980 張老師及其電話連結；1925 數字在危機框與頁尾共兩處，立即協助清單只顯示安心專線名稱。
 </code></pre>
 <h2>實作時補上的一致性條件</h2>
 <ul>
@@ -110,6 +124,13 @@
 <h2>主動測試</h2>
 <p>這講是<strong>預約站</strong>——有時段、有狀態、有取消規則，看不見的錯更多。最招牌的一個觸發：<strong>用 <code>Ctrl/⌘+F</code> 在頁面上逐字核對危機電話（119、1925、1995、1980），看 AI 有沒有抄錯一位數、湊出不存在的專線。</strong></p>
 <p>記住：<strong>AI 是被告不是法官，畫面才是證據。</strong> 電話真假、表單收了什麼，都是畫面說了算，不能信 AI 嘴上說「都對」。</p>
+<h2>同意與計數主動回驗</h2>
+<ul><li>[ ] 匿名瀏覽時計數是 0；選服務後是 1，稱呼、聯絡方式與偏好時段仍未開放。</li>
+<li>[ ] 讀完說明、同意框留空，直接按送出，瀏覽器應阻擋並聚焦同意框，狀態維持第 3 步。</li>
+<li>[ ] 勾同意後才出現第 4 步欄位；填好時段、稱呼、聯絡方式後計數是 4，選填需求有字才變成 5。送出後顯示等待回覆，正式預約仍需人工確認。</li>
+<li>[ ] 表單前看得到「如果現在就很危險」標題，原始碼為 aside.crisis 與第一行 strong；搜尋 1925 兩處、1995 三處，文字及 tel 連結逐字一致。</li>
+<li>[ ] 取消同意會收起並清空第 4 步欄位，計數回到服務 1 項；換服務也要重新閱讀並勾選同意。</li>
+</ul>
 <h2>資料一致性主動回驗</h2>
 <ul>
 <li>[ ] 線上諮商只列線上時段；換服務清空選擇。</li>

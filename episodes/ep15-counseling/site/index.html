@@ -126,6 +126,8 @@ h3{font-size:22px;margin-bottom:8px}
 
 
 .crisis-note{font-size:18px;background:#fff8e2;border:2px solid var(--sun);border-radius:14px;padding:16px 20px;margin-bottom:20px}
+.crisis-note strong{display:block;width:fit-content;font-size:22px;line-height:1.5;margin-bottom:8px}
+.crisis-note p{margin:0}
 .crisis-note a,.foot-crisis a{font-weight:800}
 .state-line{font-size:16px;font-weight:700;color:var(--teald);margin-bottom:14px}
 .form-note{font-size:16px;line-height:1.75;color:var(--ink);margin-bottom:18px}
@@ -285,7 +287,7 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
 <div class="zero" aria-hidden="true"><span class="zn">0</span><span class="zu">項</span></div>
 <h1 id="h1">瀏覽這一頁，<br>不需要交出任何資料。</h1>
 </div>
-<p class="sub">小徑心理諮商所提供成年人的個別諮商、伴侶諮商與線上諮商。適合想找人說說，但還沒決定要不要開始的您。表單只問稱呼、聯絡方式、偏好時段，和一格可以不寫的簡短需求。</p>
+<p class="sub">小徑心理諮商所提供成年人的個別諮商、伴侶諮商與線上諮商。適合想找人說說，但還沒決定要不要開始的您。預約只收稱呼、聯絡方式、偏好時段、服務類型，和一格可以不寫的簡短需求。</p>
 <p class="cta"><a class="btn btn-primary" href="#booking">預約初談</a><a class="btn btn-quiet" href="#flow">了解服務方式</a><a class="btn btn-text" href="#crisis">我需要立即協助</a></p>
 <p class="soft">您可以先只看看。預約前，不需要留下任何資料。</p>
 <div class="photo" aria-hidden="true">
@@ -318,9 +320,9 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
 <p class="lead">五個步驟，您隨時可以停在任何一步。</p>
 <ol class="steps" id="steps">
 <li data-step="1"><b>瀏覽匿名資訊</b><span>不需要留任何資料，就像現在這樣。</span></li>
-<li data-step="2"><b>選擇服務</b><span>選一種服務、一個偏好時段。這一步仍然不收個人資料。</span></li>
-<li data-step="3"><b>閱讀隱私說明</b><span>保密範圍、例外、資料保存期限，讀完再決定要不要往下。</span></li>
-<li data-step="4"><b>送出最小資料</b><span>稱呼、聯絡方式，以及可以不寫的簡短需求。</span></li>
+<li data-step="2"><b>選擇服務</b><span>選一種服務，再閱讀保密與同意說明。</span></li>
+<li data-step="3"><b>閱讀並勾選同意</b><span>保密範圍、例外、資料保存期限，讀完再決定要不要往下。</span></li>
+<li data-step="4"><b>送出最小資料</b><span>稱呼、聯絡方式、偏好時段、已選的服務類型，以及可以不寫的簡短需求。</span></li>
 <li data-step="5"><b>等待回覆</b><span>本所在 2 個工作天內回覆；經您確認後，預約才算成立。</span></li>
 </ol>
 <div class="fit">
@@ -404,13 +406,16 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
 <section class="sec" id="booking" aria-labelledby="b-h2">
 <h2 id="b-h2">預約初談</h2>
 <p class="lead">一次只問一件事，您隨時可以離開。</p>
-<p class="crisis-note">若您或身邊的人目前有立即傷害自己或他人的危險，請不要等待線上表單回覆。請立即撥打 <a href="tel:119">119</a>、前往最近急診，或聯繫 <a href="tel:1925">1925</a> 安心專線、<a href="tel:1995">1995</a> 生命線、<a href="tel:1980">1980</a> 張老師。</p>
+<aside class="crisis crisis-note">
+<strong>如果現在就很危險</strong>
+<p>若您或身邊的人目前有立即傷害自己或他人的危險，請不要等待線上表單回覆。請立即撥打 <a href="tel:119">119</a>、前往最近急診，或聯繫 <a href="tel:1925">1925</a> 安心專線、<a href="tel:1995">1995</a> 生命線、<a href="tel:1980">1980</a> 張老師。</p>
+</aside>
 <p class="state-line" id="state-line">目前在第 1 步／共 5 步：瀏覽匿名資訊</p>
 <p class="form-note">預約以人工回覆確認為準；也可以直接撥電話 <a class="nb" href="tel:02-0000-0000">02-0000-0000</a> 或用 LINE 聯絡。</p>
 <div class="form-card">
 <form id="booking-form" autocomplete="off">
 <fieldset class="pick" id="pick-svc">
-<legend>第 1 步：選擇服務</legend>
+<legend>第 2 步：選擇服務</legend>
 <p class="hint">到這一步，本頁沒有向您要任何資料。</p>
 <div id="svc-list" class="svc-list">
 <label class="svc"><input type="radio" name="service" value="初談"><span class="svc-b"><span class="svc-name">初談</span><span class="svc-meta">30 分鐘・現場或線上</span><span class="svc-desc">先聊聊現在的狀況與想要的方向，一起看合不合適。</span></span></label>
@@ -419,22 +424,30 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
 <label class="svc"><input type="radio" name="service" value="線上諮商"><span class="svc-b"><span class="svc-name">線上諮商</span><span class="svc-meta">50 分鐘・視訊</span><span class="svc-desc">在您自己的空間進行，需要安靜、不被打擾的環境。</span></span></label>
 </div>
 </fieldset>
-<fieldset class="pick" id="pick-slot" hidden>
-<legend>第 2 步：選擇偏好時段</legend>
-<p class="hint">已經有人預約的時段不能選。找不到合適的，可以選「都可以」，由本所協調。</p>
-<div id="slot-list"></div>
-</fieldset>
-<p id="pick-summary" class="summary" aria-live="polite">還沒選服務</p>
-<fieldset id="intake" hidden disabled>
-<legend class="vh">送出最小資料</legend>
+<fieldset id="consent-step" hidden disabled>
+<legend>第 3 步：閱讀並勾選同意</legend>
 <div id="privacy-box" class="privacy-box">
-<h3>送出前，請先讀這一段</h3>
+<h3>填資料前，請先讀這一段</h3>
 <ul>
 <li>會談內容本所依法負保密責任，不會主動告訴任何第三方，包含您的家人。</li>
 <li>例外：自傷、傷人、兒少、家暴等法定通報情形，本所只提供最少必要的資訊，並會事先向您說明。</li>
 <li>您告訴本所的預約資料（用電話、LINE 或這一頁都一樣）只用來安排預約；成立之後的諮商紀錄，依法至少保存十年。</li>
 </ul>
 </div>
+<label class="consent">
+<input type="checkbox" name="consent" required>
+我已閱讀並同意上述保密說明與例外情況
+</label>
+</fieldset>
+<fieldset class="pick" id="pick-slot" hidden disabled>
+<legend>第 4 步：送出最小資料</legend>
+<p class="hint">先選偏好時段。已經有人預約的時段不能選。找不到合適的，可以選「都可以」，由本所協調。</p>
+<div id="slot-list"></div>
+</fieldset>
+<p id="pick-summary" class="summary" aria-live="polite">還沒選服務</p>
+<fieldset id="intake" hidden disabled>
+<legend class="vh">送出最小資料</legend>
+
 <div class="field">
 <label for="f-name">稱呼</label>
 <input id="f-name" name="name" type="text" required maxlength="20" autocomplete="off">
@@ -450,12 +463,9 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
 <textarea id="f-need" name="need" rows="3" maxlength="100" autocomplete="off"></textarea>
 <small>可以不寫。不需要寫病史或詳細經過，留到見面再談。</small>
 </div>
-<label class="consent">
-<input type="checkbox" name="consent" required>
-我已閱讀並同意上述保密說明與例外情況
-</label>
-<button type="submit" id="submit" class="btn btn-primary">送出預約請求</button>
+
 </fieldset>
+<button type="submit" id="submit" hidden class="btn btn-primary">送出預約請求</button>
 </form>
 <section id="confirm" class="confirm" hidden tabindex="-1" aria-live="polite">
 <h3>您的預約請求已整理好</h3>
@@ -480,7 +490,7 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
 <div data-obj="TherapistProfile"><b>TherapistProfile</b><span>諮商師姓名、證照、取向、服務對象、不可服務範圍。用途：建立專業邊界。</span></div>
 <div data-obj="ServiceType"><b>ServiceType</b><span>個別諮商、伴侶諮商、線上諮商、初談。用途：說明服務類型。</span></div>
 <div data-obj="AvailabilitySlot"><b>AvailabilitySlot</b><span>日期、時段、服務方式、是否可預約。用途：顯示可約時段。</span></div>
-<div data-obj="IntakeRequest"><b>IntakeRequest</b><span>稱呼、聯絡方式、偏好時段、簡短需求。用途：初次預約。<em id="m-intake">目前沒有資料</em></span></div>
+<div data-obj="IntakeRequest"><b>IntakeRequest</b><span>稱呼、聯絡方式、偏好時段、服務類型、簡短需求。用途：初次預約。<em id="m-intake">目前沒有資料</em></span></div>
 <div data-obj="PrivacyConsent"><b>PrivacyConsent</b><span>保密說明、例外情況、資料保存期限、同意時間。用途：隱私告知。<em id="m-consent">尚未同意</em></span></div>
 <div data-obj="CrisisResource"><b>CrisisResource</b><span>緊急電話、急診、生命線、張老師等資源。用途：危機轉介。</span></div>
 <div data-obj="CancellationRule"><b>CancellationRule</b><span>取消期限、改期次數、費用規則。用途：預約規則。</span></div>
@@ -508,13 +518,14 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
 <li data-field="name"><span>稱呼</span><em data-status>未填</em></li>
 <li data-field="contact"><span>聯絡方式</span><em data-status>未填</em></li>
 <li data-field="slot"><span>偏好時段</span><em data-status>未填</em></li>
+<li data-field="service"><span>服務類型</span><em data-status>未填</em></li>
 <li data-field="need"><span>簡短需求</span><em data-status>未填（可不寫）</em></li>
 </ul>
 <p class="meter-note" data-after="已整理成預約請求；經您回覆確認前，不算預約成立。">按下送出之前，這些內容都只在您的畫面上，沒有交給任何人。</p>
 <ol class="meter-steps" aria-label="預約進行到哪一步">
 <li data-step="1">瀏覽匿名資訊</li>
 <li data-step="2">選擇服務</li>
-<li data-step="3">閱讀隱私說明</li>
+<li data-step="3">閱讀並勾選同意</li>
 <li data-step="4">送出最小資料</li>
 <li data-step="5">等待回覆</li>
 </ol>
@@ -530,8 +541,8 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
 <script>
 (function () {
   "use strict";
-  /* 預約狀態機：瀏覽匿名資訊 → 選擇服務 → 閱讀隱私說明 → 送出最小資料 → 等待回覆。
-     第 1 步不收任何欄位；個人欄位（稱呼、聯絡方式、簡短需求）要到服務與時段都選了才出現。 */
+  /* 預約狀態機：瀏覽匿名資訊 → 選擇服務 → 閱讀並勾選同意 → 送出最小資料 → 等待回覆。
+     第 1 步不收任何欄位；選好服務後先閱讀並勾選同意，才出現偏好時段與個人欄位。 */
   var SERVICES = {
     "初談": { len: "30 分鐘", modes: ["現場", "線上"] },
     "個別諮商": { len: "50 分鐘", modes: ["現場"] },
@@ -549,12 +560,13 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
     { id: "1009-1400", date: "10/09（五）", time: "14:00", mode: "線上", ok: true },
     { id: "1013-1930", date: "10/13（二）", time: "19:30", mode: "現場", ok: true }
   ];
-  var STEPS = ["瀏覽匿名資訊", "選擇服務", "閱讀隱私說明", "送出最小資料", "等待回覆"];
+  var STEPS = ["瀏覽匿名資訊", "選擇服務", "閱讀並勾選同意", "送出最小資料", "等待回覆"];
   var $ = function (s) { return document.querySelector(s); };
   var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
   var form = $("#booking-form"), slotBox = $("#slot-list"), pickSlot = $("#pick-slot"), intake = $("#intake");
   var confirmBox = $("#confirm"), summary = $("#pick-summary"), stateLine = $("#state-line");
   var st = { svc: null, slot: null, submitted: false };
+  var consentStep = $("#consent-step"), consent = $("input[name=consent]"), submit = $("#submit");
   var slotError=el("p", "slot-error", "");
   slotError.id="slot-error"; slotError.setAttribute("role", "alert"); slotError.style.color="#9b2c2c";
   pickSlot.appendChild(slotError);
@@ -588,7 +600,7 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
       d.list.forEach(function (s) {
         var lab = el("label", "slot" + (s.ok ? "" : " is-taken"));
         var inp = document.createElement("input");
-        inp.type = "radio"; inp.name = "slot"; inp.value = s.id; inp.disabled = !s.ok;
+        inp.type = "radio"; inp.name = "slot"; inp.value = s.id; inp.disabled = !s.ok; inp.required = true;
         inp.addEventListener("change", function () { st.slot = inp.value; sync(); });
         lab.appendChild(inp);
         lab.appendChild(el("span", "slot-t", s.time));
@@ -601,7 +613,7 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
     });
     var any = el("label", "slot slot-any");
     var ai = document.createElement("input");
-    ai.type = "radio"; ai.name = "slot"; ai.value = "any";
+    ai.type = "radio"; ai.name = "slot"; ai.value = "any"; ai.required = true;
     ai.addEventListener("change", function () { st.slot = "any"; sync(); });
     any.appendChild(ai);
     any.appendChild(el("span", "slot-t", "都可以，由本所協調"));
@@ -612,11 +624,12 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
     if ($("#f-name").value.trim()) { n++; }
     if ($("#f-contact").value.trim()) { n++; }
     if (st.slot) { n++; }
+    if (st.svc) { n++; }
     if ($("#f-need").value.trim()) { n++; }
     return n;
   }
   function paintCount() {
-    var flags = { name: !!$("#f-name").value.trim(), contact: !!$("#f-contact").value.trim(), slot: !!st.slot, need: !!$("#f-need").value.trim() };
+    var flags = { name: !!$("#f-name").value.trim(), contact: !!$("#f-contact").value.trim(), slot: !!st.slot, service: !!st.svc, need: !!$("#f-need").value.trim() };
     $$("[data-count]").forEach(function (o) { o.textContent = String(filled()); });
     $$("[data-field]").forEach(function (li) {
       var on = !!flags[li.getAttribute("data-field")];
@@ -628,13 +641,17 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
   function step() {
     if (st.submitted) { return 5; }
     if (!st.svc) { return 1; }
-    if (!st.slot) { return 2; }
-    return $("input[name=consent]").checked ? 4 : 3;
+    return consent.checked ? 4 : 3;
   }
   function sync() {
     var n = step();
-    pickSlot.hidden = !st.svc;
-    var show = !!(st.svc && st.slot && !st.submitted);
+    var choosing = !!(st.svc && !st.submitted);
+    consentStep.hidden = !choosing;
+    consentStep.disabled = !choosing;
+    var show = !!(choosing && consent.checked);
+    pickSlot.hidden = !show;
+    pickSlot.disabled = !show;
+    submit.hidden = !choosing;
     intake.hidden = !show;
     intake.disabled = !show;
     form.hidden = st.submitted;
@@ -654,10 +671,22 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
     paintCount();
   }
   $$("#svc-list input[name=service]").forEach(function (r) {
-    r.addEventListener("change", function () { st.svc = r.value; st.slot = null; slotError.textContent=""; renderSlots(); sync(); });
+    r.addEventListener("change", function () {
+      st.svc = r.value; consent.checked = false; clearDetails(); renderSlots(); sync();
+    });
   });
   ["#f-name", "#f-contact", "#f-need"].forEach(function (s) { $(s).addEventListener("input", paintCount); });
-  $("input[name=consent]").addEventListener("change", sync);
+  function clearDetails() {
+    // Retracting consent also clears hidden details so the counter reflects this step.
+    st.slot = null;
+    slotError.textContent = "";
+    $$("#slot-list input").forEach(function (r) { r.checked = false; });
+    ["#f-name", "#f-contact", "#f-need"].forEach(function (s) { $(s).value = ""; });
+  }
+  consent.addEventListener("change", function () {
+    if (!consent.checked) { clearDetails(); }
+    sync();
+  });
 
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   form.addEventListener("submit", function (e) {
@@ -678,7 +707,7 @@ footer .foot-crisis a{display:inline-block;min-height:44px;line-height:44px;padd
     $("#c-slot").textContent = slotText(st.slot);
     $("#c-need").textContent = need || "（沒有填）";
     $("#c-consent-time").textContent = when;
-    $("#m-intake").textContent = "最近一筆：" + name + "／" + contact + "／" + slotText(st.slot) + "／" + (need || "沒有填");
+    $("#m-intake").textContent = "最近一筆：" + name + "／" + contact + "／" + slotText(st.slot) + "／" + st.svc + "／" + (need || "沒有填");
     $("#m-consent").textContent = "最近一筆：已同意，" + when + "，諮商紀錄依法至少保存十年";
     st.submitted = true;
     sync();
