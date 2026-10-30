@@ -20,11 +20,17 @@ def offline_lesson(data):
 def build(episode):
     slug = episode['slug']
     title = html.escape(f"EP{episode['number']} {episode['title']}")
+    has_home = slug == 'ep18-review' and (ROOT / 'episodes' / slug / 'materials/home/index.html').is_file()
+    website = 'materials/home/index.html' if has_home else 'site/index.html'
+    website_label = '開啟我的接案首頁參考版' if has_home else '開啟網站'
+    textbook_link = (f'<p><a href="episodes/{slug}/site/index.html">對照課本原提示詞的總複習工作台</a></p>'
+                     if has_home else '')
     entry = f'''<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"><title>{title}</title>
 <link rel="icon" href="data:,"></head>
 <body style="max-width:800px;margin:40px auto;padding:20px;font:20px/1.8 sans-serif">
-<h1>{title}</h1><p><a href="episodes/{slug}/site/index.html">開啟網站</a></p>
+<h1>{title}</h1><p><a href="episodes/{slug}/{website}">{website_label}</a></p>
+{textbook_link}
 <p><a href="episodes/{slug}/index.html">閱讀規格、對話提示卡與驗收清單</a></p>
 <p>本套件可直接開檔使用。互動為課程示意；請使用虛構練習資料。</p></body></html>'''
     files = {p.relative_to(ROOT).as_posix(): p.read_bytes()
