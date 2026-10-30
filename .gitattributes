@@ -4,3 +4,5 @@
 *.webp binary
 *.zip binary
 
+# Video source HTML must retain its original bytes, including whitespace.
+episodes/*/materials/*.html -text whitespace=-blank-at-eol,-blank-at-eof

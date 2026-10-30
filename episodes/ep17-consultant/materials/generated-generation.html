@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>示範顧問｜顧問預約與付款流程原型</title>
+<style>
+:root{
+  --bg:#f4f2ed;
+  --paper:#fffdf9;
+  --ink:#1f2825;
+  --muted:#59645f;
+  --line:#d9ddd8;
+  --brand:#1f5b4d;
+  --brand2:#e2eee8;
+  --warm:#f2e7d7;
+  --danger:#a33b32;
+  --danger-bg:#f9e8e5;
+  --ok:#226d50;
+  --ok-bg:#e2f1e9;
+  --warn:#875d20;
+  --warn-bg:#f8eed8;
+  --radius:22px;
+  --shadow:0 16px 45px rgba(31,40,37,.07);
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+  font-size:16px;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;
+  font-size:18px;
+  line-height:1.75;
+  -webkit-text-size-adjust:100%;
+}
+
+button,input,select,textarea{font:inherit}
+button,a{touch-action:manipulation}
+a{color:inherit}
+
+.container,
+.wrap{
+  width:min(1180px,calc(100% - 64px));
+  margin-inline:auto;
+}
+
+.notice{
+  background:#173e35;
+  color:#fff;
+  text-align:center;
+  padding:14px 24px;
+  font-size:16px;
+  line-height:1.55;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(255,253,249,.94);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav-inner{
+  min-height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+
+.brand{
+  font-size:21px;
+  line-height:1.3;
+  font-weight:850;
+  white-space:nowrap;
+}
+
+.nav-links{
+  display:flex;
+  gap:28px;
+  align-items:center;
+}
+
+.nav-links a{
+  text-decoration:none;
+  font-size:16px;
+  line-height:1.4;
+  font-weight:700;
+}
+
+.btn{
+  border:0;
+  border-radius:999px;
+  padding:14px 23px;
+  min-height:50px;
+  font-size:16px;
+  line-height:1.35;
+  font-weight:800;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  text-decoration:none;
+}
+
+.btn-primary{background:var(--brand);color:#fff}
+.btn-secondary{background:var(--brand2);color:var(--brand)}
+.btn-ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn-danger{background:var(--danger-bg);color:var(--danger)}
+
+.hero{
+  padding:112px 0 96px;
+  background:
+    radial-gradient(circle at 88% 10%,#dfece6 0,transparent 31%),
+    radial-gradient(circle at 3% 65%,#f0dfca 0,transparent 27%),
+    var(--paper);
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr);
+  gap:72px;
+  align-items:center;
+}
+
+.eyebrow{
+  display:inline-flex;
+  padding:8px 14px;
+  border-radius:999px;
+  background:var(--brand2);
+  color:var(--brand);
+  font-size:16px;
+  line-height:1.4;
+  font-weight:850;
+}
+
+h1{
+  max-width:780px;
+  margin:22px 0;
+  font-size:clamp(48px,6vw,78px);
+  line-height:1.08;
+  letter-spacing:-.045em;
+}
+
+.hero p{
+  max-width:720px;
+  margin-top:0;
+  font-size:21px;
+  line-height:1.75;
+  color:var(--muted);
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:32px;
+}
+
+.hero-card,
+.card,
+.panel{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+
+.hero-card{
+  padding:38px;
+}
+
+.hero-card strong{
+  display:block;
+  font-size:25px;
+  line-height:1.35;
+  margin-bottom:12px;
+}
+
+.checklist{
+  padding:0;
+  margin:22px 0 0;
+  list-style:none;
+}
+
+.checklist li{
+  padding:14px 0;
+  border-top:1px solid var(--line);
+}
+
+.checklist li:before{
+  content:"✓";
+  color:var(--brand);
+  font-weight:900;
+  margin-right:10px;
+}
+
+section{
+  padding:96px 0;
+}
+
+.section-head{
+  max-width:820px;
+  margin-bottom:44px;
+}
+
+.section-head h2{
+  font-size:42px;
+  line-height:1.2;
+  margin:0 0 16px;
+  letter-spacing:-.025em;
+}
+
+.section-head p{
+  color:var(--muted);
+  margin:0;
+  max-width:760px;
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:28px;
+}
+
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:28px;
+}
+
+.card{
+  padding:36px;
+}
+
+.card h3{
+  font-size:25px;
+  line-height:1.35;
+  margin:0 0 14px;
+}
+
+.card p{
+  color:var(--muted);
+  margin-top:12px;
+  margin-bottom:0;
+}
+
+.tag{
+  display:inline-flex;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:6px 12px;
+  font-size:16px;
+  line-height:1.4;
+  font-weight:750;
+}
+
+.price{
+  font-size:38px;
+  font-weight:900;
+  line-height:1.2;
+  margin:22px 0 7px;
+}
+
+.package-card{
+  position:relative;
+}
+
+.package-card.selected{
+  outline:3px solid var(--brand);
+  outline-offset:2px;
+}
+
+.package-card button{
+  margin-top:20px;
+  width:100%;
+}
+
+.list{
+  padding-left:24px;
+  margin-top:14px;
+  margin-bottom:0;
+}
+
+.list li{
+  margin:10px 0;
+}
+
+.exclude{
+  background:#f6f3ee;
+  padding:20px;
+  border-radius:14px;
+  margin-top:24px;
+}
+
+.alt{background:#e8ece8}
+
+.proof{
+  border-left:4px solid var(--brand);
+  padding-left:18px;
+  color:var(--ink)!important;
+  font-weight:700;
+}
+
+.form-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(330px,.8fr);
+  gap:30px;
+  align-items:start;
+}
+
+.panel{
+  padding:36px;
+}
+
+.field{
+  margin-bottom:26px;
+}
+
+label{
+  display:block;
+  font-weight:850;
+  margin-bottom:9px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  background:#fff;
+  color:var(--ink);
+  border:1px solid #bcc6c1;
+  border-radius:13px;
+  padding:15px 16px;
+  min-height:56px;
+  font-size:18px;
+  line-height:1.5;
+}
+
+textarea{
+  min-height:144px;
+  resize:vertical;
+}
+
+.help{
+  font-size:16px;
+  line-height:1.6;
+  color:var(--muted);
+  margin-top:8px;
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:24px;
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.summary-row span:first-child{
+  flex:0 0 auto;
+}
+
+.summary-row span:last-child{
+  text-align:right;
+  font-weight:750;
+  overflow-wrap:anywhere;
+}
+
+.summary-row.total{
+  font-size:23px;
+  border-bottom:0;
+  padding-top:21px;
+}
+
+.confirm-box{
+  margin:26px 0;
+  padding:20px;
+  border-radius:15px;
+  background:var(--warm);
+}
+
+.status-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:16px;
+}
+
+.status-card{
+  min-height:168px;
+  padding:24px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+}
+
+.status-card.active{
+  outline:3px solid var(--brand);
+}
+
+.status-card strong{
+  display:block;
+  font-size:19px;
+  line-height:1.4;
+  margin-bottom:10px;
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  display:inline-block;
+  background:#9aa29e;
+  margin-right:7px;
+}
+
+.active .dot{background:var(--brand)}
+
+.state-box{
+  margin-top:28px;
+  border-radius:20px;
+  padding:28px;
+  background:var(--paper);
+  border:1px solid var(--line);
+}
+
+.state-box p:last-child{
+  margin-bottom:0;
+}
+
+.state-box.success{
+  background:var(--ok-bg);
+  border-color:#9bc6b2;
+}
+
+.state-box.failed{
+  background:var(--danger-bg);
+  border-color:#dfaaa4;
+}
+
+.state-box.cancelled{
+  background:var(--warn-bg);
+  border-color:#dec38e;
+}
+
+.delivery{
+  display:none;
+  margin-top:28px;
+}
+
+.delivery.show{display:block}
+
+.table-wrap{
+  overflow:auto;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:800px;
+}
+
+th,
+td{
+  text-align:left;
+  padding:18px;
+  border-bottom:1px solid var(--line);
+  font-size:16px;
+  line-height:1.65;
+  vertical-align:top;
+}
+
+th{
+  background:#edf0ed;
+  font-weight:850;
+}
+
+tbody tr:last-child td{
+  border-bottom:0;
+}
+
+.schema{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:16px;
+}
+
+.code-id{
+  color:var(--brand);
+  font-weight:850;
+}
+
+.flow{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+
+.flow-step{
+  background:#fff;
+  border:1px solid var(--line);
+  padding:22px;
+  border-radius:17px;
+}
+
+.flow-step b{
+  display:block;
+  margin-bottom:8px;
+}
+
+.callout{
+  padding:24px 26px;
+  border-radius:18px;
+  background:#173e35;
+  color:#fff;
+}
+
+.callout strong{
+  font-size:22px;
+  line-height:1.4;
+}
+
+.footer{
+  padding:52px 0 74px;
+  border-top:1px solid var(--line);
+  background:var(--paper);
+}
+
+.footer-grid{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:32px;
+}
+
+.small{
+  font-size:16px;
+  line-height:1.6;
+  color:var(--muted);
+}
+
+dialog{
+  width:min(650px,calc(100% - 32px));
+  border:0;
+  border-radius:25px;
+  padding:0;
+  box-shadow:0 25px 90px rgba(0,0,0,.25);
+}
+
+dialog::backdrop{
+  background:rgba(17,24,22,.62);
+}
+
+.modal-head{
+  padding:26px 30px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+}
+
+.modal-body{
+  padding:30px;
+}
+
+.modal-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:28px;
+}
+
+.x{
+  border:0;
+  background:#eee;
+  border-radius:50%;
+  width:42px;
+  height:42px;
+  cursor:pointer;
+  font-size:20px;
+  flex:0 0 auto;
+}
+
+.mock-payment{
+  border:1px dashed #9aa8a1;
+  padding:24px;
+  border-radius:17px;
+  background:#f6f8f6;
+}
+
+.toast{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:80;
+  max-width:min(420px,calc(100vw - 44px));
+  background:#17211e;
+  color:white;
+  padding:15px 20px;
+  border-radius:13px;
+  display:none;
+  font-size:16px;
+  line-height:1.5;
+}
+
+.toast.show{display:block}
+
+.site-header{
+  position:relative!important;
+}
+
+.starter{
+  padding:72px 0;
+  background:#e7ebe3;
+}
+
+.starter-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+  gap:36px;
+  align-items:stretch;
+}
+
+.starter-form,
+.starter-preview{
+  padding:38px;
+  border-radius:24px;
+  background:#fffdf8;
+  border:1px solid #c8d0c8;
+}
+
+.starter-form{
+  display:grid;
+  gap:22px;
+}
+
+.starter-form label{
+  display:grid;
+  gap:9px;
+  margin:0;
+}
+
+.starter-preview{
+  background:#17483c;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.starter-preview h3{
+  font-size:40px;
+  line-height:1.25;
+  margin:14px 0;
+  overflow-wrap:anywhere;
+}
+
+.starter-preview p{
+  font-size:20px;
+  line-height:1.65;
+  color:#f1eee3;
+  overflow-wrap:anywhere;
+}
+
+.starter-preview small{
+  font-size:16px;
+  color:#d7ddd6;
+}
+
+.starter-preview hr{
+  width:100%;
+  border:0;
+  border-top:1px solid #668276;
+  margin:20px 0;
+}
+
+.starter input{
+  width:100%;
+  min-width:0;
+  font-size:18px;
+  padding:14px;
+  border:1px solid #9dac9e;
+  border-radius:10px;
+}
+
+.starter h2{
+  font-size:40px;
+  line-height:1.2;
+  margin:0 0 32px;
+}
+
+.starter label{
+  font-size:18px;
+}
+
+@media(max-width:1050px){
+  .status-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .status-card:last-child{
+    grid-column:span 2;
+  }
+
+  .flow{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:900px){
+  .container,
+  .wrap{
+    width:min(100% - 40px,1180px);
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero{
+    padding:76px 0;
+  }
+
+  .hero-grid,
+  .form-layout,
+  .grid-3,
+  .starter-layout{
+    grid-template-columns:1fr;
+  }
+
+  .hero-grid{
+    gap:36px;
+  }
+
+  .grid-2{
+    grid-template-columns:1fr;
+  }
+
+  .status-grid{
+    grid-template-columns:1fr;
+  }
+
+  .status-card:last-child{
+    grid-column:auto;
+  }
+
+  .flow{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:640px){
+  html{
+    font-size:18px;
+  }
+
+  body{
+    font-size:18px;
+    line-height:1.72;
+  }
+
+  .container,
+  .wrap{
+    width:min(100% - 28px,1180px);
+  }
+
+  .notice,
+  .small,
+  .help,
+  .tag,
+  .btn,
+  .schema{
+    font-size:16px;
+  }
+
+  nav{
+    position:relative;
+  }
+
+  .nav-inner{
+    min-height:68px;
+    gap:12px;
+  }
+
+  .brand{
+    font-size:18px;
+    white-space:normal;
+  }
+
+  .nav-inner>.btn{
+    padding-inline:17px;
+    flex:0 0 auto;
+  }
+
+  .hero{
+    padding:64px 0 58px;
+  }
+
+  .hero-grid{
+    gap:28px;
+  }
+
+  h1{
+    font-size:44px;
+    line-height:1.1;
+    margin:18px 0;
+  }
+
+  .hero p{
+    font-size:19px;
+    line-height:1.7;
+  }
+
+  .hero-card,
+  .card,
+  .panel{
+    padding:26px 22px;
+  }
+
+  section{
+    padding:68px 0;
+  }
+
+  .section-head{
+    margin-bottom:32px;
+  }
+
+  .section-head h2,
+  .starter h2{
+    font-size:32px;
+    line-height:1.2;
+  }
+
+  .card h3{
+    font-size:24px;
+  }
+
+  .price{
+    font-size:34px;
+  }
+
+  input,
+  select,
+  textarea{
+    font-size:18px;
+  }
+
+  .summary-row{
+    flex-direction:column;
+    gap:3px;
+  }
+
+  .summary-row span:last-child{
+    text-align:left;
+  }
+
+  .status-grid,
+  .flow{
+    grid-template-columns:1fr;
+  }
+
+  .status-card{
+    min-height:0;
+  }
+
+  .footer-grid{
+    display:block;
+  }
+
+  .footer-grid>div+div{
+    margin-top:24px;
+  }
+
+  .starter{
+    padding:64px 0;
+  }
+
+  .starter-form,
+  .starter-preview{
+    padding:24px 22px;
+  }
+
+  .starter-preview h3{
+    font-size:32px;
+  }
+
+  .starter-preview p{
+    font-size:18px;
+  }
+
+  .modal-head{
+    padding:22px;
+  }
+
+  .modal-body{
+    padding:22px;
+  }
+
+  .modal-actions{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .modal-actions .btn{
+    width:100%;
+  }
+
+  .toast{
+    right:14px;
+    bottom:14px;
+    max-width:calc(100vw - 28px);
+  }
+
+  .table-wrap,
+  .table-scroll{
+    overflow:visible!important;
+    border:0;
+    background:transparent;
+  }
+
+  table{
+    min-width:0!important;
+    width:100%!important;
+    display:block;
+  }
+
+  thead{
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip:rect(0 0 0 0);
+    clip-path:inset(50%);
+    white-space:nowrap;
+  }
+
+  tbody{
+    display:grid;
+    gap:18px;
+  }
+
+  tr{
+    display:block;
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:18px;
+    background:var(--paper);
+    box-shadow:0 8px 24px rgba(31,40,37,.04);
+  }
+
+  td{
+    display:block!important;
+    min-width:0!important;
+    width:auto!important;
+    border:0!important;
+    padding:10px 0!important;
+    font-size:18px!important;
+    line-height:1.65;
+    overflow-wrap:anywhere;
+  }
+
+  td+td{
+    border-top:1px solid var(--line)!important;
+    margin-top:4px;
+    padding-top:14px!important;
+  }
+
+  td[data-label]:before{
+    content:attr(data-label);
+    display:block;
+    margin-bottom:4px;
+    font-size:16px;
+    line-height:1.4;
+    font-weight:800;
+    color:var(--muted);
+  }
+
+  .site-header,
+  header{
+    position:relative!important;
+  }
+}
+</style>
+<style id="k23b-style">
+.textbook-block{max-width:1120px;margin:48px auto;padding:32px;background:#fffdf9;border:1px solid #d9ddd8;border-radius:20px;color:#1f2825;font-size:20px;line-height:1.7}
+.textbook-block h2{font-size:32px;line-height:1.45;margin:0 0 20px}.textbook-block p{margin:16px 0}.textbook-block summary{cursor:pointer;font-size:22px;padding:16px 20px}.textbook-block details{border:1px solid #d9ddd8;border-radius:12px;margin:16px 0;padding:8px}.textbook-block details p{padding:0 20px 16px}.textbook-block button,.textbook-block select{font:inherit;padding:14px 22px;min-height:52px;margin:8px;border:1px solid #1f5b4d;border-radius:10px;background:white;color:#1f2825}.textbook-block .selected{background:#1f5b4d;color:white}.textbook-block .booked{background:#eee;color:#666}.textbook-block code{font-size:18px;word-break:break-word}
+@media(max-width:640px){.textbook-block{margin:24px 16px;padding:24px}.textbook-block button,.textbook-block select{max-width:100%;margin:8px 0}}
+</style><style>h1,h2,h3{text-wrap:balance} @media(max-width:640px){.container,.wrap{width:calc(100% - 48px)!important}} .unit-safe{white-space:nowrap}</style></head>
+<body>
+
+<div class="notice">
+  教學虛構示例｜本頁是金流流程原型，尚未真正串接藍新、綠界或其他金流服務
+</div>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="brand">示範顧問 · 預約原型</div>
+    <div class="nav-links">
+      <a href="#plans">服務方案</a>
+      <a href="#evidence">案例與文章</a>
+      <a href="#booking">預約</a>
+      <a href="#flow">付款流程</a>
+      <a href="#environment">環境差異</a>
+    </div>
+    <a class="btn btn-primary" href="#booking">預約諮詢</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">教學虛構示例 · 顧問預約與付款網站</span>
+      <h1>先把問題說清楚，再決定是否值得一起解。</h1>
+      <p>
+        示範顧問協助團隊釐清數位服務流程、網站需求與執行優先順序。
+        本原型重點不是承諾成果，而是讓客戶在付款前清楚知道方案、價格、預約時間、交付內容與退款邊界。
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#booking">預約諮詢</a>
+        <a class="btn btn-secondary" href="#plans">先看方案</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <strong>比較適合這些情況</strong>
+      <ul class="checklist">
+        <li>需求很多，但不知道先處理哪一件</li>
+        <li>準備製作網站、系統或數位服務</li>
+        <li>希望先取得可執行的決策與下一步</li>
+        <li>願意提供必要背景資料，接受明確服務邊界</li>
+      </ul>
+      <p class="small">不保證營收、流量、募資或其他第三方可控制之外的結果。</p>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="plans">
+  <div class="container">
+    <div class="section-head">
+      <h2>服務方案</h2>
+      <p>以下方案與顧問資訊皆為教學虛構示例。價格採含稅總額顯示，付款前仍會再次確認摘要。</p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card package-card selected" data-plan-card="strategy">
+        <span class="tag">方案 A</span>
+        <h3>問題釐清諮詢</h3>
+        <div class="price">NT$ 3,150</div>
+        <p>60 分鐘 · 未稅 NT$ 3,000 + 稅額 <span class="unit-safe">NT$ 150</span></p>
+        <strong>交付物</strong>
+        <ul class="list">
+          <li>60 分鐘線上諮詢</li>
+          <li>問題與優先順序摘要</li>
+          <li>會後一頁行動建議</li>
+        </ul>
+        <div class="exclude">
+          <strong>不包含</strong><br>
+          網站實作、廣告代操、長期專案管理、法律／財稅意見、保證特定商業成果。
+        </div>
+        <button class="btn btn-secondary choose-plan" data-plan="strategy">選擇此方案</button>
+      </article>
+
+      <article class="card package-card" data-plan-card="workshop">
+        <span class="tag">方案 B</span>
+        <h3>流程診斷工作坊</h3>
+        <div class="price">NT$ 8,400</div>
+        <p>120 分鐘 · 未稅 NT$ 8,000 + 稅額 <span class="unit-safe">NT$ 400</span></p>
+        <strong>交付物</strong>
+        <ul class="list">
+          <li>120 分鐘線上工作坊</li>
+          <li>現況流程與主要風險整理</li>
+          <li>會後兩頁執行優先順序</li>
+        </ul>
+        <div class="exclude">
+          <strong>不包含</strong><br>
+          程式開發、正式 UI 設計稿、第三方系統採購、無限次修改、保證營收或轉換率。
+        </div>
+        <button class="btn btn-secondary choose-plan" data-plan="workshop">選擇此方案</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="evidence">
+  <div class="container">
+    <div class="section-head">
+      <h2>案例、文章與可驗證成果</h2>
+      <p>本區不捏造真人客戶、評論或學員成績，只示範顧問服務如何以文件與流程作為可信證據。</p>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <span class="tag">教學虛構案例</span>
+        <h3>預約流程重新整理</h3>
+        <p>情境：團隊的詢問、報價、排程與付款分散在不同訊息管道。</p>
+        <p class="proof">可驗證成果：交付一份現況流程圖、一份風險清單與明確的下一步排序。</p>
+      </article>
+
+      <article class="card">
+        <span class="tag">方法論文章示例</span>
+        <h3>先定義「付款成功」</h3>
+        <p>瀏覽器跳回成功頁，不應直接等同後端已確認收款。正式服務需依金流通知與後端驗證結果更新訂單。</p>
+        <p class="proof">驗證方式：訂單狀態與金流交易紀錄可以被獨立查詢。</p>
+      </article>
+
+      <article class="card">
+        <span class="tag">方法論文章示例</span>
+        <h3>交付邊界寫在付款以前</h3>
+        <p>把會議時長、交付物、不包含項目、退款條件與後續追蹤先列清楚，減少雙方對服務範圍的不同理解。</p>
+        <p class="proof">驗證方式：付款前摘要與完成後交付紀錄使用同一筆預約 ID。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="container">
+    <div class="section-head">
+      <h2>預約與付款前確認</h2>
+      <p>本表單只把資料保存在你的瀏覽器 localStorage，屬於教學測試資料，不代表資料已送到真實後端。</p>
+    </div>
+
+    <div class="form-layout">
+      <form class="panel" id="bookingForm">
+        <div class="field">
+          <label for="companyType">公司類型</label>
+          <select id="companyType" required>
+            <option value="個人／自由工作者">個人／自由工作者</option>
+            <option value="小型團隊">小型團隊</option>
+            <option value="中小企業">中小企業</option>
+            <option value="非營利／教育組織">非營利／教育組織</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="problem">目前最想釐清的問題</label>
+          <textarea id="problem" required>希望整理現有網站與預約付款流程，確認應該先改哪些環節。</textarea>
+          <div class="help">請避免填入信用卡號、密碼、API 金鑰或其他敏感憑證。</div>
+        </div>
+
+        <div class="field">
+          <label for="budget">預算範圍</label>
+          <select id="budget" required>
+            <option>NT$ 3,000–10,000</option>
+            <option>NT$ 10,001–30,000</option>
+            <option>NT$ 30,001–100,000</option>
+            <option>尚未確定</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="slot">可預約時段</label>
+          <select id="slot" required>
+            <option>2026/10/08 10:00</option>
+            <option>2026/10/08 14:00</option>
+            <option>2026/10/09 10:00</option>
+            <option>2026/10/09 15:30</option>
+          </select>
+          <div class="help">以上時段為教學虛構示例，沒有連接真實行事曆。</div>
+        </div>
+
+        <button class="btn btn-secondary" type="submit">儲存教學預約資料</button>
+      </form>
+
+      <aside class="panel" id="orderPanel">
+        <span class="tag">付款前確認摘要</span>
+        <h3>訂單摘要</h3>
+
+        <div class="summary-row"><span>訂單 ID</span><span id="orderId"></span></div>
+        <div class="summary-row"><span>方案</span><span id="sumPlan"></span></div>
+        <div class="summary-row"><span>未稅金額</span><span id="sumAmount"></span></div>
+        <div class="summary-row"><span>稅額</span><span id="sumTax"></span></div>
+        <div class="summary-row total"><span>含稅總額</span><span id="sumTotal"></span></div>
+        <div class="summary-row"><span>預約時間</span><span id="sumSlot"></span></div>
+
+        <div class="confirm-box">
+          <strong>退款條件｜教學虛構示例</strong><br>
+          預約時間 48 小時前取消，可申請全額退款；48 小時內取消不退費，但可在一次範圍內申請改期。
+          
+        </div>
+
+        <label style="display:flex;gap:12px;align-items:flex-start">
+          <input id="confirmTerms" type="checkbox" style="width:22px;min-height:22px;margin-top:5px">
+          <span>我已確認方案、總額、預約時間、退款條件與服務不包含項目。</span>
+        </label>
+
+        <button class="btn btn-primary" id="payBtn" type="button" style="width:100%;margin-top:20px">
+          前往付款｜教學模擬
+        </button>
+        <button class="btn btn-ghost" id="newOrderBtn" type="button" style="width:100%;margin-top:10px">建立另一筆教學訂單</button>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="flow">
+  <div class="container">
+    <div class="section-head">
+      <h2>付款流程示意</h2>
+      <p>付款頁由本頁對話框模擬。直接關掉頁面本身不會更改訂單狀態；只有教學模擬的付款結果會更新狀態。</p>
+    </div>
+
+    <div class="status-grid">
+      <div class="status-card active" data-status-card="unpaid">
+        <strong><span class="dot"></span>前往付款</strong>
+        已建立同一筆訂單，尚未收到付款結果。
+      </div>
+      <div class="status-card" data-status-card="processing">
+        <strong><span class="dot"></span>付款中</strong>
+        使用者正在模擬付款頁操作。
+      </div>
+      <div class="status-card" data-status-card="paid">
+        <strong><span class="dot"></span>付款成功</strong>
+        教學模擬成功通知已更新訂單。
+      </div>
+      <div class="status-card" data-status-card="failed">
+        <strong><span class="dot"></span>付款失敗</strong>
+        模擬付款未完成，可再次嘗試。
+      </div>
+      <div class="status-card" data-status-card="cancelled">
+        <strong><span class="dot"></span>使用者取消</strong>
+        模擬使用者取消，訂單轉為已取消（終態）。
+      </div>
+    </div>
+
+    <div id="stateBox" class="state-box">
+      <strong>付款狀態：前往付款</strong>
+      <p>這只是前端原型狀態。本頁沒有連接真實金流後端，也沒有執行真實 webhook 簽章驗證。</p>
+    </div>
+
+    <div class="delivery panel" id="delivery">
+      <span class="tag">付款成功後的下一步</span>
+      <h3>交付說明</h3>
+      <div class="grid-2">
+        <div>
+          <strong>會議連結</strong>
+          <p>正式服務應於付款確認後，由後端或排程系統建立並提供。此原型不會真正發送會議通知。</p>
+        </div>
+        <div>
+          <strong>會前資料</strong>
+          <p>建議準備目前流程、主要問題、相關頁面與希望在本次會議完成的決策。</p>
+        </div>
+        <div>
+          <strong>交付物</strong>
+          <p id="deliveryOutput"></p>
+        </div>
+        <div>
+          <strong>後續追蹤</strong>
+          <p>示例規則：交付後 7 天內可就文件內容提出一次文字釐清，不等同新增工作範圍。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>從預約到交付，資料怎麼串起來</h2>
+      <p>以下用六張表與外鍵 ID 示範資料關係。欄位名稱依本次教學需求呈現。</p>
+    </div>
+
+    <div class="flow">
+      <div class="flow-step"><b>1. ConsultingPackage</b>定義可購買方案</div>
+      <div class="flow-step"><b>2. ConsultationBooking</b>用方案 id 串預約</div>
+      <div class="flow-step"><b>3. Order</b>用預約 id 建立訂單</div>
+      <div class="flow-step"><b>4. PaymentTransaction</b>用訂單 id 串金流交易</div>
+      <div class="flow-step"><b>5. PaymentCallback</b>以交易編號對應金流通知</div>
+      <div class="flow-step"><b>6. DeliveryRecord</b>用預約 id 串交付</div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:24px">
+      <table>
+<thead>
+<tr><th>資料表</th><th>示例紀錄</th><th>關係</th></tr>
+</thead>
+<tbody>
+<tr>
+<td class="schema" data-label="資料表">ConsultingPackage</td>
+<td data-label="示例紀錄"><span class="code-id">PKG-001</span>｜問題釐清諮詢｜3000｜60 分鐘｜摘要＋行動建議｜不含實作</td>
+<td data-label="關係">主方案資料</td>
+</tr>
+<tr>
+<td class="schema" data-label="資料表">ConsultationBooking</td>
+<td data-label="示例紀錄"><span class="code-id">BKG-001</span>｜教學客戶｜方案 id=<b>PKG-001</b>｜2026/10/08 10:00｜流程診斷｜待付款</td>
+<td data-label="關係">FK → ConsultingPackage.id</td>
+</tr>
+<tr>
+<td class="schema" data-label="資料表">Order</td>
+<td data-label="示例紀錄"><span class="code-id">ORD-001</span>｜預約 id=<b>BKG-001</b>｜3000｜150｜3150｜待付款</td>
+<td data-label="關係">FK → ConsultationBooking.id</td>
+</tr>
+<tr>
+<td class="schema" data-label="資料表">PaymentTransaction</td>
+<td data-label="示例紀錄"><span class="code-id">PAY-001</span>｜訂單 id=<b>ORD-001</b>｜教學金流｜SIM-20261008-001｜待付款｜—</td>
+<td data-label="關係">FK → Order.id</td>
+</tr>
+<tr>
+<td class="schema" data-label="資料表">PaymentCallback</td>
+<td data-label="示例紀錄">交易編號=<b>SIM-20261008-001</b>｜教學模擬回傳資料｜未驗證｜—</td>
+<td data-label="關係">對應 PaymentTransaction.交易編號</td>
+</tr>
+<tr>
+<td class="schema" data-label="資料表">DeliveryRecord</td>
+<td data-label="示例紀錄">預約 id=<b>BKG-001</b>｜會議連結依付款後建立｜摘要文件｜未開始｜7 天內一次文字釐清</td>
+<td data-label="關係">FK → ConsultationBooking.id</td>
+</tr>
+</tbody>
+</table>
+    </div>
+
+    <div class="callout" style="margin-top:24px">
+      <strong>正式環境的重要界線</strong><br>
+      商店代號、API 金鑰、HashKey、HashIV、交易簽章密鑰等敏感資訊不得寫進前端 HTML 或 JavaScript。
+      正式付款結果應由可信任的後端驗證金流通知後，再更新訂單狀態。
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="environment">
+  <div class="container">
+    <div class="section-head">
+      <h2>原型 / sandbox / 正式環境差異</h2>
+      <p>「畫面看起來能付款」和「真的能安全收款」是不同層級的工作。</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+<thead>
+<tr>
+<th>項目</th>
+<th>前端原型</th>
+<th>Sandbox 測試環境</th>
+<th>正式環境</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="項目">真實商家帳號</td>
+<td data-label="前端原型">不需要</td>
+<td data-label="Sandbox 測試環境">通常使用測試商家資料</td>
+<td data-label="正式環境">需要正式申請與啟用</td>
+</tr>
+<tr>
+<td data-label="項目">需要後端</td>
+<td data-label="前端原型">本教學原型不需要</td>
+<td data-label="Sandbox 測試環境">建議需要，用來建立訂單與接收通知</td>
+<td data-label="正式環境">需要</td>
+</tr>
+<tr>
+<td data-label="項目">驗證 webhook 簽章</td>
+<td data-label="前端原型">沒有真實 webhook，不驗證</td>
+<td data-label="Sandbox 測試環境">應依金流規格測試驗證</td>
+<td data-label="正式環境">必須依金流規格驗證</td>
+</tr>
+<tr>
+<td data-label="項目">收真實信用卡</td>
+<td data-label="前端原型">不可以</td>
+<td data-label="Sandbox 測試環境">不應收取真實款項</td>
+<td data-label="正式環境">依核准的正式金流功能處理</td>
+</tr>
+<tr>
+<td data-label="項目">發票</td>
+<td data-label="前端原型">不處理</td>
+<td data-label="Sandbox 測試環境">可測試流程，但非正式開立</td>
+<td data-label="正式環境">依商家制度、金流與適用法規處理</td>
+</tr>
+<tr>
+<td data-label="項目">退款</td>
+<td data-label="前端原型">只模擬狀態</td>
+<td data-label="Sandbox 測試環境">測試退款流程</td>
+<td data-label="正式環境">依正式交易、退款規則與金流 API 處理</td>
+</tr>
+</tbody>
+</table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>交付邊界</h2>
+      <p>付款完成代表建立服務關係，不代表任何特定營運成果必然發生。</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>付款確認後</h3>
+        <p>正式服務才建立會議資訊、會前資料需求與內部交付紀錄。本原型不會真正寄送通知。</p>
+      </div>
+      <div class="card">
+        <h3>會議當天</h3>
+        <p>依所選方案時長進行。若需新增分析、製作或執行工作，應另外確認範圍與費用。</p>
+      </div>
+      <div class="card">
+        <h3>會議完成後</h3>
+        <p>提供方案載明的交付物與後續追蹤，不把「建議」描述為保證營收、流量或其他外部成果。</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="starter" id="your-start"><div class="wrap"><h2>從你的服務開始</h2><div class="starter-layout"><form class="starter-form" onsubmit="return false" aria-label="整理自己的素材"><label for="your-0">服務名稱<input id="your-0" autocomplete="off" placeholder="填入你自己的服務名稱" /></label><label for="your-1">交付什麼<input id="your-1" autocomplete="off" placeholder="填入你自己的交付什麼" /></label><label for="your-2">不包含什麼<input id="your-2" autocomplete="off" placeholder="填入你自己的不包含什麼" /></label></form><article class="starter-preview" aria-live="polite"><small>你的網站起點</small><h3 id="your-title">讓客人認識你的專長</h3><p id="your-detail">交付什麼，由你填入。</p><hr><p id="your-boundary">不包含什麼，先說清楚。</p></article></div></div></section></main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <strong>示範顧問｜教學虛構示例</strong>
+      <div class="small">所有人物、案例、方案與交易皆為教學流程示範，不代表真實營業服務。</div>
+    </div>
+    <div>
+      <button class="btn btn-danger" id="resetBtn" type="button">教學重置</button>
+    </div>
+  </div>
+</footer>
+
+<dialog id="paymentDialog">
+  <div class="modal-head">
+    <div>
+      <strong style="font-size:24px">付款頁｜教學模擬</strong>
+      <div class="small">不是藍新、綠界或其他真實金流頁面</div>
+    </div>
+    <button class="x" id="closeDialog" aria-label="關閉付款視窗">×</button>
+  </div>
+  <div class="modal-body">
+    <div class="mock-payment">
+      <strong>目前訂單</strong>
+      <div class="summary-row"><span>訂單 ID</span><span id="modalOrder"></span></div>
+      <div class="summary-row"><span>方案</span><span id="modalPlan"></span></div>
+      <div class="summary-row total"><span>模擬付款金額</span><span id="modalTotal"></span></div>
+    </div>
+
+    <p>
+      以下按鈕只是教學模擬，用來展示付款通知後可能出現的狀態。
+      本頁沒有收集卡號、沒有送出真實交易，也不宣稱已完成真實簽章驗證。
+    </p>
+
+    <div class="modal-actions">
+      <button class="btn btn-primary mock-result" data-result="paid">成功通知｜教學模擬</button>
+      <button class="btn btn-danger mock-result" data-result="failed">失敗｜教學模擬</button>
+      <button class="btn btn-secondary mock-result" data-result="cancelled">使用者取消｜教學模擬</button>
+      <button class="btn btn-ghost" id="modalCloseAction">關閉付款視窗</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast">教學資料已儲存在此瀏覽器。</div>
+
+<script>
+const plans={
+  strategy:{
+    id:"PKG-001",
+    name:"問題釐清諮詢",
+    amount:3000,
+    tax:150,
+    total:3150,
+    duration:"60 分鐘",
+    delivery:"問題與優先順序摘要，以及會後一頁行動建議。"
+  },
+  workshop:{
+    id:"PKG-002",
+    name:"流程診斷工作坊",
+    amount:8000,
+    tax:400,
+    total:8400,
+    duration:"120 分鐘",
+    delivery:"現況流程與主要風險整理，以及會後兩頁執行優先順序。"
+  }
+};
+
+const key="consultingPrototypeV1";
+const freshState=(sequence=1)=>({
+  plan:"strategy",
+  orderId:"ORD-20261004-"+String(sequence).padStart(3,"0"),
+  bookingId:"BKG-20261004-"+String(sequence).padStart(3,"0"),
+  orderStatus:"pending_payment",
+  paymentStatus:"unpaid",
+  companyType:"個人／自由工作者",
+  problem:"希望整理現有網站與預約付款流程，確認應該先改哪些環節。",
+  budget:"NT$ 3,000–10,000",
+  slot:"2026/10/08 10:00"
+});
+
+let state;
+try{
+  state=JSON.parse(localStorage.getItem(key))||freshState();
+}catch(e){
+  state=freshState();
+}
+
+function normalizeState(saved){
+  const result={...freshState(),...saved};
+  if(saved && saved.status && !saved.orderStatus){
+    result.orderStatus=saved.status==="paid"?"paid":saved.status==="failed"?"payment_failed":saved.status==="cancelled"?"cancelled":"pending_payment";
+    result.paymentStatus=saved.status;
+  }
+  if(result.orderStatus==="pending_payment" && result.paymentStatus==="cancelled") result.orderStatus="cancelled";
+  delete result.status;
+  return result;
+}
+state=normalizeState(state);
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+const money=n=>"NT$ "+n.toLocaleString("zh-TW");
+
+function save(){
+  localStorage.setItem(key,JSON.stringify(state));
+}
+function statusLabel(s){
+  return {
+    unpaid:"待付款",
+    processing:"付款中",
+    paid:"已付款",
+    failed:"付款失敗",
+    cancelled:"使用者取消"
+  }[s];
+}
+function render(){
+  const p=plans[state.plan];
+
+  $$(".package-card").forEach(el=>
+    el.classList.toggle("selected",el.dataset.planCard===state.plan)
+  );
+
+  $("#orderId").textContent=state.orderId;
+  $("#sumPlan").textContent=p.name+"｜"+p.duration;
+  $("#sumAmount").textContent=money(p.amount);
+  $("#sumTax").textContent=money(p.tax);
+  $("#sumTotal").textContent=money(p.total);
+  $("#sumSlot").textContent=state.slot;
+
+  $("#modalOrder").textContent=state.orderId;
+  $("#modalPlan").textContent=p.name;
+  $("#modalTotal").textContent=money(p.total);
+  $("#deliveryOutput").textContent=p.delivery;
+
+  $("#companyType").value=state.companyType;
+  $("#problem").value=state.problem;
+  $("#budget").value=state.budget;
+  $("#slot").value=state.slot;
+
+  $$(".status-card").forEach(el=>
+    el.classList.toggle("active",el.dataset.statusCard===state.paymentStatus)
+  );
+
+  const box=$("#stateBox");
+  box.className="state-box";
+  const copy={
+    unpaid:[
+      "付款狀態：前往付款",
+      "訂單已存在，但本原型尚未收到任何模擬付款結果。"
+    ],
+    processing:[
+      "付款狀態：付款中",
+      "模擬付款頁已開啟。直接關掉頁面後回查同一筆訂單；關頁本身不改訂單狀態。"
+    ],
+    paid:[
+      "付款狀態：付款成功｜教學模擬",
+      "已收到教學模擬的成功通知。即使之後關掉頁面，這筆訂單仍維持已付款。"
+    ],
+    failed:[
+      "付款狀態：付款失敗｜教學模擬",
+      "這代表模擬交易失敗，不代表真實信用卡曾被請款。使用者可再次前往付款。"
+    ],
+    cancelled:[
+      "付款狀態：使用者取消｜教學模擬",
+      "這筆訂單已取消，不能再付款。要示範其他結果，請建立另一筆教學訂單。"
+    ]
+  }[state.paymentStatus];
+
+  box.classList.toggle("success",state.paymentStatus==="paid");
+  box.classList.toggle("failed",state.paymentStatus==="failed");
+  box.classList.toggle("cancelled",state.paymentStatus==="cancelled");
+  const orderLabel={pending_payment:"待付款",paid:"已付款",payment_failed:"付款失敗",cancelled:"已取消",completed:"已完成",refunded:"已退款"}[state.orderStatus];
+  box.innerHTML="<p id='stateOrderId'>訂單編號："+state.orderId+"</p><strong id='orderState'>訂單狀態："+orderLabel+"</strong><br><strong id='paymentState'>"+copy[0]+"</strong><p>"+copy[1]+" 本頁沒有執行真實金流簽章驗證。</p>";
+  $$(".mock-result").forEach(btn=>{btn.disabled=state.orderStatus==="paid" || ["cancelled","completed","refunded"].includes(state.orderStatus)});
+  $("#payBtn").disabled=["cancelled","completed","refunded"].includes(state.orderStatus);
+  $("#payBtn").textContent=state.orderStatus==="cancelled"?"已取消，不能再付款":"前往付款｜教學模擬";
+  $("#delivery").classList.toggle("show",state.orderStatus==="paid");
+
+  save();
+}
+
+function toast(msg){
+  const t=$("#toast");
+  t.textContent=msg;
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2200);
+}
+
+$$(".choose-plan").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    state.plan=btn.dataset.plan;
+    save();
+    render();
+    document.querySelector("#booking").scrollIntoView({behavior:"smooth"});
+  });
+});
+
+$("#slot").addEventListener("change",e=>{
+  state.slot=e.target.value;
+  render();
+});
+
+$("#bookingForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  state.companyType=$("#companyType").value;
+  state.problem=$("#problem").value.trim();
+  state.budget=$("#budget").value;
+  state.slot=$("#slot").value;
+  save();
+  render();
+  toast("教學預約資料已儲存在此瀏覽器。");
+});
+
+$("#newOrderBtn").addEventListener("click",()=>{
+  const sequence=Number(state.orderId.split("-").pop())+1;
+  const plan=state.plan;
+  state={...freshState(sequence),plan};
+  $("#confirmTerms").checked=false;
+  render();
+  toast("已建立另一筆教學訂單，請核對新編號並確認付款摘要。");
+});
+
+let statusBeforeDialog="unpaid";
+$("#payBtn").addEventListener("click",()=>{
+  if(!$("#confirmTerms").checked){
+    alert("請先確認方案、總額、時間、退款條件與服務邊界。");
+    return;
+  }
+  statusBeforeDialog=state.paymentStatus==="paid"?"paid":state.paymentStatus;
+  if(["cancelled","completed","refunded"].includes(state.orderStatus)) return;
+  if(state.orderStatus==="payment_failed") state.orderStatus="pending_payment";
+  if(state.paymentStatus!=="paid") state.paymentStatus="processing";
+  render();
+  $("#paymentDialog").showModal();
+  if (innerWidth <= 640) { const d=$("#paymentDialog"); d.scrollTop=d.scrollHeight; }
+});
+
+function closePayment(){
+  if(state.paymentStatus==="processing"){
+    state.paymentStatus=statusBeforeDialog==="processing"?"unpaid":statusBeforeDialog;
+  }
+  render();
+  $("#paymentDialog").close();
+}
+
+$("#closeDialog").addEventListener("click",closePayment);
+$("#modalCloseAction").addEventListener("click",closePayment);
+
+$$(".mock-result").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    if(state.orderStatus!=="pending_payment" || state.paymentStatus!=="processing") return;
+    state.paymentStatus=btn.dataset.result;
+    state.orderStatus=state.paymentStatus==="paid"?"paid":state.paymentStatus==="failed"?"payment_failed":state.paymentStatus==="cancelled"?"cancelled":"pending_payment";
+    save();
+    render();
+    $("#paymentDialog").close();
+    document.querySelector("#flow").scrollIntoView({behavior:"smooth"});
+    toast(
+      state.paymentStatus==="paid"
+        ?"教學模擬成功通知已記錄。"
+        :"教學模擬付款狀態已更新。"
+    );
+  });
+});
+
+$("#paymentDialog").addEventListener("cancel",e=>{
+  e.preventDefault();
+  closePayment();
+});
+
+$("#resetBtn").addEventListener("click",()=>{
+  if(confirm("要清除這個原型儲存在本機瀏覽器的教學測試資料嗎？")){
+    localStorage.removeItem(key);
+    state=freshState();
+    $("#confirmTerms").checked=false;
+    render();
+    toast("教學測試資料已重置。");
+  }
+});
+
+const queryBtn=document.createElement("button");
+queryBtn.id="queryOrder";
+queryBtn.className="btn btn-ghost";
+queryBtn.type="button";
+queryBtn.textContent="重新查詢訂單";
+queryBtn.style.marginTop="10px";
+queryBtn.style.width="100%";
+queryBtn.addEventListener("click",()=>{
+  try{
+    state=normalizeState(JSON.parse(localStorage.getItem(key))||state);
+  }catch(e){}
+  render();
+  toast("已從本機教學資料重新讀取同一筆訂單。");
+});
+$("#orderPanel").appendChild(queryBtn);
+
+render();
+</script>
+<script>(()=>{const ids=['your-title','your-detail','your-boundary'];const defaults=["讓客人認識你的專長", "交付什麼，由你填入。", "不包含什麼，先說清楚。"];ids.forEach((id,i)=>{const input=document.getElementById('your-'+i);input.addEventListener('input',()=>{document.getElementById(id).textContent=input.value.trim()||defaults[i]})})})();</script><section class="textbook-block" id="trustMethods"><h2>付費前的信任依據</h2><p>信任三支柱：能力、善意、正直。資歷與成果、具名可查證的推薦人、可追蹤的方法論連結分別提供依據。</p><p>信號理論：高成本而難以模仿的深度文章是可信信號。</p><p>損失規避：損失的痛苦約為等值獲益的兩倍；用「不轉型的代價」檢查案例。</p></section>
+<section class="textbook-block" id="feeBreakdown"><h2>訂單費用拆分</h2><p>診斷費、執行費、成果獎金分開列示；各項金額依方案與合約填寫，不編造金額。</p><p>付款前核對金額、稅額、總額與退款規則。</p></section>
+<section class="textbook-block" id="closedLoop"><h2>從確認收款到完成交付</h2><p>確認收款 → 開立發票 → 完成交付</p><details id="refundBranch"><summary>訂單的退款分支</summary><p>已付款 → 申請退款 → 退款完成 → 已退款</p></details></section>
+<section class="textbook-block" id="slotTest"><h2>預約時段互動核對</h2><p>已被約走的時段不可選；換選時移除舊 selected，再寫回 booking.slotId。</p><button class="slot booked" data-id="booked">已被預約的時段</button><button class="slot" data-id="available-a">可用時段 A</button><button class="slot" data-id="available-b">可用時段 B</button><p id="slotValue">booking.slotId：尚未選取</p></section>
+<section class="textbook-block" id="textbookEnvironments"><h2>原型／sandbox／正式環境</h2><p>教學原型：用前端狀態模擬待付款、成功、失敗、取消與交付。</p><details id="envSandbox"><summary>測試環境 sandbox</summary><p>使用金流商測試商店與測試卡號跑完整流程；不使用真實信用卡，也不當正式營運。</p></details><details id="envProduction"><summary>正式環境 production</summary><p>使用商家正式帳號、正式網域、後端簽章與 Webhook；發票流程也要接上。不能共用老師或學校帳號，責任屬於實際商家。</p></details></section>
+<script>const booking={slotId:null};const slots=document.querySelectorAll('.slot');slots.forEach(slot=>slot.addEventListener('click',()=>{if(slot.classList.contains('booked'))return;slots.forEach(s=>s.classList.remove('selected'));slot.classList.add('selected');booking.slotId=slot.dataset.id;document.querySelector('#slotValue').textContent='booking.slotId：'+booking.slotId+' → ConsultationBooking.預約時間';}));</script></body>
+</html>

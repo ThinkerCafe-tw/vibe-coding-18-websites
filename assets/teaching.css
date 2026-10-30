@@ -40,3 +40,31 @@
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+#materials { scroll-margin-top: 18px; }
+.materials-eyebrow, .material-step { color: #496454; font-size: 14px; font-weight: 650; }
+#materials h2 { margin: 6px 0 12px; font-size: clamp(26px, 4vw, 34px); }
+.materials-help { font-size: 15px; color: #4d6357; }
+.materials-list { list-style: none; padding: 0; margin: 28px 0 0; }
+.material-card { min-width: 0; padding: 24px 0; border-top: 1px solid #dbe3db; }
+.material-card h3 { margin: 8px 0; font-size: 22px; }
+.material-card figure { margin: 18px 0; }
+.material-card img { width: 100%; max-height: 260px; object-fit: contain; background: #f1f4ee; border-radius: 8px; }
+.material-card figcaption { font-size: 14px; color: #4d6357; }
+.material-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; }
+.material-actions button, .material-actions a { min-height: 44px; max-width: 100%; padding: 10px 16px; border-radius: 7px; font: inherit; line-height: 1.5; text-decoration: none; }
+.material-actions button { border: 1px solid #1a6947; background: #1a6947; color: white; cursor: pointer; }
+.material-actions button:disabled { background: #68776b; cursor: default; }
+.material-actions :focus-visible, #materials summary:focus-visible { outline: 3px solid #276a4c; outline-offset: 4px; }
+.material-full { margin-top: 10px; }
+#materials summary { min-height: 44px; padding: 9px 0; cursor: pointer; }
+.material-full pre { max-height: 420px; overflow-y: auto; white-space: pre-wrap; word-break: break-word; tab-size: 2; }
+.material-hash { color: #4d6357; font-size: 13px; }
+.material-hash code { overflow-wrap: anywhere; }
+.copy-status { margin: 8px 0 0; font-size: 15px; min-height: 1.8em; color: #1a6947; }
+.copy-manual { width: 100%; height: 220px; font: 15px/1.5 monospace; }
+.materials-missing { padding: 16px; border-left: 4px solid #8f6b2c; background: #fff9e9; }
+@media (max-width: 600px) {
+  .material-actions > * { flex: 1 1 100%; text-align: center; }
+  .material-card h3 { font-size: 20px; }
+}

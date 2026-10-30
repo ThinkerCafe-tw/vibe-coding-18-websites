@@ -1,0 +1,1263 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="把 AI 回覆的完整網頁貼進來，自己按一下、看得到、下載走。不用註冊，內容只留在你自己的瀏覽器。">
+<title>貼上預覽｜思考者咖啡實作教室</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2319362e'/%3E%3Ctext x='7' y='24' fill='white' font-size='24'%3ET%3C/text%3E%3C/svg%3E">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f7f4ec;color:#19362e;font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",sans-serif}
+main{max-width:1050px;margin:auto;padding:28px 24px 60px}
+header{border-bottom:1px solid #19362e33;padding-bottom:18px}
+header a{font-weight:650}
+nav{display:flex;gap:18px;flex-wrap:wrap;font-size:15px;margin-top:12px}
+a{color:inherit;text-underline-offset:4px}
+nav a[aria-current="page"]{border-bottom:2px solid #19362e}
+h1{font-size:clamp(32px,5vw,48px);line-height:1.25;letter-spacing:-.03em;margin:30px 0 14px}
+h2{font-size:25px;margin-top:32px}
+h3{font-size:18px;margin:0 0 8px}
+p{max-width:740px}
+.lead{max-width:640px;color:#2c463c}
+.button,button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;background:#19362e;color:#fff;border:1px solid #19362e;padding:12px 18px;border-radius:7px;font:inherit;font-weight:650;text-decoration:none;cursor:pointer;margin:4px 6px 4px 0}
+.button:hover,button:hover{background:#0f231d}
+.secondary{background:transparent;color:#19362e}
+.secondary:hover{background:#e9eee7}
+.quiet{background:transparent;color:#19362e;border-color:transparent;text-decoration:underline;font-weight:500;min-height:40px}
+.quiet:hover{background:transparent;color:#0f231d}
+.quiet.danger{color:#8a4a1f}
+button:disabled{opacity:.45;cursor:not-allowed}
+.note,article{padding:24px;background:#e9eee7;border-radius:10px;margin:24px 0}
+.meta{font-size:14px;color:#586259;max-width:none}
+label{display:block;font-weight:650;margin:16px 0 8px}
+textarea{width:100%;min-height:190px;background:#fffdf8;color:#19362e;border:1px solid #8d9a91;border-radius:6px;padding:16px;font:15px/1.8 ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}
+.file-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:14px}
+.file-row input{max-width:100%}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:16px}
+.status{min-height:24px;font-size:14px;color:#19362e;font-weight:600;margin-top:8px}
+.status.error{color:#8a4a1f}
+.version-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.version-tabs button{min-height:40px;padding:8px 16px;background:#fffdf8;color:#586259;border:1px solid #8d9a91;border-radius:7px 7px 0 0;font-weight:600}
+.version-tabs button[aria-selected="true"]{background:#19362e;color:#fff;border-color:#19362e}
+.version-meta{font-size:13px;color:#586259;min-height:20px;margin:0 0 10px}
+.viewport-switch{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:10px 0 6px}
+.viewport-group{display:inline-flex;border:1px solid #19362e;border-radius:7px;overflow:hidden}
+.viewport-group button{min-height:40px;padding:8px 18px;background:#fffdf8;color:#19362e;border:0;border-right:1px solid #19362e;border-radius:0;font:inherit;font-weight:650;cursor:pointer;margin:0}
+.viewport-group button:last-child{border-right:0}
+.viewport-group button[aria-pressed="true"]{background:#19362e;color:#fff}
+.viewport-group button:hover{background:#e9eee7}
+.viewport-group button[aria-pressed="true"]:hover{background:#0f231d}
+.viewport-width{font-size:14px;color:#586259;font-weight:650}
+.preview-shell{background:#fffdf8;border:1px solid #8d9a91;border-radius:10px;overflow:hidden}
+.preview-bar{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:10px 16px;background:#e9eee7;font-size:12px;color:#586259}
+.preview-bar strong{color:#19362e}
+.preview-frame-wrap{width:100%;height:560px;margin:0 auto;transition:width .3s ease;overflow:hidden}
+.preview-frame-wrap.is-mobile{width:390px;max-width:100%}
+.preview-shell iframe{display:block;width:100%;height:100%;border:0;background:#fff;transform-origin:0 0}
+.download-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:14px}
+.storage-status{padding:12px 16px;border-radius:8px;background:#fffdf8;border:1px solid #8d9a91;font-size:15px}
+.storage-status.warn{background:#f6e6d3;border-color:#a67135;color:#7a4212;font-weight:650}
+.photo-privacy{font-size:14px;color:#2c463c;margin:6px 0 14px}
+.photo-drop{border:2px dashed #8d9a91;border-radius:10px;padding:22px;text-align:center;cursor:pointer;background:#fffdf8;color:#586259;font-size:15px}
+.photo-drop.dragover{border-color:#19362e;background:#e9eee7;color:#19362e}
+.photo-drop input[type=file]{display:none}
+.photo-status{min-height:20px;font-size:14px;color:#19362e;font-weight:600;margin-top:8px}
+.photo-status.error{color:#8a4a1f}
+.photo-empty-hint,.ref-empty-hint{font-size:14px;color:#586259}
+.photo-list{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
+.photo-chip{width:120px;border:1px solid #8d9a91;border-radius:8px;overflow:hidden;background:#fffdf8;font-size:12px}
+.photo-chip img{width:100%;height:90px;object-fit:cover;display:block;background:#e9eee7}
+.photo-chip-name{padding:6px 8px 0;word-break:break-all;font-weight:650;color:#19362e}
+.photo-chip-meta{padding:2px 8px 0;color:#586259}
+.photo-chip-remove{display:block;width:100%;border:0;border-top:1px solid #8d9a9155;background:transparent;color:#8a4a1f;padding:6px 8px;font:inherit;font-size:12px;cursor:pointer;margin:8px 0 0}
+.photo-chip-remove:hover{background:#f6e6d3}
+.ref-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+.ref-table th,.ref-table td{text-align:left;padding:8px 10px;border-bottom:1px solid #8d9a9155;vertical-align:middle}
+.ref-table th{color:#586259;font-weight:650;font-size:13px}
+.ref-status{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:650;white-space:nowrap}
+.ref-status.matched{background:#dcead9;color:#19362e}
+.ref-status.unmatched{background:#f6e6d3;color:#7a4212}
+.ref-table select{font:inherit;font-size:13px;padding:4px 6px;border-radius:6px;border:1px solid #8d9a91;background:#fffdf8;color:#19362e}
+ol,ul{padding-left:1.3em}
+li{margin-bottom:8px}
+a:focus-visible,button:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid #a67135;outline-offset:3px}
+footer{margin-top:40px;border-top:1px solid #19362e33;padding-top:20px;font-size:14px;color:#586259}
+@media(max-width:650px){
+  main{padding:22px 20px 40px}
+  article,.note{padding:18px}
+  nav{gap:12px}
+  .button,button{font-size:16px}
+  .preview-frame-wrap{height:460px}
+  .actions .button,.actions button{flex:1 1 100%;margin-right:0}
+}
+.split-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.split-field textarea{min-height:220px;height:220px}.split-field label{min-height:62px}.split-field .meta{min-height:84px}.quiet,.version-tabs button,.viewport-group button{min-height:44px}@media(max-width:760px){.split-grid{grid-template-columns:1fr}.split-field label,.split-field .meta{min-height:0}}
+</style>
+</head>
+<body>
+<main>
+
+<header><a href="../../index.html">← 回到課程</a><p>貼上預覽工具</p></header>
+
+<h1>把 AI 回覆的網頁，貼回來看看。</h1><p class="meta">跟著影片貼入 HTML、放照片、儲存與取代版本。</p>
+<p class="lead">你已經跟 AI 要到一份完整的網頁了。先別急著問別人「這樣做對不對」。貼進下面的框、按一下，看得到畫面、按得動按鈕，才算真的做出來了。這一頁不會把你貼的內容送到任何地方，也不用註冊。</p>
+
+<section class="note"><p><strong>付款狀態、清除與本機儲存測試：</strong>預覽框使用隔離環境，無法使用作品的 localStorage。EP16–18 請從本講素材下載影片操作版 HTML，直接開啟後再做後續測試；上傳到這裡的原始碼與下載內容不會改寫。</p>
+  <h2>怎麼用這一頁</h2>
+  <ol>
+    <li>把 AI 回覆的完整內容整段複製，從 <code>&lt;!doctype</code> 開始，一路到最後的 <code>&lt;/html&gt;</code>。</li>
+    <li>貼進下面「貼上完整的 HTML」那個框，或直接選一個 <code>.html</code> 檔案匯入。</li>
+    <li>按「儲存並預覽」，下面就會多一個版本，也會馬上看到可以操作的畫面。</li>
+    <li>看了不滿意，回去跟 AI 說要改什麼，把新的回覆貼進來、再按一次「儲存並預覽」，舊的版本不會不見，你可以隨時切回去比較。</li>
+    <li>滿意的版本，記得按「下載目前這一版」存成檔案帶走。</li>
+  </ol>
+</section>
+
+<article id="split-entry">
+<h2>AI 分三段回覆時，從這裡貼</h2>
+<p>這裡的三格會幫你組成同一份 HTML。第一段是網頁骨架；第二段決定外觀；第三段讓按鈕與表單能互動。不需要自己在長程式碼裡找貼入位置。</p>
+<details><summary style="min-height:44px;cursor:pointer;padding:10px 0">展開三段貼入區</summary>
+<div class="split-grid"><div class="split-field"><label for="part-html">1 · 第一段 HTML：貼上整個網頁骨架</label><p class="meta">保留 AI 留下的「第二段貼這裡」和「第三段貼這裡」，包括外面的 style、script 標籤。</p><textarea id="part-html" rows="7" spellcheck="false"></textarea>
+</div><div class="split-field"><label for="part-css">2 · 第二段 CSS：貼上完整樣式</label><p class="meta">貼程式碼區塊的內容，不用再加 style 標籤。</p><textarea id="part-css" rows="5" spellcheck="false"></textarea>
+</div><div class="split-field"><label for="part-js">3 · 第三段 JavaScript：貼上完整互動程式</label><p class="meta">貼程式碼區塊的內容，不用再加 script 標籤。</p><textarea id="part-js" rows="5" spellcheck="false"></textarea>
+</div></div><button type="button" id="assemble-parts">組成完整網頁</button><p id="assembly-status" class="status" role="status" aria-live="polite"></p>
+<p class="meta">組成成功後，下方會出現完整 HTML。先按「儲存並預覽」看結果；修改既有版本時，才按「取代目前選取的版本」。</p>
+</details></article>
+<article>
+  <h2>貼上完整的 HTML</h2>
+  <label for="html-input">從 &lt;!doctype 到 &lt;/html&gt;</label>
+  <textarea id="html-input" rows="10" spellcheck="false" placeholder="在這裡貼上 AI 回覆的完整 HTML。"></textarea>
+  <div class="file-row">
+    <label for="file-input" style="margin:0">或選一個 .html 檔案匯入</label>
+    <input type="file" id="file-input" accept=".html,text/html">
+  </div>
+  <div class="actions">
+    <button type="button" id="save-button">儲存並預覽</button>
+    <button type="button" class="secondary" id="replace-button">取代目前選取的版本</button>
+    <button type="button" class="quiet" id="clear-input">清空輸入框</button>
+  </div>
+  <p class="status" id="save-status" role="status" aria-live="polite"></p>
+  <p class="meta">「儲存並預覽」每次都會<strong>新增一個版本</strong>，不會蓋掉你已經存好的。要覆蓋現有的版本，才按「取代目前選取的版本」。「清空輸入框」只清這個框，存好的版本都還在。</p>
+</article>
+
+<article>
+  <h2>你的版本</h2>
+  <p class="meta" id="version-empty-hint">還沒有版本。貼上 HTML 並按「儲存並預覽」之後，這裡會列出每一次存下的版本。</p>
+  <div class="version-tabs" id="version-tabs" role="tablist" aria-label="版本"></div>
+  <p class="version-meta" id="version-meta"></p>
+
+  <div class="viewport-switch">
+    <div class="viewport-group" role="group" aria-label="切換預覽寬度">
+      <button type="button" id="viewport-desktop" aria-pressed="true">桌機</button>
+      <button type="button" id="viewport-mobile" aria-pressed="false">手機</button>
+    </div>
+    <span class="viewport-width" id="viewport-width"></span>
+  </div>
+  <p class="meta">手機看起來不一樣是正常的，你可以兩邊切著看，確認兩種都能看得懂、按得到。</p>
+
+  <div class="preview-shell">
+    <div class="preview-bar">
+      <strong id="preview-label">還沒有版本可以預覽</strong>
+      <span>這裡可以試著操作；預覽是隔離的，不會送出資料，也不會跳到別的網站</span>
+    </div>
+    <div class="preview-frame-wrap" id="preview-frame-wrap">
+      <iframe id="preview-frame" title="目前選取版本的預覽" sandbox="allow-scripts" referrerpolicy="no-referrer"></iframe>
+    </div>
+  </div>
+
+  <div class="download-row">
+    <button type="button" id="download-button" disabled>下載目前這一版</button>
+    <span class="meta">沒放照片就存成一個 HTML 檔案；有放照片就打包成 zip（<code>index.html</code> + <code>images/</code>），跟教材教的做法一致。下載的一定是上面正在看的那一版。</span>
+  </div>
+  <p class="status" id="preview-status" role="status" aria-live="polite"></p>
+</article>
+
+<article class="photo-tray" id="photo-tray-section">
+  <h2>放照片</h2>
+  <p class="lead">預覽不能連到網路，如果 AI 幫你寫的網頁裡用到 <code>images/hero.jpg</code> 這種路徑，這裡本來就看不到圖，不是你把網頁做壞了。把對應的照片放進來，下面會自動幫你對上檔名。</p>
+  <p class="photo-privacy">照片只存在你這台電腦的瀏覽器，不會上傳到任何地方。</p>
+
+  <div class="photo-drop" id="photo-drop" tabindex="0" role="button" aria-label="拖放照片到這裡，或按這裡選照片">
+    拖放照片到這裡，或按這裡選照片（可以一次選多張，只收 jpg / png / webp）
+    <input type="file" id="photo-file-input" accept="image/jpeg,image/png,image/webp" multiple>
+  </div>
+  <p class="status photo-status" id="photo-status" role="status" aria-live="polite"></p>
+
+  <p class="photo-empty-hint" id="photo-empty-hint">還沒有放照片。</p>
+  <div class="photo-list" id="photo-list"></div>
+
+  <h3>這個版本用到的圖片路徑</h3>
+  <p class="ref-empty-hint" id="ref-empty-hint">目前選取的版本沒有用到任何圖片路徑。</p>
+  <table class="ref-table" id="ref-table" hidden>
+    <thead><tr><th>網頁裡寫的路徑</th><th>狀態</th><th>對應到哪張照片</th></tr></thead>
+    <tbody id="ref-table-body"></tbody>
+  </table>
+</article>
+
+<article>
+  <h2>你的練習紀錄</h2>
+  <p class="storage-status" id="storage-status">檢查瀏覽器儲存狀態中…</p>
+  <div class="actions">
+    <button type="button" class="quiet danger" id="wipe-button">刪除本機練習紀錄</button>
+  </div>
+  <p class="meta">不需要註冊，也沒有雲端帳號。紀錄只存在你現在用的這台電腦、這個瀏覽器；換電腦、換瀏覽器或清除瀏覽資料都會不見，請常按「下載目前這一版」備份重要版本。</p>
+</article>
+
+<footer>課程練習工具。內容保存在這台瀏覽器；不需登入。</footer>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var KEY = 'thinker.pastepreview.v1';
+
+  var state = { versions: [], selectedId: null, seq: 0 };
+  var storageWritable = false;
+
+  function status(id, text, isError) {
+    var el = $(id);
+    if (!el) return;
+    el.textContent = text || '';
+    el.classList.toggle('error', !!isError);
+  }
+
+  /* ---------------------------------------------------------- 儲存（誠實） */
+
+  function probeStorage() {
+    try {
+      localStorage.setItem(KEY + '.probe', '1');
+      localStorage.removeItem(KEY + '.probe');
+      return true;
+    } catch (e) { return false; }
+  }
+
+  function readStored() {
+    try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; }
+  }
+
+  function persist() {
+    if (!storageWritable) { renderStorage(); return false; }
+    try {
+      localStorage.setItem(KEY, JSON.stringify({ versions: state.versions, seq: state.seq, selectedId: state.selectedId }));
+      renderStorage();
+      return true;
+    } catch (e) {
+      storageWritable = false;
+      renderStorage();
+      return false;
+    }
+  }
+
+  function restore() {
+    var stored = readStored();
+    if (!stored || !Array.isArray(stored.versions)) return;
+    state.versions = stored.versions.filter(function (v) { return v && typeof v.html === 'string'; });
+    state.seq = typeof stored.seq === 'number' ? stored.seq : state.versions.length;
+    state.selectedId = stored.selectedId || null;
+  }
+
+  function renderStorage() {
+    var el = $('storage-status');
+    var count = state.versions.length;
+    if (!storageWritable) {
+      el.textContent = '這個瀏覽器不讓網頁儲存資料（可能是無痕模式，或容量已滿）。目前的 ' + count + ' 個版本只留在這個分頁，關掉分頁就會不見，請立刻用「下載目前這一版」備份。';
+      el.classList.add('warn');
+    } else {
+      el.textContent = count
+        ? '已存在這台電腦的這個瀏覽器：' + count + ' 個版本。換電腦、換瀏覽器或清除瀏覽資料就會不見。'
+        : '還沒有存任何版本。存好之後只會留在這台電腦的這個瀏覽器。';
+      el.classList.remove('warn');
+    }
+  }
+
+  /* ---------------------------------------------------------------- 版本 */
+
+  function findVersion(id) {
+    for (var i = 0; i < state.versions.length; i++) if (state.versions[i].id === id) return state.versions[i];
+    return null;
+  }
+
+  function newId() {
+    return 'v' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  }
+
+  function nextLabel() {
+    state.seq += 1;
+    return '版本 ' + state.seq;
+  }
+
+  function renderVersionTabs() {
+    var tabs = $('version-tabs');
+    var hint = $('version-empty-hint');
+    hint.hidden = state.versions.length > 0;
+    tabs.replaceChildren.apply(tabs, state.versions.map(function (version) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('role', 'tab');
+      button.setAttribute('aria-controls', 'preview-frame');
+      var active = version.id === state.selectedId;
+      button.setAttribute('aria-selected', String(active));
+      button.textContent = version.label;
+      button.addEventListener('click', function () { selectVersion(version.id); persist(); });
+      return button;
+    }));
+  }
+
+  function describe(version) {
+    if (!version) return '';
+    var when = new Date(version.savedAt).toLocaleString('zh-TW', { hour12: false });
+    var how = version.source === 'file' ? '匯入 HTML 檔' : '貼上';
+    return when + ' 儲存 · ' + how;
+  }
+
+  /* -------------------------------------------------------- 預覽（沙箱隔離） */
+
+  /* ---------------------------------------------------- 圖片路徑（放照片托盤用） */
+
+  function urlIsReplaceable(u) {
+    if (!u) return false;
+    u = u.trim();
+    if (!u) return false;
+    if (/^(data:|https?:\/\/|\/\/|blob:|mailto:|tel:|#)/i.test(u)) return false;
+    return true;
+  }
+
+  function basenameOf(u) {
+    var clean = u.split(/[?#]/)[0];
+    var parts = clean.split('/');
+    return parts[parts.length - 1];
+  }
+
+  /*
+   * 走訪一份已經解析好的 DOM，找出所有「相對路徑」的圖片參照：
+   * img 的 src、img/source 的 srcset、行內 style 與 <style> 區塊裡的
+   * CSS url(...)（含逗號分隔的多重背景）。對每一個找到的參照都呼叫
+   * onRef(rawUrl, apply)：rawUrl 是網頁裡原本寫的那個路徑字串，
+   * apply(dataUrl) 是「如果呼叫端決定要替換，就這樣改」的函式。
+   * 呼叫端不呼叫 apply 的話，這個節點原封不動——這正是托盤「對不上
+   * 檔名就維持原樣，讓破圖佔位樣式接手」的機制。
+   * 這個函式只操作傳進來的 doc；只在 isolated() 裡才會傳進一份
+   * DOMParser 剖析出、隨這次呼叫就丟棄的複本，從來不會傳進呼叫端
+   * 自己留著的原始字串或版本紀錄。
+   */
+  function forEachImageRef(doc, onRef) {
+    var imgs = doc.querySelectorAll('img[src]');
+    for (var i = 0; i < imgs.length; i++) {
+      (function (img) {
+        var raw = img.getAttribute('src');
+        if (!urlIsReplaceable(raw)) return;
+        onRef(raw, function (dataUrl) { img.setAttribute('src', dataUrl); });
+      })(imgs[i]);
+    }
+
+    var withSrcset = doc.querySelectorAll('img[srcset],source[srcset]');
+    for (var j = 0; j < withSrcset.length; j++) {
+      (function (el) {
+        var raw = el.getAttribute('srcset');
+        var candidates = raw.split(',');
+        var replacements = {};
+        candidates.forEach(function (part) {
+          var trimmed = part.trim();
+          var m = trimmed.match(/^(\S+)(\s.*)?$/);
+          if (!m || !urlIsReplaceable(m[1])) return;
+          onRef(m[1], function (dataUrl) { replacements[m[1]] = dataUrl; });
+        });
+        if (!Object.keys(replacements).length) return;
+        var rebuilt = candidates.map(function (part) {
+          var trimmed = part.trim();
+          var m = trimmed.match(/^(\S+)(\s.*)?$/);
+          if (!m) return trimmed;
+          var descriptor = m[2] || '';
+          return replacements[m[1]] ? (replacements[m[1]] + descriptor) : trimmed;
+        }).join(', ');
+        el.setAttribute('srcset', rebuilt);
+      })(withSrcset[j]);
+    }
+
+    var cssUrlRe = /url\(\s*(['"]?)([^'")]+)\1\s*\)/g;
+
+    function scanCss(getText, setText) {
+      var text = getText();
+      if (!text || text.indexOf('url(') === -1) return;
+      var replacements = {};
+      var m;
+      cssUrlRe.lastIndex = 0;
+      while ((m = cssUrlRe.exec(text))) {
+        if (urlIsReplaceable(m[2])) {
+          (function (url) { onRef(url, function (dataUrl) { replacements[url] = dataUrl; }); })(m[2]);
+        }
+      }
+      if (!Object.keys(replacements).length) return;
+      var changed = false;
+      var next = text.replace(cssUrlRe, function (whole, quote, url) {
+        if (replacements[url]) { changed = true; return 'url(' + replacements[url] + ')'; }
+        return whole;
+      });
+      if (changed) setText(next);
+    }
+
+    var styleEls = doc.querySelectorAll('style');
+    for (var k = 0; k < styleEls.length; k++) {
+      (function (styleEl) {
+        scanCss(function () { return styleEl.textContent; }, function (t) { styleEl.textContent = t; });
+      })(styleEls[k]);
+    }
+
+    var withStyleAttr = doc.querySelectorAll('[style]');
+    for (var s = 0; s < withStyleAttr.length; s++) {
+      (function (el) {
+        scanCss(function () { return el.getAttribute('style'); }, function (t) { el.setAttribute('style', t); });
+      })(withStyleAttr[s]);
+    }
+  }
+
+  /* 給「這個版本用到的圖片路徑」那張表用：只列出來，不做任何替換。 */
+  function listImageRefs(html) {
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var seen = {};
+    var refs = [];
+    forEachImageRef(doc, function (rawUrl) {
+      if (seen[rawUrl]) return;
+      seen[rawUrl] = true;
+      refs.push({ rawUrl: rawUrl, filename: basenameOf(rawUrl) });
+    });
+    return refs;
+  }
+
+  var PLACEHOLDER_STYLE = "img:not([src^='data:']){display:block;min-height:160px;background:#e9eee7;border-radius:10px;padding:16px;color:#586259;text-align:center;font-size:14px;box-sizing:border-box;object-fit:contain}";
+
+  /**
+   * 只做兩件事，而且都是收緊，不是放寬：
+   * - 拿掉貼上內容裡原本的 <meta http-equiv> 與 <base>，換成這裡固定的
+   *   安全政策，避免作品自己的設定蓋掉隔離設定。
+   * - iframe 本身用 sandbox="allow-scripts"（沒有 allow-same-origin），
+   *   所以就算作品裡的程式想跳到別的網址或讀取上層頁面，也做不到。
+   * DOMParser 只解析、不執行，不管貼進來的是完整文件還是片段，
+   * 瀏覽器都會把它補成一份完整的 <html><head><body> 文件。
+   *
+   * 這裡也是「放照片」托盤的替換點，原則只有一條：
+   * - 圖片路徑替換永遠只發生在這份用 DOMParser 剖析出來、隨這次呼叫
+   *   就丟棄的 doc 上面，換成本機轉出的 data URI；永遠不會去改呼叫端
+   *   存著的 html 字串本身（version.html）。貼上框、版本紀錄、下載出
+   *   來的檔案，看到的永遠是學員貼進來的那一份，一個字元都不動。
+   * - 破圖佔位樣式（img 找不到本機照片時的淺底圓角提示）也只加在這裡
+   *   回傳的 srcdoc 字串上，不會進下載的檔案。
+   */
+  var PREVIEW_FORM_BRIDGE = "/* Preview-only: run the pasted page's own submit handler, never submit a form. */\n(function () {\n  var active = new WeakSet();\n  var implicitTypes = new Set([\n    'text', 'search', 'url', 'tel', 'email', 'password', 'date',\n    'month', 'week', 'time', 'datetime-local', 'number',\n  ]);\n\n  function isSubmitter(control) {\n    return control && (control.tagName === 'BUTTON' && control.type === 'submit'\n      || control.tagName === 'INPUT' && (control.type === 'submit' || control.type === 'image'));\n  }\n\n  function submitLocally(form, submitter) {\n    if (!form || active.has(form)) return;\n    // Preserve author-selected native validation, including formnovalidate.\n    if (!form.noValidate && !(submitter && submitter.formNoValidate) && !form.reportValidity()) return;\n    active.add(form);\n    try {\n      // This is an untrusted SubmitEvent, not the browser's submission algorithm.\n      // Existing handlers read the real current fields. No state is invented here.\n      form.dispatchEvent(new SubmitEvent('submit', {\n        bubbles: true, cancelable: true, submitter: submitter || null,\n      }));\n    } finally {\n      active.delete(form);\n    }\n  }\n\n  // Install after the pasted scripts. Target/ancestor click handlers run first;\n  // their preventDefault remains authoritative, and reset/type=button are ignored.\n  window.addEventListener('click', function (event) {\n    if (event.defaultPrevented || !(event.target instanceof Element)) return;\n    var submitter = event.target.closest('button,input');\n    if (!isSubmitter(submitter) || !submitter.form || submitter.matches(':disabled')) return;\n    event.preventDefault();\n    submitLocally(submitter.form, submitter);\n  });\n\n  window.addEventListener('keydown', function (event) {\n    if (event.defaultPrevented || event.key !== 'Enter' || event.isComposing || event.repeat\n      || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;\n    var input = event.target;\n    // Textareas, contenteditable and non-implicit controls keep their own behavior.\n    if (!(input instanceof HTMLInputElement) || !implicitTypes.has(input.type)\n      || !input.form || input.matches(':disabled')) return;\n    var form = input.form;\n    var submitter = Array.from(document.querySelectorAll('button,input')).find(function (control) {\n      return isSubmitter(control) && control.form === form;\n    });\n    if (submitter) {\n      if (submitter.matches(':disabled')) return;\n      event.preventDefault();\n      // Respect the original button's click handler as well as the submit handler.\n      submitter.click();\n    } else {\n      var blockers = Array.from(form.elements).filter(function (control) {\n        return control instanceof HTMLInputElement && implicitTypes.has(control.type);\n      });\n      if (blockers.length > 1) return;\n      event.preventDefault();\n      submitLocally(form, null);\n    }\n  });\n})();\n";
+  function isolated(html, photoMap) {
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var toRemove = doc.querySelectorAll('meta[http-equiv],base');
+    for (var i = 0; i < toRemove.length; i++) toRemove[i].remove();
+    if (photoMap && Object.keys(photoMap).length) {
+      forEachImageRef(doc, function (rawUrl, apply) {
+        if (photoMap[rawUrl]) apply(photoMap[rawUrl]);
+      });
+    }
+    var policy = doc.createElement('meta');
+    policy.httpEquiv = 'Content-Security-Policy';
+    policy.content = "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'";
+    doc.head.prepend(policy);
+    var placeholder = doc.createElement('style');
+    placeholder.textContent = PLACEHOLDER_STYLE;
+    doc.head.appendChild(placeholder);
+    // Only the disposable srcdoc receives this bridge. Stored/exported HTML is untouched.
+    var formBridge = doc.createElement('script');
+    formBridge.dataset.previewFormBridge = 'local-only';
+    formBridge.textContent = PREVIEW_FORM_BRIDGE;
+    doc.body.appendChild(formBridge);
+    return '<!doctype html>\n' + doc.documentElement.outerHTML;
+  }
+
+  async function selectVersion(id, message) {
+    var version = findVersion(id);
+    if (!version) return;
+    state.selectedId = id;
+    var photoMap = await refreshPhotoTray(id, version.html);
+    $('preview-frame').srcdoc = isolated(version.html, photoMap);
+    $('preview-label').textContent = version.label;
+    $('version-meta').textContent = describe(version);
+    $('download-button').disabled = false;
+    renderVersionTabs();
+    status('preview-status', message || ('正在看「' + version.label + '」。試著點點看上面的按鈕與連結，確認畫面跟你想的一樣。'));
+  }
+
+  /* ---------------------------------------------------------------- 放照片托盤 */
+  /*
+   * 照片只存瀏覽器本機的 IndexedDB（localStorage 放不下）。state.versions
+   * 完全不碰照片，保持乾淨好搬；照片另外用兩個 store 存，用版本 id 關聯：
+   * - photos：{id, versionId, filename, mime, dataUrl, size, originalSize,
+   *   resized, addedAt}，dataUrl 已經是 base64，預覽替換跟下載都直接用。
+   * - mappings：檔名對不上時的手動指定，key 是 versionId + rawUrl。
+   * 之後場域 v0 要讓作品跟著人走時，照片要能一起搬，所以現在就用
+   * versionId 當關聯鍵，而不是把照片塞進 state.versions 裡面。
+   */
+
+  var PHOTO_DB_NAME = 'thinker.pastepreview.photos.v1';
+  var PHOTO_MAX_BYTES = 2 * 1024 * 1024;
+  var PHOTO_MAX_SIDE = 1600;
+  var dbPromise = null;
+
+  function openPhotoDb() {
+    if (!window.indexedDB) return Promise.reject(new Error('這個瀏覽器沒有 indexedDB'));
+    if (dbPromise) return dbPromise;
+    dbPromise = new Promise(function (resolve, reject) {
+      var req = indexedDB.open(PHOTO_DB_NAME, 1);
+      req.onupgradeneeded = function () {
+        var db = req.result;
+        if (!db.objectStoreNames.contains('photos')) {
+          var photoStore = db.createObjectStore('photos', { keyPath: 'id', autoIncrement: true });
+          photoStore.createIndex('versionId', 'versionId', { unique: false });
+        }
+        if (!db.objectStoreNames.contains('mappings')) {
+          var mapStore = db.createObjectStore('mappings', { keyPath: ['versionId', 'rawUrl'] });
+          mapStore.createIndex('versionId', 'versionId', { unique: false });
+        }
+      };
+      req.onsuccess = function () { resolve(req.result); };
+      req.onerror = function () { reject(req.error); };
+    });
+    return dbPromise;
+  }
+
+  function dbGetPhotosByVersion(versionId) {
+    return openPhotoDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction('photos', 'readonly');
+        var req = tx.objectStore('photos').index('versionId').getAll(IDBKeyRange.only(versionId));
+        req.onsuccess = function () { resolve(req.result || []); };
+        req.onerror = function () { reject(req.error); };
+      });
+    });
+  }
+
+  function dbAddPhoto(record) {
+    return openPhotoDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction('photos', 'readwrite');
+        var req = tx.objectStore('photos').add(record);
+        req.onsuccess = function () { resolve(req.result); };
+        req.onerror = function () { reject(req.error); };
+      });
+    });
+  }
+
+  function dbDeletePhoto(id) {
+    return openPhotoDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction('photos', 'readwrite');
+        tx.objectStore('photos').delete(id);
+        tx.oncomplete = function () { resolve(); };
+        tx.onerror = function () { reject(tx.error); };
+      });
+    });
+  }
+
+  function dbGetMappingsByVersion(versionId) {
+    return openPhotoDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction('mappings', 'readonly');
+        var req = tx.objectStore('mappings').index('versionId').getAll(IDBKeyRange.only(versionId));
+        req.onsuccess = function () {
+          var out = {};
+          (req.result || []).forEach(function (m) { out[m.rawUrl] = m.photoId; });
+          resolve(out);
+        };
+        req.onerror = function () { reject(req.error); };
+      });
+    });
+  }
+
+  function dbSetMapping(versionId, rawUrl, photoId) {
+    return openPhotoDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction('mappings', 'readwrite');
+        var store = tx.objectStore('mappings');
+        if (photoId) store.put({ versionId: versionId, rawUrl: rawUrl, photoId: photoId });
+        else store.delete([versionId, rawUrl]);
+        tx.oncomplete = function () { resolve(); };
+        tx.onerror = function () { reject(tx.error); };
+      });
+    });
+  }
+
+  function dbClearAllPhotos() {
+    return openPhotoDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction(['photos', 'mappings'], 'readwrite');
+        tx.objectStore('photos').clear();
+        tx.objectStore('mappings').clear();
+        tx.oncomplete = function () { resolve(); };
+        tx.onerror = function () { reject(tx.error); };
+      });
+    });
+  }
+
+  function formatBytes(n) {
+    if (n < 1024) return n + ' B';
+    if (n < 1024 * 1024) return (n / 1024).toFixed(1) + ' KB';
+    return (n / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function isAllowedImageFile(file) {
+    var type = (file.type || '').toLowerCase();
+    if (type === 'image/jpeg' || type === 'image/png' || type === 'image/webp') return true;
+    return /\.(jpe?g|png|webp)$/i.test(file.name || '');
+  }
+
+  function readFileAsDataUrl(file) {
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function () { resolve(reader.result); };
+      reader.onerror = function () { reject(reader.error || new Error('讀取失敗')); };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /* 只有超過約 2MB 才會走這裡：用 canvas 縮到長邊 1600px，換更小的檔案。 */
+  function resizeImageFile(file) {
+    return new Promise(function (resolve, reject) {
+      var objectUrl = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () {
+        var w = img.naturalWidth, h = img.naturalHeight;
+        var scale = Math.min(1, PHOTO_MAX_SIDE / Math.max(w, h));
+        var canvas = document.createElement('canvas');
+        canvas.width = Math.max(1, Math.round(w * scale));
+        canvas.height = Math.max(1, Math.round(h * scale));
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+        URL.revokeObjectURL(objectUrl);
+        var outMime = file.type === 'image/png' ? 'image/png' : 'image/jpeg';
+        var dataUrl = canvas.toDataURL(outMime, outMime === 'image/jpeg' ? 0.85 : undefined);
+        resolve({ dataUrl: dataUrl, width: canvas.width, height: canvas.height });
+      };
+      img.onerror = function () { URL.revokeObjectURL(objectUrl); reject(new Error('圖片讀取失敗')); };
+      img.src = objectUrl;
+    });
+  }
+
+  function decodeDataUrlToBytes(dataUrl) {
+    var comma = dataUrl.indexOf(',');
+    var binary = atob(dataUrl.slice(comma + 1));
+    var bytes = new Uint8Array(binary.length);
+    for (var i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return bytes;
+  }
+
+  async function addPhotoFiles(versionId, fileList) {
+    var files = Array.prototype.slice.call(fileList);
+    var messages = [];
+    for (var i = 0; i < files.length; i++) {
+      var file = files[i];
+      if (!isAllowedImageFile(file)) {
+        messages.push('「' + file.name + '」不是 jpg / png / webp，已略過。');
+        continue;
+      }
+      try {
+        var dataUrl, resized = false;
+        if (file.size > PHOTO_MAX_BYTES) {
+          var out = await resizeImageFile(file);
+          dataUrl = out.dataUrl;
+          resized = true;
+        } else {
+          dataUrl = await readFileAsDataUrl(file);
+        }
+        var bytes = decodeDataUrlToBytes(dataUrl);
+        var existing = await dbGetPhotosByVersion(versionId);
+        var dup = existing.filter(function (p) { return p.filename.toLowerCase() === file.name.toLowerCase(); })[0];
+        if (dup) await dbDeletePhoto(dup.id);
+        await dbAddPhoto({
+          versionId: versionId,
+          filename: file.name,
+          mime: dataUrl.slice(5, dataUrl.indexOf(';')),
+          dataUrl: dataUrl,
+          size: bytes.length,
+          originalSize: file.size,
+          resized: resized,
+          addedAt: new Date().toISOString()
+        });
+        messages.push(resized
+          ? '「' + file.name + '」原本 ' + formatBytes(file.size) + '，已經幫你縮到長邊 1600px，現在是 ' + formatBytes(bytes.length) + '，不影響托盤裡看到的樣子。'
+          : '已放入「' + file.name + '」（' + formatBytes(bytes.length) + '）。');
+      } catch (err) {
+        messages.push('「' + file.name + '」處理失敗：' + err.message);
+      }
+    }
+    return messages;
+  }
+
+  function renderPhotoList(photos) {
+    var list = $('photo-list');
+    var hint = $('photo-empty-hint');
+    hint.hidden = photos.length > 0;
+    list.replaceChildren.apply(list, photos.map(function (p) {
+      var chip = document.createElement('div');
+      chip.className = 'photo-chip';
+      var img = document.createElement('img');
+      img.src = p.dataUrl;
+      img.alt = p.filename;
+      var name = document.createElement('div');
+      name.className = 'photo-chip-name';
+      name.textContent = p.filename;
+      var meta = document.createElement('div');
+      meta.className = 'photo-chip-meta';
+      meta.textContent = formatBytes(p.size) + (p.resized ? '（已縮圖）' : '');
+      var removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'photo-chip-remove';
+      removeBtn.textContent = '移除';
+      removeBtn.addEventListener('click', function () { removePhoto(p.id); });
+      chip.append(img, name, meta, removeBtn);
+      return chip;
+    }));
+  }
+
+  /*
+   * 「這個版本用到的圖片路徑」各自對應到托盤裡的哪一張照片。三條規則，
+   * 由強到弱，第一條對上就停：
+   *   ① manual   學員自己在第三欄下拉選單指定的（存在 IndexedDB 的 mappings）。
+   *   ② filename 照片檔名跟網頁裡引用的檔名一模一樣。
+   *   ③ only-one 2026-09-21 新增：**還沒對應的圖片引用剛好只有一個，托盤裡的
+   *      照片也剛好只有一張，而且那張還沒被別的引用用掉**，就對應上去。
+   * 為什麼要第三條：AI 生圖工具給的檔名（實測值「ChatGPT Image 2026年9月20日
+   * 下午09_12_42.png」）永遠不會等於網頁裡寫的 images/hero.jpg，只靠②學員
+   * 永遠對不上，一定得自己去點那個下拉選單——而課文與影片教的是「拖進托盤，
+   * 首圖就換成照片」。只有「一個缺口配一張照片」這種毫無歧義的情況才自動；
+   * 多個引用、或一次放多張，一律維持下拉選單讓學員自己指，不要猜。
+   * 三條都對不上就是 null，維持「尚未對應」與破圖佔位樣式。
+   * 回傳的 how 只影響對應表那一列的說明文字——學員看得到是哪條規則做的，
+   * 也隨時可以用下拉選單改掉。
+   */
+  function resolveRefPhotos(refs, photos, mappings) {
+    var map = mappings || {};
+    var byLower = {}; photos.forEach(function (p) { byLower[p.filename.toLowerCase()] = p; });
+    var byId = {}; photos.forEach(function (p) { byId[p.id] = p; });
+    var used = {};
+    var rows = refs.map(function (ref) {
+      var mappedId = map[ref.rawUrl];
+      var manual = (mappedId && byId[mappedId]) || null;
+      var photo = manual || byLower[ref.filename.toLowerCase()] || null;
+      if (photo) used[photo.id] = true;
+      return { ref: ref, photo: photo, manual: !!manual, how: manual ? 'manual' : (photo ? 'filename' : null) };
+    });
+    var gaps = rows.filter(function (row) { return !row.photo; });
+    if (gaps.length === 1 && photos.length === 1 && !used[photos[0].id]) {
+      gaps[0].photo = photos[0];
+      gaps[0].how = 'only-one';
+    }
+    return rows;
+  }
+
+  function renderRefTable(refs, photos, mappings) {
+    var table = $('ref-table');
+    var body = $('ref-table-body');
+    var hint = $('ref-empty-hint');
+    hint.hidden = refs.length > 0;
+    table.hidden = refs.length === 0;
+    body.replaceChildren.apply(body, resolveRefPhotos(refs, photos, mappings).map(function (row) {
+      var ref = row.ref;
+      var photo = row.photo;
+      var mappedId = row.manual ? mappings[ref.rawUrl] : null;
+
+      var tr = document.createElement('tr');
+      var pathTd = document.createElement('td');
+      var code = document.createElement('code');
+      code.textContent = ref.rawUrl;
+      pathTd.append(code);
+
+      var statusTd = document.createElement('td');
+      var pill = document.createElement('span');
+      pill.className = 'ref-status ' + (photo ? 'matched' : 'unmatched');
+      pill.textContent = photo ? '已對應' : '尚未對應';
+      statusTd.append(pill);
+
+      var pickTd = document.createElement('td');
+      var select = document.createElement('select');
+      select.setAttribute('aria-label', ref.rawUrl + ' 對應到哪張照片');
+      var optNone = document.createElement('option');
+      optNone.value = '';
+      optNone.textContent = mappedId ? '取消手動指定（改回依檔名自動對應）' : '－ 選擇照片 －';
+      select.append(optNone);
+      photos.forEach(function (p) {
+        var opt = document.createElement('option');
+        opt.value = String(p.id);
+        opt.textContent = p.filename;
+        if (mappedId && String(p.id) === String(mappedId)) opt.selected = true;
+        select.append(opt);
+      });
+      select.addEventListener('change', function () { onMappingChange(ref.rawUrl, select.value); });
+      pickTd.append(select);
+      if (photo && row.how === 'filename') {
+        var autoNote = document.createElement('div');
+        autoNote.className = 'meta';
+        autoNote.style.margin = '4px 0 0';
+        autoNote.textContent = '依檔名自動對應到「' + photo.filename + '」，不用手動選。';
+        pickTd.append(autoNote);
+      } else if (photo && row.how === 'only-one') {
+        var onlyNote = document.createElement('div');
+        onlyNote.className = 'meta';
+        onlyNote.style.margin = '4px 0 0';
+        onlyNote.textContent = '自動對應到「' + photo.filename
+          + '」：這個版本只缺這一張圖，托盤裡也只有這一張照片。要換成別張就用上面的選單。';
+        pickTd.append(onlyNote);
+      }
+
+      tr.append(pathTd, statusTd, pickTd);
+      return tr;
+    }));
+  }
+
+  var photoRenderToken = 0;
+
+  async function refreshPhotoTray(versionId, html) {
+    var token = ++photoRenderToken;
+    var refs = listImageRefs(html);
+    if (!window.indexedDB) {
+      status('photo-status', '這個瀏覽器不支援本機儲存照片，放照片功能無法使用。', true);
+      renderPhotoList([]);
+      renderRefTable(refs, [], {});
+      return {};
+    }
+    var photos, mappings;
+    try {
+      photos = await dbGetPhotosByVersion(versionId);
+      mappings = await dbGetMappingsByVersion(versionId);
+    } catch (err) {
+      if (token !== photoRenderToken) return {};
+      status('photo-status', '讀取本機照片失敗：' + err.message, true);
+      return {};
+    }
+    if (token !== photoRenderToken) return {};
+    renderPhotoList(photos);
+    renderRefTable(refs, photos, mappings);
+    // 預覽替換與對應表走同一支 resolveRefPhotos()，不要各算各的——這兩處
+    // 只要有一處漏掉新規則，畫面就會出現「表上寫已對應、預覽還是破圖」。
+    var map = {};
+    resolveRefPhotos(refs, photos, mappings).forEach(function (row) {
+      if (row.photo) map[row.ref.rawUrl] = row.photo.dataUrl;
+    });
+    return map;
+  }
+
+  async function rerenderCurrentPreview() {
+    var version = findVersion(state.selectedId);
+    if (!version) { renderPhotoList([]); renderRefTable([], [], {}); return; }
+    var photoMap = await refreshPhotoTray(state.selectedId, version.html);
+    $('preview-frame').srcdoc = isolated(version.html, photoMap);
+  }
+
+  async function removePhoto(id) {
+    try { await dbDeletePhoto(id); } catch (err) { status('photo-status', '移除失敗：' + err.message, true); return; }
+    await rerenderCurrentPreview();
+  }
+
+  async function onMappingChange(rawUrl, photoIdStr) {
+    try { await dbSetMapping(state.selectedId, rawUrl, photoIdStr ? Number(photoIdStr) : null); }
+    catch (err) { status('photo-status', '對應失敗：' + err.message, true); return; }
+    await rerenderCurrentPreview();
+  }
+
+  async function onPhotoFilesAdded(fileList) {
+    if (!state.selectedId) {
+      status('photo-status', '請先貼上並按「儲存並預覽」，有版本之後才能放照片。', true);
+      return;
+    }
+    var messages = await addPhotoFiles(state.selectedId, fileList);
+    status('photo-status', messages.join(' '));
+    await rerenderCurrentPreview();
+  }
+
+  var photoDrop = $('photo-drop');
+  var photoFileInput = $('photo-file-input');
+  photoDrop.addEventListener('click', function () { photoFileInput.click(); });
+  photoDrop.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); photoFileInput.click(); }
+  });
+  photoDrop.addEventListener('dragover', function (e) { e.preventDefault(); photoDrop.classList.add('dragover'); });
+  photoDrop.addEventListener('dragleave', function () { photoDrop.classList.remove('dragover'); });
+  photoDrop.addEventListener('drop', function (e) {
+    e.preventDefault();
+    photoDrop.classList.remove('dragover');
+    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) onPhotoFilesAdded(e.dataTransfer.files);
+  });
+  photoFileInput.addEventListener('change', function (e) {
+    if (e.target.files && e.target.files.length) onPhotoFilesAdded(e.target.files);
+    e.target.value = '';
+  });
+
+  if (!window.indexedDB) {
+    status('photo-status', '這個瀏覽器不支援本機儲存照片，放照片功能無法使用。', true);
+  }
+
+  /* -------------------------------------------------------- 預覽寬度切換 */
+  /*
+   * 兩種模式的做法不一樣，這點很重要：
+   *
+   * 手機（390px）：容器真的變窄到 390px，iframe 也真的是 390px 寬，
+   * 不縮放。被預覽的網頁自己的 @media 規則吃到這個寬度、跑出它自己的
+   * 手機版面——這條本來就是對的，這次沒有動它。
+   *
+   * 桌機：框在頁面裡只有 950px 上下，但真正的桌機瀏覽器是 1440px 上
+   * 下。直接把 iframe 做成 950 寬，網頁會以為自己在窄螢幕上：店名折
+   * 行、首屏的「查看菜單」被擠到 560px 的框外面，學生看到的不是他真
+   * 正的桌機版。所以改成「用 1440 的版面寬度渲染，再等比縮小塞進
+   * 框」——iframe 的 CSS 寬高設成 1440 × (框高 ÷ scale)，再用
+   * transform: scale() 縮回框的大小。transform 只改畫面呈現，不改
+   * iframe 自己的 layout 寬度，所以網頁看到的 innerWidth 一直是 1440。
+   * transform-origin 設 0 0（CSS 裡），縮放才是從左上角收，不會偏移；
+   * 瀏覽器的點擊命中測試會跟著 transform 走，所以點到的還是視覺上那
+   * 個元素（這點有實際點過驗證，不是照理說）。
+   *
+   * 跟版本資料完全分開：這是畫面狀態，不寫進 state.versions，也不進
+   * persist()，重新整理就回到桌機。
+   */
+
+  var DESKTOP_CSS_WIDTH = 1440;
+
+  function applyPreviewScale() {
+    var wrap = $('preview-frame-wrap');
+    var frame = $('preview-frame');
+    if (!wrap || !frame) return;
+    var box = wrap.getBoundingClientRect();
+    if (!box.width || !box.height) return;
+
+    if (wrap.classList.contains('is-mobile')) {
+      /* 手機：不縮放，清掉桌機模式留下的行內樣式，回到 CSS 的 100%。 */
+      frame.style.width = '';
+      frame.style.height = '';
+      frame.style.transform = '';
+      $('viewport-width').textContent = Math.round(box.width) + 'px';
+      return;
+    }
+
+    /* scale 封頂 1：框比 1440 還寬時就不放大，直接用框本身的寬度。 */
+    var scale = Math.min(1, box.width / DESKTOP_CSS_WIDTH);
+    var cssWidth = box.width / scale;
+    var cssHeight = box.height / scale;
+    frame.style.width = cssWidth + 'px';
+    frame.style.height = cssHeight + 'px';
+    frame.style.transform = scale < 1 ? 'scale(' + scale + ')' : 'none';
+    $('viewport-width').textContent = Math.round(cssWidth) + 'px'
+      + (scale < 1 ? '（縮到 ' + Math.round(scale * 100) + '% 塞進框裡）' : '');
+  }
+
+  function setViewport(mode) {
+    var isMobile = mode === 'mobile';
+    $('preview-frame-wrap').classList.toggle('is-mobile', isMobile);
+    $('viewport-desktop').setAttribute('aria-pressed', String(!isMobile));
+    $('viewport-mobile').setAttribute('aria-pressed', String(isMobile));
+    applyPreviewScale();
+  }
+
+  $('viewport-desktop').addEventListener('click', function () { setViewport('desktop'); });
+  $('viewport-mobile').addEventListener('click', function () { setViewport('mobile'); });
+
+  /*
+   * 容器的寬高是 CSS 決定的（寬 100% / 390px，高 560px 或窄螢幕 460px），
+   * 改 iframe 的行內寬高不會回頭改到容器，所以這個 observer 不會自激。
+   */
+  if (window.ResizeObserver) {
+    new ResizeObserver(applyPreviewScale).observe($('preview-frame-wrap'));
+  } else {
+    window.addEventListener('resize', applyPreviewScale);
+  }
+  applyPreviewScale();
+
+  /* ---------------------------------------------------------------- 存檔 */
+
+  var inputSource = 'paste';
+  $('html-input').addEventListener('input', function () { inputSource = 'paste'; });
+
+  function addVersion(html, source) {
+    var now = new Date().toISOString();
+    var version = { id: newId(), label: nextLabel(), html: html, source: source, savedAt: now };
+    state.versions.push(version);
+    return version;
+  }
+
+  function save(replace) {
+    var raw = $('html-input').value;
+    if (!raw || !raw.trim()) {
+      status('save-status', '輸入框是空的，請先把 AI 回覆的完整 HTML 貼進來。', true);
+      return;
+    }
+    var html = raw.trim();
+
+    if (replace) {
+      var target = findVersion(state.selectedId);
+      if (!target) {
+        status('save-status', '目前沒有選取任何版本可以取代，請先按「儲存並預覽」存出第一個版本。', true);
+        return;
+      }
+      target.html = html;
+      target.source = inputSource;
+      target.savedAt = new Date().toISOString();
+      renderVersionTabs();
+      selectVersion(target.id, '已取代「' + target.label + '」。');
+      var okReplace = persist();
+      status('save-status', okReplace
+        ? '已取代「' + target.label + '」，並存在這個瀏覽器。'
+        : '已取代「' + target.label + '」，但這個瀏覽器無法儲存，關掉分頁就會不見，請立刻按「下載目前這一版」。', !okReplace);
+      $('preview-frame').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
+    var version = addVersion(html, inputSource);
+    renderVersionTabs();
+    selectVersion(version.id, '正在看「' + version.label + '」。試著點點看上面的按鈕與連結，確認畫面跟你想的一樣。');
+    var ok = persist();
+    status('save-status', ok
+      ? '已新增「' + version.label + '」，並存在這個瀏覽器。舊的版本都還在，可以隨時切回去比較。'
+      : '已新增「' + version.label + '」，但這個瀏覽器無法儲存，關掉分頁就會不見，請立刻按「下載目前這一版」。', !ok);
+    $('preview-frame').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  $('save-button').addEventListener('click', function () { save(false); });
+  $('replace-button').addEventListener('click', function () { save(true); });
+  $('clear-input').addEventListener('click', function () {
+    $('html-input').value = '';
+    inputSource = 'paste';
+    status('save-status', '輸入框已清空。你已經存好的版本都還在，沒有被刪掉。');
+  });
+
+  $('file-input').addEventListener('change', function (event) {
+    var file = event.target.files[0];
+    if (!file) return;
+    file.text().then(function (text) {
+      $('html-input').value = text;
+      inputSource = 'file';
+      status('save-status', '已把「' + file.name + '」放進輸入框。按「儲存並預覽」才會存成一個版本。');
+    }).catch(function (error) {
+      status('save-status', '讀不到這個檔案：' + error.message, true);
+    }).finally(function () {
+      event.target.value = '';
+    });
+  });
+
+  /* ---------------------------------------------------------------- 下載 */
+
+  function download(data, filename, mime) {
+    var url = URL.createObjectURL(new Blob([data], { type: mime }));
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  function utf8Bytes(str) { return new TextEncoder().encode(str); }
+
+  var CRC_TABLE = (function () {
+    var table = new Uint32Array(256);
+    for (var n = 0; n < 256; n++) {
+      var c = n;
+      for (var k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+      table[n] = c >>> 0;
+    }
+    return table;
+  })();
+
+  function crc32(bytes) {
+    var crc = 0xFFFFFFFF;
+    for (var i = 0; i < bytes.length; i++) crc = CRC_TABLE[(crc ^ bytes[i]) & 0xFF] ^ (crc >>> 8);
+    return (crc ^ 0xFFFFFFFF) >>> 0;
+  }
+
+  function dosDateTime(date) {
+    var time = ((date.getHours() & 0x1F) << 11) | ((date.getMinutes() & 0x3F) << 5) | ((date.getSeconds() >> 1) & 0x1F);
+    var d = (((date.getFullYear() - 1980) & 0x7F) << 9) | (((date.getMonth() + 1) & 0xF) << 5) | (date.getDate() & 0x1F);
+    return { time: time, date: d };
+  }
+
+  /*
+   * 只存不壓的最小 zip 產生器，瀏覽器本機執行，自己寫的，沒有用任何
+   * 外部函式庫或 CDN。每個檔案都用 STORE（不壓縮）：
+   * local file header → 檔案原始位元組，全部檔案結束後接 central
+   * directory，最後接 end of central directory record。檔名一律
+   * UTF-8，並打開 language encoding flag（bit 11），讓中文檔名也能被
+   * 一般的解壓縮工具讀對。entries 是 [{name, bytes}]，bytes 一定是
+   * Uint8Array，且必須跟放進托盤、跟預覽替換用的是同一份位元組，
+   * 這樣「解壓後跟原檔逐位元組相同」才會成立。
+   */
+  function buildZip(entries) {
+    var encoder = new TextEncoder();
+    var dt = dosDateTime(new Date());
+    var localChunks = [];
+    var centralChunks = [];
+    var offset = 0;
+
+    entries.forEach(function (entry) {
+      var nameBytes = encoder.encode(entry.name);
+      var bytes = entry.bytes;
+      var crc = crc32(bytes);
+      var flags = 0x0800;
+
+      var localHeader = new Uint8Array(30 + nameBytes.length);
+      var dv = new DataView(localHeader.buffer);
+      dv.setUint32(0, 0x04034b50, true);
+      dv.setUint16(4, 20, true);
+      dv.setUint16(6, flags, true);
+      dv.setUint16(8, 0, true);
+      dv.setUint16(10, dt.time, true);
+      dv.setUint16(12, dt.date, true);
+      dv.setUint32(14, crc, true);
+      dv.setUint32(18, bytes.length, true);
+      dv.setUint32(22, bytes.length, true);
+      dv.setUint16(26, nameBytes.length, true);
+      dv.setUint16(28, 0, true);
+      localHeader.set(nameBytes, 30);
+      localChunks.push(localHeader, bytes);
+
+      var centralHeader = new Uint8Array(46 + nameBytes.length);
+      var cdv = new DataView(centralHeader.buffer);
+      cdv.setUint32(0, 0x02014b50, true);
+      cdv.setUint16(4, 20, true);
+      cdv.setUint16(6, 20, true);
+      cdv.setUint16(8, flags, true);
+      cdv.setUint16(10, 0, true);
+      cdv.setUint16(12, dt.time, true);
+      cdv.setUint16(14, dt.date, true);
+      cdv.setUint32(16, crc, true);
+      cdv.setUint32(20, bytes.length, true);
+      cdv.setUint32(24, bytes.length, true);
+      cdv.setUint16(28, nameBytes.length, true);
+      cdv.setUint16(30, 0, true);
+      cdv.setUint16(32, 0, true);
+      cdv.setUint16(34, 0, true);
+      cdv.setUint16(36, 0, true);
+      cdv.setUint32(38, 0, true);
+      cdv.setUint32(42, offset, true);
+      centralHeader.set(nameBytes, 46);
+      centralChunks.push(centralHeader);
+
+      offset += localHeader.length + bytes.length;
+    });
+
+    var centralSize = centralChunks.reduce(function (sum, c) { return sum + c.length; }, 0);
+    var centralOffset = offset;
+    var end = new Uint8Array(22);
+    var edv = new DataView(end.buffer);
+    edv.setUint32(0, 0x06054b50, true);
+    edv.setUint16(4, 0, true);
+    edv.setUint16(6, 0, true);
+    edv.setUint16(8, entries.length, true);
+    edv.setUint16(10, entries.length, true);
+    edv.setUint32(12, centralSize, true);
+    edv.setUint32(16, centralOffset, true);
+    edv.setUint16(20, 0, true);
+
+    var all = localChunks.concat(centralChunks, [end]);
+    var total = all.reduce(function (sum, c) { return sum + c.length; }, 0);
+    var out = new Uint8Array(total);
+    var pos = 0;
+    all.forEach(function (chunk) { out.set(chunk, pos); pos += chunk.length; });
+    return out;
+  }
+
+  /*
+   * 檔名一律固定：沒照片是 index.html，有照片是 index.zip（裡面才是
+   * index.html + images/）。不用版本名當檔名，因為課文與旁白教的就是
+   * 「按下載就會得到 index.html」——網站首頁的檔名必須是 index.html，
+   * 換成「版本 1.html」學生照著放上去就開不了。同名重下載時，瀏覽器
+   * 自己會補成 index (1).html，那是他本機的事，不影響教材口徑。
+   */
+  /*
+   * zip 裡那個條目該叫什麼：**網頁裡引用的那個路徑**，不是照片自己的檔名。
+   * 🔴 2026-09-21 修掉的錯：這裡本來寫 `'images/' + p.filename`。學員對應好、
+   * 按下載，zip 裡是 index.html（內容寫 images/hero.jpg）加上
+   * images/ChatGPT Image ….png——解壓打開首圖必破，而且對應表上明明寫著
+   * 「已對應」。之所以一路綠燈，是因為之前驗 zip 時用的照片剛好就叫
+   * hero.jpg，量到的是「檔名相同」那個特例。
+   * 副檔名與內容不一致（引用是 .jpg、學員的照片是 PNG）照存不動：瀏覽器
+   * 看的是內容不是副檔名，一樣正常顯示，不轉檔、也不動學員的 HTML。
+   */
+  function zipPathForRef(rawUrl) {
+    var clean = String(rawUrl).split(/[?#]/)[0].trim().replace(/^\.?\//, '').replace(/^\/+/, '');
+    if (!clean || clean.indexOf('..') !== -1 || /[\\]/.test(clean)) return null;
+    return clean;
+  }
+
+  $('download-button').addEventListener('click', async function () {
+    var version = findVersion(state.selectedId);
+    if (!version) return;
+    var photos = [];
+    var mappings = {};
+    if (window.indexedDB) {
+      try { photos = await dbGetPhotosByVersion(state.selectedId); } catch (err) { photos = []; }
+      try { mappings = await dbGetMappingsByVersion(state.selectedId); } catch (err) { mappings = {}; }
+    }
+    if (!photos.length) {
+      download(version.html, 'index.html', 'text/html;charset=utf-8');
+      status('preview-status', '已下載「' + version.label + '」，檔名是 index.html，就是上面正在看的這一版。這個檔案用瀏覽器直接打得開。');
+      return;
+    }
+    var entries = [{ name: 'index.html', bytes: utf8Bytes(version.html) }];
+    var taken = {};
+    var used = {};
+    // ① 有對應到引用的照片：存成那個引用的路徑。同一張被多個引用用到就
+    //    每個路徑各存一份（解壓之後每個路徑都要真的有檔案）。
+    resolveRefPhotos(listImageRefs(version.html), photos, mappings).forEach(function (row) {
+      if (!row.photo) return;
+      used[row.photo.id] = true;
+      var name = zipPathForRef(row.ref.rawUrl) || ('images/' + row.photo.filename);
+      if (taken[name]) return;
+      taken[name] = true;
+      entries.push({ name: name, bytes: decodeDataUrlToBytes(row.photo.dataUrl) });
+    });
+    // ② 沒對應到任何引用的照片：維持 images/<原檔名>，不要吃掉學員自己
+    //    多放的圖。
+    photos.forEach(function (p) {
+      if (used[p.id]) return;
+      var name = 'images/' + p.filename;
+      if (taken[name]) return;
+      taken[name] = true;
+      entries.push({ name: name, bytes: decodeDataUrlToBytes(p.dataUrl) });
+    });
+    var zipBytes = buildZip(entries);
+    download(zipBytes, 'index.zip', 'application/zip');
+    status('preview-status', '已下載「' + version.label + '」，含 ' + photos.length + ' 張照片，打包成 index.zip。解壓縮之後就是 index.html 加一個 images 資料夾，打開 index.html 就看得到圖片，跟教材教的「圖片放 images 資料夾」是同一件事。');
+  });
+
+  /* ---------------------------------------------------------------- 清除 */
+
+  $('wipe-button').addEventListener('click', function () {
+    if (!confirm('確定要刪除這個瀏覽器裡的練習紀錄嗎？\n已經下載的檔案不受影響，但這個動作無法復原。')) {
+      status('save-status', '已取消，沒有刪除任何東西。');
+      return;
+    }
+    try { localStorage.removeItem(KEY); } catch (e) { /* 已經不能寫，本來就沒有紀錄可刪。 */ }
+    state.versions = [];
+    state.seq = 0;
+    state.selectedId = null;
+    renderVersionTabs();
+    $('preview-frame').removeAttribute('srcdoc');
+    $('preview-label').textContent = '還沒有版本可以預覽';
+    $('version-meta').textContent = '';
+    $('download-button').disabled = true;
+    renderStorage();
+    renderPhotoList([]);
+    renderRefTable([], [], {});
+    if (window.indexedDB) dbClearAllPhotos().catch(function () { /* 沒有紀錄可刪也沒關係 */ });
+    status('save-status', '已刪除這個瀏覽器裡的練習紀錄（含放過的照片），其他網站資料沒有動到。');
+  });
+
+  /* ---------------------------------------------------------------- 啟動 */
+
+  storageWritable = probeStorage();
+  restore();
+  renderStorage();
+  renderVersionTabs();
+  renderPhotoList([]);
+  renderRefTable([], [], {});
+  if (state.selectedId && findVersion(state.selectedId)) {
+    selectVersion(state.selectedId, '已找回這個瀏覽器裡的 ' + state.versions.length + ' 個版本。');
+  } else if (state.versions.length) {
+    selectVersion(state.versions[state.versions.length - 1].id, '已找回這個瀏覽器裡的 ' + state.versions.length + ' 個版本。');
+  }
+})();
+</script>
+<script src="split.js"></script>
+</body>
+</html>

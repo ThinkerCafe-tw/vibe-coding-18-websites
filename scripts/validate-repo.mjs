@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { validateMaterials } from './validate-materials.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
@@ -185,7 +186,7 @@ function isExternalTarget(target) {
   return /^(?:[a-z]+:|#|\/\/)/i.test(target);
 }
 
-async function validateHtmlLinks(files) {
+async function validateHtmlLinks(files, missingReferences) {
   for (const absolutePath of files.filter((file) => file.endsWith(".html"))) {
     const html = await fs.readFile(absolutePath, "utf8");
     const attributePattern = /\b(?:href|src)=["']([^"']+)["']/g;
@@ -202,6 +203,13 @@ async function validateHtmlLinks(files) {
       const candidate = target.endsWith("/") ? path.join(resolved, "index.html") : resolved;
 
       if (!candidate.startsWith(root) || !(await fileExists(candidate))) {
+        // Historical video HTML is preserved byte-for-byte. Only an explicitly
+        // disclosed, absent image with its original remove-on-error behavior is exempt.
+        if (missingReferences.get(absolutePath)?.has(target)
+            && /<img\b[^>]*onerror=["']this\.remove\(\)["'][^>]*>/i.test(html)) {
+          console.log(`已揭露原始素材缺件：${path.relative(root, absolutePath)} → ${target}`);
+          continue;
+        }
         const relativeFile = path.relative(root, absolutePath);
         report(`${relativeFile} 指向不存在的本地檔案：${target}`);
       }
@@ -248,8 +256,9 @@ async function validatePublicSafety(files) {
 
 await validateRequiredFiles();
 await validateManifest();
+const missingReferences = await validateMaterials(root, report);
 const files = await walk(root);
-await validateHtmlLinks(files);
+await validateHtmlLinks(files, missingReferences);
 await validatePublicSafety(files);
 
 if (errors.length > 0) {

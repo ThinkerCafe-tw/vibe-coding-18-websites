@@ -4,6 +4,8 @@ import html
 import json
 import re
 import zipfile
+import sys
+from importlib.util import spec_from_file_location, module_from_spec
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -27,8 +29,17 @@ def build(episode):
 <p>本套件可直接開檔使用。互動為課程示意；請使用虛構練習資料。</p></body></html>'''
     files = {p.relative_to(ROOT).as_posix(): p.read_bytes()
              for p in (ROOT / 'episodes' / slug).rglob('*') if p.is_file()}
-    for name in ['LICENSE', 'LICENSE-CONTENT', 'assets/teaching.css', 'assets/teaching.js']:
+    for name in ['LICENSE', 'LICENSE-CONTENT', 'assets/teaching.css', 'assets/teaching.js', 'assets/materials.js']:
         files[name] = (ROOT / name).read_bytes()
+    for p in (ROOT / 'tools' / 'preview').rglob('*'):
+        if p.is_file():
+            files[p.relative_to(ROOT).as_posix()] = p.read_bytes()
+    if slug == 'ep18-review':
+        # The opening studio links to these two lesson examples. Reference their
+        # canonical files so its links also work in the standalone archive.
+        for name in ['episodes/ep16-event/materials/index-after.html',
+                     'episodes/ep17-consultant/materials/index-before.html']:
+            files[name] = (ROOT / name).read_bytes()
     if b'assets/demo-records.js' in files[f'episodes/{slug}/site/index.html']:
         files['assets/demo-records.js'] = (ROOT / 'assets/demo-records.js').read_bytes()
     if b'assets/form-validation.js' in files[f'episodes/{slug}/site/index.html']:
@@ -47,5 +58,11 @@ def build(episode):
 
 
 if __name__ == '__main__':
+    sys.dont_write_bytecode = True
+    # Keep every ZIP's offline view synchronized with its canonical JSON.
+    spec = spec_from_file_location('build_materials', ROOT / 'scripts/build-materials.py')
+    materials = module_from_spec(spec)
+    spec.loader.exec_module(materials)
+    materials.build()
     for episode in json.loads((ROOT / 'episodes/manifest.json').read_text()):
         build(episode)
