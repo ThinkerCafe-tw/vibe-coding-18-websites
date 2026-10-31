@@ -38,7 +38,7 @@
     },
     {
       "id": "home-image-cafe",
-      "label": "咖啡廳作品縮圖（示意）",
+      "label": "咖啡廳課程練習縮圖",
       "kind": "image",
       "file": "materials/home/cafe.svg",
       "sha256": "eba8e953f2552dedf325a73427ecb4a9978f71faa5cb71cab4710e9bd6066c4f",
@@ -50,7 +50,7 @@
     },
     {
       "id": "home-image-photo",
-      "label": "攝影師作品縮圖（示意）",
+      "label": "攝影師課程練習縮圖",
       "kind": "image",
       "file": "materials/home/photo.svg",
       "sha256": "ccad896523413600cddaca18c1a2c93eae5fa57f7544523e4429dae5cdb3c608",
@@ -62,7 +62,7 @@
     },
     {
       "id": "home-image-clinic",
-      "label": "診所作品縮圖（示意）",
+      "label": "診所課程練習縮圖",
       "kind": "image",
       "file": "materials/home/clinic.svg",
       "sha256": "2740a4da4a4f3a8b1c91e614539d10ffc3ce28fe060407893beadd3c0235172e",
@@ -74,7 +74,7 @@
     },
     {
       "id": "home-image-event",
-      "label": "活動報名作品縮圖（示意）",
+      "label": "活動報名課程練習縮圖",
       "kind": "image",
       "file": "materials/home/event.svg",
       "sha256": "d62792fa06f5cb430bd72610b3687cf4faba61bb64eccfd42b5762dbb55b3bfe",
@@ -86,7 +86,7 @@
     },
     {
       "id": "home-image-consultant",
-      "label": "顧問作品縮圖（示意）",
+      "label": "顧問課程練習縮圖",
       "kind": "image",
       "file": "materials/home/consultant.svg",
       "sha256": "a3b5df670fb3c9c81ba9f3bab967bcdc0c2c0027230148b755d72d2383854f91",
