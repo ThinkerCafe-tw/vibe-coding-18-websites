@@ -997,7 +997,7 @@ dialog::backdrop{
   }
 }
 </style>
-<!-- K08 readable layout --><style>@media(min-width:900px){nav{position:static!important}.container,.wrap{width:calc(100% - 112px);max-width:1408px}.form-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)!important;align-items:start}.panel{padding:28px}#orderPanel{line-height:1.45}#orderPanel h3{margin:14px 0}.summary-row{padding:9px 0!important}.confirm-box{padding:18px;margin:16px 0}#orderPanel .btn{min-height:48px;padding:12px 22px}.status-grid{gap:18px}.status-card{padding:24px}.state-box{padding:28px}.modal-head,.modal-body{padding:32px}dialog{width:1100px;max-width:calc(100% - 96px);max-height:calc(100% - 80px)}.modal-actions{gap:20px}.mock-payment{padding:24px}.modal-body p{margin:24px 0}}</style><style>@media(min-width:900px){dialog{position:fixed;inset:0;margin:0;width:100%;height:100%;max-width:none;max-height:none;border:0;border-radius:0;padding:80px 130px;background:var(--paper)}.modal-head,.modal-body{background:white}.modal-body{border-radius:0 0 24px 24px}.modal-head{border-radius:24px 24px 0 0}}</style><style id="k23b-style">
+<!-- K08 readable layout --><style>@media(min-width:900px){nav{position:static!important}.container,.wrap{width:calc(100% - 112px);max-width:1408px}.form-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)!important;align-items:start}.panel{padding:28px}#orderPanel{line-height:1.45}#orderPanel h3{margin:14px 0}.summary-row{padding:9px 0!important}.confirm-box{padding:18px;margin:16px 0}#orderPanel .btn{min-height:48px;padding:12px 22px}.status-grid{gap:18px}.status-card{padding:24px}.state-box{padding:28px}.modal-head,.modal-body{padding:32px}dialog{width:1100px;max-width:calc(100% - 96px);max-height:calc(100% - 80px)}.modal-actions{gap:20px}.mock-payment{padding:24px}.modal-body p{margin:24px 0}}</style><style>@media(min-width:900px){dialog{position:fixed;inset:0;margin:0;width:100%;height:100%;max-width:none;max-height:none;border:0;border-radius:0;padding:80px 130px;background:var(--paper)}.modal-head,.modal-body{background:white}.modal-body{border-radius:0 0 24px 24px}.modal-head{border-radius:24px 24px 0 0}}</style><style>#logBody td{padding:6px;border-top:1px solid #e5e5e5}</style><style id="k23b-style">
 .textbook-block{max-width:1120px;margin:48px auto;padding:32px;background:#fffdf9;border:1px solid #d9ddd8;border-radius:20px;color:#1f2825;font-size:20px;line-height:1.7}
 .textbook-block h2{font-size:32px;line-height:1.45;margin:0 0 20px}.textbook-block p{margin:16px 0}.textbook-block summary{cursor:pointer;font-size:22px;padding:16px 20px}.textbook-block details{border:1px solid #d9ddd8;border-radius:12px;margin:16px 0;padding:8px}.textbook-block details p{padding:0 20px 16px}.textbook-block button,.textbook-block select{font:inherit;padding:14px 22px;min-height:52px;margin:8px;border:1px solid #1f5b4d;border-radius:10px;background:white;color:#1f2825}.textbook-block .selected{background:#1f5b4d;color:white}.textbook-block .booked{background:#eee;color:#666}.textbook-block code{font-size:18px;word-break:break-word}
 @media(max-width:640px){.textbook-block{margin:24px 16px;padding:24px}.textbook-block button,.textbook-block select{max-width:100%;margin:8px 0}}
@@ -1242,6 +1242,17 @@ dialog::backdrop{
     <div id="stateBox" class="state-box">
       <strong>付款狀態：前往付款</strong>
       <p>這只是前端原型狀態。本頁沒有連接真實金流後端，也沒有執行真實 webhook 簽章驗證。</p>
+    </div>
+
+    <div class="panel" id="stateLog" style="margin-top:16px">
+      <span class="tag">訂單狀態紀錄｜教學模擬</span>
+      <p id="logCounts" style="margin:10px 0;font-weight:700"></p>
+      <button class="btn btn-secondary" id="dupNotice" type="button" hidden>成功通知又送來一次｜教學模擬</button>
+      <p style="margin:8px 0;color:var(--muted,#666)">金流常會把同一個成功通知重送好幾次。同一筆付款只能入帳一次，訂單也不能因此變動。</p>
+      <div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:15px">
+        <thead><tr><th style="text-align:left;padding:6px">時間</th><th style="text-align:left;padding:6px">發生什麼</th><th style="text-align:left;padding:6px">訂單狀態</th><th style="text-align:left;padding:6px">通知 / 入帳</th></tr></thead>
+        <tbody id="logBody"></tbody>
+      </table></div>
     </div>
 
     <div class="delivery panel" id="delivery">
@@ -1493,7 +1504,10 @@ const freshState=(sequence=1)=>({
   companyType:"個人／自由工作者",
   problem:"希望整理現有網站與預約付款流程，確認應該先改哪些環節。",
   budget:"NT$ 3,000–10,000",
-  slot:"2026/10/08 10:00"
+  slot:"2026/10/08 10:00",
+  notices:0,
+  credited:0,
+  events:[]
 });
 
 let state;
@@ -1520,6 +1534,12 @@ const money=n=>"NT$ "+n.toLocaleString("zh-TW");
 
 function save(){
   localStorage.setItem(key,JSON.stringify(state));
+}
+const orderLabels={pending_payment:"待付款",paid:"已付款",payment_failed:"付款失敗",cancelled:"已取消",completed:"已完成",refunded:"已退款"};
+function logEvent(what){
+  const d=new Date();
+  const t=[d.getHours(),d.getMinutes(),d.getSeconds()].map(n=>String(n).padStart(2,"0")).join(":");
+  state.events=(state.events||[]).concat([{t,what,order:orderLabels[state.orderStatus],notices:state.notices||0,credited:state.credited||0}]).slice(-12);
 }
 function statusLabel(s){
   return {
@@ -1592,6 +1612,10 @@ function render(){
   $("#payBtn").disabled=["cancelled","completed","refunded"].includes(state.orderStatus);
   $("#payBtn").textContent=state.orderStatus==="cancelled"?"已取消，不能再付款":"前往付款｜教學模擬";
   $("#delivery").classList.toggle("show",state.orderStatus==="paid");
+  $("#dupNotice").hidden=state.orderStatus!=="paid";
+  $("#logCounts").textContent="收到成功通知 "+(state.notices||0)+" 次｜實際入帳 "+(state.credited||0)+" 次";
+  const rows=(state.events||[]).map(e=>"<tr><td>"+e.t+"</td><td>"+e.what+"</td><td><strong>"+e.order+"</strong></td><td>"+e.notices+" / "+e.credited+"</td></tr>").join("");
+  $("#logBody").innerHTML=rows||"<tr><td colspan='4'>還沒有紀錄，送出預約後開始記錄。</td></tr>";
 
   save();
 }
@@ -1623,6 +1647,7 @@ $("#bookingForm").addEventListener("submit",e=>{
   state.problem=$("#problem").value.trim();
   state.budget=$("#budget").value;
   state.slot=$("#slot").value;
+  logEvent("送出預約，訂單 "+state.orderId+" 待付款");
   save();
   render();
   toast("教學預約資料已儲存在此瀏覽器。");
@@ -1632,6 +1657,7 @@ $("#newOrderBtn").addEventListener("click",()=>{
   const sequence=Number(state.orderId.split("-").pop())+1;
   const plan=state.plan;
   state={...freshState(sequence),plan};
+  logEvent("建立新訂單 "+state.orderId);
   $("#confirmTerms").checked=false;
   render();
   toast("已建立另一筆教學訂單，請核對新編號並確認付款摘要。");
@@ -1647,6 +1673,7 @@ $("#payBtn").addEventListener("click",()=>{
   if(["cancelled","completed","refunded"].includes(state.orderStatus)) return;
   if(state.orderStatus==="payment_failed") state.orderStatus="pending_payment";
   if(state.paymentStatus!=="paid") state.paymentStatus="processing";
+  logEvent("前往付款，付款中");
   render();
   $("#paymentDialog").showModal();
   if (innerWidth <= 640) { const d=$("#paymentDialog"); d.scrollTop=d.scrollHeight; }
@@ -1655,6 +1682,7 @@ $("#payBtn").addEventListener("click",()=>{
 function closePayment(){
   if(state.paymentStatus==="processing"){
     state.paymentStatus=statusBeforeDialog==="processing"?"unpaid":statusBeforeDialog;
+    logEvent("關掉付款頁，訂單不變");
   }
   render();
   $("#paymentDialog").close();
@@ -1668,6 +1696,8 @@ $$(".mock-result").forEach(btn=>{
     if(state.orderStatus!=="pending_payment" || state.paymentStatus!=="processing") return;
     state.paymentStatus=btn.dataset.result;
     state.orderStatus=state.paymentStatus==="paid"?"paid":state.paymentStatus==="failed"?"payment_failed":state.paymentStatus==="cancelled"?"cancelled":"pending_payment";
+    if(state.paymentStatus==="paid"){state.notices=(state.notices||0)+1;state.credited=(state.credited||0)+1;}
+    logEvent({paid:"收到成功通知，入帳一次",failed:"收到付款失敗",cancelled:"使用者取消付款"}[state.paymentStatus]);
     save();
     render();
     $("#paymentDialog").close();
@@ -1679,6 +1709,14 @@ $$(".mock-result").forEach(btn=>{
       state.paymentStatus==="failed" ? 150 : 2200
     );
   });
+});
+
+$("#dupNotice").addEventListener("click",()=>{
+  if(state.orderStatus!=="paid") return;
+  state.notices=(state.notices||0)+1;
+  logEvent("同一筆付款的成功通知又來了，已處理過，不再入帳");
+  render();
+  toast("重複通知已略過：訂單仍是已付款，入帳還是一次。");
 });
 
 $("#paymentDialog").addEventListener("cancel",e=>{
