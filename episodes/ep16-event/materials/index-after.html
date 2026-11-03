@@ -2327,7 +2327,10 @@
               <button id="simulateTimeout" class="warning" disabled>教學模擬：付款逾時</button>
               <button id="simulateCancel" class="danger" disabled>教學模擬：取消報名</button>
               <button id="simulateConfirm" class="secondary" disabled>教學模擬：確認報名</button>
+              <button id="simulateDupNotice" class="secondary" disabled>教學模擬：付款通知又送來一次</button>
             </div>
+            <p id="dupCounts" style="margin:14px 0 6px;font-size:26px;font-weight:800;color:#1f5f4a"></p>
+            <p class="muted" style="margin:0 0 12px">金流常把同一個付款通知重送好幾次。同一筆付款只能成立一次，名額不能再扣、成功信也不能再寄。</p>
 
             <div id="latestNotification" class="notification" aria-live="polite">
               <strong>通知紀錄</strong>
@@ -3076,6 +3079,7 @@
 
         registration.status = "paid";
         registration.paymentStatus = "success";
+        registration.paidNotices = 1;
 
         const payment = state.payments.find(p => p.registrationId === registration.id);
         if (payment) {
@@ -3370,6 +3374,11 @@
         $("#simulateTimeout").disabled = !(active && active.status === "pending_payment");
         $("#simulateConfirm").disabled = !(active && active.status === "paid");
         $("#simulateCancel").disabled = !active;
+        $("#simulateDupNotice").disabled = !(active && ["paid", "confirmed"].includes(active.status));
+        const paidCount = state.registrations.filter(r => ["paid", "confirmed"].includes(r.status)).length;
+        $("#dupCounts").textContent = active && ["paid", "confirmed"].includes(active.status)
+          ? `付款通知收到 ${active.paidNotices || 1} 次｜成立付款 ${paidCount} 筆｜早鳥剩餘 ${Math.max(0, Number(state.tickets.early || 0))} 名`
+          : "";
       }
 
       function renderWaitlist() {
@@ -3559,6 +3568,21 @@
       });
 
       $("#simulatePaid").addEventListener("click", simulatePaid);
+      $("#simulateDupNotice").addEventListener("click", () => {
+        const registration = getActiveRegistration();
+        if (!registration || !["paid", "confirmed"].includes(registration.status)) return;
+        registration.paidNotices = (registration.paidNotices || 1) + 1;
+        state.notifications.unshift({
+          id: uid("notice"),
+          target: registration.name,
+          content: "同一筆付款的通知又送來了：這筆已處理過，不再成立付款、不再扣名額、不再寄成功信。",
+          channel: "教學示意通道",
+          status: "重複通知已略過",
+          createdAt: nowISO()
+        });
+        saveState();
+        render();
+      });
       $("#simulateTimeout").addEventListener("click", simulateTimeout);
       $("#simulateConfirm").addEventListener("click", simulateConfirm);
       $("#simulateCancel").addEventListener("click", simulateCancel);
