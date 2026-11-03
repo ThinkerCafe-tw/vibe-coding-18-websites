@@ -2324,6 +2324,7 @@
 
             <div class="controls">
               <button id="simulatePaid" class="primary" disabled>教學模擬：付款成功</button>
+              <button id="simulateFailed" class="warning" disabled>教學模擬：付款失敗</button>
               <button id="simulateTimeout" class="warning" disabled>教學模擬：付款逾時</button>
               <button id="simulateCancel" class="danger" disabled>教學模擬：取消報名</button>
               <button id="simulateConfirm" class="secondary" disabled>教學模擬：確認報名</button>
@@ -2900,6 +2901,7 @@
         return ({
           pending: "待付款",
           success: "付款成功（教學模擬）",
+          failed: "付款失敗（教學模擬）",
           timeout: "付款逾時（教學模擬）",
           cancelled: "已取消（教學模擬）",
           none: "尚未建立"
@@ -3092,6 +3094,32 @@
           id: uid("notice"),
           target: registration.name,
           content: "報名成功：付款完成，請核對活動資訊、票種與報到方式。這只是教學模擬，沒有真實交易。",
+          channel: "教學示意通道",
+          status: "教學示意未發送",
+          createdAt: nowISO()
+        });
+
+        saveState();
+        render();
+      }
+
+      function simulateFailed() {
+        const registration = getActiveRegistration();
+        if (!registration || registration.status !== "pending_payment") return;
+
+        registration.paymentStatus = "failed";
+
+        const payment = state.payments.find(p => p.registrationId === registration.id);
+        if (payment) {
+          payment.method = "教學模擬付款方式";
+          payment.result = "付款失敗（教學模擬）";
+          payment.transactionTime = nowISO();
+        }
+
+        state.notifications.unshift({
+          id: uid("notice"),
+          target: registration.name,
+          content: "付款未完成：報名仍是待付款，名額保留到付款期限，可重新付款。這只是教學模擬，未真的扣款。",
           channel: "教學示意通道",
           status: "教學示意未發送",
           createdAt: nowISO()
@@ -3371,6 +3399,7 @@
         }
 
         $("#simulatePaid").disabled = !(active && active.status === "pending_payment");
+        $("#simulateFailed").disabled = !(active && active.status === "pending_payment");
         $("#simulateTimeout").disabled = !(active && active.status === "pending_payment");
         $("#simulateConfirm").disabled = !(active && active.status === "paid");
         $("#simulateCancel").disabled = !active;
@@ -3568,6 +3597,7 @@
       });
 
       $("#simulatePaid").addEventListener("click", simulatePaid);
+      $("#simulateFailed").addEventListener("click", simulateFailed);
       $("#simulateDupNotice").addEventListener("click", () => {
         const registration = getActiveRegistration();
         if (!registration || !["paid", "confirmed"].includes(registration.status)) return;
