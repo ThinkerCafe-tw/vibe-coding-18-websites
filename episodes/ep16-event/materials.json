@@ -107,7 +107,7 @@
       "label": "影片操作用：修正後活動報名網頁",
       "kind": "starter-html",
       "description": "用此版本接續票種、候補、逾時、通知與手機測試。",
-      "sha256": "914d5c45ca92fbce9933a2c1fc0213e02a5a4ddacc2aa8a3394e2ea3f1a6ff33",
+      "sha256": "6f3bf58db5b8f0f0e74494bb6781508dffebb7bb5add9b84244071886b5f0559",
       "usedInVideoAt": [
         "018",
         "019"

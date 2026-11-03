@@ -40,7 +40,7 @@
       "label": "影片操作用：顧問預約網頁",
       "kind": "starter-html",
       "description": "接續影片的方案、訂單與付款測試，使用本檔。",
-      "sha256": "913357ee3f609e95b40b50b1c096a9a891d33b30818f957efa3eb7b9f6ea3a69",
+      "sha256": "464342a004424e0e8b3465877b78dd45baf25a9522f16aa2eccd70f1b1fc831b",
       "usedInVideoAt": [
         "009"
       ],
